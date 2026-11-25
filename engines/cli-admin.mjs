@@ -1,7 +1,7 @@
 import { execFile } from 'node:child_process'
 import { existsSync, lstatSync, readFileSync, renameSync, rmSync, statSync, writeFileSync } from 'node:fs'
 import { homedir } from 'node:os'
-import { join } from 'node:path'
+import { isAbsolute, join } from 'node:path'
 import { promisify } from 'node:util'
 
 const execute = promisify(execFile)
@@ -126,6 +126,9 @@ const agyLegacyCredentialFiles = ['oauth_creds.json', 'credentials.json']
 
 function agyOAuthDirectory(env) {
   const effective = { ...process.env, ...env }
+  if (effective.ANTIGRAVITY_APP_DATA_DIR && isAbsolute(effective.ANTIGRAVITY_APP_DATA_DIR)) {
+    return effective.ANTIGRAVITY_APP_DATA_DIR
+  }
   return join(effective.ANTIGRAVITY_GEMINI_DIR || join(effective.HOME || homedir(), '.gemini'),
     effective.ANTIGRAVITY_APP_DATA_DIR || 'antigravity-cli')
 }
