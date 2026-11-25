@@ -16633,27 +16633,182 @@ function clampPos(x, y) {
   };
 }
 function PetSprite({ mood }) {
+  if (mood === "running") {
+    return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("svg", { className: "dchat-pet-svg", width: "30", height: "30", viewBox: "0 0 32 32", fill: "none", "aria-hidden": "true", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { className: "dchat-pet-wind", d: "M2 14.5H5.5M3 17.5H6", stroke: "currentColor", strokeWidth: "1.3", strokeLinecap: "round" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "8", cy: "24", r: "4.3", stroke: "currentColor", strokeWidth: "1.5" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("g", { className: "dchat-pet-wheel", style: { transformOrigin: "8px 24px" }, children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M8 20.5V27.5M4.5 24H11.5", stroke: "currentColor", strokeWidth: "1.1", strokeLinecap: "round" }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "23.5", cy: "24", r: "4.3", stroke: "currentColor", strokeWidth: "1.5" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("g", { className: "dchat-pet-wheel", style: { transformOrigin: "23.5px 24px" }, children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M23.5 20.5V27.5M20 24H27", stroke: "currentColor", strokeWidth: "1.1", strokeLinecap: "round" }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+        "path",
+        {
+          d: "M8 24L14.2 24L18.5 17.8H11.8L8 24ZM14.2 24L11.8 17.8M23.5 24L18.2 15.5L20.8 14.8",
+          stroke: "currentColor",
+          strokeWidth: "1.4",
+          strokeLinecap: "round",
+          strokeLinejoin: "round"
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M10.3 17.5H13.3", stroke: "currentColor", strokeWidth: "1.5", strokeLinecap: "round" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("g", { className: "dchat-pet-rider", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+          "path",
+          {
+            d: "M9.6 17.2C9.2 14.2 11.6 12.2 14.6 13.1C16.2 13.6 16.8 15.5 15.2 17.2Z",
+            fill: "currentColor",
+            fillOpacity: "0.16",
+            stroke: "currentColor",
+            strokeWidth: "1.4",
+            strokeLinejoin: "round"
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "14.6", cy: "9.4", r: "2.9", fill: "currentColor", fillOpacity: "0.14", stroke: "currentColor", strokeWidth: "1.4" }),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M13.8 6.5C14.3 5.2 15.6 5.2 16.2 6.4", stroke: "currentColor", strokeWidth: "1.2", strokeLinecap: "round" }),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+          "path",
+          {
+            d: "M17.2 8.7L26.2 10.3C24.8 12.8 20.4 13.4 16.9 11.4Z",
+            fill: "currentColor",
+            fillOpacity: "0.2",
+            stroke: "currentColor",
+            strokeWidth: "1.35",
+            strokeLinejoin: "round"
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "15.5", cy: "8.9", r: "0.8", fill: "currentColor" }),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M13.8 14.4L18.6 15.7", stroke: "currentColor", strokeWidth: "1.4", strokeLinecap: "round" })
+      ] })
+    ] });
+  }
+  if (mood === "attention") {
+    return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("svg", { className: "dchat-pet-svg", width: "30", height: "30", viewBox: "0 0 32 32", fill: "none", "aria-hidden": "true", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+        "path",
+        {
+          d: "M7.5 25.5C7 19.5 9.5 15.5 13.5 15.5C17.2 15.5 19.2 19.5 18.6 25.5Z",
+          fill: "currentColor",
+          fillOpacity: "0.15",
+          stroke: "currentColor",
+          strokeWidth: "1.5",
+          strokeLinejoin: "round"
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "13", cy: "11.2", r: "3.4", fill: "currentColor", fillOpacity: "0.14", stroke: "currentColor", strokeWidth: "1.5" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M12 7.8C12.5 6.4 14 6.4 14.6 7.7", stroke: "currentColor", strokeWidth: "1.25", strokeLinecap: "round" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+        "path",
+        {
+          d: "M16 10.2L24.5 11.2C23.2 14.1 18.8 14.8 15.6 12.8Z",
+          fill: "currentColor",
+          fillOpacity: "0.2",
+          stroke: "currentColor",
+          strokeWidth: "1.4",
+          strokeLinejoin: "round"
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "14.1", cy: "10.6", r: "1", fill: "currentColor" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M7.8 19.5L4.8 16.5M18.2 19.5L21.5 17", stroke: "currentColor", strokeWidth: "1.5", strokeLinecap: "round" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M6 25.5H20", stroke: "currentColor", strokeWidth: "1.4", strokeLinecap: "round" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("g", { className: "dchat-pet-spark", style: { transformOrigin: "25.5px 7px" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M25.5 4.2V7.8", stroke: "currentColor", strokeWidth: "1.8", strokeLinecap: "round" }),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "25.5", cy: "10.2", r: "1", fill: "currentColor" })
+      ] })
+    ] });
+  }
+  if (mood === "done") {
+    return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("svg", { className: "dchat-pet-svg", width: "30", height: "30", viewBox: "0 0 32 32", fill: "none", "aria-hidden": "true", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+        "path",
+        {
+          d: "M7.5 25.5C7 19.5 9.5 15.5 13.5 15.5C17.2 15.5 19.2 19.5 18.6 25.5Z",
+          fill: "currentColor",
+          fillOpacity: "0.15",
+          stroke: "currentColor",
+          strokeWidth: "1.5",
+          strokeLinejoin: "round"
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "13", cy: "11.2", r: "3.4", fill: "currentColor", fillOpacity: "0.14", stroke: "currentColor", strokeWidth: "1.5" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M12 7.8C12.5 6.4 14 6.4 14.6 7.7", stroke: "currentColor", strokeWidth: "1.25", strokeLinecap: "round" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+        "path",
+        {
+          d: "M16 10.4L24.2 11.4C22.8 14 18.6 14.4 15.6 12.6Z",
+          fill: "currentColor",
+          fillOpacity: "0.2",
+          stroke: "currentColor",
+          strokeWidth: "1.4",
+          strokeLinejoin: "round"
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M13 10.8C13.6 10 14.6 10 15.1 10.8", stroke: "currentColor", strokeWidth: "1.35", strokeLinecap: "round" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M7.8 18.5L4.5 14.8M18.2 18.5L22 15.5", stroke: "currentColor", strokeWidth: "1.5", strokeLinecap: "round" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M6 25.5H20", stroke: "currentColor", strokeWidth: "1.4", strokeLinecap: "round" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+        "path",
+        {
+          className: "dchat-pet-spark",
+          style: { transformOrigin: "25.5px 7px" },
+          d: "M25.5 3.8L26.3 6.2L28.7 7L26.3 7.8L25.5 10.2L24.7 7.8L22.3 7L24.7 6.2Z",
+          fill: "currentColor"
+        }
+      )
+    ] });
+  }
   return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("svg", { className: "dchat-pet-svg", width: "30", height: "30", viewBox: "0 0 32 32", fill: "none", "aria-hidden": "true", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("rect", { x: "4", y: "7", width: "24", height: "19", rx: "9", fill: "currentColor", fillOpacity: "0.12", stroke: "currentColor", strokeWidth: "1.6" }),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M11 7.5C11 5.3 12.8 4 16 4C19.2 4 21 5.3 21 7.5", stroke: "currentColor", strokeWidth: "1.5", strokeLinecap: "round" }),
-    mood === "idle" ? /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(import_jsx_runtime44.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M10.5 16.5C11.3 17.3 12.7 17.3 13.5 16.5", stroke: "currentColor", strokeWidth: "1.6", strokeLinecap: "round" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M18.5 16.5C19.3 17.3 20.7 17.3 21.5 16.5", stroke: "currentColor", strokeWidth: "1.6", strokeLinecap: "round" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M14.5 20.5H17.5", stroke: "currentColor", strokeWidth: "1.4", strokeLinecap: "round" })
-    ] }) : mood === "running" ? /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(import_jsx_runtime44.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "12", cy: "16", r: "1.7", fill: "currentColor" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "20", cy: "16", r: "1.7", fill: "currentColor" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M13.5 20.2C14.5 21.4 17.5 21.4 18.5 20.2", stroke: "currentColor", strokeWidth: "1.5", strokeLinecap: "round" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { className: "dchat-pet-spark", cx: "26.5", cy: "6.5", r: "2", fill: "currentColor" })
-    ] }) : mood === "attention" ? /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(import_jsx_runtime44.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "12", cy: "16", r: "1.8", fill: "currentColor" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "20", cy: "16", r: "1.8", fill: "currentColor" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "16", cy: "20.5", r: "1.5", stroke: "currentColor", strokeWidth: "1.4" })
-    ] }) : /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(import_jsx_runtime44.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M10.5 16.5L12 15L13.5 16.5", stroke: "currentColor", strokeWidth: "1.6", strokeLinecap: "round", strokeLinejoin: "round" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M18.5 16.5L20 15L21.5 16.5", stroke: "currentColor", strokeWidth: "1.6", strokeLinecap: "round", strokeLinejoin: "round" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M13 20C14.3 21.7 17.7 21.7 19 20", stroke: "currentColor", strokeWidth: "1.6", strokeLinecap: "round" })
-    ] })
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+      "path",
+      {
+        d: "M6.2 25.5C5.8 19.2 8.5 15 12.2 15C15.5 15 17.5 18.5 17 25.5Z",
+        fill: "currentColor",
+        fillOpacity: "0.14",
+        stroke: "currentColor",
+        strokeWidth: "1.5",
+        strokeLinejoin: "round"
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "11.8", cy: "10.8", r: "3.3", fill: "currentColor", fillOpacity: "0.14", stroke: "currentColor", strokeWidth: "1.5" }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M10.8 7.5C11.3 6.2 12.7 6.2 13.3 7.4", stroke: "currentColor", strokeWidth: "1.2", strokeLinecap: "round" }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+      "path",
+      {
+        d: "M14.8 10L22.6 11.3C21.3 13.6 17.4 14 14.5 12.3Z",
+        fill: "currentColor",
+        fillOpacity: "0.2",
+        stroke: "currentColor",
+        strokeWidth: "1.35",
+        strokeLinejoin: "round"
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M11.6 10.5C12.2 11.2 13.2 11.2 13.8 10.5", stroke: "currentColor", strokeWidth: "1.3", strokeLinecap: "round" }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M12.5 19.2C15 19.8 17.2 21 19.4 21", stroke: "currentColor", strokeWidth: "1.45", strokeLinecap: "round" }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+      "rect",
+      {
+        x: "19.5",
+        y: "18.8",
+        width: "6.8",
+        height: "6.7",
+        rx: "1.4",
+        fill: "currentColor",
+        fillOpacity: "0.16",
+        stroke: "currentColor",
+        strokeWidth: "1.4"
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M26.3 20.3C28.2 20.3 28.2 23.8 26.3 23.8", stroke: "currentColor", strokeWidth: "1.35", strokeLinecap: "round" }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M5 25.5H27.5", stroke: "currentColor", strokeWidth: "1.4", strokeLinecap: "round" }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+      "path",
+      {
+        className: "dchat-pet-steam",
+        d: "M21.6 16.8C21 15.6 22.3 14.8 21.7 13.5M24.4 16.8C23.8 15.6 25.1 14.8 24.5 13.5",
+        stroke: "currentColor",
+        strokeWidth: "1.25",
+        strokeLinecap: "round"
+      }
+    )
   ] });
 }
 function SessionPet({
@@ -20513,8 +20668,21 @@ var session_pet_default = `.dchat-pet-root {
   border-color: color-mix(in srgb, currentColor 40%, transparent);
 }
 
-.dchat-pet-root[data-mood='running'] .dchat-pet-svg {
-  animation: dchat-pet-bob 1.8s ease-in-out infinite;
+.dchat-pet-root[data-mood='running'] .dchat-pet-svg,
+.dchat-pet-header-slot[data-mood='running'] .dchat-pet-svg {
+  animation: dchat-pet-bob 0.9s ease-in-out infinite;
+}
+
+.dchat-pet-wheel {
+  animation: dchat-pet-spin 1.1s linear infinite;
+}
+
+.dchat-pet-wind {
+  animation: dchat-pet-wind 0.9s ease-in-out infinite;
+}
+
+.dchat-pet-steam {
+  animation: dchat-pet-steam 2.4s ease-in-out infinite;
 }
 
 .dchat-pet-spark {
@@ -20523,7 +20691,22 @@ var session_pet_default = `.dchat-pet-root {
 
 @keyframes dchat-pet-bob {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-2px); }
+  50% { transform: translateY(-1.2px); }
+}
+
+@keyframes dchat-pet-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes dchat-pet-wind {
+  0%, 100% { opacity: 0.9; transform: translateX(0); }
+  50% { opacity: 0.35; transform: translateX(-1.5px); }
+}
+
+@keyframes dchat-pet-steam {
+  0%, 100% { opacity: 0.75; transform: translateY(0); }
+  50% { opacity: 0.25; transform: translateY(-1.5px); }
 }
 
 @keyframes dchat-pet-pulse {
