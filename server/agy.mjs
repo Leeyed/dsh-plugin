@@ -1,7 +1,7 @@
-import { spawn } from 'node:child_process';
 import { homedir } from 'node:os';
 import { join, relative, resolve } from 'node:path';
 import { createInterface } from 'node:readline';
+import { spawnCli } from '../engines/cli-admin.mjs';
 import { metricCount, totalInput } from './persisted-metrics.mjs';
 import { agyCommandExecution, agyCommandResult, agyToolActivity, appendExecutionText, completeExecution } from './tool-activity.mjs';
 
@@ -104,7 +104,7 @@ export async function startAgy({ cwd, env, resumeId, forkFrom, replayHistory, ap
     const gemini = join(env?.HOME || homedir(), '.gemini');
     args.push('--app-data-dir', relative(gemini, appDataDirectory));
   }
-  const child = spawn('agy', args, {
+  const child = spawnCli('agy', args, {
     cwd: directory,
     ...(env ? { env: { ...process.env, ...env } } : {}),
     stdio: ['pipe', 'pipe', 'ignore'],

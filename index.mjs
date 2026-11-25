@@ -1,6 +1,6 @@
 import { spawn } from 'node:child_process'
 import { randomUUID } from 'node:crypto'
-import { closeSync, copyFileSync, constants, existsSync, fstatSync, lstatSync, mkdirSync, openSync, readFileSync, readdirSync, realpathSync, renameSync, rmSync, statSync, symlinkSync, writeFileSync } from 'node:fs'
+import { closeSync, copyFileSync, constants, existsSync, fstatSync, linkSync, lstatSync, mkdirSync, openSync, readFileSync, readdirSync, realpathSync, renameSync, rmSync, statSync, symlinkSync, writeFileSync } from 'node:fs'
 import { createRequire } from 'node:module'
 import { homedir } from 'node:os'
 import { basename, isAbsolute, join, relative, sep } from 'node:path'
@@ -21,8 +21,8 @@ function getDshRequire() {
 }
 
 import { createAccountUsageCache, excludesSubscriptionQuota } from './server/account-usage-cache.mjs'
-import { agyDataDirectory } from './server/agy-session-history.mjs'
-import { claudeExternalAuthEnvKeys } from './engines/cli-admin.mjs'
+import { agyDataDirectory, migrateAgySharedHistory } from './server/agy-session-history.mjs'
+import { claudeExternalAuthEnvKeys, spawnCli } from './engines/cli-admin.mjs'
 import { createEngineRegistry } from './registry.mjs'
 
 function compareSemver(a, b) {
@@ -731,26 +731,56 @@ export function apply(ctx, config = {}) {
   }
   function linkSharedItem(src, dst) {
     if (!existsSync(src) || existsSync(dst)) return
-    try { symlinkSync(src, dst) } catch {}
+    const isDir = (() => { try { return statSync(src).isDirectory() } catch { return false } })()
+    try {
+      symlinkSync(src, dst, process.platform === 'win32' && isDir ? 'junction' : undefined)
+    } catch {
+      if (process.platform === 'win32' && !isDir) {
+        try { linkSync(src, dst) } catch {}
+      }
+    }
   }
   function agyIsolatedEnv(profileId) {
     const dir = join(store, 'profiles', 'agy', profileId)
     const config = join(dir, '.config')
     mkdirSync(config, { recursive: true, mode: 0o700 })
+    const nativeAgy = agyDataDirectory(homedir())
+    const isolatedAgy = agyDataDirectory(dir)
+    migrateAgySharedHistory(nativeAgy, isolatedAgy, linkSharedItem)
+    const winDirs = process.platform === 'win32' ? {
+      USERPROFILE: dir,
+      APPDATA: join(dir, 'AppData', 'Roaming'),
+      LOCALAPPDATA: join(dir, 'AppData', 'Local'),
+    } : {}
+    for (const folder of Object.values(winDirs)) mkdirSync(folder, { recursive: true, mode: 0o700 })
     return {
       HOME: dir,
       XDG_CONFIG_HOME: config,
-      // AGY's Linux keyring uses one entry for all homes. Make its native
-      // credential store fall back to the file in this profile instead.
-      ...(process.platform === 'linux' ? { DBUS_SESSION_BUS_ADDRESS: 'unix:path=/dev/null/dsh-agy-private-bus' } : {}),
+      ...winDirs,
+      // AGY's Linux keyring uses one entry for all homes; disable D-Bus so it
+      // falls back to file storage. On macOS/Windows, scope the OS credential store.
+      ...(process.platform === 'linux'
+        ? { DBUS_SESSION_BUS_ADDRESS: 'unix:path=/dev/null/dsh-agy-private-bus', ANTIGRAVITY_CREDENTIAL_SCOPE: undefined }
+        : { ANTIGRAVITY_CREDENTIAL_SCOPE: `dsh-agy-${profileId}` }),
       ANTIGRAVITY_GEMINI_DIR: undefined,
       ANTIGRAVITY_APP_DATA_DIR: undefined,
       ANTIGRAVITY_CONFIG_REL_DIR: undefined,
-      ANTIGRAVITY_CREDENTIAL_SCOPE: undefined,
       AGY_ACCOUNT: undefined,
       AGY_ADC_AUTH: undefined,
     }
   }
+  function migrateAllAgyProfiles() {
+    const agyProfilesDir = join(store, 'profiles', 'agy')
+    if (!existsSync(agyProfilesDir)) return
+    const nativeAgy = agyDataDirectory(homedir())
+    for (const entry of readdirSync(agyProfilesDir, { withFileTypes: true })) {
+      if (!entry.isDirectory()) continue
+      try {
+        migrateAgySharedHistory(nativeAgy, agyDataDirectory(join(agyProfilesDir, entry.name)), linkSharedItem)
+      } catch {}
+    }
+  }
+  migrateAllAgyProfiles()
   function resolveProfileEnv(engineId, profileId, pendingProfile) {
     if (!profileId || profileId === 'default') return undefined
     const profile = pendingProfile || engineProfiles(engineId).list.find(item => item.id === profileId)
@@ -953,7 +983,7 @@ export function apply(ctx, config = {}) {
     if (!env) return base
     const unset = Object.entries(env).filter(([, value]) => value === undefined).map(([key]) => '-u ' + key)
     const prefix = Object.entries(env)
-      .filter(([k, v]) => v && ['CODEX_HOME', 'CLAUDE_CONFIG_DIR', 'CLAUDE_SECURESTORAGE_CONFIG_DIR', 'HOME', 'XDG_CONFIG_HOME', 'DBUS_SESSION_BUS_ADDRESS'].includes(k))
+      .filter(([k, v]) => v && ['CODEX_HOME', 'CLAUDE_CONFIG_DIR', 'CLAUDE_SECURESTORAGE_CONFIG_DIR', 'HOME', 'USERPROFILE', 'APPDATA', 'LOCALAPPDATA', 'XDG_CONFIG_HOME', 'DBUS_SESSION_BUS_ADDRESS', 'ANTIGRAVITY_CREDENTIAL_SCOPE'].includes(k))
       .map(([k, v]) => `${k}='${v.replaceAll("'", "'\\''")}'`)
       .join(' ')
     return [unset.length ? 'env ' + unset.join(' ') : '', prefix, base].filter(Boolean).join(' ')
@@ -1103,7 +1133,7 @@ export function apply(ctx, config = {}) {
     const env = resolveProfileEnv(provider.id, targetProfileId, pendingProfile)
     const finishDefaultAgyOAuth = isAgy && targetProfileId === 'default' && provider.finishDefaultOAuth
     const previousOAuthMarker = finishDefaultAgyOAuth ? provider.nativeOAuthMarker?.(env) : undefined
-    const child = spawn(provider.loginSpec.bin, provider.loginSpec.args || [], {
+    const child = spawnCli(provider.loginSpec.bin, provider.loginSpec.args || [], {
       cwd: isAgy && env?.HOME ? env.HOME : homedir(),
       env: { ...process.env, ...env, BROWSER: 'true' },
       stdio: ['pipe', 'pipe', 'pipe'],
@@ -1240,7 +1270,7 @@ export function apply(ctx, config = {}) {
         if (info?.latestVersion) next.latestVersion = info.latestVersion
         next.updateAvailable = Boolean(next.version && next.latestVersion && compareSemver(next.version, next.latestVersion) < 0)
       } catch (error) {
-        if (error.code === 'ENOENT' && error.path === provider.loginSpec?.bin) {
+        if (error.code === 'ENOENT') {
           next.installed = false
           delete next.version
           delete next.latestVersion

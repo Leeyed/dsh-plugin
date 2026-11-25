@@ -1,7 +1,7 @@
-import { spawn } from 'node:child_process'
 import { randomUUID } from 'node:crypto'
 import { isAbsolute } from 'node:path'
 import { createInterface } from 'node:readline'
+import { spawnCli } from '../engines/cli-admin.mjs'
 import { claudeContextSize, claudeInput, claudeRequestContext } from './claude-usage.mjs'
 import { claudeAccountUsage, claudeContextSummary } from './claude-native.mjs'
 import { codexCommands, parseCodexCommand } from './codex-commands.mjs'
@@ -107,7 +107,7 @@ function connect(engine, args, { cwd, env }, onMessage, onFailure) {
   const codex = engine === 'codex'
   const label = codex ? 'Codex' : 'Claude Code'
   const group = process.platform !== 'win32'
-  const child = spawn(engine, args, { cwd, env, detached: group, stdio: ['pipe', 'pipe', 'ignore'] })
+  const child = spawnCli(engine, args, { cwd, env, detached: group, stdio: ['pipe', 'pipe', 'ignore'] })
   const ended = Promise.withResolvers()
   const pending = new Map()
   let nextId = 0

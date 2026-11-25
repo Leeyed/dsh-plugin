@@ -1,6 +1,7 @@
-import { lstatSync, mkdirSync, readlinkSync, realpathSync, statSync, symlinkSync } from 'node:fs'
+import { copyFileSync, existsSync, linkSync, lstatSync, mkdirSync, readdirSync, readlinkSync, realpathSync, renameSync, rmSync, statSync, symlinkSync } from 'node:fs'
 import { homedir } from 'node:os'
 import { join } from 'node:path'
+import { DatabaseSync } from 'node:sqlite'
 import { nativeUuid, openNativeDatabase } from './native-history.mjs'
 
 export const agyDataDirectory = (home = homedir()) => join(home, '.gemini', 'antigravity-cli')
@@ -8,13 +9,20 @@ export const agyDataDirectory = (home = homedir()) => join(home, '.gemini', 'ant
 function linkItem(directory, name, source) {
   const path = join(directory, name)
   const target = join(source, name)
+  const isDir = (() => { try { return statSync(target).isDirectory() } catch { return false } })()
   try {
-    symlinkSync(target, path)
+    symlinkSync(target, path, process.platform === 'win32' && isDir ? 'junction' : undefined)
   } catch (error) {
-    if (error.code !== 'EEXIST') throw error
-    if (!lstatSync(path).isSymbolicLink() || readlinkSync(path) !== target) {
-      throw new Error('The Antigravity session directory has an unexpected entry')
+    if (error.code === 'EEXIST') {
+      if (!lstatSync(path).isSymbolicLink() || readlinkSync(path) !== target) {
+        throw new Error('The Antigravity session directory has an unexpected entry')
+      }
+      return
     }
+    if (process.platform === 'win32' && !isDir) {
+      try { linkSync(target, path); return } catch {}
+    }
+    throw error
   }
 }
 
@@ -50,4 +58,82 @@ export function prepareAgySessionDirectory({ historyDirectory, runtimeDirectory,
     if (statSync(join(credentials, name), { throwIfNoEntry: false })) linkItem(runtimeDirectory, name, credentials)
   }
   return runtimeDirectory
+}
+
+function mergeDirectoryMissing(fromDir, toDir) {
+  mkdirSync(toDir, { recursive: true, mode: 0o700 })
+  for (const entry of readdirSync(fromDir, { withFileTypes: true })) {
+    const src = join(fromDir, entry.name)
+    const dst = join(toDir, entry.name)
+    if (entry.isDirectory()) {
+      mergeDirectoryMissing(src, dst)
+    } else if (!existsSync(dst)) {
+      try { renameSync(src, dst) } catch {
+        try { copyFileSync(src, dst) } catch {}
+      }
+    }
+  }
+}
+
+function mergeSummaryDatabase(srcDb, dstDb) {
+  if (!existsSync(srcDb)) {
+    try {
+      renameSync(dstDb, srcDb)
+      for (const suffix of ['-wal', '-shm']) {
+        if (existsSync(dstDb + suffix)) renameSync(dstDb + suffix, srcDb + suffix)
+      }
+      return true
+    } catch { return false }
+  }
+  const target = new DatabaseSync(srcDb)
+  try {
+    target.exec('ATTACH DATABASE ' + JSON.stringify(dstDb) + ' AS legacy')
+    const hasLegacy = target.prepare("SELECT 1 FROM legacy.sqlite_master WHERE type='table' AND name='conversation_summaries'").get()
+    const hasMain = target.prepare("SELECT 1 FROM main.sqlite_master WHERE type='table' AND name='conversation_summaries'").get()
+    if (hasLegacy && hasMain) {
+      const cols = target.prepare('PRAGMA main.table_info(conversation_summaries)').all().map(c => c.name)
+      const legacyCols = new Set(target.prepare('PRAGMA legacy.table_info(conversation_summaries)').all().map(c => c.name))
+      const shared = cols.filter(c => legacyCols.has(c))
+      if (shared.length) {
+        const list = shared.map(c => `"${c}"`).join(', ')
+        target.exec(`INSERT OR IGNORE INTO main.conversation_summaries (${list}) SELECT ${list} FROM legacy.conversation_summaries`)
+      }
+    }
+    target.exec('DETACH DATABASE legacy')
+    return true
+  } catch {
+    return false
+  } finally {
+    target.close()
+  }
+}
+
+export function migrateAgySharedHistory(nativeAgy, isolatedAgy, linkSharedItem) {
+  mkdirSync(isolatedAgy, { recursive: true, mode: 0o700 })
+  for (const name of ['conversations', 'brain', 'annotations']) {
+    const src = join(nativeAgy, name)
+    const dst = join(isolatedAgy, name)
+    mkdirSync(src, { recursive: true, mode: 0o700 })
+    const stat = lstatSync(dst, { throwIfNoEntry: false })
+    if (stat && !stat.isSymbolicLink()) {
+      try {
+        if (stat.isDirectory()) mergeDirectoryMissing(dst, src)
+        rmSync(dst, { recursive: true, force: true })
+      } catch {}
+    }
+    linkSharedItem(src, dst)
+  }
+  const srcDb = join(nativeAgy, 'conversation_summaries.db')
+  const dstDb = join(isolatedAgy, 'conversation_summaries.db')
+  const dstStat = lstatSync(dstDb, { throwIfNoEntry: false })
+  const srcStat = lstatSync(srcDb, { throwIfNoEntry: false })
+  const sameInode = Boolean(dstStat && srcStat && dstStat.ino && dstStat.ino === srcStat.ino)
+  if (dstStat && !dstStat.isSymbolicLink() && !sameInode) {
+    if (mergeSummaryDatabase(srcDb, dstDb)) {
+      for (const suffix of ['', '-wal', '-shm']) {
+        try { rmSync(dstDb + suffix, { force: true }) } catch {}
+      }
+    }
+  }
+  linkSharedItem(srcDb, dstDb)
 }

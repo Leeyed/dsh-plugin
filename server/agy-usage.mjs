@@ -1,9 +1,7 @@
-import { execFile } from 'node:child_process'
 import { existsSync } from 'node:fs'
 import { homedir } from 'node:os'
-import { promisify } from 'node:util'
+import { execCliFile } from '../engines/cli-admin.mjs'
 
-const execute = promisify(execFile)
 const quotaWindowName = /^(5h|five[ -]hour|7d|weekly|30d|monthly)(?:\s+limit(?:\s+remaining)?)?$/i
 
 export function agyUsageReport(report) {
@@ -44,7 +42,7 @@ export function agyUsageReport(report) {
 }
 
 async function isAgyUsageSupported(options) {
-  const installed = await execute('agy', ['--version'], options)
+  const installed = await execCliFile('agy', ['--version'], options)
   const version = /^(\d+)\.(\d+)\.(\d+)(?:[-+\s]|$)/.exec(installed.stdout.trim())
   if (!version) return false
   const [, major, minor, patch] = version.map(Number)
@@ -56,7 +54,7 @@ export async function agyAccountUsage({ cwd = homedir(), signal, env }) {
   const options = { cwd: safeCwd, signal, timeout: 20_000, maxBuffer: 128 * 1024, ...(env ? {env:{...process.env,...env}} : {}) }
   try {
     if (!await isAgyUsageSupported(options)) return agyUsageReport()
-    const result = await execute('agy', ['--print', '/usage', '--output-format', 'json'], options)
+    const result = await execCliFile('agy', ['--print', '/usage', '--output-format', 'json'], options)
     return agyUsageReport(JSON.parse(result.stdout))
   } catch {
     signal?.throwIfAborted()

@@ -1,10 +1,97 @@
-import { execFile } from 'node:child_process'
+import { execFile, spawn } from 'node:child_process'
 import { existsSync, lstatSync, readFileSync, renameSync, rmSync, statSync, writeFileSync } from 'node:fs'
 import { homedir } from 'node:os'
 import { isAbsolute, join } from 'node:path'
 import { promisify } from 'node:util'
 
 const execute = promisify(execFile)
+const winExtensions = ['.exe', '.com', '.cmd', '.bat']
+
+function isWindowsBatch(filePath) {
+  return /\.(?:cmd|bat)$/i.test(filePath)
+}
+
+function windowsSearchDirs(env) {
+  const effective = { ...process.env, ...env }
+  const pathValue = effective.PATH || effective.Path || process.env.PATH || process.env.Path || ''
+  const fromPath = pathValue.split(';').map(entry => entry.trim().replace(/^"(.*)"$/, '$1')).filter(Boolean)
+  // Include standard Windows CLI install locations in case Desktop GUI PATH is minimal
+  // or isolated profile env overrides USERPROFILE/APPDATA/LOCALAPPDATA.
+  const home = process.env.USERPROFILE || homedir()
+  const appData = process.env.APPDATA || join(home, 'AppData', 'Roaming')
+  const localAppData = process.env.LOCALAPPDATA || join(home, 'AppData', 'Local')
+  const programData = process.env.PROGRAMDATA || 'C:\\ProgramData'
+  const extra = [
+    join(appData, 'npm'),
+    join(localAppData, 'Programs', 'antigravity', 'bin'),
+    join(localAppData, 'Programs', 'claude'),
+    join(localAppData, 'Microsoft', 'WinGet', 'Links'),
+    join(home, '.local', 'bin'),
+    join(home, '.claude', 'local'),
+    join(home, '.bun', 'bin'),
+    join(home, 'scoop', 'shims'),
+    join(programData, 'chocolatey', 'bin'),
+  ]
+  return [...new Set([...fromPath, ...extra])]
+}
+
+function windowsPathExts(env) {
+  const raw = env?.PATHEXT || process.env.PATHEXT || '.COM;.EXE;.BAT;.CMD'
+  const list = raw.split(';').map(ext => ext.trim().toLowerCase()).filter(ext => winExtensions.includes(ext))
+  return [...new Set(['.exe', '.com', ...list, '.cmd', '.bat'])]
+}
+
+function isRegularFile(filePath) {
+  try { return statSync(filePath).isFile() } catch { return false }
+}
+
+export function resolveCliCommand(bin, env, platform = process.platform) {
+  if (platform !== 'win32' || typeof bin !== 'string' || !bin) {
+    return { command: bin, argsPrefix: [], resolvedPath: undefined, isBatch: false }
+  }
+  const exts = windowsPathExts(env)
+  const hasSep = /[\\/]/.test(bin)
+  const hasExt = /\.[a-z0-9]+$/i.test(bin)
+  let resolvedPath
+  if (hasSep) {
+    const candidates = hasExt ? [bin] : exts.map(ext => bin + ext)
+    resolvedPath = candidates.find(isRegularFile)
+  } else {
+    for (const dir of windowsSearchDirs(env)) {
+      const candidates = hasExt ? [join(dir, bin)] : exts.map(ext => join(dir, bin + ext))
+      const match = candidates.find(isRegularFile)
+      if (match) { resolvedPath = match; break }
+    }
+  }
+  if (!resolvedPath) {
+    return { command: bin, argsPrefix: [], resolvedPath: undefined, isBatch: false }
+  }
+  if (isWindowsBatch(resolvedPath)) {
+    return {
+      command: process.env.ComSpec || 'cmd.exe',
+      argsPrefix: ['/d', '/c', resolvedPath],
+      resolvedPath,
+      isBatch: true,
+    }
+  }
+  return { command: resolvedPath, argsPrefix: [], resolvedPath, isBatch: false }
+}
+
+export function spawnCli(bin, args = [], options = {}) {
+  const resolved = resolveCliCommand(bin, options.env)
+  const winOpts = process.platform === 'win32' && options.windowsHide === undefined
+    ? { ...options, windowsHide: true }
+    : options
+  return spawn(resolved.command, [...resolved.argsPrefix, ...args], winOpts)
+}
+
+export function execCliFile(bin, args = [], options = {}) {
+  const resolved = resolveCliCommand(bin, options.env)
+  const winOpts = process.platform === 'win32' && options.windowsHide === undefined
+    ? { ...options, windowsHide: true }
+    : options
+  return execute(resolved.command, [...resolved.argsPrefix, ...args], winOpts)
+}
 
 export const claudeExternalAuthEnvKeys = [
   'ANTHROPIC_API_KEY', 'ANTHROPIC_API_KEY_FILE_DESCRIPTOR', 'ANTHROPIC_AUTH_TOKEN', 'ANTHROPIC_BASE_URL',
@@ -36,7 +123,7 @@ export function compareSemver(a, b) {
 
 async function execCli(bin, args, { cwd = homedir(), timeout = 8_000, signal, env } = {}) {
   const safeCwd = typeof cwd === 'string' && existsSync(cwd) ? cwd : homedir()
-  return execute(bin, args, {
+  return execCliFile(bin, args, {
     cwd: safeCwd,
     timeout,
     maxBuffer: 512 * 1024,

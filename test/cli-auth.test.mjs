@@ -4,7 +4,7 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { Readable } from 'node:stream'
 import { test } from 'node:test'
-import { claudeCliAdmin, codexCliAdmin } from '../engines/cli-admin.mjs'
+import { claudeCliAdmin, codexCliAdmin, resolveCliCommand } from '../engines/cli-admin.mjs'
 
 async function fixture(t) {
   const directory = await mkdtemp(join(tmpdir(), 'direct-chat-cli-auth-'))
@@ -159,4 +159,35 @@ esac
   await call('POST', 'claude/logout', { profileId: 'other' })
   await assert.rejects(readFile(join(claudeProfile, 'auth')), { code: 'ENOENT' })
   assert.equal(await readFile(join(claudeDefault, 'auth'), 'utf8'), 'default@example.test')
+})
+
+test('resolveCliCommand resolves Windows .cmd and .exe binaries from PATH', async t => {
+  const { directory } = await fixture(t)
+  const npmDir = join(directory, 'npm')
+  const binDir = join(directory, 'bin')
+  await mkdir(npmDir)
+  await mkdir(binDir)
+  await writeFile(join(npmDir, 'agy.cmd'), '@echo off\r\n')
+  await writeFile(join(npmDir, 'codex.cmd'), '@echo off\r\n')
+  await writeFile(join(binDir, 'claude.exe'), 'exe')
+  await writeFile(join(binDir, 'claude.cmd'), '@echo off\r\n')
+
+  const env = { PATH: `${npmDir};${binDir}`, PATHEXT: '.COM;.EXE;.BAT;.CMD' }
+  const agy = resolveCliCommand('agy', env, 'win32')
+  assert.equal(agy.isBatch, true)
+  assert.equal(agy.resolvedPath, join(npmDir, 'agy.cmd'))
+  assert.deepEqual(agy.argsPrefix, ['/d', '/c', join(npmDir, 'agy.cmd')])
+
+  const codex = resolveCliCommand('codex', env, 'win32')
+  assert.equal(codex.isBatch, true)
+  assert.equal(codex.resolvedPath, join(npmDir, 'codex.cmd'))
+
+  const claude = resolveCliCommand('claude', env, 'win32')
+  assert.equal(claude.isBatch, false)
+  assert.equal(claude.resolvedPath, join(binDir, 'claude.exe'))
+  assert.equal(claude.command, join(binDir, 'claude.exe'))
+
+  const linux = resolveCliCommand('agy', env, 'linux')
+  assert.equal(linux.command, 'agy')
+  assert.deepEqual(linux.argsPrefix, [])
 })
