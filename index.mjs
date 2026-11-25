@@ -41,7 +41,7 @@ import { nativeCatalog, nativeId, nativeUuid } from './server/native-history.mjs
 import { commandExecution, completeExecution, toolLocations } from './server/tool-activity.mjs'
 
 export const name = 'direct-chat'
-export const inject = { webServer: true, connection: true, 'connection.authentication': false }
+export const inject = { webServer: true, connection: true }
 const base = '/api/direct-chat/sessions'
 const store = join(process.env.DSH_HOME || join(homedir(), '.dsh'), 'direct-chat')
 const reject = (status, message) => Object.assign(new Error(message), { status })
