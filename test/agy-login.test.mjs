@@ -9,6 +9,8 @@ import { setTimeout as delay } from 'node:timers/promises'
 
 test('AGY OAuth resumes one isolated login and keeps only successful accounts', async t => {
   const dir = await mkdtemp(join(tmpdir(), 'direct-chat-oauth-'))
+  // This fixture exercises file credentials. Keep the user's Secret Service out of it.
+  await writeFile(join(dir, 'busctl'), '#!/bin/sh\nexit 1\n', { mode: 0o700 })
   const oldPath = process.env.PATH
   const oldDsh = process.env.DSH_HOME
   const oldXdgConfig = process.env.XDG_CONFIG_HOME

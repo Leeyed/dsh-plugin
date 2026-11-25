@@ -45,6 +45,25 @@ test('workspace preview handles text, links, file boundaries and partial UTF-8',
   assert.equal(media.size,8)
 })
 
+test('artifact preview accepts an authorized directory alias and preserves private file scope', async t => {
+  const dir = await mkdtemp(join(tmpdir(), 'dsh-artifact-alias-'))
+  t.after(() => rm(dir, { recursive: true, force: true }))
+  const workspace = join(dir, 'workspace')
+  const history = join(dir, 'history')
+  const alias = join(dir, 'profile-history')
+  const privateRoot = join(history, 'attachments')
+  await mkdir(workspace)
+  await mkdir(privateRoot, { recursive: true })
+  await symlink(history, alias, 'dir')
+  await writeFile(join(history, 'note.txt'), 'shared note')
+  await writeFile(join(privateRoot, 'private.txt'), 'private')
+  const scope = { allowedRoots: [alias], privateRoot }
+  const note = await previewFile(workspace, pathToFileURL(join(alias, 'note.txt')).href, scope)
+  assert.equal(note.path, join(history, 'note.txt'))
+  assert.equal(note.text, 'shared note')
+  await assert.rejects(previewFile(workspace, join(alias, 'attachments', 'private.txt'), scope), { status: 403 })
+})
+
 test('directory browser lists scoped files and refuses directory escapes', async t => {
   const dir = await mkdtemp(join(tmpdir(),'dsh-file-tree-'))
   t.after(() => rm(dir,{ recursive:true, force:true }))

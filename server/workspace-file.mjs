@@ -71,18 +71,27 @@ async function fileScope(cwd, { allowedRoots = [], privateRoot, privateDirectory
   const extraRoots = (await Promise.all(
     (Array.isArray(allowedRoots) ? allowedRoots : [])
       .filter(dir => typeof dir === 'string' && dir)
-      .map(dir => realpath(dir).catch(() => null))
+      .map(async dir => {
+        const canonical = await realpath(dir).catch(() => null)
+        return canonical && { alias: resolve(dir), canonical }
+      })
   )).filter(Boolean)
   const insideAllowed = path => privateRoot && inside(privateRoot, path)
     ? Boolean(privateDirectory && inside(privateDirectory, path))
-    : inside(root, path) || extraRoots.some(candidate => inside(candidate, path))
-  return { root, insideAllowed }
+    : inside(root, path) || extraRoots.some(candidate => inside(candidate.canonical, path))
+  function resolveRequested(path) {
+    const requested = resolve(root, path)
+    if (privateRoot && inside(privateRoot, requested)) return requested
+    const match = extraRoots.find(candidate => inside(candidate.alias, requested))
+    return match ? resolve(match.canonical, relative(match.alias, requested)) : requested
+  }
+  return { resolveRequested, insideAllowed }
 }
 
 async function openScopedFile(cwd, requestedPath, scope) {
   const targetPath = normalizeRequestedPath(requestedPath)
-  const { root, insideAllowed } = await fileScope(cwd, scope)
-  const requested = resolve(root, targetPath)
+  const { resolveRequested, insideAllowed } = await fileScope(cwd, scope)
+  const requested = resolveRequested(targetPath)
   if (!insideAllowed(requested)) throw fail(403, 'File is outside this workspace')
   let handle
   try {

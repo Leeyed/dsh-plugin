@@ -11,11 +11,15 @@ import { nativeId } from '../server/native-history.mjs'
 
 async function fixture(t, profiles) {
   const dir=await mkdtemp(join(tmpdir(),'direct-chat-accounts-'))
+  const oldHome=process.env.HOME
+  process.env.HOME=join(dir,'native-home')
   const old=process.env.DSH_HOME
   process.env.DSH_HOME=dir
   let dispose
   t.after(async()=>{
     dispose?.()
+    if (oldHome===undefined) delete process.env.HOME
+    else process.env.HOME=oldHome
     if (old===undefined) delete process.env.DSH_HOME
     else process.env.DSH_HOME=old
     await rm(dir,{recursive:true,force:true})
