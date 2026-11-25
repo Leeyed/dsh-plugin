@@ -295,6 +295,24 @@ function agyUsesNativeKeyring(env) {
   return process.platform === 'linux' && !effective.ANTIGRAVITY_CREDENTIAL_SCOPE && !effective.AGY_ACCOUNT && !effective.AGY_ADC_AUTH
 }
 
+async function hasWindowsAgyCredential({ signal, env } = {}) {
+  if (process.platform !== 'win32') return false
+  const effective = { ...process.env, ...env }
+  if (effective.AGY_ACCOUNT || effective.AGY_ADC_AUTH) return false
+  const scope = effective.ANTIGRAVITY_CREDENTIAL_SCOPE
+  try {
+    if (scope) {
+      const { stdout } = await execCli('cmdkey', ['/list'], { signal, env, timeout: 1_500 })
+      return stdout.includes(scope)
+    }
+    const { stdout } = await execCli('cmdkey', ['/list:gemini:antigravity'], { signal, env, timeout: 1_500 })
+    // Locale-independent: the target name appears in the header AND on the target line when present.
+    return stdout.split('gemini:antigravity').length > 2
+  } catch {
+    return false
+  }
+}
+
 async function searchAgyKeyring({ signal, env }) {
   const { stdout } = await execCli('busctl', [...agyKeyringOptions, 'call', agyKeyringDestination, '/org/freedesktop/secrets',
     'org.freedesktop.Secret.Service', 'SearchItems', 'a{ss}', '2', ...agyKeyringAttributes], { signal, env, timeout: 1_500 })
@@ -401,12 +419,13 @@ export const agyCliAdmin = {
     const line = output.trimEnd().split(/\r?\n/).at(-1)
     const account = line === 'Logged in.' ? 'Google OAuth' : accountEmail(/^Logged in as (.+)\.$/.exec(line)?.[1])
     const marker = agyNativeOAuthMarker(env)
-    if (!account || !marker || marker === previousMarker) return { authenticated: false }
+    const hasWinCred = !marker && process.platform === 'win32' ? await hasWindowsAgyCredential({ signal, env }) : false
+    if (!account || (!hasWinCred && (!marker || marker === previousMarker))) return { authenticated: false }
     const fileAuth = readAgyFileAuth(agyOAuthDirectory(env))
     const item = fileAuth?.account !== account ? await agyKeyringItem({ signal, env }) : undefined
-    if (item?.marker && accountEmail(account)) {
+    if ((item?.marker || hasWinCred) && accountEmail(account)) {
       const file = agyReceiptFile()
-      writeFileSync(file + '.tmp', JSON.stringify({ marker, item: item.marker, account }), { mode: 0o600 })
+      writeFileSync(file + '.tmp', JSON.stringify({ marker: marker || 'win32-cmdkey', item: item?.marker || 'gemini:antigravity', account }), { mode: 0o600 })
       renameSync(file + '.tmp', file)
     }
     return { authenticated: true, account }
@@ -455,7 +474,13 @@ export const agyCliAdmin = {
         return await readAgyKeyringAuth(item, signal) || { authenticated: true, account: 'Google OAuth' }
       }
     }
-    return readAgyFileAuth(agyOAuthDirectory(env), !env) || { authenticated: false }
+    const fileAuth = readAgyFileAuth(agyOAuthDirectory(env), !env)
+    if (fileAuth) return fileAuth
+    if (await hasWindowsAgyCredential({ signal, env })) {
+      const winReceipt = !env ? readAgyReceipt('win32-cmdkey') : undefined
+      return { authenticated: true, account: winReceipt?.account || 'Google OAuth' }
+    }
+    return { authenticated: false }
   },
 }
 
