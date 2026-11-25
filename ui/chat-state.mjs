@@ -22,7 +22,8 @@ export function composerAccount(bound, engine, draft, requestedId) {
   const id = requestedId ?? bound?.id ?? engine.defaultProfileId ?? 'default'
   const choices = profiles.map(profile => {
     const known = bound?.choices?.find(choice => choice.id === profile.id)
-    return { id: profile.id, label: known?.label || profile.name, account: known?.account || profile.account }
+    const account = engine.id === 'agy' && known ? known.account : (known?.account || profile.account)
+    return { id: profile.id, label: known?.label || profile.name, account }
   })
   const selected = choices.find(choice => choice.id === id)
   return { ...selected, ...(bound?.id === id ? bound : {}), id, choices,
@@ -318,9 +319,9 @@ export function applyEvent(session, { type, data }) {
     case 'permission_resolved':
       return { ...session, permissions: session.permissions.filter(item => permissionId(item) !== data.id) }
     case 'done':
-      return { ...session, busy: false, permissions: [], stopReason: data.stopReason }
+      return { ...session, busy: false, runStartedAt: undefined, permissions: [], stopReason: data.stopReason }
     case 'error':
-      return { ...session, busy: false, permissions: [], error: data.message }
+      return { ...session, busy: false, runStartedAt: undefined, permissions: [], error: data.message }
     case 'message': {
       const { index, message, clearActivity } = data
       if (!Number.isInteger(index) || index < 0 || index > session.messages.length) return session

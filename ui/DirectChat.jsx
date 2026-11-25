@@ -30,6 +30,7 @@ import { codexPromptCommand } from './review-command.mjs'
 import { MessageQueue, pendingQueueSubmission } from './MessageQueue.jsx'
 import { SessionStatus } from './SessionStatus.jsx'
 import { SessionPet } from './SessionPet.jsx'
+import { RunningJobsAction } from './RunningJobs.jsx'
 import { TranscriptActivity } from './TranscriptActivity.jsx'
 import { WorkspaceDiff } from './WorkspaceDiff.jsx'
 import { appendReviewQuote } from './workspace-diff-view.mjs'
@@ -38,6 +39,16 @@ import { WorkspacePicker } from './WorkspacePicker.jsx'
 import { createTranscriptFollow, isNearTranscriptBottom, transcriptTurnItems } from './transcript-scroll.mjs'
 
 const noAgents = []
+const noTools = []
+
+const isBackgroundTool = tool => {
+  if (!tool) return false
+  if (tool.execution?.background || tool._meta?.background) return true
+  const text = `${tool.execution?.output ?? ''}\n${tool.execution?.outputTail ?? ''}\n${tool.execution?.stdout ?? ''}`
+  return /running as a background task|background task with task id:/i.test(text)
+}
+
+const isActiveTool = tool => tool?.status === 'pending' || tool?.status === 'in_progress'
 const defaultSubmissionSettings = { getSnapshot: () => undefined, subscribe: () => () => {} }
 const INITIAL_VISIBLE_MESSAGES = 24
 const LOAD_MORE_MESSAGES_STEP = 32
@@ -58,9 +69,11 @@ export function DirectChat({ navigation, startNative, renderFactorySlot, workspa
   const [metadata, setMetadata] = useState(null)
   const parent = useRef(null)
   const [agentSummary, setAgentSummary] = useState(null)
+  const [runtimeSummary, setRuntimeSummary] = useState(null)
 
   const current = metadata?.id === target.id ? metadata : null
   const currentAgents = agentSummary?.id === target.id ? agentSummary : null
+  const currentRuntime = runtimeSummary?.id === target.id ? runtimeSummary : null
   const engine = target.engine ?? engines[0]?.id
   const engineMeta = engines.find(item => item.id === engine)?.meta
   return <section className="dchat" data-blank={!target.id || undefined} data-hero-engine={!target.id ? engine : undefined}
@@ -92,6 +105,7 @@ export function DirectChat({ navigation, startNative, renderFactorySlot, workspa
         </>}
       </div>
       <div className="dchat-header-actions">
+        {target.id && <RunningJobsAction key={target.id} sessionId={target.id} summary={currentRuntime} t={t} />}
         {diffController && <WorkspaceDiff controller={diffController} t={t} />}
         {statusStore && <SessionPet variant="header" statusStore={statusStore} nativeSessions={nativeSessions}
           useSessionStatus={useSessionStatus} useWorkspaces={useWorkspaces}
@@ -102,7 +116,7 @@ export function DirectChat({ navigation, startNative, renderFactorySlot, workspa
       <div className={conversationLayout.scrollBody}>
         <SessionPane key={target.key ?? target.id ?? target.engine} target={target} navigation={navigation} startNative={startNative} performanceSettings={performanceSettings} submissionSettings={submissionSettings}
           engine={engine} engines={engines} engineStatus={engineStatus} reloadEngines={engineSource.refresh} diffController={diffController}
-          queueDock={queueDock} onAgentSummary={setAgentSummary} onSession={setMetadata}
+          queueDock={queueDock} onAgentSummary={setAgentSummary} onRuntimeSummary={setRuntimeSummary} onSession={setMetadata}
           renderFactorySlot={renderFactorySlot} workspaceSource={workspaceSource} t={t} />
       </div>
       <ConversationWidthControls container={column} phase={target.id ? 'active' : 'hero'} />
@@ -110,7 +124,7 @@ export function DirectChat({ navigation, startNative, renderFactorySlot, workspa
   </section>
 }
 
-function SessionPane({ queueDock, onAgentSummary, target, navigation, startNative, performanceSettings, submissionSettings = defaultSubmissionSettings, onSession, renderFactorySlot, workspaceSource, engine, engines, engineStatus, reloadEngines, diffController, t }) {
+function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navigation, startNative, performanceSettings, submissionSettings = defaultSubmissionSettings, onSession, renderFactorySlot, workspaceSource, engine, engines, engineStatus, reloadEngines, diffController, t }) {
   const blank = !target.id
   const cwd = target.cwd ?? ''
   const [draftProfiles, setDraftProfiles] = useState(() => {
@@ -300,10 +314,11 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
   }
 
   const busy = Boolean(session?.busy)
-  const [runStartedAt, setRunStartedAt] = useState(undefined)
+  const [fallbackStartedAt, setFallbackStartedAt] = useState(undefined)
   useEffect(() => {
-    setRunStartedAt(busy ? Date.now() : undefined)
-  }, [busy, id])
+    setFallbackStartedAt(busy && !session?.runStartedAt ? Date.now() : undefined)
+  }, [busy, session?.runStartedAt, id])
+  const runStartedAt = busy ? (session?.runStartedAt ?? fallbackStartedAt) : undefined
   const ready = connection === 'ready'
   const capabilities = session?.capabilities ?? {}
   const currentEngine = session?.engine ?? (blank ? engine : undefined)
@@ -541,9 +556,45 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
     })
   }, [hiddenMessageCount, id, allMessages.length])
 
+  const seenLiveToolsRef = useRef(new Set())
+  const runtimeTools = useMemo(() => {
+    const byId = new Map()
+    for (const tool of activity.tools) {
+      const idKey = tool.toolCallId ?? `live-${byId.size}`
+      if (isActiveTool(tool) && (tool.kind === 'execute' || tool.execution)) {
+        seenLiveToolsRef.current.add(idKey)
+      }
+      if (isBackgroundTool(tool) || seenLiveToolsRef.current.has(idKey)) {
+        byId.set(idKey, tool)
+      }
+    }
+    for (const msg of session?.messages ?? noTools) {
+      for (const tool of msg?.tools ?? noTools) {
+        const idKey = tool?.toolCallId
+        if (idKey && (isBackgroundTool(tool) || seenLiveToolsRef.current.has(idKey)) && !byId.has(idKey)) {
+          byId.set(idKey, tool)
+        }
+      }
+    }
+    return byId.size ? [...byId.values()] : noTools
+  }, [session?.messages, activity.tools])
+  const performRef = useRef(perform)
+  performRef.current = perform
+  const stopCurrentTurn = useCallback(() => { void performRef.current('cancel') }, [])
+
   useEffect(() => {
     if (!blank && id) onAgentSummary({ id, agents, ready, error: connectionError })
   }, [blank, id, agents, ready, connectionError, onAgentSummary])
+
+  useEffect(() => {
+    if (!blank && id && onRuntimeSummary) {
+      onRuntimeSummary({
+        id,
+        tools: runtimeTools,
+        stop: busy && ready && !pending ? stopCurrentTurn : null,
+      })
+    }
+  }, [blank, id, runtimeTools, busy, ready, pending, stopCurrentTurn, onRuntimeSummary])
 
   const resolvedActiveTurn = activeTurn ?? turnItems.at(-1)?.turn ?? null
 
@@ -586,8 +637,16 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
           {visibleMessages.map((message, index) => {
             const i = hiddenMessageCount + index
             const isLastAssistant = message.role === 'assistant' && i === allMessages.length - 1
+            const settleTool = tool => (!busy && tool && (tool.status === 'in_progress' || tool.status === 'pending')
+              ? { ...tool, status: 'interrupted' }
+              : tool)
             const savedActivity = (message.thought || message.tools?.length || message.plan?.length || message.steps?.length)
-              ? { thought: message.thought || '', plan: message.plan || [], tools: message.tools || [], steps: message.steps }
+              ? {
+                  thought: message.thought || '',
+                  plan: message.plan || [],
+                  tools: (message.tools || []).map(settleTool),
+                  steps: message.steps?.map(step => step?.kind === 'tool' ? { ...step, tool: settleTool(step.tool) } : step),
+                }
               : null
             return <article className="dchat-message" key={i} data-role={message.role} data-message-index={i}
               aria-label={message.role === 'user' ? t('you') : engineLabel(engines, session.engine)}>

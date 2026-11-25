@@ -1314,6 +1314,28 @@ export function apply(ctx, config = {}) {
         record.nativeAgents = record.nativeAgents.map(agent => activeTask(agent.status) ? {...agent,status:'interrupted'} : agent)
         changed = true
       }
+      if (Array.isArray(record.messages)) {
+        const settleTool = tool => (tool && (tool.status === 'in_progress' || tool.status === 'pending')
+          ? { ...tool, status: 'interrupted' }
+          : tool)
+        let toolsChanged = false
+        const settledMessages = record.messages.map(msg => {
+          if (!msg || typeof msg !== 'object') return msg
+          const hasPendingTools = Array.isArray(msg.tools) && msg.tools.some(t => t && (t.status === 'in_progress' || t.status === 'pending'))
+          const hasPendingSteps = Array.isArray(msg.steps) && msg.steps.some(st => st?.kind === 'tool' && st.tool && (st.tool.status === 'in_progress' || st.tool.status === 'pending'))
+          if (!hasPendingTools && !hasPendingSteps) return msg
+          toolsChanged = true
+          return {
+            ...msg,
+            ...(hasPendingTools ? { tools: msg.tools.map(settleTool) } : {}),
+            ...(hasPendingSteps ? { steps: msg.steps.map(st => st?.kind === 'tool' ? { ...st, tool: settleTool(st.tool) } : st) } : {}),
+          }
+        })
+        if (toolsChanged) {
+          record.messages = settledMessages
+          changed = true
+        }
+      }
       if (changed) save(session)
     }
   }
@@ -1573,7 +1595,7 @@ export function apply(ctx, config = {}) {
     const visibleOptions = waitingForAgyCatalog ? (options ?? []).filter(option => !['model','thought_level'].includes(option.category ?? option.id)) : view?.options ?? options
     return { id, engine, title, cwd, messages, options:visibleOptions, account:sessionAccount(s), canFork:canFork(s.record) && !isArchived(s.record), historyNotice:s.record.historyNotice, createdAt:s.record.createdAt, updatedAt:s.record.updatedAt, archived:isArchived(s.record), metrics:s.record.metrics || {}, agents:agentList(s), parentId:s.record.parentId,
       capabilities:{...(view?.capabilities ?? s.record.capabilitiesMedia),readOnly:s.record.resumable===false || isArchived(s.record),parallel:s.record.resumable!==false && !s.record.parentId && messages.length>0,steer:typeof s.adapter?.steer === 'function'},
-      busy: s.busy, permissions: [...s.permissions.values()], updates, queue:s.record.queue, queuePaused:s.queuePaused }
+      busy: s.busy, runStartedAt: s.busy ? (s.turnStartedAt ?? undefined) : undefined, permissions: [...s.permissions.values()], updates, queue:s.record.queue, queuePaused:s.queuePaused }
   }
   function inspectForView(s, definition) {
     if (s.inspecting || s.switchingAccount || !s.record.remoteId) return
@@ -1802,6 +1824,7 @@ export function apply(ctx, config = {}) {
     s.lastText = null
     s.afterActivity = false
     s.startedAt = performance.now()
+    s.turnStartedAt = s.turnStartedAt ?? Date.now()
     s.waitStartedAt = null
     s.waitMs = 0
     s.turnHasUsage = false
@@ -1824,6 +1847,7 @@ export function apply(ctx, config = {}) {
       }
       broadcast(s,'metrics',s.record.metrics)
       s.startedAt = null
+      s.turnStartedAt = null
       s.record.updatedAt = Date.now()
       if (s.record.requestId) taskState(s,type==='error'?'failed':result?.stopReason==='cancelled'?'cancelled':'completed',
         type==='error'?result.message:s.lastText?.text.slice(0,400))
@@ -1965,6 +1989,7 @@ export function apply(ctx, config = {}) {
     const starting = {item,cancelled:false}
     s.starting = starting
     s.busy = true
+    s.turnStartedAt = Date.now()
     try {
       const provider = engines.get(s.record.engine)
       if (!item) await provider?.resolvePrompt?.({text,attachmentCount:files.length})
@@ -1976,6 +2001,7 @@ export function apply(ctx, config = {}) {
       runTurn(s,a,text,files,item)
     } catch (error) {
       s.busy = false
+      s.turnStartedAt = null
       scheduleRelease(s)
       throw error
     } finally {
@@ -3005,6 +3031,7 @@ export function apply(ctx, config = {}) {
       await cancelTurn(s)
     } else if (action === 'configure') {
       s.busy = true
+    s.turnStartedAt = Date.now()
       try {
         const a = await open(s)
         const optId = textField(data.id,'id')

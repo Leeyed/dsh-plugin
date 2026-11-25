@@ -9,7 +9,7 @@ import { formatCacheHitPercent, formatExactTokens, formatTokens } from '@deepsee
 import pillStyles from '@deepseek-ai/dsh-client-ui-chat/src/client/chat/StatsPills.module.css'
 import dialogStyles from '@deepseek-ai/dsh-client-ui-chat/src/client/chat/stat-dialog.module.css'
 import { AccountReport, useAccountReport, useStatusReport } from './status-report.jsx'
-import { modelAccountWindow, sessionStatus, transcriptCounts, turnTokenUsage } from './session-status.mjs'
+import { modelAccountWindows, sessionStatus, transcriptCounts, turnTokenUsage } from './session-status.mjs'
 
 const emptySettings = { getSnapshot: () => undefined, subscribe: () => () => {} }
 const ringRadius = 5.5
@@ -43,10 +43,16 @@ export function SessionStatus({ sessionId, engine, profileId, engineCapabilities
   const [open, setOpen] = useState(null)
   const contextReport = useStatusReport(sessionId, 'context', open === 'context' || open === 'summary')
   const account = useAccountReport(sessionId, engine, profileId, open === 'account' || open === 'summary')
-  const accountWindow = modelAccountWindow(engine, model, modelName, account.report?.limits)
-  const accountRemaining = accountWindow?.remaining
-  const accountReading = accountRemaining === undefined ? t('status.account') : t('status.accountSummary', { value: accountRemaining })
-  const accountTitle = accountRemaining === undefined ? undefined : [accountWindow.pool, accountWindow.window, t('status.accountRemaining', { value: accountRemaining })].filter(Boolean).join(' · ')
+  const accountWindows = modelAccountWindows(engine, model, modelName, account.report?.limits)
+  const accountRemaining = accountWindows.reduce((min, row) => (min === undefined || row.remaining < min ? row.remaining : min), undefined)
+  const accountReadings = accountWindows.length === 0
+    ? [t('status.account')]
+    : accountWindows.length === 1
+      ? [t('status.accountSummary', { value: accountWindows[0].remaining })]
+      : accountWindows.slice(0, 2).map(row => row.window ? `${row.window} ${t('status.accountSummary', { value: row.remaining })}` : t('status.accountSummary', { value: row.remaining }))
+  const accountTitle = accountWindows.length === 0
+    ? undefined
+    : accountWindows.map(row => [row.pool, row.window, t('status.accountRemaining', { value: row.remaining })].filter(Boolean).join(' · ')).join(' / ')
   const accountLabel = [t('status.account'), accountTitle].filter(Boolean).join(' · ')
   const status = sessionStatus(metrics, usage, engine, engineCapabilities)
   const speed = status.tps === undefined ? undefined
@@ -152,8 +158,8 @@ export function SessionStatus({ sessionId, engine, profileId, engineCapabilities
       </StatusPill>}
       {showContext && <ContextPill context={status.context} report={contextReport} {...select('context')} t={t} />}
       {sessionId && <StatusPill stat="account" icon={<IconGaugeOutlineRegular />}
-        readings={[accountReading]}
-        fullLabel={accountLabel} heading={t('status.account')} titleValue={accountTitle} t={t} {...select('account')}>
+        readings={accountReadings}
+        fullLabel={accountLabel} heading={t('status.account')} t={t} {...select('account')}>
         <AccountReport account={account} t={t} />
       </StatusPill>}
     </div>
