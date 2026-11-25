@@ -758,10 +758,13 @@ export function apply(ctx, config = {}) {
       XDG_CONFIG_HOME: config,
       ...winDirs,
       // AGY's Linux keyring uses one entry for all homes; disable D-Bus so it
-      // falls back to file storage. On macOS/Windows, scope the OS credential store.
+      // falls back to file storage. On Windows, SSH_CONNECTION forces file-based
+      // credential fallback instead of sharing Windows Credential Manager.
       ...(process.platform === 'linux'
         ? { DBUS_SESSION_BUS_ADDRESS: 'unix:path=/dev/null/dsh-agy-private-bus', ANTIGRAVITY_CREDENTIAL_SCOPE: undefined }
-        : { ANTIGRAVITY_CREDENTIAL_SCOPE: `dsh-agy-${profileId}` }),
+        : process.platform === 'win32'
+          ? { SSH_CONNECTION: '127.0.0.1 12345 127.0.0.1 22', ANTIGRAVITY_CREDENTIAL_SCOPE: undefined }
+          : { ANTIGRAVITY_CREDENTIAL_SCOPE: `dsh-agy-${profileId}` }),
       ANTIGRAVITY_GEMINI_DIR: undefined,
       ANTIGRAVITY_APP_DATA_DIR: undefined,
       ANTIGRAVITY_CONFIG_REL_DIR: undefined,

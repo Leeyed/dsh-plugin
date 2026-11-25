@@ -389,7 +389,7 @@ function clearAgyFileCredentials(directory, home) {
     }
   }
   const files = [join(directory, agyTokenFile)]
-  if (!home) {
+  if (!home || process.platform === 'win32') {
     for (const name of agyLegacyCredentialFiles) {
       const file = join(directory, name)
       try {
@@ -416,10 +416,12 @@ export const agyCliAdmin = {
   readOAuthAccount: readAgyOAuthEmail,
   nativeOAuthMarker: agyNativeOAuthMarker,
   async finishDefaultOAuth({ output, previousMarker, signal, env }) {
-    const line = output.trimEnd().split(/\r?\n/).at(-1)
-    const account = line === 'Logged in.' ? 'Google OAuth' : accountEmail(/^Logged in as (.+)\.$/.exec(line)?.[1])
+    const lines = String(output || '').trimEnd().split(/\r?\n/).map(line => line.trim())
+    const emailMatch = lines.map(line => accountEmail(/^Logged in as (.+)\.$/.exec(line)?.[1])).findLast(Boolean)
+    const hasLoggedInLine = lines.some(line => /^Logged in\.?$/i.test(line))
     const marker = agyNativeOAuthMarker(env)
     const hasWinCred = !marker && process.platform === 'win32' ? await hasWindowsAgyCredential({ signal, env }) : false
+    const account = emailMatch || (hasLoggedInLine || hasWinCred ? 'Google OAuth' : undefined)
     if (!account || (!hasWinCred && (!marker || marker === previousMarker))) return { authenticated: false }
     const fileAuth = readAgyFileAuth(agyOAuthDirectory(env))
     const item = fileAuth?.account !== account ? await agyKeyringItem({ signal, env }) : undefined
@@ -474,7 +476,7 @@ export const agyCliAdmin = {
         return await readAgyKeyringAuth(item, signal) || { authenticated: true, account: 'Google OAuth' }
       }
     }
-    const fileAuth = readAgyFileAuth(agyOAuthDirectory(env), !env)
+    const fileAuth = readAgyFileAuth(agyOAuthDirectory(env), !env || Boolean(env?.SSH_CONNECTION))
     if (fileAuth) return fileAuth
     if (await hasWindowsAgyCredential({ signal, env })) {
       const winReceipt = !env ? readAgyReceipt('win32-cmdkey') : undefined
