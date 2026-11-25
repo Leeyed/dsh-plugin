@@ -16634,178 +16634,188 @@ function clampPos(x, y) {
 }
 function PetSprite({ mood }) {
   if (mood === "running") {
-    return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("svg", { className: "dchat-pet-svg", width: "30", height: "30", viewBox: "0 0 32 32", fill: "none", "aria-hidden": "true", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { className: "dchat-pet-wind", d: "M2 14.5H5.5M3 17.5H6", stroke: "currentColor", strokeWidth: "1.3", strokeLinecap: "round" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "8", cy: "24", r: "4.3", stroke: "currentColor", strokeWidth: "1.5" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("g", { className: "dchat-pet-wheel", style: { transformOrigin: "8px 24px" }, children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M8 20.5V27.5M4.5 24H11.5", stroke: "currentColor", strokeWidth: "1.1", strokeLinecap: "round" }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "23.5", cy: "24", r: "4.3", stroke: "currentColor", strokeWidth: "1.5" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("g", { className: "dchat-pet-wheel", style: { transformOrigin: "23.5px 24px" }, children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M23.5 20.5V27.5M20 24H27", stroke: "currentColor", strokeWidth: "1.1", strokeLinecap: "round" }) }),
+    return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("svg", { className: "dchat-pet-svg", width: "30", height: "30", viewBox: "0 0 40 40", fill: "none", "aria-hidden": "true", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { className: "dchat-pet-wind", d: "M2.5 17H7.5M4 20.5H8", stroke: "currentColor", strokeWidth: "1.4", strokeLinecap: "round" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M4 35.5H36", stroke: "currentColor", strokeWidth: "1.2", strokeOpacity: "0.28", strokeLinecap: "round", strokeDasharray: "3 3" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "10.5", cy: "29.5", r: "5.4", stroke: "currentColor", strokeWidth: "1.7" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "10.5", cy: "29.5", r: "1.1", fill: "currentColor" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("g", { className: "dchat-pet-wheel", style: { transformOrigin: "10.5px 29.5px" }, children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M10.5 24.5V34.5M6.2 27L14.8 32M14.8 27L6.2 32", stroke: "currentColor", strokeWidth: "1.05", strokeOpacity: "0.7", strokeLinecap: "round" }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "29.5", cy: "29.5", r: "5.4", stroke: "currentColor", strokeWidth: "1.7" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "29.5", cy: "29.5", r: "1.1", fill: "currentColor" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("g", { className: "dchat-pet-wheel", style: { transformOrigin: "29.5px 29.5px" }, children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M29.5 24.5V34.5M25.2 27L33.8 32M33.8 27L25.2 32", stroke: "currentColor", strokeWidth: "1.05", strokeOpacity: "0.7", strokeLinecap: "round" }) }),
       /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
         "path",
         {
-          d: "M8 24L14.2 24L18.5 17.8H11.8L8 24ZM14.2 24L11.8 17.8M23.5 24L18.2 15.5L20.8 14.8",
+          d: "M10.5 29.5H18.5L24.5 21.5H15L10.5 29.5ZM18.5 29.5L14.5 20.5M29.5 29.5L23.8 18.2L27.2 17.5C28.4 17.3 28.8 18.6 27.8 19.2",
           stroke: "currentColor",
-          strokeWidth: "1.4",
+          strokeWidth: "1.55",
           strokeLinecap: "round",
           strokeLinejoin: "round"
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M10.3 17.5H13.3", stroke: "currentColor", strokeWidth: "1.5", strokeLinecap: "round" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "18.5", cy: "29.5", r: "1.7", fill: "currentColor", fillOpacity: "0.2", stroke: "currentColor", strokeWidth: "1.2" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M12.6 20.3H16.6", stroke: "currentColor", strokeWidth: "1.8", strokeLinecap: "round" }),
       /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("g", { className: "dchat-pet-rider", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M11.5 18.8L8 17.4L9.8 19.8", stroke: "currentColor", strokeWidth: "1.35", strokeLinecap: "round", strokeLinejoin: "round" }),
         /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
           "path",
           {
-            d: "M9.6 17.2C9.2 14.2 11.6 12.2 14.6 13.1C16.2 13.6 16.8 15.5 15.2 17.2Z",
+            d: "M11.5 19.8C11 15.8 14 13.5 17.6 14.2C20 14.7 21 17.2 19 19.8Z",
             fill: "currentColor",
             fillOpacity: "0.16",
             stroke: "currentColor",
-            strokeWidth: "1.4",
+            strokeWidth: "1.55",
             strokeLinejoin: "round"
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "14.6", cy: "9.4", r: "2.9", fill: "currentColor", fillOpacity: "0.14", stroke: "currentColor", strokeWidth: "1.4" }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M13.8 6.5C14.3 5.2 15.6 5.2 16.2 6.4", stroke: "currentColor", strokeWidth: "1.2", strokeLinecap: "round" }),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M16.2 14.5C16.2 12.2 16.6 10.6 17.6 9.6", stroke: "currentColor", strokeWidth: "3.2", strokeLinecap: "round" }),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "18.5", cy: "9.5", r: "3.4", fill: "currentColor", fillOpacity: "0.14", stroke: "currentColor", strokeWidth: "1.55" }),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M16.8 6.4C17.4 4.8 19.2 4.8 19.8 6.3", stroke: "currentColor", strokeWidth: "1.35", strokeLinecap: "round" }),
         /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
           "path",
           {
-            d: "M17.2 8.7L26.2 10.3C24.8 12.8 20.4 13.4 16.9 11.4Z",
+            d: "M21.6 8.6L34.5 10.7C34.8 11.4 34.4 12.1 33.7 12.2C31 15.4 25.4 15.8 21.1 12.6Z",
             fill: "currentColor",
-            fillOpacity: "0.2",
+            fillOpacity: "0.22",
             stroke: "currentColor",
-            strokeWidth: "1.35",
+            strokeWidth: "1.5",
             strokeLinejoin: "round"
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "15.5", cy: "8.9", r: "0.8", fill: "currentColor" }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M13.8 14.4L18.6 15.7", stroke: "currentColor", strokeWidth: "1.4", strokeLinecap: "round" })
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M21.8 10.6L33.8 11.7", stroke: "currentColor", strokeWidth: "1.15", strokeLinecap: "round" }),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "19.6", cy: "8.9", r: "0.95", fill: "currentColor" }),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M16.8 16.2C19.5 16.6 22 17.5 24.4 18.6", stroke: "currentColor", strokeWidth: "1.6", strokeLinecap: "round" })
       ] })
     ] });
   }
   if (mood === "attention") {
-    return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("svg", { className: "dchat-pet-svg", width: "30", height: "30", viewBox: "0 0 32 32", fill: "none", "aria-hidden": "true", children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("svg", { className: "dchat-pet-svg", width: "30", height: "30", viewBox: "0 0 40 40", fill: "none", "aria-hidden": "true", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M7 33.5H26", stroke: "currentColor", strokeWidth: "1.4", strokeLinecap: "round" }),
       /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
         "path",
         {
-          d: "M7.5 25.5C7 19.5 9.5 15.5 13.5 15.5C17.2 15.5 19.2 19.5 18.6 25.5Z",
+          d: "M10 33.2C9.2 25 12.2 19.5 17 19.5C21.5 19.5 24 24.5 23.2 33.2Z",
           fill: "currentColor",
-          fillOpacity: "0.15",
+          fillOpacity: "0.16",
           stroke: "currentColor",
-          strokeWidth: "1.5",
+          strokeWidth: "1.65",
           strokeLinejoin: "round"
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "13", cy: "11.2", r: "3.4", fill: "currentColor", fillOpacity: "0.14", stroke: "currentColor", strokeWidth: "1.5" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M12 7.8C12.5 6.4 14 6.4 14.6 7.7", stroke: "currentColor", strokeWidth: "1.25", strokeLinecap: "round" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M10.4 25.5L5.5 21M22.8 25L27.5 20.8", stroke: "currentColor", strokeWidth: "1.7", strokeLinecap: "round" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "16.5", cy: "13.8", r: "4.1", fill: "currentColor", fillOpacity: "0.15", stroke: "currentColor", strokeWidth: "1.65" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M14.8 9.8C15.5 8 17.6 8 18.3 9.7", stroke: "currentColor", strokeWidth: "1.4", strokeLinecap: "round" }),
       /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
         "path",
         {
-          d: "M16 10.2L24.5 11.2C23.2 14.1 18.8 14.8 15.6 12.8Z",
+          d: "M20.2 12.5L31.2 13.3C30 16.8 24.6 17.8 19.8 15.6Z",
           fill: "currentColor",
-          fillOpacity: "0.2",
+          fillOpacity: "0.22",
           stroke: "currentColor",
-          strokeWidth: "1.4",
+          strokeWidth: "1.55",
           strokeLinejoin: "round"
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "14.1", cy: "10.6", r: "1", fill: "currentColor" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M7.8 19.5L4.8 16.5M18.2 19.5L21.5 17", stroke: "currentColor", strokeWidth: "1.5", strokeLinecap: "round" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M6 25.5H20", stroke: "currentColor", strokeWidth: "1.4", strokeLinecap: "round" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("g", { className: "dchat-pet-spark", style: { transformOrigin: "25.5px 7px" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M25.5 4.2V7.8", stroke: "currentColor", strokeWidth: "1.8", strokeLinecap: "round" }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "25.5", cy: "10.2", r: "1", fill: "currentColor" })
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M20.4 14.1L30.2 14.3", stroke: "currentColor", strokeWidth: "1.2", strokeLinecap: "round" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "17.8", cy: "13", r: "1.2", fill: "currentColor" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("g", { className: "dchat-pet-spark", style: { transformOrigin: "32.5px 8.5px" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M32.5 4.8V9.6", stroke: "currentColor", strokeWidth: "2.1", strokeLinecap: "round" }),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "32.5", cy: "12.6", r: "1.2", fill: "currentColor" })
       ] })
     ] });
   }
   if (mood === "done") {
-    return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("svg", { className: "dchat-pet-svg", width: "30", height: "30", viewBox: "0 0 32 32", fill: "none", "aria-hidden": "true", children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("svg", { className: "dchat-pet-svg", width: "30", height: "30", viewBox: "0 0 40 40", fill: "none", "aria-hidden": "true", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M7 33.5H26", stroke: "currentColor", strokeWidth: "1.4", strokeLinecap: "round" }),
       /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
         "path",
         {
-          d: "M7.5 25.5C7 19.5 9.5 15.5 13.5 15.5C17.2 15.5 19.2 19.5 18.6 25.5Z",
+          d: "M10 33.2C9.2 25 12.2 19.5 17 19.5C21.5 19.5 24 24.5 23.2 33.2Z",
           fill: "currentColor",
-          fillOpacity: "0.15",
+          fillOpacity: "0.16",
           stroke: "currentColor",
-          strokeWidth: "1.5",
+          strokeWidth: "1.65",
           strokeLinejoin: "round"
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "13", cy: "11.2", r: "3.4", fill: "currentColor", fillOpacity: "0.14", stroke: "currentColor", strokeWidth: "1.5" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M12 7.8C12.5 6.4 14 6.4 14.6 7.7", stroke: "currentColor", strokeWidth: "1.25", strokeLinecap: "round" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M10.4 24.2L5.5 18.8M22.8 24.2L27.5 19.2", stroke: "currentColor", strokeWidth: "1.7", strokeLinecap: "round" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "16.5", cy: "13.8", r: "4.1", fill: "currentColor", fillOpacity: "0.15", stroke: "currentColor", strokeWidth: "1.65" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M14.8 9.8C15.5 8 17.6 8 18.3 9.7", stroke: "currentColor", strokeWidth: "1.4", strokeLinecap: "round" }),
       /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
         "path",
         {
-          d: "M16 10.4L24.2 11.4C22.8 14 18.6 14.4 15.6 12.6Z",
+          d: "M20.2 12.6L30.5 13.8C29 17 24 17.6 19.8 15.4Z",
           fill: "currentColor",
-          fillOpacity: "0.2",
+          fillOpacity: "0.22",
           stroke: "currentColor",
-          strokeWidth: "1.4",
+          strokeWidth: "1.55",
           strokeLinejoin: "round"
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M13 10.8C13.6 10 14.6 10 15.1 10.8", stroke: "currentColor", strokeWidth: "1.35", strokeLinecap: "round" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M7.8 18.5L4.5 14.8M18.2 18.5L22 15.5", stroke: "currentColor", strokeWidth: "1.5", strokeLinecap: "round" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M6 25.5H20", stroke: "currentColor", strokeWidth: "1.4", strokeLinecap: "round" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M16.5 13.3C17.2 12.3 18.4 12.3 19.1 13.3", stroke: "currentColor", strokeWidth: "1.5", strokeLinecap: "round" }),
       /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
         "path",
         {
           className: "dchat-pet-spark",
-          style: { transformOrigin: "25.5px 7px" },
-          d: "M25.5 3.8L26.3 6.2L28.7 7L26.3 7.8L25.5 10.2L24.7 7.8L22.3 7L24.7 6.2Z",
+          style: { transformOrigin: "32.5px 8.5px" },
+          d: "M32.5 4.2L33.6 7.4L36.8 8.5L33.6 9.6L32.5 12.8L31.4 9.6L28.2 8.5L31.4 7.4Z",
           fill: "currentColor"
         }
       )
     ] });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("svg", { className: "dchat-pet-svg", width: "30", height: "30", viewBox: "0 0 32 32", fill: "none", "aria-hidden": "true", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("svg", { className: "dchat-pet-svg", width: "30", height: "30", viewBox: "0 0 40 40", fill: "none", "aria-hidden": "true", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M5 33.5H35", stroke: "currentColor", strokeWidth: "1.5", strokeLinecap: "round" }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M8.5 29L5.5 26.8L7.5 30.8", stroke: "currentColor", strokeWidth: "1.4", strokeLinecap: "round", strokeLinejoin: "round" }),
     /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
       "path",
       {
-        d: "M6.2 25.5C5.8 19.2 8.5 15 12.2 15C15.5 15 17.5 18.5 17 25.5Z",
+        d: "M8.2 33.3C7.6 24.8 10.8 19.2 15.5 19.2C19.6 19.2 21.8 23.6 21.2 33.3Z",
         fill: "currentColor",
-        fillOpacity: "0.14",
+        fillOpacity: "0.15",
         stroke: "currentColor",
-        strokeWidth: "1.5",
+        strokeWidth: "1.65",
         strokeLinejoin: "round"
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "11.8", cy: "10.8", r: "3.3", fill: "currentColor", fillOpacity: "0.14", stroke: "currentColor", strokeWidth: "1.5" }),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M10.8 7.5C11.3 6.2 12.7 6.2 13.3 7.4", stroke: "currentColor", strokeWidth: "1.2", strokeLinecap: "round" }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M14.5 23.2C17.6 23.8 20.5 25.5 23.8 26.2", stroke: "currentColor", strokeWidth: "1.65", strokeLinecap: "round" }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "15", cy: "13.5", r: "4", fill: "currentColor", fillOpacity: "0.15", stroke: "currentColor", strokeWidth: "1.65" }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M13.5 9.5C14.2 7.8 16.2 7.8 16.9 9.4", stroke: "currentColor", strokeWidth: "1.35", strokeLinecap: "round" }),
     /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
       "path",
       {
-        d: "M14.8 10L22.6 11.3C21.3 13.6 17.4 14 14.5 12.3Z",
+        d: "M18.6 12.2L28.8 13.8C27.2 16.8 22.2 17.4 18.2 15.2Z",
         fill: "currentColor",
-        fillOpacity: "0.2",
+        fillOpacity: "0.22",
         stroke: "currentColor",
-        strokeWidth: "1.35",
+        strokeWidth: "1.55",
         strokeLinejoin: "round"
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M11.6 10.5C12.2 11.2 13.2 11.2 13.8 10.5", stroke: "currentColor", strokeWidth: "1.3", strokeLinecap: "round" }),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M12.5 19.2C15 19.8 17.2 21 19.4 21", stroke: "currentColor", strokeWidth: "1.45", strokeLinecap: "round" }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M18.8 13.8L28 14.6", stroke: "currentColor", strokeWidth: "1.15", strokeLinecap: "round" }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M14.8 13.1C15.5 13.9 16.8 13.9 17.5 13.1", stroke: "currentColor", strokeWidth: "1.5", strokeLinecap: "round" }),
     /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
       "rect",
       {
-        x: "19.5",
-        y: "18.8",
-        width: "6.8",
-        height: "6.7",
-        rx: "1.4",
+        x: "23.8",
+        y: "23.2",
+        width: "8.6",
+        height: "9.2",
+        rx: "1.8",
         fill: "currentColor",
-        fillOpacity: "0.16",
+        fillOpacity: "0.18",
         stroke: "currentColor",
-        strokeWidth: "1.4"
+        strokeWidth: "1.55"
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M26.3 20.3C28.2 20.3 28.2 23.8 26.3 23.8", stroke: "currentColor", strokeWidth: "1.35", strokeLinecap: "round" }),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M5 25.5H27.5", stroke: "currentColor", strokeWidth: "1.4", strokeLinecap: "round" }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M32.4 25.2C34.8 25.2 34.8 29.8 32.4 29.8", stroke: "currentColor", strokeWidth: "1.5", strokeLinecap: "round" }),
     /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
       "path",
       {
         className: "dchat-pet-steam",
-        d: "M21.6 16.8C21 15.6 22.3 14.8 21.7 13.5M24.4 16.8C23.8 15.6 25.1 14.8 24.5 13.5",
+        d: "M26.5 20.8C25.8 19.3 27.3 18.2 26.6 16.6M29.8 20.8C29.1 19.3 30.6 18.2 29.9 16.6",
         stroke: "currentColor",
-        strokeWidth: "1.25",
+        strokeWidth: "1.35",
         strokeLinecap: "round"
       }
     )
@@ -18198,18 +18208,19 @@ var commandIcons = /* @__PURE__ */ new Map([
   ["export", import_dsh_client_ui_primitives43.IconDownloadOutlineRegular]
 ]);
 var RIGHTBAR_MIN = 300;
-var RIGHTBAR_MAX = 520;
-var RIGHTBAR_DEFAULT = 360;
+var RIGHTBAR_DEFAULT_RATIO = 0.45;
+var RIGHTBAR_MAX_RATIO = 0.7;
+var RIGHTBAR_CENTER_MIN = 360;
 var RIGHTBAR_WIDTH_KEY = "dsh-direct-chat.rightbar-width";
-function clampRightbarWidth(width) {
-  return Math.min(RIGHTBAR_MAX, Math.max(RIGHTBAR_MIN, Math.round(width)));
+function clampRightbarWidth(width, maxWidth = 1200) {
+  return Math.min(maxWidth, Math.max(RIGHTBAR_MIN, Math.round(width)));
 }
 function readSavedRightbarWidth() {
   try {
     const raw = Number(localStorage.getItem(RIGHTBAR_WIDTH_KEY));
-    return Number.isFinite(raw) && raw > 0 ? clampRightbarWidth(raw) : RIGHTBAR_DEFAULT;
+    return Number.isFinite(raw) && raw > 0 ? Math.round(raw) : null;
   } catch {
-    return RIGHTBAR_DEFAULT;
+    return null;
   }
 }
 var noopRightbarLayout = { openRightbar() {
@@ -18232,6 +18243,7 @@ function DirectChat({ navigation, startNative, renderFactorySlot, workspaceSourc
   const [rightbarWidth, setRightbarWidth] = (0, import_react44.useState)(readSavedRightbarWidth);
   const [draggingSplit, setDraggingSplit] = (0, import_react44.useState)(false);
   const dragOriginRef = (0, import_react44.useRef)(null);
+  const latestRightbarWidthRef = (0, import_react44.useRef)(rightbarWidth);
   (0, import_react44.useLayoutEffect)(() => {
     const node2 = shellRef.current;
     if (!node2 || typeof ResizeObserver === "undefined") return;
@@ -18246,8 +18258,13 @@ function DirectChat({ navigation, startNative, renderFactorySlot, workspaceSourc
   }, []);
   const viewportWidth = typeof window !== "undefined" ? window.innerWidth : shellWidth;
   const canShowSplit = Boolean(renderRightbar) && viewportWidth >= 768 && shellWidth >= 760;
-  const maxSplitWidth = Math.max(RIGHTBAR_MIN, Math.min(RIGHTBAR_MAX, Math.floor(shellWidth * 0.52)));
-  const resolvedRightbarWidth = Math.min(rightbarWidth, maxSplitWidth);
+  const maxSplitWidth = Math.max(
+    RIGHTBAR_MIN,
+    Math.min(Math.floor(viewportWidth * RIGHTBAR_MAX_RATIO), shellWidth - RIGHTBAR_CENTER_MIN)
+  );
+  const preferredRightbarWidth = rightbarWidth ?? Math.round(viewportWidth * RIGHTBAR_DEFAULT_RATIO);
+  const resolvedRightbarWidth = clampRightbarWidth(preferredRightbarWidth, maxSplitWidth);
+  latestRightbarWidthRef.current = resolvedRightbarWidth;
   (0, import_react44.useLayoutEffect)(() => {
     if (!diffController) return;
     diffController.useLayoutSeat(canShowSplit);
@@ -18262,15 +18279,16 @@ function DirectChat({ navigation, startNative, renderFactorySlot, workspaceSourc
   };
   const moveSplitDrag = (event2) => {
     if (!dragOriginRef.current) return;
-    const next = clampRightbarWidth(dragOriginRef.current.width + (dragOriginRef.current.x - event2.clientX));
-    setRightbarWidth(Math.min(next, maxSplitWidth));
+    const next = clampRightbarWidth(dragOriginRef.current.width + (dragOriginRef.current.x - event2.clientX), maxSplitWidth);
+    latestRightbarWidthRef.current = next;
+    setRightbarWidth(next);
   };
   const endSplitDrag = () => {
     if (!dragOriginRef.current) return;
     dragOriginRef.current = null;
     setDraggingSplit(false);
     try {
-      localStorage.setItem(RIGHTBAR_WIDTH_KEY, String(rightbarWidth));
+      localStorage.setItem(RIGHTBAR_WIDTH_KEY, String(latestRightbarWidthRef.current));
     } catch {
     }
   };
@@ -20591,6 +20609,11 @@ var session_pet_default = `.dchat-pet-root {
   }
 }
 
+.dchat-pet-fab .dchat-pet-svg {
+  width: 26px;
+  height: 26px;
+}
+
 .dchat-pet-header-btn {
   position: relative;
   display: inline-flex;
@@ -20619,20 +20642,24 @@ var session_pet_default = `.dchat-pet-root {
 }
 
 .dchat-pet-header-btn .dchat-pet-svg {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
+  flex: none;
 }
 
 .dchat-pet-header-btn .dchat-pet-badge {
-  inset: 0 0 auto auto;
+  position: absolute;
+  top: 1px;
+  right: 1px;
   display: grid;
   place-items: center;
   box-sizing: border-box;
-  min-width: 16px;
-  height: 16px;
+  min-width: 13px;
+  height: 13px;
   padding: 0 3px;
-  font-size: 10px;
-  line-height: 1;
+  font-size: 9px;
+  line-height: 13px;
+  box-shadow: 0 0 0 1.5px var(--dsw-alias-bg-base);
 }
 
 .dchat .dchat-header-actions .dchat-pet-header-btn > .dchat-pet-badge {
@@ -20716,17 +20743,19 @@ var session_pet_default = `.dchat-pet-root {
 
 .dchat-pet-badge {
   position: absolute;
-  top: -3px;
-  right: -3px;
-  min-width: 18px;
-  height: 18px;
-  padding: 0 5px;
+  top: -4px;
+  right: -4px;
+  box-sizing: border-box;
+  min-width: 15px;
+  height: 15px;
+  padding: 0 3px;
   border-radius: 999px;
   background: var(--dsw-alias-label-primary);
   color: var(--dsw-alias-bg-base);
-  font-size: 11px;
+  box-shadow: 0 0 0 1.5px var(--dsw-alias-bg-base);
+  font-size: 9px;
   font-weight: 600;
-  line-height: 18px;
+  line-height: 15px;
   text-align: center;
   font-variant-numeric: tabular-nums;
 }
@@ -22100,7 +22129,7 @@ html[data-platform='darwin'] .dchat-title a {
 }
 
 /* The web drawer already places its sidebar opener over this header. */
-html:not([data-platform]) [data-sidebar-drawer] [data-global-panel]:has(> [data-slot="main"] > .dchat) {
+html:not([data-platform]) [data-sidebar-drawer] [data-global-panel]:has(> [data-slot="main"] > :is(.dchat, .dchat-shell > .dchat)) {
   padding-block-start: 0;
 }
 
@@ -23413,6 +23442,53 @@ html:not([data-platform]) [data-sidebar-drawer] .dchat-title {
   overflow-wrap: anywhere;
 }
 
+@container (max-width: 720px) {
+  .dchat-composer-bar {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0 4px;
+  }
+
+  .dchat-mobile-options {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 34px;
+    padding: 0;
+    border: 0;
+    border-radius: var(--dsw-radius-sm);
+    color: var(--dsw-alias-label-secondary);
+    background: transparent;
+  }
+
+  .dchat-mobile-options[aria-expanded=true] {
+    background: var(--dsw-alias-interactive-bg-active);
+  }
+
+  .dchat-composer-options {
+    display: none;
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .dchat-composer-options[data-expanded] {
+    display: flex;
+    padding-block: 4px;
+    border-top: 1px solid var(--dsw-alias-border-l2);
+  }
+
+  .dchat-composer-trailing {
+    grid-column: 2;
+    grid-row: 1;
+    justify-content: flex-end;
+    margin-inline-start: 0;
+    gap: 2px;
+  }
+
+  .dchat-composer-bar button { min-height: 28px; }
+  .dchat-composer-tools { gap: 0; }
+}
+
 @container (max-width: 560px) {
   .dchat-header {
     gap: 6px;
@@ -23480,50 +23556,9 @@ html:not([data-platform]) [data-sidebar-drawer] .dchat-title {
     gap: 6px;
   }
 
-  .dchat-composer-bar {
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
-    gap: 0 4px;
-  }
-
-  .dchat-mobile-options {
-    display: grid;
-    place-items: center;
-    width: 40px;
-    height: 40px;
-    padding: 0;
-    border: 0;
-    border-radius: var(--dsw-radius-sm);
-    color: var(--dsw-alias-label-secondary);
-    background: transparent;
-  }
-
-  .dchat-mobile-options[aria-expanded=true] {
-    background: var(--dsw-alias-interactive-bg-active);
-  }
-
-  .dchat-composer-options {
-    display: none;
-    grid-column: 1 / -1;
-    grid-row: 2;
-  }
-
-  .dchat-composer-options[data-expanded] {
-    display: flex;
-    padding-block: 4px;
-    border-top: 1px solid var(--dsw-alias-border-l2);
-  }
-
   .dchat-composer-trailing {
-    grid-column: 2;
-    grid-row: 1;
-    justify-content: flex-end;
-    margin-inline-start: 0;
     gap: 2px;
   }
-
-  .dchat-composer-bar button { min-height: 28px; }
-  .dchat-mobile-options { height: 34px; }
 
   .dchat-composer-tools { gap: 0; }
   .dchat-transcript { scrollbar-gutter: auto; }
@@ -23771,7 +23806,8 @@ function apply(ctx) {
       contextMenus: ctx.contextMenus,
       panelSource,
       panelId,
-      terminalHost
+      terminalHost,
+      t
     }
   );
   ctx.slots.inject("main", () => ctx.slots.register({

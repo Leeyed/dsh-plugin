@@ -63,20 +63,21 @@ const commandIcons = new Map([
 ])
 
 const RIGHTBAR_MIN = 300
-const RIGHTBAR_MAX = 520
-const RIGHTBAR_DEFAULT = 360
+const RIGHTBAR_DEFAULT_RATIO = 0.45
+const RIGHTBAR_MAX_RATIO = 0.7
+const RIGHTBAR_CENTER_MIN = 360
 const RIGHTBAR_WIDTH_KEY = 'dsh-direct-chat.rightbar-width'
 
-function clampRightbarWidth(width) {
-  return Math.min(RIGHTBAR_MAX, Math.max(RIGHTBAR_MIN, Math.round(width)))
+function clampRightbarWidth(width, maxWidth = 1200) {
+  return Math.min(maxWidth, Math.max(RIGHTBAR_MIN, Math.round(width)))
 }
 
 function readSavedRightbarWidth() {
   try {
     const raw = Number(localStorage.getItem(RIGHTBAR_WIDTH_KEY))
-    return Number.isFinite(raw) && raw > 0 ? clampRightbarWidth(raw) : RIGHTBAR_DEFAULT
+    return Number.isFinite(raw) && raw > 0 ? Math.round(raw) : null
   } catch {
-    return RIGHTBAR_DEFAULT
+    return null
   }
 }
 
@@ -99,6 +100,7 @@ export function DirectChat({ navigation, startNative, renderFactorySlot, workspa
   const [rightbarWidth, setRightbarWidth] = useState(readSavedRightbarWidth)
   const [draggingSplit, setDraggingSplit] = useState(false)
   const dragOriginRef = useRef(null)
+  const latestRightbarWidthRef = useRef(rightbarWidth)
 
   useLayoutEffect(() => {
     const node = shellRef.current
@@ -115,8 +117,13 @@ export function DirectChat({ navigation, startNative, renderFactorySlot, workspa
 
   const viewportWidth = typeof window !== 'undefined' ? window.innerWidth : shellWidth
   const canShowSplit = Boolean(renderRightbar) && viewportWidth >= 768 && shellWidth >= 760
-  const maxSplitWidth = Math.max(RIGHTBAR_MIN, Math.min(RIGHTBAR_MAX, Math.floor(shellWidth * 0.52)))
-  const resolvedRightbarWidth = Math.min(rightbarWidth, maxSplitWidth)
+  const maxSplitWidth = Math.max(
+    RIGHTBAR_MIN,
+    Math.min(Math.floor(viewportWidth * RIGHTBAR_MAX_RATIO), shellWidth - RIGHTBAR_CENTER_MIN),
+  )
+  const preferredRightbarWidth = rightbarWidth ?? Math.round(viewportWidth * RIGHTBAR_DEFAULT_RATIO)
+  const resolvedRightbarWidth = clampRightbarWidth(preferredRightbarWidth, maxSplitWidth)
+  latestRightbarWidthRef.current = resolvedRightbarWidth
 
   useLayoutEffect(() => {
     if (!diffController) return
@@ -133,14 +140,15 @@ export function DirectChat({ navigation, startNative, renderFactorySlot, workspa
   }
   const moveSplitDrag = event => {
     if (!dragOriginRef.current) return
-    const next = clampRightbarWidth(dragOriginRef.current.width + (dragOriginRef.current.x - event.clientX))
-    setRightbarWidth(Math.min(next, maxSplitWidth))
+    const next = clampRightbarWidth(dragOriginRef.current.width + (dragOriginRef.current.x - event.clientX), maxSplitWidth)
+    latestRightbarWidthRef.current = next
+    setRightbarWidth(next)
   }
   const endSplitDrag = () => {
     if (!dragOriginRef.current) return
     dragOriginRef.current = null
     setDraggingSplit(false)
-    try { localStorage.setItem(RIGHTBAR_WIDTH_KEY, String(rightbarWidth)) } catch {}
+    try { localStorage.setItem(RIGHTBAR_WIDTH_KEY, String(latestRightbarWidthRef.current)) } catch {}
   }
 
   const current = metadata?.id === target.id ? metadata : null

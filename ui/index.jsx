@@ -138,7 +138,7 @@ export function apply(ctx) {
   }, 'direct-chat: close-native-rightbar')
 
   const renderRightbar = props => <DocumentWorkspacePane {...props}
-    controller={diffController} contextMenus={ctx.contextMenus} panelSource={panelSource} panelId={panelId} terminalHost={terminalHost} />
+    controller={diffController} contextMenus={ctx.contextMenus} panelSource={panelSource} panelId={panelId} terminalHost={terminalHost} t={t} />
 
   ctx.slots.inject('main', () => ctx.slots.register({
     name: 'main', key: panelId, locale: panelId,

@@ -58,6 +58,11 @@
   }
 }
 
+.dchat-pet-fab .dchat-pet-svg {
+  width: 26px;
+  height: 26px;
+}
+
 .dchat-pet-header-btn {
   position: relative;
   display: inline-flex;
@@ -86,20 +91,24 @@
 }
 
 .dchat-pet-header-btn .dchat-pet-svg {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
+  flex: none;
 }
 
 .dchat-pet-header-btn .dchat-pet-badge {
-  inset: 0 0 auto auto;
+  position: absolute;
+  top: 1px;
+  right: 1px;
   display: grid;
   place-items: center;
   box-sizing: border-box;
-  min-width: 16px;
-  height: 16px;
+  min-width: 13px;
+  height: 13px;
   padding: 0 3px;
-  font-size: 10px;
-  line-height: 1;
+  font-size: 9px;
+  line-height: 13px;
+  box-shadow: 0 0 0 1.5px var(--dsw-alias-bg-base);
 }
 
 .dchat .dchat-header-actions .dchat-pet-header-btn > .dchat-pet-badge {
@@ -183,17 +192,19 @@
 
 .dchat-pet-badge {
   position: absolute;
-  top: -3px;
-  right: -3px;
-  min-width: 18px;
-  height: 18px;
-  padding: 0 5px;
+  top: -4px;
+  right: -4px;
+  box-sizing: border-box;
+  min-width: 15px;
+  height: 15px;
+  padding: 0 3px;
   border-radius: 999px;
   background: var(--dsw-alias-label-primary);
   color: var(--dsw-alias-bg-base);
-  font-size: 11px;
+  box-shadow: 0 0 0 1.5px var(--dsw-alias-bg-base);
+  font-size: 9px;
   font-weight: 600;
-  line-height: 18px;
+  line-height: 15px;
   text-align: center;
   font-variant-numeric: tabular-nums;
 }
