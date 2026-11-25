@@ -1,0 +1,45 @@
+.dchat-workspace-picker {
+  min-width: 0;
+}
+
+.dchat-workspace-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  max-width: min(100%, 360px);
+  min-height: 28px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: var(--dsw-radius-sm);
+  background: transparent;
+  color: var(--dsw-alias-label-primary);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.dchat-workspace-trigger:not(:disabled):hover,
+.dchat-workspace-trigger[aria-expanded='true'] {
+  background: var(--dsw-alias-interactive-bg-hover);
+}
+
+.dchat-workspace-trigger:disabled {
+  cursor: default;
+}
+
+.dchat-workspace-trigger > svg {
+  flex: none;
+}
+
+.dchat-workspace-selection {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dchat-workspace-chevron {
+  color: var(--dsw-alias-label-caption);
+}
