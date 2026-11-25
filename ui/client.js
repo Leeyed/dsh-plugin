@@ -3446,7 +3446,7 @@ function OutdatedThreads({ threads, actions, t }) {
 // ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/FileLabel.tsx
 var import_dsh_client_ui_primitives10 = require("@deepseek-ai/dsh-client-ui-primitives");
 
-// ../../deepseek-harness/packages/util/workspace-path/src/index.ts
+// ../node_modules/@deepseek-ai/dsh-util-workspace-path/src/index.ts
 function isWindowsStylePath(value) {
   return /^[A-Za-z]:[/\\]/.test(value) || value.startsWith("\\\\");
 }
@@ -8883,7 +8883,7 @@ function WorkspaceDialogs({ request: request3, workspaces, renameWorkspace, dele
 // ../node_modules/@deepseek-ai/dsh-client-ui-workspace/src/client/rows/WorkspaceBrowser.tsx
 var import_dsh_client_ui_primitives24 = require("@deepseek-ai/dsh-client-ui-primitives");
 
-// ../../deepseek-harness/packages/api/workspace-controller/src/default-workspace.ts
+// ../node_modules/@deepseek-ai/dsh-api-workspace-controller/src/default-workspace.ts
 var DEFAULT_WORKSPACE_DIRECTORY = "default-workspace";
 function workspaceDisplayTitle(title, localizedDefault) {
   return title === DEFAULT_WORKSPACE_DIRECTORY ? localizedDefault : title;
@@ -11351,6 +11351,13 @@ function ExternalSessionRow({ node: node2, css, label, compactTime, formatTime, 
   const [open, setOpen] = (0, import_react24.useState)(false);
   const [point, setPoint] = (0, import_react24.useState)(null);
   const [pending, setPending] = (0, import_react24.useState)(false);
+  const rowRef = (0, import_react24.useRef)(null);
+  const titleRef = (0, import_react24.useRef)(null);
+  const marquee = useTitleMarquee(titleRef);
+  (0, import_react24.useEffect)(() => {
+    if (open || rowRef.current?.matches(":hover")) marquee.enter();
+    else marquee.leave();
+  }, [open, marquee]);
   const title = row.title || label;
   const origin = row.origin === "terminal" ? t("sidebar.terminal") : void 0;
   const created = sidebarTime(row.createdAt);
@@ -11405,6 +11412,11 @@ function ExternalSessionRow({ node: node2, css, label, compactTime, formatTime, 
   const anchor = /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(
     "div",
     {
+      ref: rowRef,
+      onPointerEnter: marquee.enter,
+      onPointerLeave: () => {
+        if (!open) marquee.leave();
+      },
       role: "treeitem",
       tabIndex: 0,
       "data-row-key": `session:${node2.id}`,
@@ -11427,7 +11439,7 @@ function ExternalSessionRow({ node: node2, css, label, compactTime, formatTime, 
       },
       children: [
         /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("span", { className: `${css.slot} dchat-sidebar-slot`, "aria-hidden": "true", children: /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(EngineLogo, { engine: row.engine, label, size: 14 }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("span", { className: css.title, onDoubleClick: (event2) => {
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("span", { ref: titleRef, className: css.title, onDoubleClick: (event2) => {
           event2.stopPropagation();
           if (!pending && canRename) rename(row);
         }, children: title }),
@@ -11589,17 +11601,24 @@ function DirectoryPickDialog({ open, busy, directoryPicker, useHostInfo, onPicke
   const [pathInput, setPathInput] = (0, import_react25.useState)("");
   const [entries, setEntries] = (0, import_react25.useState)([]);
   const [loading, setLoading] = (0, import_react25.useState)(false);
+  const desktopPicker = globalThis.__DSH_DIRECTORY_PICKER__;
+  const nativePicker = desktopPicker?.pick ? desktopPicker : hostInfo?.nativeDirectoryPicker ? directoryPicker : null;
   const pickedOnceRef = (0, import_react25.useRef)(false);
   (0, import_react25.useEffect)(() => {
     if (!open) {
       pickedOnceRef.current = false;
       return;
     }
-    if (hostInfo?.nativeDirectoryPicker && directoryPicker?.pick && !pickedOnceRef.current) {
+    if (nativePicker?.pick) {
+      if (pickedOnceRef.current) return;
       pickedOnceRef.current = true;
-      directoryPicker.pick().then(
+      nativePicker.pick().then(
         (res) => {
-          if (res?.path) onPicked(res.path);
+          if (nativePicker === desktopPicker) {
+            if (res) onPicked(res);
+            else onCancel();
+          } else if (!res.ok) onError(res.error.message);
+          else if (res.value) onPicked(res.value);
           else onCancel();
         },
         (err) => onError(err?.message || "Failed to open directory picker")
@@ -11629,8 +11648,8 @@ function DirectoryPickDialog({ open, busy, directoryPicker, useHostInfo, onPicke
       }
     );
     return () => controller.abort();
-  }, [open, hostInfo?.nativeDirectoryPicker, directoryPicker, pathInput]);
-  if (!open || hostInfo?.nativeDirectoryPicker) return null;
+  }, [open, nativePicker, desktopPicker, directoryPicker, pathInput]);
+  if (!open || nativePicker?.pick) return null;
   return /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(
     import_dsh_client_ui_primitives26.Modal,
     {
@@ -11677,13 +11696,13 @@ function DirectoryPickDialog({ open, busy, directoryPicker, useHostInfo, onPicke
   );
 }
 var defaultContextMenuTarget = () => false;
-var defaultContextMenu = () => ({ getTriggerProps: () => ({}) });
+var defaultContextMenu = () => ({ getTriggerProps: (_target, handlers) => handlers ?? {} });
 var defaultSectionScroller = () => ({ bindScrollerRef: () => {
 } });
 var defaultWorkspaceActionRequest = () => null;
 var noop2 = () => {
 };
-var allowAllAccess = () => true;
+var unavailableAccess = () => false;
 var emptyFactorySlot = () => null;
 function MergedWorkspaceBrowser({
   history,
@@ -11718,8 +11737,7 @@ function MergedWorkspaceBrowser({
     void fn?.call(uiWorkspace, sessionId).catch(() => showToast(directT("sidebar.actionFailed")));
   };
   const handleFork = (sessionId) => {
-    void uiWorkspace?.forkSession?.(sessionId).catch(() => {
-    });
+    void uiWorkspace?.forkSession?.(sessionId).catch(() => showToast(directT("sidebar.actionFailed")));
   };
   const handleRename = (sessionId, displayTitle2) => {
     setRenameTarget(sessionId);
@@ -11803,8 +11821,8 @@ function MergedWorkspaceBrowser({
             useSectionScroller: browserProps.useSectionScroller ?? defaultSectionScroller,
             useWorkspaceActionRequest: browserProps.useWorkspaceActionRequest ?? defaultWorkspaceActionRequest,
             settleWorkspaceAction: browserProps.settleWorkspaceAction ?? noop2,
-            useWorkspaceAccess: browserProps.useWorkspaceAccess ?? allowAllAccess,
-            useSessionAccess: browserProps.useSessionAccess ?? allowAllAccess,
+            useWorkspaceAccess: browserProps.useWorkspaceAccess ?? unavailableAccess,
+            useSessionAccess: browserProps.useSessionAccess ?? unavailableAccess,
             renderFactorySlot: browserProps.renderFactorySlot ?? emptyFactorySlot,
             renderSlot: localRenderSlot,
             extension: {
@@ -22030,6 +22048,7 @@ html [data-sidebar-drawer] .dchat-title {
 }
 
 .dchat-title h1 {
+  max-width: 220px;
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;

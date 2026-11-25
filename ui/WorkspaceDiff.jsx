@@ -45,7 +45,7 @@ function resolveBuiltinTerminalChunkUrl(extraModules) {
   if (start >= 0) {
     return `${row.url.slice(0, start)}/${row.id}/client.terminal.js?rev=${encodeURIComponent(row.rev)}`
   }
-  return `plugins/${row.id}/client.terminal.js?rev=${encodeURIComponent(row.rev)}`
+  return `/plugins/${row.id}/client.terminal.js?rev=${encodeURIComponent(row.rev)}`
 }
 
 let terminalBodyPromise

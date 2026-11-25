@@ -1,5 +1,5 @@
 import { useEffect, useId, useRef, useState } from 'react'
-import { FishLogo } from '@deepseek-ai/dsh-client-ui-primitives'
+import { FishLogo, IconChevronDownOutlineRegular, Menu } from '@deepseek-ai/dsh-client-ui-primitives'
 import antigravityLogo from './engine-logos/agy.png'
 import claudeLogo from './engine-logos/claude.png'
 import codexLogo from './engine-logos/codex.png'
@@ -17,6 +17,35 @@ export function EngineLogo({ engine, label = engine, icon, size = 24 }) {
   return <span className="dchat-engine-initial" aria-hidden="true" style={{ width: size, height: size, fontSize: size * 0.68 }}>
     {Array.from(label || '')[0]?.toLocaleUpperCase()}
   </span>
+}
+
+export function EngineDropdown({ selected = null, engines, status, reload, onSelect, disabled = false, t }) {
+  const [open, setOpen] = useState(false)
+  const options = [{ id: null, label: t('engine.native'), meta: null }, ...engines]
+  const active = options.find(option => option.id === selected) ?? { id: selected, label: selected || t('engine.native') }
+  if (!engines.length && status === 'ready' && selected === null) return null
+  const items = options.map(({ id, label, meta }) => ({
+    id: id === null ? '__native__' : id,
+    label,
+    icon: <EngineLogo engine={id} label={label} icon={meta?.icon} size={16} />,
+  }))
+  return <Menu open={open && !disabled} portal side="bottom" align="start" dense items={items}
+    selectedId={selected === null ? '__native__' : selected}
+    onClose={() => setOpen(false)}
+    onSelect={id => {
+      setOpen(false)
+      void onSelect(id === '__native__' ? null : id)
+    }}
+    anchor={<button type="button" className="dchat-workspace-trigger" disabled={disabled}
+      aria-haspopup="menu" aria-expanded={open && !disabled}
+      onClick={() => {
+        if (!open && status !== 'loading') void reload?.()
+        setOpen(v => !v)
+      }}>
+      <EngineLogo engine={active.id} label={active.label} icon={active.meta?.icon} size={16} />
+      <span className="dchat-workspace-selection">{active.label}</span>
+      <IconChevronDownOutlineRegular className="dchat-workspace-chevron" size={12} />
+    </button>} />
 }
 
 export function EngineHero({ selected, engines, status, reload, onSelect, nativeHeadline, t }) {

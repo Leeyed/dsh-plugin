@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState, useSyncExternalStore } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState, useSyncExternalStore } from 'react'
 import {
   Button, HoverCard, IconArchiveOutlineRegular, IconBranchOutlineRegular, IconCopyOutlineRegular,
   IconEditOutlineRegular, IconEllipsisOutlineRegular, IconPinFillRegular, IconPinOutlineRegular,
@@ -6,6 +6,7 @@ import {
   Menu, Modal, StateDot, Toast, Tooltip, writeClipboard,
 } from '@deepseek-ai/dsh-client-ui-primitives'
 import { archiveWorkspace, deleteSession, engineLabel, sessionAction } from './chat-state.mjs'
+import { useTitleMarquee } from '@deepseek-ai/dsh-client-ui-workspace/src/client/rows/Rows.tsx'
 import { EngineLogo } from './EngineHero.jsx'
 import { hideNativeDraft, isVirtualGroup, mergeSidebarRows, projectSidebarGroups, sidebarRowVisible, sidebarTime } from './sidebar-history.mjs'
 
@@ -411,6 +412,13 @@ function ExternalSessionRow({ node, css, label, compactTime, formatTime, active,
   const [open, setOpen] = useState(false)
   const [point, setPoint] = useState(null)
   const [pending, setPending] = useState(false)
+  const rowRef = useRef(null)
+  const titleRef = useRef(null)
+  const marquee = useTitleMarquee(titleRef)
+  useEffect(() => {
+    if (open || rowRef.current?.matches(':hover')) marquee.enter()
+    else marquee.leave()
+  }, [open, marquee])
   const title = row.title || label
   const origin = row.origin === 'terminal' ? t('sidebar.terminal') : undefined
   const created = sidebarTime(row.createdAt)
@@ -463,7 +471,7 @@ function ExternalSessionRow({ node, css, label, compactTime, formatTime, active,
     else if (id === 'fork' && canFork) await mutate('fork', {}, 'sidebar.forked')
   }
   const activate = () => node.archived ? report(t('sidebar.restoreToOpen'), false) : openDirect(row.id)
-  const anchor = <div role="treeitem" tabIndex={0} data-row-key={`session:${node.id}`} data-direct-row=""
+  const anchor = <div ref={rowRef} onPointerEnter={marquee.enter} onPointerLeave={() => { if (!open) marquee.leave() }} role="treeitem" tabIndex={0} data-row-key={`session:${node.id}`} data-direct-row=""
     data-live-state={liveState || undefined}
     className={[css.sessionRow, active && css.selected, node.archived && css.archived, open && css.menuOpen].filter(Boolean).join(' ')}
     aria-selected={active} aria-description={node.archived ? t('sidebar.restoreToOpen') : undefined}
@@ -481,7 +489,7 @@ function ExternalSessionRow({ node, css, label, compactTime, formatTime, active,
     <span className={`${css.slot} dchat-sidebar-slot`} aria-hidden="true">
       <EngineLogo engine={row.engine} label={label} size={14} />
     </span>
-    <span className={css.title} onDoubleClick={event => {
+    <span ref={titleRef} className={css.title} onDoubleClick={event => {
       event.stopPropagation()
       if (!pending && canRename) rename(row)
     }}>{title}</span>
