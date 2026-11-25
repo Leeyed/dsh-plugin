@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { startDirectFromNative } from './native-draft.mjs'
+import { startDirectFromNative, startNativeFromDirect } from './native-draft.mjs'
 import { createNavigation } from './navigation.mjs'
 
 function nativeContext(getDraft) {
@@ -76,4 +76,72 @@ test('opens the direct engine when a native session is absent', () => {
   const target = navigation.getSnapshot()
   assert.equal(target.engine, 'claude')
   assert.equal(navigation.draftFor(target, 'claude').getSnapshot().text, '')
+})
+
+test('startDirectFromNative remembers explicit cwd and clears native draft after transfer', () => {
+  const values = new Map()
+  const storage = {
+    getItem: key => values.get(key) ?? null,
+    setItem: (key, value) => values.set(key, value),
+    removeItem: key => values.delete(key),
+  }
+  const navigation = createNavigation(() => {}, storage)
+  let nativeDraft = 'hello from native'
+  const scope = {}
+  const ctx = {
+    get: key => ({
+      uiSession: { adapter: { current: { getSnapshot: () => ({ key: 'native-1' }) } } },
+      sessions: { scope: id => (id === 'native-1' ? scope : undefined) },
+      conversation: {
+        input: {
+          for: sessionScope => (sessionScope === scope ? {
+            state: { getSnapshot: () => ({ draft: nativeDraft }) },
+            setDraft: value => { nativeDraft = value },
+          } : undefined),
+        },
+      },
+    })[key],
+  }
+
+  startDirectFromNative(ctx, navigation, 'codex', '/workspace/project')
+
+  assert.equal(navigation.getSnapshot().cwd, '/workspace/project')
+  assert.equal(values.get('dsh-direct-chat.cwd'), '/workspace/project')
+  assert.equal(navigation.draftFor(navigation.getSnapshot(), 'codex').getSnapshot().text, 'hello from native')
+  assert.equal(nativeDraft, '')
+})
+
+test('startNativeFromDirect opens workspace and transfers direct draft when native input is empty', async () => {
+  let openedWorkspace = null
+  let nativeDraft = ''
+  const scope = {}
+  const ctx = {
+    layout: { beginNavigation: () => ({ aborted: false }) },
+    workspaces: { create: async ({ path }) => ({ workspaceId: `ws:${path}` }) },
+    uiWorkspace: {
+      openWorkspace: async id => { openedWorkspace = id },
+      startSession: () => { openedWorkspace = 'default' },
+    },
+    get: key => ({
+      uiSession: { adapter: { current: { getSnapshot: () => ({ key: 'native-2' }) } } },
+      sessions: { scope: id => (id === 'native-2' ? scope : undefined) },
+      conversation: {
+        input: {
+          for: sessionScope => (sessionScope === scope ? {
+            state: { getSnapshot: () => ({ draft: nativeDraft }) },
+            setDraft: value => { nativeDraft = value },
+          } : undefined),
+        },
+      },
+    })[key],
+  }
+
+  const transferred = await startNativeFromDirect(ctx, undefined, '/workspace/project', 'draft from codex')
+  assert.equal(transferred, true)
+  assert.equal(openedWorkspace, 'ws:/workspace/project')
+  assert.equal(nativeDraft, 'draft from codex')
+
+  const preserved = await startNativeFromDirect(ctx, 'ws:/workspace/project', '/workspace/project', 'should not overwrite')
+  assert.equal(preserved, false)
+  assert.equal(nativeDraft, 'draft from codex')
 })

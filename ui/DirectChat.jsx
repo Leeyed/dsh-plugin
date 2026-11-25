@@ -24,7 +24,7 @@ import {
 } from './chat-state.mjs'
 import { useComposerCommands } from './ComposerCommands.jsx'
 import { commandEntries } from './composer-commands.mjs'
-import { EngineHero, EngineLogo } from './EngineHero.jsx'
+import { EngineDropdown, EngineLogo } from './EngineHero.jsx'
 import { ReviewCommand } from './ReviewCommand.jsx'
 import { codexPromptCommand } from './review-command.mjs'
 import { MessageQueue, pendingQueueSubmission } from './MessageQueue.jsx'
@@ -62,66 +62,149 @@ const commandIcons = new Map([
   ['export', IconDownloadOutlineRegular],
 ])
 
-export function DirectChat({ navigation, startNative, renderFactorySlot, workspaceSource, engineSource, diffController, performanceSettings, submissionSettings, queueDock, statusStore, nativeSessions, useSessionStatus, useWorkspaces, openDirect, openNative, t }) {
+const RIGHTBAR_MIN = 300
+const RIGHTBAR_MAX = 520
+const RIGHTBAR_DEFAULT = 360
+const RIGHTBAR_WIDTH_KEY = 'dsh-direct-chat.rightbar-width'
+
+function clampRightbarWidth(width) {
+  return Math.min(RIGHTBAR_MAX, Math.max(RIGHTBAR_MIN, Math.round(width)))
+}
+
+function readSavedRightbarWidth() {
+  try {
+    const raw = Number(localStorage.getItem(RIGHTBAR_WIDTH_KEY))
+    return Number.isFinite(raw) && raw > 0 ? clampRightbarWidth(raw) : RIGHTBAR_DEFAULT
+  } catch {
+    return RIGHTBAR_DEFAULT
+  }
+}
+
+const noopRightbarLayout = { openRightbar() {}, closeRightbar() {} }
+
+export function DirectChat({ navigation, startNative, renderFactorySlot, workspaceSource, engineSource, diffController, renderRightbar, performanceSettings, submissionSettings, queueDock, statusStore, nativeSessions, useSessionStatus, useWorkspaces, openDirect, openNative, t }) {
   const target = useSyncExternalStore(navigation.subscribe, navigation.getSnapshot)
   const { engines, status: engineStatus } = useSyncExternalStore(engineSource.subscribe, engineSource.getSnapshot)
+  const diffState = useSyncExternalStore(
+    diffController?.subscribe ?? defaultSubmissionSettings.subscribe,
+    diffController?.getSnapshot ?? (() => ({ open: false })),
+  )
   const [column, setColumn] = useState(null)
   const [metadata, setMetadata] = useState(null)
   const parent = useRef(null)
   const [agentSummary, setAgentSummary] = useState(null)
   const [runtimeSummary, setRuntimeSummary] = useState(null)
+  const shellRef = useRef(null)
+  const [shellWidth, setShellWidth] = useState(() => typeof window !== 'undefined' ? window.innerWidth : 1200)
+  const [rightbarWidth, setRightbarWidth] = useState(readSavedRightbarWidth)
+  const [draggingSplit, setDraggingSplit] = useState(false)
+  const dragOriginRef = useRef(null)
+
+  useLayoutEffect(() => {
+    const node = shellRef.current
+    if (!node || typeof ResizeObserver === 'undefined') return
+    const update = () => {
+      const next = node.getBoundingClientRect().width
+      if (next > 0) setShellWidth(next)
+    }
+    update()
+    const observer = new ResizeObserver(update)
+    observer.observe(node)
+    return () => observer.disconnect()
+  }, [])
+
+  const viewportWidth = typeof window !== 'undefined' ? window.innerWidth : shellWidth
+  const canShowSplit = Boolean(renderRightbar) && viewportWidth >= 768 && shellWidth >= 760
+  const maxSplitWidth = Math.max(RIGHTBAR_MIN, Math.min(RIGHTBAR_MAX, Math.floor(shellWidth * 0.52)))
+  const resolvedRightbarWidth = Math.min(rightbarWidth, maxSplitWidth)
+
+  useLayoutEffect(() => {
+    if (!diffController) return
+    diffController.useLayoutSeat(canShowSplit)
+    return () => diffController.useLayoutSeat(false)
+  }, [diffController, canShowSplit])
+
+  const startSplitDrag = event => {
+    if (event.button !== 0) return
+    event.preventDefault()
+    event.currentTarget.setPointerCapture?.(event.pointerId)
+    dragOriginRef.current = { x: event.clientX, width: resolvedRightbarWidth }
+    setDraggingSplit(true)
+  }
+  const moveSplitDrag = event => {
+    if (!dragOriginRef.current) return
+    const next = clampRightbarWidth(dragOriginRef.current.width + (dragOriginRef.current.x - event.clientX))
+    setRightbarWidth(Math.min(next, maxSplitWidth))
+  }
+  const endSplitDrag = () => {
+    if (!dragOriginRef.current) return
+    dragOriginRef.current = null
+    setDraggingSplit(false)
+    try { localStorage.setItem(RIGHTBAR_WIDTH_KEY, String(rightbarWidth)) } catch {}
+  }
 
   const current = metadata?.id === target.id ? metadata : null
   const currentAgents = agentSummary?.id === target.id ? agentSummary : null
   const currentRuntime = runtimeSummary?.id === target.id ? runtimeSummary : null
   const engine = target.engine ?? engines[0]?.id
   const engineMeta = engines.find(item => item.id === engine)?.meta
-  return <section className="dchat" data-blank={!target.id || undefined} data-hero-engine={!target.id ? engine : undefined}
-    style={!target.id && engineMeta?.accentColor ? { '--dchat-hero-accent': engineMeta.accentColor } : undefined} aria-label={t('panel')}>
-    <header className="dchat-header">
-      <div className="dchat-title">
-        {target.id && <>
-          {current?.parentId && <Button size="sm" className="dchat-parent" aria-label={t('parallel.parent')}
-            title={t('parallel.parent')} onClick={() => navigation.open(current.parentId)}>
-            <IconChevronLeftOutlineRegular size={16} />
-            <span>{parent.current?.id === current.parentId ? parent.current.title : t('agents.parent')}</span>
-          </Button>}
-          <h1 title={current?.title}>{current?.title || t('panel')}</h1>
-          {current && (() => {
-            const engInfo = engines.find(item => item.id === current.engine)
-            const engStatus = engInfo?.status
-            return <span className="dchat-engine-label" title={current.cwd}>
-              <EngineLogo engine={current.engine} size={14} />{engineLabel(engines, current.engine)}
-              {engStatus?.version && <span className="dchat-engine-version">v{engStatus.version}</span>}
-              {engStatus?.updateAvailable && <span className="dchat-engine-pill" data-tone="update">
-                {t('engine.updateAvailable', { version: engStatus.latestVersion })}
-              </span>}
-            </span>
-          })()}
-          <SubagentCatalog key={target.id} summary={currentAgents} openChild={id => {
-            parent.current = current
-            navigation.open(id)
-          }} t={t} />
-        </>}
+  const showSplitPane = canShowSplit && Boolean(diffState?.open)
+
+  return <div ref={shellRef} className="dchat-shell" data-dragging-split={draggingSplit || undefined}>
+    <section className="dchat" data-blank={!target.id || undefined} data-hero-engine={!target.id ? engine : undefined}
+      style={!target.id && engineMeta?.accentColor ? { '--dchat-hero-accent': engineMeta.accentColor } : undefined} aria-label={t('panel')}>
+      <header className="dchat-header">
+        <div className="dchat-title">
+          {target.id && <>
+            {current?.parentId && <Button size="sm" className="dchat-parent" aria-label={t('parallel.parent')}
+              title={t('parallel.parent')} onClick={() => navigation.open(current.parentId)}>
+              <IconChevronLeftOutlineRegular size={16} />
+              <span>{parent.current?.id === current.parentId ? parent.current.title : t('agents.parent')}</span>
+            </Button>}
+            <h1 title={current?.title}>{current?.title || t('panel')}</h1>
+            {current && (() => {
+              const engInfo = engines.find(item => item.id === current.engine)
+              const engStatus = engInfo?.status
+              return <span className="dchat-engine-label" title={current.cwd}>
+                <EngineLogo engine={current.engine} size={14} />{engineLabel(engines, current.engine)}
+                {engStatus?.version && <span className="dchat-engine-version">v{engStatus.version}</span>}
+                {engStatus?.updateAvailable && <span className="dchat-engine-pill" data-tone="update">
+                  {t('engine.updateAvailable', { version: engStatus.latestVersion })}
+                </span>}
+              </span>
+            })()}
+            <SubagentCatalog key={target.id} summary={currentAgents} openChild={id => {
+              parent.current = current
+              navigation.open(id)
+            }} t={t} />
+          </>}
+        </div>
+        <div className="dchat-header-actions">
+          {target.id && <RunningJobsAction key={target.id} sessionId={target.id} summary={currentRuntime} t={t} />}
+          {diffController && <WorkspaceDiff controller={diffController} t={t} />}
+          {statusStore && <SessionPet variant="header" statusStore={statusStore} nativeSessions={nativeSessions}
+            useSessionStatus={useSessionStatus} useWorkspaces={useWorkspaces}
+            engineSource={engineSource} openDirect={openDirect || (sessionId => navigation.open(sessionId))} openNative={openNative} t={t} />}
+        </div>
+      </header>
+      <div ref={setColumn} className={conversationLayout.body}>
+        <div className={conversationLayout.scrollBody}>
+          <SessionPane key={target.key ?? target.id ?? target.engine} target={target} navigation={navigation} startNative={startNative} performanceSettings={performanceSettings} submissionSettings={submissionSettings}
+            engine={engine} engines={engines} engineStatus={engineStatus} reloadEngines={engineSource.refresh} diffController={diffController}
+            queueDock={queueDock} onAgentSummary={setAgentSummary} onRuntimeSummary={setRuntimeSummary} onSession={setMetadata}
+            renderFactorySlot={renderFactorySlot} workspaceSource={workspaceSource} t={t} />
+        </div>
+        <ConversationWidthControls container={column} phase={target.id ? 'active' : 'hero'} />
       </div>
-      <div className="dchat-header-actions">
-        {target.id && <RunningJobsAction key={target.id} sessionId={target.id} summary={currentRuntime} t={t} />}
-        {diffController && <WorkspaceDiff controller={diffController} t={t} />}
-        {statusStore && <SessionPet variant="header" statusStore={statusStore} nativeSessions={nativeSessions}
-          useSessionStatus={useSessionStatus} useWorkspaces={useWorkspaces}
-          engineSource={engineSource} openDirect={openDirect || (sessionId => navigation.open(sessionId))} openNative={openNative} t={t} />}
-      </div>
-    </header>
-    <div ref={setColumn} className={conversationLayout.body}>
-      <div className={conversationLayout.scrollBody}>
-        <SessionPane key={target.key ?? target.id ?? target.engine} target={target} navigation={navigation} startNative={startNative} performanceSettings={performanceSettings} submissionSettings={submissionSettings}
-          engine={engine} engines={engines} engineStatus={engineStatus} reloadEngines={engineSource.refresh} diffController={diffController}
-          queueDock={queueDock} onAgentSummary={setAgentSummary} onRuntimeSummary={setRuntimeSummary} onSession={setMetadata}
-          renderFactorySlot={renderFactorySlot} workspaceSource={workspaceSource} t={t} />
-      </div>
-      <ConversationWidthControls container={column} phase={target.id ? 'active' : 'hero'} />
-    </div>
-  </section>
+    </section>
+    {showSplitPane && <>
+      <div className="dchat-split-handle" role="separator" aria-orientation="vertical"
+        onPointerDown={startSplitDrag} onPointerMove={moveSplitDrag} onPointerUp={endSplitDrag} onPointerCancel={endSplitDrag} />
+      <aside className="dchat-split-rightbar" style={{ width: `${resolvedRightbarWidth}px` }}>
+        {renderRightbar({ width: resolvedRightbarWidth, viewportWidth, canShow: true, layout: noopRightbarLayout })}
+      </aside>
+    </>}
+  </div>
 }
 
 function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navigation, startNative, performanceSettings, submissionSettings = defaultSubmissionSettings, onSession, renderFactorySlot, workspaceSource, engine, engines, engineStatus, reloadEngines, diffController, t }) {
@@ -676,25 +759,16 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
     </div>}
     <div className="dchat-input-region" data-centered={blank || undefined}>
       {blank && <>
-        <EngineHero selected={engine} engines={engines} status={engineStatus} reload={reloadEngines}
-          onSelect={async next => {
-            if (next === engine) return
-            if (next === null) {
-              const workspace = workspaceSource.getSnapshot().items.find(item => item.path === cwd)
-              try { await startNative(workspace?.workspaceId, cwd) }
-              catch (reason) { setError(reason.message || t('request.failed')) }
-            } else {
-              const nextComposer = navigation.draftFor(target, next)
-              const nextSnap = nextComposer.getSnapshot()
-              if (!nextSnap.sending && !nextSnap.text && !nextSnap.attachments.length && (draft || attachments.length)) {
-                if (draft) nextComposer.setText(draft)
-                if (attachments.length) nextComposer.setAttachments(attachments)
-              }
-              navigation.start(next, cwd)
-            }
-          }} t={t} />
-        {engine && <div className="dchat-workspace-row">
-          <WorkspacePicker value={cwd} onChange={path => {
+        <div className="dchat-engine-hero">
+          <h1 className="dchat-engine-headline">
+            <span className="dchat-engine-headline-button">
+              <EngineLogo engine={engine} label={engineLabel(engines, engine)} icon={engines.find(item => item.id === engine)?.meta?.icon} size={38} />
+              <span>{engineLabel(engines, engine)}</span>
+            </span>
+          </h1>
+        </div>
+        <div className="dchat-workspace-row">
+          {engine && <WorkspacePicker value={cwd} onChange={path => {
             if (path !== cwd) {
               const nextComposer = navigation.draftFor({ ...target, cwd: path }, engine)
               const nextSnap = nextComposer.getSnapshot()
@@ -706,8 +780,44 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
             navigation.rememberCwd(path)
             navigation.start(engine, path)
           }} disabled={Boolean(pending)} t={t}
-            renderFactorySlot={renderFactorySlot} workspaceSource={workspaceSource} />
-        </div>}
+            renderFactorySlot={renderFactorySlot} workspaceSource={workspaceSource} />}
+          <EngineDropdown selected={engine} engines={engines} status={engineStatus} reload={reloadEngines}
+            disabled={Boolean(pending)} onSelect={async next => {
+              if (next === engine) return
+              if (next === null) {
+                const workspace = workspaceSource.getSnapshot().items.find(item => item.path === cwd)
+                const effectiveDraft = stagedCommand
+                  ? `/${stagedCommand}${draft.trim() ? ` ${draft.trim()}` : ''}`
+                  : draft
+                try {
+                  const transferred = await startNative(workspace?.workspaceId, cwd, effectiveDraft)
+                  if (transferred && effectiveDraft && !composer.getSnapshot().sending) {
+                    setDraft('')
+                    if (stagedCommand) setStagedCommand(null)
+                  }
+                }
+                catch (reason) { setError(reason.message || t('request.failed')) }
+              } else {
+                const nextComposer = navigation.draftFor(target, next)
+                const nextSnap = nextComposer.getSnapshot()
+                if (!nextSnap.sending && !nextSnap.text && !nextSnap.attachments.length && (draft || attachments.length)) {
+                  if (draft) {
+                    nextComposer.setText(draft)
+                    if (!composer.getSnapshot().sending) setDraft('')
+                  }
+                  if (attachments.length) {
+                    nextComposer.setAttachments(attachments)
+                    if (!composer.getSnapshot().sending) setAttachments([])
+                  }
+                }
+                if (stagedCommand && !nextSnap.sending && !nextSnap.command) {
+                  nextComposer.setCommand(stagedCommand)
+                  if (!composer.getSnapshot().sending) setStagedCommand(null)
+                }
+                navigation.start(next, cwd)
+              }
+            }} t={t} />
+        </div>
       </>}
       {needsEngine && <div className="dchat-connection" role="status">
         <span>{t(engineStatus === 'ready' ? 'engine.empty' : engineStatus === 'error' ? 'engine.failed' : 'engine.loading')}</span>

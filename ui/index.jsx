@@ -5,21 +5,24 @@ import { spreadsheetCopy } from './SpreadsheetPreview.jsx'
 import { ArchiveSettings, archiveSettingsCopy } from './ArchiveSettings.jsx'
 import { EngineSettings } from './EngineSettings.jsx'
 import { forgeCopy } from './ForgeChanges.jsx'
-import { WorkspaceDiffPane, diffCopy, workspaceDiffSlot } from './WorkspaceDiff.jsx'
+import { WorkspaceDiffPane, diffCopy } from './WorkspaceDiff.jsx'
+import { createWorkspaceViewStore } from '@deepseek-ai/dsh-client-ui-workspace/src/client/stores.ts'
+import { createWorkspaceShortcutControls } from '@deepseek-ai/dsh-client-ui-workspace/src/client/shortcuts.ts'
+import { MergedWorkspaceBrowser } from './MergedWorkspaceBrowser.jsx'
 import { sessionStatusCopy } from './SessionStatus.jsx'
 import statusStyles from './session-status.css'
 import { createQueueDockSource } from './MessageQueue.jsx'
 import { DirectChat } from './DirectChat.jsx'
-import { EngineHero } from './EngineHero.jsx'
+import { EngineDropdown } from './EngineHero.jsx'
 import { createEngineCatalog, createDirectStatusStore } from './chat-state.mjs'
 import { createNavigation } from './navigation.mjs'
-import { startDirectFromNative } from './native-draft.mjs'
+import { startDirectFromNative, startNativeFromDirect } from './native-draft.mjs'
 import { SessionPet } from './SessionPet.jsx'
 import petStyles from './session-pet.css'
 import { en, zh } from './copy.mjs'
 import { createSidebarHistory } from './sidebar-history.mjs'
 import { createWorkspaceDiffController } from './workspace-diff-view.mjs'
-import { SidebarProjection, SidebarSessions, sidebarCopy, workspaceProjectionSlot, workspaceSessionsSlot } from './sidebar.jsx'
+import { sidebarCopy } from './sidebar.jsx'
 import archiveStyles from './archive-settings.css'
 import engineStyles from './engine-hero.css'
 import sidebarStyles from './sidebar.css'
@@ -107,15 +110,7 @@ export function apply(ctx) {
       try { return ctx.modules?.manifest?.modules ?? ctx.get?.('modules')?.manifest?.modules } catch { return undefined }
     },
   }
-  const startNative = async (workspaceId, cwd) => {
-    if (!workspaceId && cwd) {
-      const navigationSignal = ctx.layout.beginNavigation()
-      workspaceId = (await ctx.workspaces.create({ path: cwd })).workspaceId
-      if (navigationSignal.aborted) return
-    }
-    if (workspaceId) await ctx.uiWorkspace.openWorkspace(workspaceId)
-    else ctx.uiWorkspace.startSession()
-  }
+  const startNative = (workspaceId, cwd, draft) => startNativeFromDirect(ctx, workspaceId, cwd, draft)
   const startDirect = (engine, cwd) => {
     startDirectFromNative(ctx, navigation, engine, cwd)
     ctx.layout.selectPanel(panelId)
@@ -132,20 +127,25 @@ export function apply(ctx) {
     openNative: id => { try { ctx.uiWorkspace.openSession(id) } catch {} },
   })
 
+  ctx.effect(() => {
+    const sync = () => {
+      if (ctx.layout.panelInfo.getSnapshot()?.activePanelId === panelId) {
+        ctx.layout.closeRightbar()
+      }
+    }
+    sync()
+    return ctx.layout.panelInfo.subscribe(sync)
+  }, 'direct-chat: close-native-rightbar')
+
+  const renderRightbar = props => <DocumentWorkspacePane {...props}
+    controller={diffController} contextMenus={ctx.contextMenus} panelSource={panelSource} panelId={panelId} terminalHost={terminalHost} />
+
   ctx.slots.inject('main', () => ctx.slots.register({
     name: 'main', key: panelId, locale: panelId,
-    inject: () => ({ ...sessionPetProps(), navigation, startNative, workspaceSource, diffController, queueDock,
+    inject: () => ({ ...sessionPetProps(), navigation, startNative, workspaceSource, diffController, renderRightbar, queueDock,
       performanceSettings: ctx.get('configForms')?.get('ui-chat'),
       submissionSettings: ctx.get('configForms')?.get('ui-conversation') }),
   }, DirectChat))
-  ctx.slots.inject(workspaceDiffSlot, () => {
-    const dispose = ctx.slots.register({
-      name: workspaceDiffSlot, locale: panelId,
-      inject: () => ({ controller: diffController, contextMenus: ctx.contextMenus, panelSource, panelId, layout: ctx.layout, terminalHost }),
-    }, DocumentWorkspacePane)
-    diffController.useLayoutSeat(true)
-    return () => { diffController.useLayoutSeat(false); dispose() }
-  })
   ctx.slots.inject('shell.overlay', () => ctx.slots.register({
     name: 'shell.overlay', id: 'direct-chat-workspace-diff', locale: panelId,
     inject: () => ({ controller: diffController, contextMenus: ctx.contextMenus, panelSource, panelId, terminalHost }),
@@ -165,20 +165,74 @@ export function apply(ctx) {
     label: () => t('archiveSettings.title'),
     inject: () => ({ history, engineSource }),
   }, ArchiveSettings))
-  ctx.slots.inject('conversation.hero.engine', () => ctx.slots.register({
-    name: 'conversation.hero.engine', locale: panelId,
-    inject: () => ({ engineSource, startDirect }),
-  }, NativeEngineHero))
-  ctx.slots.inject(workspaceSessionsSlot, () => ctx.slots.register({
-    name: workspaceSessionsSlot, id: panelId, locale: panelId,
-    inject: () => ({ history }),
-  }, SidebarSessions))
-  ctx.slots.inject(workspaceProjectionSlot, () => ctx.slots.register({
-    name: workspaceProjectionSlot, locale: panelId,
-    inject: () => ({ history, statusStore, navigation, openDirect, panelId, engineSource, archiveRequest,
-      registerWorkspace: path => ctx.workspaces.create({ path }),
-    }),
-  }, SidebarProjection))
+  ctx.slots.inject('conversation.hero.agentPreset', () => ctx.slots.register({
+    name: 'conversation.hero.agentPreset', priority: -10, locale: panelId,
+    inject: sessionId => ({ sessionId, engineSource, startDirect }),
+  }, NativeInputDockHero))
+
+  const viewHandle = createWorkspaceViewStore()
+  const viewInstance = viewHandle.create()
+  const viewStore = { ...viewHandle, create: () => viewInstance }
+  const shortcutControls = createWorkspaceShortcutControls()
+  const getDirectoryPicker = () => {
+    try { return ctx.get?.('remote.directoryPicker') } catch { return undefined }
+  }
+  const getShortcutsCatalog = () => {
+    try { return ctx.get?.('shortcuts')?.catalog } catch { return undefined }
+  }
+  const directoryFlowSource = { getSnapshot: () => Boolean(getDirectoryPicker()), subscribe: () => () => {} }
+  const hostInfoSource = {
+    getSnapshot: () => {
+      try { return ctx.get?.('remote')?.$host ?? {} } catch { return {} }
+    },
+    subscribe: listener => {
+      try { return ctx.on?.('connection/reset', listener) ?? (() => {}) } catch { return () => {} }
+    },
+  }
+  ctx.slots.inject('sidebar.workspaces', () => ctx.slots.register({
+    name: 'sidebar.workspaces',
+    priority: -10,
+    store: viewStore,
+    locale: 'workspace',
+    inject: () => {
+      const sessionsApi = (() => { try { return ctx.get?.('sessions') } catch { return undefined } })()
+      const directoryPicker = getDirectoryPicker()
+      return {
+        history, statusStore, navigation, openDirect, panelId, engineSource, archiveRequest,
+        registerWorkspace: path => ctx.workspaces.create({ path }),
+        directoryPicker, uiWorkspace: ctx.uiWorkspace, sessionsApi, workspacesApi: ctx.workspaces,
+        directT: t,
+        startSession: workspaceId => ctx.uiWorkspace.startSession(workspaceId),
+        open: sessionId => ctx.uiWorkspace.openSession(sessionId),
+        searchSessions: async (query, signal) => {
+          const result = await sessionsApi?.search(query, signal)
+          if (result && !result.ok) throw new Error(result.error?.message || 'Search failed')
+          return result?.value ?? { items: [], truncated: false }
+        },
+        searchResultLimit: sessionsApi?.searchResultLimit ?? 50,
+        requestSessionRename: shortcutControls.rename,
+        notifyArchivedNotOpenable: () => {},
+        renameWorkspace: async (workspaceId, title) => { await ctx.workspaces.rename(workspaceId, title) },
+        deleteWorkspace: async workspaceId => { await ctx.workspaces.delete(workspaceId) },
+        insertWorkspaceBefore: async (workspaceId, beforeWorkspaceId) => {
+          await ctx.workspaces.insertBefore(workspaceId, beforeWorkspaceId)
+        },
+        unarchiveSession: async sessionId => { await ctx.uiWorkspace.unarchiveSession(sessionId) },
+        createWorkspace: input => ctx.workspaces.create(input),
+        requestSearch: shortcutControls.search,
+        requestAddWorkspace: shortcutControls.add,
+        closeAddWorkspace: shortcutControls.closeAdd,
+        setDirectoryBusy: shortcutControls.directoryBusy,
+        dismissForkError: shortcutControls.dismissForkError,
+        hooks: {
+          directoryFlow: directoryFlowSource,
+          hostInfo: hostInfoSource,
+          workspaceShortcuts: shortcutControls.state,
+          shortcuts: getShortcutsCatalog() ?? { getSnapshot: () => [], subscribe: () => () => {} },
+        },
+      }
+    },
+  }, MergedWorkspaceBrowser))
   ctx.effect(() => ctx.contextMenus.register({
     id: 'direct-chat.workspace.archive', target: 'workspace', order: 290,
     resolve: ({ path, displayTitle }) => {
@@ -207,9 +261,14 @@ export function apply(ctx) {
   }, SessionPet))
 }
 
-function NativeEngineHero({ cwd, headline, startDirect, engineSource, t }) {
+function NativeInputDockHero({ sessionId, useSessions, useWorkspaces, engineSource, startDirect, t }) {
+  const session = useSessions(s => sessionId ? s.byId[sessionId] : undefined)
+  const workspacePath = useWorkspaces(w => sessionId
+    ? w.items.find(workspace => workspace.sessionIds.includes(sessionId))?.path
+    : undefined) ?? (session?.cwd || undefined)
   const { engines, status } = useSyncExternalStore(engineSource.subscribe, engineSource.getSnapshot)
-  return <EngineHero selected={null} engines={engines} status={status} reload={engineSource.refresh}
-    nativeHeadline={headline} onSelect={engine => startDirect(engine, cwd)} t={t} />
+  if (!session?.blank) return null
+  return <EngineDropdown selected={null} engines={engines} status={status} reload={engineSource.refresh}
+    onSelect={engine => { if (engine !== null) startDirect(engine, workspacePath) }} t={t} />
 }
 

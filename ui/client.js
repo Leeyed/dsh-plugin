@@ -1,5 +1,5 @@
 // Built from ui/index.jsx by npm run build:ui.
-/*! @deepseek-ai/dsh-experimental-client-ui-forge, @deepseek-ai/dsh-client-ui-attachment, @deepseek-ai/dsh-client-ui-chat, @deepseek-ai/dsh-client-ui-conversation, @deepseek-ai/dsh-client-ui-input-trigger, @deepseek-ai/dsh-client-ui-jobs, @deepseek-ai/dsh-client-ui-sidebar-right, @deepseek-ai/dsh-client-ui-sidebar-terminal
+/*! @deepseek-ai/dsh-experimental-client-ui-forge, @deepseek-ai/dsh-client-ui-attachment, @deepseek-ai/dsh-client-ui-chat, @deepseek-ai/dsh-client-ui-conversation, @deepseek-ai/dsh-client-ui-input-trigger, @deepseek-ai/dsh-client-ui-jobs, @deepseek-ai/dsh-client-ui-sidebar-right, @deepseek-ai/dsh-client-ui-sidebar-terminal, @deepseek-ai/dsh-client-ui-workspace
 MIT License
 
 Copyright (c) 2026 DeepSeek
@@ -24,7 +24,7 @@ SOFTWARE.
 */
 window.__ModuleLoader__.load({ id: "dsh-direct-chat", factory(require) {
 const module = { exports: {} };
-const compiledNativeStyles = "/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ReviewComposer.module.css */\n.ReviewComposer_root,\n.ReviewComposer_thread {\n  box-sizing: border-box;\n  width: calc(100% - 20px);\n  max-width: 680px;\n  margin: 10px;\n  padding: 12px;\n  border: 0.5px solid var(--dsw-alias-border-l3);\n  border-radius: var(--dsw-radius-md);\n  background: var(--dsw-alias-bg-layer-1);\n  color: var(--dsw-alias-label-primary);\n  font: var(--dsw-font-xs-13);\n  font-family: Inter, var(--dsw-font-family);\n  white-space: normal;\n}\n.ReviewComposer_root {\n  background: var(--dsw-alias-bg-layer-2);\n  border-radius: var(--dsw-radius-lg);\n}\n.ReviewComposer_root:focus-within {\n  border-color: var(--dsw-alias-border-l4);\n}\n[data-forge-comments] > .ReviewComposer_root,\n[data-forge-comments] > .ReviewComposer_thread {\n  width: auto;\n  max-width: none;\n  margin: 0;\n}\n.ReviewComposer_title {\n  margin-bottom: 12px;\n  color: var(--dsw-alias-label-secondary);\n  overflow-wrap: anywhere;\n}\n.ReviewComposer_input {\n  display: block;\n  box-sizing: border-box;\n  width: 100%;\n  height: 88px;\n  min-height: 88px;\n  contain: strict;\n  padding: 10px 12px;\n  resize: vertical;\n  border: 0.5px solid var(--dsw-alias-border-l4);\n  border-radius: var(--dsw-radius-md);\n  outline: none;\n  background: var(--dsw-alias-bg-layer-3);\n  color: var(--dsw-alias-label-primary);\n  font: inherit;\n}\n.ReviewComposer_input::placeholder {\n  color: var(--dsw-alias-label-dimmed);\n}\n.ReviewComposer_input:focus {\n  border-color: var(--dsw-alias-state-business-primary);\n}\n.ReviewComposer_root .ReviewComposer_input {\n  padding: 0;\n  border: 0;\n  border-radius: 0;\n  background: transparent;\n}\n.ReviewComposer_actions {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  justify-content: flex-end;\n  gap: 8px;\n  padding-top: 10px;\n  margin-top: 10px;\n  border-top: 0.5px solid var(--dsw-alias-border-l2);\n}\n.ReviewComposer_cancel {\n  margin-inline-end: auto;\n}\n.ReviewComposer_error {\n  margin-top: 8px;\n  color: var(--dsw-alias-state-error-primary);\n  overflow-wrap: anywhere;\n}\n.ReviewComposer_gitAction {\n  display: inline-flex;\n  flex: none;\n  align-items: stretch;\n}\n.ReviewComposer_gitMain {\n  border-start-end-radius: 0;\n  border-end-end-radius: 0;\n}\n.ReviewComposer_gitArrow {\n  width: 30px;\n  padding: 0;\n  border-start-start-radius: 0;\n  border-end-start-radius: 0;\n  border-inline-start: 0.5px solid color-mix(in srgb, var(--dsw-alias-label-primary-foreground) 25%, transparent);\n}\n.ReviewComposer_threadHeader {\n  display: flex;\n  align-items: center;\n  flex-wrap: wrap;\n  gap: 8px;\n  margin-bottom: 8px;\n}\n.ReviewComposer_author {\n  font-weight: 500;\n}\n.ReviewComposer_range {\n  color: var(--dsw-alias-label-secondary);\n  font-size: 12px;\n}\n.ReviewComposer_commentBody {\n  white-space: pre-wrap;\n  overflow-wrap: anywhere;\n}\n.ReviewComposer_threadActions {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 4px;\n  margin: 8px -8px -4px;\n}\n.ReviewComposer_gutter {\n  position: relative;\n}\n.ReviewComposer_line {\n  display: block;\n  width: 100%;\n  height: 100%;\n  padding: 0;\n  color: inherit;\n  text-align: inherit;\n  cursor: pointer;\n  border: 0;\n  border-radius: 0;\n  background: transparent;\n  font: inherit;\n  user-select: none;\n  touch-action: pan-y;\n}\n.ReviewComposer_selected {\n  background: var(--dsw-alias-interactive-bg-hover);\n  outline: 1px solid var(--dsw-alias-border-l2);\n  outline-offset: -1px;\n}\n@media (hover: hover) {\n  .ReviewComposer_line:hover {\n    color: var(--dsw-alias-state-business-primary);\n  }\n}\n@media (pointer: coarse) {\n  .ReviewComposer_input {\n    font-size: 16px;\n  }\n  .ReviewComposer_line {\n    min-height: 28px;\n  }\n}\n.ReviewComposer_add,\n.ReviewComposer_hoverAdd {\n  position: absolute;\n  z-index: 1;\n  inset-inline-start: calc(100% - 4px);\n  top: 50%;\n  transform: translateY(-50%);\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  width: 22px;\n  height: 22px;\n  padding: 0;\n  border: 0;\n  border-radius: var(--dsw-radius-xs);\n  background: var(--dsw-alias-button-primary-fill);\n  color: var(--dsw-alias-label-primary-foreground);\n  font: inherit;\n  cursor: pointer;\n  user-select: none;\n}\n[data-review]:not([data-split]):not([data-single-side]) [data-review-side=L] .ReviewComposer_add,\n[data-review]:not([data-split]):not([data-single-side]) [data-review-side=L] .ReviewComposer_hoverAdd {\n  inset-inline-start: calc(100% + var(--forge-number-width, 3.5em) - 4px);\n}\n.ReviewComposer_hoverAdd {\n  display: none;\n}\n@media (hover: hover) {\n  [data-diff-side]:hover .ReviewComposer_hoverAdd,\n  [data-diff-line]:hover .ReviewComposer_hoverAdd {\n    display: inline-flex;\n  }\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ReviewThreads.module.css */\n.ReviewThreads_card,\n.ReviewThreads_folded {\n  box-sizing: border-box;\n  width: calc(100% - 20px);\n  max-width: 720px;\n  margin: 10px;\n  border: 0.5px solid var(--dsw-alias-border-l3);\n  border-radius: var(--dsw-radius-md);\n  background: var(--dsw-alias-bg-layer-1);\n  color: var(--dsw-alias-label-primary);\n  font: var(--dsw-font-xs-13);\n  font-family: Inter, var(--dsw-font-family);\n  white-space: normal;\n}\n.ReviewThreads_card {\n  padding: 10px 12px;\n}\n.ReviewThreads_card:focus {\n  outline: none;\n}\n.ReviewThreads_card:focus-visible {\n  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: -1px;\n}\n[data-forge-comments] > .ReviewThreads_card,\n[data-forge-comments] > .ReviewThreads_folded {\n  width: auto;\n  max-width: none;\n  margin: 0;\n}\n.ReviewThreads_card[data-resolved] {\n  --dsh-scrollbar-thumb: var(--dsw-alias-scrollbar-bg-l2);\n  --dsh-scrollbar-thumb-hover: var(--dsw-alias-scrollbar-hover-l2);\n  background: var(--dsw-alias-bg-layer-2);\n}\n.ReviewThreads_folded {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  min-height: 32px;\n  padding: 4px 12px;\n  color: var(--dsw-alias-label-secondary);\n}\n.ReviewThreads_folded > svg {\n  flex: none;\n  color: var(--dsw-alias-state-success-primary);\n}\n.ReviewThreads_foldedText {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ReviewThreads_header {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 6px;\n  margin-bottom: 8px;\n}\n.ReviewThreads_place {\n  min-width: 0;\n  color: var(--dsw-alias-label-secondary);\n  font-size: 12px;\n  overflow-wrap: anywhere;\n}\n.ReviewThreads_spacer {\n  flex: 1;\n}\n.ReviewThreads_link {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  gap: 2px;\n  padding: 0;\n  border: 0;\n  background: transparent;\n  color: var(--dsw-alias-state-business-primary);\n  font: inherit;\n  font-size: 12px;\n  cursor: pointer;\n}\n.ReviewThreads_link:disabled {\n  color: var(--dsw-alias-label-dimmed);\n  cursor: default;\n}\n.ReviewThreads_link:focus-visible {\n  border-radius: var(--dsw-radius-xs);\n  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: 2px;\n}\n@media (hover: hover) {\n  .ReviewThreads_link:not(:disabled):hover {\n    text-decoration: underline;\n  }\n}\n.ReviewThreads_turned {\n  transform: rotate(-90deg);\n}\n.ReviewThreads_comments {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n.ReviewThreads_comment {\n  display: flex;\n  gap: 8px;\n  min-width: 0;\n}\n.ReviewThreads_avatar {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  justify-content: center;\n  overflow: hidden;\n  border-radius: 50%;\n  corner-shape: round;\n  background: var(--dsw-alias-interactive-bg-hover);\n  color: var(--dsw-alias-label-secondary);\n  font-weight: 500;\n  line-height: 1;\n  user-select: none;\n}\n.ReviewThreads_avatar img {\n  display: block;\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n  corner-shape: round;\n  object-fit: cover;\n}\n.ReviewThreads_commentMain {\n  flex: 1;\n  min-width: 0;\n}\n.ReviewThreads_commentHeader {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 6px;\n  min-height: 20px;\n}\n.ReviewThreads_login {\n  font-weight: 500;\n  overflow-wrap: anywhere;\n}\n.ReviewThreads_time {\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 12px;\n}\n.ReviewThreads_body {\n  min-width: 0;\n  margin-top: 2px;\n  overflow-wrap: anywhere;\n}\n.ReviewThreads_actions {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 4px;\n  margin: 10px -8px -4px;\n}\n.ReviewThreads_form {\n  margin-top: 10px;\n}\n.ReviewThreads_formActions {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  justify-content: flex-end;\n  gap: 8px;\n  margin-top: 8px;\n}\n.ReviewThreads_replyPrompt {\n  display: block;\n  box-sizing: border-box;\n  width: 100%;\n  min-height: 32px;\n  margin-top: 10px;\n  padding: 6px 12px;\n  border: 0.5px solid var(--dsw-alias-border-l4);\n  border-radius: var(--dsw-radius-md);\n  background: var(--dsw-alias-bg-layer-3);\n  color: var(--dsw-alias-label-dimmed);\n  font: inherit;\n  text-align: start;\n  cursor: text;\n}\n.ReviewThreads_replyPrompt:focus-visible {\n  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: 2px;\n}\n.ReviewThreads_menuAnchor {\n  display: inline-flex;\n  flex: none;\n}\n.ReviewThreads_icon {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  width: 20px;\n  height: 20px;\n  padding: 0;\n  border: 0;\n  border-radius: var(--dsw-radius-xs);\n  background: transparent;\n  color: var(--dsw-alias-label-secondary);\n  cursor: pointer;\n}\n.ReviewThreads_icon[aria-expanded=true] {\n  background: var(--dsw-alias-interactive-bg-hover);\n  color: var(--dsw-alias-label-primary);\n}\n.ReviewThreads_icon:focus-visible {\n  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: 1px;\n}\n@media (hover: hover) {\n  .ReviewThreads_icon:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n    color: var(--dsw-alias-label-primary);\n  }\n}\n.ReviewThreads_confirm {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 8px;\n  margin-top: 8px;\n}\n.ReviewThreads_confirmText {\n  flex: 1 1 auto;\n  min-width: 0;\n  color: var(--dsw-alias-label-secondary);\n  overflow-wrap: anywhere;\n}\n.ReviewThreads_confirmError,\n.ReviewThreads_actionError {\n  flex-basis: 100%;\n  margin-top: 0;\n}\n.ReviewThreads_actionError {\n  padding-inline: 8px;\n}\n.ReviewThreads_excerpt,\n.ReviewThreads_original {\n  margin-bottom: 10px;\n  overflow-x: auto;\n  border: 0.5px solid var(--dsw-alias-border-l2);\n  border-radius: var(--dsw-radius-sm);\n  font: var(--dsw-font-markdown-code-block);\n}\n.ReviewThreads_excerptLine,\n.ReviewThreads_originalLine {\n  min-height: 20px;\n  padding: 0 10px;\n  line-height: 20px;\n  white-space: pre;\n}\n.ReviewThreads_excerptHeader {\n  color: var(--dsw-alias-label-tertiary);\n}\n.ReviewThreads_added {\n  background: var(--dsw-alias-file-diff-added-bg);\n}\n.ReviewThreads_deleted {\n  background: var(--dsw-alias-file-diff-deleted-bg);\n}\n.ReviewThreads_original {\n  max-height: 320px;\n  overflow: auto;\n}\n.ReviewThreads_originalLine {\n  display: grid;\n  grid-template-columns: max-content minmax(0, 1fr);\n  gap: 12px;\n}\n.ReviewThreads_originalNumber {\n  min-width: 3ch;\n  color: var(--dsw-alias-label-tertiary);\n  text-align: right;\n  user-select: none;\n}\n.ReviewThreads_marked {\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n.ReviewThreads_originalNote {\n  padding: 8px 10px;\n  color: var(--dsw-alias-label-secondary);\n  font-family: Inter, var(--dsw-font-family);\n}\n.ReviewThreads_outdated {\n  border-top: 0.5px solid var(--dsw-alias-border-l3);\n  padding-bottom: 2px;\n}\n.ReviewThreads_outdatedHeader {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  min-height: 32px;\n  padding: 0 12px;\n  color: var(--dsw-alias-label-secondary);\n  font: var(--dsw-font-xs-13);\n  font-family: Inter, var(--dsw-font-family);\n}\n@container (max-width: 479px) {\n  .ReviewThreads_card,\n  .ReviewThreads_folded {\n    width: calc(100% - 12px);\n    margin: 6px;\n  }\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/FileLabel.module.css */\n.FileLabel_label {\n  position: relative;\n  display: flex;\n  min-width: 0;\n}\n.FileLabel_parts {\n  display: flex;\n  align-items: baseline;\n  gap: 6px;\n  min-width: 0;\n  overflow: hidden;\n  white-space: nowrap;\n}\n.FileLabel_name {\n  flex: 0 1 auto;\n  color: var(--dsw-alias-label-primary);\n}\n.FileLabel_directory {\n  flex: 1 1 0;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 11px;\n}\n.FileLabel_shortened {\n  display: flex;\n  min-width: 0;\n  overflow: hidden;\n}\n.FileLabel_head {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.FileLabel_tail {\n  flex: none;\n}\n.FileLabel_visuallyHidden {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  overflow: hidden;\n  clip-path: inset(50%);\n  white-space: nowrap;\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ChangesTab.module.css */\n.ChangesTab_root {\n  container: ChangesTab_forge-changes / inline-size;\n  --forge-changes-bg: var(--dsw-alias-bg-base);\n  --forge-fill: var(--dsw-alias-card-fill);\n  --forge-diff-empty: color-mix(in srgb, var(--dsw-alias-interactive-bg-hover) 50%, transparent);\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n  min-height: 0;\n  background: var(--forge-changes-bg);\n  color: var(--dsw-alias-label-primary);\n  font-size: 12px;\n  line-height: 18px;\n}\n.ChangesTab_header {\n  display: flex;\n  flex: none;\n  align-items: center;\n  gap: 8px;\n  box-sizing: border-box;\n  min-height: 44px;\n  padding: 0 8px 0 14px;\n  border-bottom: 0.5px solid var(--dsw-alias-border-l3);\n}\n.ChangesTab_headerIcon {\n  display: inline-flex;\n  flex: none;\n  color: var(--dsw-alias-label-secondary);\n}\n.ChangesTab_headerTitle {\n  min-width: 0;\n  overflow: hidden;\n  font-size: 13px;\n  font-weight: 500;\n  line-height: 20px;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ChangesTab_headerNumber {\n  flex: none;\n  color: var(--dsw-alias-label-tertiary);\n  font-family: var(--ds-font-family-code);\n}\n.ChangesTab_headerNote {\n  min-width: 0;\n  overflow: hidden;\n  color: var(--dsw-alias-label-secondary);\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ChangesTab_headerHead {\n  flex: 0 100 auto;\n  min-width: 2.5em;\n  overflow: hidden;\n  color: var(--dsw-alias-label-secondary);\n  font-family: var(--ds-font-family-code);\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ChangesTab_headerArrow {\n  flex: none;\n  color: var(--dsw-alias-label-tertiary);\n}\n.ChangesTab_headerSuffix {\n  color: var(--dsw-alias-label-tertiary);\n}\n@container ChangesTab_forge-changes (max-width: 520px) {\n  .ChangesTab_headerSuffix {\n    display: none;\n  }\n}\n@container ChangesTab_forge-changes (max-width: 380px) {\n  .ChangesTab_headerHead,\n  .ChangesTab_headerArrow {\n    display: none;\n  }\n}\n.ChangesTab_headerEnd {\n  display: inline-flex;\n  flex: 0 1 auto;\n  align-items: center;\n  gap: 4px;\n  min-width: 0;\n  margin-left: auto;\n}\n.ChangesTab_toolbar {\n  display: flex;\n  flex: none;\n  align-items: stretch;\n  box-sizing: border-box;\n  border-bottom: 0.5px solid var(--dsw-alias-border-l3);\n}\n.ChangesTab_lensCell {\n  display: none;\n  flex: none;\n  align-items: center;\n  box-sizing: border-box;\n  width: var(--forge-tree-width);\n  padding: 0 8px;\n  border-inline-end: 0.5px solid var(--dsw-alias-border-l3);\n}\n.ChangesTab_toolbar[data-tree=right] .ChangesTab_lensCell {\n  order: 1;\n  border-inline-start: 0.5px solid var(--dsw-alias-border-l3);\n  border-inline-end: 0;\n}\n.ChangesTab_toolbarMain {\n  display: flex;\n  flex: 1;\n  align-items: center;\n  gap: 0 4px;\n  box-sizing: border-box;\n  min-width: 0;\n  min-height: 38px;\n  padding: 5px 8px;\n}\n.ChangesTab_lensMenu {\n  display: inline-flex;\n}\n@container ChangesTab_forge-changes (min-width: 760px) {\n  .ChangesTab_toolbar:not([data-tree=hidden]) .ChangesTab_lensCell {\n    display: flex;\n  }\n  .ChangesTab_toolbar:not([data-tree=hidden]) .ChangesTab_lensMenu {\n    display: none;\n  }\n}\n.ChangesTab_spacer {\n  flex: 1;\n}\n.ChangesTab_progressSlot,\n.ChangesTab_foldTests,\n.ChangesTab_filesSlot {\n  display: inline-flex;\n  flex: none;\n  min-width: 0;\n}\n.ChangesTab_select {\n  display: inline-flex;\n  flex: 0 1 auto;\n  align-items: center;\n  gap: 4px;\n  box-sizing: border-box;\n  min-width: 0;\n  height: 28px;\n  padding: 0 6px 0 8px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-primary);\n  cursor: pointer;\n  font: inherit;\n  white-space: nowrap;\n}\n.ChangesTab_select[aria-expanded=true] {\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n@media (hover: hover) {\n  .ChangesTab_select:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.ChangesTab_select:disabled {\n  color: var(--dsw-alias-label-tertiary);\n  cursor: default;\n}\n@media (hover: hover) {\n  .ChangesTab_select:disabled:hover {\n    background: transparent;\n  }\n}\n.ChangesTab_select svg {\n  flex: none;\n}\n.ChangesTab_counts {\n  display: inline-flex;\n  flex: none;\n  gap: 6px;\n  font-family: var(--ds-font-family-code);\n}\n.ChangesTab_totals {\n  padding: 0 4px;\n}\n.ChangesTab_added {\n  color: var(--dsw-alias-state-success-primary);\n}\n.ChangesTab_deleted {\n  color: var(--dsw-alias-state-error-primary);\n}\n.ChangesTab_tools {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  gap: 2px;\n}\n.ChangesTab_tool {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  justify-content: center;\n  width: 28px;\n  height: 28px;\n  padding: 0;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-secondary);\n  cursor: pointer;\n}\n.ChangesTab_tool[aria-pressed=true],\n.ChangesTab_tool[aria-expanded=true],\n.ChangesTab_tool[data-expanded] {\n  background: var(--dsw-alias-interactive-bg-hover);\n  color: var(--dsw-alias-label-primary);\n}\n@media (hover: hover) {\n  .ChangesTab_tool:hover:not(:disabled) {\n    background: var(--dsw-alias-interactive-bg-hover);\n    color: var(--dsw-alias-label-primary);\n  }\n}\n.ChangesTab_tool:disabled {\n  color: var(--dsw-alias-label-tertiary);\n  cursor: default;\n}\n.ChangesTab_tool svg {\n  width: 15px;\n  height: 15px;\n}\n.ChangesTab_tool[aria-pressed=true] .ChangesTab_compareIcon {\n  transform: rotate(90deg);\n}\n.ChangesTab_more {\n  display: none;\n}\n.ChangesTab_toolbarMain:is([data-fold=\"1\"], [data-fold=\"2\"], [data-fold=\"3\"]) .ChangesTab_foldViews,\n.ChangesTab_toolbarMain:is([data-fold=\"2\"], [data-fold=\"3\"]) .ChangesTab_foldTests,\n.ChangesTab_toolbarMain[data-fold=\"3\"] .ChangesTab_foldRefresh {\n  display: none;\n}\n.ChangesTab_toolbarMain[data-fold=\"3\"] .ChangesTab_filesSlot {\n  flex-shrink: 1;\n}\n.ChangesTab_toolbarMain:is([data-fold=\"1\"], [data-fold=\"2\"], [data-fold=\"3\"]) .ChangesTab_more {\n  display: inline-flex;\n}\n.ChangesTab_toolbarMain:is([data-fold=\"2\"], [data-fold=\"3\"]) .ChangesTab_progressSlot [data-forge-progress=full] {\n  display: none;\n}\n.ChangesTab_toolbarMain:is([data-fold=\"2\"], [data-fold=\"3\"]) .ChangesTab_progressSlot [data-forge-progress=compact] {\n  display: inline-flex;\n}\n.ChangesTab_menuRow {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 12px;\n  min-width: 0;\n}\n.ChangesTab_menuPath {\n  flex: 1;\n  min-width: 0;\n}\n.ChangesTab_menuList {\n  min-width: 280px;\n  max-width: min(420px, 80vw);\n}\n.ChangesTab_notice {\n  display: flex;\n  flex: none;\n  align-items: center;\n  gap: 8px;\n  padding: 8px 14px;\n  border-bottom: 0.5px solid var(--dsw-alias-border-l3);\n  background: var(--forge-fill);\n  color: var(--dsw-alias-label-secondary);\n}\n.ChangesTab_notice > svg {\n  flex: none;\n}\n.ChangesTab_noticeAction {\n  flex: none;\n  margin-left: auto;\n}\n.ChangesTab_body {\n  position: relative;\n  display: flex;\n  flex: 1;\n  min-height: 0;\n}\n.ChangesTab_treeToggle {\n  display: none;\n}\n@container ChangesTab_forge-changes (min-width: 760px) {\n  .ChangesTab_treeToggle {\n    display: inline-flex;\n  }\n  .ChangesTab_treePane:not([hidden]) {\n    display: block;\n  }\n}\n.ChangesTab_files {\n  --forge-files-inset: 10px;\n  flex: 1;\n  box-sizing: border-box;\n  min-width: 0;\n  min-height: 0;\n  padding: var(--forge-files-inset);\n  overflow: auto;\n}\n.ChangesTab_files:focus {\n  outline: none;\n}\n.ChangesTab_actions {\n  display: flex;\n  gap: 8px;\n}\n.ChangesTab_centered {\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  gap: 8px;\n  box-sizing: border-box;\n  padding: 24px;\n  color: var(--dsw-alias-label-secondary);\n  font-size: var(--dsh-content-font-size-secondary, 13px);\n  text-align: center;\n}\n.ChangesTab_file {\n  overflow: clip;\n  border: 0.5px solid var(--dsw-alias-border-l4);\n  border-radius: var(--dsw-radius-lg);\n  background: var(--forge-changes-bg);\n}\n.ChangesTab_file + .ChangesTab_file {\n  margin-top: 12px;\n}\n@container ChangesTab_forge-changes (max-width: 380px) {\n  .ChangesTab_files {\n    --forge-files-inset: 6px;\n  }\n  .ChangesTab_file + .ChangesTab_file {\n    margin-top: 8px;\n  }\n}\n.ChangesTab_fileHeader {\n  position: sticky;\n  top: calc(-1 * var(--forge-files-inset, 0px));\n  z-index: 2;\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  box-sizing: border-box;\n  min-height: 36px;\n  padding: 0 4px 0 8px;\n  border-bottom: 0.5px solid var(--dsw-alias-border-l3);\n  background: linear-gradient(var(--dsw-alias-interactive-bg-hover), var(--dsw-alias-interactive-bg-hover)), var(--forge-changes-bg);\n}\n.ChangesTab_fileToggle {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  justify-content: center;\n  width: 20px;\n  height: 24px;\n  padding: 0;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-tertiary);\n  cursor: pointer;\n}\n@media (hover: hover) {\n  .ChangesTab_fileToggle:hover {\n    color: var(--dsw-alias-label-primary);\n  }\n}\n.ChangesTab_file:not([data-expanded]) .ChangesTab_fileHeader {\n  border-bottom: 0;\n}\n.ChangesTab_fileTitle {\n  display: flex;\n  flex: 1 1 0;\n  align-items: center;\n  gap: 6px;\n  min-width: 0;\n  overflow: hidden;\n}\n.ChangesTab_fileIcon {\n  flex: none;\n}\n.ChangesTab_filePath {\n  display: flex;\n  flex: 0 1 auto;\n  min-width: 0;\n}\n.ChangesTab_fileSpacer {\n  flex: 1;\n  align-self: stretch;\n}\n.ChangesTab_chevron {\n  transition: transform 120ms ease;\n}\n.ChangesTab_file:not([data-expanded]) .ChangesTab_chevron {\n  transform: rotate(-90deg);\n}\n.ChangesTab_changedTag {\n  flex: none;\n  max-width: 30%;\n}\n.ChangesTab_changedText {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.ChangesTab_viewed {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  gap: 6px;\n  box-sizing: border-box;\n  height: 24px;\n  padding: 0 8px 0 6px;\n  border: 0.5px solid var(--dsw-alias-border-l2);\n  border-radius: var(--dsw-radius-sm);\n  color: var(--dsw-alias-label-secondary);\n  white-space: nowrap;\n  cursor: pointer;\n  user-select: none;\n}\n.ChangesTab_viewed input {\n  margin: 0;\n  accent-color: var(--dsw-alias-state-business-primary);\n  cursor: pointer;\n}\n.ChangesTab_viewed:has(input:checked) {\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n@media (hover: hover) {\n  .ChangesTab_viewed:hover {\n    color: var(--dsw-alias-label-primary);\n  }\n}\n.ChangesTab_viewed[data-disabled],\n.ChangesTab_viewed[data-disabled] input {\n  color: var(--dsw-alias-label-tertiary);\n  cursor: default;\n}\n.ChangesTab_viewed:has(input:focus-visible) {\n  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: -1px;\n}\n.ChangesTab_viewed input:focus-visible {\n  outline: none;\n}\n@container ChangesTab_forge-changes (max-width: 520px) {\n  .ChangesTab_viewed {\n    padding: 0 6px;\n  }\n  .ChangesTab_viewedLabel {\n    display: none;\n  }\n}\n.ChangesTab_badge {\n  flex: 0 1 auto;\n  min-width: 0;\n  max-width: 50%;\n  overflow: hidden;\n  padding: 0 6px;\n  border-radius: 4px;\n  background: var(--forge-fill);\n  color: var(--dsw-alias-label-secondary);\n  font-size: 11px;\n  line-height: 18px;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ChangesTab_code {\n  overflow-x: auto;\n  font: var(--dsw-font-markdown-code-block);\n}\n.ChangesTab_unreached {\n  height: calc(var(--forge-rows) * 22px);\n}\n.ChangesTab_code:not([data-wrap]):not([data-split]) {\n  display: grid;\n  grid-template-columns: minmax(max-content, 100%);\n}\n.ChangesTab_line {\n  display: grid;\n  grid-template-columns: var(--forge-number-width, 3.5em) var(--forge-number-width, 3.5em) 1.4em minmax(0, 1fr);\n  box-sizing: border-box;\n  min-height: 22px;\n  line-height: 22px;\n  white-space: pre;\n}\n.ChangesTab_code:not([data-wrap]):not([data-split]) .ChangesTab_line {\n  grid-template-columns: var(--forge-number-width, 3.5em) var(--forge-number-width, 3.5em) 1.4em max-content;\n}\n.ChangesTab_pair {\n  display: grid;\n  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);\n  min-height: 22px;\n  line-height: 22px;\n  white-space: pre;\n}\n.ChangesTab_cell {\n  display: grid;\n  grid-template-columns: var(--forge-number-width, 3.5em) minmax(0, 1fr);\n  box-sizing: border-box;\n  min-width: 0;\n}\n.ChangesTab_cell + .ChangesTab_cell {\n  border-left: 0.5px solid var(--dsw-alias-border-l3);\n}\n.ChangesTab_cell .ChangesTab_text {\n  overflow: hidden;\n}\n.ChangesTab_code[data-wrap] .ChangesTab_line,\n.ChangesTab_code[data-wrap] .ChangesTab_pair {\n  white-space: pre-wrap;\n}\n.ChangesTab_code[data-wrap] .ChangesTab_text {\n  overflow-wrap: anywhere;\n}\n.ChangesTab_number {\n  box-sizing: border-box;\n  padding-right: 6px;\n  color: var(--dsw-alias-label-tertiary);\n  text-align: right;\n  user-select: none;\n}\n.ChangesTab_sign {\n  text-align: center;\n  user-select: none;\n}\n.ChangesTab_text {\n  padding: 0 16px 0 6px;\n}\n.ChangesTab_code[data-split][data-review] .ChangesTab_text {\n  padding-left: calc(1.4em + 6px);\n}\n.ChangesTab_add {\n  --forge-diff-gutter: var(--dsw-alias-file-diff-added-gutter);\n  --forge-diff-marker: var(--dsw-alias-file-diff-added-marker);\n  background: var(--dsw-alias-file-diff-added-bg);\n}\n.ChangesTab_del {\n  --forge-diff-gutter: var(--dsw-alias-file-diff-deleted-gutter);\n  --forge-diff-marker: var(--dsw-alias-file-diff-deleted-marker);\n  background: var(--dsw-alias-file-diff-deleted-bg);\n}\n.ChangesTab_add .ChangesTab_number,\n.ChangesTab_del .ChangesTab_number {\n  background: var(--forge-diff-gutter);\n  color: var(--forge-diff-marker);\n}\n.ChangesTab_add .ChangesTab_sign,\n.ChangesTab_del .ChangesTab_sign {\n  color: var(--forge-diff-marker);\n}\n.ChangesTab_context .ChangesTab_text {\n  color: var(--dsw-alias-label-secondary);\n}\n.ChangesTab_empty {\n  background: var(--forge-diff-empty);\n}\n.ChangesTab_notes {\n  display: grid;\n  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);\n  white-space: normal;\n}\n.ChangesTab_noteCell {\n  display: grid;\n  grid-template-columns: var(--forge-number-width, 3.5em) minmax(0, 1fr);\n  min-width: 0;\n}\n.ChangesTab_noteCell + .ChangesTab_noteCell {\n  border-left: 0.5px solid var(--dsw-alias-border-l3);\n}\n.ChangesTab_noteStack {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  min-width: 0;\n  padding: 8px 12px 10px calc(1.4em + 6px);\n}\n.ChangesTab_noteStack:empty {\n  padding: 0;\n}\n.ChangesTab_gap,\n.ChangesTab_fileNote {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  box-sizing: border-box;\n  width: 100%;\n  min-height: 26px;\n  margin: 0;\n  padding: 0 12px;\n  border: 0;\n  background: var(--forge-fill);\n  color: var(--dsw-alias-label-tertiary);\n  font-family: var(--dsw-font-family);\n  font-size: 12px;\n  line-height: 18px;\n  text-align: left;\n}\n.ChangesTab_gap {\n  cursor: pointer;\n}\n@media (hover: hover) {\n  .ChangesTab_gap:hover:not(:disabled) {\n    background: var(--dsw-alias-interactive-bg-hover);\n    color: var(--dsw-alias-label-primary);\n  }\n}\n.ChangesTab_gap:disabled {\n  cursor: progress;\n}\n.ChangesTab_local {\n  min-width: 0;\n  border: 0.5px solid var(--dsw-alias-border-l2);\n  border-radius: var(--dsw-radius-md);\n  background: var(--dsw-alias-bg-layer-1);\n}\n.ChangesTab_localHead {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  min-width: 0;\n  padding: 8px 12px 2px 6px;\n}\n.ChangesTab_localToggle {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  gap: 6px;\n  min-height: 26px;\n  padding: 0 6px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-primary);\n  cursor: pointer;\n  font: inherit;\n  font-weight: 500;\n}\n@media (hover: hover) {\n  .ChangesTab_localToggle:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.ChangesTab_localToggle svg {\n  color: var(--dsw-alias-label-tertiary);\n  transition: transform 120ms ease;\n}\n.ChangesTab_localToggle[aria-expanded=true] svg {\n  transform: rotate(180deg);\n}\n.ChangesTab_localRefs {\n  min-width: 0;\n  margin-left: auto;\n  overflow: hidden;\n  color: var(--dsw-alias-label-tertiary);\n  font-family: var(--ds-font-family-code);\n  font-size: 12px;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ChangesTab_localRow {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  padding: 4px 10px 10px 12px;\n  font-size: 12px;\n}\n.ChangesTab_localView {\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  min-width: 0;\n  min-height: 28px;\n  margin-left: -6px;\n  padding: 0 6px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-secondary);\n  cursor: pointer;\n  font: inherit;\n}\n@media (hover: hover) {\n  .ChangesTab_localView:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.ChangesTab_localCreate {\n  flex: none;\n  margin-left: auto;\n}\n.ChangesTab_localFiles {\n  margin: 0;\n  padding: 4px 6px 8px;\n  border-top: 0.5px solid var(--dsw-alias-border-l2);\n  list-style: none;\n}\n.ChangesTab_localFile {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  box-sizing: border-box;\n  width: 100%;\n  min-height: 28px;\n  padding: 0 6px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-primary);\n  cursor: pointer;\n  font: inherit;\n  font-size: 12px;\n  text-align: left;\n}\n@media (hover: hover) {\n  .ChangesTab_localFile:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.ChangesTab_localFile .ChangesTab_menuPath {\n  flex: 1;\n}\n.ChangesTab_localView:focus-visible,\n.ChangesTab_localToggle:focus-visible,\n.ChangesTab_fileToggle:focus-visible,\n.ChangesTab_localFile:focus-visible,\n.ChangesTab_select:focus-visible,\n.ChangesTab_gap:focus-visible {\n  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: -2px;\n}\n.ChangesTab_reviewNotice {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 8px;\n  padding: 10px;\n}\n.ChangesTab_code[data-split][data-native-side=L] [data-diff-side=R],\n.ChangesTab_code[data-split][data-native-side=L] [data-diff-side=R] *,\n.ChangesTab_code[data-split][data-native-side=R] [data-diff-side=L],\n.ChangesTab_code[data-split][data-native-side=R] [data-diff-side=L] * {\n  user-select: none;\n}\n.ChangesTab_headerAction {\n  flex: none;\n  white-space: nowrap;\n}\n.ChangesTab_code[data-single-side] .ChangesTab_line {\n  grid-template-columns: var(--forge-number-width) 1.4em minmax(0, 1fr);\n}\n.ChangesTab_code[data-single-side]:not([data-wrap]) .ChangesTab_line {\n  grid-template-columns: var(--forge-number-width) 1.4em max-content;\n}\n.ChangesTab_reviewFile {\n  padding: 12px 0;\n}\n.ChangesTab_reviewFile > h3 {\n  margin: 0 10px;\n  font-size: 12px;\n  font-weight: 500;\n  overflow-wrap: anywhere;\n}\n.ChangesTab_threadCount {\n  flex: none;\n  height: 20px;\n  padding: 0 6px;\n  border: 0;\n  border-radius: var(--dsw-radius-xs);\n  background: color-mix(in srgb, var(--dsw-alias-state-business-primary) 12%, transparent);\n  color: var(--dsw-alias-state-business-primary);\n  font: inherit;\n  font-size: 11px;\n  line-height: 20px;\n  white-space: nowrap;\n  cursor: pointer;\n}\n.ChangesTab_threadCount:focus-visible {\n  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: -1px;\n}\n@media (hover: hover) {\n  .ChangesTab_threadCount:hover {\n    background: color-mix(in srgb, var(--dsw-alias-state-business-primary) 20%, transparent);\n  }\n}\n.ChangesTab_threadCountNumber {\n  display: none;\n}\n@container ChangesTab_forge-changes (max-width: 479px) {\n  .ChangesTab_threadCountText {\n    display: none;\n  }\n  .ChangesTab_threadCountNumber {\n    display: inline;\n  }\n}\n.ChangesTab_threadsToggle {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  gap: 6px;\n  height: 28px;\n  padding: 0 8px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-primary);\n  font: inherit;\n  white-space: nowrap;\n  cursor: pointer;\n}\n.ChangesTab_threadsToggle[aria-pressed=true] {\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n@media (hover: hover) {\n  .ChangesTab_threadsToggle:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.ChangesTab_threadsTotal {\n  padding: 0 5px;\n  border-radius: var(--dsw-radius-xs);\n  background: var(--forge-fill);\n  color: var(--dsw-alias-label-secondary);\n  font-size: 11px;\n  line-height: 16px;\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ChangedFiles.module.css */\n.ChangedFiles_root {\n  box-sizing: border-box;\n  width: 100%;\n  min-width: 0;\n  display: flex;\n  flex-direction: column;\n  min-height: 0;\n  color: var(--dsw-alias-label-primary);\n  font-size: 12px;\n}\n.ChangedFiles_search {\n  padding: 8px;\n}\n.ChangedFiles_rows {\n  overflow: auto;\n  min-height: 0;\n  padding: 0 4px 6px;\n}\n.ChangedFiles_row {\n  box-sizing: border-box;\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  width: 100%;\n  min-width: 0;\n  min-height: 30px;\n  padding: 4px 6px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: inherit;\n  font: inherit;\n  text-align: start;\n  cursor: pointer;\n}\n.ChangedFiles_row svg {\n  flex: none;\n}\n.ChangedFiles_name {\n  flex: 1;\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ChangedFiles_threads {\n  flex: none;\n  min-width: 16px;\n  padding: 0 5px;\n  box-sizing: border-box;\n  border-radius: var(--dsw-radius-xs);\n  background: color-mix(in srgb, var(--dsw-alias-state-business-primary) 12%, transparent);\n  color: var(--dsw-alias-state-business-primary);\n  font-size: 11px;\n  line-height: 16px;\n  text-align: center;\n}\n.ChangedFiles_selected {\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n.ChangedFiles_chevron {\n  display: inline-flex;\n  flex: 0 0 12px;\n}\n.ChangedFiles_collapsed {\n  transform: rotate(-90deg);\n}\n.ChangedFiles_empty {\n  padding: 12px 8px;\n  color: var(--dsw-alias-label-secondary);\n}\n.ChangedFiles_menu {\n  width: min(360px, calc(100vw - 24px));\n}\n.ChangedFiles_trigger {\n  display: inline-flex;\n  align-items: center;\n  gap: 4px;\n  height: 28px;\n  padding: 0 8px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-primary);\n  font: inherit;\n  white-space: nowrap;\n  cursor: pointer;\n}\n.ChangedFiles_trigger:disabled {\n  color: var(--dsw-alias-label-tertiary);\n  cursor: default;\n}\n.ChangedFiles_anchor {\n  min-width: 0;\n  max-width: 100%;\n}\n.ChangedFiles_trigger {\n  min-width: 0;\n  max-width: 100%;\n}\n.ChangedFiles_triggerLabel {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.ChangedFiles_triggerChevron {\n  flex: none;\n}\n@media (hover: hover) {\n  .ChangedFiles_row:hover,\n  .ChangedFiles_trigger:hover:not(:disabled) {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n@media (pointer: coarse) {\n  .ChangedFiles_row {\n    min-height: 44px;\n  }\n  .ChangedFiles_search input {\n    font-size: 16px;\n  }\n}\n.ChangedFiles_searchInput {\n  box-sizing: border-box;\n  width: 100%;\n  max-width: 100%;\n}\n.ChangedFiles_searchInput input::placeholder {\n  color: var(--dsw-alias-label-secondary);\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/FileTreePane.module.css */\n.FileTreePane_pane {\n  display: none;\n  position: relative;\n  flex: none;\n  min-width: 0;\n  min-height: 0;\n  box-sizing: border-box;\n  border-inline-start: 0.5px solid var(--dsw-alias-border-l3);\n}\n.FileTreePane_pane[hidden] {\n  display: none;\n}\n.FileTreePane_pane[data-position=left] {\n  order: -1;\n  border-inline-start: 0;\n  border-inline-end: 0.5px solid var(--dsw-alias-border-l3);\n}\n.FileTreePane_navigation {\n  height: 100%;\n  min-width: 0;\n  overflow-y: auto;\n}\n.FileTreePane_resize {\n  position: absolute;\n  inset-block: 0;\n  inset-inline-start: -4px;\n  width: 8px;\n  z-index: 2;\n  cursor: col-resize;\n  touch-action: none;\n  user-select: none;\n}\n.FileTreePane_resize::after {\n  content: \"\";\n  position: absolute;\n  inset-block: 0;\n  inset-inline-start: 3px;\n  width: 2px;\n}\n.FileTreePane_pane[data-position=left] .FileTreePane_resize {\n  inset-inline-start: auto;\n  inset-inline-end: -4px;\n}\n.FileTreePane_resize:focus-visible::after {\n  background: var(--dsw-alias-state-business-primary);\n}\n@media (hover: hover) {\n  .FileTreePane_resize:hover::after {\n    background: var(--dsw-alias-state-business-primary);\n  }\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/RefreshGlyph.module.css */\n.RefreshGlyph_glyph {\n  display: inline-flex;\n}\n.RefreshGlyph_glyph[data-turning] {\n  animation: RefreshGlyph_forge-refresh-turn 1s linear infinite;\n}\n@keyframes RefreshGlyph_forge-refresh-turn {\n  to {\n    transform: rotate(360deg);\n  }\n}\n@media (prefers-reduced-motion: reduce) {\n  .RefreshGlyph_glyph[data-turning] {\n    animation-name: RefreshGlyph_forge-refresh-dim;\n  }\n}\n@keyframes RefreshGlyph_forge-refresh-dim {\n  50% {\n    opacity: 0.4;\n  }\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ReviewControls.module.css */\n.ReviewControls_segmented {\n  box-sizing: border-box;\n  display: grid;\n  grid-auto-columns: minmax(0, 1fr);\n  grid-auto-flow: column;\n  gap: 2px;\n  width: 100%;\n  min-width: 0;\n  height: 28px;\n  padding: 2px;\n  border-radius: var(--dsw-radius-md);\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n.ReviewControls_segment {\n  box-sizing: border-box;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: 4px;\n  min-width: 0;\n  height: 24px;\n  padding: 0 4px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-secondary);\n  font: inherit;\n  white-space: nowrap;\n  cursor: pointer;\n}\n.ReviewControls_segment[aria-checked=true] {\n  background: var(--dsw-alias-bg-layer-1);\n  box-shadow: var(--dsw-elevation-soft);\n  color: var(--dsw-alias-label-primary);\n}\n@media (hover: hover) {\n  .ReviewControls_segment:hover:not(:disabled) {\n    color: var(--dsw-alias-label-primary);\n  }\n}\n.ReviewControls_segment:disabled {\n  color: var(--dsw-alias-label-tertiary);\n  cursor: default;\n}\n.ReviewControls_segment:focus-visible {\n  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: -2px;\n}\n.ReviewControls_segmentLabel {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.ReviewControls_count {\n  flex: none;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 11px;\n  font-variant-numeric: tabular-nums;\n}\n.ReviewControls_menuRow {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 16px;\n  min-width: 120px;\n}\n.ReviewControls_trigger {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  gap: 4px;\n  height: 28px;\n  padding: 0 6px 0 8px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-primary);\n  font: inherit;\n  white-space: nowrap;\n  cursor: pointer;\n}\n.ReviewControls_trigger[aria-expanded=true] {\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n@media (hover: hover) {\n  .ReviewControls_trigger:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.ReviewControls_switch {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  gap: 6px;\n  height: 28px;\n  padding: 0 4px;\n  color: var(--dsw-alias-label-secondary);\n  white-space: nowrap;\n  cursor: pointer;\n}\n.ReviewControls_switchLabel {\n  user-select: none;\n}\n.ReviewControls_progress {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  gap: 6px;\n  padding: 0 4px;\n  color: var(--dsw-alias-label-secondary);\n  white-space: nowrap;\n  font-variant-numeric: tabular-nums;\n}\n.ReviewControls_progressForm {\n  display: inline-flex;\n  align-items: center;\n}\n.ReviewControls_progressForm[data-forge-progress=compact] {\n  display: none;\n}\n.ReviewControls_ring {\n  flex: none;\n  width: 14px;\n  height: 14px;\n  transform: rotate(-90deg);\n}\n.ReviewControls_ringTrack,\n.ReviewControls_ringFill {\n  fill: none;\n  stroke-width: 2px;\n}\n.ReviewControls_ringTrack {\n  stroke: var(--dsw-alias-border-l3);\n}\n.ReviewControls_ringFill {\n  stroke: var(--dsw-alias-state-success-primary);\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/shell/SidebarRight.module.css */\n.SidebarRight_session {\n  display: contents;\n}\n.SidebarRight_session[hidden] {\n  display: none;\n}\n.SidebarRight_panel {\n  --dsh-dockkit-dock-layer: 10;\n  --dsh-dockkit-float-layer: 60;\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  display: flex;\n  flex-direction: column;\n  min-width: 0;\n  overflow: clip;\n  pointer-events: none;\n}\n.SidebarRight_panel [data-dockkit-host=dock],\n.SidebarRight_panel [data-dockkit-empty],\n.SidebarRight_panel [data-dockkit-divider] {\n  transform: translateX(var(--dsh-sidebar-width));\n  visibility: hidden;\n  transition: transform var(--ds-transition-duration-slow) var(--ds-ease-in-out), visibility 0s linear var(--ds-transition-duration-slow);\n}\n.SidebarRight_panel[data-sidebar-right-open] [data-dockkit-host=dock],\n.SidebarRight_panel[data-sidebar-right-open] [data-dockkit-empty],\n.SidebarRight_panel[data-sidebar-right-open] [data-dockkit-divider] {\n  transform: none;\n  visibility: visible;\n  transition: transform var(--ds-transition-duration-slow) var(--ds-ease-in-out);\n}\n@starting-style {\n  .SidebarRight_panel[data-sidebar-right-opening] [data-dockkit-host=dock],\n  .SidebarRight_panel[data-sidebar-right-opening] [data-dockkit-empty],\n  .SidebarRight_panel[data-sidebar-right-opening] [data-dockkit-divider] {\n    transform: translateX(var(--dsh-sidebar-width));\n  }\n}\n.SidebarRight_panel[data-sidebar-right-panel=fullscreen] {\n  --dsh-dockkit-dock-layer: 40;\n}\n[data-windows-titlebar] .SidebarRight_panel[data-sidebar-right-panel=fullscreen] {\n  max-width: calc(100vw - var(--dsh-windows-sidebar-width));\n}\n[data-windows-titlebar] .SidebarRight_panel[data-sidebar-right-panel=fullscreen] [data-dockkit-column=\"0\"][data-dockkit-pane] {\n  border-radius: var(--dsh-windows-content-radius) 0 0 0;\n  corner-shape: round;\n}\n[data-platform=darwin] .SidebarRight_panel[data-sidebar-right-panel=fullscreen] [data-dockkit-host=dock][data-dockkit-column=\"0\"] {\n  --dsh-dockkit-strip-inline-start: 88px;\n}\n[data-platform=darwin] .SidebarRight_panel[data-sidebar-right-panel=fullscreen] [data-dockkit-host=dock][data-dockkit-column=\"1\"] {\n  --dsh-dockkit-strip-inline-start: 10px;\n}\n[data-platform=darwin][data-fullscreen] .SidebarRight_panel[data-sidebar-right-panel=fullscreen] [data-dockkit-host=dock][data-dockkit-column=\"0\"] {\n  --dsh-dockkit-strip-inline-start: 10px;\n}\n@media (prefers-reduced-motion: reduce) {\n  .SidebarRight_panel [data-dockkit-host=dock],\n  .SidebarRight_panel [data-dockkit-empty],\n  .SidebarRight_panel [data-dockkit-divider],\n  .SidebarRight_panel[data-sidebar-right-open] [data-dockkit-host=dock],\n  .SidebarRight_panel[data-sidebar-right-open] [data-dockkit-empty],\n  .SidebarRight_panel[data-sidebar-right-open] [data-dockkit-divider] {\n    transition: none;\n  }\n}\n.SidebarRight_iconButton {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  justify-content: center;\n  width: 28px;\n  height: 28px;\n  padding: 6px;\n  color: var(--dsw-alias-label-secondary);\n  line-height: 1;\n  background: transparent;\n  border: none;\n  border-radius: var(--dsw-radius-sm);\n  cursor: pointer;\n}\n.SidebarRight_iconButton svg {\n  width: 15px;\n  height: 15px;\n}\n@media (hover: hover) {\n  .SidebarRight_iconButton:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.SidebarRight_collapseGlyph {\n  transform: scaleX(-1);\n}\n.SidebarRight_panelBody {\n  display: flex;\n  flex: 1 1 auto;\n  min-height: 0;\n}\n@media (pointer: coarse) {\n  .SidebarRight_panelBody [data-dockkit-split-control]:has(> [data-dockkit-split-blocked]) {\n    visibility: hidden;\n  }\n}\n.SidebarRight_unavailable {\n  margin: 0;\n  padding: 12px;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: var(--dsh-content-font-size-secondary, 13px);\n}\n.SidebarRight_tabTitle {\n  display: contents;\n}\n.SidebarRight_tabBody {\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n  min-height: 0;\n  min-width: 0;\n  overflow: hidden;\n}\n.SidebarRight_panel [data-dockkit-pane][data-sidebar-right-flash],\n.SidebarRight_panel [data-dockkit-float][data-sidebar-right-flash] {\n  --sidebar-right-flash-color: var(--dsw-specific-sidebar-right-flash);\n  --sidebar-right-flash-ring: color-mix(in srgb, var(--sidebar-right-flash-color) 48%, transparent);\n  --sidebar-right-flash-near: color-mix(in srgb, var(--sidebar-right-flash-color) 16%, transparent);\n  --sidebar-right-flash-far: color-mix(in srgb, var(--sidebar-right-flash-color) 10%, transparent);\n}\n.SidebarRight_panel [data-dockkit-pane][data-sidebar-right-flash] {\n  position: relative;\n}\n.SidebarRight_panel [data-dockkit-pane][data-sidebar-right-flash]::after {\n  content: \"\";\n  position: absolute;\n  inset: 0;\n  z-index: 7;\n  pointer-events: none;\n  --sidebar-right-flash-from:\n    inset 0 0 0 1px var(--sidebar-right-flash-ring),\n    inset 0 2px 4px 0 var(--sidebar-right-flash-near),\n    inset 0 0 10px 0 var(--sidebar-right-flash-far);\n  --sidebar-right-flash-to:\n    inset 0 0 0 1px transparent,\n    inset 0 2px 4px 0 transparent,\n    inset 0 0 10px 0 transparent;\n}\n.SidebarRight_panel [data-dockkit-float][data-sidebar-right-flash] {\n  --sidebar-right-flash-from:\n    var(--dsw-elevation-prominent),\n    0 0 0 1px var(--sidebar-right-flash-ring),\n    0 2px 4px 0 var(--sidebar-right-flash-near),\n    0 0 10px 0 var(--sidebar-right-flash-far);\n  --sidebar-right-flash-to:\n    var(--dsw-elevation-prominent),\n    0 0 0 1px transparent,\n    0 2px 4px 0 transparent,\n    0 0 10px 0 transparent;\n}\n.SidebarRight_panel [data-dockkit-pane][data-sidebar-right-flash]::after,\n.SidebarRight_panel [data-dockkit-float][data-sidebar-right-flash] {\n  animation-duration: calc(var(--ds-transition-duration-slow) * 2);\n  animation-timing-function: var(--ds-ease-in-out);\n}\n.SidebarRight_panel [data-dockkit-pane][data-sidebar-right-flash=odd]::after,\n.SidebarRight_panel [data-dockkit-float][data-sidebar-right-flash=odd] {\n  animation-name: SidebarRight_flashOdd;\n}\n.SidebarRight_panel [data-dockkit-pane][data-sidebar-right-flash=even]::after,\n.SidebarRight_panel [data-dockkit-float][data-sidebar-right-flash=even] {\n  animation-name: SidebarRight_flashEven;\n}\n@keyframes SidebarRight_flashOdd {\n  from {\n    box-shadow: var(--sidebar-right-flash-from);\n  }\n  to {\n    box-shadow: var(--sidebar-right-flash-to);\n  }\n}\n@keyframes SidebarRight_flashEven {\n  from {\n    box-shadow: var(--sidebar-right-flash-from);\n  }\n  to {\n    box-shadow: var(--sidebar-right-flash-to);\n  }\n}\n@media (prefers-reduced-motion: reduce) {\n  .SidebarRight_panel [data-dockkit-pane][data-sidebar-right-flash]::after,\n  .SidebarRight_panel [data-dockkit-float][data-sidebar-right-flash] {\n    animation-timing-function: step-end;\n  }\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/tabs/guide/GuideBody.module.css */\n.GuideBody_guide {\n  --dsl-guide-entry-radius: var(--dsw-radius-xl);\n  display: flex;\n  flex-direction: column;\n  gap: 14px;\n  align-items: center;\n  justify-content: center;\n  box-sizing: border-box;\n  min-height: 100%;\n  padding: 0 24px;\n}\n.GuideBody_guide::after {\n  content: \"\";\n  flex: 0 1 10%;\n}\n.GuideBody_hero {\n  display: flex;\n  margin-bottom: 16px;\n  color: var(--dsw-specific-guide-hero);\n}\n.GuideBody_entry {\n  display: flex;\n  gap: 14px;\n  align-items: center;\n  box-sizing: border-box;\n  width: 380px;\n  max-width: 100%;\n  min-height: 56px;\n  padding: 14px 20px;\n  color: var(--dsw-alias-label-primary);\n  font: inherit;\n  text-align: left;\n  background: var(--dsw-alias-bg-layer-1);\n  border: 0.5px solid var(--dsw-alias-border-l3);\n  border-radius: var(--dsl-guide-entry-radius);\n  cursor: pointer;\n}\n@media (hover: hover) {\n  .GuideBody_entry:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.GuideBody_entryIcon {\n  display: flex;\n  flex: none;\n  align-items: center;\n  justify-content: center;\n  width: 26px;\n  height: 26px;\n  color: var(--dsw-alias-label-secondary);\n}\n.GuideBody_placeholderInk {\n  color: var(--dsw-alias-label-tertiary);\n}\n.GuideBody_entryText {\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  gap: 3px;\n  min-width: 0;\n}\n.GuideBody_entryTitle {\n  overflow: hidden;\n  font-size: 14px;\n  line-height: 1.4;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n}\n.GuideBody_entryDescription {\n  overflow: hidden;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 11px;\n  line-height: 1.4;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n}\n.GuideBody_titleIcon {\n  flex: none;\n  color: var(--dsw-alias-label-tertiary);\n}\n.GuideBody_entryCell {\n  width: 380px;\n  max-width: 100%;\n}\n.GuideBody_moreAnchor {\n  display: flex;\n  width: 380px;\n  max-width: 100%;\n}\n.GuideBody_moreAnchor .GuideBody_entry[aria-expanded=true] {\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n.GuideBody_moreMenu {\n  width: max-content;\n  max-width: min(480px, calc(100vw - 24px));\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/StatsPills.module.css */\n.StatsPills_anchor {\n  display: inline-flex;\n  min-width: 0;\n  font-size: calc(var(--dsh-content-font-size-secondary, 13px) - 1px);\n  line-height: calc(20px + var(--dsh-content-font-delta-secondary, 0px));\n}\n.StatsPills_pill {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  box-sizing: border-box;\n  max-width: 100%;\n  padding: 1px 8px;\n  border: none;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-tertiary);\n  font: inherit;\n  font-variant-numeric: tabular-nums;\n  line-height: inherit;\n  white-space: nowrap;\n}\n.StatsPills_pill svg {\n  width: 14px;\n  height: 14px;\n  flex: none;\n}\nbutton.StatsPills_pill {\n  cursor: pointer;\n}\nbutton.StatsPills_pill[aria-expanded=true] {\n  background: var(--dsw-alias-interactive-bg-hover);\n  color: var(--dsw-alias-label-secondary);\n}\n@media (hover: hover) {\n  button.StatsPills_pill:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n    color: var(--dsw-alias-label-secondary);\n  }\n}\n.StatsPills_label {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.StatsPills_sep {\n  color: var(--dsw-alias-separator-primary);\n  margin: 0 6px;\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/stat-dialog.module.css */\n.stat_dialog_panel {\n  position: fixed;\n  z-index: 1100;\n  box-sizing: border-box;\n  width: max-content;\n  min-width: min(300px, calc(100vw - 24px));\n  max-width: min(440px, calc(100vw - 24px));\n  padding: 16px;\n  border: 0;\n  border-radius: var(--dsw-radius-lg);\n  background: var(--dsw-specific-menu);\n  backdrop-filter: var(--dsw-menu-backdrop-filter);\n  --dsw-elevation-stroke-color: var(--dsw-alias-border-l1);\n  box-shadow: var(--dsw-elevation-prominent);\n  font-size: 12px;\n  line-height: 18px;\n  color: var(--dsw-alias-label-secondary);\n  cursor: default;\n  max-height: calc(100dvh - 12px - max(12px, var(--dsh-frame-overlay-top, 12px)));\n  overflow-x: hidden;\n  overflow-y: auto;\n  --dsh-scrollbar-thumb: var(--dsw-alias-scrollbar-bg-l2);\n  --dsh-scrollbar-thumb-hover: var(--dsw-alias-scrollbar-hover-l2);\n  position-area: none;\n  top: max(12px, var(--dsh-frame-overlay-top, 12px));\n  bottom: max(12px, calc(anchor(top) + 8px));\n  left: max(12px, anchor(left));\n  right: 12px;\n  position-try-fallbacks:\n    --dsh-stat-window,\n    --dsh-stat-opposite,\n    --dsh-stat-wide-opposite,\n    --dsh-stat-tall,\n    --dsh-stat-viewport;\n  align-self: end;\n  justify-self: start;\n  height: fit-content;\n  min-height: 0;\n  margin: 0;\n}\n.stat_dialog_title {\n  display: flex;\n  justify-content: space-between;\n  gap: 16px;\n  margin-bottom: 8px;\n  color: var(--dsw-alias-label-primary);\n  font-weight: 500;\n}\n.stat_dialog_titleRule {\n  margin-bottom: 10px;\n  border-top: 0.5px solid var(--dsw-alias-border-l2);\n}\n.stat_dialog_titleValue {\n  font-variant-numeric: tabular-nums;\n}\n.stat_dialog_titleLabel {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  min-width: 0;\n}\n.stat_dialog_titleLabel svg {\n  width: 14px;\n  height: 14px;\n  flex: none;\n}\n.stat_dialog_details {\n  display: grid;\n  grid-template-columns: minmax(76px, auto) minmax(0, 1fr);\n  gap: 6px 16px;\n  margin: 0;\n  color: var(--dsw-alias-label-tertiary);\n}\n.stat_dialog_details dt,\n.stat_dialog_details dd {\n  min-width: 0;\n  margin: 0;\n}\n.stat_dialog_details dd {\n  color: var(--dsw-alias-label-secondary);\n  font-variant-numeric: tabular-nums;\n  text-align: right;\n}\n.stat_dialog_details .stat_dialog_route {\n  overflow-wrap: anywhere;\n}\n.stat_dialog_reasoning {\n  color: var(--dsw-alias-label-tertiary);\n  white-space: nowrap;\n}\n@position-try --dsh-stat-window {\n  position-area: none;\n  top: max(12px, var(--dsh-frame-overlay-top, 12px));\n  bottom: max(12px, calc(anchor(top) + 8px));\n  left: 12px;\n  right: 12px;\n  margin: 0;\n  align-self: safe end;\n  justify-self: safe end;\n}\n@position-try --dsh-stat-opposite {\n  top: max(12px, calc(anchor(bottom) + 8px));\n  bottom: 12px;\n  align-self: start;\n}\n@position-try --dsh-stat-wide-opposite {\n  top: max(12px, calc(anchor(bottom) + 8px));\n  bottom: 12px;\n  left: 12px;\n  right: 12px;\n  align-self: start;\n  justify-self: safe end;\n}\n@position-try --dsh-stat-tall {\n  position-area: none;\n  top: max(12px, var(--dsh-frame-overlay-top, 12px));\n  bottom: 12px;\n  left: max(12px, anchor(left));\n  right: 12px;\n  margin: 0;\n  align-self: safe start;\n  justify-self: start;\n}\n@position-try --dsh-stat-viewport {\n  position-area: none;\n  inset: max(12px, var(--dsh-frame-overlay-top, 12px)) 12px 12px;\n  margin: 0;\n  align-self: safe start;\n  justify-self: safe end;\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/TurnUsagePanel.module.css */\n.TurnUsagePanel_root {\n  display: inline-flex;\n  min-width: 0;\n}\n.TurnUsagePanel_root + .TurnUsagePanel_root {\n  margin-left: -6px;\n}\n.TurnUsagePanel_trigger {\n  display: inline-flex;\n  align-items: center;\n  gap: 4px;\n  min-width: 0;\n  height: calc(28px + var(--dsh-content-font-delta, 0px));\n  padding: 6px 8px;\n  border: none;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: calc(var(--dsh-content-font-size-secondary, 13px) - 1px);\n  font-variant-numeric: tabular-nums;\n  line-height: calc(24px + var(--dsh-content-font-delta, 0px));\n  white-space: nowrap;\n  cursor: pointer;\n}\n.TurnUsagePanel_label {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.TurnUsagePanel_trigger svg {\n  width: calc(15px + var(--dsh-content-font-delta, 0px));\n  height: calc(15px + var(--dsh-content-font-delta, 0px));\n  flex: none;\n}\n.TurnUsagePanel_trigger[aria-expanded=true] {\n  background: var(--dsw-alias-interactive-bg-hover);\n  color: var(--dsw-alias-label-tertiary);\n}\n@media (hover: hover) {\n  .TurnUsagePanel_trigger:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n    color: var(--dsw-alias-label-tertiary);\n  }\n}\n@media (max-width: 480px) {\n  .TurnUsagePanel_trigger {\n    justify-content: center;\n    width: calc(28px + var(--dsh-content-font-delta, 0px));\n    padding: 6px;\n  }\n  .TurnUsagePanel_trigger .TurnUsagePanel_label {\n    display: none;\n  }\n  .TurnUsagePanel_root + .TurnUsagePanel_root {\n    margin-left: 0;\n  }\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-attachment/src/AttachmentRail.module.css */\n.AttachmentRail_root {\n  position: relative;\n  min-width: 0;\n}\n.AttachmentRail_rail {\n  display: flex;\n  align-items: stretch;\n  gap: 10px;\n  overflow-x: auto;\n  overflow-y: hidden;\n  scrollbar-width: none;\n  --dsh-scrollbar-thumb: var(--dsw-alias-scrollbar-bg-l2);\n  --dsh-scrollbar-thumb-hover: var(--dsw-alias-scrollbar-hover-l2);\n}\n.AttachmentRail_rail::-webkit-scrollbar {\n  display: none;\n}\n.AttachmentRail_item {\n  flex: none;\n  height: 64px;\n}\n.AttachmentRail_thumbnail {\n  width: 64px;\n  height: 64px;\n  padding: 0;\n  overflow: hidden;\n  border: 0.5px solid var(--dsw-alias-border-l2-darkmode-thin);\n  border-radius: var(--dsw-radius-xl);\n  background: var(--dsw-alias-interactive-bg-hover);\n  cursor: zoom-in;\n}\n.AttachmentRail_thumbnail img {\n  display: block;\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n}\n.AttachmentRail_remove {\n  position: absolute;\n  top: 4px;\n  right: 4px;\n  z-index: 1;\n  display: grid;\n  place-items: center;\n  width: 18px;\n  height: 18px;\n  padding: 0;\n  border: none;\n  border-radius: 50%;\n  corner-shape: round;\n  background: var(--dsw-alias-button-contrast-fill);\n  color: var(--dsw-alias-label-primary-inverted);\n  cursor: pointer;\n  opacity: 0;\n  transition: opacity 0.2s ease-in-out;\n}\n.AttachmentRail_remove:focus-visible {\n  opacity: 1;\n}\n@media (hover: hover) {\n  .AttachmentRail_item:hover .AttachmentRail_remove {\n    opacity: 1;\n  }\n}\n@media (hover: none), (pointer: coarse) {\n  .AttachmentRail_remove {\n    opacity: 1;\n  }\n}\n@media (prefers-reduced-motion: reduce) {\n  .AttachmentRail_remove {\n    transition: none;\n  }\n}\n.AttachmentRail_arrow {\n  position: absolute;\n  top: 50%;\n  z-index: 2;\n  display: grid;\n  place-items: center;\n  width: 24px;\n  height: 24px;\n  padding: 0;\n  border: 0;\n  --dsw-elevation-stroke-color: var(--dsw-alias-border-l2-darkmode-thin);\n  border-radius: 999px;\n  corner-shape: round;\n  background: var(--dsw-specific-input-major);\n  color: var(--dsw-alias-label-secondary);\n  box-shadow: var(--dsw-elevation-panel);\n  cursor: pointer;\n  transform: translateY(-50%);\n}\n@media (hover: hover) {\n  .AttachmentRail_arrow:hover {\n    background: var(--dsw-alias-interactive-bg-hover-solid);\n  }\n}\n.AttachmentRail_arrowLeft {\n  left: 4px;\n}\n.AttachmentRail_arrowRight {\n  right: 4px;\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/TurnNavigator.module.css */\n.TurnNavigator_slot {\n  position: absolute;\n  top: 0;\n  right: 0;\n  left: 0;\n  z-index: 7;\n  height: 0;\n  padding-inline: calc(var(--dsh-composer-side-clearance) + 16px);\n  container-type: inline-size;\n  pointer-events: none;\n}\n[data-conversation-scroll] .TurnNavigator_slot {\n  position: sticky;\n}\n.TurnNavigator_frame {\n  --turn-rail-band: calc( var(--dsh-conversation-viewport-height, 100dvh) - var(--dsh-composer-height, 152px) );\n  --turn-preview-height: 100px;\n  position: absolute;\n  top: calc(var(--turn-rail-band) / 2);\n  right: 12px;\n  width: 28px;\n  max-height: min(max(0px, calc(var(--turn-rail-band) - 64px)), 420px);\n  contain: layout;\n  cursor: pointer;\n  pointer-events: auto;\n  transform: translateY(-50%);\n}\n.TurnNavigator_scroller {\n  position: relative;\n  max-height: inherit;\n  overflow-y: auto;\n  overscroll-behavior: contain;\n  scrollbar-width: none;\n}\n.TurnNavigator_scroller::-webkit-scrollbar {\n  display: none;\n}\n.TurnNavigator_fadeTop {\n  mask-image:\n    linear-gradient(\n      to bottom,\n      transparent 0,\n      #000 24px,\n      #000 100%);\n}\n.TurnNavigator_fadeBottom {\n  mask-image:\n    linear-gradient(\n      to bottom,\n      #000 0,\n      #000 calc(100% - 24px),\n      transparent 100%);\n}\n.TurnNavigator_fadeTop.TurnNavigator_fadeBottom {\n  mask-image:\n    linear-gradient(\n      to bottom,\n      transparent 0,\n      #000 24px,\n      #000 calc(100% - 24px),\n      transparent 100%);\n}\n.TurnNavigator_marks {\n  position: relative;\n}\n.TurnNavigator_mark {\n  position: absolute;\n  top: 0;\n  right: 0;\n  left: 0;\n  height: 10px;\n  padding: 0;\n  border: 0;\n  border-radius: 8px;\n  background: transparent;\n  cursor: pointer;\n}\n.TurnNavigator_mark::before {\n  position: absolute;\n  top: 50%;\n  right: 0;\n  width: 20px;\n  height: 2px;\n  border-radius: 2px;\n  background: var(--dsw-alias-border-l4);\n  content: \"\";\n  transform: translateY(-50%) scaleX(0.6);\n  transform-origin: right center;\n  transition: transform 140ms ease, background-color 140ms ease;\n}\n.TurnNavigator_markUnloaded::before {\n  transform: translateY(-50%) scaleX(0.4);\n  opacity: 0.6;\n}\n.TurnNavigator_markPreview::before {\n  transform: translateY(-50%) scaleX(0.9);\n  background: var(--dsw-alias-label-tertiary);\n}\n.TurnNavigator_markBusy::before {\n  animation: TurnNavigator_dsh-turn-mark-busy 1s ease-in-out infinite;\n}\n.TurnNavigator_markActive::before {\n  transform: translateY(-50%) scaleX(1);\n  background: var(--dsw-alias-label-primary);\n}\n.TurnNavigator_mark:focus-visible::before {\n  transform: translateY(-50%) scaleX(1);\n  background: var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n}\n.TurnNavigator_mark:focus-visible {\n  outline: none;\n}\n.TurnNavigator_mark:focus-visible::after {\n  position: absolute;\n  inset: 0 0 0 auto;\n  width: 20px;\n  border-radius: inherit;\n  outline: 1px solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: -1px;\n  content: \"\";\n}\n.TurnNavigator_preview {\n  position: absolute;\n  top: clamp(0px, calc(var(--turn-preview-center) - var(--turn-preview-height) / 2), calc(100% - var(--turn-preview-height)));\n  right: calc(100% + 10px);\n  box-sizing: border-box;\n  width: min(300px, calc(100cqw - 120px));\n  max-height: var(--turn-preview-height);\n  overflow: hidden;\n  padding: 10px 12px;\n  border: 0;\n  border-radius: var(--dsw-radius-lg);\n  color: var(--dsw-alias-label-primary);\n  background: var(--dsw-alias-bg-layer-1);\n  box-shadow: var(--dsw-elevation-panel);\n  pointer-events: none;\n  animation: TurnNavigator_dsh-turn-preview-enter 120ms ease-out;\n  transition: top 140ms cubic-bezier(0.2, 0.8, 0.2, 1);\n}\n.TurnNavigator_previewPrompt,\n.TurnNavigator_previewResponse {\n  display: -webkit-box;\n  overflow: hidden;\n  -webkit-box-orient: vertical;\n}\n.TurnNavigator_previewPrompt {\n  font: var(--dsw-font-xs-strong-13);\n  -webkit-line-clamp: 1;\n}\n.TurnNavigator_previewResponse {\n  margin-top: 4px;\n  color: var(--dsw-alias-label-caption);\n  font: var(--dsw-font-xxs-12);\n  -webkit-line-clamp: 3;\n}\n@keyframes TurnNavigator_dsh-turn-preview-enter {\n  from {\n    opacity: 0;\n    transform: translateX(4px);\n  }\n  to {\n    opacity: 1;\n    transform: translateX(0);\n  }\n}\n@keyframes TurnNavigator_dsh-turn-mark-busy {\n  0%, 100% {\n    opacity: 1;\n  }\n  50% {\n    opacity: 0.35;\n  }\n}\n@container (max-width: 900px) {\n  .TurnNavigator_frame {\n    display: none;\n  }\n}\n@media (prefers-reduced-motion: reduce) {\n  .TurnNavigator_frame,\n  .TurnNavigator_scroller,\n  .TurnNavigator_mark::before,\n  .TurnNavigator_markBusy::before,\n  .TurnNavigator_preview {\n    transition: none;\n    animation: none;\n    scroll-behavior: auto;\n  }\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/ChatView.module.css */\n.ChatView_frame {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  min-height: 0;\n  flex: 1 1 auto;\n  container-type: inline-size;\n}\n.ChatView_root {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  min-height: 0;\n  flex: 1 1 auto;\n  overflow-x: visible;\n  overflow-y: clip;\n}\n.ChatView_scroll {\n  flex: 1 1 auto;\n  min-height: 0;\n  overflow-x: clip;\n  overflow-y: auto;\n  padding: 16px calc(var(--dsh-composer-side-clearance) + 16px);\n  container-type: inline-size;\n}\n.ChatView_scroll,\n[data-conversation-scroll]:has(.ChatView_root) {\n  overscroll-behavior-y: none;\n}\n.ChatView_root[data-chat-following-tail] .ChatView_scroll,\n[data-conversation-scroll]:has(.ChatView_root[data-chat-following-tail]) {\n  overflow-anchor: none;\n}\n[data-conversation-scroll] .ChatView_frame,\n[data-conversation-scroll] .ChatView_root {\n  flex: 0 0 auto;\n  min-height: auto;\n  height: auto;\n}\n[data-conversation-scroll] .ChatView_scroll {\n  overflow-x: clip;\n  overflow-y: visible;\n  flex: 0 0 auto;\n  min-height: auto;\n}\n.ChatView_column {\n  position: relative;\n  max-width: var(--dsh-chat-content-width);\n  width: 100%;\n  margin: 0 auto;\n  display: flex;\n  flex-direction: column;\n}\n:is(.ChatView_column, [data-slot=\"conversation.chat.flow\"]) > :not([hidden]):not(.ChatView_textInteraction):not(.ChatView_flowItem:is(:empty, :has(> [data-slot=\"conversation.chat.node\"]:empty))) ~ :not([hidden]):not(.ChatView_textInteraction):not(.ChatView_flowItem:is(:empty, :has(> [data-slot=\"conversation.chat.node\"]:empty))),\n.ChatView_column > .ChatView_older + [data-slot=\"conversation.chat.flow\"] > :not([hidden]):not(.ChatView_textInteraction):not(.ChatView_flowItem:is(:empty, :has(> [data-slot=\"conversation.chat.node\"]:empty))) {\n  margin-top: var(--dsh-chat-flow-gap, 4px);\n}\n.ChatView_flowItem[data-chat-group-part=response] {\n  --dsh-chat-flow-gap: 12px;\n}\n:is(.ChatView_column, [data-slot=\"conversation.chat.flow\"]) > [data-chat-group-part=response]:not([hidden]):not(:empty) + :not([hidden]):not(.ChatView_flowItem:is(:empty, :has(> [data-slot=\"conversation.chat.node\"]:empty))):not(.ChatView_running):not(:has(> [data-slot=\"conversation.chat.node\"] > [data-chat-steering-batch])) {\n  --dsh-chat-flow-gap: 12px;\n}\n.ChatView_flowItem {\n  min-width: 0;\n}\n.ChatView_turnSpacer {\n  height: 0;\n}\n.ChatView_column[data-chat-motion] > :not([data-chat-motion]),\n.ChatView_column[data-chat-motion] > [data-slot=\"conversation.chat.flow\"] > :not([data-chat-motion]) {\n  transition: margin-top 160ms cubic-bezier(0.4, 0, 0.2, 1);\n}\n.ChatView_column[data-input-fold] > :not([data-chat-motion]),\n.ChatView_column[data-input-fold] > [data-slot=\"conversation.chat.flow\"] > :not([data-chat-motion]) {\n  transition: none;\n}\n.ChatView_column[data-chat-motion] > [data-chat-flow-kind=turn-process],\n.ChatView_column[data-chat-motion] > [data-slot=\"conversation.chat.flow\"] > [data-chat-flow-kind=turn-process] {\n  transition: none;\n}\n@media (prefers-reduced-motion: reduce) {\n  .ChatView_column[data-chat-motion] > :not([data-chat-motion]),\n  .ChatView_column[data-chat-motion] > [data-slot=\"conversation.chat.flow\"] > :not([data-chat-motion]) {\n    transition: none;\n  }\n}\n.ChatView_flowItem[data-chat-flow-kind=turn-process],\n:is(.ChatView_column, [data-slot=\"conversation.chat.flow\"]) > [data-chat-flow-kind=turn-process]:not(:empty, :has(> [data-slot=\"conversation.chat.node\"]:empty)) + :not([hidden]):not(.ChatView_flowItem:is(:empty, :has(> [data-slot=\"conversation.chat.node\"]:empty))):not(.ChatView_running):not(:has(> [data-slot=\"conversation.chat.node\"] > [data-chat-steering-batch])),\n:is(.ChatView_column, [data-slot=\"conversation.chat.flow\"]) > [data-chat-flow-kind=turn-process] + :not([hidden]):not(.ChatView_flowItem:is(:empty, :has(> [data-slot=\"conversation.chat.node\"]:empty))):not(.ChatView_running):not([data-submission-echo], [data-pending-steering]):not(:has(> [data-slot=\"conversation.chat.node\"] > [data-chat-steering-batch])) {\n  --dsh-chat-flow-gap: 16px;\n}\n:is(.ChatView_column, [data-slot=\"conversation.chat.flow\"]) > .ChatView_flowItem:has(> [data-slot=\"conversation.chat.node\"] > [data-chat-steering-batch=start]) {\n  --dsh-chat-flow-gap: calc(44px + var(--dsh-content-font-delta, 0px));\n}\n.ChatView_running + [data-pending-steering] {\n  --dsh-chat-flow-gap: 0px;\n}\n.ChatView_flowItem[data-chat-flow-kind=turn-tail] + .ChatView_running {\n  display: none;\n}\n@media (prefers-reduced-motion: no-preference) {\n  :where(.ChatView_column > [data-slot=\"conversation.chat.flow\"] > .ChatView_flowItem[data-chat-flow-kind=steering]) + .ChatView_running {\n    animation: ChatView_running-enters-slot 140ms cubic-bezier(0.2, 0.8, 0.2, 1);\n  }\n  .ChatView_column[data-input-fold] .ChatView_running {\n    animation-duration: 0s;\n  }\n}\n@keyframes ChatView_running-enters-slot {\n  from {\n    opacity: 0;\n    translate: 0 calc(-44px - var(--dsh-content-font-delta, 0px));\n  }\n  40% {\n    opacity: 1;\n  }\n}\n.ChatView_flowItem:is(:empty, :has(> [data-slot=\"conversation.chat.node\"]:empty)) {\n  height: 0;\n}\n.ChatView_callRow {\n  border-radius: var(--dsw-radius-sm);\n}\n.ChatView_hint {\n  color: var(--dsw-alias-label-tertiary);\n  font-size: var(--dsh-content-font-size-secondary, 13px);\n  line-height: calc(18px + var(--dsh-content-font-delta-secondary, 0px));\n}\n.ChatView_running {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  --dsh-chat-flow-gap: 12px;\n  --dsw-alias-label-shimmer: var(--dsw-alias-label-deep-diving-shimmer);\n  color: var(--dsw-alias-label-deep-diving);\n  font-size: calc(var(--dsh-content-font-size, 14px) - 2px);\n  line-height: calc(22px + var(--dsh-content-font-delta, 0px));\n}\n.ChatView_running[data-holding] {\n  visibility: hidden;\n  opacity: 0;\n}\n:is(.ChatView_column, [data-slot=\"conversation.chat.flow\"]) > :nth-last-child(2 of :not([hidden]):not([data-pending-steering]):not(.ChatView_flowItem:is(:empty, :has(> [data-slot=\"conversation.chat.node\"]:empty)))):is(.ChatView_flowItem:not([data-chat-flow-kind=user]):not([data-chat-flow-kind=steering]):not([data-chat-flow-kind=turn-trigger]), [data-chat-group-key]) ~ .ChatView_running > .ChatView_runningDivider {\n  opacity: 1;\n}\n.ChatView_runningDivider {\n  position: absolute;\n  top: -4px;\n  left: 0;\n  right: 0;\n  height: 0.5px;\n  background: color-mix(in srgb, var(--dsw-alias-border-l1) 75%, var(--dsw-alias-border-l2));\n  opacity: 0;\n  pointer-events: none;\n}\n@media (prefers-reduced-motion: no-preference) {\n  .ChatView_runningDivider {\n    transition: opacity 160ms ease;\n  }\n}\n.ChatView_runningContent {\n  display: inline-flex;\n  align-items: center;\n  min-width: 0;\n  gap: 6px;\n  margin-top: 4px;\n  height: calc(28px + var(--dsh-content-font-delta, 0px));\n}\n.ChatView_runningText {\n  min-width: 0;\n  font-variant-numeric: tabular-nums;\n}\n.ChatView_runningIcon {\n  position: relative;\n  display: inline-flex;\n  flex: none;\n  width: calc(14px + var(--dsh-content-font-delta, 0px));\n  height: calc(14px + var(--dsh-content-font-delta, 0px));\n  contain: strict;\n  overflow: hidden;\n}\n.ChatView_runningWhaleAnimated {\n  display: none;\n  position: absolute;\n  inset: 0;\n}\n.ChatView_runningWhaleStill {\n  display: initial;\n}\n@supports (mask-mode: alpha) and (mask-image: url()) {\n  @media (prefers-reduced-motion: no-preference) and (forced-colors: none) {\n    .ChatView_runningWhaleAnimated {\n      display: block;\n      background: currentColor;\n      mask: url(data:image/png;base64,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) center / 100% 100% no-repeat;\n      mask-mode: alpha;\n      will-change: transform;\n    }\n    .ChatView_runningWhaleStill {\n      display: none;\n    }\n  }\n}\n.ChatView_openError {\n  color: var(--dsw-alias-state-error-primary);\n  font-size: var(--dsh-content-font-size-secondary, 13px);\n  line-height: calc(18px + var(--dsh-content-font-delta-secondary, 0px));\n}\n.ChatView_older {\n  overflow-anchor: none;\n  display: flex;\n  justify-content: center;\n}\n.ChatView_older button {\n  display: grid;\n  line-height: 18px;\n  white-space: nowrap;\n  border: none;\n  border-radius: var(--dsw-radius-sm);\n  padding: 4px 12px;\n  font-size: 12px;\n  color: var(--dsw-alias-label-secondary);\n  background: var(--dsw-alias-interactive-bg-hover-solid);\n  cursor: pointer;\n}\n.ChatView_older button > span {\n  grid-area: 1 / 1;\n}\n.ChatView_historyHidden {\n  visibility: hidden;\n}\n.ChatView_older button:disabled {\n  cursor: default;\n  opacity: 0.6;\n}\n.ChatView_toBottomSlot {\n  position: absolute;\n  right: 0;\n  bottom: 16px;\n  left: 0;\n  z-index: 8;\n  height: 0;\n  display: flex;\n  justify-content: flex-end;\n  padding-right: max(calc(var(--dsh-composer-side-clearance) + 16px), calc((100% - var(--dsh-chat-content-width)) / 2));\n  pointer-events: none;\n}\n[data-conversation-scroll] .ChatView_toBottomSlot {\n  position: sticky;\n  bottom: calc(var(--dsh-composer-height, 152px) + 16px);\n}\n.ChatView_toBottom {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 34px;\n  height: 34px;\n  margin-top: -34px;\n  padding: 0;\n  border: 0;\n  --dsw-elevation-stroke-color: var(--dsw-alias-border-l3);\n  border-radius: 100px;\n  corner-shape: round;\n  color: var(--dsw-alias-label-primary);\n  background: var(--dsw-alias-button-floating-fill);\n  box-shadow: var(--dsw-elevation-panel);\n  cursor: pointer;\n  pointer-events: auto;\n}\n@media (hover: hover) {\n  .ChatView_toBottom:hover {\n    background: var(--dsw-alias-button-floating-hover);\n  }\n}\n.ChatView_modalAction {\n  min-width: 72px;\n}\n.ChatView_column > .ChatView_textInteraction {\n  position: absolute;\n  z-index: 6;\n  visibility: hidden;\n  margin: 0;\n  width: max-content;\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/accessibility.module.css */\n.accessibility_visuallyHidden {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  overflow: hidden;\n  clip: rect(0 0 0 0);\n  white-space: nowrap;\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-conversation/src/client/skeleton/ConversationRoot.module.css */\n.ConversationRoot_root {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n  min-width: 0;\n  background: var(--dsw-alias-bg-base);\n}\n.ConversationRoot_root[data-phase=hero] {\n  isolation: isolate;\n}\n.ConversationRoot_header {\n  display: grid;\n  grid-template-columns: auto minmax(0, 1fr);\n  flex: none;\n  box-sizing: border-box;\n  min-height: 76px;\n  padding: 10px 28px 0 20px;\n  border-bottom: 0.5px solid var(--dsw-alias-border-l3);\n}\n.ConversationRoot_header:where(:not(:has(.ConversationRoot_tabs))) {\n  min-height: 0;\n  padding-bottom: 10px;\n}\n.ConversationRoot_headerBlank {\n  min-height: 0;\n  padding-bottom: 0;\n  border-bottom: none;\n}\n.ConversationRoot_headerBlank .ConversationRoot_headerCorner {\n  margin-left: auto;\n}\n[data-platform=darwin] .ConversationRoot_headerLeading,\n[data-platform=darwin] .ConversationRoot_headerActions,\n[data-platform=darwin] .ConversationRoot_headerUtilities,\n[data-platform=darwin] .ConversationRoot_headerCorner {\n  -webkit-app-region: no-drag;\n}\n.ConversationRoot_titleRow {\n  grid-column: 2;\n  container-type: inline-size;\n  display: flex;\n  align-items: center;\n  gap: 0;\n  min-height: 30px;\n  padding-inline-start: max(0px, calc(var(--dsh-frame-leading-clearance, 0px) - 20px));\n}\n.ConversationRoot_titleCluster {\n  display: flex;\n  flex: 1;\n  align-items: center;\n  gap: 10px;\n  min-width: 0;\n  --title-cluster-fade: 20px;\n  margin: -4px calc(-1 * var(--title-cluster-fade)) -4px -4px;\n  padding: 4px var(--title-cluster-fade) 4px 4px;\n  overflow: clip;\n  mask-image:\n    linear-gradient(\n      to left,\n      transparent calc(0.3 * var(--title-cluster-fade)),\n      #000 var(--title-cluster-fade));\n}\n.ConversationRoot_titleCluster:has(+ .ConversationRoot_headerUtilities:empty) {\n  --title-cluster-fade: 8px;\n}\n.ConversationRoot_headerLeading {\n  grid-column: 1;\n  grid-row: 1;\n  display: flex;\n  flex: none;\n  align-items: center;\n  gap: 8px;\n}\n.ConversationRoot_crumbs {\n  display: flex;\n  align-items: center;\n  gap: 4px;\n  min-width: 0;\n  overflow: hidden;\n  white-space: nowrap;\n}\n.ConversationRoot_crumbSeg {\n  display: inline-flex;\n  align-items: center;\n  gap: 4px;\n  min-width: 0;\n}\n.ConversationRoot_crumbSep {\n  color: var(--dsw-alias-label-caption);\n  font-size: 14px;\n  line-height: 20px;\n}\n.ConversationRoot_crumb {\n  display: inline-block;\n  max-width: 220px;\n  overflow: hidden;\n  padding: 4px 8px;\n  border: none;\n  border-radius: var(--dsw-radius-md);\n  background: transparent;\n  font-size: 14px;\n  line-height: 20px;\n  color: var(--dsw-alias-label-tertiary);\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  cursor: pointer;\n}\n@media (hover: hover) {\n  button.ConversationRoot_crumb:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.ConversationRoot_crumbCurrent {\n  font-weight: 500;\n  color: var(--dsw-alias-label-primary);\n  cursor: default;\n}\n.ConversationRoot_headerActions {\n  display: flex;\n  flex: none;\n  align-items: center;\n  gap: 10px;\n}\n@container (max-width: 460px) {\n  .ConversationRoot_headerActions {\n    gap: 8px;\n  }\n}\n.ConversationRoot_headerUtilities {\n  display: flex;\n  flex: none;\n  align-items: center;\n  gap: 8px;\n  margin-left: 20px;\n}\n.ConversationRoot_headerUtilities:empty {\n  display: none;\n}\n.ConversationRoot_headerMenuButton {\n  flex: none;\n  width: 28px;\n  padding: 0;\n  color: var(--dsw-alias-label-secondary);\n}\n.ConversationRoot_headerMenuButton svg {\n  width: 15px;\n  height: 15px;\n}\n.ConversationRoot_headerCorner {\n  display: flex;\n  flex: none;\n  align-items: center;\n  margin-left: 8px;\n  margin-right: -16px;\n}\n.ConversationRoot_headerCorner:empty {\n  display: none;\n}\n.ConversationRoot_tabs {\n  grid-column: 1 / -1;\n  position: relative;\n  z-index: 1;\n  display: flex;\n  gap: 16px 20px;\n  width: 100%;\n  min-width: 0;\n  box-sizing: border-box;\n  align-items: flex-start;\n  flex-wrap: wrap;\n  margin-top: 10px;\n  padding-left: 8px;\n}\n@media (max-width: 767px) {\n  html:not([data-platform]) .ConversationRoot_tabs {\n    padding-left: 0;\n  }\n}\n.ConversationRoot_viewTabs {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 32px;\n  min-width: 0;\n  min-height: 25px;\n}\n.ConversationRoot_tab {\n  --dsh-tab-hit-inline: 10px;\n  position: relative;\n  box-sizing: border-box;\n  min-height: 35px;\n  margin: -10px calc(-1 * var(--dsh-tab-hit-inline)) 0;\n  padding: 10px var(--dsh-tab-hit-inline) 9px;\n  border: none;\n  background: transparent;\n  font-size: 13px;\n  line-height: 16px;\n  font-weight: 500;\n  color: var(--dsw-alias-label-tertiary);\n  cursor: pointer;\n}\n.ConversationRoot_tab::after {\n  content: \"\";\n  position: absolute;\n  right: var(--dsh-tab-hit-inline);\n  bottom: -1px;\n  left: var(--dsh-tab-hit-inline);\n  height: 2px;\n  border-radius: 2px;\n  background: transparent;\n}\n.ConversationRoot_tabActive {\n  color: var(--dsw-alias-state-business-primary);\n}\n.ConversationRoot_tabActive::after {\n  background: var(--dsw-alias-state-business-primary);\n}\n.ConversationRoot_viewsMoreAnchor {\n  flex: none;\n}\n.ConversationRoot_viewsMore {\n  width: 22px;\n  height: 22px;\n  margin-top: -3px;\n  padding: 0;\n  color: var(--dsw-alias-label-secondary);\n}\n.ConversationRoot_viewsMoreActive {\n  color: var(--dsw-alias-state-business-primary);\n}\n.ConversationRoot_tabLabel {\n  display: block;\n  max-width: 88px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ConversationRoot_viewsMore[aria-expanded=true] {\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n.ConversationRoot_viewsMoreMenu {\n  width: 288px;\n  max-width: calc(100vw - 24px);\n}\n.ConversationRoot_viewArea {\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  min-height: 0;\n}\n.ConversationRoot_widthHandle {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  z-index: 0;\n  width: min(10px, calc((100% - var(--dsh-chat-content-width)) / 2 - 24px - 24px));\n  cursor: col-resize;\n}\n.ConversationRoot_widthHandle[data-side=left] {\n  right: calc(50% + var(--dsh-chat-content-width) / 2 + 24px);\n}\n.ConversationRoot_widthHandle[data-side=right] {\n  left: calc(50% + var(--dsh-chat-content-width) / 2 + 24px);\n}\n.ConversationRoot_widthHandle::after {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  width: 2px;\n  border-radius: 2px;\n  background:\n    linear-gradient(\n      to bottom,\n      transparent calc(var(--dsh-width-handle-pointer-y, 50%) - 36px),\n      var(--dsw-alias-scrollbar-bg-l1) calc(var(--dsh-width-handle-pointer-y, 50%) - 8px),\n      var(--dsw-alias-scrollbar-bg-l1) calc(var(--dsh-width-handle-pointer-y, 50%) + 8px),\n      transparent calc(var(--dsh-width-handle-pointer-y, 50%) + 36px));\n  opacity: 0;\n  pointer-events: none;\n}\n.ConversationRoot_widthHandle[data-side=left]::after {\n  right: 4px;\n}\n.ConversationRoot_widthHandle[data-side=right]::after {\n  left: 4px;\n}\n.ConversationRoot_widthHandle[data-dragging]::after {\n  opacity: 1;\n}\n@media (hover: hover) {\n  .ConversationRoot_widthHandle:hover::after {\n    opacity: 1;\n  }\n}\n.ConversationRoot_root:has([data-conversation-composer-overlay]) .ConversationRoot_widthHandle {\n  display: none;\n}\n.ConversationRoot_composerStack {\n  --dsh-composer-stack-gap: 6px;\n  display: flex;\n  flex-direction: column;\n  gap: var(--dsh-composer-stack-gap);\n}\n.ConversationRoot_composerSeat {\n  display: flex;\n  flex: none;\n  flex-direction: column;\n  --dsh-composer-text-max-height: 336px;\n}\n.ConversationRoot_root[data-phase=active] {\n  overflow: hidden;\n}\n.ConversationRoot_root[data-phase=active] .ConversationRoot_header {\n  flex: none;\n}\n.ConversationRoot_body {\n  position: relative;\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  min-height: 0;\n  --dsh-chat-content-width: var( --dsh-chat-user-width, clamp(680px, calc(var(--dsh-conversation-column-width, 0px) * 0.64), 920px) );\n  --dsh-composer-card-max-width: calc(var(--dsh-chat-content-width) + 32px);\n  --dsh-composer-side-clearance: 16px;\n  --dsh-composer-dock-inset: 8px;\n}\n.ConversationRoot_embeddedBody {\n  overflow: hidden;\n  --dsh-chat-content-width: min(calc(100% - 32px), 920px);\n  --dsh-composer-card-max-width: min(calc(100% - 16px), 952px);\n  --dsh-composer-side-clearance: 8px;\n  --dsh-composer-dock-inset: 8px;\n}\n.ConversationRoot_scrollBody {\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  min-height: 0;\n  margin-right: 2px;\n  overflow-y: auto;\n  scrollbar-gutter: stable;\n}\n.ConversationRoot_scrollBody::-webkit-scrollbar-track {\n  margin: 2px;\n}\n.ConversationRoot_root[data-phase=active] .ConversationRoot_viewArea,\n.ConversationRoot_embeddedBody[data-content-phase=active] .ConversationRoot_viewArea {\n  flex: 1 0 auto;\n  min-height: auto;\n}\n.ConversationRoot_root[data-phase=active] .ConversationRoot_composerSeat,\n.ConversationRoot_embeddedBody[data-content-phase=active] .ConversationRoot_composerSeat {\n  position: sticky;\n  bottom: 0;\n  margin-top: auto;\n  z-index: 9;\n  will-change: transform;\n  overflow-anchor: none;\n  background:\n    linear-gradient(\n      180deg,\n      color-mix(in srgb, var(--dsw-alias-bg-base) 0%, transparent) 0px,\n      var(--dsw-alias-bg-base) 36px);\n}\n.ConversationRoot_scrollBody:has([data-conversation-composer-overlay]) {\n  position: relative;\n  overflow-x: hidden;\n  overflow-y: auto;\n  scrollbar-gutter: auto;\n}\n.ConversationRoot_scrollBody:has([data-conversation-composer-overlay]) > [data-slot=\"conversation.session\"] > .ConversationRoot_viewArea {\n  flex: 1 1 0;\n  min-height: 0;\n  overflow: hidden;\n}\n.ConversationRoot_scrollBody:has([data-conversation-composer-overlay]) > .ConversationRoot_composerSeat {\n  position: absolute;\n  right: var(--dsh-scrollbar-width);\n  bottom: 0;\n  left: 0;\n}\n.ConversationRoot_composerHero {\n  align-self: center;\n  gap: 8px;\n  padding-bottom: 32px;\n  width: min(calc(var(--dsh-composer-card-max-width) + 2 * var(--dsh-composer-side-clearance)), 100%);\n  z-index: 1;\n}\n.ConversationRoot_heroWorkspaceRow {\n  display: flex;\n  align-items: center;\n  gap: 2px;\n  min-width: 0;\n  margin-top: 4px;\n  padding: 0 16px 0 20px;\n}\n.ConversationRoot_heroOptions {\n  display: flex;\n  flex: none;\n  align-items: center;\n  gap: 2px;\n  min-width: 0;\n  margin-left: auto;\n}\n.ConversationRoot_heroOptions:empty {\n  display: none;\n}\n.ConversationRoot_root[data-phase=hero] .ConversationRoot_scrollBody,\n.ConversationRoot_embeddedBody[data-content-phase=hero] .ConversationRoot_scrollBody {\n  justify-content: center;\n  overflow-y: auto;\n}\n.ConversationRoot_root[data-phase=settling] .ConversationRoot_composerSeat,\n.ConversationRoot_embeddedBody[data-content-phase=settling] .ConversationRoot_composerSeat {\n  visibility: hidden;\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-conversation/src/client/skeleton/InputBar.module.css */\n.InputBar_root {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding: 0 var(--dsh-composer-side-clearance) 4px;\n}\n.InputBar_dock {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 12px;\n  max-width: 100%;\n  padding-top: 4px;\n}\n.InputBar_root:not(.InputBar_hero) > .InputBar_dock {\n  min-height: calc(22px + var(--dsh-content-font-delta-secondary, 0px));\n}\n.InputBar_hero .InputBar_dock:empty {\n  display: none;\n}\n.InputBar_hero {\n  padding: 0 var(--dsh-composer-side-clearance);\n}\n.InputBar_notice {\n  width: 100%;\n  max-width: var(--dsh-composer-card-max-width);\n  margin-bottom: 6px;\n  padding: 4px 8px;\n  border-radius: var(--dsw-radius-md);\n  background: var(--dsw-alias-interactive-bg-hover);\n  color: var(--dsw-alias-label-secondary);\n  font-size: 12px;\n  line-height: 18px;\n}\n.InputBar_card {\n  box-sizing: border-box;\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n  width: 100%;\n  max-width: var(--dsh-composer-card-max-width);\n  padding-top: 8px;\n  border: 0;\n  --dsw-elevation-stroke-color: var(--dsw-alias-border-l2);\n  border-radius: var(--dsw-radius-panel);\n  background: var(--dsw-specific-input-major);\n  box-shadow: var(--dsw-elevation-soft);\n  font-size: var(--dsh-content-font-size, 14px);\n  line-height: calc(24px + var(--dsh-content-font-delta, 0px));\n  --dsh-scrollbar-thumb: var(--dsw-alias-scrollbar-bg-l2);\n  --dsh-scrollbar-thumb-hover: var(--dsw-alias-scrollbar-hover-l2);\n}\n@media (pointer: coarse) {\n  .InputBar_card {\n    font-size: max(16px, var(--dsh-content-font-size, 14px));\n  }\n}\n.InputBar_cardWorkspaceTrigger {\n  --dsw-elevation-stroke-color: transparent;\n  cursor: pointer;\n}\n.InputBar_cardWorkspaceTrigger::after {\n  content: \"\";\n  position: absolute;\n  inset: 0;\n  box-sizing: border-box;\n  border: 1px dashed currentColor;\n  border-radius: var(--dsw-radius-panel);\n  color: var(--dsw-alias-border-l4);\n  transition: color 100ms ease;\n  pointer-events: none;\n}\n.InputBar_cardWorkspaceTrigger :disabled {\n  pointer-events: none;\n}\n@media (hover: hover) {\n  .InputBar_cardWorkspaceTrigger:hover::after {\n    color: var(--dsw-alias-state-business-primary);\n  }\n}\n.InputBar_accessory {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  padding: 10px 12px 0;\n}\n.InputBar_overlayAnchor {\n  position: absolute;\n  inset: 0 0 auto;\n  height: 0;\n}\n.InputBar_scroll {\n  max-height: var(--dsh-composer-text-max-height);\n  overflow-y: auto;\n  margin-right: 4px;\n}\n.InputBar_scroll::-webkit-scrollbar-track {\n  margin-top: 8px;\n}\n.InputBar_grow {\n  position: relative;\n}\n.InputBar_pending {\n  width: 8px;\n  height: 8px;\n  border-radius: 50%;\n  corner-shape: round;\n  background: var(--dsw-alias-state-business-primary);\n  animation: InputBar_input-pending 1s ease-in-out infinite alternate;\n}\n@keyframes InputBar_input-pending {\n  from {\n    opacity: 0.35;\n  }\n  to {\n    opacity: 1;\n  }\n}\n.InputBar_input {\n  box-sizing: border-box;\n  min-height: 36px;\n  padding: 4px 8px 0 14px;\n  font-family: var(--dsw-font-family);\n  font-size: inherit;\n  line-height: inherit;\n  white-space: pre-wrap;\n  word-break: break-word;\n  overflow-wrap: anywhere;\n  outline: none;\n  color: var(--dsw-alias-label-primary);\n  caret-color: var(--dsw-alias-state-business-primary);\n}\n.InputBar_input p {\n  margin: 0;\n}\n.InputBar_input p:last-child::after {\n  content: var(--dsh-composer-hint);\n  color: var(--dsw-alias-label-caption);\n}\n.InputBar_input[data-composer-composing] p:last-child::after {\n  content: none;\n}\n.InputBar_input[data-composer-chip-selected] {\n  caret-color: transparent;\n}\n.InputBar_input[data-composer-composing] + .InputBar_placeholder {\n  visibility: hidden;\n}\n.InputBar_placeholder {\n  position: absolute;\n  inset: 4px 8px auto 14px;\n  color: var(--dsw-alias-label-caption);\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  pointer-events: none;\n  user-select: none;\n}\n.InputBar_inputDisabled {\n  color: var(--dsw-alias-label-tertiary);\n  cursor: not-allowed;\n}\n.InputBar_input[aria-haspopup=menu] {\n  cursor: pointer;\n}\n.InputBar_hero .InputBar_input {\n  min-height: 52px;\n}\n.InputBar_hero .InputBar_placeholder {\n  white-space: normal;\n  display: -webkit-box;\n  -webkit-box-orient: vertical;\n  -webkit-line-clamp: 2;\n  line-clamp: 2;\n}\n.InputBar_row {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  justify-content: space-between;\n  gap: 12px;\n  padding: 2px 8px 6px;\n  min-width: 0;\n  container-type: inline-size;\n}\n.InputBar_row[data-model-compact] {\n  --dsh-composer-model-text-display: none;\n  --dsh-composer-model-icon-display: block;\n}\n.InputBar_tools,\n.InputBar_modes,\n.InputBar_trailing {\n  display: flex;\n  align-items: center;\n  min-width: 0;\n}\n.InputBar_tools {\n  gap: 12px;\n}\n.InputBar_modes {\n  gap: 12px;\n}\n.InputBar_trailing {\n  flex: none;\n  margin-left: auto;\n  gap: 12px;\n}\n@container (max-width: 560px) {\n  .InputBar_tools,\n  .InputBar_modes,\n  .InputBar_trailing {\n    gap: 8px;\n  }\n}\n.InputBar_add {\n  display: grid;\n  place-items: center;\n  flex: none;\n  width: 28px;\n  height: 28px;\n  border: none;\n  border-radius: 999px;\n  corner-shape: round;\n  background: var(--dsw-specific-selector);\n  color: var(--dsw-alias-label-primary);\n  cursor: pointer;\n}\n@media (hover: hover) {\n  .InputBar_add:hover:not(:disabled) {\n    background: var(--dsw-alias-interactive-bg-hover-solid);\n  }\n}\n.InputBar_add:disabled {\n  opacity: 0.5;\n  cursor: default;\n}\n.InputBar_select {\n  max-width: 220px;\n  height: 28px;\n  padding: 0 20px 0 8px;\n  border: none;\n  border-radius: var(--dsw-radius-sm);\n  outline: none;\n  background-color: transparent;\n  background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M3 4.5L6 7.5L9 4.5' stroke='%2381858C' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E\");\n  background-repeat: no-repeat;\n  background-position: right 4px center;\n  background-size: 12px 12px;\n  color: var(--dsw-alias-label-secondary);\n  font-size: 13px;\n  line-height: 20px;\n  font-weight: 500;\n  white-space: nowrap;\n  cursor: pointer;\n  appearance: none;\n}\n@media (hover: hover) {\n  .InputBar_select:hover:not(:disabled) {\n    background-color: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.InputBar_select:disabled {\n  opacity: 0.5;\n  cursor: default;\n}\n.InputBar_primary {\n  display: grid;\n  place-items: center;\n  flex: none;\n  width: 34px;\n  height: 34px;\n  border: none;\n  border-radius: 999px;\n  corner-shape: round;\n  background: var(--dsw-alias-button-info-fill);\n  color: var(--dsw-alias-label-on-color);\n  cursor: pointer;\n  transition: background-color 100ms ease;\n  transform: translateY(-2px);\n}\n.InputBar_continueIcon {\n  transform: scale(1.5);\n}\n@media (hover: hover) {\n  .InputBar_primary:hover:not(:disabled) {\n    background: var(--dsw-alias-button-info-hover);\n  }\n}\n.InputBar_primary:disabled {\n  opacity: 0.4;\n  cursor: default;\n}\n.InputBar_primary[data-sending]:disabled {\n  opacity: 1;\n  cursor: progress;\n}\n.InputBar_sendingSpinner {\n  animation: InputBar_input-sending 800ms linear infinite;\n}\n@media (prefers-reduced-motion: reduce) {\n  .InputBar_sendingSpinner {\n    animation-duration: 2400ms;\n  }\n}\n@keyframes InputBar_input-sending {\n  to {\n    transform: rotate(360deg);\n  }\n}\n.InputBar_retry {\n  margin-left: 8px;\n  padding: 1px 8px;\n  border: 1px solid currentColor;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: inherit;\n  font-size: 12px;\n  cursor: pointer;\n}\n.InputBar_standardControls {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  min-width: 0;\n}\n.InputBar_tools[hidden],\n.InputBar_standardControls[hidden] {\n  display: none;\n}\n.InputBar_trailingActive {\n  flex: 1;\n  margin-left: 0;\n}\n.InputBar_activity {\n  display: flex;\n  align-items: center;\n  flex: none;\n}\n.InputBar_activity:empty {\n  display: none;\n}\n.InputBar_activityExpanded {\n  flex: 1;\n  min-width: 0;\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-conversation/src/client/skeleton/TodoPanel.module.css */\n.TodoPanel_root {\n  box-sizing: border-box;\n  flex: none;\n  overflow: hidden;\n  margin: 0 auto;\n  width: calc(100% - var(--dsh-composer-side-clearance) - var(--dsh-composer-side-clearance) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset));\n  max-width: calc(var(--dsh-composer-card-max-width) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset));\n  border: 0;\n  --dsw-elevation-stroke-color: var(--dsw-alias-border-l1);\n  border-radius: var(--dsw-radius-lg);\n  background: var(--dsw-specific-menu);\n  backdrop-filter: var(--dsw-menu-backdrop-filter);\n  box-shadow: var(--dsw-elevation-panel);\n  --dsh-scrollbar-thumb: var(--dsw-alias-scrollbar-bg-l2);\n  --dsh-scrollbar-thumb-hover: var(--dsw-alias-scrollbar-hover-l2);\n}\n.TodoPanel_body {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  padding: 6px 12px;\n}\n.TodoPanel_header {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  width: 100%;\n  padding: 0;\n  border: none;\n  background: transparent;\n  text-align: left;\n  cursor: pointer;\n}\n.TodoPanel_lead {\n  display: grid;\n  flex: none;\n  place-items: center;\n  color: var(--dsw-alias-label-tertiary);\n}\n.TodoPanel_title {\n  flex: none;\n  font-size: 13px;\n  line-height: 24px;\n  font-weight: 500;\n  color: var(--dsw-alias-label-primary);\n}\n.TodoPanel_progress {\n  flex: 1 1 auto;\n  min-width: 0;\n  overflow: hidden;\n  font-size: 13px;\n  line-height: 20px;\n  font-weight: 400;\n  color: var(--dsw-alias-label-tertiary);\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.TodoPanel_chevron {\n  display: grid;\n  flex: none;\n  place-items: center;\n  color: var(--dsw-alias-label-tertiary);\n}\n.TodoPanel_list {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  margin: 0;\n  padding: 0;\n  list-style: none;\n  max-height: 180px;\n  overflow-y: auto;\n}\n.TodoPanel_item {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  min-width: 0;\n  font-size: 13px;\n  line-height: 20px;\n  color: var(--dsw-alias-label-secondary);\n}\n.TodoPanel_glyph {\n  display: grid;\n  flex: none;\n  place-items: center;\n  width: 16px;\n  height: 16px;\n}\n.TodoPanel_content {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-input-trigger/src/client/MenuView.module.css */\n.MenuView_menu {\n  position: absolute;\n  bottom: calc(100% + 4px);\n  left: 0;\n  right: 0;\n  z-index: 100;\n  box-sizing: border-box;\n  max-height: 400px;\n  overflow: hidden;\n  --dsh-scrollbar-thumb: var(--dsw-alias-scrollbar-bg-l2);\n  --dsh-scrollbar-thumb-hover: var(--dsw-alias-scrollbar-hover-l2);\n  --dsh-scrollbar-width: 6px;\n  --dsh-scrollbar-thumb-border: 2px;\n  --dsh-scrollbar-track-margin: 12px;\n  padding: 4px;\n  display: flex;\n  flex-direction: column;\n  border: 0;\n  --dsw-elevation-stroke-color: var(--dsw-alias-border-l1);\n  box-shadow: var(--dsw-elevation-prominent);\n}\n.MenuView_menu[data-overflow-below]::after {\n  content: \"\";\n  position: absolute;\n  right: 14px;\n  bottom: 4px;\n  left: 4px;\n  height: 16px;\n  background:\n    linear-gradient(\n      to bottom,\n      transparent,\n      var(--dsw-specific-menu));\n  pointer-events: none;\n}\n.MenuView_viewport {\n  display: flex;\n  flex-direction: column;\n  min-height: 0;\n  overflow-y: auto;\n}\n.MenuView_item {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  width: 100%;\n  min-height: 34px;\n  padding: 6px 8px;\n  border: none;\n  border-radius: var(--dsw-radius-md);\n  background: transparent;\n  cursor: pointer;\n  font-size: 13px;\n  line-height: 20px;\n  color: var(--dsw-alias-label-primary);\n  text-align: left;\n}\n.MenuView_item.MenuView_active {\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n.MenuView_sectionTitle {\n  flex: none;\n  min-height: 23px;\n  padding: 5px 8px 2px;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 11px;\n  font-weight: 500;\n  line-height: 16px;\n}\n.MenuView_sectionTitle:not(:first-child) {\n  margin-top: 3px;\n}\n.MenuView_itemIcon {\n  display: inline-flex;\n  flex: none;\n  width: 14px;\n  height: 14px;\n  align-items: center;\n  justify-content: center;\n  color: var(--dsw-alias-menu-icon);\n}\n.MenuView_itemIcon svg {\n  width: 14px;\n  height: 14px;\n}\n.MenuView_itemName {\n  flex: none;\n  max-width: 40%;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.MenuView_itemAlias {\n  flex: none;\n  max-width: 20%;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 12px;\n  line-height: 18px;\n}\n.MenuView_itemDescription {\n  flex: 1;\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  text-align: right;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 12px;\n  line-height: 18px;\n}\n.MenuView_trailing {\n  flex: none;\n  display: inline-flex;\n  align-items: center;\n  gap: 3px;\n  margin-left: auto;\n}\n.MenuView_drillHintText {\n  display: none;\n  color: var(--dsw-alias-label-caption);\n  font-size: 10px;\n  line-height: 16px;\n  white-space: nowrap;\n}\n.MenuView_drillHint {\n  display: none;\n  padding: 0 4px;\n  border-radius: var(--dsw-radius-xs);\n  background: var(--dsw-alias-interactive-bg-hover);\n  color: var(--dsw-alias-label-caption);\n  font-family: inherit;\n  font-size: 10px;\n  line-height: 16px;\n}\n.MenuView_item.MenuView_active .MenuView_drillHintText,\n.MenuView_item.MenuView_active .MenuView_drillHint {\n  display: inline-flex;\n}\n.MenuView_drill {\n  flex: none;\n  display: inline-grid;\n  place-items: center;\n  width: 18px;\n  height: 18px;\n  border-radius: var(--dsw-radius-xs);\n  color: var(--dsw-alias-menu-icon);\n}\n@media (hover: hover) {\n  .MenuView_drill:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n    color: var(--dsw-alias-label-primary);\n  }\n}\n.MenuView_groupTitle {\n  padding: 6px 8px;\n  font-size: 11px;\n  line-height: 15px;\n  color: var(--dsw-alias-label-tertiary);\n}\n.MenuView_skeletonRow {\n  display: flex;\n  align-items: center;\n  box-sizing: border-box;\n  min-height: 34px;\n  padding: 6px 8px;\n}\n.MenuView_skeletonBar {\n  height: 18px;\n  border-radius: var(--dsw-radius-xs);\n  background: var(--dsw-alias-bg-skeleton);\n  animation: MenuView_dsh-menu-skeleton 2s cubic-bezier(0.36, 0, 0.64, 1) infinite;\n}\n@keyframes MenuView_dsh-menu-skeleton {\n  0% {\n    opacity: 1;\n  }\n  40% {\n    opacity: 0.6;\n  }\n  80%, 100% {\n    opacity: 1;\n  }\n}\n.MenuView_crumbs {\n  flex: none;\n  display: flex;\n  align-items: center;\n  flex-wrap: wrap;\n  gap: 2px;\n  padding: 3px 3px 5px;\n  margin-bottom: 2px;\n  border-bottom: 0.5px solid var(--dsw-alias-border-l1);\n}\n.MenuView_crumb {\n  flex: 0 1 auto;\n  max-width: 40%;\n  overflow: hidden;\n  padding: 2px 5px;\n  border: none;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-tertiary);\n  cursor: pointer;\n  font-family: inherit;\n  font-size: 11px;\n  line-height: 16px;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n@media (hover: hover) {\n  .MenuView_crumb:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n    color: var(--dsw-alias-label-primary);\n  }\n}\n.MenuView_crumbCurrent {\n  background: transparent;\n  color: var(--dsw-alias-label-primary);\n  cursor: default;\n}\n@media (hover: hover) {\n  .MenuView_crumbCurrent:hover {\n    background: transparent;\n    color: var(--dsw-alias-label-primary);\n    cursor: default;\n  }\n}\n.MenuView_crumbSeparator {\n  flex: none;\n  display: inline-flex;\n  color: var(--dsw-alias-menu-icon);\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-jobs/src/client/JobListAction.module.css */\n.JobListAction_trigger {\n  display: inline-flex;\n  align-items: center;\n  gap: 4px;\n  min-height: 28px;\n  padding: 3px 2px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 12px;\n  line-height: 18px;\n  cursor: pointer;\n}\n.JobListAction_trigger:focus-visible {\n  color: var(--dsw-alias-label-secondary);\n}\n@media (hover: hover) {\n  .JobListAction_trigger:hover {\n    color: var(--dsw-alias-label-secondary);\n  }\n}\n.JobListAction_activitySlot {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  justify-content: center;\n  width: 14px;\n  height: 14px;\n}\n.JobListAction_trigger .JobListAction_compactIcon {\n  display: none;\n}\n@container (max-width: 460px) {\n  .JobListAction_trigger .JobListAction_compactIcon {\n    display: block;\n  }\n  .JobListAction_trigger .JobListAction_textModeActivity {\n    display: none;\n  }\n  .JobListAction_trigger .JobListAction_count {\n    display: none;\n  }\n  .JobListAction_trigger {\n    box-sizing: border-box;\n    width: 28px;\n    height: 28px;\n    padding: 0;\n    justify-content: center;\n    color: var(--dsw-alias-label-secondary);\n  }\n  .JobListAction_trigger .JobListAction_activitySlot,\n  .JobListAction_trigger .JobListAction_activitySlot > svg {\n    width: 15px;\n    height: 15px;\n  }\n  .JobListAction_trigger:focus-visible {\n    color: var(--dsw-alias-label-secondary);\n  }\n  .JobListAction_trigger:active {\n    background: var(--dsw-alias-interactive-bg-active);\n  }\n  @media (hover: hover) {\n    .JobListAction_trigger:hover {\n      color: var(--dsw-alias-label-secondary);\n      background: var(--dsw-alias-interactive-bg-hover);\n    }\n  }\n}\n.JobListAction_menu {\n  position: fixed;\n  z-index: 100;\n  box-sizing: border-box;\n  display: flex;\n  flex-direction: column;\n  width: 500px;\n  max-width: min(560px, calc(100vw - 32px));\n  max-height: min(480px, calc(100dvh - 140px));\n  overflow: hidden;\n  --dsh-scrollbar-thumb: var(--dsw-alias-scrollbar-bg-l2);\n  --dsh-scrollbar-thumb-hover: var(--dsw-alias-scrollbar-hover-l2);\n  --dsw-elevation-stroke-color: var(--dsw-alias-border-l1);\n  box-shadow: var(--dsw-elevation-prominent);\n  position-area: none;\n  top: max(12px, calc(anchor(bottom) + 5px));\n  bottom: 12px;\n  left: max(12px, anchor(left));\n  right: 12px;\n  position-try-fallbacks:\n    --dsh-jobs-window,\n    --dsh-jobs-opposite,\n    --dsh-jobs-wide-opposite,\n    --dsh-jobs-tall,\n    --dsh-jobs-viewport;\n  align-self: start;\n  justify-self: start;\n  height: fit-content;\n  min-height: 0;\n  margin: 0;\n}\n.JobListAction_menuBody {\n  display: flex;\n  flex-direction: column;\n  gap: 1px;\n  min-height: 0;\n  margin: 0;\n  padding: 4px;\n  overflow: auto;\n  list-style: none;\n}\n.JobListAction_sectionHeader {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  margin: 4px 4px 1px;\n  padding: 4px 0 3px;\n  border-top: 0.5px solid var(--dsw-alias-border-l1);\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 11px;\n  line-height: 16px;\n}\n.JobListAction_sectionHeader:first-child {\n  margin-top: 0;\n  border-top: 0;\n}\n.JobListAction_sectionToggle,\n.JobListAction_sectionClear {\n  display: inline-flex;\n  gap: 3px;\n  align-items: center;\n  padding: 2px 4px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 11px;\n  line-height: 16px;\n  cursor: pointer;\n}\n.JobListAction_sectionToggle:focus-visible,\n.JobListAction_sectionClear:focus-visible {\n  background: var(--dsw-alias-fill-l1);\n  color: var(--dsw-alias-label-secondary);\n}\n@media (hover: hover) {\n  .JobListAction_sectionToggle:hover,\n  .JobListAction_sectionClear:hover {\n    background: var(--dsw-alias-fill-l1);\n    color: var(--dsw-alias-label-secondary);\n  }\n}\n.JobListAction_sectionChevron {\n  transform: rotate(-90deg);\n  transition: transform 120ms ease;\n}\n.JobListAction_sectionChevronOpen {\n  transform: none;\n}\n.JobListAction_item {\n  display: flex;\n  flex-direction: column;\n}\n.JobListAction_rowLine {\n  display: flex;\n  gap: 6px;\n  align-items: stretch;\n}\n.JobListAction_rowLineLive {\n  padding: 4px 8px 4px 2px;\n  border-radius: var(--dsw-radius-md);\n  background: var(--dsw-alias-fill-l2);\n}\n@media (hover: hover) {\n  .JobListAction_rowLineLive:hover {\n    background: color-mix(in srgb, var(--dsw-alias-label-primary) 9%, transparent);\n  }\n}\n.JobListAction_rowLineLive .JobListAction_kind {\n  background: var(--dsw-specific-menu);\n}\n.JobListAction_rowLine .JobListAction_row {\n  flex: 1;\n  min-width: 0;\n}\n@media (hover: hover) {\n  .JobListAction_rowLineLive .JobListAction_row:hover {\n    background: transparent;\n  }\n}\n.JobListAction_rowLineLive .JobListAction_row {\n  border-radius: var(--dsw-radius-sm);\n}\n.JobListAction_rowLineLive .JobListAction_row:focus-visible {\n  background: color-mix(in srgb, var(--dsw-alias-label-primary) 6%, transparent);\n}\n.JobListAction_chevronBox {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  align-self: center;\n  justify-content: center;\n  width: 20px;\n  height: 20px;\n  border: 0.5px solid var(--dsw-alias-border-l2);\n  border-radius: var(--dsw-radius-sm);\n  background: var(--dsw-specific-menu);\n}\n.JobListAction_stop {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  align-self: center;\n  justify-content: center;\n  width: 20px;\n  height: 20px;\n  padding: 0;\n  border: 0.5px solid var(--dsw-alias-border-l2);\n  border-radius: var(--dsw-radius-sm);\n  background: var(--dsw-specific-menu);\n  color: var(--dsw-alias-label-secondary);\n  cursor: pointer;\n}\n.JobListAction_stop:focus-visible {\n  border-color: color-mix(in srgb, var(--dsw-alias-state-error-primary) 45%, transparent);\n  color: var(--dsw-alias-state-error-primary);\n}\n@media (hover: hover) {\n  .JobListAction_stop:hover {\n    border-color: color-mix(in srgb, var(--dsw-alias-state-error-primary) 45%, transparent);\n    color: var(--dsw-alias-state-error-primary);\n  }\n}\n.JobListAction_stopArmed,\n.JobListAction_stopArmed:focus-visible {\n  gap: 4px;\n  width: auto;\n  padding: 0 7px;\n  border-color: color-mix(in srgb, var(--dsw-alias-state-error-primary) 45%, transparent);\n  background: color-mix(in srgb, var(--dsw-alias-state-error-primary) 12%, transparent);\n  color: var(--dsw-alias-state-error-primary);\n}\n@media (hover: hover) {\n  .JobListAction_stopArmed:hover {\n    gap: 4px;\n    width: auto;\n    padding: 0 7px;\n    border-color: color-mix(in srgb, var(--dsw-alias-state-error-primary) 45%, transparent);\n    background: color-mix(in srgb, var(--dsw-alias-state-error-primary) 12%, transparent);\n    color: var(--dsw-alias-state-error-primary);\n  }\n}\n.JobListAction_stopLabel {\n  font-size: 11px;\n  line-height: 18px;\n  white-space: nowrap;\n}\n.JobListAction_stopFailed {\n  color: var(--dsw-alias-state-error-primary);\n}\n.JobListAction_row {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  box-sizing: border-box;\n  width: 100%;\n  min-height: 28px;\n  padding: 4px 7px;\n  border: 0;\n  border-radius: var(--dsw-radius-md);\n  background: transparent;\n  color: var(--dsw-alias-label-primary);\n  font-size: 12px;\n  line-height: 17px;\n  text-align: left;\n  cursor: pointer;\n}\n.JobListAction_row:focus-visible {\n  background: var(--dsw-alias-fill-l1);\n}\n@media (hover: hover) {\n  .JobListAction_row:hover {\n    background: var(--dsw-alias-fill-l1);\n  }\n}\n.JobListAction_rowStatic {\n  cursor: default;\n}\n@media (hover: hover) {\n  .JobListAction_rowStatic:hover {\n    background: transparent;\n  }\n}\n.JobListAction_rowSettled {\n  color: var(--dsw-alias-label-tertiary);\n}\n.JobListAction_row .JobListAction_rowDot {\n  flex: none;\n}\n.JobListAction_main {\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  gap: 2px;\n  min-width: 0;\n}\n.JobListAction_primary {\n  display: flex;\n  align-items: baseline;\n  gap: 8px;\n  min-width: 0;\n}\n.JobListAction_secondary {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  min-width: 0;\n}\n.JobListAction_kind {\n  flex: none;\n  padding: 0 5px;\n  border-radius: var(--dsw-radius-xs);\n  background: var(--dsw-alias-fill-l2);\n  color: var(--dsw-alias-label-secondary);\n  font-size: 10px;\n  line-height: 16px;\n}\n.JobListAction_label {\n  flex: 1;\n  min-width: 0;\n  overflow: hidden;\n  font-family: var(--dsw-font-mono);\n  white-space: nowrap;\n  text-overflow: ellipsis;\n}\n.JobListAction_status {\n  flex: none;\n  max-width: 60%;\n  overflow: hidden;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 10px;\n  line-height: 16px;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n}\n.JobListAction_duration {\n  flex: none;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 11px;\n  line-height: 18px;\n  font-variant-numeric: tabular-nums;\n}\n.JobListAction_chevron {\n  flex: none;\n  color: var(--dsw-alias-label-tertiary);\n}\n.JobListAction_chevronOpen {\n  transform: rotate(180deg);\n}\n.JobListAction_panel {\n  margin: 0 8px 8px;\n  --dsl-terminal-command-whitespace: pre-wrap;\n  --dsl-terminal-line-whitespace: pre-wrap;\n  --dsl-terminal-output-max-height: 288px;\n}\n.JobListAction_panel [data-terminal] {\n  --dsl-terminal-gutter: 12px;\n}\n.JobListAction_notice {\n  margin: 0 8px 6px;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 11px;\n  line-height: 16px;\n}\n.JobListAction_noticeError {\n  color: var(--dsw-alias-state-error-primary);\n}\n@position-try --dsh-jobs-window {\n  position-area: none;\n  top: max(12px, calc(anchor(bottom) + 5px));\n  bottom: 12px;\n  left: 12px;\n  right: 12px;\n  margin: 0;\n  align-self: safe start;\n  justify-self: safe end;\n}\n@position-try --dsh-jobs-opposite {\n  top: max(12px, var(--dsh-frame-overlay-top, 12px));\n  bottom: max(12px, calc(anchor(top) + 5px));\n  align-self: end;\n}\n@position-try --dsh-jobs-wide-opposite {\n  top: max(12px, var(--dsh-frame-overlay-top, 12px));\n  bottom: max(12px, calc(anchor(top) + 5px));\n  left: 12px;\n  right: 12px;\n  align-self: end;\n  justify-self: safe end;\n}\n@position-try --dsh-jobs-tall {\n  position-area: none;\n  top: max(12px, var(--dsh-frame-overlay-top, 12px));\n  bottom: 12px;\n  left: max(12px, anchor(left));\n  right: 12px;\n  margin: 0;\n  align-self: safe start;\n  justify-self: start;\n}\n@position-try --dsh-jobs-viewport {\n  position-area: none;\n  inset: max(12px, var(--dsh-frame-overlay-top, 12px)) 12px 12px;\n  margin: 0;\n  align-self: safe start;\n  justify-self: safe end;\n}\n";
+const compiledNativeStyles = "/* ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ReviewComposer.module.css */\n.ReviewComposer_root,\n.ReviewComposer_thread {\n  box-sizing: border-box;\n  width: calc(100% - 20px);\n  max-width: 680px;\n  margin: 10px;\n  padding: 12px;\n  border: 0.5px solid var(--dsw-alias-border-l3);\n  border-radius: var(--dsw-radius-md);\n  background: var(--dsw-alias-bg-layer-1);\n  color: var(--dsw-alias-label-primary);\n  font: var(--dsw-font-xs-13);\n  font-family: Inter, var(--dsw-font-family);\n  white-space: normal;\n}\n.ReviewComposer_root {\n  background: var(--dsw-alias-bg-layer-2);\n  border-radius: var(--dsw-radius-lg);\n}\n.ReviewComposer_root:focus-within {\n  border-color: var(--dsw-alias-border-l4);\n}\n[data-forge-comments] > .ReviewComposer_root,\n[data-forge-comments] > .ReviewComposer_thread {\n  width: auto;\n  max-width: none;\n  margin: 0;\n}\n.ReviewComposer_title {\n  margin-bottom: 12px;\n  color: var(--dsw-alias-label-secondary);\n  overflow-wrap: anywhere;\n}\n.ReviewComposer_input {\n  display: block;\n  box-sizing: border-box;\n  width: 100%;\n  height: 88px;\n  min-height: 88px;\n  contain: strict;\n  padding: 10px 12px;\n  resize: vertical;\n  border: 0.5px solid var(--dsw-alias-border-l4);\n  border-radius: var(--dsw-radius-md);\n  outline: none;\n  background: var(--dsw-alias-bg-layer-3);\n  color: var(--dsw-alias-label-primary);\n  font: inherit;\n}\n.ReviewComposer_input::placeholder {\n  color: var(--dsw-alias-label-dimmed);\n}\n.ReviewComposer_input:focus {\n  border-color: var(--dsw-alias-state-business-primary);\n}\n.ReviewComposer_root .ReviewComposer_input {\n  padding: 0;\n  border: 0;\n  border-radius: 0;\n  background: transparent;\n}\n.ReviewComposer_actions {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  justify-content: flex-end;\n  gap: 8px;\n  padding-top: 10px;\n  margin-top: 10px;\n  border-top: 0.5px solid var(--dsw-alias-border-l2);\n}\n.ReviewComposer_cancel {\n  margin-inline-end: auto;\n}\n.ReviewComposer_error {\n  margin-top: 8px;\n  color: var(--dsw-alias-state-error-primary);\n  overflow-wrap: anywhere;\n}\n.ReviewComposer_gitAction {\n  display: inline-flex;\n  flex: none;\n  align-items: stretch;\n}\n.ReviewComposer_gitMain {\n  border-start-end-radius: 0;\n  border-end-end-radius: 0;\n}\n.ReviewComposer_gitArrow {\n  width: 30px;\n  padding: 0;\n  border-start-start-radius: 0;\n  border-end-start-radius: 0;\n  border-inline-start: 0.5px solid color-mix(in srgb, var(--dsw-alias-label-primary-foreground) 25%, transparent);\n}\n.ReviewComposer_threadHeader {\n  display: flex;\n  align-items: center;\n  flex-wrap: wrap;\n  gap: 8px;\n  margin-bottom: 8px;\n}\n.ReviewComposer_author {\n  font-weight: 500;\n}\n.ReviewComposer_range {\n  color: var(--dsw-alias-label-secondary);\n  font-size: 12px;\n}\n.ReviewComposer_commentBody {\n  white-space: pre-wrap;\n  overflow-wrap: anywhere;\n}\n.ReviewComposer_threadActions {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 4px;\n  margin: 8px -8px -4px;\n}\n.ReviewComposer_gutter {\n  position: relative;\n}\n.ReviewComposer_line {\n  display: block;\n  width: 100%;\n  height: 100%;\n  padding: 0;\n  color: inherit;\n  text-align: inherit;\n  cursor: pointer;\n  border: 0;\n  border-radius: 0;\n  background: transparent;\n  font: inherit;\n  user-select: none;\n  touch-action: pan-y;\n}\n.ReviewComposer_selected {\n  background: var(--dsw-alias-interactive-bg-hover);\n  outline: 1px solid var(--dsw-alias-border-l2);\n  outline-offset: -1px;\n}\n@media (hover: hover) {\n  .ReviewComposer_line:hover {\n    color: var(--dsw-alias-state-business-primary);\n  }\n}\n@media (pointer: coarse) {\n  .ReviewComposer_input {\n    font-size: 16px;\n  }\n  .ReviewComposer_line {\n    min-height: 28px;\n  }\n}\n.ReviewComposer_add,\n.ReviewComposer_hoverAdd {\n  position: absolute;\n  z-index: 1;\n  inset-inline-start: calc(100% - 4px);\n  top: 50%;\n  transform: translateY(-50%);\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  width: 22px;\n  height: 22px;\n  padding: 0;\n  border: 0;\n  border-radius: var(--dsw-radius-xs);\n  background: var(--dsw-alias-button-primary-fill);\n  color: var(--dsw-alias-label-primary-foreground);\n  font: inherit;\n  cursor: pointer;\n  user-select: none;\n}\n[data-review]:not([data-split]):not([data-single-side]) [data-review-side=L] .ReviewComposer_add,\n[data-review]:not([data-split]):not([data-single-side]) [data-review-side=L] .ReviewComposer_hoverAdd {\n  inset-inline-start: calc(100% + var(--forge-number-width, 3.5em) - 4px);\n}\n.ReviewComposer_hoverAdd {\n  display: none;\n}\n@media (hover: hover) {\n  [data-diff-side]:hover .ReviewComposer_hoverAdd,\n  [data-diff-line]:hover .ReviewComposer_hoverAdd {\n    display: inline-flex;\n  }\n}\n\n/* ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ReviewThreads.module.css */\n.ReviewThreads_card,\n.ReviewThreads_folded {\n  box-sizing: border-box;\n  width: calc(100% - 20px);\n  max-width: 720px;\n  margin: 10px;\n  border: 0.5px solid var(--dsw-alias-border-l3);\n  border-radius: var(--dsw-radius-md);\n  background: var(--dsw-alias-bg-layer-1);\n  color: var(--dsw-alias-label-primary);\n  font: var(--dsw-font-xs-13);\n  font-family: Inter, var(--dsw-font-family);\n  white-space: normal;\n}\n.ReviewThreads_card {\n  padding: 10px 12px;\n}\n.ReviewThreads_card:focus {\n  outline: none;\n}\n.ReviewThreads_card:focus-visible {\n  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: -1px;\n}\n[data-forge-comments] > .ReviewThreads_card,\n[data-forge-comments] > .ReviewThreads_folded {\n  width: auto;\n  max-width: none;\n  margin: 0;\n}\n.ReviewThreads_card[data-resolved] {\n  --dsh-scrollbar-thumb: var(--dsw-alias-scrollbar-bg-l2);\n  --dsh-scrollbar-thumb-hover: var(--dsw-alias-scrollbar-hover-l2);\n  background: var(--dsw-alias-bg-layer-2);\n}\n.ReviewThreads_folded {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  min-height: 32px;\n  padding: 4px 12px;\n  color: var(--dsw-alias-label-secondary);\n}\n.ReviewThreads_folded > svg {\n  flex: none;\n  color: var(--dsw-alias-state-success-primary);\n}\n.ReviewThreads_foldedText {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ReviewThreads_header {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 6px;\n  margin-bottom: 8px;\n}\n.ReviewThreads_place {\n  min-width: 0;\n  color: var(--dsw-alias-label-secondary);\n  font-size: 12px;\n  overflow-wrap: anywhere;\n}\n.ReviewThreads_spacer {\n  flex: 1;\n}\n.ReviewThreads_link {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  gap: 2px;\n  padding: 0;\n  border: 0;\n  background: transparent;\n  color: var(--dsw-alias-state-business-primary);\n  font: inherit;\n  font-size: 12px;\n  cursor: pointer;\n}\n.ReviewThreads_link:disabled {\n  color: var(--dsw-alias-label-dimmed);\n  cursor: default;\n}\n.ReviewThreads_link:focus-visible {\n  border-radius: var(--dsw-radius-xs);\n  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: 2px;\n}\n@media (hover: hover) {\n  .ReviewThreads_link:not(:disabled):hover {\n    text-decoration: underline;\n  }\n}\n.ReviewThreads_turned {\n  transform: rotate(-90deg);\n}\n.ReviewThreads_comments {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n.ReviewThreads_comment {\n  display: flex;\n  gap: 8px;\n  min-width: 0;\n}\n.ReviewThreads_avatar {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  justify-content: center;\n  overflow: hidden;\n  border-radius: 50%;\n  corner-shape: round;\n  background: var(--dsw-alias-interactive-bg-hover);\n  color: var(--dsw-alias-label-secondary);\n  font-weight: 500;\n  line-height: 1;\n  user-select: none;\n}\n.ReviewThreads_avatar img {\n  display: block;\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n  corner-shape: round;\n  object-fit: cover;\n}\n.ReviewThreads_commentMain {\n  flex: 1;\n  min-width: 0;\n}\n.ReviewThreads_commentHeader {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 6px;\n  min-height: 20px;\n}\n.ReviewThreads_login {\n  font-weight: 500;\n  overflow-wrap: anywhere;\n}\n.ReviewThreads_time {\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 12px;\n}\n.ReviewThreads_body {\n  min-width: 0;\n  margin-top: 2px;\n  overflow-wrap: anywhere;\n}\n.ReviewThreads_actions {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 4px;\n  margin: 10px -8px -4px;\n}\n.ReviewThreads_form {\n  margin-top: 10px;\n}\n.ReviewThreads_formActions {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  justify-content: flex-end;\n  gap: 8px;\n  margin-top: 8px;\n}\n.ReviewThreads_replyPrompt {\n  display: block;\n  box-sizing: border-box;\n  width: 100%;\n  min-height: 32px;\n  margin-top: 10px;\n  padding: 6px 12px;\n  border: 0.5px solid var(--dsw-alias-border-l4);\n  border-radius: var(--dsw-radius-md);\n  background: var(--dsw-alias-bg-layer-3);\n  color: var(--dsw-alias-label-dimmed);\n  font: inherit;\n  text-align: start;\n  cursor: text;\n}\n.ReviewThreads_replyPrompt:focus-visible {\n  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: 2px;\n}\n.ReviewThreads_menuAnchor {\n  display: inline-flex;\n  flex: none;\n}\n.ReviewThreads_icon {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  width: 20px;\n  height: 20px;\n  padding: 0;\n  border: 0;\n  border-radius: var(--dsw-radius-xs);\n  background: transparent;\n  color: var(--dsw-alias-label-secondary);\n  cursor: pointer;\n}\n.ReviewThreads_icon[aria-expanded=true] {\n  background: var(--dsw-alias-interactive-bg-hover);\n  color: var(--dsw-alias-label-primary);\n}\n.ReviewThreads_icon:focus-visible {\n  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: 1px;\n}\n@media (hover: hover) {\n  .ReviewThreads_icon:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n    color: var(--dsw-alias-label-primary);\n  }\n}\n.ReviewThreads_confirm {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 8px;\n  margin-top: 8px;\n}\n.ReviewThreads_confirmText {\n  flex: 1 1 auto;\n  min-width: 0;\n  color: var(--dsw-alias-label-secondary);\n  overflow-wrap: anywhere;\n}\n.ReviewThreads_confirmError,\n.ReviewThreads_actionError {\n  flex-basis: 100%;\n  margin-top: 0;\n}\n.ReviewThreads_actionError {\n  padding-inline: 8px;\n}\n.ReviewThreads_excerpt,\n.ReviewThreads_original {\n  margin-bottom: 10px;\n  overflow-x: auto;\n  border: 0.5px solid var(--dsw-alias-border-l2);\n  border-radius: var(--dsw-radius-sm);\n  font: var(--dsw-font-markdown-code-block);\n}\n.ReviewThreads_excerptLine,\n.ReviewThreads_originalLine {\n  min-height: 20px;\n  padding: 0 10px;\n  line-height: 20px;\n  white-space: pre;\n}\n.ReviewThreads_excerptHeader {\n  color: var(--dsw-alias-label-tertiary);\n}\n.ReviewThreads_added {\n  background: var(--dsw-alias-file-diff-added-bg);\n}\n.ReviewThreads_deleted {\n  background: var(--dsw-alias-file-diff-deleted-bg);\n}\n.ReviewThreads_original {\n  max-height: 320px;\n  overflow: auto;\n}\n.ReviewThreads_originalLine {\n  display: grid;\n  grid-template-columns: max-content minmax(0, 1fr);\n  gap: 12px;\n}\n.ReviewThreads_originalNumber {\n  min-width: 3ch;\n  color: var(--dsw-alias-label-tertiary);\n  text-align: right;\n  user-select: none;\n}\n.ReviewThreads_marked {\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n.ReviewThreads_originalNote {\n  padding: 8px 10px;\n  color: var(--dsw-alias-label-secondary);\n  font-family: Inter, var(--dsw-font-family);\n}\n.ReviewThreads_outdated {\n  border-top: 0.5px solid var(--dsw-alias-border-l3);\n  padding-bottom: 2px;\n}\n.ReviewThreads_outdatedHeader {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  min-height: 32px;\n  padding: 0 12px;\n  color: var(--dsw-alias-label-secondary);\n  font: var(--dsw-font-xs-13);\n  font-family: Inter, var(--dsw-font-family);\n}\n@container (max-width: 479px) {\n  .ReviewThreads_card,\n  .ReviewThreads_folded {\n    width: calc(100% - 12px);\n    margin: 6px;\n  }\n}\n\n/* ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/FileLabel.module.css */\n.FileLabel_label {\n  position: relative;\n  display: flex;\n  min-width: 0;\n}\n.FileLabel_parts {\n  display: flex;\n  align-items: baseline;\n  gap: 6px;\n  min-width: 0;\n  overflow: hidden;\n  white-space: nowrap;\n}\n.FileLabel_name {\n  flex: 0 1 auto;\n  color: var(--dsw-alias-label-primary);\n}\n.FileLabel_directory {\n  flex: 1 1 0;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 11px;\n}\n.FileLabel_shortened {\n  display: flex;\n  min-width: 0;\n  overflow: hidden;\n}\n.FileLabel_head {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.FileLabel_tail {\n  flex: none;\n}\n.FileLabel_visuallyHidden {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  overflow: hidden;\n  clip-path: inset(50%);\n  white-space: nowrap;\n}\n\n/* ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ChangesTab.module.css */\n.ChangesTab_root {\n  container: ChangesTab_forge-changes / inline-size;\n  --forge-changes-bg: var(--dsw-alias-bg-base);\n  --forge-fill: var(--dsw-alias-card-fill);\n  --forge-diff-empty: color-mix(in srgb, var(--dsw-alias-interactive-bg-hover) 50%, transparent);\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n  min-height: 0;\n  background: var(--forge-changes-bg);\n  color: var(--dsw-alias-label-primary);\n  font-size: 12px;\n  line-height: 18px;\n}\n.ChangesTab_header {\n  display: flex;\n  flex: none;\n  align-items: center;\n  gap: 8px;\n  box-sizing: border-box;\n  min-height: 44px;\n  padding: 0 8px 0 14px;\n  border-bottom: 0.5px solid var(--dsw-alias-border-l3);\n}\n.ChangesTab_headerIcon {\n  display: inline-flex;\n  flex: none;\n  color: var(--dsw-alias-label-secondary);\n}\n.ChangesTab_headerTitle {\n  min-width: 0;\n  overflow: hidden;\n  font-size: 13px;\n  font-weight: 500;\n  line-height: 20px;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ChangesTab_headerNumber {\n  flex: none;\n  color: var(--dsw-alias-label-tertiary);\n  font-family: var(--ds-font-family-code);\n}\n.ChangesTab_headerNote {\n  min-width: 0;\n  overflow: hidden;\n  color: var(--dsw-alias-label-secondary);\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ChangesTab_headerHead {\n  flex: 0 100 auto;\n  min-width: 2.5em;\n  overflow: hidden;\n  color: var(--dsw-alias-label-secondary);\n  font-family: var(--ds-font-family-code);\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ChangesTab_headerArrow {\n  flex: none;\n  color: var(--dsw-alias-label-tertiary);\n}\n.ChangesTab_headerSuffix {\n  color: var(--dsw-alias-label-tertiary);\n}\n@container ChangesTab_forge-changes (max-width: 520px) {\n  .ChangesTab_headerSuffix {\n    display: none;\n  }\n}\n@container ChangesTab_forge-changes (max-width: 380px) {\n  .ChangesTab_headerHead,\n  .ChangesTab_headerArrow {\n    display: none;\n  }\n}\n.ChangesTab_headerEnd {\n  display: inline-flex;\n  flex: 0 1 auto;\n  align-items: center;\n  gap: 4px;\n  min-width: 0;\n  margin-left: auto;\n}\n.ChangesTab_toolbar {\n  display: flex;\n  flex: none;\n  align-items: stretch;\n  box-sizing: border-box;\n  border-bottom: 0.5px solid var(--dsw-alias-border-l3);\n}\n.ChangesTab_lensCell {\n  display: none;\n  flex: none;\n  align-items: center;\n  box-sizing: border-box;\n  width: var(--forge-tree-width);\n  padding: 0 8px;\n  border-inline-end: 0.5px solid var(--dsw-alias-border-l3);\n}\n.ChangesTab_toolbar[data-tree=right] .ChangesTab_lensCell {\n  order: 1;\n  border-inline-start: 0.5px solid var(--dsw-alias-border-l3);\n  border-inline-end: 0;\n}\n.ChangesTab_toolbarMain {\n  display: flex;\n  flex: 1;\n  align-items: center;\n  gap: 0 4px;\n  box-sizing: border-box;\n  min-width: 0;\n  min-height: 38px;\n  padding: 5px 8px;\n}\n.ChangesTab_lensMenu {\n  display: inline-flex;\n}\n@container ChangesTab_forge-changes (min-width: 760px) {\n  .ChangesTab_toolbar:not([data-tree=hidden]) .ChangesTab_lensCell {\n    display: flex;\n  }\n  .ChangesTab_toolbar:not([data-tree=hidden]) .ChangesTab_lensMenu {\n    display: none;\n  }\n}\n.ChangesTab_spacer {\n  flex: 1;\n}\n.ChangesTab_progressSlot,\n.ChangesTab_foldTests,\n.ChangesTab_filesSlot {\n  display: inline-flex;\n  flex: none;\n  min-width: 0;\n}\n.ChangesTab_select {\n  display: inline-flex;\n  flex: 0 1 auto;\n  align-items: center;\n  gap: 4px;\n  box-sizing: border-box;\n  min-width: 0;\n  height: 28px;\n  padding: 0 6px 0 8px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-primary);\n  cursor: pointer;\n  font: inherit;\n  white-space: nowrap;\n}\n.ChangesTab_select[aria-expanded=true] {\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n@media (hover: hover) {\n  .ChangesTab_select:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.ChangesTab_select:disabled {\n  color: var(--dsw-alias-label-tertiary);\n  cursor: default;\n}\n@media (hover: hover) {\n  .ChangesTab_select:disabled:hover {\n    background: transparent;\n  }\n}\n.ChangesTab_select svg {\n  flex: none;\n}\n.ChangesTab_counts {\n  display: inline-flex;\n  flex: none;\n  gap: 6px;\n  font-family: var(--ds-font-family-code);\n}\n.ChangesTab_totals {\n  padding: 0 4px;\n}\n.ChangesTab_added {\n  color: var(--dsw-alias-state-success-primary);\n}\n.ChangesTab_deleted {\n  color: var(--dsw-alias-state-error-primary);\n}\n.ChangesTab_tools {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  gap: 2px;\n}\n.ChangesTab_tool {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  justify-content: center;\n  width: 28px;\n  height: 28px;\n  padding: 0;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-secondary);\n  cursor: pointer;\n}\n.ChangesTab_tool[aria-pressed=true],\n.ChangesTab_tool[aria-expanded=true],\n.ChangesTab_tool[data-expanded] {\n  background: var(--dsw-alias-interactive-bg-hover);\n  color: var(--dsw-alias-label-primary);\n}\n@media (hover: hover) {\n  .ChangesTab_tool:hover:not(:disabled) {\n    background: var(--dsw-alias-interactive-bg-hover);\n    color: var(--dsw-alias-label-primary);\n  }\n}\n.ChangesTab_tool:disabled {\n  color: var(--dsw-alias-label-tertiary);\n  cursor: default;\n}\n.ChangesTab_tool svg {\n  width: 15px;\n  height: 15px;\n}\n.ChangesTab_tool[aria-pressed=true] .ChangesTab_compareIcon {\n  transform: rotate(90deg);\n}\n.ChangesTab_more {\n  display: none;\n}\n.ChangesTab_toolbarMain:is([data-fold=\"1\"], [data-fold=\"2\"], [data-fold=\"3\"]) .ChangesTab_foldViews,\n.ChangesTab_toolbarMain:is([data-fold=\"2\"], [data-fold=\"3\"]) .ChangesTab_foldTests,\n.ChangesTab_toolbarMain[data-fold=\"3\"] .ChangesTab_foldRefresh {\n  display: none;\n}\n.ChangesTab_toolbarMain[data-fold=\"3\"] .ChangesTab_filesSlot {\n  flex-shrink: 1;\n}\n.ChangesTab_toolbarMain:is([data-fold=\"1\"], [data-fold=\"2\"], [data-fold=\"3\"]) .ChangesTab_more {\n  display: inline-flex;\n}\n.ChangesTab_toolbarMain:is([data-fold=\"2\"], [data-fold=\"3\"]) .ChangesTab_progressSlot [data-forge-progress=full] {\n  display: none;\n}\n.ChangesTab_toolbarMain:is([data-fold=\"2\"], [data-fold=\"3\"]) .ChangesTab_progressSlot [data-forge-progress=compact] {\n  display: inline-flex;\n}\n.ChangesTab_menuRow {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 12px;\n  min-width: 0;\n}\n.ChangesTab_menuPath {\n  flex: 1;\n  min-width: 0;\n}\n.ChangesTab_menuList {\n  min-width: 280px;\n  max-width: min(420px, 80vw);\n}\n.ChangesTab_notice {\n  display: flex;\n  flex: none;\n  align-items: center;\n  gap: 8px;\n  padding: 8px 14px;\n  border-bottom: 0.5px solid var(--dsw-alias-border-l3);\n  background: var(--forge-fill);\n  color: var(--dsw-alias-label-secondary);\n}\n.ChangesTab_notice > svg {\n  flex: none;\n}\n.ChangesTab_noticeAction {\n  flex: none;\n  margin-left: auto;\n}\n.ChangesTab_body {\n  position: relative;\n  display: flex;\n  flex: 1;\n  min-height: 0;\n}\n.ChangesTab_treeToggle {\n  display: none;\n}\n@container ChangesTab_forge-changes (min-width: 760px) {\n  .ChangesTab_treeToggle {\n    display: inline-flex;\n  }\n  .ChangesTab_treePane:not([hidden]) {\n    display: block;\n  }\n}\n.ChangesTab_files {\n  --forge-files-inset: 10px;\n  flex: 1;\n  box-sizing: border-box;\n  min-width: 0;\n  min-height: 0;\n  padding: var(--forge-files-inset);\n  overflow: auto;\n}\n.ChangesTab_files:focus {\n  outline: none;\n}\n.ChangesTab_actions {\n  display: flex;\n  gap: 8px;\n}\n.ChangesTab_centered {\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  gap: 8px;\n  box-sizing: border-box;\n  padding: 24px;\n  color: var(--dsw-alias-label-secondary);\n  font-size: var(--dsh-content-font-size-secondary, 13px);\n  text-align: center;\n}\n.ChangesTab_file {\n  overflow: clip;\n  border: 0.5px solid var(--dsw-alias-border-l4);\n  border-radius: var(--dsw-radius-lg);\n  background: var(--forge-changes-bg);\n}\n.ChangesTab_file + .ChangesTab_file {\n  margin-top: 12px;\n}\n@container ChangesTab_forge-changes (max-width: 380px) {\n  .ChangesTab_files {\n    --forge-files-inset: 6px;\n  }\n  .ChangesTab_file + .ChangesTab_file {\n    margin-top: 8px;\n  }\n}\n.ChangesTab_fileHeader {\n  position: sticky;\n  top: calc(-1 * var(--forge-files-inset, 0px));\n  z-index: 2;\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  box-sizing: border-box;\n  min-height: 36px;\n  padding: 0 4px 0 8px;\n  border-bottom: 0.5px solid var(--dsw-alias-border-l3);\n  background: linear-gradient(var(--dsw-alias-interactive-bg-hover), var(--dsw-alias-interactive-bg-hover)), var(--forge-changes-bg);\n}\n.ChangesTab_fileToggle {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  justify-content: center;\n  width: 20px;\n  height: 24px;\n  padding: 0;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-tertiary);\n  cursor: pointer;\n}\n@media (hover: hover) {\n  .ChangesTab_fileToggle:hover {\n    color: var(--dsw-alias-label-primary);\n  }\n}\n.ChangesTab_file:not([data-expanded]) .ChangesTab_fileHeader {\n  border-bottom: 0;\n}\n.ChangesTab_fileTitle {\n  display: flex;\n  flex: 1 1 0;\n  align-items: center;\n  gap: 6px;\n  min-width: 0;\n  overflow: hidden;\n}\n.ChangesTab_fileIcon {\n  flex: none;\n}\n.ChangesTab_filePath {\n  display: flex;\n  flex: 0 1 auto;\n  min-width: 0;\n}\n.ChangesTab_fileSpacer {\n  flex: 1;\n  align-self: stretch;\n}\n.ChangesTab_chevron {\n  transition: transform 120ms ease;\n}\n.ChangesTab_file:not([data-expanded]) .ChangesTab_chevron {\n  transform: rotate(-90deg);\n}\n.ChangesTab_changedTag {\n  flex: none;\n  max-width: 30%;\n}\n.ChangesTab_changedText {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.ChangesTab_viewed {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  gap: 6px;\n  box-sizing: border-box;\n  height: 24px;\n  padding: 0 8px 0 6px;\n  border: 0.5px solid var(--dsw-alias-border-l2);\n  border-radius: var(--dsw-radius-sm);\n  color: var(--dsw-alias-label-secondary);\n  white-space: nowrap;\n  cursor: pointer;\n  user-select: none;\n}\n.ChangesTab_viewed input {\n  margin: 0;\n  accent-color: var(--dsw-alias-state-business-primary);\n  cursor: pointer;\n}\n.ChangesTab_viewed:has(input:checked) {\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n@media (hover: hover) {\n  .ChangesTab_viewed:hover {\n    color: var(--dsw-alias-label-primary);\n  }\n}\n.ChangesTab_viewed[data-disabled],\n.ChangesTab_viewed[data-disabled] input {\n  color: var(--dsw-alias-label-tertiary);\n  cursor: default;\n}\n.ChangesTab_viewed:has(input:focus-visible) {\n  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: -1px;\n}\n.ChangesTab_viewed input:focus-visible {\n  outline: none;\n}\n@container ChangesTab_forge-changes (max-width: 520px) {\n  .ChangesTab_viewed {\n    padding: 0 6px;\n  }\n  .ChangesTab_viewedLabel {\n    display: none;\n  }\n}\n.ChangesTab_badge {\n  flex: 0 1 auto;\n  min-width: 0;\n  max-width: 50%;\n  overflow: hidden;\n  padding: 0 6px;\n  border-radius: 4px;\n  background: var(--forge-fill);\n  color: var(--dsw-alias-label-secondary);\n  font-size: 11px;\n  line-height: 18px;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ChangesTab_code {\n  overflow-x: auto;\n  font: var(--dsw-font-markdown-code-block);\n}\n.ChangesTab_unreached {\n  height: calc(var(--forge-rows) * 22px);\n}\n.ChangesTab_code:not([data-wrap]):not([data-split]) {\n  display: grid;\n  grid-template-columns: minmax(max-content, 100%);\n}\n.ChangesTab_line {\n  display: grid;\n  grid-template-columns: var(--forge-number-width, 3.5em) var(--forge-number-width, 3.5em) 1.4em minmax(0, 1fr);\n  box-sizing: border-box;\n  min-height: 22px;\n  line-height: 22px;\n  white-space: pre;\n}\n.ChangesTab_code:not([data-wrap]):not([data-split]) .ChangesTab_line {\n  grid-template-columns: var(--forge-number-width, 3.5em) var(--forge-number-width, 3.5em) 1.4em max-content;\n}\n.ChangesTab_pair {\n  display: grid;\n  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);\n  min-height: 22px;\n  line-height: 22px;\n  white-space: pre;\n}\n.ChangesTab_cell {\n  display: grid;\n  grid-template-columns: var(--forge-number-width, 3.5em) minmax(0, 1fr);\n  box-sizing: border-box;\n  min-width: 0;\n}\n.ChangesTab_cell + .ChangesTab_cell {\n  border-left: 0.5px solid var(--dsw-alias-border-l3);\n}\n.ChangesTab_cell .ChangesTab_text {\n  overflow: hidden;\n}\n.ChangesTab_code[data-wrap] .ChangesTab_line,\n.ChangesTab_code[data-wrap] .ChangesTab_pair {\n  white-space: pre-wrap;\n}\n.ChangesTab_code[data-wrap] .ChangesTab_text {\n  overflow-wrap: anywhere;\n}\n.ChangesTab_number {\n  box-sizing: border-box;\n  padding-right: 6px;\n  color: var(--dsw-alias-label-tertiary);\n  text-align: right;\n  user-select: none;\n}\n.ChangesTab_sign {\n  text-align: center;\n  user-select: none;\n}\n.ChangesTab_text {\n  padding: 0 16px 0 6px;\n}\n.ChangesTab_code[data-split][data-review] .ChangesTab_text {\n  padding-left: calc(1.4em + 6px);\n}\n.ChangesTab_add {\n  --forge-diff-gutter: var(--dsw-alias-file-diff-added-gutter);\n  --forge-diff-marker: var(--dsw-alias-file-diff-added-marker);\n  background: var(--dsw-alias-file-diff-added-bg);\n}\n.ChangesTab_del {\n  --forge-diff-gutter: var(--dsw-alias-file-diff-deleted-gutter);\n  --forge-diff-marker: var(--dsw-alias-file-diff-deleted-marker);\n  background: var(--dsw-alias-file-diff-deleted-bg);\n}\n.ChangesTab_add .ChangesTab_number,\n.ChangesTab_del .ChangesTab_number {\n  background: var(--forge-diff-gutter);\n  color: var(--forge-diff-marker);\n}\n.ChangesTab_add .ChangesTab_sign,\n.ChangesTab_del .ChangesTab_sign {\n  color: var(--forge-diff-marker);\n}\n.ChangesTab_context .ChangesTab_text {\n  color: var(--dsw-alias-label-secondary);\n}\n.ChangesTab_empty {\n  background: var(--forge-diff-empty);\n}\n.ChangesTab_notes {\n  display: grid;\n  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);\n  white-space: normal;\n}\n.ChangesTab_noteCell {\n  display: grid;\n  grid-template-columns: var(--forge-number-width, 3.5em) minmax(0, 1fr);\n  min-width: 0;\n}\n.ChangesTab_noteCell + .ChangesTab_noteCell {\n  border-left: 0.5px solid var(--dsw-alias-border-l3);\n}\n.ChangesTab_noteStack {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  min-width: 0;\n  padding: 8px 12px 10px calc(1.4em + 6px);\n}\n.ChangesTab_noteStack:empty {\n  padding: 0;\n}\n.ChangesTab_gap,\n.ChangesTab_fileNote {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  box-sizing: border-box;\n  width: 100%;\n  min-height: 26px;\n  margin: 0;\n  padding: 0 12px;\n  border: 0;\n  background: var(--forge-fill);\n  color: var(--dsw-alias-label-tertiary);\n  font-family: var(--dsw-font-family);\n  font-size: 12px;\n  line-height: 18px;\n  text-align: left;\n}\n.ChangesTab_gap {\n  cursor: pointer;\n}\n@media (hover: hover) {\n  .ChangesTab_gap:hover:not(:disabled) {\n    background: var(--dsw-alias-interactive-bg-hover);\n    color: var(--dsw-alias-label-primary);\n  }\n}\n.ChangesTab_gap:disabled {\n  cursor: progress;\n}\n.ChangesTab_local {\n  min-width: 0;\n  border: 0.5px solid var(--dsw-alias-border-l2);\n  border-radius: var(--dsw-radius-md);\n  background: var(--dsw-alias-bg-layer-1);\n}\n.ChangesTab_localHead {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  min-width: 0;\n  padding: 8px 12px 2px 6px;\n}\n.ChangesTab_localToggle {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  gap: 6px;\n  min-height: 26px;\n  padding: 0 6px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-primary);\n  cursor: pointer;\n  font: inherit;\n  font-weight: 500;\n}\n@media (hover: hover) {\n  .ChangesTab_localToggle:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.ChangesTab_localToggle svg {\n  color: var(--dsw-alias-label-tertiary);\n  transition: transform 120ms ease;\n}\n.ChangesTab_localToggle[aria-expanded=true] svg {\n  transform: rotate(180deg);\n}\n.ChangesTab_localRefs {\n  min-width: 0;\n  margin-left: auto;\n  overflow: hidden;\n  color: var(--dsw-alias-label-tertiary);\n  font-family: var(--ds-font-family-code);\n  font-size: 12px;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ChangesTab_localRow {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  padding: 4px 10px 10px 12px;\n  font-size: 12px;\n}\n.ChangesTab_localView {\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  min-width: 0;\n  min-height: 28px;\n  margin-left: -6px;\n  padding: 0 6px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-secondary);\n  cursor: pointer;\n  font: inherit;\n}\n@media (hover: hover) {\n  .ChangesTab_localView:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.ChangesTab_localCreate {\n  flex: none;\n  margin-left: auto;\n}\n.ChangesTab_localFiles {\n  margin: 0;\n  padding: 4px 6px 8px;\n  border-top: 0.5px solid var(--dsw-alias-border-l2);\n  list-style: none;\n}\n.ChangesTab_localFile {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  box-sizing: border-box;\n  width: 100%;\n  min-height: 28px;\n  padding: 0 6px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-primary);\n  cursor: pointer;\n  font: inherit;\n  font-size: 12px;\n  text-align: left;\n}\n@media (hover: hover) {\n  .ChangesTab_localFile:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.ChangesTab_localFile .ChangesTab_menuPath {\n  flex: 1;\n}\n.ChangesTab_localView:focus-visible,\n.ChangesTab_localToggle:focus-visible,\n.ChangesTab_fileToggle:focus-visible,\n.ChangesTab_localFile:focus-visible,\n.ChangesTab_select:focus-visible,\n.ChangesTab_gap:focus-visible {\n  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: -2px;\n}\n.ChangesTab_reviewNotice {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 8px;\n  padding: 10px;\n}\n.ChangesTab_code[data-split][data-native-side=L] [data-diff-side=R],\n.ChangesTab_code[data-split][data-native-side=L] [data-diff-side=R] *,\n.ChangesTab_code[data-split][data-native-side=R] [data-diff-side=L],\n.ChangesTab_code[data-split][data-native-side=R] [data-diff-side=L] * {\n  user-select: none;\n}\n.ChangesTab_headerAction {\n  flex: none;\n  white-space: nowrap;\n}\n.ChangesTab_code[data-single-side] .ChangesTab_line {\n  grid-template-columns: var(--forge-number-width) 1.4em minmax(0, 1fr);\n}\n.ChangesTab_code[data-single-side]:not([data-wrap]) .ChangesTab_line {\n  grid-template-columns: var(--forge-number-width) 1.4em max-content;\n}\n.ChangesTab_reviewFile {\n  padding: 12px 0;\n}\n.ChangesTab_reviewFile > h3 {\n  margin: 0 10px;\n  font-size: 12px;\n  font-weight: 500;\n  overflow-wrap: anywhere;\n}\n.ChangesTab_threadCount {\n  flex: none;\n  height: 20px;\n  padding: 0 6px;\n  border: 0;\n  border-radius: var(--dsw-radius-xs);\n  background: color-mix(in srgb, var(--dsw-alias-state-business-primary) 12%, transparent);\n  color: var(--dsw-alias-state-business-primary);\n  font: inherit;\n  font-size: 11px;\n  line-height: 20px;\n  white-space: nowrap;\n  cursor: pointer;\n}\n.ChangesTab_threadCount:focus-visible {\n  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: -1px;\n}\n@media (hover: hover) {\n  .ChangesTab_threadCount:hover {\n    background: color-mix(in srgb, var(--dsw-alias-state-business-primary) 20%, transparent);\n  }\n}\n.ChangesTab_threadCountNumber {\n  display: none;\n}\n@container ChangesTab_forge-changes (max-width: 479px) {\n  .ChangesTab_threadCountText {\n    display: none;\n  }\n  .ChangesTab_threadCountNumber {\n    display: inline;\n  }\n}\n.ChangesTab_threadsToggle {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  gap: 6px;\n  height: 28px;\n  padding: 0 8px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-primary);\n  font: inherit;\n  white-space: nowrap;\n  cursor: pointer;\n}\n.ChangesTab_threadsToggle[aria-pressed=true] {\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n@media (hover: hover) {\n  .ChangesTab_threadsToggle:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.ChangesTab_threadsTotal {\n  padding: 0 5px;\n  border-radius: var(--dsw-radius-xs);\n  background: var(--forge-fill);\n  color: var(--dsw-alias-label-secondary);\n  font-size: 11px;\n  line-height: 16px;\n}\n\n/* ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ChangedFiles.module.css */\n.ChangedFiles_root {\n  box-sizing: border-box;\n  width: 100%;\n  min-width: 0;\n  display: flex;\n  flex-direction: column;\n  min-height: 0;\n  color: var(--dsw-alias-label-primary);\n  font-size: 12px;\n}\n.ChangedFiles_search {\n  padding: 8px;\n}\n.ChangedFiles_rows {\n  overflow: auto;\n  min-height: 0;\n  padding: 0 4px 6px;\n}\n.ChangedFiles_row {\n  box-sizing: border-box;\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  width: 100%;\n  min-width: 0;\n  min-height: 30px;\n  padding: 4px 6px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: inherit;\n  font: inherit;\n  text-align: start;\n  cursor: pointer;\n}\n.ChangedFiles_row svg {\n  flex: none;\n}\n.ChangedFiles_name {\n  flex: 1;\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ChangedFiles_threads {\n  flex: none;\n  min-width: 16px;\n  padding: 0 5px;\n  box-sizing: border-box;\n  border-radius: var(--dsw-radius-xs);\n  background: color-mix(in srgb, var(--dsw-alias-state-business-primary) 12%, transparent);\n  color: var(--dsw-alias-state-business-primary);\n  font-size: 11px;\n  line-height: 16px;\n  text-align: center;\n}\n.ChangedFiles_selected {\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n.ChangedFiles_chevron {\n  display: inline-flex;\n  flex: 0 0 12px;\n}\n.ChangedFiles_collapsed {\n  transform: rotate(-90deg);\n}\n.ChangedFiles_empty {\n  padding: 12px 8px;\n  color: var(--dsw-alias-label-secondary);\n}\n.ChangedFiles_menu {\n  width: min(360px, calc(100vw - 24px));\n}\n.ChangedFiles_trigger {\n  display: inline-flex;\n  align-items: center;\n  gap: 4px;\n  height: 28px;\n  padding: 0 8px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-primary);\n  font: inherit;\n  white-space: nowrap;\n  cursor: pointer;\n}\n.ChangedFiles_trigger:disabled {\n  color: var(--dsw-alias-label-tertiary);\n  cursor: default;\n}\n.ChangedFiles_anchor {\n  min-width: 0;\n  max-width: 100%;\n}\n.ChangedFiles_trigger {\n  min-width: 0;\n  max-width: 100%;\n}\n.ChangedFiles_triggerLabel {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.ChangedFiles_triggerChevron {\n  flex: none;\n}\n@media (hover: hover) {\n  .ChangedFiles_row:hover,\n  .ChangedFiles_trigger:hover:not(:disabled) {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n@media (pointer: coarse) {\n  .ChangedFiles_row {\n    min-height: 44px;\n  }\n  .ChangedFiles_search input {\n    font-size: 16px;\n  }\n}\n.ChangedFiles_searchInput {\n  box-sizing: border-box;\n  width: 100%;\n  max-width: 100%;\n}\n.ChangedFiles_searchInput input::placeholder {\n  color: var(--dsw-alias-label-secondary);\n}\n\n/* ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/FileTreePane.module.css */\n.FileTreePane_pane {\n  display: none;\n  position: relative;\n  flex: none;\n  min-width: 0;\n  min-height: 0;\n  box-sizing: border-box;\n  border-inline-start: 0.5px solid var(--dsw-alias-border-l3);\n}\n.FileTreePane_pane[hidden] {\n  display: none;\n}\n.FileTreePane_pane[data-position=left] {\n  order: -1;\n  border-inline-start: 0;\n  border-inline-end: 0.5px solid var(--dsw-alias-border-l3);\n}\n.FileTreePane_navigation {\n  height: 100%;\n  min-width: 0;\n  overflow-y: auto;\n}\n.FileTreePane_resize {\n  position: absolute;\n  inset-block: 0;\n  inset-inline-start: -4px;\n  width: 8px;\n  z-index: 2;\n  cursor: col-resize;\n  touch-action: none;\n  user-select: none;\n}\n.FileTreePane_resize::after {\n  content: \"\";\n  position: absolute;\n  inset-block: 0;\n  inset-inline-start: 3px;\n  width: 2px;\n}\n.FileTreePane_pane[data-position=left] .FileTreePane_resize {\n  inset-inline-start: auto;\n  inset-inline-end: -4px;\n}\n.FileTreePane_resize:focus-visible::after {\n  background: var(--dsw-alias-state-business-primary);\n}\n@media (hover: hover) {\n  .FileTreePane_resize:hover::after {\n    background: var(--dsw-alias-state-business-primary);\n  }\n}\n\n/* ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/RefreshGlyph.module.css */\n.RefreshGlyph_glyph {\n  display: inline-flex;\n}\n.RefreshGlyph_glyph[data-turning] {\n  animation: RefreshGlyph_forge-refresh-turn 1s linear infinite;\n}\n@keyframes RefreshGlyph_forge-refresh-turn {\n  to {\n    transform: rotate(360deg);\n  }\n}\n@media (prefers-reduced-motion: reduce) {\n  .RefreshGlyph_glyph[data-turning] {\n    animation-name: RefreshGlyph_forge-refresh-dim;\n  }\n}\n@keyframes RefreshGlyph_forge-refresh-dim {\n  50% {\n    opacity: 0.4;\n  }\n}\n\n/* ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ReviewControls.module.css */\n.ReviewControls_segmented {\n  box-sizing: border-box;\n  display: grid;\n  grid-auto-columns: minmax(0, 1fr);\n  grid-auto-flow: column;\n  gap: 2px;\n  width: 100%;\n  min-width: 0;\n  height: 28px;\n  padding: 2px;\n  border-radius: var(--dsw-radius-md);\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n.ReviewControls_segment {\n  box-sizing: border-box;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: 4px;\n  min-width: 0;\n  height: 24px;\n  padding: 0 4px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-secondary);\n  font: inherit;\n  white-space: nowrap;\n  cursor: pointer;\n}\n.ReviewControls_segment[aria-checked=true] {\n  background: var(--dsw-alias-bg-layer-1);\n  box-shadow: var(--dsw-elevation-soft);\n  color: var(--dsw-alias-label-primary);\n}\n@media (hover: hover) {\n  .ReviewControls_segment:hover:not(:disabled) {\n    color: var(--dsw-alias-label-primary);\n  }\n}\n.ReviewControls_segment:disabled {\n  color: var(--dsw-alias-label-tertiary);\n  cursor: default;\n}\n.ReviewControls_segment:focus-visible {\n  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: -2px;\n}\n.ReviewControls_segmentLabel {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.ReviewControls_count {\n  flex: none;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 11px;\n  font-variant-numeric: tabular-nums;\n}\n.ReviewControls_menuRow {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 16px;\n  min-width: 120px;\n}\n.ReviewControls_trigger {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  gap: 4px;\n  height: 28px;\n  padding: 0 6px 0 8px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-primary);\n  font: inherit;\n  white-space: nowrap;\n  cursor: pointer;\n}\n.ReviewControls_trigger[aria-expanded=true] {\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n@media (hover: hover) {\n  .ReviewControls_trigger:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.ReviewControls_switch {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  gap: 6px;\n  height: 28px;\n  padding: 0 4px;\n  color: var(--dsw-alias-label-secondary);\n  white-space: nowrap;\n  cursor: pointer;\n}\n.ReviewControls_switchLabel {\n  user-select: none;\n}\n.ReviewControls_progress {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  gap: 6px;\n  padding: 0 4px;\n  color: var(--dsw-alias-label-secondary);\n  white-space: nowrap;\n  font-variant-numeric: tabular-nums;\n}\n.ReviewControls_progressForm {\n  display: inline-flex;\n  align-items: center;\n}\n.ReviewControls_progressForm[data-forge-progress=compact] {\n  display: none;\n}\n.ReviewControls_ring {\n  flex: none;\n  width: 14px;\n  height: 14px;\n  transform: rotate(-90deg);\n}\n.ReviewControls_ringTrack,\n.ReviewControls_ringFill {\n  fill: none;\n  stroke-width: 2px;\n}\n.ReviewControls_ringTrack {\n  stroke: var(--dsw-alias-border-l3);\n}\n.ReviewControls_ringFill {\n  stroke: var(--dsw-alias-state-success-primary);\n}\n\n/* ../node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/shell/SidebarRight.module.css */\n.SidebarRight_session {\n  display: contents;\n}\n.SidebarRight_session[hidden] {\n  display: none;\n}\n.SidebarRight_panel {\n  --dsh-dockkit-dock-layer: 10;\n  --dsh-dockkit-float-layer: 60;\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  display: flex;\n  flex-direction: column;\n  min-width: 0;\n  overflow: clip;\n  pointer-events: none;\n}\n.SidebarRight_panel [data-dockkit-host=dock],\n.SidebarRight_panel [data-dockkit-empty],\n.SidebarRight_panel [data-dockkit-divider] {\n  transform: translateX(var(--dsh-sidebar-width));\n  visibility: hidden;\n  transition: transform var(--ds-transition-duration-slow) var(--ds-ease-in-out), visibility 0s linear var(--ds-transition-duration-slow);\n}\n.SidebarRight_panel[data-sidebar-right-open] [data-dockkit-host=dock],\n.SidebarRight_panel[data-sidebar-right-open] [data-dockkit-empty],\n.SidebarRight_panel[data-sidebar-right-open] [data-dockkit-divider] {\n  transform: none;\n  visibility: visible;\n  transition: transform var(--ds-transition-duration-slow) var(--ds-ease-in-out);\n}\n@starting-style {\n  .SidebarRight_panel[data-sidebar-right-opening] [data-dockkit-host=dock],\n  .SidebarRight_panel[data-sidebar-right-opening] [data-dockkit-empty],\n  .SidebarRight_panel[data-sidebar-right-opening] [data-dockkit-divider] {\n    transform: translateX(var(--dsh-sidebar-width));\n  }\n}\n.SidebarRight_panel[data-sidebar-right-panel=fullscreen] {\n  --dsh-dockkit-dock-layer: 40;\n}\n[data-windows-titlebar] .SidebarRight_panel[data-sidebar-right-panel=fullscreen] {\n  max-width: calc(100vw - var(--dsh-windows-sidebar-width));\n}\n[data-windows-titlebar] .SidebarRight_panel[data-sidebar-right-panel=fullscreen] [data-dockkit-column=\"0\"][data-dockkit-pane] {\n  border-radius: var(--dsh-windows-content-radius) 0 0 0;\n  corner-shape: round;\n}\n[data-platform=darwin] .SidebarRight_panel[data-sidebar-right-panel=fullscreen] [data-dockkit-host=dock][data-dockkit-column=\"0\"] {\n  --dsh-dockkit-strip-inline-start: 88px;\n}\n[data-platform=darwin] .SidebarRight_panel[data-sidebar-right-panel=fullscreen] [data-dockkit-host=dock][data-dockkit-column=\"1\"] {\n  --dsh-dockkit-strip-inline-start: 10px;\n}\n[data-platform=darwin][data-fullscreen] .SidebarRight_panel[data-sidebar-right-panel=fullscreen] [data-dockkit-host=dock][data-dockkit-column=\"0\"] {\n  --dsh-dockkit-strip-inline-start: 10px;\n}\n@media (prefers-reduced-motion: reduce) {\n  .SidebarRight_panel [data-dockkit-host=dock],\n  .SidebarRight_panel [data-dockkit-empty],\n  .SidebarRight_panel [data-dockkit-divider],\n  .SidebarRight_panel[data-sidebar-right-open] [data-dockkit-host=dock],\n  .SidebarRight_panel[data-sidebar-right-open] [data-dockkit-empty],\n  .SidebarRight_panel[data-sidebar-right-open] [data-dockkit-divider] {\n    transition: none;\n  }\n}\n.SidebarRight_iconButton {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  justify-content: center;\n  width: 28px;\n  height: 28px;\n  padding: 6px;\n  color: var(--dsw-alias-label-secondary);\n  line-height: 1;\n  background: transparent;\n  border: none;\n  border-radius: var(--dsw-radius-sm);\n  cursor: pointer;\n}\n.SidebarRight_iconButton svg {\n  width: 15px;\n  height: 15px;\n}\n@media (hover: hover) {\n  .SidebarRight_iconButton:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.SidebarRight_collapseGlyph {\n  transform: scaleX(-1);\n}\n.SidebarRight_panelBody {\n  display: flex;\n  flex: 1 1 auto;\n  min-height: 0;\n}\n@media (pointer: coarse) {\n  .SidebarRight_panelBody [data-dockkit-split-control]:has(> [data-dockkit-split-blocked]) {\n    visibility: hidden;\n  }\n}\n.SidebarRight_unavailable {\n  margin: 0;\n  padding: 12px;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: var(--dsh-content-font-size-secondary, 13px);\n}\n.SidebarRight_tabTitle {\n  display: contents;\n}\n.SidebarRight_tabBody {\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n  min-height: 0;\n  min-width: 0;\n  overflow: hidden;\n}\n.SidebarRight_panel [data-dockkit-pane][data-sidebar-right-flash],\n.SidebarRight_panel [data-dockkit-float][data-sidebar-right-flash] {\n  --sidebar-right-flash-color: var(--dsw-specific-sidebar-right-flash);\n  --sidebar-right-flash-ring: color-mix(in srgb, var(--sidebar-right-flash-color) 48%, transparent);\n  --sidebar-right-flash-near: color-mix(in srgb, var(--sidebar-right-flash-color) 16%, transparent);\n  --sidebar-right-flash-far: color-mix(in srgb, var(--sidebar-right-flash-color) 10%, transparent);\n}\n.SidebarRight_panel [data-dockkit-pane][data-sidebar-right-flash] {\n  position: relative;\n}\n.SidebarRight_panel [data-dockkit-pane][data-sidebar-right-flash]::after {\n  content: \"\";\n  position: absolute;\n  inset: 0;\n  z-index: 7;\n  pointer-events: none;\n  --sidebar-right-flash-from:\n    inset 0 0 0 1px var(--sidebar-right-flash-ring),\n    inset 0 2px 4px 0 var(--sidebar-right-flash-near),\n    inset 0 0 10px 0 var(--sidebar-right-flash-far);\n  --sidebar-right-flash-to:\n    inset 0 0 0 1px transparent,\n    inset 0 2px 4px 0 transparent,\n    inset 0 0 10px 0 transparent;\n}\n.SidebarRight_panel [data-dockkit-float][data-sidebar-right-flash] {\n  --sidebar-right-flash-from:\n    var(--dsw-elevation-prominent),\n    0 0 0 1px var(--sidebar-right-flash-ring),\n    0 2px 4px 0 var(--sidebar-right-flash-near),\n    0 0 10px 0 var(--sidebar-right-flash-far);\n  --sidebar-right-flash-to:\n    var(--dsw-elevation-prominent),\n    0 0 0 1px transparent,\n    0 2px 4px 0 transparent,\n    0 0 10px 0 transparent;\n}\n.SidebarRight_panel [data-dockkit-pane][data-sidebar-right-flash]::after,\n.SidebarRight_panel [data-dockkit-float][data-sidebar-right-flash] {\n  animation-duration: calc(var(--ds-transition-duration-slow) * 2);\n  animation-timing-function: var(--ds-ease-in-out);\n}\n.SidebarRight_panel [data-dockkit-pane][data-sidebar-right-flash=odd]::after,\n.SidebarRight_panel [data-dockkit-float][data-sidebar-right-flash=odd] {\n  animation-name: SidebarRight_flashOdd;\n}\n.SidebarRight_panel [data-dockkit-pane][data-sidebar-right-flash=even]::after,\n.SidebarRight_panel [data-dockkit-float][data-sidebar-right-flash=even] {\n  animation-name: SidebarRight_flashEven;\n}\n@keyframes SidebarRight_flashOdd {\n  from {\n    box-shadow: var(--sidebar-right-flash-from);\n  }\n  to {\n    box-shadow: var(--sidebar-right-flash-to);\n  }\n}\n@keyframes SidebarRight_flashEven {\n  from {\n    box-shadow: var(--sidebar-right-flash-from);\n  }\n  to {\n    box-shadow: var(--sidebar-right-flash-to);\n  }\n}\n@media (prefers-reduced-motion: reduce) {\n  .SidebarRight_panel [data-dockkit-pane][data-sidebar-right-flash]::after,\n  .SidebarRight_panel [data-dockkit-float][data-sidebar-right-flash] {\n    animation-timing-function: step-end;\n  }\n}\n\n/* ../node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/tabs/guide/GuideBody.module.css */\n.GuideBody_guide {\n  --dsl-guide-entry-radius: var(--dsw-radius-xl);\n  display: flex;\n  flex-direction: column;\n  gap: 14px;\n  align-items: center;\n  justify-content: center;\n  box-sizing: border-box;\n  min-height: 100%;\n  padding: 0 24px;\n}\n.GuideBody_guide::after {\n  content: \"\";\n  flex: 0 1 10%;\n}\n.GuideBody_hero {\n  display: flex;\n  margin-bottom: 16px;\n  color: var(--dsw-specific-guide-hero);\n}\n.GuideBody_entry {\n  display: flex;\n  gap: 14px;\n  align-items: center;\n  box-sizing: border-box;\n  width: 380px;\n  max-width: 100%;\n  min-height: 56px;\n  padding: 14px 20px;\n  color: var(--dsw-alias-label-primary);\n  font: inherit;\n  text-align: left;\n  background: var(--dsw-alias-bg-layer-1);\n  border: 0.5px solid var(--dsw-alias-border-l3);\n  border-radius: var(--dsl-guide-entry-radius);\n  cursor: pointer;\n}\n@media (hover: hover) {\n  .GuideBody_entry:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.GuideBody_entryIcon {\n  display: flex;\n  flex: none;\n  align-items: center;\n  justify-content: center;\n  width: 26px;\n  height: 26px;\n  color: var(--dsw-alias-label-secondary);\n}\n.GuideBody_placeholderInk {\n  color: var(--dsw-alias-label-tertiary);\n}\n.GuideBody_entryText {\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  gap: 3px;\n  min-width: 0;\n}\n.GuideBody_entryTitle {\n  overflow: hidden;\n  font-size: 14px;\n  line-height: 1.4;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n}\n.GuideBody_entryDescription {\n  overflow: hidden;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 11px;\n  line-height: 1.4;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n}\n.GuideBody_titleIcon {\n  flex: none;\n  color: var(--dsw-alias-label-tertiary);\n}\n.GuideBody_entryCell {\n  width: 380px;\n  max-width: 100%;\n}\n.GuideBody_moreAnchor {\n  display: flex;\n  width: 380px;\n  max-width: 100%;\n}\n.GuideBody_moreAnchor .GuideBody_entry[aria-expanded=true] {\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n.GuideBody_moreMenu {\n  width: max-content;\n  max-width: min(480px, calc(100vw - 24px));\n}\n\n/* ../node_modules/@deepseek-ai/dsh-client-ui-workspace/src/client/rows/WorkspaceBrowser.module.css */\n.WorkspaceBrowser_root {\n  --workspace-toolbar-height: 36px;\n  --workspace-toolbar-gap: 0px;\n  position: relative;\n  flex: 1;\n  min-height: 0;\n  display: flex;\n  flex-direction: column;\n  box-sizing: border-box;\n}\n.WorkspaceBrowser_root:not(.WorkspaceBrowser_rail) {\n  flex: none;\n  max-height: 100cqh;\n}\n.WorkspaceBrowser_root:not(.WorkspaceBrowser_rail):has(.WorkspaceBrowser_searchExpanded) {\n  height: 100cqh;\n}\n.WorkspaceBrowser_iconButton {\n  flex: none;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  width: 28px;\n  height: 28px;\n  border: none;\n  border-radius: var(--dsw-radius-sm);\n  padding: 0;\n  background: transparent;\n  cursor: pointer;\n  color: var(--dsw-alias-label-secondary);\n}\n.WorkspaceBrowser_iconButton:focus-visible,\n.WorkspaceBrowser_searchButton:focus-visible,\n.WorkspaceBrowser_clearButton:focus-visible {\n  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: -2px;\n}\n@media (hover: hover) {\n  .WorkspaceBrowser_iconButton:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.WorkspaceBrowser_viewOptionsMenu {\n  min-width: 200px;\n}\n.WorkspaceBrowser_sectionHeader {\n  flex: none;\n  display: flex;\n  align-items: center;\n  justify-content: flex-end;\n  gap: 4px;\n  height: var(--workspace-toolbar-height);\n  padding-left: var(--dsh-sidebar-row-padding);\n  margin-bottom: var(--workspace-toolbar-gap);\n  box-sizing: border-box;\n  border-radius: var(--dsw-radius-md);\n  overflow: hidden;\n  color: var(--dsw-alias-label-tertiary);\n}\n.WorkspaceBrowser_root:not(.WorkspaceBrowser_rail) .WorkspaceBrowser_sectionHeader.WorkspaceBrowser_searchSpacingMotion {\n  transition:\n    margin-right 180ms var(--ds-ease-in-out),\n    padding-inline 180ms var(--ds-ease-in-out),\n    gap 180ms var(--ds-ease-in-out);\n}\n.WorkspaceBrowser_root:not(.WorkspaceBrowser_rail) .WorkspaceBrowser_sectionHeader:not(:has(.WorkspaceBrowser_searchExpanded)) {\n  margin-right: -4px;\n  padding-right: 1px;\n}\n.WorkspaceBrowser_sectionLabel {\n  position: relative;\n  left: -1px;\n  flex: none;\n  max-width: 45%;\n  min-width: 0;\n  overflow: hidden;\n  white-space: nowrap;\n  line-height: 20px;\n  opacity: 1;\n  visibility: visible;\n  transition:\n    max-width 180ms var(--ds-ease-in-out),\n    margin-right 180ms var(--ds-ease-in-out),\n    opacity 120ms var(--ds-ease-in-out),\n    transform 180ms var(--ds-ease-in-out),\n    visibility 0s linear;\n}\n.WorkspaceBrowser_sectionLabelHidden {\n  max-width: 0;\n  margin-right: -4px;\n  opacity: 0;\n  transform: translateX(-4px);\n  visibility: hidden;\n  transition-delay:\n    0s,\n    0s,\n    0s,\n    0s,\n    180ms;\n}\n.WorkspaceBrowser_searchSlot {\n  flex: 1;\n  max-width: 28px;\n  min-width: 0;\n  display: flex;\n  align-items: center;\n  margin-left: auto;\n  padding-left: 0;\n  box-sizing: border-box;\n  transition: max-width 180ms var(--ds-ease-in-out), padding-left 180ms var(--ds-ease-in-out);\n}\n.WorkspaceBrowser_searchSlotExpanded {\n  max-width: 100%;\n  padding-left: 0;\n}\n.WorkspaceBrowser_headerActions {\n  flex: none;\n  display: flex;\n  align-items: center;\n  gap: 4px;\n  max-width: 60px;\n  opacity: 1;\n  overflow: hidden;\n  visibility: visible;\n  transition:\n    max-width 180ms var(--ds-ease-in-out),\n    opacity 120ms var(--ds-ease-in-out),\n    transform 180ms var(--ds-ease-in-out),\n    visibility 0s linear;\n}\n.WorkspaceBrowser_headerActionsHidden {\n  max-width: 0;\n  opacity: 0;\n  transform: translateX(4px);\n  visibility: hidden;\n  pointer-events: none;\n  transition-delay:\n    0s,\n    0s,\n    0s,\n    180ms;\n}\n.WorkspaceBrowser_search {\n  flex: none;\n  display: flex;\n  align-items: center;\n  gap: 0;\n  width: 100%;\n  height: 28px;\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n  border: none;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  cursor: text;\n  color: var(--dsw-alias-label-secondary);\n  overflow: hidden;\n  transition:\n    width 180ms var(--ds-ease-in-out),\n    padding 180ms var(--ds-ease-in-out),\n    border-color 180ms var(--ds-ease-in-out),\n    background-color 180ms var(--ds-ease-in-out);\n}\n.WorkspaceBrowser_root:not(.WorkspaceBrowser_rail) .WorkspaceBrowser_sectionHeader:has(.WorkspaceBrowser_searchExpanded) {\n  margin-right: 0;\n  padding-inline: calc(var(--dsh-sidebar-paint-inset) + 1px);\n  gap: 0;\n}\n.WorkspaceBrowser_sectionHeader:has(.WorkspaceBrowser_searchExpanded) .WorkspaceBrowser_sectionLabelHidden {\n  margin-right: 0;\n}\n.WorkspaceBrowser_searchExpanded {\n  width: 100%;\n  height: 32px;\n  margin-inline: 0;\n  padding: 0 4px 0 0;\n  border: 0.5px solid var(--dsw-alias-border-l4);\n  border-radius: var(--dsw-radius-md);\n  background: transparent;\n  color: var(--dsw-alias-label-caption);\n}\n.WorkspaceBrowser_searchButton {\n  flex: none;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  width: 28px;\n  height: 28px;\n  border: none;\n  border-radius: var(--dsw-radius-sm);\n  padding: 0;\n  background: transparent;\n  cursor: pointer;\n  color: inherit;\n}\n.WorkspaceBrowser_searchExpanded .WorkspaceBrowser_searchButton {\n  width: 28px;\n  height: 32px;\n}\n@media (hover: hover) {\n  .WorkspaceBrowser_searchButton:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n  .WorkspaceBrowser_searchExpanded .WorkspaceBrowser_searchButton:hover {\n    background: transparent;\n  }\n}\n.WorkspaceBrowser_searchInput {\n  flex: 1;\n  width: 0;\n  min-width: 0;\n  border: none;\n  outline: none;\n  background: transparent;\n  opacity: 0;\n  pointer-events: none;\n  font-size: 13px;\n  line-height: 18px;\n  color: var(--dsw-alias-label-primary);\n  transition: opacity 120ms var(--ds-ease-in-out);\n}\n.WorkspaceBrowser_searchExpanded .WorkspaceBrowser_searchInput {\n  margin-left: -2px;\n  opacity: 1;\n  pointer-events: auto;\n}\n.WorkspaceBrowser_searchInput::placeholder {\n  color: var(--dsw-alias-label-tertiary);\n}\n.WorkspaceBrowser_clearButton {\n  flex: none;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  width: 24px;\n  height: 24px;\n  border: none;\n  border-radius: var(--dsw-radius-sm);\n  padding: 0;\n  background: transparent;\n  cursor: pointer;\n  color: var(--dsw-alias-label-secondary);\n}\n@media (hover: hover) {\n  .WorkspaceBrowser_clearButton:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.WorkspaceBrowser_rail .WorkspaceBrowser_sectionHeader {\n  gap: 0;\n  padding-left: 0;\n  margin-bottom: 12px;\n  justify-content: flex-start;\n}\n.WorkspaceBrowser_rail .WorkspaceBrowser_headerActions {\n  max-width: none;\n}\n.WorkspaceBrowser_rail .WorkspaceBrowser_iconButton {\n  width: 36px;\n  height: 36px;\n  border-radius: var(--dsw-radius-md);\n  color: var(--dsw-alias-label-primary);\n}\n.WorkspaceBrowser_rail .WorkspaceBrowser_search {\n  width: 36px;\n  height: 36px;\n  padding: 0;\n  margin: 0 0 12px;\n  gap: 0;\n  border-radius: var(--dsw-radius-md);\n  border-color: transparent;\n  background: transparent;\n}\n.WorkspaceBrowser_rail .WorkspaceBrowser_searchButton {\n  width: 36px;\n  height: 36px;\n  border-radius: var(--dsw-radius-md);\n  color: var(--dsw-alias-label-primary);\n}\n@media (hover: hover) {\n  .WorkspaceBrowser_rail .WorkspaceBrowser_searchButton:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.WorkspaceBrowser_listArea {\n  flex: 1;\n  min-height: 0;\n  display: flex;\n  flex-direction: column;\n  overflow: visible;\n}\n.WorkspaceBrowser_root:not(.WorkspaceBrowser_rail) .WorkspaceBrowser_listArea {\n  display: block;\n  margin-left: -4px;\n  margin-right: calc(2px - var(--dsh-sidebar-inline-padding));\n  padding-left: 4px;\n  padding-right: calc(var(--dsh-sidebar-inline-padding) - var(--dsh-scrollbar-width) - 2px);\n  overflow-x: hidden;\n  overflow-y: auto;\n  scrollbar-gutter: stable;\n}\n@container scroll-state(scrollable: bottom) {\n  .WorkspaceBrowser_root:not(.WorkspaceBrowser_rail) .WorkspaceBrowser_listArea {\n    overflow-y: hidden;\n  }\n}\n.WorkspaceBrowser_treeBody {\n  flex: 1;\n  min-height: 0;\n  display: flex;\n  flex-direction: column;\n  position: relative;\n}\n.WorkspaceBrowser_wide {\n  animation: WorkspaceBrowser_wide-in 200ms var(--ds-ease-in-out);\n}\n@keyframes WorkspaceBrowser_wide-in {\n  from {\n    opacity: 0;\n  }\n}\n.WorkspaceBrowser_list {\n  flex: 1;\n  min-height: 0;\n  overflow: visible;\n  padding-bottom: 16px;\n}\n.WorkspaceBrowser_flatList > * + *,\n.WorkspaceBrowser_searchTree > [role=treeitem] + [role=treeitem],\n.WorkspaceBrowser_groupSection > * + * {\n  margin-top: 2px;\n}\n.WorkspaceBrowser_searchStatus {\n  padding: 10px 12px;\n  font-size: 12px;\n  line-height: 18px;\n  color: var(--dsw-alias-label-tertiary);\n}\n.WorkspaceBrowser_skeletonRow {\n  display: flex;\n  align-items: flex-start;\n  gap: var(--dsh-sidebar-label-gap);\n  box-sizing: border-box;\n  min-height: 48px;\n  padding: 6px var(--dsh-sidebar-row-padding) 7px;\n}\n.WorkspaceBrowser_skeletonDot {\n  flex: none;\n  width: 16px;\n  height: 16px;\n  border-radius: 50%;\n  corner-shape: round;\n}\n.WorkspaceBrowser_skeletonBars {\n  flex: 1;\n  min-width: 0;\n  display: flex;\n  flex-direction: column;\n  gap: 6px;\n}\n.WorkspaceBrowser_skeletonDot,\n.WorkspaceBrowser_skeletonBar {\n  background: var(--dsw-alias-bg-skeleton);\n  animation: WorkspaceBrowser_search-skeleton 2s cubic-bezier(0.36, 0, 0.64, 1) infinite;\n}\n.WorkspaceBrowser_skeletonBar {\n  width: 65%;\n  height: 16px;\n  border-radius: var(--dsw-radius-xs);\n}\n.WorkspaceBrowser_skeletonBarWide {\n  width: 90%;\n  height: 13px;\n}\n@keyframes WorkspaceBrowser_search-skeleton {\n  0% {\n    opacity: 1;\n  }\n  40% {\n    opacity: 0.6;\n  }\n  80%, 100% {\n    opacity: 1;\n  }\n}\n.WorkspaceBrowser_groupSection {\n  position: relative;\n}\n.WorkspaceBrowser_groupSection + .WorkspaceBrowser_groupSection {\n  margin-top: 4px;\n}\n.WorkspaceBrowser_listTopDropIndicator,\n.WorkspaceBrowser_workspaceDropBefore::before,\n.WorkspaceBrowser_workspaceDropAfter::after {\n  content: \"\";\n  position: absolute;\n  z-index: 1;\n  left: 0;\n  right: 0;\n  height: 12px;\n  background:\n    linear-gradient(\n      55deg,\n      transparent calc(50% - 1px),\n      var(--dsw-alias-state-business-primary) calc(50% - 1px) calc(50% + 1px),\n      transparent calc(50% + 1px)) 0 0 / 5px 7px no-repeat,\n    linear-gradient(\n      125deg,\n      transparent calc(50% - 1px),\n      var(--dsw-alias-state-business-primary) calc(50% - 1px) calc(50% + 1px),\n      transparent calc(50% + 1px)) 0 5px / 5px 7px no-repeat,\n    linear-gradient(var(--dsw-alias-state-business-primary) 0 0) 4px 5px / calc(100% - 4px) 2px no-repeat;\n  pointer-events: none;\n}\n.WorkspaceBrowser_listTopDropIndicator {\n  top: -8px;\n}\n.WorkspaceBrowser_listTopDropActive > .WorkspaceBrowser_workspaceDropBefore:first-child::before {\n  display: none;\n}\n.WorkspaceBrowser_workspaceDropBefore::before {\n  top: -8px;\n}\n.WorkspaceBrowser_workspaceDropAfter::after {\n  bottom: -8px;\n}\n.WorkspaceBrowser_sessionOverflowButton {\n  width: 100%;\n  height: 28px;\n  border: none;\n  border-radius: var(--dsw-radius-sm);\n  padding: 0 var(--dsh-sidebar-row-padding) 0 calc(var(--dsh-sidebar-row-padding) + 16px + var(--dsh-sidebar-label-gap) + var(--dsh-workspace-indent, 0px));\n  background: transparent;\n  cursor: pointer;\n  text-align: left;\n  font-size: 12px;\n  color: var(--dsw-alias-label-tertiary);\n}\n.WorkspaceBrowser_groupSection > .WorkspaceBrowser_sessionOverflowButton {\n  margin-top: 0;\n}\n@media (hover: hover) {\n  .WorkspaceBrowser_sessionOverflowButton:hover {\n    background: transparent;\n    color: var(--dsw-alias-label-secondary);\n  }\n}\n.WorkspaceBrowser_empty {\n  padding: 16px 12px;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 13px;\n}\n.WorkspaceBrowser_emptyState {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  gap: 8px;\n  margin-top: 80px;\n  padding: 0 12px;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 13px;\n  line-height: 20px;\n}\n.WorkspaceBrowser_emptyState > svg {\n  margin-bottom: 4px;\n  color: var(--dsw-alias-label-caption);\n}\n.WorkspaceBrowser_emptyAction {\n  padding: 0;\n  border: none;\n  background: none;\n  cursor: pointer;\n  font-size: 13px;\n  line-height: 20px;\n  color: var(--dsw-alias-link);\n}\n.WorkspaceBrowser_renameInput {\n  box-sizing: border-box;\n  width: 100%;\n  height: 44px;\n  padding: 7px 14px;\n  border: 0.5px solid var(--dsw-alias-border-l4);\n  border-radius: var(--dsw-radius-lg);\n  outline: none;\n  background: transparent;\n  font-size: 14px;\n  font-weight: 400;\n  line-height: 22px;\n  color: var(--dsw-alias-label-primary);\n}\n.WorkspaceBrowser_renameInput:disabled {\n  color: var(--dsw-alias-label-dimmed);\n}\n.WorkspaceBrowser_renameError {\n  margin-top: 8px;\n  font-size: 12px;\n  line-height: 18px;\n  color: var(--dsw-alias-state-error-primary);\n}\n.WorkspaceBrowser_deleteAction:not(:disabled) {\n  color: var(--dsw-alias-state-error-primary);\n}\n.WorkspaceBrowser_deleteStatus {\n  font-size: 12px;\n  line-height: 18px;\n  color: var(--dsw-alias-label-secondary);\n}\n.WorkspaceBrowser_archiveActivity {\n  margin: 0 0 8px;\n  padding-left: 18px;\n  font-size: 13px;\n  line-height: 20px;\n  color: var(--dsw-alias-label-primary);\n}\n.WorkspaceBrowser_archiveActivity li {\n  overflow-wrap: anywhere;\n}\n@media (pointer: coarse) {\n  .WorkspaceBrowser_searchInput,\n  .WorkspaceBrowser_renameInput {\n    font-size: 16px;\n  }\n}\n@media (prefers-reduced-motion: reduce) {\n  .WorkspaceBrowser_wide {\n    animation: none;\n  }\n  .WorkspaceBrowser_skeletonDot,\n  .WorkspaceBrowser_skeletonBar {\n    animation: none;\n  }\n  .WorkspaceBrowser_root:not(.WorkspaceBrowser_rail) .WorkspaceBrowser_sectionHeader.WorkspaceBrowser_searchSpacingMotion,\n  .WorkspaceBrowser_search,\n  .WorkspaceBrowser_sectionLabel,\n  .WorkspaceBrowser_searchSlot,\n  .WorkspaceBrowser_searchInput,\n  .WorkspaceBrowser_headerActions {\n    transition: none;\n  }\n}\n\n/* ../node_modules/@deepseek-ai/dsh-client-ui-workspace/src/client/rows/Rows.module.css */\n.Rows_projectRow,\n.Rows_sessionRow {\n  display: flex;\n  align-items: center;\n  gap: var(--dsh-sidebar-label-gap);\n  border-radius: var(--dsw-radius-md);\n  border-inline: var(--dsh-sidebar-paint-inset) solid transparent;\n  background-clip: padding-box;\n  box-sizing: border-box;\n  padding: 0 8px;\n  padding-inline-start: calc(var(--dsh-sidebar-row-padding) - var(--dsh-sidebar-paint-inset) + var(--dsh-workspace-indent, 0px));\n  cursor: pointer;\n  -webkit-user-select: none;\n  user-select: none;\n  color: var(--dsw-alias-label-primary);\n}\n@media (hover: hover) {\n  .Rows_projectRow:hover {\n    background-color: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.Rows_sessionRow.Rows_selected {\n  background-color: var(--dsw-alias-interactive-bg-hover);\n}\n.Rows_dragPreview {\n  background: var(--dsw-specific-sidebar-fill);\n}\n.Rows_searchResultRow {\n  display: flex;\n  flex-direction: column;\n  align-items: stretch;\n  width: 100%;\n  min-height: 48px;\n  box-sizing: border-box;\n  border: none;\n  border-radius: var(--dsw-radius-lg);\n  padding: 4px calc(var(--dsh-sidebar-row-padding) - var(--dsh-sidebar-paint-inset));\n  border-inline: var(--dsh-sidebar-paint-inset) solid transparent;\n  background: transparent;\n  background-clip: padding-box;\n  cursor: pointer;\n  text-align: left;\n  color: var(--dsw-alias-label-primary);\n}\n@media (hover: hover) {\n  .Rows_searchResultRow:hover {\n    background-color: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.Rows_searchResultRow.Rows_selected {\n  background-color: var(--dsw-alias-interactive-bg-hover);\n}\n.Rows_searchResultHeading {\n  display: flex;\n  align-items: center;\n  min-width: 0;\n}\n.Rows_searchResultTitle {\n  flex: 0 1 auto;\n  min-width: 0;\n  margin: 0 var(--dsh-sidebar-label-gap);\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  font-size: 14px;\n  line-height: 20px;\n}\n.Rows_searchResultMeta {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  min-width: 0;\n  margin-left: calc(16px + var(--dsh-sidebar-label-gap));\n}\n.Rows_searchResultWorkspace,\n.Rows_searchResultSnippet {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  font-size: 12px;\n  line-height: 17px;\n}\n.Rows_searchResultWorkspace {\n  flex: none;\n  max-width: 40%;\n  color: var(--dsw-alias-label-tertiary);\n}\n.Rows_searchResultWorkspace:only-child {\n  max-width: 100%;\n}\n.Rows_searchResultSnippet {\n  flex: 1;\n  min-width: 0;\n  color: var(--dsw-alias-label-secondary);\n}\n.Rows_projectRow {\n  height: 32px;\n  align-items: center;\n  box-sizing: border-box;\n}\n.Rows_projectRow .Rows_rowActions {\n  height: 20px;\n}\n.Rows_sessionRow {\n  height: 32px;\n  gap: 0;\n}\n.Rows_sessionRow .Rows_title {\n  margin: 0 6px 0 var(--dsh-sidebar-label-gap);\n}\n.Rows_slot {\n  flex: none;\n  width: 16px;\n  height: 20px;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  color: var(--dsw-alias-label-tertiary);\n}\n.Rows_visuallyHidden {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  overflow: hidden;\n  clip: rect(0 0 0 0);\n  white-space: nowrap;\n}\n.Rows_folderActive {\n  color: var(--dsw-alias-state-business-primary);\n}\n.Rows_projectRow .Rows_chevron {\n  display: none;\n}\n@media (hover: hover) {\n  .Rows_projectRow:hover .Rows_chevron {\n    display: inline-flex;\n  }\n  .Rows_projectRow:hover .Rows_folder {\n    display: none;\n  }\n}\n.Rows_arrow {\n  transition: transform 150ms var(--ds-ease-in-out);\n}\n.Rows_arrowOpen {\n  transform: rotate(90deg);\n}\n.Rows_projectText {\n  flex: 1;\n  min-width: 0;\n  display: flex;\n  flex-direction: column;\n  gap: 2px;\n}\n.Rows_title {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  font-size: 14px;\n  line-height: 20px;\n}\n.Rows_renameInput {\n  min-width: 0;\n  font-size: 14px;\n  line-height: 20px;\n  padding: 0 2px;\n  border: 0.5px solid var(--dsw-alias-border-l4);\n  border-radius: var(--dsw-radius-sm);\n  background: var(--dsw-alias-button-elevated-fill);\n  color: inherit;\n  outline: none;\n}\n.Rows_sessionRow .Rows_title {\n  flex: 1;\n}\n.Rows_sessionRow .Rows_title[data-scrolled] {\n  mask-image:\n    linear-gradient(\n      to right,\n      transparent,\n      #000 12px);\n}\n.Rows_sessionRow .Rows_title[data-clipped] {\n  mask-image:\n    linear-gradient(\n      to left,\n      transparent,\n      #000 12px);\n}\n.Rows_sessionRow .Rows_title[data-scrolled][data-clipped] {\n  mask-image:\n    linear-gradient(\n      to right,\n      transparent,\n      #000 12px,\n      #000 calc(100% - 12px),\n      transparent);\n}\n.Rows_meta {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  font-size: 12px;\n  line-height: 20px;\n  color: var(--dsw-alias-label-tertiary);\n}\n.Rows_time {\n  flex: none;\n  font-size: 10px;\n  line-height: 16px;\n  color: var(--dsw-alias-label-tertiary);\n  margin-inline-end: -1px;\n}\n.Rows_pinIndicator {\n  display: inline-flex;\n  flex: none;\n  width: 16px;\n  height: 20px;\n  align-items: center;\n  justify-content: center;\n  margin-left: 6px;\n  color: var(--dsw-alias-label-caption);\n}\n.Rows_sessionRow.Rows_archived .Rows_title,\n.Rows_searchResultRow.Rows_archived .Rows_searchResultTitle,\n.Rows_searchResultRow.Rows_archived .Rows_searchResultWorkspace,\n.Rows_searchResultRow.Rows_archived .Rows_searchResultSnippet {\n  color: var(--dsw-alias-label-caption);\n}\n.Rows_dot {\n  flex: none;\n}\n.Rows_rowActions {\n  flex: none;\n  display: none;\n  align-items: center;\n  gap: 13px;\n}\n@media (hover: hover) {\n  .Rows_projectRow:hover .Rows_rowActions,\n  .Rows_searchResultRow:hover .Rows_rowActions {\n    display: inline-flex;\n  }\n}\n.Rows_projectRow.Rows_menuOpen .Rows_rowActions {\n  display: inline-flex;\n}\n.Rows_rowQuickActions {\n  display: contents;\n}\n.Rows_searchResultHeading .Rows_rowActions {\n  margin-left: auto;\n}\n.Rows_rowResting {\n  flex: none;\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  color: var(--dsw-alias-label-tertiary);\n}\n.Rows_rowResting .Rows_pinIndicator {\n  margin-left: 0;\n}\n@media (hover: hover) {\n  .Rows_sessionRow:hover {\n    background-color: var(--dsw-alias-interactive-bg-hover);\n  }\n  .Rows_sessionRow:hover .Rows_rowActions,\n  .Rows_sessionRow.Rows_menuOpen .Rows_rowActions,\n  html[data-input-modality=keyboard] .Rows_sessionRow:focus-within .Rows_rowActions {\n    display: inline-flex;\n  }\n  .Rows_sessionRow:hover .Rows_rowResting,\n  .Rows_sessionRow.Rows_menuOpen .Rows_rowResting,\n  html[data-input-modality=keyboard] .Rows_sessionRow:focus-within .Rows_rowResting {\n    display: none;\n  }\n  .Rows_sessionRow:hover .Rows_title,\n  .Rows_sessionRow.Rows_menuOpen .Rows_title {\n    text-overflow: clip;\n  }\n}\n@media (hover: none) {\n  .Rows_projectRow .Rows_rowActions,\n  .Rows_searchResultRow .Rows_rowActions,\n  .Rows_sessionRow .Rows_rowActions {\n    display: inline-flex;\n  }\n  .Rows_sessionRow .Rows_timestamp,\n  .Rows_sessionRow:has(.Rows_pinnedAction) .Rows_pinIndicator,\n  .Rows_sessionRow .Rows_rowQuickActions > [data-slot] > :not(.Rows_pinnedAction),\n  .Rows_projectRow[aria-expanded=false] .Rows_rowActions {\n    display: none;\n  }\n  .Rows_sessionRow .Rows_pinnedAction {\n    order: -1;\n  }\n}\n.Rows_projectRow.Rows_menuOpen,\n.Rows_sessionRow.Rows_menuOpen {\n  background-color: var(--dsw-alias-interactive-bg-hover);\n}\n.Rows_sessionRow.Rows_dropBefore,\n.Rows_sessionRow.Rows_dropAfter {\n  position: relative;\n}\n.Rows_sessionRow.Rows_dropBefore::before,\n.Rows_sessionRow.Rows_dropAfter::after {\n  content: \"\";\n  position: absolute;\n  z-index: 1;\n  left: calc(-1 * var(--dsh-sidebar-paint-inset));\n  right: calc(4px - var(--dsh-sidebar-paint-inset));\n  height: 12px;\n  background:\n    linear-gradient(\n      55deg,\n      transparent calc(50% - 1px),\n      var(--dsw-alias-state-business-primary) calc(50% - 1px) calc(50% + 1px),\n      transparent calc(50% + 1px)) 0 0 / 5px 7px no-repeat,\n    linear-gradient(\n      125deg,\n      transparent calc(50% - 1px),\n      var(--dsw-alias-state-business-primary) calc(50% - 1px) calc(50% + 1px),\n      transparent calc(50% + 1px)) 0 5px / 5px 7px no-repeat,\n    linear-gradient(var(--dsw-alias-state-business-primary) 0 0) 4px 5px / calc(100% - 4px) 2px no-repeat;\n  pointer-events: none;\n}\n.Rows_sessionRow.Rows_dropBefore::before {\n  top: -7px;\n}\n.Rows_sessionRow.Rows_dropAfter::after {\n  bottom: -7px;\n}\n.Rows_hoverContent {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n.Rows_hoverTitle {\n  font-size: 14px;\n  line-height: 20px;\n  color: var(--dsw-alias-hovercard-label-primary);\n  overflow-wrap: break-word;\n}\n.Rows_hoverPath {\n  font-size: 12px;\n  line-height: 16px;\n  color: var(--dsw-alias-hovercard-label-secondary);\n  word-break: break-all;\n}\n.Rows_hoverTime {\n  font-size: 12px;\n  line-height: 16px;\n  color: var(--dsw-alias-hovercard-label-secondary);\n}\n.Rows_hoverStatus {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  font-size: 12px;\n  line-height: 20px;\n  color: var(--dsw-alias-hovercard-label-tertiary);\n}\n.Rows_hoverArchived svg {\n  flex-shrink: 0;\n  margin: 0 -4px;\n}\n.Rows_iconButton {\n  flex: none;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  width: 24px;\n  height: 24px;\n  margin: -4px;\n  border: none;\n  border-radius: var(--dsw-radius-xs);\n  padding: 0;\n  background: transparent;\n  cursor: pointer;\n  color: var(--dsw-alias-label-tertiary);\n}\n.Rows_iconButton:focus-visible {\n  outline-offset: -2px;\n}\n@media (hover: hover) {\n  .Rows_iconButton:hover {\n    color: var(--dsw-alias-label-primary);\n  }\n}\n.Rows_chevron {\n  color: var(--dsw-alias-label-caption);\n}\n@media (prefers-reduced-motion: reduce) {\n  .Rows_arrow {\n    animation: none;\n    transition: none;\n  }\n}\n\n/* ../node_modules/@deepseek-ai/dsh-client-ui-workspace/src/client/WorkspacePicker.module.css */\n.WorkspacePicker_modalAction {\n  min-width: 72px;\n}\n.WorkspacePicker_modalError,\n.WorkspacePicker_menuStatus {\n  margin-top: 8px;\n  font-size: 12px;\n  line-height: 18px;\n}\n.WorkspacePicker_modalError {\n  color: var(--dsw-alias-state-error-primary);\n}\n.WorkspacePicker_menuStatus,\n.WorkspacePicker_pathSuffix {\n  color: var(--dsw-alias-label-secondary);\n}\n.WorkspacePicker_disambiguated {\n  display: flex;\n  gap: 4px;\n  min-width: 0;\n}\n.WorkspacePicker_title,\n.WorkspacePicker_pathSuffix {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.WorkspacePicker_pathSuffix {\n  flex: none;\n  max-width: 75%;\n}\n\n/* ../node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/StatsPills.module.css */\n.StatsPills_anchor {\n  display: inline-flex;\n  min-width: 0;\n  font-size: calc(var(--dsh-content-font-size-secondary, 13px) - 1px);\n  line-height: calc(20px + var(--dsh-content-font-delta-secondary, 0px));\n}\n.StatsPills_pill {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  box-sizing: border-box;\n  max-width: 100%;\n  padding: 1px 8px;\n  border: none;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-tertiary);\n  font: inherit;\n  font-variant-numeric: tabular-nums;\n  line-height: inherit;\n  white-space: nowrap;\n}\n.StatsPills_pill svg {\n  width: 14px;\n  height: 14px;\n  flex: none;\n}\nbutton.StatsPills_pill {\n  cursor: pointer;\n}\nbutton.StatsPills_pill[aria-expanded=true] {\n  background: var(--dsw-alias-interactive-bg-hover);\n  color: var(--dsw-alias-label-secondary);\n}\n@media (hover: hover) {\n  button.StatsPills_pill:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n    color: var(--dsw-alias-label-secondary);\n  }\n}\n.StatsPills_label {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.StatsPills_sep {\n  color: var(--dsw-alias-separator-primary);\n  margin: 0 6px;\n}\n\n/* ../node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/stat-dialog.module.css */\n.stat_dialog_panel {\n  position: fixed;\n  z-index: 1100;\n  box-sizing: border-box;\n  width: max-content;\n  min-width: min(300px, calc(100vw - 24px));\n  max-width: min(440px, calc(100vw - 24px));\n  padding: 16px;\n  border: 0;\n  border-radius: var(--dsw-radius-lg);\n  background: var(--dsw-specific-menu);\n  backdrop-filter: var(--dsw-menu-backdrop-filter);\n  --dsw-elevation-stroke-color: var(--dsw-alias-border-l1);\n  box-shadow: var(--dsw-elevation-prominent);\n  font-size: 12px;\n  line-height: 18px;\n  color: var(--dsw-alias-label-secondary);\n  cursor: default;\n  max-height: calc(100dvh - 12px - max(12px, var(--dsh-frame-overlay-top, 12px)));\n  overflow-x: hidden;\n  overflow-y: auto;\n  --dsh-scrollbar-thumb: var(--dsw-alias-scrollbar-bg-l2);\n  --dsh-scrollbar-thumb-hover: var(--dsw-alias-scrollbar-hover-l2);\n  position-area: none;\n  top: max(12px, var(--dsh-frame-overlay-top, 12px));\n  bottom: max(12px, calc(anchor(top) + 8px));\n  left: max(12px, anchor(left));\n  right: 12px;\n  position-try-fallbacks:\n    --dsh-stat-window,\n    --dsh-stat-opposite,\n    --dsh-stat-wide-opposite,\n    --dsh-stat-tall,\n    --dsh-stat-viewport;\n  align-self: end;\n  justify-self: start;\n  height: fit-content;\n  min-height: 0;\n  margin: 0;\n}\n.stat_dialog_title {\n  display: flex;\n  justify-content: space-between;\n  gap: 16px;\n  margin-bottom: 8px;\n  color: var(--dsw-alias-label-primary);\n  font-weight: 500;\n}\n.stat_dialog_titleRule {\n  margin-bottom: 10px;\n  border-top: 0.5px solid var(--dsw-alias-border-l2);\n}\n.stat_dialog_titleValue {\n  font-variant-numeric: tabular-nums;\n}\n.stat_dialog_titleLabel {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  min-width: 0;\n}\n.stat_dialog_titleLabel svg {\n  width: 14px;\n  height: 14px;\n  flex: none;\n}\n.stat_dialog_details {\n  display: grid;\n  grid-template-columns: minmax(76px, auto) minmax(0, 1fr);\n  gap: 6px 16px;\n  margin: 0;\n  color: var(--dsw-alias-label-tertiary);\n}\n.stat_dialog_details dt,\n.stat_dialog_details dd {\n  min-width: 0;\n  margin: 0;\n}\n.stat_dialog_details dd {\n  color: var(--dsw-alias-label-secondary);\n  font-variant-numeric: tabular-nums;\n  text-align: right;\n}\n.stat_dialog_details .stat_dialog_route {\n  overflow-wrap: anywhere;\n}\n.stat_dialog_reasoning {\n  color: var(--dsw-alias-label-tertiary);\n  white-space: nowrap;\n}\n@position-try --dsh-stat-window {\n  position-area: none;\n  top: max(12px, var(--dsh-frame-overlay-top, 12px));\n  bottom: max(12px, calc(anchor(top) + 8px));\n  left: 12px;\n  right: 12px;\n  margin: 0;\n  align-self: safe end;\n  justify-self: safe end;\n}\n@position-try --dsh-stat-opposite {\n  top: max(12px, calc(anchor(bottom) + 8px));\n  bottom: 12px;\n  align-self: start;\n}\n@position-try --dsh-stat-wide-opposite {\n  top: max(12px, calc(anchor(bottom) + 8px));\n  bottom: 12px;\n  left: 12px;\n  right: 12px;\n  align-self: start;\n  justify-self: safe end;\n}\n@position-try --dsh-stat-tall {\n  position-area: none;\n  top: max(12px, var(--dsh-frame-overlay-top, 12px));\n  bottom: 12px;\n  left: max(12px, anchor(left));\n  right: 12px;\n  margin: 0;\n  align-self: safe start;\n  justify-self: start;\n}\n@position-try --dsh-stat-viewport {\n  position-area: none;\n  inset: max(12px, var(--dsh-frame-overlay-top, 12px)) 12px 12px;\n  margin: 0;\n  align-self: safe start;\n  justify-self: safe end;\n}\n\n/* ../node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/TurnUsagePanel.module.css */\n.TurnUsagePanel_root {\n  display: inline-flex;\n  min-width: 0;\n}\n.TurnUsagePanel_root + .TurnUsagePanel_root {\n  margin-left: -6px;\n}\n.TurnUsagePanel_trigger {\n  display: inline-flex;\n  align-items: center;\n  gap: 4px;\n  min-width: 0;\n  height: calc(28px + var(--dsh-content-font-delta, 0px));\n  padding: 6px 8px;\n  border: none;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: calc(var(--dsh-content-font-size-secondary, 13px) - 1px);\n  font-variant-numeric: tabular-nums;\n  line-height: calc(24px + var(--dsh-content-font-delta, 0px));\n  white-space: nowrap;\n  cursor: pointer;\n}\n.TurnUsagePanel_label {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.TurnUsagePanel_trigger svg {\n  width: calc(15px + var(--dsh-content-font-delta, 0px));\n  height: calc(15px + var(--dsh-content-font-delta, 0px));\n  flex: none;\n}\n.TurnUsagePanel_trigger[aria-expanded=true] {\n  background: var(--dsw-alias-interactive-bg-hover);\n  color: var(--dsw-alias-label-tertiary);\n}\n@media (hover: hover) {\n  .TurnUsagePanel_trigger:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n    color: var(--dsw-alias-label-tertiary);\n  }\n}\n@media (max-width: 480px) {\n  .TurnUsagePanel_trigger {\n    justify-content: center;\n    width: calc(28px + var(--dsh-content-font-delta, 0px));\n    padding: 6px;\n  }\n  .TurnUsagePanel_trigger .TurnUsagePanel_label {\n    display: none;\n  }\n  .TurnUsagePanel_root + .TurnUsagePanel_root {\n    margin-left: 0;\n  }\n}\n\n/* ../node_modules/@deepseek-ai/dsh-client-ui-attachment/src/AttachmentRail.module.css */\n.AttachmentRail_root {\n  position: relative;\n  min-width: 0;\n}\n.AttachmentRail_rail {\n  display: flex;\n  align-items: stretch;\n  gap: 10px;\n  overflow-x: auto;\n  overflow-y: hidden;\n  scrollbar-width: none;\n  --dsh-scrollbar-thumb: var(--dsw-alias-scrollbar-bg-l2);\n  --dsh-scrollbar-thumb-hover: var(--dsw-alias-scrollbar-hover-l2);\n}\n.AttachmentRail_rail::-webkit-scrollbar {\n  display: none;\n}\n.AttachmentRail_item {\n  flex: none;\n  height: 64px;\n}\n.AttachmentRail_thumbnail {\n  width: 64px;\n  height: 64px;\n  padding: 0;\n  overflow: hidden;\n  border: 0.5px solid var(--dsw-alias-border-l2-darkmode-thin);\n  border-radius: var(--dsw-radius-xl);\n  background: var(--dsw-alias-interactive-bg-hover);\n  cursor: zoom-in;\n}\n.AttachmentRail_thumbnail img {\n  display: block;\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n}\n.AttachmentRail_remove {\n  position: absolute;\n  top: 4px;\n  right: 4px;\n  z-index: 1;\n  display: grid;\n  place-items: center;\n  width: 18px;\n  height: 18px;\n  padding: 0;\n  border: none;\n  border-radius: 50%;\n  corner-shape: round;\n  background: var(--dsw-alias-button-contrast-fill);\n  color: var(--dsw-alias-label-primary-inverted);\n  cursor: pointer;\n  opacity: 0;\n  transition: opacity 0.2s ease-in-out;\n}\n.AttachmentRail_remove:focus-visible {\n  opacity: 1;\n}\n@media (hover: hover) {\n  .AttachmentRail_item:hover .AttachmentRail_remove {\n    opacity: 1;\n  }\n}\n@media (hover: none), (pointer: coarse) {\n  .AttachmentRail_remove {\n    opacity: 1;\n  }\n}\n@media (prefers-reduced-motion: reduce) {\n  .AttachmentRail_remove {\n    transition: none;\n  }\n}\n.AttachmentRail_arrow {\n  position: absolute;\n  top: 50%;\n  z-index: 2;\n  display: grid;\n  place-items: center;\n  width: 24px;\n  height: 24px;\n  padding: 0;\n  border: 0;\n  --dsw-elevation-stroke-color: var(--dsw-alias-border-l2-darkmode-thin);\n  border-radius: 999px;\n  corner-shape: round;\n  background: var(--dsw-specific-input-major);\n  color: var(--dsw-alias-label-secondary);\n  box-shadow: var(--dsw-elevation-panel);\n  cursor: pointer;\n  transform: translateY(-50%);\n}\n@media (hover: hover) {\n  .AttachmentRail_arrow:hover {\n    background: var(--dsw-alias-interactive-bg-hover-solid);\n  }\n}\n.AttachmentRail_arrowLeft {\n  left: 4px;\n}\n.AttachmentRail_arrowRight {\n  right: 4px;\n}\n\n/* ../node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/TurnNavigator.module.css */\n.TurnNavigator_slot {\n  position: absolute;\n  top: 0;\n  right: 0;\n  left: 0;\n  z-index: 7;\n  height: 0;\n  padding-inline: calc(var(--dsh-composer-side-clearance) + 16px);\n  container-type: inline-size;\n  pointer-events: none;\n}\n[data-conversation-scroll] .TurnNavigator_slot {\n  position: sticky;\n}\n.TurnNavigator_frame {\n  --turn-rail-band: calc( var(--dsh-conversation-viewport-height, 100dvh) - var(--dsh-composer-height, 152px) );\n  --turn-preview-height: 100px;\n  position: absolute;\n  top: calc(var(--turn-rail-band) / 2);\n  right: 12px;\n  width: 28px;\n  max-height: min(max(0px, calc(var(--turn-rail-band) - 64px)), 420px);\n  contain: layout;\n  cursor: pointer;\n  pointer-events: auto;\n  transform: translateY(-50%);\n}\n.TurnNavigator_scroller {\n  position: relative;\n  max-height: inherit;\n  overflow-y: auto;\n  overscroll-behavior: contain;\n  scrollbar-width: none;\n}\n.TurnNavigator_scroller::-webkit-scrollbar {\n  display: none;\n}\n.TurnNavigator_fadeTop {\n  mask-image:\n    linear-gradient(\n      to bottom,\n      transparent 0,\n      #000 24px,\n      #000 100%);\n}\n.TurnNavigator_fadeBottom {\n  mask-image:\n    linear-gradient(\n      to bottom,\n      #000 0,\n      #000 calc(100% - 24px),\n      transparent 100%);\n}\n.TurnNavigator_fadeTop.TurnNavigator_fadeBottom {\n  mask-image:\n    linear-gradient(\n      to bottom,\n      transparent 0,\n      #000 24px,\n      #000 calc(100% - 24px),\n      transparent 100%);\n}\n.TurnNavigator_marks {\n  position: relative;\n}\n.TurnNavigator_mark {\n  position: absolute;\n  top: 0;\n  right: 0;\n  left: 0;\n  height: 10px;\n  padding: 0;\n  border: 0;\n  border-radius: 8px;\n  background: transparent;\n  cursor: pointer;\n}\n.TurnNavigator_mark::before {\n  position: absolute;\n  top: 50%;\n  right: 0;\n  width: 20px;\n  height: 2px;\n  border-radius: 2px;\n  background: var(--dsw-alias-border-l4);\n  content: \"\";\n  transform: translateY(-50%) scaleX(0.6);\n  transform-origin: right center;\n  transition: transform 140ms ease, background-color 140ms ease;\n}\n.TurnNavigator_markUnloaded::before {\n  transform: translateY(-50%) scaleX(0.4);\n  opacity: 0.6;\n}\n.TurnNavigator_markPreview::before {\n  transform: translateY(-50%) scaleX(0.9);\n  background: var(--dsw-alias-label-tertiary);\n}\n.TurnNavigator_markBusy::before {\n  animation: TurnNavigator_dsh-turn-mark-busy 1s ease-in-out infinite;\n}\n.TurnNavigator_markActive::before {\n  transform: translateY(-50%) scaleX(1);\n  background: var(--dsw-alias-label-primary);\n}\n.TurnNavigator_mark:focus-visible::before {\n  transform: translateY(-50%) scaleX(1);\n  background: var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n}\n.TurnNavigator_mark:focus-visible {\n  outline: none;\n}\n.TurnNavigator_mark:focus-visible::after {\n  position: absolute;\n  inset: 0 0 0 auto;\n  width: 20px;\n  border-radius: inherit;\n  outline: 1px solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: -1px;\n  content: \"\";\n}\n.TurnNavigator_preview {\n  position: absolute;\n  top: clamp(0px, calc(var(--turn-preview-center) - var(--turn-preview-height) / 2), calc(100% - var(--turn-preview-height)));\n  right: calc(100% + 10px);\n  box-sizing: border-box;\n  width: min(300px, calc(100cqw - 120px));\n  max-height: var(--turn-preview-height);\n  overflow: hidden;\n  padding: 10px 12px;\n  border: 0;\n  border-radius: var(--dsw-radius-lg);\n  color: var(--dsw-alias-label-primary);\n  background: var(--dsw-alias-bg-layer-1);\n  box-shadow: var(--dsw-elevation-panel);\n  pointer-events: none;\n  animation: TurnNavigator_dsh-turn-preview-enter 120ms ease-out;\n  transition: top 140ms cubic-bezier(0.2, 0.8, 0.2, 1);\n}\n.TurnNavigator_previewPrompt,\n.TurnNavigator_previewResponse {\n  display: -webkit-box;\n  overflow: hidden;\n  -webkit-box-orient: vertical;\n}\n.TurnNavigator_previewPrompt {\n  font: var(--dsw-font-xs-strong-13);\n  -webkit-line-clamp: 1;\n}\n.TurnNavigator_previewResponse {\n  margin-top: 4px;\n  color: var(--dsw-alias-label-caption);\n  font: var(--dsw-font-xxs-12);\n  -webkit-line-clamp: 3;\n}\n@keyframes TurnNavigator_dsh-turn-preview-enter {\n  from {\n    opacity: 0;\n    transform: translateX(4px);\n  }\n  to {\n    opacity: 1;\n    transform: translateX(0);\n  }\n}\n@keyframes TurnNavigator_dsh-turn-mark-busy {\n  0%, 100% {\n    opacity: 1;\n  }\n  50% {\n    opacity: 0.35;\n  }\n}\n@container (max-width: 900px) {\n  .TurnNavigator_frame {\n    display: none;\n  }\n}\n@media (prefers-reduced-motion: reduce) {\n  .TurnNavigator_frame,\n  .TurnNavigator_scroller,\n  .TurnNavigator_mark::before,\n  .TurnNavigator_markBusy::before,\n  .TurnNavigator_preview {\n    transition: none;\n    animation: none;\n    scroll-behavior: auto;\n  }\n}\n\n/* ../node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/ChatView.module.css */\n.ChatView_frame {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  min-height: 0;\n  flex: 1 1 auto;\n  container-type: inline-size;\n}\n.ChatView_root {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  min-height: 0;\n  flex: 1 1 auto;\n  overflow-x: visible;\n  overflow-y: clip;\n}\n.ChatView_scroll {\n  flex: 1 1 auto;\n  min-height: 0;\n  overflow-x: clip;\n  overflow-y: auto;\n  padding: 16px calc(var(--dsh-composer-side-clearance) + 16px);\n  container-type: inline-size;\n}\n.ChatView_scroll,\n[data-conversation-scroll]:has(.ChatView_root) {\n  overscroll-behavior-y: none;\n}\n.ChatView_root[data-chat-following-tail] .ChatView_scroll,\n[data-conversation-scroll]:has(.ChatView_root[data-chat-following-tail]) {\n  overflow-anchor: none;\n}\n[data-conversation-scroll] .ChatView_frame,\n[data-conversation-scroll] .ChatView_root {\n  flex: 0 0 auto;\n  min-height: auto;\n  height: auto;\n}\n[data-conversation-scroll] .ChatView_scroll {\n  overflow-x: clip;\n  overflow-y: visible;\n  flex: 0 0 auto;\n  min-height: auto;\n}\n.ChatView_column {\n  position: relative;\n  max-width: var(--dsh-chat-content-width);\n  width: 100%;\n  margin: 0 auto;\n  display: flex;\n  flex-direction: column;\n}\n:is(.ChatView_column, [data-slot=\"conversation.chat.flow\"]) > :not([hidden]):not(.ChatView_textInteraction):not(.ChatView_flowItem:is(:empty, :has(> [data-slot=\"conversation.chat.node\"]:empty))) ~ :not([hidden]):not(.ChatView_textInteraction):not(.ChatView_flowItem:is(:empty, :has(> [data-slot=\"conversation.chat.node\"]:empty))),\n.ChatView_column > .ChatView_older + [data-slot=\"conversation.chat.flow\"] > :not([hidden]):not(.ChatView_textInteraction):not(.ChatView_flowItem:is(:empty, :has(> [data-slot=\"conversation.chat.node\"]:empty))) {\n  margin-top: var(--dsh-chat-flow-gap, 4px);\n}\n.ChatView_flowItem[data-chat-group-part=response] {\n  --dsh-chat-flow-gap: 12px;\n}\n:is(.ChatView_column, [data-slot=\"conversation.chat.flow\"]) > [data-chat-group-part=response]:not([hidden]):not(:empty) + :not([hidden]):not(.ChatView_flowItem:is(:empty, :has(> [data-slot=\"conversation.chat.node\"]:empty))):not(.ChatView_running):not(:has(> [data-slot=\"conversation.chat.node\"] > [data-chat-steering-batch])) {\n  --dsh-chat-flow-gap: 12px;\n}\n.ChatView_flowItem {\n  min-width: 0;\n}\n.ChatView_turnSpacer {\n  height: 0;\n}\n.ChatView_column[data-chat-motion] > :not([data-chat-motion]),\n.ChatView_column[data-chat-motion] > [data-slot=\"conversation.chat.flow\"] > :not([data-chat-motion]) {\n  transition: margin-top 160ms cubic-bezier(0.4, 0, 0.2, 1);\n}\n.ChatView_column[data-input-fold] > :not([data-chat-motion]),\n.ChatView_column[data-input-fold] > [data-slot=\"conversation.chat.flow\"] > :not([data-chat-motion]) {\n  transition: none;\n}\n.ChatView_column[data-chat-motion] > [data-chat-flow-kind=turn-process],\n.ChatView_column[data-chat-motion] > [data-slot=\"conversation.chat.flow\"] > [data-chat-flow-kind=turn-process] {\n  transition: none;\n}\n@media (prefers-reduced-motion: reduce) {\n  .ChatView_column[data-chat-motion] > :not([data-chat-motion]),\n  .ChatView_column[data-chat-motion] > [data-slot=\"conversation.chat.flow\"] > :not([data-chat-motion]) {\n    transition: none;\n  }\n}\n.ChatView_flowItem[data-chat-flow-kind=turn-process],\n:is(.ChatView_column, [data-slot=\"conversation.chat.flow\"]) > [data-chat-flow-kind=turn-process]:not(:empty, :has(> [data-slot=\"conversation.chat.node\"]:empty)) + :not([hidden]):not(.ChatView_flowItem:is(:empty, :has(> [data-slot=\"conversation.chat.node\"]:empty))):not(.ChatView_running):not(:has(> [data-slot=\"conversation.chat.node\"] > [data-chat-steering-batch])),\n:is(.ChatView_column, [data-slot=\"conversation.chat.flow\"]) > [data-chat-flow-kind=turn-process] + :not([hidden]):not(.ChatView_flowItem:is(:empty, :has(> [data-slot=\"conversation.chat.node\"]:empty))):not(.ChatView_running):not([data-submission-echo], [data-pending-steering]):not(:has(> [data-slot=\"conversation.chat.node\"] > [data-chat-steering-batch])) {\n  --dsh-chat-flow-gap: 16px;\n}\n:is(.ChatView_column, [data-slot=\"conversation.chat.flow\"]) > .ChatView_flowItem:has(> [data-slot=\"conversation.chat.node\"] > [data-chat-steering-batch=start]) {\n  --dsh-chat-flow-gap: calc(44px + var(--dsh-content-font-delta, 0px));\n}\n.ChatView_running + [data-pending-steering] {\n  --dsh-chat-flow-gap: 0px;\n}\n.ChatView_flowItem[data-chat-flow-kind=turn-tail] + .ChatView_running {\n  display: none;\n}\n@media (prefers-reduced-motion: no-preference) {\n  :where(.ChatView_column > [data-slot=\"conversation.chat.flow\"] > .ChatView_flowItem[data-chat-flow-kind=steering]) + .ChatView_running {\n    animation: ChatView_running-enters-slot 140ms cubic-bezier(0.2, 0.8, 0.2, 1);\n  }\n  .ChatView_column[data-input-fold] .ChatView_running {\n    animation-duration: 0s;\n  }\n}\n@keyframes ChatView_running-enters-slot {\n  from {\n    opacity: 0;\n    translate: 0 calc(-44px - var(--dsh-content-font-delta, 0px));\n  }\n  40% {\n    opacity: 1;\n  }\n}\n.ChatView_flowItem:is(:empty, :has(> [data-slot=\"conversation.chat.node\"]:empty)) {\n  height: 0;\n}\n.ChatView_callRow {\n  border-radius: var(--dsw-radius-sm);\n}\n.ChatView_hint {\n  color: var(--dsw-alias-label-tertiary);\n  font-size: var(--dsh-content-font-size-secondary, 13px);\n  line-height: calc(18px + var(--dsh-content-font-delta-secondary, 0px));\n}\n.ChatView_running {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  --dsh-chat-flow-gap: 12px;\n  --dsw-alias-label-shimmer: var(--dsw-alias-label-deep-diving-shimmer);\n  color: var(--dsw-alias-label-deep-diving);\n  font-size: calc(var(--dsh-content-font-size, 14px) - 2px);\n  line-height: calc(22px + var(--dsh-content-font-delta, 0px));\n}\n.ChatView_running[data-holding] {\n  visibility: hidden;\n  opacity: 0;\n}\n:is(.ChatView_column, [data-slot=\"conversation.chat.flow\"]) > :nth-last-child(2 of :not([hidden]):not([data-pending-steering]):not(.ChatView_flowItem:is(:empty, :has(> [data-slot=\"conversation.chat.node\"]:empty)))):is(.ChatView_flowItem:not([data-chat-flow-kind=user]):not([data-chat-flow-kind=steering]):not([data-chat-flow-kind=turn-trigger]), [data-chat-group-key]) ~ .ChatView_running > .ChatView_runningDivider {\n  opacity: 1;\n}\n.ChatView_runningDivider {\n  position: absolute;\n  top: -4px;\n  left: 0;\n  right: 0;\n  height: 0.5px;\n  background: color-mix(in srgb, var(--dsw-alias-border-l1) 75%, var(--dsw-alias-border-l2));\n  opacity: 0;\n  pointer-events: none;\n}\n@media (prefers-reduced-motion: no-preference) {\n  .ChatView_runningDivider {\n    transition: opacity 160ms ease;\n  }\n}\n.ChatView_runningContent {\n  display: inline-flex;\n  align-items: center;\n  min-width: 0;\n  gap: 6px;\n  margin-top: 4px;\n  height: calc(28px + var(--dsh-content-font-delta, 0px));\n}\n.ChatView_runningText {\n  min-width: 0;\n  font-variant-numeric: tabular-nums;\n}\n.ChatView_runningIcon {\n  position: relative;\n  display: inline-flex;\n  flex: none;\n  width: calc(14px + var(--dsh-content-font-delta, 0px));\n  height: calc(14px + var(--dsh-content-font-delta, 0px));\n  contain: strict;\n  overflow: hidden;\n}\n.ChatView_runningWhaleAnimated {\n  display: none;\n  position: absolute;\n  inset: 0;\n}\n.ChatView_runningWhaleStill {\n  display: initial;\n}\n@supports (mask-mode: alpha) and (mask-image: url()) {\n  @media (prefers-reduced-motion: no-preference) and (forced-colors: none) {\n    .ChatView_runningWhaleAnimated {\n      display: block;\n      background: currentColor;\n      mask: url(data:image/png;base64,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) center / 100% 100% no-repeat;\n      mask-mode: alpha;\n      will-change: transform;\n    }\n    .ChatView_runningWhaleStill {\n      display: none;\n    }\n  }\n}\n.ChatView_openError {\n  color: var(--dsw-alias-state-error-primary);\n  font-size: var(--dsh-content-font-size-secondary, 13px);\n  line-height: calc(18px + var(--dsh-content-font-delta-secondary, 0px));\n}\n.ChatView_older {\n  overflow-anchor: none;\n  display: flex;\n  justify-content: center;\n}\n.ChatView_older button {\n  display: grid;\n  line-height: 18px;\n  white-space: nowrap;\n  border: none;\n  border-radius: var(--dsw-radius-sm);\n  padding: 4px 12px;\n  font-size: 12px;\n  color: var(--dsw-alias-label-secondary);\n  background: var(--dsw-alias-interactive-bg-hover-solid);\n  cursor: pointer;\n}\n.ChatView_older button > span {\n  grid-area: 1 / 1;\n}\n.ChatView_historyHidden {\n  visibility: hidden;\n}\n.ChatView_older button:disabled {\n  cursor: default;\n  opacity: 0.6;\n}\n.ChatView_toBottomSlot {\n  position: absolute;\n  right: 0;\n  bottom: 16px;\n  left: 0;\n  z-index: 8;\n  height: 0;\n  display: flex;\n  justify-content: flex-end;\n  padding-right: max(calc(var(--dsh-composer-side-clearance) + 16px), calc((100% - var(--dsh-chat-content-width)) / 2));\n  pointer-events: none;\n}\n[data-conversation-scroll] .ChatView_toBottomSlot {\n  position: sticky;\n  bottom: calc(var(--dsh-composer-height, 152px) + 16px);\n}\n.ChatView_toBottom {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 34px;\n  height: 34px;\n  margin-top: -34px;\n  padding: 0;\n  border: 0;\n  --dsw-elevation-stroke-color: var(--dsw-alias-border-l3);\n  border-radius: 100px;\n  corner-shape: round;\n  color: var(--dsw-alias-label-primary);\n  background: var(--dsw-alias-button-floating-fill);\n  box-shadow: var(--dsw-elevation-panel);\n  cursor: pointer;\n  pointer-events: auto;\n}\n@media (hover: hover) {\n  .ChatView_toBottom:hover {\n    background: var(--dsw-alias-button-floating-hover);\n  }\n}\n.ChatView_modalAction {\n  min-width: 72px;\n}\n.ChatView_column > .ChatView_textInteraction {\n  position: absolute;\n  z-index: 6;\n  visibility: hidden;\n  margin: 0;\n  width: max-content;\n}\n\n/* ../node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/accessibility.module.css */\n.accessibility_visuallyHidden {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  overflow: hidden;\n  clip: rect(0 0 0 0);\n  white-space: nowrap;\n}\n\n/* ../node_modules/@deepseek-ai/dsh-client-ui-conversation/src/client/skeleton/ConversationRoot.module.css */\n.ConversationRoot_root {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n  min-width: 0;\n  background: var(--dsw-alias-bg-base);\n}\n.ConversationRoot_root[data-phase=hero] {\n  isolation: isolate;\n}\n.ConversationRoot_header {\n  display: grid;\n  grid-template-columns: auto minmax(0, 1fr);\n  flex: none;\n  box-sizing: border-box;\n  min-height: 76px;\n  padding: 10px 28px 0 20px;\n  border-bottom: 0.5px solid var(--dsw-alias-border-l3);\n}\n.ConversationRoot_header:where(:not(:has(.ConversationRoot_tabs))) {\n  min-height: 0;\n  padding-bottom: 10px;\n}\n.ConversationRoot_headerBlank {\n  min-height: 0;\n  padding-bottom: 0;\n  border-bottom: none;\n}\n.ConversationRoot_headerBlank .ConversationRoot_headerCorner {\n  margin-left: auto;\n}\n[data-platform=darwin] .ConversationRoot_headerLeading,\n[data-platform=darwin] .ConversationRoot_headerActions,\n[data-platform=darwin] .ConversationRoot_headerUtilities,\n[data-platform=darwin] .ConversationRoot_headerCorner {\n  -webkit-app-region: no-drag;\n}\n.ConversationRoot_titleRow {\n  grid-column: 2;\n  container-type: inline-size;\n  display: flex;\n  align-items: center;\n  gap: 0;\n  min-height: 30px;\n  padding-inline-start: max(0px, calc(var(--dsh-frame-leading-clearance, 0px) - 20px));\n}\n.ConversationRoot_titleCluster {\n  display: flex;\n  flex: 1;\n  align-items: center;\n  gap: 10px;\n  min-width: 0;\n  --title-cluster-fade: 20px;\n  margin: -4px calc(-1 * var(--title-cluster-fade)) -4px -4px;\n  padding: 4px var(--title-cluster-fade) 4px 4px;\n  overflow: clip;\n  mask-image:\n    linear-gradient(\n      to left,\n      transparent calc(0.3 * var(--title-cluster-fade)),\n      #000 var(--title-cluster-fade));\n}\n.ConversationRoot_titleCluster:has(+ .ConversationRoot_headerUtilities:empty) {\n  --title-cluster-fade: 8px;\n}\n.ConversationRoot_headerLeading {\n  grid-column: 1;\n  grid-row: 1;\n  display: flex;\n  flex: none;\n  align-items: center;\n  gap: 8px;\n}\n.ConversationRoot_crumbs {\n  display: flex;\n  align-items: center;\n  gap: 4px;\n  min-width: 0;\n  overflow: hidden;\n  white-space: nowrap;\n}\n.ConversationRoot_crumbSeg {\n  display: inline-flex;\n  align-items: center;\n  gap: 4px;\n  min-width: 0;\n}\n.ConversationRoot_crumbSep {\n  color: var(--dsw-alias-label-caption);\n  font-size: 14px;\n  line-height: 20px;\n}\n.ConversationRoot_crumb {\n  display: inline-block;\n  max-width: 220px;\n  overflow: hidden;\n  padding: 4px 8px;\n  border: none;\n  border-radius: var(--dsw-radius-md);\n  background: transparent;\n  font-size: 14px;\n  line-height: 20px;\n  color: var(--dsw-alias-label-tertiary);\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  cursor: pointer;\n}\n@media (hover: hover) {\n  button.ConversationRoot_crumb:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.ConversationRoot_crumbCurrent {\n  font-weight: 500;\n  color: var(--dsw-alias-label-primary);\n  cursor: default;\n}\n.ConversationRoot_headerActions {\n  display: flex;\n  flex: none;\n  align-items: center;\n  gap: 10px;\n}\n@container (max-width: 460px) {\n  .ConversationRoot_headerActions {\n    gap: 8px;\n  }\n}\n.ConversationRoot_headerUtilities {\n  display: flex;\n  flex: none;\n  align-items: center;\n  gap: 8px;\n  margin-left: 20px;\n}\n.ConversationRoot_headerUtilities:empty {\n  display: none;\n}\n.ConversationRoot_headerMenuButton {\n  flex: none;\n  width: 28px;\n  padding: 0;\n  color: var(--dsw-alias-label-secondary);\n}\n.ConversationRoot_headerMenuButton svg {\n  width: 15px;\n  height: 15px;\n}\n.ConversationRoot_headerCorner {\n  display: flex;\n  flex: none;\n  align-items: center;\n  margin-left: 8px;\n  margin-right: -16px;\n}\n.ConversationRoot_headerCorner:empty {\n  display: none;\n}\n.ConversationRoot_tabs {\n  grid-column: 1 / -1;\n  position: relative;\n  z-index: 1;\n  display: flex;\n  gap: 16px 20px;\n  width: 100%;\n  min-width: 0;\n  box-sizing: border-box;\n  align-items: flex-start;\n  flex-wrap: wrap;\n  margin-top: 10px;\n  padding-left: 8px;\n}\n@media (max-width: 767px) {\n  html:not([data-platform]) .ConversationRoot_tabs {\n    padding-left: 0;\n  }\n}\n.ConversationRoot_viewTabs {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 32px;\n  min-width: 0;\n  min-height: 25px;\n}\n.ConversationRoot_tab {\n  --dsh-tab-hit-inline: 10px;\n  position: relative;\n  box-sizing: border-box;\n  min-height: 35px;\n  margin: -10px calc(-1 * var(--dsh-tab-hit-inline)) 0;\n  padding: 10px var(--dsh-tab-hit-inline) 9px;\n  border: none;\n  background: transparent;\n  font-size: 13px;\n  line-height: 16px;\n  font-weight: 500;\n  color: var(--dsw-alias-label-tertiary);\n  cursor: pointer;\n}\n.ConversationRoot_tab::after {\n  content: \"\";\n  position: absolute;\n  right: var(--dsh-tab-hit-inline);\n  bottom: -1px;\n  left: var(--dsh-tab-hit-inline);\n  height: 2px;\n  border-radius: 2px;\n  background: transparent;\n}\n.ConversationRoot_tabActive {\n  color: var(--dsw-alias-state-business-primary);\n}\n.ConversationRoot_tabActive::after {\n  background: var(--dsw-alias-state-business-primary);\n}\n.ConversationRoot_viewsMoreAnchor {\n  flex: none;\n}\n.ConversationRoot_viewsMore {\n  width: 22px;\n  height: 22px;\n  margin-top: -3px;\n  padding: 0;\n  color: var(--dsw-alias-label-secondary);\n}\n.ConversationRoot_viewsMoreActive {\n  color: var(--dsw-alias-state-business-primary);\n}\n.ConversationRoot_tabLabel {\n  display: block;\n  max-width: 88px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ConversationRoot_viewsMore[aria-expanded=true] {\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n.ConversationRoot_viewsMoreMenu {\n  width: 288px;\n  max-width: calc(100vw - 24px);\n}\n.ConversationRoot_viewArea {\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  min-height: 0;\n}\n.ConversationRoot_widthHandle {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  z-index: 0;\n  width: min(10px, calc((100% - var(--dsh-chat-content-width)) / 2 - 24px - 24px));\n  cursor: col-resize;\n}\n.ConversationRoot_widthHandle[data-side=left] {\n  right: calc(50% + var(--dsh-chat-content-width) / 2 + 24px);\n}\n.ConversationRoot_widthHandle[data-side=right] {\n  left: calc(50% + var(--dsh-chat-content-width) / 2 + 24px);\n}\n.ConversationRoot_widthHandle::after {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  width: 2px;\n  border-radius: 2px;\n  background:\n    linear-gradient(\n      to bottom,\n      transparent calc(var(--dsh-width-handle-pointer-y, 50%) - 36px),\n      var(--dsw-alias-scrollbar-bg-l1) calc(var(--dsh-width-handle-pointer-y, 50%) - 8px),\n      var(--dsw-alias-scrollbar-bg-l1) calc(var(--dsh-width-handle-pointer-y, 50%) + 8px),\n      transparent calc(var(--dsh-width-handle-pointer-y, 50%) + 36px));\n  opacity: 0;\n  pointer-events: none;\n}\n.ConversationRoot_widthHandle[data-side=left]::after {\n  right: 4px;\n}\n.ConversationRoot_widthHandle[data-side=right]::after {\n  left: 4px;\n}\n.ConversationRoot_widthHandle[data-dragging]::after {\n  opacity: 1;\n}\n@media (hover: hover) {\n  .ConversationRoot_widthHandle:hover::after {\n    opacity: 1;\n  }\n}\n.ConversationRoot_root:has([data-conversation-composer-overlay]) .ConversationRoot_widthHandle {\n  display: none;\n}\n.ConversationRoot_composerStack {\n  --dsh-composer-stack-gap: 6px;\n  display: flex;\n  flex-direction: column;\n  gap: var(--dsh-composer-stack-gap);\n}\n.ConversationRoot_composerSeat {\n  display: flex;\n  flex: none;\n  flex-direction: column;\n  --dsh-composer-text-max-height: 336px;\n}\n.ConversationRoot_root[data-phase=active] {\n  overflow: hidden;\n}\n.ConversationRoot_root[data-phase=active] .ConversationRoot_header {\n  flex: none;\n}\n.ConversationRoot_body {\n  position: relative;\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  min-height: 0;\n  --dsh-chat-content-width: var( --dsh-chat-user-width, clamp(680px, calc(var(--dsh-conversation-column-width, 0px) * 0.64), 920px) );\n  --dsh-composer-card-max-width: calc(var(--dsh-chat-content-width) + 32px);\n  --dsh-composer-side-clearance: 16px;\n  --dsh-composer-dock-inset: 8px;\n}\n.ConversationRoot_embeddedBody {\n  overflow: hidden;\n  --dsh-chat-content-width: min(calc(100% - 32px), 920px);\n  --dsh-composer-card-max-width: min(calc(100% - 16px), 952px);\n  --dsh-composer-side-clearance: 8px;\n  --dsh-composer-dock-inset: 8px;\n}\n.ConversationRoot_scrollBody {\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  min-height: 0;\n  margin-right: 2px;\n  overflow-y: auto;\n  scrollbar-gutter: stable;\n}\n.ConversationRoot_scrollBody::-webkit-scrollbar-track {\n  margin: 2px;\n}\n.ConversationRoot_root[data-phase=active] .ConversationRoot_viewArea,\n.ConversationRoot_embeddedBody[data-content-phase=active] .ConversationRoot_viewArea {\n  flex: 1 0 auto;\n  min-height: auto;\n}\n.ConversationRoot_root[data-phase=active] .ConversationRoot_composerSeat,\n.ConversationRoot_embeddedBody[data-content-phase=active] .ConversationRoot_composerSeat {\n  position: sticky;\n  bottom: 0;\n  margin-top: auto;\n  z-index: 9;\n  will-change: transform;\n  overflow-anchor: none;\n  background:\n    linear-gradient(\n      180deg,\n      color-mix(in srgb, var(--dsw-alias-bg-base) 0%, transparent) 0px,\n      var(--dsw-alias-bg-base) 36px);\n}\n.ConversationRoot_scrollBody:has([data-conversation-composer-overlay]) {\n  position: relative;\n  overflow-x: hidden;\n  overflow-y: auto;\n  scrollbar-gutter: auto;\n}\n.ConversationRoot_scrollBody:has([data-conversation-composer-overlay]) > [data-slot=\"conversation.session\"] > .ConversationRoot_viewArea {\n  flex: 1 1 0;\n  min-height: 0;\n  overflow: hidden;\n}\n.ConversationRoot_scrollBody:has([data-conversation-composer-overlay]) > .ConversationRoot_composerSeat {\n  position: absolute;\n  right: var(--dsh-scrollbar-width);\n  bottom: 0;\n  left: 0;\n}\n.ConversationRoot_composerHero {\n  align-self: center;\n  gap: 8px;\n  padding-bottom: 32px;\n  width: min(calc(var(--dsh-composer-card-max-width) + 2 * var(--dsh-composer-side-clearance)), 100%);\n  z-index: 1;\n}\n.ConversationRoot_heroWorkspaceRow {\n  display: flex;\n  align-items: center;\n  gap: 2px;\n  min-width: 0;\n  margin-top: 4px;\n  padding: 0 16px 0 20px;\n}\n.ConversationRoot_heroOptions {\n  display: flex;\n  flex: none;\n  align-items: center;\n  gap: 2px;\n  min-width: 0;\n  margin-left: auto;\n}\n.ConversationRoot_heroOptions:empty {\n  display: none;\n}\n.ConversationRoot_root[data-phase=hero] .ConversationRoot_scrollBody,\n.ConversationRoot_embeddedBody[data-content-phase=hero] .ConversationRoot_scrollBody {\n  justify-content: center;\n  overflow-y: auto;\n}\n.ConversationRoot_root[data-phase=settling] .ConversationRoot_composerSeat,\n.ConversationRoot_embeddedBody[data-content-phase=settling] .ConversationRoot_composerSeat {\n  visibility: hidden;\n}\n\n/* ../node_modules/@deepseek-ai/dsh-client-ui-conversation/src/client/skeleton/InputBar.module.css */\n.InputBar_root {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding: 0 var(--dsh-composer-side-clearance) 4px;\n}\n.InputBar_dock {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 12px;\n  max-width: 100%;\n  padding-top: 4px;\n}\n.InputBar_root:not(.InputBar_hero) > .InputBar_dock {\n  min-height: calc(22px + var(--dsh-content-font-delta-secondary, 0px));\n}\n.InputBar_hero .InputBar_dock:empty {\n  display: none;\n}\n.InputBar_hero {\n  padding: 0 var(--dsh-composer-side-clearance);\n}\n.InputBar_notice {\n  width: 100%;\n  max-width: var(--dsh-composer-card-max-width);\n  margin-bottom: 6px;\n  padding: 4px 8px;\n  border-radius: var(--dsw-radius-md);\n  background: var(--dsw-alias-interactive-bg-hover);\n  color: var(--dsw-alias-label-secondary);\n  font-size: 12px;\n  line-height: 18px;\n}\n.InputBar_card {\n  box-sizing: border-box;\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n  width: 100%;\n  max-width: var(--dsh-composer-card-max-width);\n  padding-top: 8px;\n  border: 0;\n  --dsw-elevation-stroke-color: var(--dsw-alias-border-l2);\n  border-radius: var(--dsw-radius-panel);\n  background: var(--dsw-specific-input-major);\n  box-shadow: var(--dsw-elevation-soft);\n  font-size: var(--dsh-content-font-size, 14px);\n  line-height: calc(24px + var(--dsh-content-font-delta, 0px));\n  --dsh-scrollbar-thumb: var(--dsw-alias-scrollbar-bg-l2);\n  --dsh-scrollbar-thumb-hover: var(--dsw-alias-scrollbar-hover-l2);\n}\n@media (pointer: coarse) {\n  .InputBar_card {\n    font-size: max(16px, var(--dsh-content-font-size, 14px));\n  }\n}\n.InputBar_cardWorkspaceTrigger {\n  --dsw-elevation-stroke-color: transparent;\n  cursor: pointer;\n}\n.InputBar_cardWorkspaceTrigger::after {\n  content: \"\";\n  position: absolute;\n  inset: 0;\n  box-sizing: border-box;\n  border: 1px dashed currentColor;\n  border-radius: var(--dsw-radius-panel);\n  color: var(--dsw-alias-border-l4);\n  transition: color 100ms ease;\n  pointer-events: none;\n}\n.InputBar_cardWorkspaceTrigger :disabled {\n  pointer-events: none;\n}\n@media (hover: hover) {\n  .InputBar_cardWorkspaceTrigger:hover::after {\n    color: var(--dsw-alias-state-business-primary);\n  }\n}\n.InputBar_accessory {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  padding: 10px 12px 0;\n}\n.InputBar_overlayAnchor {\n  position: absolute;\n  inset: 0 0 auto;\n  height: 0;\n}\n.InputBar_scroll {\n  max-height: var(--dsh-composer-text-max-height);\n  overflow-y: auto;\n  margin-right: 4px;\n}\n.InputBar_scroll::-webkit-scrollbar-track {\n  margin-top: 8px;\n}\n.InputBar_grow {\n  position: relative;\n}\n.InputBar_pending {\n  width: 8px;\n  height: 8px;\n  border-radius: 50%;\n  corner-shape: round;\n  background: var(--dsw-alias-state-business-primary);\n  animation: InputBar_input-pending 1s ease-in-out infinite alternate;\n}\n@keyframes InputBar_input-pending {\n  from {\n    opacity: 0.35;\n  }\n  to {\n    opacity: 1;\n  }\n}\n.InputBar_input {\n  box-sizing: border-box;\n  min-height: 36px;\n  padding: 4px 8px 0 14px;\n  font-family: var(--dsw-font-family);\n  font-size: inherit;\n  line-height: inherit;\n  white-space: pre-wrap;\n  word-break: break-word;\n  overflow-wrap: anywhere;\n  outline: none;\n  color: var(--dsw-alias-label-primary);\n  caret-color: var(--dsw-alias-state-business-primary);\n}\n.InputBar_input p {\n  margin: 0;\n}\n.InputBar_input p:last-child::after {\n  content: var(--dsh-composer-hint);\n  color: var(--dsw-alias-label-caption);\n}\n.InputBar_input[data-composer-composing] p:last-child::after {\n  content: none;\n}\n.InputBar_input[data-composer-chip-selected] {\n  caret-color: transparent;\n}\n.InputBar_input[data-composer-composing] + .InputBar_placeholder {\n  visibility: hidden;\n}\n.InputBar_placeholder {\n  position: absolute;\n  inset: 4px 8px auto 14px;\n  color: var(--dsw-alias-label-caption);\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  pointer-events: none;\n  user-select: none;\n}\n.InputBar_inputDisabled {\n  color: var(--dsw-alias-label-tertiary);\n  cursor: not-allowed;\n}\n.InputBar_input[aria-haspopup=menu] {\n  cursor: pointer;\n}\n.InputBar_hero .InputBar_input {\n  min-height: 52px;\n}\n.InputBar_hero .InputBar_placeholder {\n  white-space: normal;\n  display: -webkit-box;\n  -webkit-box-orient: vertical;\n  -webkit-line-clamp: 2;\n  line-clamp: 2;\n}\n.InputBar_row {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  justify-content: space-between;\n  gap: 12px;\n  padding: 2px 8px 6px;\n  min-width: 0;\n  container-type: inline-size;\n}\n.InputBar_row[data-model-compact] {\n  --dsh-composer-model-text-display: none;\n  --dsh-composer-model-icon-display: block;\n}\n.InputBar_tools,\n.InputBar_modes,\n.InputBar_trailing {\n  display: flex;\n  align-items: center;\n  min-width: 0;\n}\n.InputBar_tools {\n  gap: 12px;\n}\n.InputBar_modes {\n  gap: 12px;\n}\n.InputBar_trailing {\n  flex: none;\n  margin-left: auto;\n  gap: 12px;\n}\n@container (max-width: 560px) {\n  .InputBar_tools,\n  .InputBar_modes,\n  .InputBar_trailing {\n    gap: 8px;\n  }\n}\n.InputBar_add {\n  display: grid;\n  place-items: center;\n  flex: none;\n  width: 28px;\n  height: 28px;\n  border: none;\n  border-radius: 999px;\n  corner-shape: round;\n  background: var(--dsw-specific-selector);\n  color: var(--dsw-alias-label-primary);\n  cursor: pointer;\n}\n@media (hover: hover) {\n  .InputBar_add:hover:not(:disabled) {\n    background: var(--dsw-alias-interactive-bg-hover-solid);\n  }\n}\n.InputBar_add:disabled {\n  opacity: 0.5;\n  cursor: default;\n}\n.InputBar_select {\n  max-width: 220px;\n  height: 28px;\n  padding: 0 20px 0 8px;\n  border: none;\n  border-radius: var(--dsw-radius-sm);\n  outline: none;\n  background-color: transparent;\n  background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M3 4.5L6 7.5L9 4.5' stroke='%2381858C' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E\");\n  background-repeat: no-repeat;\n  background-position: right 4px center;\n  background-size: 12px 12px;\n  color: var(--dsw-alias-label-secondary);\n  font-size: 13px;\n  line-height: 20px;\n  font-weight: 500;\n  white-space: nowrap;\n  cursor: pointer;\n  appearance: none;\n}\n@media (hover: hover) {\n  .InputBar_select:hover:not(:disabled) {\n    background-color: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.InputBar_select:disabled {\n  opacity: 0.5;\n  cursor: default;\n}\n.InputBar_primary {\n  display: grid;\n  place-items: center;\n  flex: none;\n  width: 34px;\n  height: 34px;\n  border: none;\n  border-radius: 999px;\n  corner-shape: round;\n  background: var(--dsw-alias-button-info-fill);\n  color: var(--dsw-alias-label-on-color);\n  cursor: pointer;\n  transition: background-color 100ms ease;\n  transform: translateY(-2px);\n}\n.InputBar_continueIcon {\n  transform: scale(1.5);\n}\n@media (hover: hover) {\n  .InputBar_primary:hover:not(:disabled) {\n    background: var(--dsw-alias-button-info-hover);\n  }\n}\n.InputBar_primary:disabled {\n  opacity: 0.4;\n  cursor: default;\n}\n.InputBar_primary[data-sending]:disabled {\n  opacity: 1;\n  cursor: progress;\n}\n.InputBar_sendingSpinner {\n  animation: InputBar_input-sending 800ms linear infinite;\n}\n@media (prefers-reduced-motion: reduce) {\n  .InputBar_sendingSpinner {\n    animation-duration: 2400ms;\n  }\n}\n@keyframes InputBar_input-sending {\n  to {\n    transform: rotate(360deg);\n  }\n}\n.InputBar_retry {\n  margin-left: 8px;\n  padding: 1px 8px;\n  border: 1px solid currentColor;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: inherit;\n  font-size: 12px;\n  cursor: pointer;\n}\n.InputBar_standardControls {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  min-width: 0;\n}\n.InputBar_tools[hidden],\n.InputBar_standardControls[hidden] {\n  display: none;\n}\n.InputBar_trailingActive {\n  flex: 1;\n  margin-left: 0;\n}\n.InputBar_activity {\n  display: flex;\n  align-items: center;\n  flex: none;\n}\n.InputBar_activity:empty {\n  display: none;\n}\n.InputBar_activityExpanded {\n  flex: 1;\n  min-width: 0;\n}\n\n/* ../node_modules/@deepseek-ai/dsh-client-ui-conversation/src/client/skeleton/TodoPanel.module.css */\n.TodoPanel_root {\n  box-sizing: border-box;\n  flex: none;\n  overflow: hidden;\n  margin: 0 auto;\n  width: calc(100% - var(--dsh-composer-side-clearance) - var(--dsh-composer-side-clearance) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset));\n  max-width: calc(var(--dsh-composer-card-max-width) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset));\n  border: 0;\n  --dsw-elevation-stroke-color: var(--dsw-alias-border-l1);\n  border-radius: var(--dsw-radius-lg);\n  background: var(--dsw-specific-menu);\n  backdrop-filter: var(--dsw-menu-backdrop-filter);\n  box-shadow: var(--dsw-elevation-panel);\n  --dsh-scrollbar-thumb: var(--dsw-alias-scrollbar-bg-l2);\n  --dsh-scrollbar-thumb-hover: var(--dsw-alias-scrollbar-hover-l2);\n}\n.TodoPanel_body {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  padding: 6px 12px;\n}\n.TodoPanel_header {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  width: 100%;\n  padding: 0;\n  border: none;\n  background: transparent;\n  text-align: left;\n  cursor: pointer;\n}\n.TodoPanel_lead {\n  display: grid;\n  flex: none;\n  place-items: center;\n  color: var(--dsw-alias-label-tertiary);\n}\n.TodoPanel_title {\n  flex: none;\n  font-size: 13px;\n  line-height: 24px;\n  font-weight: 500;\n  color: var(--dsw-alias-label-primary);\n}\n.TodoPanel_progress {\n  flex: 1 1 auto;\n  min-width: 0;\n  overflow: hidden;\n  font-size: 13px;\n  line-height: 20px;\n  font-weight: 400;\n  color: var(--dsw-alias-label-tertiary);\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.TodoPanel_chevron {\n  display: grid;\n  flex: none;\n  place-items: center;\n  color: var(--dsw-alias-label-tertiary);\n}\n.TodoPanel_list {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  margin: 0;\n  padding: 0;\n  list-style: none;\n  max-height: 180px;\n  overflow-y: auto;\n}\n.TodoPanel_item {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  min-width: 0;\n  font-size: 13px;\n  line-height: 20px;\n  color: var(--dsw-alias-label-secondary);\n}\n.TodoPanel_glyph {\n  display: grid;\n  flex: none;\n  place-items: center;\n  width: 16px;\n  height: 16px;\n}\n.TodoPanel_content {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\n/* ../node_modules/@deepseek-ai/dsh-client-ui-input-trigger/src/client/MenuView.module.css */\n.MenuView_menu {\n  position: absolute;\n  bottom: calc(100% + 4px);\n  left: 0;\n  right: 0;\n  z-index: 100;\n  box-sizing: border-box;\n  max-height: 400px;\n  overflow: hidden;\n  --dsh-scrollbar-thumb: var(--dsw-alias-scrollbar-bg-l2);\n  --dsh-scrollbar-thumb-hover: var(--dsw-alias-scrollbar-hover-l2);\n  --dsh-scrollbar-width: 6px;\n  --dsh-scrollbar-thumb-border: 2px;\n  --dsh-scrollbar-track-margin: 12px;\n  padding: 4px;\n  display: flex;\n  flex-direction: column;\n  border: 0;\n  --dsw-elevation-stroke-color: var(--dsw-alias-border-l1);\n  box-shadow: var(--dsw-elevation-prominent);\n}\n.MenuView_menu[data-overflow-below]::after {\n  content: \"\";\n  position: absolute;\n  right: 14px;\n  bottom: 4px;\n  left: 4px;\n  height: 16px;\n  background:\n    linear-gradient(\n      to bottom,\n      transparent,\n      var(--dsw-specific-menu));\n  pointer-events: none;\n}\n.MenuView_viewport {\n  display: flex;\n  flex-direction: column;\n  min-height: 0;\n  overflow-y: auto;\n}\n.MenuView_item {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  width: 100%;\n  min-height: 34px;\n  padding: 6px 8px;\n  border: none;\n  border-radius: var(--dsw-radius-md);\n  background: transparent;\n  cursor: pointer;\n  font-size: 13px;\n  line-height: 20px;\n  color: var(--dsw-alias-label-primary);\n  text-align: left;\n}\n.MenuView_item.MenuView_active {\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n.MenuView_sectionTitle {\n  flex: none;\n  min-height: 23px;\n  padding: 5px 8px 2px;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 11px;\n  font-weight: 500;\n  line-height: 16px;\n}\n.MenuView_sectionTitle:not(:first-child) {\n  margin-top: 3px;\n}\n.MenuView_itemIcon {\n  display: inline-flex;\n  flex: none;\n  width: 14px;\n  height: 14px;\n  align-items: center;\n  justify-content: center;\n  color: var(--dsw-alias-menu-icon);\n}\n.MenuView_itemIcon svg {\n  width: 14px;\n  height: 14px;\n}\n.MenuView_itemName {\n  flex: none;\n  max-width: 40%;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.MenuView_itemAlias {\n  flex: none;\n  max-width: 20%;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 12px;\n  line-height: 18px;\n}\n.MenuView_itemDescription {\n  flex: 1;\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  text-align: right;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 12px;\n  line-height: 18px;\n}\n.MenuView_trailing {\n  flex: none;\n  display: inline-flex;\n  align-items: center;\n  gap: 3px;\n  margin-left: auto;\n}\n.MenuView_drillHintText {\n  display: none;\n  color: var(--dsw-alias-label-caption);\n  font-size: 10px;\n  line-height: 16px;\n  white-space: nowrap;\n}\n.MenuView_drillHint {\n  display: none;\n  padding: 0 4px;\n  border-radius: var(--dsw-radius-xs);\n  background: var(--dsw-alias-interactive-bg-hover);\n  color: var(--dsw-alias-label-caption);\n  font-family: inherit;\n  font-size: 10px;\n  line-height: 16px;\n}\n.MenuView_item.MenuView_active .MenuView_drillHintText,\n.MenuView_item.MenuView_active .MenuView_drillHint {\n  display: inline-flex;\n}\n.MenuView_drill {\n  flex: none;\n  display: inline-grid;\n  place-items: center;\n  width: 18px;\n  height: 18px;\n  border-radius: var(--dsw-radius-xs);\n  color: var(--dsw-alias-menu-icon);\n}\n@media (hover: hover) {\n  .MenuView_drill:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n    color: var(--dsw-alias-label-primary);\n  }\n}\n.MenuView_groupTitle {\n  padding: 6px 8px;\n  font-size: 11px;\n  line-height: 15px;\n  color: var(--dsw-alias-label-tertiary);\n}\n.MenuView_skeletonRow {\n  display: flex;\n  align-items: center;\n  box-sizing: border-box;\n  min-height: 34px;\n  padding: 6px 8px;\n}\n.MenuView_skeletonBar {\n  height: 18px;\n  border-radius: var(--dsw-radius-xs);\n  background: var(--dsw-alias-bg-skeleton);\n  animation: MenuView_dsh-menu-skeleton 2s cubic-bezier(0.36, 0, 0.64, 1) infinite;\n}\n@keyframes MenuView_dsh-menu-skeleton {\n  0% {\n    opacity: 1;\n  }\n  40% {\n    opacity: 0.6;\n  }\n  80%, 100% {\n    opacity: 1;\n  }\n}\n.MenuView_crumbs {\n  flex: none;\n  display: flex;\n  align-items: center;\n  flex-wrap: wrap;\n  gap: 2px;\n  padding: 3px 3px 5px;\n  margin-bottom: 2px;\n  border-bottom: 0.5px solid var(--dsw-alias-border-l1);\n}\n.MenuView_crumb {\n  flex: 0 1 auto;\n  max-width: 40%;\n  overflow: hidden;\n  padding: 2px 5px;\n  border: none;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-tertiary);\n  cursor: pointer;\n  font-family: inherit;\n  font-size: 11px;\n  line-height: 16px;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n@media (hover: hover) {\n  .MenuView_crumb:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n    color: var(--dsw-alias-label-primary);\n  }\n}\n.MenuView_crumbCurrent {\n  background: transparent;\n  color: var(--dsw-alias-label-primary);\n  cursor: default;\n}\n@media (hover: hover) {\n  .MenuView_crumbCurrent:hover {\n    background: transparent;\n    color: var(--dsw-alias-label-primary);\n    cursor: default;\n  }\n}\n.MenuView_crumbSeparator {\n  flex: none;\n  display: inline-flex;\n  color: var(--dsw-alias-menu-icon);\n}\n\n/* ../node_modules/@deepseek-ai/dsh-client-ui-jobs/src/client/JobListAction.module.css */\n.JobListAction_trigger {\n  display: inline-flex;\n  align-items: center;\n  gap: 4px;\n  min-height: 28px;\n  padding: 3px 2px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 12px;\n  line-height: 18px;\n  cursor: pointer;\n}\n.JobListAction_trigger:focus-visible {\n  color: var(--dsw-alias-label-secondary);\n}\n@media (hover: hover) {\n  .JobListAction_trigger:hover {\n    color: var(--dsw-alias-label-secondary);\n  }\n}\n.JobListAction_activitySlot {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  justify-content: center;\n  width: 14px;\n  height: 14px;\n}\n.JobListAction_trigger .JobListAction_compactIcon {\n  display: none;\n}\n@container (max-width: 460px) {\n  .JobListAction_trigger .JobListAction_compactIcon {\n    display: block;\n  }\n  .JobListAction_trigger .JobListAction_textModeActivity {\n    display: none;\n  }\n  .JobListAction_trigger .JobListAction_count {\n    display: none;\n  }\n  .JobListAction_trigger {\n    box-sizing: border-box;\n    width: 28px;\n    height: 28px;\n    padding: 0;\n    justify-content: center;\n    color: var(--dsw-alias-label-secondary);\n  }\n  .JobListAction_trigger .JobListAction_activitySlot,\n  .JobListAction_trigger .JobListAction_activitySlot > svg {\n    width: 15px;\n    height: 15px;\n  }\n  .JobListAction_trigger:focus-visible {\n    color: var(--dsw-alias-label-secondary);\n  }\n  .JobListAction_trigger:active {\n    background: var(--dsw-alias-interactive-bg-active);\n  }\n  @media (hover: hover) {\n    .JobListAction_trigger:hover {\n      color: var(--dsw-alias-label-secondary);\n      background: var(--dsw-alias-interactive-bg-hover);\n    }\n  }\n}\n.JobListAction_menu {\n  position: fixed;\n  z-index: 100;\n  box-sizing: border-box;\n  display: flex;\n  flex-direction: column;\n  width: 500px;\n  max-width: min(560px, calc(100vw - 32px));\n  max-height: min(480px, calc(100dvh - 140px));\n  overflow: hidden;\n  --dsh-scrollbar-thumb: var(--dsw-alias-scrollbar-bg-l2);\n  --dsh-scrollbar-thumb-hover: var(--dsw-alias-scrollbar-hover-l2);\n  --dsw-elevation-stroke-color: var(--dsw-alias-border-l1);\n  box-shadow: var(--dsw-elevation-prominent);\n  position-area: none;\n  top: max(12px, calc(anchor(bottom) + 5px));\n  bottom: 12px;\n  left: max(12px, anchor(left));\n  right: 12px;\n  position-try-fallbacks:\n    --dsh-jobs-window,\n    --dsh-jobs-opposite,\n    --dsh-jobs-wide-opposite,\n    --dsh-jobs-tall,\n    --dsh-jobs-viewport;\n  align-self: start;\n  justify-self: start;\n  height: fit-content;\n  min-height: 0;\n  margin: 0;\n}\n.JobListAction_menuBody {\n  display: flex;\n  flex-direction: column;\n  gap: 1px;\n  min-height: 0;\n  margin: 0;\n  padding: 4px;\n  overflow: auto;\n  list-style: none;\n}\n.JobListAction_sectionHeader {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  margin: 4px 4px 1px;\n  padding: 4px 0 3px;\n  border-top: 0.5px solid var(--dsw-alias-border-l1);\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 11px;\n  line-height: 16px;\n}\n.JobListAction_sectionHeader:first-child {\n  margin-top: 0;\n  border-top: 0;\n}\n.JobListAction_sectionToggle,\n.JobListAction_sectionClear {\n  display: inline-flex;\n  gap: 3px;\n  align-items: center;\n  padding: 2px 4px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 11px;\n  line-height: 16px;\n  cursor: pointer;\n}\n.JobListAction_sectionToggle:focus-visible,\n.JobListAction_sectionClear:focus-visible {\n  background: var(--dsw-alias-fill-l1);\n  color: var(--dsw-alias-label-secondary);\n}\n@media (hover: hover) {\n  .JobListAction_sectionToggle:hover,\n  .JobListAction_sectionClear:hover {\n    background: var(--dsw-alias-fill-l1);\n    color: var(--dsw-alias-label-secondary);\n  }\n}\n.JobListAction_sectionChevron {\n  transform: rotate(-90deg);\n  transition: transform 120ms ease;\n}\n.JobListAction_sectionChevronOpen {\n  transform: none;\n}\n.JobListAction_item {\n  display: flex;\n  flex-direction: column;\n}\n.JobListAction_rowLine {\n  display: flex;\n  gap: 6px;\n  align-items: stretch;\n}\n.JobListAction_rowLineLive {\n  padding: 4px 8px 4px 2px;\n  border-radius: var(--dsw-radius-md);\n  background: var(--dsw-alias-fill-l2);\n}\n@media (hover: hover) {\n  .JobListAction_rowLineLive:hover {\n    background: color-mix(in srgb, var(--dsw-alias-label-primary) 9%, transparent);\n  }\n}\n.JobListAction_rowLineLive .JobListAction_kind {\n  background: var(--dsw-specific-menu);\n}\n.JobListAction_rowLine .JobListAction_row {\n  flex: 1;\n  min-width: 0;\n}\n@media (hover: hover) {\n  .JobListAction_rowLineLive .JobListAction_row:hover {\n    background: transparent;\n  }\n}\n.JobListAction_rowLineLive .JobListAction_row {\n  border-radius: var(--dsw-radius-sm);\n}\n.JobListAction_rowLineLive .JobListAction_row:focus-visible {\n  background: color-mix(in srgb, var(--dsw-alias-label-primary) 6%, transparent);\n}\n.JobListAction_chevronBox {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  align-self: center;\n  justify-content: center;\n  width: 20px;\n  height: 20px;\n  border: 0.5px solid var(--dsw-alias-border-l2);\n  border-radius: var(--dsw-radius-sm);\n  background: var(--dsw-specific-menu);\n}\n.JobListAction_stop {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  align-self: center;\n  justify-content: center;\n  width: 20px;\n  height: 20px;\n  padding: 0;\n  border: 0.5px solid var(--dsw-alias-border-l2);\n  border-radius: var(--dsw-radius-sm);\n  background: var(--dsw-specific-menu);\n  color: var(--dsw-alias-label-secondary);\n  cursor: pointer;\n}\n.JobListAction_stop:focus-visible {\n  border-color: color-mix(in srgb, var(--dsw-alias-state-error-primary) 45%, transparent);\n  color: var(--dsw-alias-state-error-primary);\n}\n@media (hover: hover) {\n  .JobListAction_stop:hover {\n    border-color: color-mix(in srgb, var(--dsw-alias-state-error-primary) 45%, transparent);\n    color: var(--dsw-alias-state-error-primary);\n  }\n}\n.JobListAction_stopArmed,\n.JobListAction_stopArmed:focus-visible {\n  gap: 4px;\n  width: auto;\n  padding: 0 7px;\n  border-color: color-mix(in srgb, var(--dsw-alias-state-error-primary) 45%, transparent);\n  background: color-mix(in srgb, var(--dsw-alias-state-error-primary) 12%, transparent);\n  color: var(--dsw-alias-state-error-primary);\n}\n@media (hover: hover) {\n  .JobListAction_stopArmed:hover {\n    gap: 4px;\n    width: auto;\n    padding: 0 7px;\n    border-color: color-mix(in srgb, var(--dsw-alias-state-error-primary) 45%, transparent);\n    background: color-mix(in srgb, var(--dsw-alias-state-error-primary) 12%, transparent);\n    color: var(--dsw-alias-state-error-primary);\n  }\n}\n.JobListAction_stopLabel {\n  font-size: 11px;\n  line-height: 18px;\n  white-space: nowrap;\n}\n.JobListAction_stopFailed {\n  color: var(--dsw-alias-state-error-primary);\n}\n.JobListAction_row {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  box-sizing: border-box;\n  width: 100%;\n  min-height: 28px;\n  padding: 4px 7px;\n  border: 0;\n  border-radius: var(--dsw-radius-md);\n  background: transparent;\n  color: var(--dsw-alias-label-primary);\n  font-size: 12px;\n  line-height: 17px;\n  text-align: left;\n  cursor: pointer;\n}\n.JobListAction_row:focus-visible {\n  background: var(--dsw-alias-fill-l1);\n}\n@media (hover: hover) {\n  .JobListAction_row:hover {\n    background: var(--dsw-alias-fill-l1);\n  }\n}\n.JobListAction_rowStatic {\n  cursor: default;\n}\n@media (hover: hover) {\n  .JobListAction_rowStatic:hover {\n    background: transparent;\n  }\n}\n.JobListAction_rowSettled {\n  color: var(--dsw-alias-label-tertiary);\n}\n.JobListAction_row .JobListAction_rowDot {\n  flex: none;\n}\n.JobListAction_main {\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  gap: 2px;\n  min-width: 0;\n}\n.JobListAction_primary {\n  display: flex;\n  align-items: baseline;\n  gap: 8px;\n  min-width: 0;\n}\n.JobListAction_secondary {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  min-width: 0;\n}\n.JobListAction_kind {\n  flex: none;\n  padding: 0 5px;\n  border-radius: var(--dsw-radius-xs);\n  background: var(--dsw-alias-fill-l2);\n  color: var(--dsw-alias-label-secondary);\n  font-size: 10px;\n  line-height: 16px;\n}\n.JobListAction_label {\n  flex: 1;\n  min-width: 0;\n  overflow: hidden;\n  font-family: var(--dsw-font-mono);\n  white-space: nowrap;\n  text-overflow: ellipsis;\n}\n.JobListAction_status {\n  flex: none;\n  max-width: 60%;\n  overflow: hidden;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 10px;\n  line-height: 16px;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n}\n.JobListAction_duration {\n  flex: none;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 11px;\n  line-height: 18px;\n  font-variant-numeric: tabular-nums;\n}\n.JobListAction_chevron {\n  flex: none;\n  color: var(--dsw-alias-label-tertiary);\n}\n.JobListAction_chevronOpen {\n  transform: rotate(180deg);\n}\n.JobListAction_panel {\n  margin: 0 8px 8px;\n  --dsl-terminal-command-whitespace: pre-wrap;\n  --dsl-terminal-line-whitespace: pre-wrap;\n  --dsl-terminal-output-max-height: 288px;\n}\n.JobListAction_panel [data-terminal] {\n  --dsl-terminal-gutter: 12px;\n}\n.JobListAction_notice {\n  margin: 0 8px 6px;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 11px;\n  line-height: 16px;\n}\n.JobListAction_noticeError {\n  color: var(--dsw-alias-state-error-primary);\n}\n@position-try --dsh-jobs-window {\n  position-area: none;\n  top: max(12px, calc(anchor(bottom) + 5px));\n  bottom: 12px;\n  left: 12px;\n  right: 12px;\n  margin: 0;\n  align-self: safe start;\n  justify-self: safe end;\n}\n@position-try --dsh-jobs-opposite {\n  top: max(12px, var(--dsh-frame-overlay-top, 12px));\n  bottom: max(12px, calc(anchor(top) + 5px));\n  align-self: end;\n}\n@position-try --dsh-jobs-wide-opposite {\n  top: max(12px, var(--dsh-frame-overlay-top, 12px));\n  bottom: max(12px, calc(anchor(top) + 5px));\n  left: 12px;\n  right: 12px;\n  align-self: end;\n  justify-self: safe end;\n}\n@position-try --dsh-jobs-tall {\n  position-area: none;\n  top: max(12px, var(--dsh-frame-overlay-top, 12px));\n  bottom: 12px;\n  left: max(12px, anchor(left));\n  right: 12px;\n  margin: 0;\n  align-self: safe start;\n  justify-self: start;\n}\n@position-try --dsh-jobs-viewport {\n  position-area: none;\n  inset: max(12px, var(--dsh-frame-overlay-top, 12px)) 12px 12px;\n  margin: 0;\n  align-self: safe start;\n  justify-self: safe end;\n}\n";
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -60,8 +60,8 @@ __export(index_exports, {
   inject: () => inject
 });
 module.exports = __toCommonJS(index_exports);
-var import_react40 = require("react");
-var import_dsh_client_ui_primitives39 = require("@deepseek-ai/dsh-client-ui-primitives");
+var import_react45 = require("react");
+var import_dsh_client_ui_primitives44 = require("@deepseek-ai/dsh-client-ui-primitives");
 
 // DocumentPreview.jsx
 var import_react = require("react");
@@ -1157,103 +1157,52 @@ function EngineLogo({ engine, label = engine, icon: icon2, size = 24 }) {
   if (logo) return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("img", { src: logo, alt: "", width: size, height: size, draggable: false });
   return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "dchat-engine-initial", "aria-hidden": "true", style: { width: size, height: size, fontSize: size * 0.68 }, children: Array.from(label || "")[0]?.toLocaleUpperCase() });
 }
-function EngineHero({ selected, engines, status, reload, onSelect, nativeHeadline, t }) {
-  const options = [{ id: null, label: t("engine.native") }, ...engines];
-  const active = options.find((option) => option.id === selected) ?? { id: selected, label: selected || t("panel") };
-  const root = (0, import_react4.useRef)(null);
-  const trigger = (0, import_react4.useRef)(null);
-  const menuId = (0, import_react4.useId)();
-  const changing = (0, import_react4.useRef)(false);
+function EngineDropdown({ selected = null, engines, status, reload, onSelect, disabled = false, t }) {
   const [open, setOpen] = (0, import_react4.useState)(false);
-  const [busy, setBusy] = (0, import_react4.useState)(false);
-  const [failed, setFailed] = (0, import_react4.useState)(false);
-  (0, import_react4.useEffect)(() => {
-    if (!open) return;
-    const onPointerDown = (event2) => {
-      if (!root.current?.contains(event2.target)) setOpen(false);
-    };
-    const onKeyDown = (event2) => {
-      if (event2.key !== "Escape") return;
-      event2.preventDefault();
-      event2.stopPropagation();
-      setOpen(false);
-      trigger.current?.focus({ preventScroll: true });
-    };
-    document.addEventListener("pointerdown", onPointerDown, true);
-    document.addEventListener("keydown", onKeyDown, true);
-    return () => {
-      document.removeEventListener("pointerdown", onPointerDown, true);
-      document.removeEventListener("keydown", onKeyDown, true);
-    };
-  }, [open]);
-  async function select(id) {
-    setOpen(false);
-    trigger.current?.focus({ preventScroll: true });
-    if (selected === id || changing.current) return;
-    changing.current = true;
-    setBusy(true);
-    setFailed(false);
-    try {
-      await onSelect(id);
-    } catch {
-      setFailed(true);
-    } finally {
-      changing.current = false;
-      setBusy(false);
-    }
-  }
-  return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { ref: root, className: "dchat-engine-hero", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("h1", { className: "dchat-engine-headline", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
-      "button",
-      {
-        ref: trigger,
-        type: "button",
-        className: "dchat-engine-headline-button",
-        "aria-expanded": open,
-        "aria-controls": open ? menuId : void 0,
-        "aria-description": t("engine.choose"),
-        "aria-disabled": busy || void 0,
-        onClick: () => {
-          if (changing.current) return;
-          if (!open && status !== "loading") void reload();
-          setOpen((value) => !value);
-        },
-        children: nativeHeadline ?? /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(import_jsx_runtime4.Fragment, { children: [
-          selected !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(EngineLogo, { engine: active.id, label: active.label, icon: active.meta?.icon, size: 38 }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { children: active.label })
-        ] })
-      }
-    ) }),
-    open && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { id: menuId, className: "dchat-engine-popover", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "dchat-engine-cards", role: "group", "aria-label": t("engine.choose"), children: options.map(({ id, label, meta, status: engStatus }) => /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
+  const options = [{ id: null, label: t("engine.native"), meta: null }, ...engines];
+  const active = options.find((option) => option.id === selected) ?? { id: selected, label: selected || t("engine.native") };
+  if (!engines.length && status === "ready" && selected === null) return null;
+  const items = options.map(({ id, label, meta }) => ({
+    id: id === null ? "__native__" : id,
+    label,
+    icon: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(EngineLogo, { engine: id, label, icon: meta?.icon, size: 16 })
+  }));
+  return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+    import_dsh_client_ui_primitives4.Menu,
+    {
+      open: open && !disabled,
+      portal: true,
+      side: "bottom",
+      align: "start",
+      dense: true,
+      items,
+      selectedId: selected === null ? "__native__" : selected,
+      onClose: () => setOpen(false),
+      onSelect: (id) => {
+        setOpen(false);
+        void onSelect(id === "__native__" ? null : id);
+      },
+      anchor: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
         "button",
         {
           type: "button",
-          className: "dchat-engine-card",
-          "data-engine": id === null ? "dsh" : `cli:${id}`,
-          "aria-pressed": selected === id,
-          style: meta?.accentColor ? { "--dchat-card-accent": meta.accentColor } : void 0,
-          onClick: () => void select(id),
+          className: "dchat-workspace-trigger",
+          disabled,
+          "aria-haspopup": "menu",
+          "aria-expanded": open && !disabled,
+          onClick: () => {
+            if (!open && status !== "loading") void reload?.();
+            setOpen((v) => !v);
+          },
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(EngineLogo, { engine: id, label, icon: meta?.icon }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { children: label }),
-            engStatus?.installed === false && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "dchat-engine-version", children: t("engine.notInstalled") }),
-            engStatus?.version && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { className: "dchat-engine-version", children: [
-              "v",
-              engStatus.version
-            ] })
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(EngineLogo, { engine: active.id, label: active.label, icon: active.meta?.icon, size: 16 }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "dchat-workspace-selection", children: active.label }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_dsh_client_ui_primitives4.IconChevronDownOutlineRegular, { className: "dchat-workspace-chevron", size: 12 })
           ]
-        },
-        id === null ? "dsh" : `cli:${id}`
-      )) }),
-      (status === "idle" || status === "loading") && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("p", { className: "dchat-engine-availability", role: "status", children: t("engine.loading") }),
-      status === "error" && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "dchat-engine-availability", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { role: "status", children: t("engine.failed") }),
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("button", { type: "button", onClick: () => void reload(), children: t("engine.retry") })
-      ] })
-    ] }),
-    failed && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("p", { className: "dchat-engine-availability", role: "alert", children: t("request.failed") })
-  ] });
+        }
+      )
+    }
+  );
 }
 
 // EngineSettings.jsx
@@ -1876,7 +1825,7 @@ function EngineSettings({ engineSource, t }) {
 var import_react15 = require("react");
 var import_dsh_client_ui_primitives16 = require("@deepseek-ai/dsh-client-ui-primitives");
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ChangedFiles.tsx
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ChangedFiles.tsx
 var import_react10 = require("react");
 
 // ../node_modules/clsx/dist/clsx.mjs
@@ -1895,15 +1844,15 @@ function clsx() {
 }
 var clsx_default = clsx;
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ChangedFiles.tsx
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ChangedFiles.tsx
 var import_dsh_client_ui_primitives12 = require("@deepseek-ai/dsh-client-ui-primitives");
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/DiffFile.tsx
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/DiffFile.tsx
 var import_react9 = require("react");
 var import_react_dom = require("react-dom");
 var import_dsh_client_ui_primitives11 = require("@deepseek-ai/dsh-client-ui-primitives");
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/diff-rows.ts
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/diff-rows.ts
 function drawn(text) {
   return text.endsWith("\r") ? text.slice(0, -1) : text;
 }
@@ -2017,7 +1966,7 @@ function drawnLines(file) {
   return count;
 }
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/code-selection.ts
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/code-selection.ts
 function codeAt(node2) {
   return (node2 instanceof Element ? node2 : node2?.parentElement)?.closest("[data-review-code]") ?? null;
 }
@@ -2047,7 +1996,7 @@ function readCodeSelection(root, side) {
   return { side, from: first.line, to: last.line, text: fragments.map((item) => item.text).join("\n") };
 }
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/review.ts
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/review.ts
 function selectReviewLines(file, side, from, to) {
   const startLine = Math.min(from, to);
   const endLine = Math.max(from, to);
@@ -2098,11 +2047,11 @@ function reviewMatches(selection2, source2, file) {
   return selectReviewLines(file, comment.side, comment.startLine, comment.endLine)?.hunk === comment.hunk;
 }
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ReviewThread.tsx
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ReviewThread.tsx
 var import_react6 = require("react");
 var import_dsh_client_ui_primitives6 = require("@deepseek-ai/dsh-client-ui-primitives");
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/review-queue.ts
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/review-queue.ts
 var import_zod = require("zod");
 var line = import_zod.z.object({ path: import_zod.z.string(), side: import_zod.z.enum(["L", "R"]), startLine: import_zod.z.number().int().positive(), endLine: import_zod.z.number().int().positive(), body: import_zod.z.string() });
 var commits = import_zod.z.object({ from: import_zod.z.string(), to: import_zod.z.string() }).nullable().default(null);
@@ -2132,7 +2081,7 @@ var saved = import_zod.z.object({
 });
 var EMPTY_FILE_REVIEW = { threads: [], locked: false, error: null };
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ReviewComposer.module.css
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ReviewComposer.module.css
 var ReviewComposer_default = {
   root: "ReviewComposer_root",
   thread: "ReviewComposer_thread",
@@ -2156,7 +2105,7 @@ var ReviewComposer_default = {
   hoverAdd: "ReviewComposer_hoverAdd"
 };
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ReviewThread.tsx
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ReviewThread.tsx
 var import_jsx_runtime6 = require("react/jsx-runtime");
 var noSubscription = () => () => {
 };
@@ -2250,11 +2199,11 @@ function ReviewThread({ thread, actions, locked, outdated, t }) {
   ] });
 }
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ReviewThreads.tsx
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ReviewThreads.tsx
 var import_react8 = require("react");
 var import_dsh_client_ui_primitives9 = require("@deepseek-ai/dsh-client-ui-primitives");
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/format.ts
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/format.ts
 var import_dsh_client_ui_primitives7 = require("@deepseek-ai/dsh-client-ui-primitives");
 function formatAgo(iso, now, t) {
   const at = Date.parse(iso);
@@ -2263,7 +2212,7 @@ function formatAgo(iso, now, t) {
   return t(`time.${unit}`, { n });
 }
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-util-values/lib/index.js
+// ../node_modules/@deepseek-ai/dsh-util-values/lib/index.js
 var SIMPLE_ESCAPES = {
   '"': '"',
   "\\": "\\",
@@ -2885,7 +2834,7 @@ function assertNever(value, context) {
   throw new Error(`unreachable variant${context ? ` in ${context}` : ""}: ${rendered}`);
 }
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/review-threads.ts
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/review-threads.ts
 function anchorRange(side, anchor) {
   return `${side}${anchor.startLine}${anchor.endLine === anchor.startLine ? "" : `\u2013${anchor.endLine}`}`;
 }
@@ -2917,7 +2866,7 @@ function hunkExcerpt(hunk, side, lines) {
   return { header, lines: kept.reverse() };
 }
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ReviewComposer.tsx
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ReviewComposer.tsx
 var import_react7 = require("react");
 var import_dsh_client_ui_primitives8 = require("@deepseek-ai/dsh-client-ui-primitives");
 var import_jsx_runtime7 = require("react/jsx-runtime");
@@ -3057,7 +3006,7 @@ function ReviewComposer({ selection: selection2, actions, close, visible = true,
   );
 }
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ReviewThreads.module.css
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ReviewThreads.module.css
 var ReviewThreads_default = {
   card: "ReviewThreads_card",
   folded: "ReviewThreads_folded",
@@ -3099,7 +3048,7 @@ var ReviewThreads_default = {
   outdatedHeader: "ReviewThreads_outdatedHeader"
 };
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ReviewThreads.tsx
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ReviewThreads.tsx
 var import_jsx_runtime8 = require("react/jsx-runtime");
 function writtenOn(thread) {
   return thread.original === null ? null : thread.original.commit.slice(0, 7);
@@ -3494,24 +3443,35 @@ function OutdatedThreads({ threads, actions, t }) {
   ] });
 }
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/FileLabel.tsx
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/FileLabel.tsx
 var import_dsh_client_ui_primitives10 = require("@deepseek-ai/dsh-client-ui-primitives");
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-util-workspace-path/lib/index.js
+// ../../deepseek-harness/packages/util/workspace-path/src/index.ts
+function isWindowsStylePath(value) {
+  return /^[A-Za-z]:[/\\]/.test(value) || value.startsWith("\\\\");
+}
+function abbreviateHomePath(path, home) {
+  if (home === void 0 || home === "") return path;
+  if (isWindowsStylePath(path) || isWindowsStylePath(home)) return path;
+  const root = home.replace(/\/+$/, "");
+  if (root === "" || root === "/") return path;
+  if (path.replace(/\/+$/, "") === root) return "~";
+  if (path.startsWith(`${root}/`)) return `~${path.slice(root.length)}`;
+  return path;
+}
+function workspaceTitleOf(path) {
+  const trimmed = path.replace(/[/\\]+$/, "");
+  const separator = Math.max(trimmed.lastIndexOf("/"), trimmed.lastIndexOf("\\"));
+  return trimmed.slice(separator + 1);
+}
 function pathPartsOf(path) {
   const trimmed = path.replace(/[/\\]+$/, "");
-  if (trimmed === "") return {
-    directory: "",
-    name: path
-  };
+  if (trimmed === "") return { directory: "", name: path };
   const cut = Math.max(trimmed.lastIndexOf("/"), trimmed.lastIndexOf("\\")) + 1;
-  return {
-    directory: trimmed.slice(0, cut),
-    name: trimmed.slice(cut)
-  };
+  return { directory: trimmed.slice(0, cut), name: trimmed.slice(cut) };
 }
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/FileLabel.module.css
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/FileLabel.module.css
 var FileLabel_default = {
   label: "FileLabel_label",
   parts: "FileLabel_parts",
@@ -3523,7 +3483,7 @@ var FileLabel_default = {
   visuallyHidden: "FileLabel_visuallyHidden"
 };
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/FileLabel.tsx
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/FileLabel.tsx
 var import_jsx_runtime9 = require("react/jsx-runtime");
 var KEPT_END = 12;
 var MIN_START = 4;
@@ -3552,7 +3512,7 @@ function FileLabel({ path, tooltip, className }) {
   ] }) });
 }
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ChangesTab.module.css
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ChangesTab.module.css
 var ChangesTab_default = {
   root: "ChangesTab_root",
   "forge-changes": "ChangesTab_forge-changes",
@@ -3644,7 +3604,7 @@ var ChangesTab_default = {
   threadsTotal: "ChangesTab_threadsTotal"
 };
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/DiffFile.tsx
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/DiffFile.tsx
 var import_jsx_runtime10 = require("react/jsx-runtime");
 function Counts({ file, t }) {
   if (file.binary) return /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { children: t("diff.binaryLabel") });
@@ -4221,7 +4181,7 @@ function DiffFileSection(props) {
 }
 var DiffFile = (0, import_react9.memo)(DiffFileSection);
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/file-tree.ts
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/file-tree.ts
 function childrenOf(directory) {
   const directories = [...directory.directories.values()].map((child) => {
     let leaf = child;
@@ -4277,7 +4237,7 @@ function filterFileTree(nodes, query) {
   });
 }
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ChangedFiles.module.css
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ChangedFiles.module.css
 var ChangedFiles_default = {
   root: "ChangedFiles_root",
   search: "ChangedFiles_search",
@@ -4297,7 +4257,7 @@ var ChangedFiles_default = {
   searchInput: "ChangedFiles_searchInput"
 };
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ChangedFiles.tsx
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ChangedFiles.tsx
 var import_jsx_runtime11 = require("react/jsx-runtime");
 function Rows({ nodes, depth, props }) {
   const { state, toggle, jump, menu, threadCounts, t } = props;
@@ -4430,17 +4390,17 @@ function ChangedFilesMenu({ visible, ...props }) {
   );
 }
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/FileTreePane.tsx
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/FileTreePane.tsx
 var import_react11 = require("react");
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/FileTreePane.module.css
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/FileTreePane.module.css
 var FileTreePane_default = {
   pane: "FileTreePane_pane",
   navigation: "FileTreePane_navigation",
   resize: "FileTreePane_resize"
 };
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/FileTreePane.tsx
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/FileTreePane.tsx
 var import_jsx_runtime12 = require("react/jsx-runtime");
 var MIN_WIDTH = 200;
 var MAX_WIDTH = 600;
@@ -4520,18 +4480,18 @@ function FileTreePane({ position, id, onWidth, ...props }) {
   ] });
 }
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/RefreshGlyph.tsx
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/RefreshGlyph.tsx
 var import_react12 = require("react");
 var import_dsh_client_ui_primitives13 = require("@deepseek-ai/dsh-client-ui-primitives");
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/RefreshGlyph.module.css
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/RefreshGlyph.module.css
 var RefreshGlyph_default = {
   glyph: "RefreshGlyph_glyph",
   "forge-refresh-turn": "RefreshGlyph_forge-refresh-turn",
   "forge-refresh-dim": "RefreshGlyph_forge-refresh-dim"
 };
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/RefreshGlyph.tsx
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/RefreshGlyph.tsx
 var import_jsx_runtime13 = require("react/jsx-runtime");
 function RefreshGlyph({ busy, size }) {
   const [turning, setTurning] = (0, import_react12.useState)(false);
@@ -4551,11 +4511,11 @@ function RefreshGlyph({ busy, size }) {
   );
 }
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ReviewControls.tsx
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ReviewControls.tsx
 var import_react13 = require("react");
 var import_dsh_client_ui_primitives14 = require("@deepseek-ai/dsh-client-ui-primitives");
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ReviewControls.module.css
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ReviewControls.module.css
 var ReviewControls_default = {
   segmented: "ReviewControls_segmented",
   segment: "ReviewControls_segment",
@@ -4572,7 +4532,7 @@ var ReviewControls_default = {
   ringFill: "ReviewControls_ringFill"
 };
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ReviewControls.tsx
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ReviewControls.tsx
 var import_jsx_runtime14 = require("react/jsx-runtime");
 var LENSES = ["all", "interface", "implementation", "test"];
 var LENS_LABEL = {
@@ -4734,11 +4694,11 @@ function ViewedProgress({ viewed, total, t }) {
   );
 }
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ViewOptionsMenu.tsx
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ViewOptionsMenu.tsx
 var import_react14 = require("react");
 var import_dsh_client_ui_primitives15 = require("@deepseek-ai/dsh-client-ui-primitives");
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/toolbar-fold.ts
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/toolbar-fold.ts
 var DEEPEST_FOLD = 3;
 function foldOf(inside) {
   const level = Number.parseInt(inside.closest("[data-fold]")?.getAttribute("data-fold") ?? "", 10);
@@ -4785,7 +4745,7 @@ function observeToolbarFold(row) {
   };
 }
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ViewOptionsMenu.tsx
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ViewOptionsMenu.tsx
 var import_jsx_runtime15 = require("react/jsx-runtime");
 function ViewOptionsMenu({ options, visible, t }) {
   const [fold, setFold] = (0, import_react14.useState)(null);
@@ -4859,7 +4819,7 @@ function ViewOptionsMenu({ options, visible, t }) {
   );
 }
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/locales.ts
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/locales.ts
 var zh = {
   "settings.retainOnArchive.title": "\u5F52\u6863\u65F6\u4E0D\u5220\u9664\u5DE5\u4F5C\u6811",
   "settings.retainOnArchive.description": "\u5F00\u542F\u540E\uFF0C\u5F52\u6863\u4F1A\u8BDD\u65F6\u4FDD\u7559\u5B83\u521B\u5EFA\u7684\u5DE5\u4F5C\u6811\uFF1B\u5173\u95ED\u65F6\uFF0C\u5E72\u51C0\u4E14\u65E0\u4EBA\u5F15\u7528\u7684\u5DE5\u4F5C\u6811\u4F1A\u88AB\u5220\u9664\uFF0C\u5206\u652F\u548C\u63D0\u4EA4\u4ECD\u7136\u4FDD\u7559\u3002",
@@ -5715,7 +5675,7 @@ var en = {
   "thread.writeUnsupported": "This code host does not support changing threads here."
 };
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/section-reach.ts
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/section-reach.ts
 var REACH_MARGIN = "1200px 0px";
 var noop = () => {
 };
@@ -5763,7 +5723,7 @@ var SectionReach = class {
   }
 };
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/viewed-files.ts
+// ../node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/viewed-files.ts
 var import_zod2 = require("zod");
 var PREFIX = "dsh-direct-chat.forge-viewed.v1";
 var MAX_SESSIONS = 50;
@@ -6413,13 +6373,13 @@ var import_dsh_client_ui_dockkit4 = require("@deepseek-ai/dsh-client-ui-dockkit"
 var Primitives = __toESM(require("@deepseek-ai/dsh-client-ui-primitives"), 1);
 var import_dsh_client_ui_primitives20 = require("@deepseek-ai/dsh-client-ui-primitives");
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/contract/seed.ts
+// ../node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/contract/seed.ts
 var GUIDE_KIND = "guide";
 function pageAddress(kind) {
   return `sidebar://${kind}`;
 }
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/labels.ts
+// ../node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/labels.ts
 function dockLabels(t, split, close) {
   return {
     emptyPane: t("dock.emptyPane"),
@@ -6444,7 +6404,7 @@ function dockLabels(t, split, close) {
   };
 }
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/locales.ts
+// ../node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/locales.ts
 var zh2 = {
   "menu.close": "\u5173\u95ED",
   "menu.closeOthers": "\u5173\u95ED\u5176\u4ED6\u6807\u7B7E\u9875",
@@ -6526,7 +6486,7 @@ var en2 = {
   "tab.unavailable": "Nothing here can view this kind of content yet."
 };
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/shell/SidebarRight.module.css
+// ../node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/shell/SidebarRight.module.css
 var SidebarRight_default = {
   session: "SidebarRight_session",
   panel: "SidebarRight_panel",
@@ -6540,15 +6500,15 @@ var SidebarRight_default = {
   flashEven: "SidebarRight_flashEven"
 };
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/shell/SidebarRight.tsx
+// ../node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/shell/SidebarRight.tsx
 var import_react16 = require("react");
 var import_dsh_client_ui_primitives17 = require("@deepseek-ai/dsh-client-ui-primitives");
 var import_dsh_client_ui_dockkit3 = require("@deepseek-ai/dsh-client-ui-dockkit");
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/stores.ts
+// ../node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/stores.ts
 var import_dsh_client_store = require("@deepseek-ai/dsh-client-store");
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/persistence.ts
+// ../node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/persistence.ts
 var import_zod3 = require("zod");
 var import_dsh_client_ui_dockkit = require("@deepseek-ai/dsh-client-ui-dockkit");
 var sidebarPersistence = "dsh.sidebar-right.v1";
@@ -6638,7 +6598,7 @@ function clearSidebarLayout(sessionId) {
   }
 }
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/stores.ts
+// ../node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/stores.ts
 var import_dsh_client_ui_dockkit2 = require("@deepseek-ai/dsh-client-ui-dockkit");
 function canCloseTab(surface2, tabId2) {
   const tab = surface2.layout.tabs[tabId2];
@@ -6910,7 +6870,7 @@ function createSidebarRightStore(seed) {
   } };
 }
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/shell/SidebarRight.tsx
+// ../node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/shell/SidebarRight.tsx
 var import_jsx_runtime17 = require("react/jsx-runtime");
 function FullscreenGlyph() {
   return /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("svg", { width: "16", height: "16", viewBox: "0 0 16 16", fill: "none", "aria-hidden": "true", children: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("path", { d: "M2.33203 10.4054V13.1681C2.33229 13.444 2.55605 13.6681 2.83203 13.6681H5.49512V14.6681H2.83203C2.00376 14.6681 1.33229 13.9963 1.33203 13.1681V10.4054H2.33203ZM14.6689 13.1681C14.6687 13.996 13.9968 14.6676 13.1689 14.6681H10.4951V13.6681H13.1689C13.4445 13.6676 13.6687 13.4437 13.6689 13.1681V10.4054H14.6689V13.1681ZM13.1689 1.33118C13.9969 1.33163 14.6688 2.00315 14.6689 2.83118V5.4054H13.6689V2.83118C13.6688 2.55544 13.4446 2.33162 13.1689 2.33118H10.4951V1.33118H13.1689ZM5.49512 2.33118H2.83203C2.55598 2.33118 2.33218 2.55516 2.33203 2.83118V5.4054H1.33203V2.83118C1.33218 2.00288 2.00369 1.33118 2.83203 1.33118H5.49512V2.33118Z", fill: "currentColor" }) });
@@ -6956,11 +6916,11 @@ function PanelChrome({ sessionId, fullscreen, actions, t, shortcuts, toggleFulls
   ] });
 }
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/tabs/guide/GuideBody.tsx
+// ../node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/tabs/guide/GuideBody.tsx
 var import_react17 = require("react");
 var import_dsh_client_ui_primitives18 = require("@deepseek-ai/dsh-client-ui-primitives");
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/tabs/guide/GuideBody.module.css
+// ../node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/tabs/guide/GuideBody.module.css
 var GuideBody_default = {
   guide: "GuideBody_guide",
   hero: "GuideBody_hero",
@@ -6976,7 +6936,7 @@ var GuideBody_default = {
   moreMenu: "GuideBody_moreMenu"
 };
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/tabs/guide/GuideTitle.tsx
+// ../node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/tabs/guide/GuideTitle.tsx
 var import_jsx_runtime18 = require("react/jsx-runtime");
 function CompassGlyph({ size = 16, className }) {
   return /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("svg", { width: size, height: size, viewBox: "0 0 16 16", fill: "none", "aria-hidden": "true", className, children: [
@@ -6998,7 +6958,7 @@ function GuideTitle({ useTabInfo }) {
   ] });
 }
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/tabs/guide/GuideMoreIcon.tsx
+// ../node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/tabs/guide/GuideMoreIcon.tsx
 var import_jsx_runtime19 = require("react/jsx-runtime");
 function GuideMoreIcon() {
   return /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(
@@ -7023,14 +6983,14 @@ function GuideMoreIcon() {
   );
 }
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/tabs/guide/guide-pins.ts
+// ../node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/tabs/guide/guide-pins.ts
 var import_dsh_client_store2 = require("@deepseek-ai/dsh-client-store");
 var FIXED_GUIDE_KIND = "files";
 function guideEntryId(entry) {
   return `${entry.kind}:${entry.id}`;
 }
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/tabs/guide/GuideBody.tsx
+// ../node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/tabs/guide/GuideBody.tsx
 var import_jsx_runtime20 = require("react/jsx-runtime");
 var MAX_DESCRIBED_ENTRIES = 4;
 function EntryBox({ entry, described, onPick, shortcut }) {
@@ -7166,7 +7126,7 @@ function GuideBody({
   return renderSlotChain("sidebar.right.tab.guide", {}, options);
 }
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-sidebar-terminal/src/client/TerminalIcon.tsx
+// ../node_modules/@deepseek-ai/dsh-client-ui-sidebar-terminal/src/client/TerminalIcon.tsx
 var import_jsx_runtime21 = require("react/jsx-runtime");
 function TerminalIcon() {
   return /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("svg", { width: "16", height: "16", viewBox: "0 0 16 16", fill: "none", "aria-hidden": "true", children: [
@@ -7527,7 +7487,6 @@ function workspaceTabMenuGroup(surface2, paneId2, tabId2) {
 
 // WorkspaceDiff.jsx
 var import_jsx_runtime23 = require("react/jsx-runtime");
-var workspaceDiffSlot = "rightbar.direct-chat";
 var workspaceTabTarget = "direct-chat-tab";
 var empty = [];
 var noMenuTarget = { subscribe: () => () => {
@@ -7550,7 +7509,7 @@ function resolveBuiltinTerminalChunkUrl(extraModules) {
   if (start >= 0) {
     return `${row.url.slice(0, start)}/${row.id}/client.terminal.js?rev=${encodeURIComponent(row.rev)}`;
   }
-  return `plugins/${row.id}/client.terminal.js?rev=${encodeURIComponent(row.rev)}`;
+  return `/plugins/${row.id}/client.terminal.js?rev=${encodeURIComponent(row.rev)}`;
 }
 var terminalBodyPromise;
 function loadNativeTerminalBody(extraModules) {
@@ -8351,17 +8310,3558 @@ var diffCopy = {
   }
 };
 
-// SessionStatus.jsx
-var import_react23 = require("react");
-var import_react_dom4 = require("react-dom");
-var import_dsh_client_ui_primitives25 = require("@deepseek-ai/dsh-client-ui-primitives");
+// ../node_modules/@deepseek-ai/dsh-client-ui-workspace/src/client/stores.ts
+var import_dsh_client_store3 = require("@deepseek-ai/dsh-client-store");
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/StatsPills.tsx
+// ../node_modules/@deepseek-ai/dsh-client-ui-workspace/src/client/tree.ts
+var UNGROUPED_KEY = "";
+function owningGroupKey(workspaces, sessionId) {
+  return workspaces.find((workspace) => workspace.sessionIds.includes(sessionId))?.workspaceId ?? UNGROUPED_KEY;
+}
+function mainSessionId(list) {
+  return Object.values(list.byId).find((session) => (session.retainedBy.mainView ?? 0) > 0)?.id;
+}
+function workspaceLabel(cwd) {
+  if (cwd === void 0 || cwd === "") return "";
+  const base = workspaceTitleOf(cwd);
+  return base !== "" ? base : cwd;
+}
+function orderByRecency(sessionIds, summaries) {
+  return sessionIds.flatMap((id) => {
+    const summary = summaries[id];
+    if (summary === void 0) return [];
+    return [{ id, rank: summary.updatedAt }];
+  }).sort((a, b) => {
+    if (a.rank !== b.rank) return b.rank - a.rank;
+    return a.id < b.id ? -1 : 1;
+  }).map((member) => member.id);
+}
+function reconcileManualOrder(memberIds, savedOrder, summaries, rowState) {
+  const members = new Map(memberIds.map((id) => [id, id]));
+  const included = /* @__PURE__ */ new Set();
+  const ordered2 = [];
+  for (const key of savedOrder ?? []) {
+    const id = members.get(key);
+    if (id === void 0 || included.has(key)) continue;
+    ordered2.push(id);
+    included.add(key);
+  }
+  const archived = new Set(rowState?.archivedSessionIds);
+  const pins = [];
+  for (const sessionId of rowState?.pinnedSessionIds ?? []) {
+    const id = members.get(sessionId);
+    if (id === void 0 || included.has(id) || archived.has(id) || summaries[id] === void 0) continue;
+    pins.push(id);
+    included.add(id);
+  }
+  const ordinary = [];
+  const archives = [];
+  for (const id of orderByRecency([...members.values()].filter((id2) => !included.has(id2)), summaries)) {
+    if (archived.has(id)) archives.push(id);
+    else ordinary.push(id);
+  }
+  return [...pins, ...ordered2, ...ordinary, ...archives];
+}
+function pinCurrentBlank(order, currentBlank) {
+  if (currentBlank === void 0) return [...order];
+  return [currentBlank, ...order.filter((id) => id !== currentBlank)];
+}
+function sessionVisible(session, current, archived, archivedFilter) {
+  if (session.origin === "subagent") return false;
+  if (session.blank && session.id !== current) return false;
+  switch (archivedFilter) {
+    case "default":
+      return !archived.has(session.id);
+    case "show":
+      return true;
+    case "only":
+      return archived.has(session.id);
+    /* v8 ignore next 2 -- closed-union backstop; only reached if the filter is forged */
+    default:
+      return assertNever(archivedFilter);
+  }
+}
+function sectionMembers(members, pinned, archived) {
+  const placeholders = [];
+  const leading = [];
+  const rest = [];
+  for (const member of members) {
+    if (member.blank) placeholders.push(member);
+    else if (!archived.has(member.id) && pinned.has(member.id)) leading.push(member);
+    else rest.push(member);
+  }
+  return [...placeholders, ...leading, ...rest];
+}
+function sessionTitle(session) {
+  return session.blank ? "" : session.title?.trim() ?? "";
+}
+function buildGroup(key, workspaceId, cwd, createdAt, label, members) {
+  return { key, workspaceId, cwd, createdAt, label, sessions: [...members] };
+}
+function orderedUngrouped(members, stored, summaries) {
+  const byId = new Map(members.map((session) => [session.id, session]));
+  const ids = stored === void 0 ? orderByRecency(members.map((session) => session.id), summaries) : reconcileManualOrder(members.map((session) => session.id), stored, summaries);
+  return ids.flatMap((id) => {
+    const session = byId.get(id);
+    return session === void 0 ? [] : [session];
+  });
+}
+function groupByWorkspace(list, workspaces, archived, archivedFilter, ungroupedOrder) {
+  const current = mainSessionId(list);
+  const groups = [];
+  const accounted = /* @__PURE__ */ new Set();
+  for (const workspace of workspaces) {
+    const members = [];
+    for (const id of workspace.sessionIds) {
+      const summary = list.byId[id];
+      if (summary === void 0) continue;
+      accounted.add(id);
+      if (!sessionVisible(summary, current, archived, archivedFilter)) continue;
+      members.push(summary);
+    }
+    if (archivedFilter === "only" && members.length === 0) continue;
+    groups.push(buildGroup(
+      workspace.workspaceId,
+      workspace.workspaceId,
+      workspace.path,
+      Date.parse(workspace.createdAt),
+      workspace.title,
+      members
+    ));
+  }
+  const stray = list.ids.map((id) => list.byId[id]).filter((s) => s !== void 0 && !accounted.has(s.id) && sessionVisible(s, current, archived, archivedFilter));
+  if (stray.length > 0) {
+    groups.push(buildGroup(
+      UNGROUPED_KEY,
+      void 0,
+      void 0,
+      void 0,
+      "",
+      orderedUngrouped(stray, ungroupedOrder, list.byId)
+    ));
+  }
+  return groups;
+}
+function visiblePendingKind(kind) {
+  switch (kind) {
+    case "approval":
+    case "plan-review":
+    case "question":
+      return kind;
+    default:
+      return void 0;
+  }
+}
+function runningChildCount(list, parentId, statuses) {
+  return list.projectionsBySession[parentId]?.values.subagentCatalog?.reduce(
+    (count, child) => count + ((statuses.get(child.id)?.running ?? list.byId[child.id]?.running) === true ? 1 : 0),
+    0
+  ) ?? 0;
+}
+function sessionNode(s, list, statuses, pinned, archived) {
+  const status = statuses.get(s.id);
+  const pendingInteraction = visiblePendingKind(status?.pendingInteraction?.kind);
+  return {
+    id: s.id,
+    title: sessionTitle(s),
+    blank: s.blank,
+    running: status?.running ?? s.running,
+    runningSubagentCount: runningChildCount(list, s.id, statuses),
+    completed: status?.completionUnread === true,
+    pinned: !archived.has(s.id) && pinned.has(s.id),
+    archived: archived.has(s.id),
+    updatedAt: s.updatedAt,
+    ...s.cwd === void 0 || s.cwd === "" ? {} : { cwd: s.cwd },
+    ...pendingInteraction === void 0 ? {} : { pendingInteraction }
+  };
+}
+function deriveGroups(list, workspaces, rowState, statuses, view) {
+  const archived = new Set(rowState.archivedSessionIds);
+  const pinned = new Set(rowState.pinnedSessionIds);
+  const expandedGroups = new Set(view.expandedGroups);
+  const current = mainSessionId(list);
+  const currentGroup = current === void 0 ? void 0 : owningGroupKey(workspaces, current);
+  const groups = [];
+  for (const g of groupByWorkspace(list, workspaces, archived, rowState.archivedFilter, view.ungroupedOrder)) {
+    const expanded = expandedGroups.has(g.key);
+    groups.push({
+      key: g.key,
+      workspaceId: g.workspaceId,
+      cwd: g.cwd,
+      createdAt: g.createdAt,
+      label: g.label,
+      sessionCount: g.sessions.length,
+      expanded,
+      containsCurrent: g.key === currentGroup,
+      sessions: expanded ? sectionMembers(g.sessions, pinned, archived).map((session) => sessionNode(session, list, statuses, pinned, archived)) : []
+    });
+  }
+  return groups;
+}
+function sessionMemberIds(list) {
+  return visibleSessionIds(list, [], "show");
+}
+function visibleSessionIds(list, archivedSessionIds, archivedFilter) {
+  const archived = new Set(archivedSessionIds);
+  const current = mainSessionId(list);
+  return list.ids.filter((id) => {
+    const s = list.byId[id];
+    return s !== void 0 && sessionVisible(s, current, archived, archivedFilter);
+  });
+}
+function deriveFlat(list, sessionIds, rowState, statuses) {
+  const archived = new Set(rowState.archivedSessionIds);
+  const pinned = new Set(rowState.pinnedSessionIds);
+  const current = mainSessionId(list);
+  const members = sessionIds.flatMap((id) => {
+    const session = list.byId[id];
+    return session !== void 0 && sessionVisible(session, current, archived, rowState.archivedFilter) ? [session] : [];
+  });
+  return sectionMembers(members, pinned, archived).map((session) => sessionNode(session, list, statuses, pinned, archived));
+}
+function deriveSearchResults(list, workspaces, query, archivedSessionIds, archivedFilter, statuses, content, limit) {
+  const q = query.trim().toLowerCase();
+  if (q === "") return { items: [], hasMore: false };
+  const archived = new Set(archivedSessionIds);
+  const current = mainSessionId(list);
+  const workspaceBySession = /* @__PURE__ */ new Map();
+  for (const workspace of workspaces) {
+    for (const sessionId of workspace.sessionIds) {
+      if (!workspaceBySession.has(sessionId)) workspaceBySession.set(sessionId, workspace.title);
+    }
+  }
+  const labelOf = (summary) => workspaceBySession.get(summary.id) ?? workspaceLabel(summary.cwd);
+  const contentBySession = /* @__PURE__ */ new Map();
+  for (const item of content.items) {
+    if (!contentBySession.has(item.sessionId)) contentBySession.set(item.sessionId, item);
+  }
+  const local = [];
+  for (const id of list.ids) {
+    const summary = list.byId[id];
+    if (summary === void 0 || summary.blank || !sessionVisible(summary, current, archived, archivedFilter)) continue;
+    if (sessionTitle(summary).toLowerCase().includes(q) || labelOf(summary).toLowerCase().includes(q) || summary.id.toLowerCase().includes(q)) {
+      local.push(summary);
+    }
+  }
+  const localById = new Map(local.map((summary) => [summary.id, summary]));
+  const orderedLocal = orderByRecency(local.map((summary) => summary.id), list.byId).map((id) => localById.get(id));
+  const ordered2 = [];
+  const included = /* @__PURE__ */ new Set();
+  const include = (summary) => {
+    if (included.has(summary.id)) return;
+    included.add(summary.id);
+    ordered2.push(summary);
+  };
+  for (const summary of orderedLocal) include(summary);
+  for (const item of content.items) {
+    const summary = list.byId[item.sessionId];
+    if (summary !== void 0 && !summary.blank && sessionVisible(summary, current, archived, archivedFilter)) include(summary);
+  }
+  return {
+    items: ordered2.slice(0, limit).map((summary) => {
+      const match = contentBySession.get(summary.id);
+      const status = statuses.get(summary.id);
+      const pendingInteraction = visiblePendingKind(status?.pendingInteraction?.kind);
+      return {
+        id: summary.id,
+        title: sessionTitle(summary),
+        workspace: labelOf(summary),
+        running: status?.running ?? summary.running,
+        runningSubagentCount: runningChildCount(list, summary.id, statuses),
+        ...pendingInteraction === void 0 ? {} : { pendingInteraction },
+        completed: status?.completionUnread === true,
+        archived: archived.has(summary.id),
+        ...match === void 0 ? {} : { snippet: match.snippet }
+      };
+    }),
+    hasMore: content.hasMore || ordered2.length > limit
+  };
+}
+function folderPath(path) {
+  const windows = /^[A-Za-z]:[/\\]/.test(path) || path.startsWith("\\\\");
+  return (windows ? path.replaceAll("\\", "/") : path).replace(/\/+$/, "");
+}
+function owningParentFolder(path, parents) {
+  const child = folderPath(path);
+  let owner;
+  let length = -1;
+  for (const parent of parents) {
+    const root = folderPath(parent);
+    if (root.length > length && child !== root && child.startsWith(`${root}/`)) {
+      owner = parent;
+      length = root.length;
+    }
+  }
+  return owner;
+}
+
+// ../node_modules/@deepseek-ai/dsh-client-ui-workspace/src/client/stores.ts
+var FLAT_SESSION_ORDER_KEY = "__flat_session_order__";
+function copySessionOrders(orders) {
+  return Object.fromEntries(Object.entries(orders).map(([key, order]) => [key, [...order]]));
+}
+function createWorkspaceViewStore() {
+  return (0, import_dsh_client_store3.defineStore)({
+    init: () => ({
+      groupBy: "workspace",
+      orderBy: "updated",
+      groupExpansion: {},
+      sessionOrderByAccount: {},
+      archivedFilter: "default"
+    }),
+    persist: "dsh.workspace.view.v5",
+    actions: {
+      setGroupBy: (d, mode) => {
+        d.groupBy = mode;
+      },
+      setOrderBy: (d, mode, initialOrders) => {
+        if (mode === d.orderBy) return;
+        d.sessionOrderByAccount = mode === "manual" ? copySessionOrders(initialOrders) : {};
+        d.orderBy = mode;
+      },
+      setGroupExpanded: (d, key, expanded) => {
+        d.groupExpansion[key] = expanded;
+      },
+      retainAccountKeys: (d, workspaceKeys) => {
+        const retained = new Set(workspaceKeys);
+        d.groupExpansion = Object.fromEntries(
+          Object.entries(d.groupExpansion).filter(([key]) => retained.has(key))
+        );
+        d.sessionOrderByAccount = Object.fromEntries(
+          Object.entries(d.sessionOrderByAccount).filter(([key]) => retained.has(key))
+        );
+        delete d.sessionUpdatedAtByAccount;
+      },
+      syncSessionOrders: (d, orders) => {
+        if (d.orderBy !== "manual") return;
+        Object.assign(d.sessionOrderByAccount, copySessionOrders(orders));
+      },
+      setSessionOrder: (d, accountKey, order, initialOrders) => {
+        if (d.orderBy === "updated") d.sessionOrderByAccount = copySessionOrders(initialOrders);
+        else Object.assign(d.sessionOrderByAccount, copySessionOrders(initialOrders));
+        d.orderBy = "manual";
+        d.sessionOrderByAccount[accountKey] = [...order];
+      },
+      pinSessionOrder: (d, sessionId, accountKeys, source2) => {
+        const selected = new Set(accountKeys);
+        d.sessionOrderByAccount = Object.fromEntries(Object.entries(source2.members).map(([key, members]) => {
+          const order = reconcileManualOrder(members, d.sessionOrderByAccount[key], source2.summaries, source2.rowState);
+          return [key, selected.has(key) ? [sessionId, ...order.filter((id) => id !== sessionId)] : order];
+        }));
+      },
+      setArchivedFilter: (d, filter) => {
+        d.archivedFilter = filter;
+      }
+    }
+  });
+}
+
+// ../node_modules/@deepseek-ai/dsh-client-ui-workspace/src/client/shortcuts.ts
+var import_dsh_client_store4 = require("@deepseek-ai/dsh-client-store");
+function createWorkspaceShortcutControls() {
+  const state = (0, import_dsh_client_store4.createSnapshotStore)({
+    searchRequest: 0,
+    addRequested: false,
+    directoryBusy: false,
+    renameTarget: null
+  });
+  return {
+    state,
+    search: () => {
+      state.set({ ...state.getSnapshot(), searchRequest: state.getSnapshot().searchRequest + 1 });
+    },
+    add: () => {
+      state.set(state.getSnapshot().directoryBusy ? state.getSnapshot() : { ...state.getSnapshot(), addRequested: true });
+    },
+    closeAdd: () => {
+      state.set({ ...state.getSnapshot(), addRequested: false });
+    },
+    directoryBusy: (busy) => {
+      state.set({ ...state.getSnapshot(), directoryBusy: busy });
+    },
+    rename: (sessionId, currentTitle) => {
+      state.set({ ...state.getSnapshot(), renameTarget: { sessionId, currentTitle } });
+    },
+    closeRename: () => {
+      state.set({ ...state.getSnapshot(), renameTarget: null });
+    }
+  };
+}
+
+// MergedWorkspaceBrowser.jsx
+var import_react25 = require("react");
+var import_dsh_client_ui_primitives26 = require("@deepseek-ai/dsh-client-ui-primitives");
+
+// ../node_modules/@deepseek-ai/dsh-client-ui-workspace/src/client/rows/WorkspaceBrowser.tsx
+var import_react23 = require("react");
+
+// ../node_modules/@deepseek-ai/dsh-client-ui-workspace/src/client/rows/WorkspaceDialogs.tsx
+var import_react20 = require("react");
+var import_dsh_client_ui_primitives21 = require("@deepseek-ai/dsh-client-ui-primitives");
+
+// ../node_modules/@deepseek-ai/dsh-client-ui-workspace/src/client/rows/WorkspaceBrowser.module.css
+var WorkspaceBrowser_default = {
+  root: "WorkspaceBrowser_root",
+  rail: "WorkspaceBrowser_rail",
+  searchExpanded: "WorkspaceBrowser_searchExpanded",
+  iconButton: "WorkspaceBrowser_iconButton",
+  searchButton: "WorkspaceBrowser_searchButton",
+  clearButton: "WorkspaceBrowser_clearButton",
+  viewOptionsMenu: "WorkspaceBrowser_viewOptionsMenu",
+  sectionHeader: "WorkspaceBrowser_sectionHeader",
+  searchSpacingMotion: "WorkspaceBrowser_searchSpacingMotion",
+  sectionLabel: "WorkspaceBrowser_sectionLabel",
+  sectionLabelHidden: "WorkspaceBrowser_sectionLabelHidden",
+  searchSlot: "WorkspaceBrowser_searchSlot",
+  searchSlotExpanded: "WorkspaceBrowser_searchSlotExpanded",
+  headerActions: "WorkspaceBrowser_headerActions",
+  headerActionsHidden: "WorkspaceBrowser_headerActionsHidden",
+  search: "WorkspaceBrowser_search",
+  searchInput: "WorkspaceBrowser_searchInput",
+  listArea: "WorkspaceBrowser_listArea",
+  treeBody: "WorkspaceBrowser_treeBody",
+  wide: "WorkspaceBrowser_wide",
+  "wide-in": "WorkspaceBrowser_wide-in",
+  list: "WorkspaceBrowser_list",
+  flatList: "WorkspaceBrowser_flatList",
+  searchTree: "WorkspaceBrowser_searchTree",
+  groupSection: "WorkspaceBrowser_groupSection",
+  searchStatus: "WorkspaceBrowser_searchStatus",
+  skeletonRow: "WorkspaceBrowser_skeletonRow",
+  skeletonDot: "WorkspaceBrowser_skeletonDot",
+  skeletonBars: "WorkspaceBrowser_skeletonBars",
+  skeletonBar: "WorkspaceBrowser_skeletonBar",
+  "search-skeleton": "WorkspaceBrowser_search-skeleton",
+  skeletonBarWide: "WorkspaceBrowser_skeletonBarWide",
+  listTopDropIndicator: "WorkspaceBrowser_listTopDropIndicator",
+  workspaceDropBefore: "WorkspaceBrowser_workspaceDropBefore",
+  workspaceDropAfter: "WorkspaceBrowser_workspaceDropAfter",
+  listTopDropActive: "WorkspaceBrowser_listTopDropActive",
+  sessionOverflowButton: "WorkspaceBrowser_sessionOverflowButton",
+  empty: "WorkspaceBrowser_empty",
+  emptyState: "WorkspaceBrowser_emptyState",
+  emptyAction: "WorkspaceBrowser_emptyAction",
+  renameInput: "WorkspaceBrowser_renameInput",
+  renameError: "WorkspaceBrowser_renameError",
+  deleteAction: "WorkspaceBrowser_deleteAction",
+  deleteStatus: "WorkspaceBrowser_deleteStatus",
+  archiveActivity: "WorkspaceBrowser_archiveActivity"
+};
+
+// ../node_modules/@deepseek-ai/dsh-client-ui-workspace/src/client/rows/WorkspaceDialogs.tsx
+var import_jsx_runtime24 = require("react/jsx-runtime");
+function WorkspaceDialogs({ request: request3, workspaces, renameWorkspace, deleteWorkspace, settleWorkspaceAction, t }) {
+  const composingRef = (0, import_react20.useRef)(false);
+  const renameTarget = request3.action === "rename" ? request3 : null;
+  const [renameDraft, setRenameDraft] = (0, import_react20.useState)(request3.displayTitle);
+  const [renaming, setRenaming] = (0, import_react20.useState)(false);
+  const [renameError, setRenameError] = (0, import_react20.useState)(null);
+  const renameTrimmed = renameDraft.trim();
+  const renameDuplicate = renameTarget !== null && renameTrimmed !== "" && workspaces.some((w) => w.workspaceId !== renameTarget.workspaceId && w.title === renameTrimmed);
+  const renameBlocked = renaming || renameTrimmed === "" || renameTarget === null || renameTrimmed === renameTarget.storedTitle || renameDuplicate;
+  const closeRename = () => {
+    if (renaming) return;
+    settleWorkspaceAction();
+    setRenameError(null);
+  };
+  const confirmRename = () => {
+    if (renameBlocked) return;
+    setRenaming(true);
+    setRenameError(null);
+    renameWorkspace(renameTarget.workspaceId, renameTrimmed).then(() => {
+      setRenaming(false);
+      settleWorkspaceAction();
+    }).catch((reason) => {
+      setRenaming(false);
+      setRenameError(reason instanceof Error ? reason.message : String(reason));
+    });
+  };
+  const deleteTarget = request3.action === "delete" ? request3 : null;
+  const [deleting, setDeleting] = (0, import_react20.useState)(false);
+  const [deleteCommittedId, setDeleteCommittedId] = (0, import_react20.useState)(null);
+  const [deleteError, setDeleteError] = (0, import_react20.useState)(null);
+  (0, import_react20.useEffect)(() => {
+    if (deleteCommittedId === null || workspaces.some((workspace) => workspace.workspaceId === deleteCommittedId)) return;
+    setDeleting(false);
+    setDeleteCommittedId(null);
+    settleWorkspaceAction();
+  }, [deleteCommittedId, workspaces, settleWorkspaceAction]);
+  const closeDelete = () => {
+    if (deleting) return;
+    settleWorkspaceAction();
+    setDeleteError(null);
+  };
+  const confirmDelete = () => {
+    if (deleting || deleteTarget === null) return;
+    setDeleting(true);
+    setDeleteCommittedId(null);
+    setDeleteError(null);
+    deleteWorkspace(deleteTarget.workspaceId).then(() => {
+      setDeleteCommittedId(deleteTarget.workspaceId);
+    }).catch((reason) => {
+      setDeleting(false);
+      setDeleteError(reason instanceof Error ? reason.message : String(reason));
+    });
+  };
+  return /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(import_jsx_runtime24.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
+      import_dsh_client_ui_primitives21.Modal,
+      {
+        open: renameTarget !== null,
+        onClose: closeRename,
+        closeLabel: t("close"),
+        title: t("rename.workspace.title"),
+        footer: /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(import_jsx_runtime24.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_dsh_client_ui_primitives21.Button, { variant: "outline", disabled: renaming, onClick: closeRename, children: t("cancel") }),
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_dsh_client_ui_primitives21.Button, { variant: "primary", disabled: renameBlocked, onClick: confirmRename, children: t("rename") })
+        ] }),
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(
+            "input",
+            {
+              className: WorkspaceBrowser_default.renameInput,
+              value: renameDraft,
+              "aria-label": t("field.workspaceName"),
+              "data-modal-autofocus": true,
+              disabled: renaming,
+              onFocus: (e) => {
+                e.target.select();
+              },
+              onChange: (e) => {
+                setRenameDraft(e.target.value);
+                setRenameError(null);
+              },
+              onCompositionStart: () => {
+                composingRef.current = true;
+              },
+              onCompositionEnd: () => {
+                composingRef.current = false;
+              },
+              onKeyDown: (e) => {
+                if (e.key === "Enter" && !composingRef.current) {
+                  e.preventDefault();
+                  confirmRename();
+                }
+              }
+            }
+          ),
+          renameDuplicate && /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: WorkspaceBrowser_default.renameError, role: "alert", children: t("conflict.named", { name: renameTrimmed }) }),
+          renameError !== null && /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: WorkspaceBrowser_default.renameError, role: "alert", children: renameError })
+        ]
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
+      import_dsh_client_ui_primitives21.Modal,
+      {
+        open: deleteTarget !== null,
+        onClose: closeDelete,
+        closeLabel: t("close"),
+        title: t("delete.workspace"),
+        ...deleteTarget === null ? {} : { description: t("delete.desc", { name: deleteTarget.displayTitle }) },
+        footer: /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(import_jsx_runtime24.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_dsh_client_ui_primitives21.Button, { variant: "outline", disabled: deleting, onClick: closeDelete, children: t("cancel") }),
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(
+            import_dsh_client_ui_primitives21.Button,
+            {
+              variant: "outline",
+              className: WorkspaceBrowser_default.deleteAction,
+              disabled: deleting,
+              onClick: confirmDelete,
+              children: t("delete.workspace")
+            }
+          )
+        ] }),
+        children: [
+          deleting && /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: WorkspaceBrowser_default.deleteStatus, role: "status", children: t("delete.pending") }),
+          deleteError !== null && /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: WorkspaceBrowser_default.renameError, role: "alert", children: deleteError })
+        ]
+      }
+    )
+  ] });
+}
+
+// ../node_modules/@deepseek-ai/dsh-client-ui-workspace/src/client/rows/WorkspaceBrowser.tsx
+var import_dsh_client_ui_primitives24 = require("@deepseek-ai/dsh-client-ui-primitives");
+
+// ../../deepseek-harness/packages/api/workspace-controller/src/default-workspace.ts
+var DEFAULT_WORKSPACE_DIRECTORY = "default-workspace";
+function workspaceDisplayTitle(title, localizedDefault) {
+  return title === DEFAULT_WORKSPACE_DIRECTORY ? localizedDefault : title;
+}
+
+// ../node_modules/@deepseek-ai/dsh-client-ui-workspace/src/client/rows/Rows.tsx
 var import_react21 = require("react");
-var import_react_dom2 = require("react-dom");
 var import_dsh_client_ui_primitives22 = require("@deepseek-ai/dsh-client-ui-primitives");
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/message-chrome.ts
+// ../node_modules/@deepseek-ai/dsh-client-ui-workspace/src/client/rows/Rows.module.css
+var Rows_default = {
+  projectRow: "Rows_projectRow",
+  sessionRow: "Rows_sessionRow",
+  selected: "Rows_selected",
+  dragPreview: "Rows_dragPreview",
+  searchResultRow: "Rows_searchResultRow",
+  searchResultHeading: "Rows_searchResultHeading",
+  searchResultTitle: "Rows_searchResultTitle",
+  searchResultMeta: "Rows_searchResultMeta",
+  searchResultWorkspace: "Rows_searchResultWorkspace",
+  searchResultSnippet: "Rows_searchResultSnippet",
+  rowActions: "Rows_rowActions",
+  title: "Rows_title",
+  slot: "Rows_slot",
+  visuallyHidden: "Rows_visuallyHidden",
+  folderActive: "Rows_folderActive",
+  chevron: "Rows_chevron",
+  folder: "Rows_folder",
+  arrow: "Rows_arrow",
+  arrowOpen: "Rows_arrowOpen",
+  projectText: "Rows_projectText",
+  renameInput: "Rows_renameInput",
+  meta: "Rows_meta",
+  time: "Rows_time",
+  pinIndicator: "Rows_pinIndicator",
+  archived: "Rows_archived",
+  dot: "Rows_dot",
+  menuOpen: "Rows_menuOpen",
+  rowQuickActions: "Rows_rowQuickActions",
+  rowResting: "Rows_rowResting",
+  timestamp: "Rows_timestamp",
+  pinnedAction: "Rows_pinnedAction",
+  dropBefore: "Rows_dropBefore",
+  dropAfter: "Rows_dropAfter",
+  hoverContent: "Rows_hoverContent",
+  hoverTitle: "Rows_hoverTitle",
+  hoverPath: "Rows_hoverPath",
+  hoverTime: "Rows_hoverTime",
+  hoverStatus: "Rows_hoverStatus",
+  hoverArchived: "Rows_hoverArchived",
+  iconButton: "Rows_iconButton"
+};
+
+// ../node_modules/@deepseek-ai/dsh-client-ui-workspace/src/client/rows/Rows.tsx
+var import_jsx_runtime25 = require("react/jsx-runtime");
+var DRAG_PREVIEW_PROPERTIES = [
+  "--dsh-sidebar-row-padding",
+  "--dsh-sidebar-label-gap",
+  "--dsh-sidebar-paint-inset"
+];
+function displayTitle(node2, t) {
+  return node2.blank ? t("session.new") : node2.title || t("session.untitled");
+}
+var MIN_TITLE_REVEAL_PX = 8;
+var TITLE_MARQUEE_PX_PER_MS = 0.03;
+function placeTitle(title, left, range) {
+  if (typeof title.scrollTo === "function") title.scrollTo({ left, behavior: "instant" });
+  else title.scrollLeft = left;
+  if (left > 0) title.dataset.scrolled = "";
+  else delete title.dataset.scrolled;
+  if (left < range) title.dataset.clipped = "";
+  else delete title.dataset.clipped;
+}
+function restTitle(title) {
+  if (typeof title.scrollTo === "function") title.scrollTo({ left: 0, behavior: "instant" });
+  else title.scrollLeft = 0;
+  delete title.dataset.scrolled;
+  delete title.dataset.clipped;
+}
+function useTitleMarquee(title) {
+  const frame = (0, import_react21.useRef)(0);
+  const revealing = (0, import_react21.useRef)(false);
+  (0, import_react21.useEffect)(() => () => {
+    cancelAnimationFrame(frame.current);
+  }, []);
+  return (0, import_react21.useMemo)(() => ({
+    enter: (event2) => {
+      if (event2?.pointerType === "touch") return;
+      if (title.current === null) return;
+      if (revealing.current) return;
+      revealing.current = true;
+      const element = title.current;
+      const range = element.scrollWidth - element.clientWidth;
+      if (range <= MIN_TITLE_REVEAL_PX) return;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        placeTitle(element, range, range);
+        return;
+      }
+      cancelAnimationFrame(frame.current);
+      let previous;
+      let position = 0;
+      const step = (now) => {
+        position += previous === void 0 ? 0 : (now - previous) * TITLE_MARQUEE_PX_PER_MS;
+        previous = now;
+        placeTitle(element, Math.min(position, range), range);
+        if (position < range) frame.current = requestAnimationFrame(step);
+      };
+      frame.current = requestAnimationFrame(step);
+    },
+    leave: () => {
+      revealing.current = false;
+      cancelAnimationFrame(frame.current);
+      if (title.current === null) return;
+      restTitle(title.current);
+    }
+  }), [title]);
+}
+function timeLabel(updatedAt, now, t) {
+  const { unit, n } = (0, import_dsh_client_ui_primitives22.relativeTime)(updatedAt, now);
+  return unit === "now" ? t("time.now") : t(`time.${unit}`, { n });
+}
+var directChatClock = new Intl.DateTimeFormat(void 0, { dateStyle: "medium", timeStyle: "long" });
+function directChatFormatTime(at) {
+  return Number.isFinite(at) && at > 0 && at <= 864e13 ? directChatClock.format(at) : void 0;
+}
+function hoverTimeLabel(updatedAt, now, t) {
+  const { unit, n } = (0, import_dsh_client_ui_primitives22.relativeTime)(updatedAt, now);
+  return unit === "now" ? t("time.now") : t("time.ago", { t: t(`time.${unit}`, { n }) });
+}
+function createdLabel(createdAt, t) {
+  const d = new Date(createdAt);
+  const pad2 = (v) => String(v).padStart(2, "0");
+  const date = t("date.ymd", { y: d.getFullYear(), m: d.getMonth() + 1, d: d.getDate() });
+  return t("hover.created", { time: `${date} ${pad2(d.getHours())}:${pad2(d.getMinutes())}` });
+}
+function WorkspaceHoverContent({ label, cwd, createdAt, t }) {
+  return /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: Rows_default.hoverContent, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: Rows_default.hoverTitle, children: label }),
+    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: Rows_default.hoverPath, children: cwd }),
+    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: Rows_default.hoverTime, children: createdLabel(createdAt, t) })
+  ] });
+}
+function rowHalf(e) {
+  const rect = e.currentTarget.getBoundingClientRect();
+  return e.clientY < rect.top + rect.height / 2 ? "before" : "after";
+}
+function ProjectRowItem(props) {
+  const workspaceId = props.group.workspaceId;
+  return workspaceId === void 0 ? /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(UngroupedProjectRow, { ...props }) : /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(WorkspaceProjectRow, { ...props, workspaceId });
+}
+function UngroupedProjectRow(props) {
+  return /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(ProjectRow, { ...props, actions: { reorder: false } });
+}
+function WorkspaceProjectRow({ workspaceId, ...props }) {
+  const { useWorkspaceAccess } = props;
+  const create = useWorkspaceAccess(workspaceId, "session/create");
+  const actions = {
+    create: create ? () => {
+      props.onCreate(workspaceId);
+    } : void 0,
+    reorder: useWorkspaceAccess(workspaceId, "workspace/insertBefore")
+  };
+  return /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(ProjectRow, { ...props, actions });
+}
+function ProjectRow({
+  group,
+  containsCurrentDescendant = false,
+  onToggle,
+  drag: offeredDrag,
+  home,
+  newShortcut,
+  t,
+  actions,
+  directActions,
+  renderFactorySlot,
+  useContextMenuTarget,
+  useContextMenu
+}) {
+  const { getTriggerProps } = useContextMenu();
+  const drag = actions.reorder ? offeredDrag : void 0;
+  const create = actions.create;
+  const row = group;
+  const label = row.workspaceId === void 0 && !row.directCwd ? t("group.ungrouped") : row.label;
+  const active = containsCurrentDescendant || group.expanded && group.containsCurrent;
+  const menuOpen = useContextMenuTarget((target) => target?.kind === "workspace" && target.value.workspaceId === row.workspaceId);
+  const dragPreview = (0, import_dsh_client_ui_primitives22.useRowDragPreview)(Rows_default.dragPreview, DRAG_PREVIEW_PROPERTIES);
+  const workspaceMenuTarget = row.workspaceId !== void 0 && row.cwd !== void 0 ? { workspaceId: row.workspaceId, path: row.cwd } : void 0;
+  const ownRow = /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(
+    "div",
+    {
+      className: clsx_default(Rows_default.projectRow, menuOpen && Rows_default.menuOpen),
+      "data-row-key": `workspace:${group.key}`,
+      role: "treeitem",
+      "aria-expanded": row.expanded,
+      onClick: onToggle,
+      ...getTriggerProps(workspaceMenuTarget === void 0 ? void 0 : { kind: "workspace", value: { ...workspaceMenuTarget, displayTitle: label } }),
+      draggable: drag !== void 0,
+      onDragStart: drag === void 0 ? void 0 : (e) => {
+        e.dataTransfer.effectAllowed = "move";
+        e.dataTransfer.setData("text/plain", row.key);
+        drag.start();
+        dragPreview.start(e);
+      },
+      onDragEnd: () => {
+        if (dragPreview.clear()) drag?.end();
+      },
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { className: clsx_default(Rows_default.slot, Rows_default.folder, active && Rows_default.folderActive), children: row.expanded ? /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_dsh_client_ui_primitives22.IconFolderOpenRegular, {}) : /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_dsh_client_ui_primitives22.IconFolderCloseRegular, {}) }),
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { className: clsx_default(Rows_default.slot, Rows_default.chevron), children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_dsh_client_ui_primitives22.IconTriangleRightFillRegular, { className: clsx_default(Rows_default.arrow, row.expanded && Rows_default.arrowOpen) }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { className: Rows_default.projectText, children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { className: Rows_default.title, children: label }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("span", { className: Rows_default.rowActions, children: [
+          directActions,
+          workspaceMenuTarget !== void 0 && renderFactorySlot("contextMenu.button", {
+            target: { kind: "workspace", value: { ...workspaceMenuTarget, displayTitle: label } },
+            label: t("actions.workspace.aria", { name: label }),
+            className: Rows_default.iconButton
+          }),
+          create !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_dsh_client_ui_primitives22.Tooltip, { label: t("actions.newSession"), shortcutKeys: newShortcut?.keys, side: "bottom", align: "end", delayMs: 500, portal: true, children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+            "button",
+            {
+              type: "button",
+              className: Rows_default.iconButton,
+              "aria-keyshortcuts": newShortcut?.aria,
+              "aria-label": t("actions.newSession.aria", { name: label }),
+              onClick: (e) => {
+                e.stopPropagation();
+                create();
+              },
+              children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_dsh_client_ui_primitives22.IconNewChatOutlineRegular, { size: 14 })
+            }
+          ) })
+        ] })
+      ]
+    }
+  );
+  if (row.createdAt === void 0) return ownRow;
+  return /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+    import_dsh_client_ui_primitives22.HoverCard,
+    {
+      anchor: ownRow,
+      content: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+        WorkspaceHoverContent,
+        {
+          label: row.label,
+          cwd: row.cwd === void 0 ? void 0 : abbreviateHomePath(row.cwd, home),
+          createdAt: row.createdAt,
+          t
+        }
+      ),
+      openDelayMs: 800,
+      grouped: true,
+      disabled: menuOpen,
+      copyText: row.cwd,
+      copyLabel: t("copy"),
+      copiedLabel: t("hover.copied")
+    }
+  );
+}
+function assertNever2(value) {
+  throw new Error(`unknown pending interaction: ${String(value)}`);
+}
+function sessionStatuses(node2, t) {
+  const subagents = node2.runningSubagentCount === 0 ? void 0 : {
+    state: "ongoing",
+    label: t(
+      node2.runningSubagentCount === 1 ? "status.subagentsRunning.one" : "status.subagentsRunning.other",
+      { n: node2.runningSubagentCount }
+    )
+  };
+  let pending;
+  switch (node2.pendingInteraction) {
+    case "approval":
+      pending = {
+        state: "warning",
+        label: t("status.waitingApproval"),
+        trailingLabel: t("status.compact.approval")
+      };
+      break;
+    case "plan-review":
+      pending = {
+        state: "warning",
+        label: t("status.planReview"),
+        trailingLabel: t("status.compact.planReview")
+      };
+      break;
+    case "question":
+      pending = {
+        state: "warning",
+        label: t("status.waitingAnswer"),
+        trailingLabel: t("status.compact.answer")
+      };
+      break;
+    case void 0:
+      break;
+    /* v8 ignore next -- closed PendingInteractionStatus union */
+    default:
+      return assertNever2(node2.pendingInteraction);
+  }
+  if (pending !== void 0) return subagents === void 0 ? [pending] : [pending, subagents];
+  if (node2.running) {
+    const primary = { state: "ongoing", label: t("status.running") };
+    return subagents === void 0 ? [primary] : [primary, subagents];
+  }
+  if (subagents !== void 0) return [subagents];
+  if (node2.completed) return [{ state: "done", label: t("status.completed") }];
+  return [{ state: "idle", label: t("status.idle") }];
+}
+function SessionStatusDots({ statuses }) {
+  return /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(import_jsx_runtime25.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_dsh_client_ui_primitives22.StateDot, { state: statuses[0].state }),
+    statuses.map((status) => /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { className: Rows_default.visuallyHidden, children: status.label }, status.label))
+  ] });
+}
+function PinnedIndicator({ t }) {
+  const label = t("row.pinned");
+  return /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { className: Rows_default.pinIndicator, role: "img", "aria-label": label, title: label, children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_dsh_client_ui_primitives22.IconPinFillRegular, { size: 14 }) });
+}
+function SessionHoverContent({ node: node2, cwd, now, renderSlot, t }) {
+  const statuses = sessionStatuses(node2, t).filter((status) => !(node2.archived && (status.state === "done" || status.state === "idle")));
+  return /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: Rows_default.hoverContent, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: Rows_default.hoverTitle, children: displayTitle(node2, t) }),
+    cwd !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: Rows_default.hoverPath, children: cwd }),
+    !node2.blank && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: Rows_default.hoverTime, children: directChatFormatTime(node2.updatedAt) ?? hoverTimeLabel(node2.updatedAt, now, t) }),
+    renderSlot("sidebar.session.row.hover", { sessionId: node2.id }),
+    statuses.map((status) => /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: Rows_default.hoverStatus, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_dsh_client_ui_primitives22.StateDot, { state: status.state }),
+      /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { children: status.label })
+    ] }, status.label)),
+    node2.archived && /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: clsx_default(Rows_default.hoverStatus, Rows_default.hoverArchived), children: [
+      /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_dsh_client_ui_primitives22.IconArchiveOutlineRegular, { size: 14 }),
+      /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { children: t("row.archived") })
+    ] })
+  ] });
+}
+function SearchResultItem({
+  result,
+  currentId,
+  onOpen,
+  onUnarchive,
+  useSessionAccess,
+  t
+}) {
+  const selected = result.id === currentId;
+  const canUnarchive = useSessionAccess(result.id, "workspace/unarchiveSession");
+  const statuses = sessionStatuses(result, t);
+  const primaryStatus = statuses[0];
+  return /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(
+    "div",
+    {
+      className: clsx_default(Rows_default.searchResultRow, selected && Rows_default.selected, result.archived && Rows_default.archived),
+      role: "treeitem",
+      "aria-selected": selected,
+      "aria-description": result.archived ? t("toast.archivedNotOpenable") : void 0,
+      onClick: () => {
+        onOpen(result.id);
+      },
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("span", { className: Rows_default.searchResultHeading, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { className: Rows_default.slot, children: !result.archived && primaryStatus.state !== "idle" && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(SessionStatusDots, { statuses }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { className: Rows_default.searchResultTitle, children: result.title || t("session.untitled") }),
+          result.archived && canUnarchive && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { className: Rows_default.rowActions, children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_dsh_client_ui_primitives22.Tooltip, { label: t("actions.unarchive"), side: "bottom", align: "end", delayMs: 500, portal: true, children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+            "button",
+            {
+              type: "button",
+              className: Rows_default.iconButton,
+              "aria-label": t("menu.unarchiveSession"),
+              onClick: (e) => {
+                e.stopPropagation();
+                onUnarchive(result.id);
+              },
+              children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_dsh_client_ui_primitives22.IconUnarchiveOutlineRegular, { size: 14 })
+            }
+          ) }) })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("span", { className: Rows_default.searchResultMeta, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { className: Rows_default.searchResultWorkspace, children: result.workspace || t("group.ungrouped") }),
+          result.snippet !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { className: Rows_default.searchResultSnippet, children: result.snippet })
+        ] })
+      ]
+    }
+  );
+}
+function SessionNodeItem({
+  node: node2,
+  currentId,
+  now,
+  onOpen,
+  onRenameRequest,
+  renderSlot,
+  renderFactorySlot,
+  useContextMenuTarget,
+  useContextMenu,
+  onReveal,
+  drag,
+  home,
+  useSessionAccess,
+  t
+}) {
+  const { getTriggerProps } = useContextMenu();
+  const row = node2;
+  const title = displayTitle(node2, t);
+  const selected = node2.id === currentId;
+  const statuses = sessionStatuses(node2, t);
+  const primaryStatus = statuses[0];
+  const showStatus = primaryStatus.state !== "idle";
+  const renamable = useSessionAccess(node2.id, "session/rename");
+  const reorderable = useSessionAccess(node2.id, "workspace/insertSessionBefore");
+  const draggable = drag !== void 0 && reorderable && !row.blank && !row.archived;
+  const menuOpen = useContextMenuTarget((target) => target?.kind === "session" && target.value.sessionId === node2.id);
+  const dragPreview = (0, import_dsh_client_ui_primitives22.useRowDragPreview)(Rows_default.dragPreview, DRAG_PREVIEW_PROPERTIES);
+  const rowRef = (0, import_react21.useRef)(null);
+  const titleRef = (0, import_react21.useRef)(null);
+  const renameArmed = (0, import_react21.useRef)(false);
+  const disarmRename = (0, import_react21.useRef)(() => {
+    renameArmed.current = false;
+  }).current;
+  const marquee = useTitleMarquee(titleRef);
+  (0, import_react21.useEffect)(() => {
+    if (menuOpen || rowRef.current?.matches(":hover")) marquee.enter();
+    else marquee.leave();
+  }, [menuOpen, marquee]);
+  (0, import_react21.useEffect)(() => {
+    if (onReveal === void 0) return;
+    rowRef.current?.scrollIntoView({ block: "nearest" });
+    onReveal();
+  }, [onReveal]);
+  const ownRow = /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(
+    "div",
+    {
+      ref: rowRef,
+      "data-row-key": `session:${node2.id}`,
+      className: clsx_default(
+        Rows_default.sessionRow,
+        selected && Rows_default.selected,
+        menuOpen && Rows_default.menuOpen,
+        row.archived && Rows_default.archived,
+        drag?.marker === "before" && Rows_default.dropBefore,
+        drag?.marker === "after" && Rows_default.dropAfter
+      ),
+      role: "treeitem",
+      "aria-selected": selected,
+      "aria-description": row.archived ? t("toast.archivedNotOpenable") : void 0,
+      tabIndex: 0,
+      onClick: () => {
+        onOpen(node2.id);
+      },
+      ...getTriggerProps(row.blank ? void 0 : { kind: "session", value: { sessionId: node2.id, displayTitle: row.title } }, { onKeyDown: (event2) => {
+        if (event2.target !== event2.currentTarget || event2.key !== "Enter" && event2.key !== " ") return;
+        if (event2.altKey || event2.ctrlKey || event2.metaKey || event2.shiftKey) return;
+        event2.preventDefault();
+        onOpen(node2.id);
+      } }),
+      onPointerEnter: marquee.enter,
+      onPointerLeave: () => {
+        if (!menuOpen) marquee.leave();
+      },
+      draggable,
+      onDragStart: !draggable ? void 0 : (e) => {
+        e.dataTransfer.effectAllowed = "move";
+        e.dataTransfer.setData("text/plain", node2.id);
+        drag.start();
+        dragPreview.start(e);
+      },
+      onDragEnd: () => {
+        if (dragPreview.clear()) drag?.end();
+      },
+      onDragOver: drag === void 0 ? void 0 : (e) => {
+        if (!drag.active) return;
+        e.preventDefault();
+        e.dataTransfer.dropEffect = "move";
+        drag.hover(rowHalf(e));
+      },
+      onDrop: drag === void 0 ? void 0 : (e) => {
+        if (!drag.active) return;
+        e.preventDefault();
+        drag.drop(rowHalf(e));
+      },
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { className: Rows_default.slot, children: !row.archived && !row.blank && (showStatus ? /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(SessionStatusDots, { statuses }) : renderSlot("sidebar.session.row.leading", { sessionId: node2.id })) }),
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+          "span",
+          {
+            ref: titleRef,
+            className: Rows_default.title,
+            onMouseDown: (e) => {
+              if (e.detail !== 1) return;
+              renameArmed.current = true;
+              window.addEventListener("blur", disarmRename, { once: true });
+            },
+            onDoubleClick: row.blank || !renamable ? void 0 : (e) => {
+              e.stopPropagation();
+              if (!renameArmed.current) return;
+              renameArmed.current = false;
+              onRenameRequest(node2.id, row.title);
+            },
+            children: title
+          }
+        ),
+        !row.blank && /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("span", { className: Rows_default.rowResting, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+            "span",
+            {
+              className: clsx_default(Rows_default.time, primaryStatus.trailingLabel === void 0 && Rows_default.timestamp),
+              title: directChatFormatTime(row.updatedAt),
+              "aria-hidden": primaryStatus.trailingLabel === void 0 ? void 0 : true,
+              children: primaryStatus.trailingLabel ?? timeLabel(row.updatedAt, now, t)
+            }
+          ),
+          renderSlot("sidebar.session.row.trailing", { sessionId: node2.id }),
+          row.pinned && !row.archived && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(PinnedIndicator, { t })
+        ] }),
+        !row.blank && /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("span", { className: Rows_default.rowActions, onClick: (e) => {
+          e.stopPropagation();
+        }, children: [
+          renderFactorySlot("contextMenu.button", {
+            target: { kind: "session", value: { sessionId: node2.id, displayTitle: row.title } },
+            label: t("actions.session.aria", { name: title }),
+            className: Rows_default.iconButton
+          }),
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { className: Rows_default.rowQuickActions, children: renderSlot("sidebar.workspaces.session.row.action", { sessionId: node2.id, displayTitle: row.title }) })
+        ] })
+      ]
+    }
+  );
+  return /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+    import_dsh_client_ui_primitives22.HoverCard,
+    {
+      anchor: ownRow,
+      content: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+        SessionHoverContent,
+        {
+          node: node2,
+          cwd: row.cwd === void 0 ? void 0 : abbreviateHomePath(row.cwd, home),
+          now,
+          renderSlot,
+          t
+        }
+      ),
+      openDelayMs: 800,
+      grouped: true,
+      disabled: menuOpen || drag?.active === true,
+      copyText: row.blank || row.title === "" ? void 0 : row.title,
+      copyLabel: t("copy"),
+      copiedLabel: t("hover.copied")
+    }
+  );
+}
+
+// ../node_modules/@deepseek-ai/dsh-client-ui-workspace/src/client/WorkspacePicker.tsx
+var import_react22 = require("react");
+var import_dsh_client_ui_primitives23 = require("@deepseek-ai/dsh-client-ui-primitives");
+
+// ../node_modules/@deepseek-ai/dsh-client-ui-workspace/src/client/path-suffix.ts
+function distinguishingPathSuffixes(workspaces) {
+  const rows = workspaces.map((workspace) => ({ ...workspace, parts: workspace.path.split(/([\\/])/) }));
+  const suffix = (parts, count) => parts.slice(-(2 * count - 1)).join("");
+  const suffixes = /* @__PURE__ */ new Map();
+  for (const row of rows) {
+    const peers = rows.filter((other) => other !== row && other.title === row.title);
+    if (peers.length === 0) continue;
+    let count = 1;
+    while (2 * count - 1 < row.parts.length && (suffix(row.parts, count) === "" || peers.some((peer) => suffix(peer.parts, count) === suffix(row.parts, count)))) count++;
+    suffixes.set(row.id, suffix(row.parts, count));
+  }
+  return suffixes;
+}
+
+// ../node_modules/@deepseek-ai/dsh-client-ui-workspace/src/client/WorkspacePicker.module.css
+var WorkspacePicker_default = {
+  modalAction: "WorkspacePicker_modalAction",
+  modalError: "WorkspacePicker_modalError",
+  menuStatus: "WorkspacePicker_menuStatus",
+  pathSuffix: "WorkspacePicker_pathSuffix",
+  disambiguated: "WorkspacePicker_disambiguated",
+  title: "WorkspacePicker_title"
+};
+
+// ../node_modules/@deepseek-ai/dsh-client-ui-workspace/src/client/WorkspacePicker.tsx
+var import_jsx_runtime26 = require("react/jsx-runtime");
+var ADD_WORKSPACE = "::add-workspace";
+function WorkspacePickFlow({
+  t,
+  open,
+  anchorRef,
+  useWorkspaces,
+  createWorkspace,
+  useDirectoryFlow,
+  renderDirectoryFlow,
+  onPick,
+  onClose,
+  addOnly = false,
+  onBusyChange,
+  side = "bottom",
+  selectedId
+}) {
+  const absentAnchor = (0, import_react22.useRef)(null);
+  const workspaceSnapshot = useWorkspaces((state) => state);
+  const workspaces = workspaceSnapshot.items;
+  const [errorOpen, setErrorOpen] = (0, import_react22.useState)(false);
+  const [modalError, setModalError] = (0, import_react22.useState)(null);
+  const [flowOpen, setFlowOpen] = (0, import_react22.useState)(false);
+  const [pickingFolder, setPickingFolder] = (0, import_react22.useState)(false);
+  const flowBusy = flowOpen || pickingFolder;
+  (0, import_react22.useEffect)(() => {
+    onBusyChange?.(flowBusy);
+  }, [flowBusy, onBusyChange]);
+  const flowAvailable = useDirectoryFlow((occupied) => occupied);
+  (0, import_react22.useEffect)(() => {
+    if (flowOpen && !flowAvailable) setFlowOpen(false);
+  }, [flowOpen, flowAvailable]);
+  const addEntries = flowAvailable ? [{ id: ADD_WORKSPACE, label: t("menu.addWorkspace"), icon: /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(import_dsh_client_ui_primitives23.IconPlusOutlineRegular, { size: 16 }), disabled: flowBusy }] : [];
+  const pinAdd = !addOnly && workspaces.length > 0;
+  const defaultWorkspaceName = t("workspace.defaultName");
+  const listed = (0, import_react22.useMemo)(() => {
+    if (!pinAdd) return [];
+    const rows = workspaces.map((workspace) => ({
+      id: workspace.workspaceId,
+      title: workspaceDisplayTitle(workspace.title, defaultWorkspaceName),
+      path: workspace.path
+    }));
+    const suffixes = distinguishingPathSuffixes(rows);
+    return rows.map((row) => ({ ...row, suffix: suffixes.get(row.id) }));
+  }, [pinAdd, workspaces, defaultWorkspaceName]);
+  const items = pinAdd ? listed.map(({ id, title, path, suffix }) => ({
+    id,
+    // The title gives way first, so the suffix that tells the rows apart
+    // stays visible; the native tooltip carries the full path.
+    label: suffix === void 0 ? title : /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)("span", { className: WorkspacePicker_default.disambiguated, title: path, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("span", { className: WorkspacePicker_default.title, children: title }),
+      " ",
+      /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("span", { className: WorkspacePicker_default.pathSuffix, children: suffix })
+    ] }),
+    icon: /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(import_dsh_client_ui_primitives23.IconFolderCloseRegular, { size: 16 }),
+    disabled: flowBusy
+  })) : addEntries;
+  const menuIsEmpty = items.length === 0;
+  const closeModal = () => {
+    setErrorOpen(false);
+    setModalError(null);
+  };
+  const adoptDirectory = (path) => createWorkspace({ path }).then((workspace) => {
+    setFlowOpen(false);
+    onPick(workspace.workspaceId);
+  }).catch((reason) => {
+    setModalError(reason instanceof Error ? reason.message : String(reason));
+    setFlowOpen(false);
+    setErrorOpen(true);
+  });
+  const openDirectoryFlow = (0, import_react22.useCallback)(() => {
+    onClose();
+    setErrorOpen(false);
+    setModalError(null);
+    setFlowOpen(true);
+  }, [onClose]);
+  const listSettled = addOnly || workspaceSnapshot.phase === "ready";
+  const addIsTheOnlyEntry = !pinAdd && listSettled && addEntries.length === 1;
+  (0, import_react22.useEffect)(() => {
+    if (open && addIsTheOnlyEntry && !flowBusy) openDirectoryFlow();
+  }, [open, addIsTheOnlyEntry, flowBusy, openDirectoryFlow]);
+  const flowOwner = {
+    open: flowOpen,
+    busy: pickingFolder,
+    onPicked: (path) => {
+      setPickingFolder(true);
+      void adoptDirectory(path).finally(() => {
+        setPickingFolder(false);
+      });
+    },
+    onCancel: () => {
+      setFlowOpen(false);
+    },
+    onError: (message) => {
+      setFlowOpen(false);
+      setModalError(message);
+      setErrorOpen(true);
+    }
+  };
+  const handleSelect = (id) => {
+    if (id === ADD_WORKSPACE) {
+      openDirectoryFlow();
+      return;
+    }
+    onPick(id);
+  };
+  return /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(import_jsx_runtime26.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(
+      import_dsh_client_ui_primitives23.Menu,
+      {
+        open: open && !addIsTheOnlyEntry && !menuIsEmpty,
+        anchor: null,
+        items,
+        ...pinAdd ? { footer: addEntries } : {},
+        selectedId,
+        onSelect: handleSelect,
+        onClose,
+        side,
+        portal: true,
+        anchorRef: anchorRef ?? absentAnchor
+      }
+    ),
+    open && !addIsTheOnlyEntry && !menuIsEmpty && workspaceSnapshot.phase === "pending" && /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("div", { className: WorkspacePicker_default.menuStatus, role: "status", children: t("picker.loading") }),
+    renderDirectoryFlow(flowOwner),
+    /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(
+      import_dsh_client_ui_primitives23.Modal,
+      {
+        open: errorOpen,
+        onClose: closeModal,
+        closeLabel: t("close"),
+        title: t("folderError.title"),
+        footer: /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(import_jsx_runtime26.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(import_dsh_client_ui_primitives23.Button, { variant: "outline", className: WorkspacePicker_default.modalAction, onClick: closeModal, children: t("cancel") }),
+          /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(import_dsh_client_ui_primitives23.Button, { variant: "primary", className: WorkspacePicker_default.modalAction, disabled: !flowAvailable, onClick: openDirectoryFlow, children: t("folderError.retry") })
+        ] }),
+        children: /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("div", { className: WorkspacePicker_default.modalError, role: "alert", children: modalError })
+      }
+    )
+  ] });
+}
+
+// ../node_modules/@deepseek-ai/dsh-client-ui-workspace/src/client/rows/WorkspaceBrowser.tsx
+var import_jsx_runtime27 = require("react/jsx-runtime");
+var directChatClock2 = new Intl.DateTimeFormat(void 0, { dateStyle: "medium", timeStyle: "long" });
+function directChatFormatTime2(at) {
+  return Number.isFinite(at) && at > 0 && at <= 864e13 ? directChatClock2.format(at) : void 0;
+}
+var EXPAND_SLIDE_MS = 300;
+var SEARCH_DEBOUNCE_MS = 250;
+var SEARCH_QUERY_MAX_CODE_UNITS = 500;
+var SESSION_WATERMARK_BASE = 5;
+var SESSION_WATERMARK_AUTO_MAX = 50;
+function watermarkRows(sessions, watermark) {
+  let count = 0;
+  const rows = sessions.filter((session) => {
+    if (session.blank) return true;
+    count += 1;
+    return count <= watermark;
+  });
+  return { rows, hiddenCount: sessions.length - rows.length };
+}
+function requiredWatermark(sessions, current, revealSessionId) {
+  let index2 = 0;
+  let required = 0;
+  for (const session of sessions) {
+    if (session.blank) continue;
+    index2 += 1;
+    const attention = index2 <= SESSION_WATERMARK_AUTO_MAX && (session.running || session.runningSubagentCount > 0 || session.pendingInteraction !== void 0 || session.completed || session.id === current);
+    if (attention || session.id === revealSessionId) required = index2;
+  }
+  return required;
+}
+function raiseWatermarks(marks, required) {
+  let raised = marks;
+  for (const [key, watermark] of required) {
+    if (watermark > (raised[key] ?? SESSION_WATERMARK_BASE)) raised = { ...raised, [key]: watermark };
+  }
+  return raised;
+}
+function sanitizeSearchQuery(value) {
+  const withoutNul = value.replaceAll("\0", "");
+  if (withoutNul.length <= SEARCH_QUERY_MAX_CODE_UNITS) return withoutNul;
+  let end = SEARCH_QUERY_MAX_CODE_UNITS;
+  const last = withoutNul.charCodeAt(end - 1);
+  const next = withoutNul.charCodeAt(end);
+  if (last >= 55296 && last <= 56319 && next >= 56320 && next <= 57343) end--;
+  return withoutNul.slice(0, end);
+}
+function useNativeDragAcceptance(active) {
+  (0, import_react23.useEffect)(() => {
+    if (!active) return;
+    const acceptDrag = (event2) => {
+      event2.preventDefault();
+      if (event2.dataTransfer !== null) event2.dataTransfer.dropEffect = "move";
+    };
+    const acceptDrop = (event2) => {
+      event2.preventDefault();
+    };
+    document.addEventListener("dragover", acceptDrag);
+    document.addEventListener("drop", acceptDrop);
+    return () => {
+      document.removeEventListener("dragover", acceptDrag);
+      document.removeEventListener("drop", acceptDrop);
+    };
+  }, [active]);
+}
+function ViewOptionsMenu2({ groupBy, orderBy, archivedFilter, onGroupPick, onOrderPick, onArchivedFilterPick, t }) {
+  const [open, setOpen] = (0, import_react23.useState)(false);
+  return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
+    import_dsh_client_ui_primitives24.Menu,
+    {
+      open,
+      onClose: () => {
+        setOpen(false);
+      },
+      items: [
+        { type: "label", id: "group-by", text: t("groupBy.label") },
+        { id: "workspace", label: t("groupBy.workspace"), icon: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_dsh_client_ui_primitives24.IconFolderCloseRegular, {}) },
+        { id: "workspace-tree", label: t("groupBy.workspaceTree"), icon: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_dsh_client_ui_primitives24.IconWorkspaceTreeOutlineRegular, {}) },
+        { id: "flat", label: t("groupBy.flat"), icon: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_dsh_client_ui_primitives24.IconFlatListOutlineRegular, {}) },
+        { type: "separator", id: "order-by-separator" },
+        { type: "label", id: "order-by", text: t("orderBy.label") },
+        { id: "manual", label: t("orderBy.manual"), icon: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_dsh_client_ui_primitives24.IconChevronsUpDownOutlineRegular, {}) },
+        { id: "updated", label: t("orderBy.updated"), icon: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_dsh_client_ui_primitives24.IconClockOutlineRegular, {}) },
+        { type: "separator", id: "archived-filter-separator" },
+        { type: "label", id: "filter-by", text: t("filterBy.label") },
+        { id: "hide-archived", label: t("viewOptions.hideArchived"), icon: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_dsh_client_ui_primitives24.IconArchiveOffOutlineRegular, {}) },
+        { id: "show-archived", label: t("viewOptions.showArchived"), icon: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_dsh_client_ui_primitives24.IconQueueOutlineRegular, {}) },
+        { id: "only-archived", label: t("viewOptions.onlyArchived"), icon: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_dsh_client_ui_primitives24.IconArchiveCheckOutlineRegular, {}) }
+      ],
+      selectedIds: [
+        groupBy,
+        orderBy,
+        { default: "hide-archived", show: "show-archived", only: "only-archived" }[archivedFilter]
+      ],
+      onSelect: (id) => {
+        if (id === "workspace" || id === "workspace-tree" || id === "flat") onGroupPick(id);
+        else if (id === "manual" || id === "updated") onOrderPick(id);
+        else if (id === "hide-archived") onArchivedFilterPick("default");
+        else if (id === "show-archived") onArchivedFilterPick("show");
+        else if (id === "only-archived") onArchivedFilterPick("only");
+        setOpen(false);
+      },
+      align: "end",
+      dense: true,
+      listClassName: WorkspaceBrowser_default.viewOptionsMenu,
+      portal: true,
+      anchor: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_dsh_client_ui_primitives24.Tooltip, { label: t("viewOptions.label"), side: "bottom", delayMs: 500, portal: true, children: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
+        "button",
+        {
+          type: "button",
+          className: clsx_default(WorkspaceBrowser_default.iconButton, WorkspaceBrowser_default.wide),
+          "aria-label": t("viewOptions.label"),
+          onClick: () => {
+            setOpen((v) => !v);
+          },
+          children: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_dsh_client_ui_primitives24.IconSlidersTwoOutlineRegular, {})
+        }
+      ) })
+    }
+  );
+}
+function sessionDragOrder(order, rows, drag, over) {
+  const source2 = rows.find((row) => row.id === drag.sessionId);
+  const target = rows.find((row) => row.id === over.id);
+  if (source2 === void 0 || target === void 0 || source2.blank || source2.pinned !== drag.pinned || target.pinned !== drag.pinned || source2.id === target.id || !order.includes(source2.id)) return;
+  const section = rows.filter((row) => row.pinned === drag.pinned);
+  const sourceIndex = section.findIndex((row) => row.id === source2.id);
+  const withoutSource = section.filter((row) => row.id !== source2.id);
+  const insertAt = withoutSource.findIndex((row) => row.id === target.id) + (over.half === "after" ? 1 : 0);
+  if (insertAt === sourceIndex) return;
+  const next = order.filter((id) => id !== source2.id);
+  const targetIndex = next.indexOf(target.id);
+  if (targetIndex === -1) return;
+  next.splice(targetIndex + (over.half === "after" ? 1 : 0), 0, source2.id);
+  return pinCurrentBlank(next, rows.find((row) => row.blank)?.id);
+}
+function workspaceGroupHalf(e) {
+  const rect = e.currentTarget.getBoundingClientRect();
+  return e.clientY < rect.top + rect.height / 2 ? "before" : "after";
+}
+function EmptySessions({ rowState, onLeaveArchivedOnly, t }) {
+  const archivedOnly = rowState.archivedFilter === "only";
+  return /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)("div", { className: WorkspaceBrowser_default.emptyState, "data-row-key": "empty", children: [
+    archivedOnly ? /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_dsh_client_ui_primitives24.IconArchiveOutlineRegular, { size: 24 }) : /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_dsh_client_ui_primitives24.IconQueueOutlineRegular, { size: 24 }),
+    /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("div", { children: archivedOnly ? t("empty.noneArchived") : t("empty.none") }),
+    archivedOnly && /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("button", { type: "button", className: WorkspaceBrowser_default.emptyAction, onClick: onLeaveArchivedOnly, children: t("empty.viewOthers") })
+  ] });
+}
+function SessionTree({
+  extension,
+  list,
+  useSessionStatus,
+  startSession,
+  open,
+  workspaces,
+  ungroupedSessionIds,
+  rowState,
+  onLeaveArchivedOnly,
+  workspaceReady,
+  animationResetKey,
+  usePanelInfo,
+  useSessionAccess,
+  useWorkspaceAccess,
+  onSessionRenameRequest,
+  renderSlot,
+  renderFactorySlot,
+  useContextMenuTarget,
+  useContextMenu,
+  insertWorkspaceBefore,
+  nestWorkspaces,
+  groupExpansion,
+  setGroupExpanded,
+  setSessionOrder,
+  home,
+  t,
+  revealSessionId,
+  onSessionRevealed,
+  shortcuts
+}) {
+  const panelActive = usePanelInfo((info) => info.activePanelId !== null);
+  const statuses = useSessionStatus((s) => s);
+  const current = panelActive ? void 0 : Object.values(list.byId).find((session) => (session.retainedBy.mainView ?? 0) > 0)?.id;
+  const revealGroup = revealSessionId === void 0 || !workspaceReady ? void 0 : owningGroupKey(workspaces, revealSessionId);
+  const [storedWatermarks, setStoredWatermarks] = (0, import_react23.useState)({});
+  const [watermarkMotionKey, setWatermarkMotionKey] = (0, import_react23.useState)(0);
+  const [drag, setDrag] = (0, import_react23.useState)(null);
+  const sessionDropCommitted = (0, import_react23.useRef)(false);
+  const [workspaceDrag, setWorkspaceDrag] = (0, import_react23.useState)(null);
+  const workspaceDropCommitted = (0, import_react23.useRef)(false);
+  const nativeDragActive = drag !== null || workspaceDrag !== null;
+  useNativeDragAcceptance(nativeDragActive);
+  const currentGroup = current === void 0 || !workspaceReady ? void 0 : owningGroupKey(workspaces, current);
+  (0, import_react23.useEffect)(() => {
+    if (current === void 0 || currentGroup === void 0 || Object.hasOwn(groupExpansion, currentGroup)) return;
+    setGroupExpanded(currentGroup, true);
+  }, [current, currentGroup, setGroupExpanded, groupExpansion]);
+  const parents = (0, import_react23.useMemo)(() => {
+    if (!nestWorkspaces) return /* @__PURE__ */ new Map();
+    const keysByPath = new Map(workspaces.map((workspace) => [workspace.path, workspace.workspaceId]));
+    const paths = [...keysByPath.keys()];
+    return new Map(workspaces.map((workspace) => {
+      const path = owningParentFolder(workspace.path, paths);
+      return [workspace.workspaceId, path === void 0 ? void 0 : keysByPath.get(path)];
+    }));
+  }, [nestWorkspaces, workspaces]);
+  const currentAncestors = (0, import_react23.useMemo)(() => {
+    const keys = /* @__PURE__ */ new Set();
+    for (let key = currentGroup === void 0 ? void 0 : parents.get(currentGroup); key !== void 0; key = parents.get(key)) {
+      keys.add(key);
+    }
+    return keys;
+  }, [currentGroup, parents]);
+  const expandedGroups = (0, import_react23.useMemo)(() => {
+    const ancestorKeys = new Set(parents.values());
+    return [...workspaces.map((workspace) => workspace.workspaceId), UNGROUPED_KEY].filter((key) => groupExpansion[key] ?? ancestorKeys.has(key));
+  }, [groupExpansion, parents, workspaces]);
+  const nativeGroups = (0, import_react23.useMemo)(
+    () => deriveGroups(list, workspaces, rowState, statuses, {
+      expandedGroups,
+      ungroupedOrder: ungroupedSessionIds
+    }),
+    [list, workspaces, rowState, statuses, expandedGroups, ungroupedSessionIds]
+  );
+  const groups = extension?.groups(nativeGroups, workspaces, expandedGroups, rowState.archivedFilter) ?? nativeGroups;
+  (0, import_react23.useEffect)(() => {
+    for (let key = revealGroup; key !== void 0; key = parents.get(key)) {
+      if (groupExpansion[key] === false || key === revealGroup && groupExpansion[key] !== true) {
+        setGroupExpanded(key, true);
+      }
+    }
+  }, [groupExpansion, parents, revealGroup, setGroupExpanded]);
+  const baselines = new Map(groups.map((group) => [group.key, Math.max(SESSION_WATERMARK_BASE, requiredWatermark(
+    group.sessions,
+    current ?? extension?.activeId,
+    group.key === revealGroup ? revealSessionId : void 0
+  ))]));
+  const foldedKeys = new Set(groups.filter((group) => !group.expanded).map((group) => group.key));
+  const underFoldedAncestor = (key) => {
+    for (let owner = parents.get(key); owner !== void 0; owner = parents.get(owner)) {
+      if (foldedKeys.has(owner)) return true;
+    }
+    return false;
+  };
+  const requiredWatermarks = new Map([...baselines].filter(([key]) => !underFoldedAncestor(key)));
+  const sessionWatermarks = raiseWatermarks(storedWatermarks, requiredWatermarks);
+  if (sessionWatermarks !== storedWatermarks) setStoredWatermarks((marks) => raiseWatermarks(marks, requiredWatermarks));
+  const dropWatermarks = (drop) => {
+    if (!Object.keys(storedWatermarks).some(drop)) return;
+    setStoredWatermarks((marks) => Object.fromEntries(Object.entries(marks).filter(([key]) => !drop(key))));
+    setWatermarkMotionKey((key) => key + 1);
+  };
+  const withinGroup = (key, root) => {
+    for (let owner = key; owner !== void 0; owner = parents.get(owner)) {
+      if (owner === root) return true;
+    }
+    return false;
+  };
+  const now = Date.now();
+  const commitSessionDrag = (activeDrag, over) => {
+    if (sessionDropCommitted.current) return;
+    sessionDropCommitted.current = true;
+    setDrag(null);
+    const group = groups.find((candidate) => candidate.key === activeDrag.accountKey);
+    if (group === void 0) return;
+    if (over.id === activeDrag.sessionId) return;
+    const accountSessionIds = activeDrag.accountKey === UNGROUPED_KEY ? ungroupedSessionIds : workspaces.find((workspace) => workspace.workspaceId === activeDrag.accountKey)?.sessionIds;
+    if (accountSessionIds === void 0) return;
+    const renderedSessions = watermarkRows(group.sessions, sessionWatermarks[group.key] ?? SESSION_WATERMARK_BASE).rows.filter((node2) => !node2.directChat);
+    const nextOrder = sessionDragOrder(accountSessionIds, renderedSessions, activeDrag, over);
+    if (nextOrder !== void 0) setSessionOrder(activeDrag.accountKey, nextOrder);
+  };
+  const commitWorkspaceDrag = (activeDrag, over) => {
+    if (workspaceDropCommitted.current) return;
+    workspaceDropCommitted.current = true;
+    setWorkspaceDrag(null);
+    const owner = parents.get(activeDrag.workspaceId);
+    const siblings = workspaces.filter((workspace) => parents.get(workspace.workspaceId) === owner);
+    const rowIndex = siblings.findIndex((workspace) => workspace.workspaceId === over.id);
+    if (rowIndex === -1) return;
+    const anchor = over.half === "before" ? over.id : siblings[rowIndex + 1]?.workspaceId;
+    if (anchor === activeDrag.workspaceId) return;
+    const sourceIndex = siblings.findIndex((workspace) => workspace.workspaceId === activeDrag.workspaceId);
+    const anchorIndex = anchor === void 0 ? siblings.length : siblings.findIndex((workspace) => workspace.workspaceId === anchor);
+    if (sourceIndex !== -1 && (anchorIndex === sourceIndex || anchorIndex === sourceIndex + 1)) return;
+    insertWorkspaceBefore(activeDrag.workspaceId, anchor).catch((reason) => {
+      console.warn("workspace reorder rejected:", reason);
+    });
+  };
+  const childrenByParent = (0, import_react23.useMemo)(() => {
+    const rendered = new Set(groups.map((group) => group.key));
+    const children = /* @__PURE__ */ new Map();
+    for (const group of groups) {
+      let parent = parents.get(group.key);
+      while (parent !== void 0 && !rendered.has(parent)) parent = parents.get(parent);
+      const siblings = children.get(parent);
+      if (siblings === void 0) children.set(parent, [group]);
+      else siblings.push(group);
+    }
+    return children;
+  }, [groups, parents]);
+  const rootGroups = childrenByParent.get(void 0) ?? [];
+  const workspaceDropAtListStart = rootGroups[0]?.workspaceId !== void 0 && workspaceDrag?.over?.id === rootGroups[0].workspaceId && workspaceDrag.over.half === "before";
+  const rowKeys = groups.length === 0 ? ["empty"] : [];
+  const renderGroup = (group, depth) => {
+    const workspaceId = group.workspaceId;
+    const children = childrenByParent.get(group.key) ?? [];
+    const compatibleDrag = workspaceDrag !== null && parents.get(workspaceDrag.workspaceId) === parents.get(group.key);
+    const watermark = sessionWatermarks[group.key] ?? SESSION_WATERMARK_BASE;
+    const collapsed = watermarkRows(group.sessions, baselines.get(group.key) ?? SESSION_WATERMARK_BASE);
+    const visible = watermarkRows(group.sessions, watermark);
+    const sessionsExpanded = visible.hiddenCount === 0;
+    rowKeys.push(`workspace:${group.key}`);
+    const childRows = group.expanded ? children.map((child) => renderGroup(child, depth + 1)) : [];
+    const sessions = visible.rows;
+    for (const node2 of sessions) if (!node2.directChat) rowKeys.push(`session:${node2.id}`);
+    if (collapsed.hiddenCount > 0) rowKeys.push(`overflow:${group.key}`);
+    const workspaceMarker = workspaceId !== void 0 && workspaceDrag?.over?.id === workspaceId ? workspaceDrag.over.half : null;
+    const workspaceDragProps = workspaceId === void 0 ? void 0 : {
+      start: () => {
+        workspaceDropCommitted.current = false;
+        setWorkspaceDrag({ workspaceId, over: null });
+      },
+      end: () => {
+        if (workspaceDrag?.over !== null && workspaceDrag?.over !== void 0) {
+          commitWorkspaceDrag(workspaceDrag, workspaceDrag.over);
+        } else {
+          setWorkspaceDrag(null);
+        }
+        workspaceDropCommitted.current = false;
+      }
+    };
+    const hoverWorkspace = workspaceId === void 0 || !compatibleDrag ? void 0 : (half) => {
+      setWorkspaceDrag((active) => active === null ? active : { ...active, over: { id: workspaceId, half } });
+    };
+    const dropWorkspace = workspaceId === void 0 || !compatibleDrag ? void 0 : (half) => {
+      commitWorkspaceDrag(workspaceDrag, { id: workspaceId, half });
+    };
+    return (
+      // Group section: header, descendant Workspaces, and own Session rows. The
+      // inter-group breathing room is the section's own margin
+      // (WorkspaceBrowser.module.css).
+      /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(
+        "div",
+        {
+          style: { "--dsh-workspace-indent": `${depth * 12}px` },
+          className: clsx_default(
+            WorkspaceBrowser_default.groupSection,
+            workspaceMarker === "before" && WorkspaceBrowser_default.workspaceDropBefore,
+            workspaceMarker === "after" && WorkspaceBrowser_default.workspaceDropAfter
+          ),
+          onDragOver: workspaceDrag === null ? void 0 : (e) => {
+            e.preventDefault();
+            if (hoverWorkspace === void 0 && parents.get(group.key) !== void 0) return;
+            e.stopPropagation();
+            if (hoverWorkspace === void 0) {
+              e.dataTransfer.dropEffect = "none";
+              if (workspaceDrag.over !== null) setWorkspaceDrag({ ...workspaceDrag, over: null });
+            } else {
+              e.dataTransfer.dropEffect = "move";
+              hoverWorkspace(workspaceGroupHalf(e));
+            }
+          },
+          onDrop: workspaceDrag === null ? void 0 : (e) => {
+            e.preventDefault();
+            if (dropWorkspace === void 0 && parents.get(group.key) !== void 0) return;
+            e.stopPropagation();
+            if (dropWorkspace === void 0) {
+              workspaceDropCommitted.current = true;
+              setWorkspaceDrag(null);
+            } else {
+              dropWorkspace(workspaceGroupHalf(e));
+            }
+          },
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
+              ProjectRowItem,
+              {
+                newShortcut: shortcuts.find((row) => row.id === "session.new"),
+                group,
+                renderFactorySlot,
+                useContextMenu,
+                useContextMenuTarget,
+                useWorkspaceAccess,
+                containsCurrentDescendant: currentAncestors.has(group.key),
+                home,
+                t,
+                onToggle: () => {
+                  if (group.expanded) dropWatermarks((key) => withinGroup(key, group.key));
+                  setGroupExpanded(group.key, !group.expanded);
+                },
+                onCreate: (workspaceId2) => {
+                  setGroupExpanded(group.key, true);
+                  startSession(workspaceId2);
+                },
+                drag: workspaceDragProps,
+                directActions: group.directCwd === void 0 ? void 0 : extension?.renderFolderActions(group, Rows_default, setGroupExpanded)
+              }
+            ),
+            childRows.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("div", { role: "group", children: childRows }),
+            sessions.map((node2) => {
+              if (node2.directChat) return extension.renderRow(node2, Rows_default, timeLabel(node2.updatedAt, now, t), directChatFormatTime2);
+              const sameGroupDrag = drag !== null && drag.accountKey === group.key;
+              const compatibleTarget = sameGroupDrag && drag.pinned === node2.pinned;
+              const normalizeHalf = (half) => node2.blank ? "after" : half;
+              const dragProps = {
+                start: () => {
+                  sessionDropCommitted.current = false;
+                  setDrag({ accountKey: group.key, sessionId: node2.id, pinned: node2.pinned, over: null });
+                },
+                active: compatibleTarget,
+                marker: sameGroupDrag && drag.over?.id === node2.id ? drag.over.half : null,
+                hover: (half) => {
+                  setDrag((d) => d === null ? d : {
+                    ...d,
+                    over: { id: node2.id, half: normalizeHalf(half) }
+                  });
+                },
+                drop: (half) => {
+                  if (drag === null) return;
+                  commitSessionDrag(drag, { id: node2.id, half: normalizeHalf(half) });
+                },
+                end: () => {
+                  if (drag?.over !== null && drag?.over !== void 0) commitSessionDrag(drag, drag.over);
+                  else setDrag(null);
+                  sessionDropCommitted.current = false;
+                }
+              };
+              return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
+                SessionNodeItem,
+                {
+                  node: node2,
+                  currentId: current,
+                  now,
+                  onOpen: open,
+                  onRenameRequest: onSessionRenameRequest,
+                  renderSlot,
+                  renderFactorySlot,
+                  useContextMenu,
+                  useContextMenuTarget,
+                  onReveal: node2.id === revealSessionId && group.key === revealGroup ? () => {
+                    onSessionRevealed(node2.id);
+                  } : void 0,
+                  drag: dragProps,
+                  home,
+                  useSessionAccess,
+                  t
+                },
+                node2.id
+              );
+            }),
+            collapsed.hiddenCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
+              "button",
+              {
+                type: "button",
+                className: WorkspaceBrowser_default.sessionOverflowButton,
+                "data-row-key": `overflow:${group.key}`,
+                "aria-expanded": sessionsExpanded,
+                onClick: () => {
+                  if (sessionsExpanded) {
+                    dropWatermarks((key) => key === group.key);
+                    return;
+                  }
+                  setStoredWatermarks((marks) => ({
+                    ...marks,
+                    [group.key]: visible.hiddenCount <= SESSION_WATERMARK_BASE ? Infinity : watermark + SESSION_WATERMARK_BASE
+                  }));
+                  setWatermarkMotionKey((key) => key + 1);
+                },
+                children: sessionsExpanded ? t("sessions.collapse") : t("sessions.expand", { n: visible.hiddenCount })
+              }
+            )
+          ]
+        },
+        group.key
+      )
+    );
+  };
+  const groupRows = rootGroups.map((group) => renderGroup(group, 0));
+  return /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(import_dsh_client_ui_primitives24.HoverCardGroup, { className: clsx_default(WorkspaceBrowser_default.treeBody, WorkspaceBrowser_default.wide), children: [
+    workspaceDropAtListStart && /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("span", { className: WorkspaceBrowser_default.listTopDropIndicator, "aria-hidden": "true" }),
+    /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(
+      import_dsh_client_ui_primitives24.AnimatedRows,
+      {
+        className: clsx_default(WorkspaceBrowser_default.list, workspaceDropAtListStart && WorkspaceBrowser_default.listTopDropActive),
+        role: "tree",
+        label: t("section.sessions"),
+        rowKeys,
+        ready: list.phase === "ready" && workspaceReady && !nativeDragActive,
+        resetKey: JSON.stringify([animationResetKey, watermarkMotionKey]),
+        children: [
+          groups.length === 0 && /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(EmptySessions, { rowState, onLeaveArchivedOnly, t }),
+          groupRows
+        ]
+      }
+    )
+  ] });
+}
+function FlatList({
+  extension,
+  list,
+  sessionIds,
+  rowState,
+  onLeaveArchivedOnly,
+  useSessionStatus,
+  useSessionAccess,
+  open,
+  onSessionRenameRequest,
+  usePanelInfo,
+  setSessionOrder,
+  workspaceReady,
+  animationResetKey,
+  revealSessionId,
+  onSessionRevealed,
+  renderSlot,
+  renderFactorySlot,
+  useContextMenuTarget,
+  useContextMenu,
+  home,
+  t
+}) {
+  const panelActive = usePanelInfo((info) => info.activePanelId !== null);
+  const statuses = useSessionStatus((s) => s);
+  const nativeRows = (0, import_react23.useMemo)(
+    () => deriveFlat(list, sessionIds, rowState, statuses),
+    [list, sessionIds, rowState, statuses]
+  );
+  const rows = extension?.flat(nativeRows, rowState.archivedFilter) ?? nativeRows;
+  const [drag, setDrag] = (0, import_react23.useState)(null);
+  const dropCommitted = (0, import_react23.useRef)(false);
+  useNativeDragAcceptance(drag !== null);
+  const currentId = panelActive ? void 0 : Object.values(list.byId).find((session) => (session.retainedBy.mainView ?? 0) > 0)?.id;
+  const commitDrag = (activeDrag, over) => {
+    if (dropCommitted.current) return;
+    dropCommitted.current = true;
+    setDrag(null);
+    const nextOrder = sessionDragOrder(sessionIds, rows.filter((node2) => !node2.directChat), activeDrag, over);
+    if (nextOrder !== void 0) setSessionOrder(FLAT_SESSION_ORDER_KEY, nextOrder);
+  };
+  const now = Date.now();
+  return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_dsh_client_ui_primitives24.HoverCardGroup, { className: clsx_default(WorkspaceBrowser_default.treeBody, WorkspaceBrowser_default.wide), children: /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(
+    import_dsh_client_ui_primitives24.AnimatedRows,
+    {
+      className: clsx_default(WorkspaceBrowser_default.list, WorkspaceBrowser_default.flatList),
+      role: "tree",
+      label: t("section.sessions"),
+      rowKeys: rows.length === 0 ? ["empty"] : rows.map((row) => `session:${row.id}`),
+      ready: list.phase === "ready" && workspaceReady && drag === null,
+      resetKey: animationResetKey,
+      children: [
+        rows.length === 0 && /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(EmptySessions, { rowState, onLeaveArchivedOnly, t }),
+        rows.map((node2) => {
+          if (node2.directChat) return extension.renderRow(node2, Rows_default, timeLabel(node2.updatedAt, now, t), directChatFormatTime2);
+          const active = drag !== null && drag.pinned === node2.pinned;
+          const normalizeHalf = (half) => node2.blank ? "after" : half;
+          return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
+            SessionNodeItem,
+            {
+              node: node2,
+              currentId,
+              now,
+              onOpen: open,
+              onRenameRequest: onSessionRenameRequest,
+              renderSlot,
+              renderFactorySlot,
+              useContextMenu,
+              useContextMenuTarget,
+              onReveal: node2.id === revealSessionId ? () => {
+                onSessionRevealed(node2.id);
+              } : void 0,
+              useSessionAccess,
+              drag: {
+                start: () => {
+                  dropCommitted.current = false;
+                  setDrag({ accountKey: FLAT_SESSION_ORDER_KEY, sessionId: node2.id, pinned: node2.pinned, over: null });
+                },
+                active,
+                marker: active && drag.over?.id === node2.id ? drag.over.half : null,
+                hover: (half) => {
+                  setDrag((current) => current === null ? current : {
+                    ...current,
+                    over: { id: node2.id, half: normalizeHalf(half) }
+                  });
+                },
+                drop: (half) => {
+                  if (drag !== null) commitDrag(drag, { id: node2.id, half: normalizeHalf(half) });
+                },
+                end: () => {
+                  if (drag?.over !== null && drag?.over !== void 0) commitDrag(drag, drag.over);
+                  else setDrag(null);
+                  dropCommitted.current = false;
+                }
+              },
+              home,
+              t
+            },
+            node2.id
+          );
+        })
+      ]
+    }
+  ) });
+}
+function SearchResults({
+  useSessions,
+  useSessionStatus,
+  open,
+  onUnarchive,
+  workspaces,
+  archivedSessionIds,
+  archivedFilter,
+  query,
+  remote,
+  resultLimit,
+  usePanelInfo,
+  useSessionAccess,
+  t
+}) {
+  const panelActive = usePanelInfo((info) => info.activePanelId !== null);
+  const list = useSessions((s) => s);
+  const statuses = useSessionStatus((s) => s);
+  const currentRemote = remote.query === query ? remote : { query, status: "loading", items: [], hasMore: false };
+  const results = (0, import_react23.useMemo)(
+    () => deriveSearchResults(
+      list,
+      workspaces,
+      query,
+      archivedSessionIds,
+      archivedFilter,
+      statuses,
+      currentRemote,
+      resultLimit
+    ),
+    [list, workspaces, query, archivedSessionIds, archivedFilter, statuses, currentRemote, resultLimit]
+  );
+  const pending = currentRemote.status === "loading";
+  const currentId = panelActive ? void 0 : Object.values(list.byId).find((session) => (session.retainedBy.mainView ?? 0) > 0)?.id;
+  return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("div", { className: clsx_default(WorkspaceBrowser_default.treeBody, WorkspaceBrowser_default.wide), children: /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)("div", { className: WorkspaceBrowser_default.list, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("div", { className: WorkspaceBrowser_default.searchTree, role: "tree", "aria-label": t("search.results.aria"), children: results.items.map((result) => /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
+      SearchResultItem,
+      {
+        result,
+        currentId,
+        onOpen: open,
+        onUnarchive,
+        useSessionAccess,
+        t
+      },
+      result.id
+    )) }),
+    pending && /* Two skeleton rows on an empty list, one when local matches already
+       show and only the content hits are outstanding. */
+    /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("div", { role: "status", "aria-label": t("search.pending"), children: (results.items.length === 0 ? [0, 1] : [0]).map((i) => /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)("div", { className: WorkspaceBrowser_default.skeletonRow, "aria-hidden": "true", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("span", { className: WorkspaceBrowser_default.skeletonDot }),
+      /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)("span", { className: WorkspaceBrowser_default.skeletonBars, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("span", { className: WorkspaceBrowser_default.skeletonBar }),
+        /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("span", { className: clsx_default(WorkspaceBrowser_default.skeletonBar, WorkspaceBrowser_default.skeletonBarWide) })
+      ] })
+    ] }, i)) }),
+    !pending && results.items.length === 0 && /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("div", { className: WorkspaceBrowser_default.empty, children: t("search.noMatches") }),
+    results.hasMore && /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("div", { className: WorkspaceBrowser_default.searchStatus, children: t("search.hasMore", { n: resultLimit }) })
+  ] }) });
+}
+function WorkspaceBrowser({
+  wide,
+  usePanelInfo,
+  expandSidebar,
+  useSectionScroller,
+  useSessions,
+  useSessionStatus,
+  useSessionAccess,
+  useWorkspaceAccess,
+  useWorkspaces,
+  useStore,
+  actions,
+  startSession,
+  open,
+  requestSessionRename,
+  notifyArchivedNotOpenable,
+  renameWorkspace,
+  useWorkspaceActionRequest,
+  settleWorkspaceAction,
+  deleteWorkspace,
+  insertWorkspaceBefore,
+  unarchiveSession,
+  createWorkspace,
+  searchSessions,
+  searchResultLimit,
+  useDirectoryFlow,
+  useHostInfo,
+  useShortcuts,
+  useWorkspaceShortcuts,
+  requestSearch,
+  requestAddWorkspace,
+  closeAddWorkspace,
+  setDirectoryBusy,
+  renderSlot,
+  renderFactorySlot,
+  useContextMenuTarget,
+  useContextMenu,
+  t,
+  extension
+}) {
+  const home = useHostInfo((info) => info.home);
+  const shortcuts = useShortcuts((rows) => rows);
+  const searchShortcut = shortcuts.find((row) => row.id === "session.search");
+  const addShortcut = shortcuts.find((row) => row.id === "workspace.add");
+  const shortcutState = useWorkspaceShortcuts((state) => state);
+  const list = useSessions((state) => state);
+  const storedWorkspaces = useWorkspaces((state) => state.items);
+  const defaultWorkspaceName = t("workspace.defaultName");
+  const workspaces = (0, import_react23.useMemo)(
+    () => storedWorkspaces.map((workspace) => ({
+      ...workspace,
+      title: workspaceDisplayTitle(workspace.title, defaultWorkspaceName)
+    })),
+    [storedWorkspaces, defaultWorkspaceName]
+  );
+  const workspacePhase = useWorkspaces((state) => state.phase);
+  const workspaceStreamState = useWorkspaces((state) => state.state);
+  const archivedSessionIds = useWorkspaces((state) => state.archivedSessionIds);
+  const pinnedSessionIds = useWorkspaces((state) => state.pinnedSessionIds);
+  const directoryFlowAvailable = useDirectoryFlow((occupied) => occupied);
+  const groupBy = useStore((s) => s.groupBy);
+  const orderBy = useStore((s) => s.orderBy);
+  const archivedFilter = useStore((s) => s.archivedFilter ?? "default");
+  const groupExpansion = useStore((s) => s.groupExpansion);
+  const sessionOrderByAccount = useStore((s) => s.sessionOrderByAccount);
+  const guardedOpen = (sessionId) => {
+    if (archivedSessionIds.includes(sessionId)) {
+      notifyArchivedNotOpenable();
+      return;
+    }
+    open(sessionId);
+  };
+  const leaveArchivedOnly = () => {
+    actions.setArchivedFilter("default");
+  };
+  const workspaceReady = workspacePhase === "ready" && workspaceStreamState !== "loading";
+  const mainSessionId2 = Object.values(list.byId).find((session) => (session.retainedBy.mainView ?? 0) > 0)?.id;
+  const currentBlank = mainSessionId2 !== void 0 && list.byId[mainSessionId2]?.blank === true ? mainSessionId2 : void 0;
+  const ungroupedMemberIds = (0, import_react23.useMemo)(() => {
+    const accounted = new Set(workspaces.flatMap((workspace) => workspace.sessionIds));
+    return list.ids.filter((id) => list.byId[id] !== void 0 && !accounted.has(id));
+  }, [list, workspaces]);
+  const orderState = (0, import_react23.useMemo)(
+    () => ({ pinnedSessionIds, archivedSessionIds }),
+    [archivedSessionIds, pinnedSessionIds]
+  );
+  const rowState = (0, import_react23.useMemo)(
+    () => ({ ...orderState, archivedFilter }),
+    [orderState, archivedFilter]
+  );
+  const flatMemberIds = (0, import_react23.useMemo)(() => sessionMemberIds(list), [list]);
+  const orderedWorkspaces = (0, import_react23.useMemo)(() => workspaces.map((workspace) => {
+    const memberIds = workspace.sessionIds;
+    const baseOrder = orderBy === "updated" ? orderByRecency(memberIds, list.byId) : reconcileManualOrder(memberIds, sessionOrderByAccount[workspace.workspaceId], list.byId, orderState);
+    return {
+      ...workspace,
+      sessionIds: pinCurrentBlank(
+        baseOrder,
+        currentBlank !== void 0 && memberIds.includes(currentBlank) ? currentBlank : void 0
+      )
+    };
+  }), [currentBlank, list.byId, orderBy, orderState, sessionOrderByAccount, workspaces]);
+  const orderedUngroupedSessionIds = (0, import_react23.useMemo)(() => {
+    const baseOrder = orderBy === "updated" ? orderByRecency(ungroupedMemberIds, list.byId) : reconcileManualOrder(ungroupedMemberIds, sessionOrderByAccount[UNGROUPED_KEY], list.byId, orderState);
+    return pinCurrentBlank(
+      baseOrder,
+      currentBlank !== void 0 && ungroupedMemberIds.includes(currentBlank) ? currentBlank : void 0
+    );
+  }, [currentBlank, list.byId, orderBy, orderState, sessionOrderByAccount, ungroupedMemberIds]);
+  const orderedFlatSessionIds = (0, import_react23.useMemo)(() => {
+    const baseOrder = orderBy === "updated" ? orderByRecency(flatMemberIds, list.byId) : reconcileManualOrder(flatMemberIds, sessionOrderByAccount[FLAT_SESSION_ORDER_KEY], list.byId, orderState);
+    return pinCurrentBlank(
+      baseOrder,
+      currentBlank !== void 0 && flatMemberIds.includes(currentBlank) ? currentBlank : void 0
+    );
+  }, [currentBlank, flatMemberIds, list.byId, orderBy, orderState, sessionOrderByAccount]);
+  const activeSessionOrders = (0, import_react23.useMemo)(() => Object.fromEntries([
+    ...orderedWorkspaces.map((workspace) => [workspace.workspaceId, workspace.sessionIds]),
+    [UNGROUPED_KEY, orderedUngroupedSessionIds],
+    [FLAT_SESSION_ORDER_KEY, orderedFlatSessionIds]
+  ]), [orderedFlatSessionIds, orderedUngroupedSessionIds, orderedWorkspaces]);
+  (0, import_react23.useEffect)(() => {
+    if (workspacePhase !== "ready") return;
+    actions.retainAccountKeys([
+      UNGROUPED_KEY,
+      FLAT_SESSION_ORDER_KEY,
+      ...workspaces.map((workspace) => workspace.workspaceId)
+    ]);
+  }, [actions.retainAccountKeys, workspacePhase, workspaces]);
+  (0, import_react23.useEffect)(() => {
+    if (list.phase !== "ready" || workspaceReady || orderBy !== "manual" || currentBlank === void 0) return;
+    const changed = {};
+    for (const [key, ids] of Object.entries(activeSessionOrders)) {
+      if (key !== FLAT_SESSION_ORDER_KEY && workspacePhase !== "ready") continue;
+      const saved3 = sessionOrderByAccount[key] ?? [];
+      if (ids[0] !== currentBlank || saved3[0] === currentBlank) continue;
+      changed[key] = [currentBlank, ...saved3.filter((id) => id !== currentBlank)];
+    }
+    if (Object.keys(changed).length > 0) actions.syncSessionOrders(changed);
+  }, [
+    actions.syncSessionOrders,
+    activeSessionOrders,
+    currentBlank,
+    list.phase,
+    orderBy,
+    sessionOrderByAccount,
+    workspacePhase,
+    workspaceReady
+  ]);
+  (0, import_react23.useEffect)(() => {
+    if (list.phase !== "ready" || !workspaceReady || orderBy !== "manual" || currentBlank === void 0) return;
+    const moved = Object.entries(activeSessionOrders).some(([key, ids]) => ids[0] === currentBlank && sessionOrderByAccount[key]?.[0] !== currentBlank);
+    if (moved) actions.syncSessionOrders(activeSessionOrders);
+  }, [
+    actions.syncSessionOrders,
+    activeSessionOrders,
+    currentBlank,
+    list.phase,
+    orderBy,
+    sessionOrderByAccount,
+    workspaceReady
+  ]);
+  const saveSessionOrder = (accountKey, order) => {
+    actions.setSessionOrder(accountKey, order, activeSessionOrders);
+  };
+  const [query, setQuery] = (0, import_react23.useState)("");
+  const [searchExpanded, setSearchExpanded] = (0, import_react23.useState)(false);
+  const [searchSpacingMotionEnabled, setSearchSpacingMotionEnabled] = (0, import_react23.useState)(false);
+  const [searchOnExpand, setSearchOnExpand] = (0, import_react23.useState)(false);
+  const [lastSearchRequest, setLastSearchRequest] = (0, import_react23.useState)(0);
+  if (lastSearchRequest !== shortcutState.searchRequest) {
+    setLastSearchRequest(shortcutState.searchRequest);
+    if (shortcutState.searchRequest !== 0) {
+      setSearchExpanded(true);
+      setSearchSpacingMotionEnabled(wide);
+      if (!wide) setSearchOnExpand(true);
+    }
+  }
+  if (!wide && searchSpacingMotionEnabled) setSearchSpacingMotionEnabled(false);
+  const changeSearchExpanded = (expanded) => {
+    setSearchSpacingMotionEnabled(wide);
+    setSearchExpanded(expanded);
+  };
+  const [revealSessionId, setRevealSessionId] = (0, import_react23.useState)(void 0);
+  const normalizedQuery = sanitizeSearchQuery(query).trim();
+  const [remoteSearch, setRemoteSearch] = (0, import_react23.useState)({
+    query: "",
+    status: "idle",
+    items: [],
+    hasMore: false
+  });
+  const searchRoot = (0, import_react23.useRef)(null);
+  const searchInput = (0, import_react23.useRef)(null);
+  const { bindScrollerRef } = useSectionScroller();
+  const focusSearch = (0, import_react23.useCallback)(() => {
+    searchInput.current?.focus({ preventScroll: true });
+  }, []);
+  const wsPickerOpen = shortcutState.addRequested;
+  const wsPlusRef = (0, import_react23.useRef)(null);
+  const workspaceActionRequest = useWorkspaceActionRequest((value) => value);
+  const openSearchResult = (sessionId) => {
+    if (archivedSessionIds.includes(sessionId)) {
+      notifyArchivedNotOpenable();
+      return;
+    }
+    setRevealSessionId(sessionId);
+    setQuery("");
+    changeSearchExpanded(false);
+    open(sessionId);
+  };
+  const acknowledgeSessionReveal = (sessionId) => {
+    setRevealSessionId((current) => current === sessionId ? void 0 : current);
+  };
+  (0, import_react23.useEffect)(() => {
+    if (normalizedQuery !== "") setRevealSessionId(void 0);
+  }, [normalizedQuery]);
+  (0, import_react23.useEffect)(() => {
+    if (wide && searchOnExpand) {
+      const timer = window.setTimeout(() => {
+        focusSearch();
+        setSearchOnExpand(false);
+      }, EXPAND_SLIDE_MS);
+      return () => {
+        window.clearTimeout(timer);
+      };
+    }
+  }, [wide, searchOnExpand, focusSearch]);
+  (0, import_react23.useEffect)(() => {
+    if (shortcutState.searchRequest === 0) return;
+    closeAddWorkspace();
+    if (!wide || searchInput.current?.closest("[inert]")) {
+      setSearchOnExpand(true);
+      expandSidebar();
+    } else focusSearch();
+  }, [shortcutState.searchRequest, focusSearch]);
+  (0, import_react23.useEffect)(() => {
+    if (!wide || !searchExpanded || searchOnExpand) return;
+    focusSearch();
+  }, [wide, searchExpanded, searchOnExpand, focusSearch]);
+  (0, import_react23.useEffect)(() => {
+    if (!wide || !searchExpanded || searchOnExpand) return;
+    const onClick = (event2) => {
+      if (!(event2.target instanceof Node) || searchRoot.current?.contains(event2.target) === true) return;
+      searchInput.current?.blur();
+      if (normalizedQuery !== "") return;
+      changeSearchExpanded(false);
+    };
+    document.addEventListener("click", onClick);
+    return () => {
+      document.removeEventListener("click", onClick);
+    };
+  }, [normalizedQuery, wide, searchExpanded, searchOnExpand]);
+  (0, import_react23.useEffect)(() => {
+    if (normalizedQuery === "") {
+      setRemoteSearch({ query: "", status: "idle", items: [], hasMore: false });
+      return;
+    }
+    const controller = new AbortController();
+    setRemoteSearch({
+      query: normalizedQuery,
+      status: "loading",
+      items: [],
+      hasMore: false
+    });
+    const timer = window.setTimeout(() => {
+      searchSessions(normalizedQuery, controller.signal).then((result) => {
+        if (controller.signal.aborted) return;
+        setRemoteSearch({
+          query: normalizedQuery,
+          status: "ready",
+          items: result.items,
+          hasMore: result.hasMore
+        });
+      }).catch(() => {
+        if (controller.signal.aborted) return;
+        setRemoteSearch({
+          query: normalizedQuery,
+          status: "error",
+          items: [],
+          hasMore: false
+        });
+      });
+    }, SEARCH_DEBOUNCE_MS);
+    return () => {
+      window.clearTimeout(timer);
+      controller.abort();
+    };
+  }, [normalizedQuery, searchSessions]);
+  const onSessionUnarchive = (sessionId) => {
+    unarchiveSession(sessionId).catch((reason) => {
+      console.warn("session unarchive rejected:", reason);
+    });
+  };
+  return /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)("div", { className: clsx_default(WorkspaceBrowser_default.root, !wide && WorkspaceBrowser_default.rail), children: [
+    /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)("div", { className: clsx_default(WorkspaceBrowser_default.sectionHeader, wide && searchSpacingMotionEnabled && WorkspaceBrowser_default.searchSpacingMotion), "data-sidebar-workspace-header": "", children: [
+      wide && /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("span", { className: clsx_default(WorkspaceBrowser_default.sectionLabel, WorkspaceBrowser_default.wide, searchExpanded && WorkspaceBrowser_default.sectionLabelHidden), children: groupBy === "flat" ? t("section.sessions") : t("section.workspaces") }),
+      wide && /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("div", { className: clsx_default(WorkspaceBrowser_default.searchSlot, searchExpanded && WorkspaceBrowser_default.searchSlotExpanded), children: /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(
+        "div",
+        {
+          ref: searchRoot,
+          className: clsx_default(WorkspaceBrowser_default.search, searchExpanded && WorkspaceBrowser_default.searchExpanded),
+          onClick: () => {
+            closeAddWorkspace();
+            changeSearchExpanded(true);
+            focusSearch();
+          },
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_dsh_client_ui_primitives24.Tooltip, { label: t("search"), shortcutKeys: searchShortcut?.keys, side: "bottom", delayMs: 500, disabled: searchExpanded, portal: true, children: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
+              "button",
+              {
+                type: "button",
+                className: WorkspaceBrowser_default.searchButton,
+                "aria-label": t("search.sessions.aria"),
+                "aria-keyshortcuts": searchShortcut?.aria,
+                "aria-expanded": searchExpanded,
+                onClick: () => {
+                  requestSearch();
+                },
+                children: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_dsh_client_ui_primitives24.IconSearchOutlineRegular, { size: searchExpanded ? 11 : 14 })
+              }
+            ) }),
+            /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
+              "input",
+              {
+                ref: searchInput,
+                className: WorkspaceBrowser_default.searchInput,
+                type: "text",
+                placeholder: t("search.placeholder"),
+                maxLength: SEARCH_QUERY_MAX_CODE_UNITS,
+                value: query,
+                tabIndex: searchExpanded ? 0 : -1,
+                onChange: (e) => {
+                  setQuery(sanitizeSearchQuery(e.target.value));
+                },
+                onKeyDown: (e) => {
+                  if (e.key !== "Escape") return;
+                  setQuery("");
+                  changeSearchExpanded(false);
+                }
+              }
+            ),
+            searchExpanded && /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
+              "button",
+              {
+                type: "button",
+                className: WorkspaceBrowser_default.clearButton,
+                "aria-label": t("search.clear"),
+                onClick: (e) => {
+                  e.stopPropagation();
+                  setQuery("");
+                  changeSearchExpanded(false);
+                },
+                children: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_dsh_client_ui_primitives24.IconCloseFillRegular, {})
+              }
+            )
+          ]
+        }
+      ) }),
+      wide && !searchExpanded && extension?.renderToolbar?.(),
+      /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)("div", { className: clsx_default(WorkspaceBrowser_default.headerActions, wide && searchExpanded && WorkspaceBrowser_default.headerActionsHidden), children: [
+        wide && /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
+          ViewOptionsMenu2,
+          {
+            groupBy,
+            orderBy,
+            archivedFilter,
+            onGroupPick: actions.setGroupBy,
+            onOrderPick: (mode) => {
+              actions.setOrderBy(mode, activeSessionOrders);
+            },
+            onArchivedFilterPick: actions.setArchivedFilter,
+            t
+          }
+        ),
+        directoryFlowAvailable && /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_dsh_client_ui_primitives24.Tooltip, { label: t("workspace.add"), shortcutKeys: addShortcut?.keys, side: "bottom", delayMs: 500, portal: true, children: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
+          "button",
+          {
+            ref: wsPlusRef,
+            type: "button",
+            className: WorkspaceBrowser_default.iconButton,
+            "aria-label": t("workspace.add"),
+            "aria-keyshortcuts": addShortcut?.aria,
+            onClick: () => {
+              requestAddWorkspace();
+            },
+            children: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_dsh_client_ui_primitives24.IconProjectAddOutlineRegular, { size: wide ? 16 : 18 })
+          }
+        ) })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
+        WorkspacePickFlow,
+        {
+          t,
+          open: wsPickerOpen,
+          anchorRef: wsPlusRef,
+          useWorkspaces,
+          createWorkspace,
+          useDirectoryFlow,
+          renderDirectoryFlow: (owner) => renderSlot("sidebar.workspaces.directoryFlow", owner),
+          addOnly: true,
+          onBusyChange: setDirectoryBusy,
+          side: "right",
+          onPick: (workspaceId) => {
+            closeAddWorkspace();
+            startSession(workspaceId, { clearPreviousDraft: false });
+          },
+          onClose: () => {
+            closeAddWorkspace();
+          }
+        }
+      )
+    ] }),
+    !wide && /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("div", { className: WorkspaceBrowser_default.search, children: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_dsh_client_ui_primitives24.Tooltip, { label: t("search"), shortcutKeys: searchShortcut?.keys, portal: true, children: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
+      "button",
+      {
+        type: "button",
+        className: WorkspaceBrowser_default.searchButton,
+        "aria-label": t("search.sessions.aria"),
+        "aria-keyshortcuts": searchShortcut?.aria,
+        onClick: () => {
+          requestSearch();
+        },
+        children: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_dsh_client_ui_primitives24.IconSearchOutlineRegular, { size: 18 })
+      }
+    ) }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("div", { ref: wide ? bindScrollerRef : void 0, className: WorkspaceBrowser_default.listArea, "data-sidebar-list-area": "", children: wide && (normalizedQuery !== "" ? /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
+      SearchResults,
+      {
+        usePanelInfo,
+        useSessionAccess,
+        useSessions,
+        useSessionStatus,
+        open: openSearchResult,
+        onUnarchive: onSessionUnarchive,
+        workspaces,
+        archivedSessionIds,
+        archivedFilter,
+        query: normalizedQuery,
+        remote: remoteSearch,
+        resultLimit: searchResultLimit,
+        t
+      }
+    ) : groupBy === "flat" ? /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
+      FlatList,
+      {
+        extension,
+        useSessionAccess,
+        usePanelInfo,
+        list,
+        sessionIds: orderedFlatSessionIds,
+        rowState,
+        onLeaveArchivedOnly: leaveArchivedOnly,
+        workspaceReady,
+        animationResetKey: `${groupBy}/${orderBy}/${archivedFilter}`,
+        useSessionStatus,
+        open: guardedOpen,
+        onSessionRenameRequest: requestSessionRename,
+        renderSlot,
+        renderFactorySlot,
+        useContextMenu,
+        useContextMenuTarget,
+        setSessionOrder: saveSessionOrder,
+        revealSessionId,
+        onSessionRevealed: acknowledgeSessionReveal,
+        home,
+        t
+      }
+    ) : /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
+      SessionTree,
+      {
+        extension,
+        useSessionAccess,
+        useWorkspaceAccess,
+        usePanelInfo,
+        list,
+        shortcuts,
+        useSessionStatus,
+        onSessionRenameRequest: requestSessionRename,
+        renderSlot,
+        renderFactorySlot,
+        useContextMenu,
+        useContextMenuTarget,
+        workspaces: orderedWorkspaces,
+        ungroupedSessionIds: orderedUngroupedSessionIds,
+        workspaceReady,
+        nestWorkspaces: groupBy === "workspace-tree",
+        animationResetKey: `${groupBy}/${orderBy}/${archivedFilter}`,
+        groupExpansion,
+        setGroupExpanded: (key, expanded) => {
+          if (!extension?.expandGroup(key, expanded)) actions.setGroupExpanded(key, expanded);
+        },
+        setSessionOrder: saveSessionOrder,
+        rowState,
+        onLeaveArchivedOnly: leaveArchivedOnly,
+        startSession,
+        open: guardedOpen,
+        insertWorkspaceBefore,
+        revealSessionId,
+        onSessionRevealed: acknowledgeSessionReveal,
+        home,
+        t
+      }
+    )) }),
+    workspaceActionRequest !== null && /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
+      WorkspaceDialogs,
+      {
+        request: workspaceActionRequest,
+        workspaces,
+        renameWorkspace,
+        deleteWorkspace,
+        settleWorkspaceAction,
+        t
+      },
+      `${workspaceActionRequest.action}/${workspaceActionRequest.workspaceId}`
+    )
+  ] });
+}
+
+// sidebar.jsx
+var import_react24 = require("react");
+var import_dsh_client_ui_primitives25 = require("@deepseek-ai/dsh-client-ui-primitives");
+var import_jsx_runtime28 = require("react/jsx-runtime");
+var sidebarCopy = {
+  en: {
+    "sidebar.refresh": "Refresh direct conversations",
+    "sidebar.failed": "Could not load direct conversations. Refresh to try again.",
+    "sidebar.terminal": "Terminal",
+    "sidebar.moreActions": "Actions for {name}",
+    "sidebar.copyPath": "Copy directory path",
+    "sidebar.copyId": "Copy session ID",
+    "sidebar.register": "Add to DSH workspaces",
+    "sidebar.registered": "Added to DSH workspaces",
+    "sidebar.registerFailed": "Could not add the directory to DSH workspaces",
+    "sidebar.copied": "Copied to clipboard",
+    "sidebar.copyFailed": "Could not copy to clipboard",
+    "sidebar.rename": "Rename",
+    "sidebar.localRename": "Rename in DSH",
+    "sidebar.renameTitle": "Rename session",
+    "sidebar.sessionName": "Session name",
+    "sidebar.delete": "Delete conversation",
+    "sidebar.deleteTitle": "Delete conversation?",
+    "sidebar.deleteDescription": "\u201C{name}\u201D and any associated subagent conversations will be permanently deleted.",
+    "sidebar.confirmDelete": "Delete permanently",
+    "sidebar.deleting": "Deleting conversation\u2026",
+    "sidebar.deleted": "Conversation deleted",
+    "sidebar.deleteFailed": "Could not delete the conversation.",
+    "sidebar.fork": "Fork session",
+    "sidebar.forkUnavailable": "The engine or current session state does not allow forking.",
+    "sidebar.agyForkUnavailable": "Open this conversation in the Antigravity terminal and run /fork.",
+    "sidebar.forkArchived": "Restore this session before forking.",
+    "sidebar.forked": "Session forked",
+    "sidebar.pin": "Pin session",
+    "sidebar.unpin": "Unpin session",
+    "sidebar.pinned": "Pinned session",
+    "sidebar.archive": "Archive",
+    "sidebar.archiveUnavailable": "Native archiving is unavailable for this session.",
+    "sidebar.restoreLegacy": "Restore from the old DSH archive",
+    "sidebar.restore": "Restore",
+    "sidebar.archived": "Conversation archived",
+    "sidebar.restored": "Conversation restored",
+    "sidebar.restoreToOpen": "Restore the conversation to open it.",
+    "sidebar.archiveFolder": "Archive all sessions",
+    "sidebar.archiveFolderTitle": "Archive all conversations in folder?",
+    "sidebar.archiveFolderDescription": "Archive {count} active conversation(s) in \u201C{name}\u201D to hide this folder from the sidebar. You can restore them anytime in Settings.",
+    "sidebar.confirmArchiveFolder": "Archive all",
+    "sidebar.archivingFolder": "Archiving conversations\u2026",
+    "sidebar.archivedFolder": "Archived {count} conversation(s)",
+    "sidebar.archivedFolderPartial": "Archived {count} conversation(s); {skipped} active or unsupported session(s) remained.",
+    "sidebar.archiveFolderNone": "No idle archivable conversations in this folder.",
+    "sidebar.archiveFolderFailed": "Could not archive conversations in this folder.",
+    "sidebar.actionFailed": "Could not complete the session action",
+    "sidebar.updatedAt": "Updated {date}",
+    "sidebar.createdAt": "Created {date}",
+    "sidebar.status.running": "Running",
+    "sidebar.status.attention": "Needs approval",
+    "sidebar.status.done": "Completed"
+  },
+  zh: {
+    "sidebar.refresh": "\u5237\u65B0\u76F4\u8FDE\u4F1A\u8BDD",
+    "sidebar.failed": "\u65E0\u6CD5\u52A0\u8F7D\u76F4\u8FDE\u4F1A\u8BDD\u3002\u70B9\u51FB\u5237\u65B0\u91CD\u8BD5\u3002",
+    "sidebar.terminal": "\u7EC8\u7AEF",
+    "sidebar.moreActions": "{name}\u7684\u66F4\u591A\u64CD\u4F5C",
+    "sidebar.copyPath": "\u590D\u5236\u76EE\u5F55\u8DEF\u5F84",
+    "sidebar.copyId": "\u590D\u5236\u4F1A\u8BDD ID",
+    "sidebar.register": "\u6DFB\u52A0\u5230 DSH \u5DE5\u4F5C\u533A",
+    "sidebar.registered": "\u5DF2\u6DFB\u52A0\u5230 DSH \u5DE5\u4F5C\u533A",
+    "sidebar.registerFailed": "\u65E0\u6CD5\u5C06\u76EE\u5F55\u6DFB\u52A0\u5230 DSH \u5DE5\u4F5C\u533A",
+    "sidebar.copied": "\u5DF2\u590D\u5236\u5230\u526A\u8D34\u677F",
+    "sidebar.copyFailed": "\u65E0\u6CD5\u590D\u5236\u5230\u526A\u8D34\u677F",
+    "sidebar.rename": "\u91CD\u547D\u540D",
+    "sidebar.localRename": "\u4FEE\u6539\u7F51\u9875\u663E\u793A\u540D",
+    "sidebar.renameTitle": "\u91CD\u547D\u540D\u4F1A\u8BDD",
+    "sidebar.sessionName": "\u4F1A\u8BDD\u540D\u79F0",
+    "sidebar.delete": "\u5220\u9664\u4F1A\u8BDD",
+    "sidebar.deleteTitle": "\u5220\u9664\u4F1A\u8BDD\uFF1F",
+    "sidebar.deleteDescription": "\u300C{name}\u300D\u53CA\u5176\u5173\u8054\u7684\u5B50\u4EE3\u7406\u4F1A\u8BDD\u5C06\u88AB\u6C38\u4E45\u5220\u9664\u3002",
+    "sidebar.confirmDelete": "\u6C38\u4E45\u5220\u9664",
+    "sidebar.deleting": "\u6B63\u5728\u5220\u9664\u4F1A\u8BDD\u2026",
+    "sidebar.deleted": "\u5DF2\u5220\u9664\u4F1A\u8BDD",
+    "sidebar.deleteFailed": "\u65E0\u6CD5\u5220\u9664\u4F1A\u8BDD\u3002",
+    "sidebar.fork": "\u5206\u53C9\u4F1A\u8BDD",
+    "sidebar.forkUnavailable": "\u5F53\u524D\u5F15\u64CE\u6216\u4F1A\u8BDD\u72B6\u6001\u4E0D\u652F\u6301\u5206\u53C9\u3002",
+    "sidebar.agyForkUnavailable": "\u8BF7\u5728 Antigravity \u7EC8\u7AEF\u6253\u5F00\u6B64\u4F1A\u8BDD\u5E76\u6267\u884C /fork\u3002",
+    "sidebar.forkArchived": "\u8BF7\u5148\u6062\u590D\u6B64\u4F1A\u8BDD\uFF0C\u518D\u521B\u5EFA\u5206\u53C9\u3002",
+    "sidebar.forked": "\u5DF2\u5206\u53C9\u4F1A\u8BDD",
+    "sidebar.pin": "\u7F6E\u9876\u4F1A\u8BDD",
+    "sidebar.unpin": "\u53D6\u6D88\u7F6E\u9876",
+    "sidebar.pinned": "\u5DF2\u7F6E\u9876\u4F1A\u8BDD",
+    "sidebar.archive": "\u5F52\u6863",
+    "sidebar.archiveUnavailable": "\u6B64\u4F1A\u8BDD\u6682\u4E0D\u652F\u6301\u539F\u751F\u5F52\u6863\u3002",
+    "sidebar.restoreLegacy": "\u4ECE\u65E7\u7248 DSH \u5F52\u6863\u6062\u590D",
+    "sidebar.restore": "\u6062\u590D",
+    "sidebar.archived": "\u5DF2\u5F52\u6863\u4F1A\u8BDD",
+    "sidebar.restored": "\u5DF2\u6062\u590D\u4F1A\u8BDD",
+    "sidebar.restoreToOpen": "\u6062\u590D\u4F1A\u8BDD\u540E\u5373\u53EF\u6253\u5F00\u3002",
+    "sidebar.archiveFolder": "\u5F52\u6863\u5168\u90E8\u4F1A\u8BDD",
+    "sidebar.archiveFolderTitle": "\u5F52\u6863\u76EE\u5F55\u4E2D\u7684\u5168\u90E8\u4F1A\u8BDD\uFF1F",
+    "sidebar.archiveFolderDescription": "\u5C06\u5F52\u6863\u300C{name}\u300D\u4E2D\u7684 {count} \u4E2A\u4F1A\u8BDD\u5E76\u4F7F\u5176\u4ECE\u5DE6\u4FA7\u8FB9\u680F\u9690\u85CF\uFF1B\u4E4B\u540E\u53EF\u968F\u65F6\u5728\u300C\u8BBE\u7F6E \u2192 CLI \u4F1A\u8BDD\u5F52\u6863\u300D\u4E2D\u6062\u590D\u3002",
+    "sidebar.confirmArchiveFolder": "\u5168\u90E8\u5F52\u6863",
+    "sidebar.archivingFolder": "\u6B63\u5728\u5F52\u6863\u4F1A\u8BDD\u2026",
+    "sidebar.archivedFolder": "\u5DF2\u5F52\u6863 {count} \u4E2A\u4F1A\u8BDD",
+    "sidebar.archivedFolderPartial": "\u5DF2\u5F52\u6863 {count} \u4E2A\u4F1A\u8BDD\uFF1B\u53E6\u6709 {skipped} \u4E2A\u8FD0\u884C\u4E2D\u6216\u4E0D\u652F\u6301\u5F52\u6863\u7684\u4F1A\u8BDD\u4FDD\u7559\u3002",
+    "sidebar.archiveFolderNone": "\u8BE5\u76EE\u5F55\u4E2D\u6CA1\u6709\u53EF\u5F52\u6863\u7684\u7A7A\u95F2\u4F1A\u8BDD\u3002",
+    "sidebar.archiveFolderFailed": "\u65E0\u6CD5\u5F52\u6863\u8BE5\u76EE\u5F55\u4E2D\u7684\u4F1A\u8BDD\u3002",
+    "sidebar.actionFailed": "\u65E0\u6CD5\u5B8C\u6210\u6B64\u4F1A\u8BDD\u64CD\u4F5C",
+    "sidebar.updatedAt": "\u66F4\u65B0\u4E8E {date}",
+    "sidebar.createdAt": "\u521B\u5EFA\u4E8E {date}",
+    "sidebar.status.running": "\u8FD0\u884C\u4E2D",
+    "sidebar.status.attention": "\u7B49\u5F85\u5BA1\u6279",
+    "sidebar.status.done": "\u5DF2\u5B8C\u6210"
+  }
+};
+function SidebarSessions({ placement, history, t }) {
+  const { pending, error } = (0, import_react24.useSyncExternalStore)(history.subscribe, history.getSnapshot);
+  if (placement !== "toolbar") return null;
+  const label = t(error ? "sidebar.failed" : "sidebar.refresh");
+  return /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+    "button",
+    {
+      type: "button",
+      className: "dchat-sidebar-refresh",
+      title: label,
+      "aria-label": label,
+      "data-error": error || void 0,
+      "aria-disabled": pending || void 0,
+      onClick: () => {
+        if (!pending) void history.refresh();
+      },
+      children: /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(import_dsh_client_ui_primitives25.IconRefreshOutlineRegular, { size: 14 })
+    }
+  );
+}
+var emptyStatusSnapshot = { list: [], byId: /* @__PURE__ */ new Map() };
+var fallbackStatusStore = { getSnapshot: () => emptyStatusSnapshot, subscribe: () => () => {
+} };
+function SidebarProjection({ render, history, statusStore = fallbackStatusStore, navigation, openDirect, usePanelInfo, panelId: panelId2, engineSource, registerWorkspace, archiveRequest, t }) {
+  const { byCwd } = (0, import_react24.useSyncExternalStore)(history.subscribe, history.getSnapshot);
+  const { engines } = (0, import_react24.useSyncExternalStore)(engineSource.subscribe, engineSource.getSnapshot);
+  const statusSnapshot = (0, import_react24.useSyncExternalStore)(statusStore.subscribe, statusStore.getSnapshot);
+  const target = (0, import_react24.useSyncExternalStore)(navigation.subscribe, navigation.getSnapshot);
+  const active = usePanelInfo((info) => info.activePanelId === panelId2);
+  const [expanded, setExpanded] = (0, import_react24.useState)(() => /* @__PURE__ */ new Set());
+  const [notice, setNotice] = (0, import_react24.useState)(null);
+  const [renameTarget, setRenameTarget] = (0, import_react24.useState)(null);
+  const [deleteTarget, setDeleteTarget] = (0, import_react24.useState)(null);
+  const [localArchiveTarget, setLocalArchiveTarget] = (0, import_react24.useState)(null);
+  const externalArchiveTarget = (0, import_react24.useSyncExternalStore)(
+    archiveRequest?.subscribe ?? fallbackStatusStore.subscribe,
+    archiveRequest?.getSnapshot ?? (() => null)
+  );
+  const archiveTarget = externalArchiveTarget ?? localArchiveTarget;
+  const setArchiveTarget = (next) => {
+    if (archiveRequest) archiveRequest.set(next);
+    else setLocalArchiveTarget(next);
+  };
+  const groupCwdsRef = (0, import_react24.useRef)(/* @__PURE__ */ new Map());
+  const report = (text, success) => setNotice((old) => ({ id: (old?.id ?? 0) + 1, text, success }));
+  const copy = async (text) => {
+    const copied = await (0, import_dsh_client_ui_primitives25.writeClipboard)(text).catch(() => false);
+    report(t(copied ? "sidebar.copied" : "sidebar.copyFailed"), copied);
+  };
+  const updateSession = async (row, action, data) => {
+    await sessionAction(row.id, action, data);
+    await history.refresh();
+  };
+  const removeSession = async (row) => {
+    const { deletedIds } = await deleteSession(row.id);
+    const removed = new Set(deletedIds);
+    history.remove(removed);
+    navigation.forget(removed, row);
+    void history.refresh();
+    report(t("sidebar.deleted"), true);
+  };
+  const extension = {
+    activeId: active && target.id ? `direct-chat:session:${target.id}` : void 0,
+    groups: (groups, workspaces, expandedGroups, filter) => {
+      const projected = projectSidebarGroups(groups, workspaces, expandedGroups, expanded, byCwd, filter, t("cwd.default"), active);
+      const nextCwds = /* @__PURE__ */ new Map();
+      for (const group of projected) {
+        const path = group.directCwd ?? group.cwd;
+        if (path) nextCwds.set(group.key, path);
+      }
+      groupCwdsRef.current = nextCwds;
+      return projected;
+    },
+    flat: (rows, filter) => mergeSidebarRows(hideNativeDraft(rows, active), [...byCwd.values()].flat().filter((row) => sidebarRowVisible(row, filter))),
+    expandGroup(key, open) {
+      if (!isVirtualGroup(key)) return false;
+      setExpanded((current) => {
+        const next = new Set(current);
+        if (open) next.add(key);
+        else next.delete(key);
+        return next;
+      });
+      return true;
+    },
+    renderRow: (node2, css, compactTime, formatTime) => {
+      const isRowActive = active && node2.directChat.id === target.id;
+      const live = !node2.archived ? statusSnapshot.byId.get(node2.directChat.id) : void 0;
+      const liveState = live?.state === "done" && isRowActive ? void 0 : live?.state;
+      return /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+        ExternalSessionRow,
+        {
+          node: node2,
+          css,
+          label: engineLabel(engines, node2.directChat.engine),
+          compactTime,
+          formatTime,
+          active: isRowActive,
+          liveState,
+          openDirect,
+          updateSession,
+          rename: setRenameTarget,
+          confirmDelete: setDeleteTarget,
+          copy,
+          report,
+          t
+        },
+        node2.id
+      );
+    },
+    renderFolderActions: (group, css, setGroupExpanded) => {
+      if (group.directCwd === void 0) return null;
+      const rows = byCwd.get(group.directCwd) ?? [];
+      const archivableCount = rows.filter((row) => !row.archived && row.archiveMode !== "unsupported").length;
+      return /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+        FolderActions,
+        {
+          path: group.directCwd,
+          name: group.label,
+          css,
+          archivableCount,
+          copy,
+          archiveAll: () => setArchiveTarget({ cwd: group.directCwd, name: group.label, count: archivableCount }),
+          register: async () => {
+            try {
+              const workspace = await registerWorkspace(group.directCwd);
+              setGroupExpanded(workspace.workspaceId, true);
+              report(t("sidebar.registered"), true);
+            } catch (error) {
+              report(error.message || t("sidebar.registerFailed"), false);
+            }
+          },
+          t
+        }
+      );
+    }
+  };
+  (0, import_react24.useLayoutEffect)(() => {
+    if (typeof document === "undefined") return;
+    const rank = { attention: 3, running: 2, done: 1 };
+    const cwdState = /* @__PURE__ */ new Map();
+    for (const item of statusSnapshot.list ?? []) {
+      if (!item?.cwd || !item.state) continue;
+      if (item.state === "done" && active && item.id === target.id) continue;
+      const prev = cwdState.get(item.cwd);
+      if (!prev || rank[item.state] > rank[prev]) cwdState.set(item.cwd, item.state);
+    }
+    for (const el of document.querySelectorAll('[data-row-key^="workspace:"]')) {
+      const key = el.dataset.rowKey?.slice("workspace:".length);
+      const cwd = key ? groupCwdsRef.current.get(key) ?? (key.startsWith("direct-chat:cwd:") ? key.slice("direct-chat:cwd:".length) : void 0) : void 0;
+      const state = cwd ? cwdState.get(cwd) : void 0;
+      if (state) el.dataset.directWorkspaceState = state;
+      else delete el.dataset.directWorkspaceState;
+    }
+  }, [statusSnapshot, byCwd, expanded, active, target.id]);
+  return /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(import_jsx_runtime28.Fragment, { children: [
+    render(extension),
+    renameTarget && /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+      SessionRename,
+      {
+        row: renameTarget,
+        save: (title) => updateSession(renameTarget, "rename", renameTarget.renameMode === "local" ? { title, mode: "local" } : { title }),
+        close: () => setRenameTarget(null),
+        t
+      },
+      renameTarget.id
+    ),
+    deleteTarget && /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+      SessionDelete,
+      {
+        name: deleteTarget.title || engineLabel(engines, deleteTarget.engine),
+        remove: () => removeSession(deleteTarget),
+        close: () => setDeleteTarget(null),
+        t
+      },
+      deleteTarget.id
+    ),
+    archiveTarget && /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+      WorkspaceArchive,
+      {
+        name: archiveTarget.name,
+        count: archiveTarget.count,
+        archive: async () => {
+          const result = await archiveWorkspace(archiveTarget.cwd);
+          await history.refresh();
+          const archivedCount = result?.archivedIds?.length ?? 0;
+          const skipped = (result?.skippedActive ?? 0) + (result?.skippedUnsupported ?? 0);
+          if (archivedCount > 0 && skipped === 0) report(t("sidebar.archivedFolder", { count: archivedCount }), true);
+          else if (archivedCount > 0) report(t("sidebar.archivedFolderPartial", { count: archivedCount, skipped }), true);
+          else report(t("sidebar.archiveFolderNone"), false);
+        },
+        close: () => setArchiveTarget(null),
+        t
+      },
+      archiveTarget.cwd
+    ),
+    notice && /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+      import_dsh_client_ui_primitives25.Toast,
+      {
+        text: notice.text,
+        tone: notice.success ? "success" : void 0,
+        onDone: () => setNotice(null)
+      },
+      notice.id
+    )
+  ] });
+}
+function MoreMenu({ name, css, open, setOpen, point, setPoint, items, select, t }) {
+  const label = t("sidebar.moreActions", { name });
+  return /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+    import_dsh_client_ui_primitives25.Menu,
+    {
+      open,
+      portal: true,
+      dense: true,
+      autoFocus: true,
+      align: "end",
+      items,
+      getAnchorRect: point ? () => point : void 0,
+      onClose: () => {
+        setOpen(false);
+        setPoint?.(null);
+      },
+      onSelect: (id) => {
+        setOpen(false);
+        setPoint?.(null);
+        select(id);
+      },
+      anchor: /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+        "button",
+        {
+          type: "button",
+          className: css.iconButton,
+          "aria-label": label,
+          title: label,
+          "data-direct-menu-trigger": "",
+          "aria-haspopup": "menu",
+          "aria-expanded": open,
+          onClick: (event2) => {
+            event2.stopPropagation();
+            setPoint?.(null);
+            setOpen(!open);
+          },
+          children: /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(import_dsh_client_ui_primitives25.IconEllipsisOutlineRegular, { size: 16 })
+        }
+      )
+    }
+  );
+}
+var icon = (Icon) => /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(Icon, { size: 16 });
+function SessionRename({ row, save, close, t }) {
+  const [draft, setDraft] = (0, import_react24.useState)(row.title || "");
+  const [pending, setPending] = (0, import_react24.useState)(false);
+  const [error, setError] = (0, import_react24.useState)("");
+  const composing = (0, import_react24.useRef)(false);
+  const title = draft.trim();
+  const confirm = async () => {
+    if (!title || pending) return;
+    setPending(true);
+    setError("");
+    try {
+      await save(title);
+      close();
+    } catch (reason) {
+      setError(reason.message || t("sidebar.actionFailed"));
+      setPending(false);
+    }
+  };
+  const dismiss = () => {
+    if (!pending) close();
+  };
+  return /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(
+    import_dsh_client_ui_primitives25.Modal,
+    {
+      open: true,
+      title: t("sidebar.renameTitle"),
+      closeLabel: t("close"),
+      onClose: dismiss,
+      footer: /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(import_jsx_runtime28.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(import_dsh_client_ui_primitives25.Button, { variant: "outline", disabled: pending, onClick: dismiss, children: t("cancel") }),
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(import_dsh_client_ui_primitives25.Button, { variant: "primary", disabled: !title || pending, onClick: () => {
+          void confirm();
+        }, children: t("sidebar.rename") })
+      ] }),
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+          "input",
+          {
+            "aria-label": t("sidebar.sessionName"),
+            className: "dchat-sidebar-rename-input",
+            "data-modal-autofocus": true,
+            maxLength: 256,
+            value: draft,
+            onFocus: (event2) => event2.currentTarget.select(),
+            disabled: pending,
+            onChange: (event2) => {
+              setDraft(event2.currentTarget.value);
+              setError("");
+            },
+            onCompositionStart: () => {
+              composing.current = true;
+            },
+            onCompositionEnd: () => {
+              composing.current = false;
+            },
+            onKeyDown: (event2) => {
+              if (event2.key !== "Enter" || composing.current || event2.nativeEvent.isComposing || event2.keyCode === 229) return;
+              event2.preventDefault();
+              void confirm();
+            }
+          }
+        ),
+        error && /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("div", { className: "dchat-sidebar-dialog-error", role: "alert", children: error })
+      ]
+    }
+  );
+}
+function ActionConfirmModal({ title, description, confirmLabel, pendingLabel, failedLabel, actionClassName, run, close, t }) {
+  const running = (0, import_react24.useRef)(false);
+  const [pending, setPending] = (0, import_react24.useState)(false);
+  const [error, setError] = (0, import_react24.useState)("");
+  const dismiss = () => {
+    if (!running.current) close();
+  };
+  const confirm = async () => {
+    if (running.current) return;
+    running.current = true;
+    setPending(true);
+    setError("");
+    try {
+      await run();
+      close();
+    } catch (reason) {
+      setError(reason.message || failedLabel);
+      running.current = false;
+      setPending(false);
+    }
+  };
+  return /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(
+    import_dsh_client_ui_primitives25.Modal,
+    {
+      open: true,
+      title,
+      description,
+      className: "dchat-sidebar-delete-dialog",
+      contentClassName: "dchat-sidebar-delete-content",
+      closeLabel: t("close"),
+      onClose: dismiss,
+      footer: /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "dchat-sidebar-delete-actions", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(import_dsh_client_ui_primitives25.Button, { variant: "outline", "data-modal-autofocus": true, disabled: pending, onClick: dismiss, children: t("cancel") }),
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+          import_dsh_client_ui_primitives25.Button,
+          {
+            variant: "outline",
+            className: actionClassName,
+            disabled: pending,
+            onClick: () => void confirm(),
+            children: confirmLabel
+          }
+        )
+      ] }),
+      children: [
+        pending && /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("div", { className: "dchat-sidebar-delete-status", role: "status", children: pendingLabel }),
+        error && /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("div", { className: "dchat-sidebar-dialog-error", role: "alert", children: error })
+      ]
+    }
+  );
+}
+function SessionDelete({ name, remove, close, t }) {
+  return /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+    ActionConfirmModal,
+    {
+      title: t("sidebar.deleteTitle"),
+      description: t("sidebar.deleteDescription", { name }),
+      confirmLabel: t("sidebar.confirmDelete"),
+      pendingLabel: t("sidebar.deleting"),
+      failedLabel: t("sidebar.deleteFailed"),
+      actionClassName: "dchat-sidebar-delete-action",
+      run: remove,
+      close,
+      t
+    }
+  );
+}
+function WorkspaceArchive({ name, count, archive, close, t }) {
+  return /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+    ActionConfirmModal,
+    {
+      title: t("sidebar.archiveFolderTitle"),
+      description: t("sidebar.archiveFolderDescription", { name, count }),
+      confirmLabel: t("sidebar.confirmArchiveFolder"),
+      pendingLabel: t("sidebar.archivingFolder"),
+      failedLabel: t("sidebar.archiveFolderFailed"),
+      run: archive,
+      close,
+      t
+    }
+  );
+}
+function FolderActions({ path, name, css, archivableCount, register, archiveAll, copy, t }) {
+  const [open, setOpen] = (0, import_react24.useState)(false);
+  const [pending, setPending] = (0, import_react24.useState)(false);
+  const items = [
+    ...path ? [
+      { id: "register", label: t("sidebar.register"), icon: icon(import_dsh_client_ui_primitives25.IconProjectAddOutlineRegular), disabled: pending },
+      { id: "path", label: t("sidebar.copyPath"), icon: icon(import_dsh_client_ui_primitives25.IconCopyOutlineRegular) },
+      { type: "separator", id: "archive-separator" }
+    ] : [],
+    { id: "archiveAll", label: t("sidebar.archiveFolder"), icon: icon(import_dsh_client_ui_primitives25.IconArchiveOutlineRegular), disabled: pending || archivableCount === 0 }
+  ];
+  return /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+    MoreMenu,
+    {
+      name,
+      css,
+      open,
+      setOpen,
+      t,
+      items,
+      select: async (id) => {
+        if (id === "path") return copy(path);
+        if (id === "archiveAll") {
+          if (!pending && archivableCount > 0) archiveAll();
+          return;
+        }
+        if (pending) return;
+        setPending(true);
+        try {
+          await register();
+        } finally {
+          setPending(false);
+        }
+      }
+    }
+  );
+}
+function QuickAction({ css, label, Icon, disabled, onClick, pinned = false }) {
+  return /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(import_dsh_client_ui_primitives25.Tooltip, { label, side: "bottom", align: "end", delayMs: 500, portal: true, children: /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+    "button",
+    {
+      type: "button",
+      className: pinned ? `${css.iconButton} ${css.pinnedAction}` : css.iconButton,
+      "aria-label": label,
+      disabled,
+      "data-direct-pinned-action": pinned || void 0,
+      onClick,
+      children: /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(Icon, { size: 14 })
+    }
+  ) });
+}
+function ExternalSessionRow({ node: node2, css, label, compactTime, formatTime, active, liveState, openDirect, updateSession, rename, confirmDelete, copy, report, t }) {
+  const row = node2.directChat;
+  const [open, setOpen] = (0, import_react24.useState)(false);
+  const [point, setPoint] = (0, import_react24.useState)(null);
+  const [pending, setPending] = (0, import_react24.useState)(false);
+  const title = row.title || label;
+  const origin = row.origin === "terminal" ? t("sidebar.terminal") : void 0;
+  const created = sidebarTime(row.createdAt);
+  const fullTime = node2.updatedAt ? formatTime(node2.updatedAt) : void 0;
+  const canArchive = row.archiveMode !== "unsupported";
+  const canDelete = row.actions?.delete === true;
+  const canRename = row.actions?.rename === true || row.renameMode === "local";
+  const archiveLabel = t(node2.archived ? row.archiveMode === "legacy" ? "sidebar.restoreLegacy" : "sidebar.restore" : "sidebar.archive");
+  const pinLabel = t(node2.pinned ? "sidebar.unpin" : "sidebar.pin");
+  const ArchiveIcon = node2.archived ? import_dsh_client_ui_primitives25.IconUnarchiveOutlineRegular : import_dsh_client_ui_primitives25.IconArchiveOutlineRegular;
+  const PinIcon = node2.pinned ? import_dsh_client_ui_primitives25.IconPinFillRegular : import_dsh_client_ui_primitives25.IconPinOutlineRegular;
+  const canFork = row.canFork === true && !node2.archived;
+  const forkReason = t(node2.archived ? "sidebar.forkArchived" : row.forkUnavailableReason === "agy-acp" ? "sidebar.agyForkUnavailable" : "sidebar.forkUnavailable");
+  const items = [
+    ...!node2.archived ? [{ id: "pin", label: pinLabel, icon: icon(PinIcon), disabled: pending }] : [],
+    { id: "rename", label: t(row.renameMode === "local" ? "sidebar.localRename" : "sidebar.rename"), icon: icon(import_dsh_client_ui_primitives25.IconEditOutlineRegular), disabled: pending || !canRename },
+    { id: "fork", label: t("sidebar.fork"), icon: icon(import_dsh_client_ui_primitives25.IconBranchOutlineRegular), disabled: pending || !canFork },
+    ...!canFork ? [{ type: "label", id: "fork-unavailable", text: forkReason }] : [],
+    { type: "separator", id: "copy-separator" },
+    { id: "id", label: t("sidebar.copyId"), icon: icon(import_dsh_client_ui_primitives25.IconCopyOutlineRegular) },
+    ...row.cwd ? [{ id: "path", label: t("sidebar.copyPath"), icon: icon(import_dsh_client_ui_primitives25.IconCopyOutlineRegular) }] : [],
+    { type: "separator", id: "archive-separator" },
+    { id: "archive", label: archiveLabel, disabled: pending || !canArchive, icon: icon(ArchiveIcon) },
+    ...!canArchive ? [{ type: "label", id: "archive-unavailable", text: t("sidebar.archiveUnavailable") }] : [],
+    ...canDelete ? [
+      { type: "separator", id: "delete-separator" },
+      { id: "delete", label: t("sidebar.delete"), icon: icon(import_dsh_client_ui_primitives25.IconTrashOutlineRegular), danger: true, disabled: pending }
+    ] : []
+  ];
+  const mutate = async (action, data, notice) => {
+    if (pending) return;
+    setPending(true);
+    try {
+      await updateSession(row, action, data);
+      if (notice) report(t(notice), true);
+    } catch (error) {
+      report(error.message || t("sidebar.actionFailed"), false);
+    } finally {
+      setPending(false);
+    }
+  };
+  const select = async (id) => {
+    if (id === "id" || id === "path") return copy(id === "id" ? row.id : row.cwd);
+    if (pending) return;
+    if (id === "rename" && canRename) rename(row);
+    else if (id === "delete" && canDelete) confirmDelete(row);
+    else if (id === "archive") await mutate("archive", { archived: !node2.archived }, node2.archived ? "sidebar.restored" : "sidebar.archived");
+    else if (id === "pin" && !node2.archived) await mutate("pin", { pinned: !node2.pinned });
+    else if (id === "fork" && canFork) await mutate("fork", {}, "sidebar.forked");
+  };
+  const activate = () => node2.archived ? report(t("sidebar.restoreToOpen"), false) : openDirect(row.id);
+  const anchor = /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(
+    "div",
+    {
+      role: "treeitem",
+      tabIndex: 0,
+      "data-row-key": `session:${node2.id}`,
+      "data-direct-row": "",
+      "data-live-state": liveState || void 0,
+      className: [css.sessionRow, active && css.selected, node2.archived && css.archived, open && css.menuOpen].filter(Boolean).join(" "),
+      "aria-selected": active,
+      "aria-description": node2.archived ? t("sidebar.restoreToOpen") : void 0,
+      onClick: activate,
+      onKeyDown: (event2) => {
+        if (event2.currentTarget !== event2.target || event2.key !== "Enter" && event2.key !== " " || event2.altKey || event2.ctrlKey || event2.metaKey || event2.shiftKey) return;
+        event2.preventDefault();
+        activate();
+      },
+      onContextMenu: (event2) => {
+        event2.preventDefault();
+        event2.stopPropagation();
+        setPoint(new DOMRect(event2.clientX, event2.clientY, 0, 0));
+        setOpen(true);
+      },
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("span", { className: `${css.slot} dchat-sidebar-slot`, "aria-hidden": "true", children: /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(EngineLogo, { engine: row.engine, label, size: 14 }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("span", { className: css.title, onDoubleClick: (event2) => {
+          event2.stopPropagation();
+          if (!pending && canRename) rename(row);
+        }, children: title }),
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("span", { className: css.rowResting, children: [
+          fullTime && /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("time", { className: `${css.time} ${css.timestamp}`, dateTime: new Date(node2.updatedAt).toISOString(), title: fullTime, children: compactTime }),
+          node2.pinned && /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("span", { className: css.pinIndicator, role: "img", title: t("sidebar.pinned"), "aria-label": t("sidebar.pinned"), children: /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(import_dsh_client_ui_primitives25.IconPinFillRegular, { size: 14 }) })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("span", { className: css.rowActions, onClick: (event2) => event2.stopPropagation(), children: [
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+            MoreMenu,
+            {
+              name: title,
+              css,
+              open,
+              setOpen,
+              point,
+              setPoint,
+              items,
+              select: (id) => {
+                void select(id);
+              },
+              t
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("span", { className: css.rowQuickActions, "data-direct-quick-actions": "", children: [
+            canArchive && /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(QuickAction, { css, label: archiveLabel, Icon: ArchiveIcon, disabled: pending, onClick: () => {
+              void select("archive");
+            } }),
+            !node2.archived && /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+              QuickAction,
+              {
+                css,
+                label: pinLabel,
+                Icon: PinIcon,
+                disabled: pending,
+                pinned: node2.pinned,
+                onClick: () => {
+                  void select("pin");
+                }
+              }
+            )
+          ] })
+        ] })
+      ]
+    }
+  );
+  return /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+    import_dsh_client_ui_primitives25.HoverCard,
+    {
+      anchor,
+      openDelayMs: 800,
+      grouped: true,
+      disabled: open,
+      copyText: title,
+      copyLabel: t("copy"),
+      copiedLabel: t("sidebar.copied"),
+      content: /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: css.hoverContent, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("div", { className: css.hoverTitle, children: title }),
+        row.cwd && /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("div", { className: css.hoverPath, children: row.cwd }),
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("div", { className: css.hoverTime, children: origin ? `${label} \xB7 ${origin}` : label }),
+        fullTime && /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("div", { className: css.hoverTime, children: t("sidebar.updatedAt", { date: fullTime }) }),
+        created > 0 && /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("div", { className: css.hoverTime, children: t("sidebar.createdAt", { date: formatTime(created) }) }),
+        liveState && /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: css.hoverStatus, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(import_dsh_client_ui_primitives25.StateDot, { state: liveState === "running" ? "ongoing" : liveState === "attention" ? "warning" : "done" }),
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("span", { children: t(`sidebar.status.${liveState}`) })
+        ] })
+      ] })
+    }
+  );
+}
+
+// MergedWorkspaceBrowser.jsx
+var import_jsx_runtime29 = require("react/jsx-runtime");
+function NativeSessionMenuItems({ sessionId, displayTitle: displayTitle2, pinned, archived, onPin, onRename, onFork, onArchive, closeMenu, t }) {
+  return /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(import_jsx_runtime29.Fragment, { children: [
+    !archived && /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+      import_dsh_client_ui_primitives26.Menu.Item,
+      {
+        icon: pinned ? /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_dsh_client_ui_primitives26.IconPinFillRegular, { size: 16 }) : /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_dsh_client_ui_primitives26.IconPinOutlineRegular, { size: 16 }),
+        onClick: () => {
+          closeMenu();
+          onPin(sessionId, !pinned);
+        },
+        children: t(pinned ? "unpin" : "pin")
+      },
+      "pin"
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+      import_dsh_client_ui_primitives26.Menu.Item,
+      {
+        icon: /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_dsh_client_ui_primitives26.IconEditOutlineRegular, { size: 16 }),
+        onClick: () => {
+          closeMenu();
+          onRename(sessionId, displayTitle2);
+        },
+        children: t("rename")
+      },
+      "rename"
+    ),
+    !archived && /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+      import_dsh_client_ui_primitives26.Menu.Item,
+      {
+        icon: /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_dsh_client_ui_primitives26.IconBranchOutlineRegular, { size: 16 }),
+        onClick: () => {
+          closeMenu();
+          onFork(sessionId);
+        },
+        children: t("fork")
+      },
+      "fork"
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_dsh_client_ui_primitives26.Menu.Separator, {}, "sep"),
+    /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+      import_dsh_client_ui_primitives26.Menu.Item,
+      {
+        icon: archived ? /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_dsh_client_ui_primitives26.IconUnarchiveOutlineRegular, { size: 16 }) : /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_dsh_client_ui_primitives26.IconArchiveOutlineRegular, { size: 16 }),
+        onClick: () => {
+          closeMenu();
+          onArchive(sessionId, !archived);
+        },
+        children: t(archived ? "unarchive" : "archive")
+      },
+      "archive"
+    )
+  ] });
+}
+function NativeSessionRowActions({ sessionId, pinned, archived, onPin, onArchive, t }) {
+  return /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(import_jsx_runtime29.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_dsh_client_ui_primitives26.Tooltip, { label: t(archived ? "unarchive" : "archive"), side: "bottom", align: "end", delayMs: 500, portal: true, children: /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+      "button",
+      {
+        type: "button",
+        className: Rows_default.iconButton,
+        "aria-label": t(archived ? "unarchive" : "archive"),
+        onClick: (event2) => {
+          event2.stopPropagation();
+          onArchive(sessionId, !archived);
+        },
+        children: archived ? /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_dsh_client_ui_primitives26.IconUnarchiveOutlineRegular, { size: 14 }) : /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_dsh_client_ui_primitives26.IconArchiveOutlineRegular, { size: 14 })
+      }
+    ) }),
+    !archived && /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_dsh_client_ui_primitives26.Tooltip, { label: t(pinned ? "unpin" : "pin"), side: "bottom", align: "end", delayMs: 500, portal: true, children: /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+      "button",
+      {
+        type: "button",
+        className: pinned ? `${Rows_default.iconButton} ${Rows_default.pinnedAction}` : Rows_default.iconButton,
+        "aria-label": t(pinned ? "unpin" : "pin"),
+        onClick: (event2) => {
+          event2.stopPropagation();
+          onPin(sessionId, !pinned);
+        },
+        children: pinned ? /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_dsh_client_ui_primitives26.IconPinFillRegular, { size: 14 }) : /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_dsh_client_ui_primitives26.IconPinOutlineRegular, { size: 14 })
+      }
+    ) })
+  ] });
+}
+function DirectoryPickDialog({ open, busy, directoryPicker, useHostInfo, onPicked, onCancel, onError, t }) {
+  const hostInfo = useHostInfo((info) => info);
+  const [pathInput, setPathInput] = (0, import_react25.useState)("");
+  const [entries, setEntries] = (0, import_react25.useState)([]);
+  const [loading, setLoading] = (0, import_react25.useState)(false);
+  const pickedOnceRef = (0, import_react25.useRef)(false);
+  (0, import_react25.useEffect)(() => {
+    if (!open) {
+      pickedOnceRef.current = false;
+      return;
+    }
+    if (hostInfo?.nativeDirectoryPicker && directoryPicker?.pick && !pickedOnceRef.current) {
+      pickedOnceRef.current = true;
+      directoryPicker.pick().then(
+        (res) => {
+          if (res?.path) onPicked(res.path);
+          else onCancel();
+        },
+        (err) => onError(err?.message || "Failed to open directory picker")
+      );
+      return;
+    }
+    if (!directoryPicker?.list) return;
+    const controller = new AbortController();
+    setLoading(true);
+    directoryPicker.list(pathInput || void 0, controller.signal).then(
+      (res) => {
+        if (controller.signal.aborted) return;
+        setLoading(false);
+        if (res?.ok === false) {
+          onError(res.error?.message || "Failed to list directories");
+          return;
+        }
+        const value = res?.value ?? res;
+        if (value?.path && !pathInput) setPathInput(value.path);
+        setEntries(Array.isArray(value?.entries) ? value.entries.filter((item) => item.isDirectory !== false) : []);
+      },
+      (err) => {
+        if (!controller.signal.aborted) {
+          setLoading(false);
+          onError(err?.message || "Failed to list directories");
+        }
+      }
+    );
+    return () => controller.abort();
+  }, [open, hostInfo?.nativeDirectoryPicker, directoryPicker, pathInput]);
+  if (!open || hostInfo?.nativeDirectoryPicker) return null;
+  return /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(
+    import_dsh_client_ui_primitives26.Modal,
+    {
+      open: true,
+      title: t("workspace.add"),
+      closeLabel: t("cancel"),
+      onClose: () => {
+        if (!busy) onCancel();
+      },
+      footer: /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(import_jsx_runtime29.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_dsh_client_ui_primitives26.Button, { variant: "outline", disabled: busy, onClick: onCancel, children: t("cancel") }),
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_dsh_client_ui_primitives26.Button, { variant: "primary", disabled: busy || !pathInput.trim(), onClick: () => onPicked(pathInput.trim()), children: t("workspace.add") })
+      ] }),
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+          "input",
+          {
+            className: "dchat-sidebar-rename-input",
+            "data-modal-autofocus": true,
+            value: pathInput,
+            disabled: busy,
+            onChange: (event2) => setPathInput(event2.target.value),
+            onKeyDown: (event2) => {
+              if (event2.key === "Enter" && pathInput.trim() && !busy) {
+                event2.preventDefault();
+                onPicked(pathInput.trim());
+              }
+            }
+          }
+        ),
+        loading ? /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("div", { className: "dchat-status", children: "\u2026" }) : entries.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("div", { style: { maxHeight: 220, overflowY: "auto", marginTop: 8 }, children: entries.map((entry) => /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+          "button",
+          {
+            type: "button",
+            className: Rows_default.projectRow,
+            style: { width: "100%", textAlign: "left" },
+            onClick: () => setPathInput(entry.path ?? (pathInput ? `${pathInput.replace(/\/$/, "")}/${entry.name}` : entry.name)),
+            children: /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { className: Rows_default.title, children: entry.name })
+          },
+          entry.path ?? entry.name
+        )) })
+      ]
+    }
+  );
+}
+var defaultContextMenuTarget = () => false;
+var defaultContextMenu = () => ({ getTriggerProps: () => ({}) });
+var defaultSectionScroller = () => ({ bindScrollerRef: () => {
+} });
+var defaultWorkspaceActionRequest = () => null;
+var noop2 = () => {
+};
+var allowAllAccess = () => true;
+var emptyFactorySlot = () => null;
+function MergedWorkspaceBrowser({
+  history,
+  statusStore,
+  navigation,
+  openDirect,
+  panelId: panelId2,
+  engineSource,
+  archiveRequest,
+  registerWorkspace,
+  directoryPicker,
+  uiWorkspace,
+  sessionsApi,
+  workspacesApi,
+  directT,
+  ...browserProps
+}) {
+  const workspacesState = browserProps.useWorkspaces((state) => state);
+  const pinnedSet = new Set(workspacesState.pinnedSessionIds ?? []);
+  const archivedSet = new Set(workspacesState.archivedSessionIds ?? []);
+  const [renameTarget, setRenameTarget] = (0, import_react25.useState)(null);
+  const [renameValue, setRenameValue] = (0, import_react25.useState)("");
+  const [renamePending, setRenamePending] = (0, import_react25.useState)(false);
+  const [toast, setToast] = (0, import_react25.useState)(null);
+  const showToast = (text) => setToast({ id: Date.now(), text });
+  const handlePin = (sessionId, nextPinned) => {
+    const fn = nextPinned ? uiWorkspace?.pinSession : uiWorkspace?.unpinSession;
+    void fn?.call(uiWorkspace, sessionId).catch(() => showToast(browserProps.t(nextPinned ? "pinFailed" : "unpinFailed")));
+  };
+  const handleArchive = (sessionId, nextArchived) => {
+    const fn = nextArchived ? uiWorkspace?.archiveSession : uiWorkspace?.unarchiveSession;
+    void fn?.call(uiWorkspace, sessionId).catch(() => showToast(directT("sidebar.actionFailed")));
+  };
+  const handleFork = (sessionId) => {
+    void uiWorkspace?.forkSession?.(sessionId).catch(() => {
+    });
+  };
+  const handleRename = (sessionId, displayTitle2) => {
+    setRenameTarget(sessionId);
+    setRenameValue(displayTitle2 || "");
+  };
+  const localRenderSlot = (slotName, ownerProps, options) => {
+    switch (slotName) {
+      case "sidebar.workspaces.directoryFlow":
+        return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(DirectoryPickDialog, { ...ownerProps, directoryPicker, useHostInfo: browserProps.useHostInfo, t: browserProps.t });
+      case "sidebar.session.row.leading":
+        return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { className: "dchat-sidebar-native-logo", "aria-hidden": "true", children: /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_dsh_client_ui_primitives26.FishLogo, { size: 14 }) });
+      case "sidebar.workspaces.session.menu.item": {
+        const [, setMenuOpen] = options?.hookContext ?? [false, () => {
+        }];
+        return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+          NativeSessionMenuItems,
+          {
+            sessionId: ownerProps.sessionId,
+            displayTitle: ownerProps.displayTitle,
+            pinned: pinnedSet.has(ownerProps.sessionId),
+            archived: archivedSet.has(ownerProps.sessionId),
+            onPin: handlePin,
+            onRename: handleRename,
+            onFork: handleFork,
+            onArchive: handleArchive,
+            closeMenu: () => setMenuOpen(false),
+            t: browserProps.t
+          }
+        );
+      }
+      case "sidebar.workspaces.session.row.action":
+        return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+          NativeSessionRowActions,
+          {
+            sessionId: ownerProps.sessionId,
+            pinned: pinnedSet.has(ownerProps.sessionId),
+            archived: archivedSet.has(ownerProps.sessionId),
+            onPin: handlePin,
+            onArchive: handleArchive,
+            t: browserProps.t
+          }
+        );
+      default:
+        return null;
+    }
+  };
+  const confirmRename = async () => {
+    const title = renameValue.trim();
+    if (!title || !renameTarget || renamePending) return;
+    setRenamePending(true);
+    try {
+      const res = await sessionsApi?.using?.(renameTarget, { source: "workspaceOperation" }, (ref) => ref.binding.session.rename(title));
+      if (res && res.ok === false) throw new Error(res.error?.message || "Rename failed");
+      setRenameTarget(null);
+    } catch (error) {
+      showToast(error?.message || directT("sidebar.actionFailed"));
+    } finally {
+      setRenamePending(false);
+    }
+  };
+  return /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(import_jsx_runtime29.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+      SidebarProjection,
+      {
+        history,
+        statusStore,
+        navigation,
+        openDirect,
+        usePanelInfo: browserProps.usePanelInfo,
+        panelId: panelId2,
+        engineSource,
+        archiveRequest,
+        registerWorkspace,
+        t: directT,
+        render: (extension) => /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+          WorkspaceBrowser,
+          {
+            ...browserProps,
+            useContextMenuTarget: browserProps.useContextMenuTarget ?? defaultContextMenuTarget,
+            useContextMenu: browserProps.useContextMenu ?? defaultContextMenu,
+            useSectionScroller: browserProps.useSectionScroller ?? defaultSectionScroller,
+            useWorkspaceActionRequest: browserProps.useWorkspaceActionRequest ?? defaultWorkspaceActionRequest,
+            settleWorkspaceAction: browserProps.settleWorkspaceAction ?? noop2,
+            useWorkspaceAccess: browserProps.useWorkspaceAccess ?? allowAllAccess,
+            useSessionAccess: browserProps.useSessionAccess ?? allowAllAccess,
+            renderFactorySlot: browserProps.renderFactorySlot ?? emptyFactorySlot,
+            renderSlot: localRenderSlot,
+            extension: {
+              ...extension,
+              renderToolbar: () => /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(SidebarSessions, { placement: "toolbar", history, t: directT })
+            }
+          }
+        )
+      }
+    ),
+    renameTarget && /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+      import_dsh_client_ui_primitives26.Modal,
+      {
+        open: true,
+        title: directT("sidebar.renameTitle"),
+        closeLabel: directT("close"),
+        onClose: () => {
+          if (!renamePending) setRenameTarget(null);
+        },
+        footer: /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(import_jsx_runtime29.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_dsh_client_ui_primitives26.Button, { variant: "outline", disabled: renamePending, onClick: () => setRenameTarget(null), children: directT("cancel") }),
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_dsh_client_ui_primitives26.Button, { variant: "primary", disabled: renamePending || !renameValue.trim(), onClick: () => void confirmRename(), children: directT("sidebar.rename") })
+        ] }),
+        children: /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+          "input",
+          {
+            className: "dchat-sidebar-rename-input",
+            "data-modal-autofocus": true,
+            maxLength: 256,
+            value: renameValue,
+            disabled: renamePending,
+            onChange: (event2) => setRenameValue(event2.target.value),
+            onKeyDown: (event2) => {
+              if (event2.key === "Enter") {
+                event2.preventDefault();
+                void confirmRename();
+              }
+            }
+          }
+        )
+      }
+    ),
+    toast && /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_dsh_client_ui_primitives26.Toast, { text: toast.text, onDone: () => setToast(null) }, toast.id)
+  ] });
+}
+
+// SessionStatus.jsx
+var import_react29 = require("react");
+var import_react_dom4 = require("react-dom");
+var import_dsh_client_ui_primitives31 = require("@deepseek-ai/dsh-client-ui-primitives");
+
+// ../node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/StatsPills.tsx
+var import_react27 = require("react");
+var import_react_dom2 = require("react-dom");
+var import_dsh_client_ui_primitives28 = require("@deepseek-ai/dsh-client-ui-primitives");
+
+// ../node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/message-chrome.ts
 var LIVE_RUN_CLOCK_INTERVAL_MS = 1e3;
 function formatRunDuration(ms, t) {
   const total = Math.max(0, Math.floor(ms / 1e3));
@@ -8379,7 +11879,7 @@ function formatTokensPerSecond(tps) {
   return clamped >= 10 ? String(Math.round(clamped)) : String(Math.round(clamped * 10) / 10);
 }
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/contract/turn-metrics.ts
+// ../node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/contract/turn-metrics.ts
 function usageOutputTokens(usage) {
   if (typeof usage !== "object" || usage === null) return null;
   const value = usage.outputTokens;
@@ -8392,7 +11892,7 @@ function assistantStepReading(node2) {
   return { ttftMs, decodeMs, outputTokens: usageOutputTokens(node2.usage) };
 }
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/token-format.ts
+// ../node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/token-format.ts
 function formatTokens(value, t) {
   const scaled = (candidate) => candidate >= 100 ? String(Math.round(candidate)) : String(Math.round(candidate * 10) / 10);
   if (value < 1e3) return String(value);
@@ -8457,16 +11957,16 @@ function formatCacheHitPercent(cacheReadTokens, promptTokens, decimalPlaces = 0)
   return `99.${"9".repeat(distinguishingPlaces - 1)}${10 - roundedLoss}`;
 }
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/stat-dialog.ts
-var import_react20 = require("react");
-var import_dsh_client_ui_primitives21 = require("@deepseek-ai/dsh-client-ui-primitives");
+// ../node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/stat-dialog.ts
+var import_react26 = require("react");
+var import_dsh_client_ui_primitives27 = require("@deepseek-ai/dsh-client-ui-primitives");
 function useStatDialog() {
-  const [open, setOpen] = (0, import_react20.useState)(false);
-  const rootRef = (0, import_react20.useRef)(null);
-  const panelRef = (0, import_react20.useRef)(null);
-  const anchorName = `--dsh-stat-${(0, import_react20.useId)().replaceAll(":", "")}`;
-  (0, import_dsh_client_ui_primitives21.useDismissOnOutsidePointer)(rootRef, open, setOpen, panelRef);
-  (0, import_react20.useEffect)(() => {
+  const [open, setOpen] = (0, import_react26.useState)(false);
+  const rootRef = (0, import_react26.useRef)(null);
+  const panelRef = (0, import_react26.useRef)(null);
+  const anchorName = `--dsh-stat-${(0, import_react26.useId)().replaceAll(":", "")}`;
+  (0, import_dsh_client_ui_primitives27.useDismissOnOutsidePointer)(rootRef, open, setOpen, panelRef);
+  (0, import_react26.useEffect)(() => {
     if (!open) return;
     const onKeyDown = (e) => {
       if (e.key === "Escape") setOpen(false);
@@ -8486,7 +11986,7 @@ function useStatDialog() {
   return { open, setOpen, rootRef, panelRef, anchorName };
 }
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/StatsPills.module.css
+// ../node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/StatsPills.module.css
 var StatsPills_default = {
   anchor: "StatsPills_anchor",
   pill: "StatsPills_pill",
@@ -8494,7 +11994,7 @@ var StatsPills_default = {
   sep: "StatsPills_sep"
 };
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/stat-dialog.module.css
+// ../node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/stat-dialog.module.css
 var stat_dialog_default = {
   panel: "stat_dialog_panel",
   title: "stat_dialog_title",
@@ -8506,8 +12006,8 @@ var stat_dialog_default = {
   reasoning: "stat_dialog_reasoning"
 };
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/StatsPills.tsx
-var import_jsx_runtime24 = require("react/jsx-runtime");
+// ../node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/StatsPills.tsx
+var import_jsx_runtime30 = require("react/jsx-runtime");
 function deriveStats(nodes) {
   const turns = /* @__PURE__ */ new Set();
   let steps = 0;
@@ -8562,9 +12062,9 @@ function exactCount(value, t) {
 function reading(first, second) {
   if (second === null) return { label: first, text: first };
   return {
-    label: /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(import_jsx_runtime24.Fragment, { children: [
+    label: /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(import_jsx_runtime30.Fragment, { children: [
       first,
-      /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: StatsPills_default.sep, "aria-hidden": true, children: "\xB7" }),
+      /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("span", { className: StatsPills_default.sep, "aria-hidden": true, children: "\xB7" }),
       second
     ] }),
     text: `${first} \xB7 ${second}`
@@ -8573,7 +12073,7 @@ function reading(first, second) {
 function useSessionStats(useChat, useProjection) {
   const settledNodes = useChat((s) => s.legacy.nodes);
   const projected = useProjection("sessionStats");
-  return (0, import_react21.useMemo)(() => projected ?? deriveStats(settledNodes), [projected, settledNodes]);
+  return (0, import_react27.useMemo)(() => projected ?? deriveStats(settledNodes), [projected, settledNodes]);
 }
 function decodeSpeed(stats, t) {
   return t("message.tokensPerSecond", {
@@ -8582,15 +12082,15 @@ function decodeSpeed(stats, t) {
 }
 var FULL_READING_TOOLTIP = { side: "top", portal: true, delayMs: 200, onlyWhenClipped: true };
 function PlainPill({ stat, icon: icon2, label, text }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: StatsPills_default.anchor, "data-composer-stat": stat, children: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_dsh_client_ui_primitives22.Tooltip, { label: text, ...FULL_READING_TOOLTIP, openOnClick: true, children: /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("span", { className: StatsPills_default.pill, children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("span", { className: StatsPills_default.anchor, "data-composer-stat": stat, children: /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(import_dsh_client_ui_primitives28.Tooltip, { label: text, ...FULL_READING_TOOLTIP, openOnClick: true, children: /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)("span", { className: StatsPills_default.pill, children: [
     icon2,
-    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: StatsPills_default.label, children: label })
+    /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("span", { className: StatsPills_default.label, children: label })
   ] }) }) });
 }
 function DialogPill({ stat, icon: icon2, label, text, title, titleValue, children }) {
   const { open, setOpen, rootRef, panelRef, anchorName } = useStatDialog();
-  return /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("span", { ref: rootRef, style: { anchorName }, className: StatsPills_default.anchor, "data-composer-stat": stat, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_dsh_client_ui_primitives22.Tooltip, { label: text, ...FULL_READING_TOOLTIP, disabled: open, children: /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)("span", { ref: rootRef, style: { anchorName }, className: StatsPills_default.anchor, "data-composer-stat": stat, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(import_dsh_client_ui_primitives28.Tooltip, { label: text, ...FULL_READING_TOOLTIP, disabled: open, children: /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(
       "button",
       {
         type: "button",
@@ -8603,12 +12103,12 @@ function DialogPill({ stat, icon: icon2, label, text, title, titleValue, childre
         },
         children: [
           icon2,
-          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: StatsPills_default.label, children: label })
+          /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("span", { className: StatsPills_default.label, children: label })
         ]
       }
     ) }),
     open && (0, import_react_dom2.createPortal)(
-      /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(
         "div",
         {
           ref: panelRef,
@@ -8617,14 +12117,14 @@ function DialogPill({ stat, icon: icon2, label, text, title, titleValue, childre
           "aria-label": title,
           style: { positionAnchor: anchorName },
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: stat_dialog_default.title, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("span", { className: stat_dialog_default.titleLabel, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)("div", { className: stat_dialog_default.title, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)("span", { className: stat_dialog_default.titleLabel, children: [
                 icon2,
                 title
               ] }),
-              titleValue !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: stat_dialog_default.titleValue, children: titleValue })
+              titleValue !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("span", { className: stat_dialog_default.titleValue, children: titleValue })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: stat_dialog_default.titleRule, "aria-hidden": true }),
+            /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("div", { className: stat_dialog_default.titleRule, "aria-hidden": true }),
             children
           ]
         }
@@ -8633,51 +12133,51 @@ function DialogPill({ stat, icon: icon2, label, text, title, titleValue, childre
     )
   ] });
 }
-var ActivityPill = (0, import_react21.memo)(function ActivityPill2({ useChat, useProjection, usePerformanceUsage, t }) {
+var ActivityPill = (0, import_react27.memo)(function ActivityPill2({ useChat, useProjection, usePerformanceUsage, t }) {
   const mode = usePerformanceUsage((value) => value);
   const stats = useSessionStats(useChat, useProjection);
   const speed = stats.decodeMs > 0 ? decodeSpeed(stats, t) : null;
-  const icon2 = /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_dsh_client_ui_primitives22.IconGaugeOutlineRegular, {});
-  if (mode === "compact") return speed === null ? null : /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(PlainPill, { stat: "activity", icon: icon2, ...reading(speed, null) });
+  const icon2 = /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(import_dsh_client_ui_primitives28.IconGaugeOutlineRegular, {});
+  if (mode === "compact") return speed === null ? null : /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(PlainPill, { stat: "activity", icon: icon2, ...reading(speed, null) });
   if (stats.steps === 0) return null;
   const counts = t("stats.counts", { turns: stats.turns, steps: stats.steps });
   const content = { stat: "activity", icon: icon2, ...reading(counts, speed) };
-  if (stats.llmMs <= 0 && stats.toolMs <= 0 && stats.ttftSteps <= 0 && speed === null) return /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(PlainPill, { ...content });
+  if (stats.llmMs <= 0 && stats.toolMs <= 0 && stats.ttftSteps <= 0 && speed === null) return /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(PlainPill, { ...content });
   return (
     // The counts head the dialog, so a cut-off reading stays complete once the dialog opens.
-    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(DialogPill, { ...content, title: t("stats.dialog.title"), titleValue: counts, children: /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("dl", { className: stat_dialog_default.details, "data-session-stats-details": true, children: [
-      stats.llmMs > 0 && /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(import_jsx_runtime24.Fragment, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("dt", { children: t("stats.dialog.llmTime") }),
-        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("dd", { children: formatDuration(stats.llmMs, t) })
+    /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(DialogPill, { ...content, title: t("stats.dialog.title"), titleValue: counts, children: /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)("dl", { className: stat_dialog_default.details, "data-session-stats-details": true, children: [
+      stats.llmMs > 0 && /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(import_jsx_runtime30.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("dt", { children: t("stats.dialog.llmTime") }),
+        /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("dd", { children: formatDuration(stats.llmMs, t) })
       ] }),
-      stats.toolMs > 0 && /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(import_jsx_runtime24.Fragment, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("dt", { children: t("stats.dialog.toolTime") }),
-        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("dd", { children: formatDuration(stats.toolMs, t) })
+      stats.toolMs > 0 && /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(import_jsx_runtime30.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("dt", { children: t("stats.dialog.toolTime") }),
+        /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("dd", { children: formatDuration(stats.toolMs, t) })
       ] }),
-      stats.ttftSteps > 0 && /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(import_jsx_runtime24.Fragment, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("dt", { children: t("stats.dialog.ttft") }),
-        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("dd", { children: formatDuration(stats.ttftMs / stats.ttftSteps, t) })
+      stats.ttftSteps > 0 && /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(import_jsx_runtime30.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("dt", { children: t("stats.dialog.ttft") }),
+        /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("dd", { children: formatDuration(stats.ttftMs / stats.ttftSteps, t) })
       ] }),
-      speed !== null && /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(import_jsx_runtime24.Fragment, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("dt", { children: t("stats.dialog.speed") }),
-        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("dd", { children: speed })
+      speed !== null && /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(import_jsx_runtime30.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("dt", { children: t("stats.dialog.speed") }),
+        /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("dd", { children: speed })
       ] })
     ] }) })
   );
 });
-var UsagePill = (0, import_react21.memo)(function UsagePill2({ useProjection, usePerformanceUsage, t }) {
+var UsagePill = (0, import_react27.memo)(function UsagePill2({ useProjection, usePerformanceUsage, t }) {
   const mode = usePerformanceUsage((value) => value);
   const usage = useProjection("tokenUsage");
   if (usage === void 0 || billedInputTokens(usage) === 0 && usage.outputTokens === 0) return null;
   const cacheHit = cacheHitPercent(usage);
   const cacheHitText = cacheHit !== null ? t("stats.cacheHit", { percent: cacheHit }) : null;
-  const icon2 = /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_dsh_client_ui_primitives22.IconDatabaseOutlineRegular, {});
+  const icon2 = /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(import_dsh_client_ui_primitives28.IconDatabaseOutlineRegular, {});
   if (mode === "compact") {
-    return cacheHitText === null ? null : /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(PlainPill, { stat: "usage", icon: icon2, ...reading(cacheHitText, null) });
+    return cacheHitText === null ? null : /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(PlainPill, { stat: "usage", icon: icon2, ...reading(cacheHitText, null) });
   }
   const total = billedInputTokens(usage) + usage.outputTokens;
   const totalText = t("message.turnUsage.count", { count: formatTokens(total, t) });
-  return /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
     DialogPill,
     {
       stat: "usage",
@@ -8685,39 +12185,39 @@ var UsagePill = (0, import_react21.memo)(function UsagePill2({ useProjection, us
       ...reading(totalText, cacheHitText),
       title: t("stats.dialog.usageTitle"),
       titleValue: exactCount(total, t),
-      children: /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("dl", { className: stat_dialog_default.details, "data-session-stats-usage": true, children: [
-        cacheHit !== null && /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(import_jsx_runtime24.Fragment, { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("dt", { children: t("message.turnUsage.cacheHit") }),
-          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("dd", { children: `${cacheHit}%` })
+      children: /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)("dl", { className: stat_dialog_default.details, "data-session-stats-usage": true, children: [
+        cacheHit !== null && /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(import_jsx_runtime30.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("dt", { children: t("message.turnUsage.cacheHit") }),
+          /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("dd", { children: `${cacheHit}%` })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("dt", { children: t("message.turnUsage.input") }),
-        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("dd", { children: exactCount(usage.uncachedInputTokens, t) }),
-        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("dt", { children: t("message.turnUsage.cacheRead") }),
-        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("dd", { children: exactCount(usage.cacheReadTokens, t) }),
-        usage.cacheWriteTokens !== 0 && /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(import_jsx_runtime24.Fragment, { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("dt", { children: t("message.turnUsage.cacheWrite") }),
-          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("dd", { children: exactCount(usage.cacheWriteTokens, t) })
+        /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("dt", { children: t("message.turnUsage.input") }),
+        /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("dd", { children: exactCount(usage.uncachedInputTokens, t) }),
+        /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("dt", { children: t("message.turnUsage.cacheRead") }),
+        /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("dd", { children: exactCount(usage.cacheReadTokens, t) }),
+        usage.cacheWriteTokens !== 0 && /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(import_jsx_runtime30.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("dt", { children: t("message.turnUsage.cacheWrite") }),
+          /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("dd", { children: exactCount(usage.cacheWriteTokens, t) })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("dt", { children: t("message.turnUsage.output") }),
-        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("dd", { children: exactCount(usage.outputTokens, t) })
+        /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("dt", { children: t("message.turnUsage.output") }),
+        /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("dd", { children: exactCount(usage.outputTokens, t) })
       ] })
     }
   );
 });
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/TurnUsagePanel.tsx
+// ../node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/TurnUsagePanel.tsx
 var import_react_dom3 = require("react-dom");
-var import_dsh_client_ui_primitives23 = require("@deepseek-ai/dsh-client-ui-primitives");
+var import_dsh_client_ui_primitives29 = require("@deepseek-ai/dsh-client-ui-primitives");
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/TurnUsagePanel.module.css
+// ../node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/TurnUsagePanel.module.css
 var TurnUsagePanel_default = {
   root: "TurnUsagePanel_root",
   trigger: "TurnUsagePanel_trigger",
   label: "TurnUsagePanel_label"
 };
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/TurnUsagePanel.tsx
-var import_jsx_runtime25 = require("react/jsx-runtime");
+// ../node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/TurnUsagePanel.tsx
+var import_jsx_runtime31 = require("react/jsx-runtime");
 function formatCompactCount(value, t) {
   return t("message.turnUsage.count", { count: formatTokens(value, t) });
 }
@@ -8729,8 +12229,8 @@ function TurnUsagePanel({ usage, t }) {
   const cacheHit = usage.cacheReadTokens === void 0 ? null : formatCacheHitPercent(usage.cacheReadTokens, usage.totalTokens - usage.outputTokens, 1);
   const total = formatCompactCount(usage.totalTokens, t);
   const routes = usage.routes?.map((route) => `${route.provider}/${route.model}`).join(", ") ?? "";
-  return /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("span", { ref: rootRef, style: { anchorName }, className: TurnUsagePanel_default.root, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("span", { ref: rootRef, style: { anchorName }, className: TurnUsagePanel_default.root, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)(
       "button",
       {
         type: "button",
@@ -8741,13 +12241,13 @@ function TurnUsagePanel({ usage, t }) {
           setOpen(!open);
         },
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_dsh_client_ui_primitives23.IconDatabaseOutlineRegular, {}),
-          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { className: TurnUsagePanel_default.label, children: t("message.turnUsage.consumed", { total }) })
+          /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(import_dsh_client_ui_primitives29.IconDatabaseOutlineRegular, {}),
+          /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("span", { className: TurnUsagePanel_default.label, children: t("message.turnUsage.consumed", { total }) })
         ]
       }
     ),
     open && (0, import_react_dom3.createPortal)(
-      /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)(
         "div",
         {
           ref: panelRef,
@@ -8756,37 +12256,37 @@ function TurnUsagePanel({ usage, t }) {
           "aria-label": t("message.turnUsage.title"),
           style: { positionAnchor: anchorName },
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: stat_dialog_default.title, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("span", { className: stat_dialog_default.titleLabel, children: [
-                /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_dsh_client_ui_primitives23.IconDatabaseOutlineRegular, {}),
+            /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("div", { className: stat_dialog_default.title, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("span", { className: stat_dialog_default.titleLabel, children: [
+                /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(import_dsh_client_ui_primitives29.IconDatabaseOutlineRegular, {}),
                 t("message.turnUsage.title")
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { className: stat_dialog_default.titleValue, children: formatExactCount(usage.totalTokens, t) })
+              /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("span", { className: stat_dialog_default.titleValue, children: formatExactCount(usage.totalTokens, t) })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: stat_dialog_default.titleRule, "aria-hidden": true }),
-            /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("dl", { className: stat_dialog_default.details, "data-turn-usage-details": true, children: [
-              routes !== "" && /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(import_jsx_runtime25.Fragment, { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("dt", { children: t("message.turnUsage.model") }),
-                /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("dd", { className: stat_dialog_default.route, children: routes })
+            /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("div", { className: stat_dialog_default.titleRule, "aria-hidden": true }),
+            /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("dl", { className: stat_dialog_default.details, "data-turn-usage-details": true, children: [
+              routes !== "" && /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)(import_jsx_runtime31.Fragment, { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("dt", { children: t("message.turnUsage.model") }),
+                /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("dd", { className: stat_dialog_default.route, children: routes })
               ] }),
-              cacheHit !== null && /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(import_jsx_runtime25.Fragment, { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("dt", { children: t("message.turnUsage.cacheHit") }),
-                /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("dd", { children: `${cacheHit}%` })
+              cacheHit !== null && /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)(import_jsx_runtime31.Fragment, { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("dt", { children: t("message.turnUsage.cacheHit") }),
+                /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("dd", { children: `${cacheHit}%` })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("dt", { children: t("message.turnUsage.input") }),
-              /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("dd", { children: formatExactCount(usage.uncachedInputTokens, t) }),
-              usage.cacheReadTokens !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(import_jsx_runtime25.Fragment, { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("dt", { children: t("message.turnUsage.cacheRead") }),
-                /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("dd", { children: formatExactCount(usage.cacheReadTokens, t) })
+              /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("dt", { children: t("message.turnUsage.input") }),
+              /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("dd", { children: formatExactCount(usage.uncachedInputTokens, t) }),
+              usage.cacheReadTokens !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)(import_jsx_runtime31.Fragment, { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("dt", { children: t("message.turnUsage.cacheRead") }),
+                /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("dd", { children: formatExactCount(usage.cacheReadTokens, t) })
               ] }),
-              usage.cacheWriteTokens !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(import_jsx_runtime25.Fragment, { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("dt", { children: t("message.turnUsage.cacheWrite") }),
-                /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("dd", { children: formatExactCount(usage.cacheWriteTokens, t) })
+              usage.cacheWriteTokens !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)(import_jsx_runtime31.Fragment, { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("dt", { children: t("message.turnUsage.cacheWrite") }),
+                /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("dd", { children: formatExactCount(usage.cacheWriteTokens, t) })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("dt", { children: t("message.turnUsage.output") }),
-              /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("dd", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("dt", { children: t("message.turnUsage.output") }),
+              /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("dd", { children: [
                 formatExactCount(usage.outputTokens, t),
-                usage.reasoningTokens !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { className: stat_dialog_default.reasoning, children: t("message.turnUsage.reasoning", { tokens: formatExactCount(usage.reasoningTokens, t) }) })
+                usage.reasoningTokens !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("span", { className: stat_dialog_default.reasoning, children: t("message.turnUsage.reasoning", { tokens: formatExactCount(usage.reasoningTokens, t) }) })
               ] })
             ] })
           ]
@@ -8798,8 +12298,8 @@ function TurnUsagePanel({ usage, t }) {
 }
 
 // status-report.jsx
-var import_react22 = require("react");
-var import_dsh_client_ui_primitives24 = require("@deepseek-ai/dsh-client-ui-primitives");
+var import_react28 = require("react");
+var import_dsh_client_ui_primitives30 = require("@deepseek-ai/dsh-client-ui-primitives");
 
 // account-report.mjs
 var ACCOUNT_REFRESH_MS = 6e4;
@@ -9035,16 +12535,16 @@ function transcriptCounts(messages = []) {
 }
 
 // status-report.jsx
-var import_jsx_runtime26 = require("react/jsx-runtime");
+var import_jsx_runtime32 = require("react/jsx-runtime");
 var accountReports = createAccountReportStore();
 function useAccountReport(sessionId, engine, profileId, open) {
   const key = accountReportKey(engine, profileId);
-  const subscribe = (0, import_react22.useCallback)((listener) => accountReports.subscribe(key, listener), [key]);
-  const getSnapshot = (0, import_react22.useCallback)(() => accountReports.getSnapshot(key), [key]);
-  const snapshot = (0, import_react22.useSyncExternalStore)(subscribe, getSnapshot, getSnapshot);
-  const request3 = (0, import_react22.useCallback)((mode) => accountReports.request(key, sessionId, mode, profileId), [key, sessionId, profileId]);
+  const subscribe = (0, import_react28.useCallback)((listener) => accountReports.subscribe(key, listener), [key]);
+  const getSnapshot = (0, import_react28.useCallback)(() => accountReports.getSnapshot(key), [key]);
+  const snapshot = (0, import_react28.useSyncExternalStore)(subscribe, getSnapshot, getSnapshot);
+  const request3 = (0, import_react28.useCallback)((mode) => accountReports.request(key, sessionId, mode, profileId), [key, sessionId, profileId]);
   const observedAt = accountObservedAt(snapshot.report);
-  (0, import_react22.useEffect)(() => {
+  (0, import_react28.useEffect)(() => {
     if (!key || !sessionId) return;
     return observeAccountUsage(document, open, request3, () => getSnapshot().report);
   }, [key, getSnapshot, open, request3, sessionId]);
@@ -9058,9 +12558,9 @@ function useAccountReport(sessionId, engine, profileId, open) {
   };
 }
 function useStatusReport(sessionId, kind, open) {
-  const [report, setReport] = (0, import_react22.useState)(null);
+  const [report, setReport] = (0, import_react28.useState)(null);
   const key = open && sessionId ? `${sessionId}/${kind}` : null;
-  (0, import_react22.useEffect)(() => {
+  (0, import_react28.useEffect)(() => {
     setReport(null);
     if (!key) return;
     const controller = new AbortController();
@@ -9109,11 +12609,11 @@ function AccountReport({ account, t }) {
   const date = observedAt === void 0 ? void 0 : new Date(observedAt);
   const hasLimits = hasAccountLimits(report);
   const status = refreshing ? "status.accountRefreshing" : failed ? hasLimits ? "status.accountShowingOld" : "status.accountFailed" : report?.reason === "noSubscriptionQuota" ? "status.noSubscriptionQuota" : !hasLimits ? report ? "status.accountUnavailable" : "status.accountLoading" : void 0;
-  return /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(import_jsx_runtime26.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)("div", { className: "dchat-quota-observation", children: [
-      date && /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("time", { className: "dchat-quota-meta", dateTime: date.toISOString(), children: t("status.accountObserved", { time: date.toLocaleString() }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(import_dsh_client_ui_primitives24.Tooltip, { label: t(refreshing ? "status.accountRefreshing" : "status.accountRefresh"), side: "bottom", children: /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(
-        import_dsh_client_ui_primitives24.Button,
+  return /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)(import_jsx_runtime32.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)("div", { className: "dchat-quota-observation", children: [
+      date && /* @__PURE__ */ (0, import_jsx_runtime32.jsx)("time", { className: "dchat-quota-meta", dateTime: date.toISOString(), children: t("status.accountObserved", { time: date.toLocaleString() }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(import_dsh_client_ui_primitives30.Tooltip, { label: t(refreshing ? "status.accountRefreshing" : "status.accountRefresh"), side: "bottom", children: /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(
+        import_dsh_client_ui_primitives30.Button,
         {
           size: "sm",
           className: "dchat-quota-refresh",
@@ -9122,38 +12622,38 @@ function AccountReport({ account, t }) {
           onClick: () => {
             if (canRefresh && !refreshing) refresh();
           },
-          children: /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(import_dsh_client_ui_primitives24.IconRefreshOutlineRegular, { size: 15, "aria-hidden": "true" })
+          children: /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(import_dsh_client_ui_primitives30.IconRefreshOutlineRegular, { size: 15, "aria-hidden": "true" })
         }
       ) })
     ] }),
-    status && /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("p", { className: "dchat-quota-status", role: "status", children: t(status) }),
-    hasLimits && /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(AccountLimits, { limits: report.limits, t })
+    status && /* @__PURE__ */ (0, import_jsx_runtime32.jsx)("p", { className: "dchat-quota-status", role: "status", children: t(status) }),
+    hasLimits && /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(AccountLimits, { limits: report.limits, t })
   ] });
 }
 function AccountLimits({ limits, t }) {
   const groups = accountLimitGroups(limits);
-  return /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("div", { className: "dchat-quota-list", children: groups.map((group) => /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)("div", { className: "dchat-quota-item", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("div", { className: "dchat-quota-title", children: /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("span", { className: "dchat-quota-name", children: group.name }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("div", { className: "dchat-quota-windows", children: group.windows.map((limit, index2) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime32.jsx)("div", { className: "dchat-quota-list", children: groups.map((group) => /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)("div", { className: "dchat-quota-item", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime32.jsx)("div", { className: "dchat-quota-title", children: /* @__PURE__ */ (0, import_jsx_runtime32.jsx)("span", { className: "dchat-quota-name", children: group.name }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime32.jsx)("div", { className: "dchat-quota-windows", children: group.windows.map((limit, index2) => {
       const remaining = accountRemainingPercent(limit.usedPercent);
       const tone = remaining === void 0 ? "normal" : remaining <= 10 ? "critical" : remaining <= 25 ? "warning" : "normal";
       const reset = formatResetTime(limit.resetsAt, t);
-      return /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)("div", { className: "dchat-quota-window", "data-tone": tone, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)("div", { className: "dchat-quota-header", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)("span", { className: "dchat-quota-window-label", children: [
-            limit.windowLabel && /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("span", { className: "dchat-quota-badge", children: limit.windowLabel }),
-            reset && /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("span", { className: "dchat-quota-meta", title: reset.full, children: reset.text })
+      return /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)("div", { className: "dchat-quota-window", "data-tone": tone, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)("div", { className: "dchat-quota-header", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)("span", { className: "dchat-quota-window-label", children: [
+            limit.windowLabel && /* @__PURE__ */ (0, import_jsx_runtime32.jsx)("span", { className: "dchat-quota-badge", children: limit.windowLabel }),
+            reset && /* @__PURE__ */ (0, import_jsx_runtime32.jsx)("span", { className: "dchat-quota-meta", title: reset.full, children: reset.text })
           ] }),
-          remaining !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("span", { className: "dchat-quota-percent", children: t("status.accountRemaining", { value: remaining }) })
+          remaining !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime32.jsx)("span", { className: "dchat-quota-percent", children: t("status.accountRemaining", { value: remaining }) })
         ] }),
-        remaining !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("div", { className: "dchat-quota-bar", "aria-hidden": "true", children: remaining > 0 && /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("div", { className: "dchat-quota-fill", style: { width: `${remaining}%` } }) })
+        remaining !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime32.jsx)("div", { className: "dchat-quota-bar", "aria-hidden": "true", children: remaining > 0 && /* @__PURE__ */ (0, import_jsx_runtime32.jsx)("div", { className: "dchat-quota-fill", style: { width: `${remaining}%` } }) })
       ] }, index2);
     }) })
   ] }, group.key)) });
 }
 
 // SessionStatus.jsx
-var import_jsx_runtime27 = require("react/jsx-runtime");
+var import_jsx_runtime33 = require("react/jsx-runtime");
 var emptySettings = { getSnapshot: () => void 0, subscribe: () => () => {
 } };
 var ringRadius = 5.5;
@@ -9177,10 +12677,10 @@ function turnUsageTranslate(t, cacheSummary, key, params) {
   return t(turnUsageLabels[key] ?? key, params);
 }
 function SessionStatus({ sessionId, engine, profileId, engineCapabilities, messages, model, modelName, effort, agentCount, createdAt, updatedAt, usage, metrics, settings = emptySettings, t }) {
-  const subscribe = (0, import_react23.useCallback)((listener) => settings.subscribe(listener), [settings]);
-  const getSnapshot = (0, import_react23.useCallback)(() => settings.getSnapshot()?.value?.performanceUsage === "compact", [settings]);
-  const isCompact = (0, import_react23.useSyncExternalStore)(subscribe, getSnapshot, getSnapshot);
-  const [open, setOpen] = (0, import_react23.useState)(null);
+  const subscribe = (0, import_react29.useCallback)((listener) => settings.subscribe(listener), [settings]);
+  const getSnapshot = (0, import_react29.useCallback)(() => settings.getSnapshot()?.value?.performanceUsage === "compact", [settings]);
+  const isCompact = (0, import_react29.useSyncExternalStore)(subscribe, getSnapshot, getSnapshot);
+  const [open, setOpen] = (0, import_react29.useState)(null);
   const contextReport = useStatusReport(sessionId, "context", open === "context" || open === "summary");
   const account = useAccountReport(sessionId, engine, profileId, open === "account" || open === "summary");
   const accountWindows = modelAccountWindows(engine, model, modelName, account.report?.limits);
@@ -9190,7 +12690,7 @@ function SessionStatus({ sessionId, engine, profileId, engineCapabilities, messa
   const accountLabel = [t("status.account"), accountTitle].filter(Boolean).join(" \xB7 ");
   const status = sessionStatus(metrics, usage, engine, engineCapabilities);
   const speed = status.tps === void 0 ? void 0 : t("status.tps", { value: status.tps >= 10 ? Math.round(status.tps) : Math.round(status.tps * 10) / 10 });
-  const history = (0, import_react23.useMemo)(() => transcriptCounts(messages), [messages]);
+  const history = (0, import_react29.useMemo)(() => transcriptCounts(messages), [messages]);
   const turns = history.turns;
   const counts = turns > 0 ? t("status.turns", { value: turns }) : void 0;
   const timeRows = [
@@ -9229,10 +12729,10 @@ function SessionStatus({ sessionId, engine, profileId, engineCapabilities, messa
   const usageDialog = showUsage && (!isCompact || totalRows.length > 0);
   const nativeUsage = !isCompact && totalRows.length === 0 ? turnTokenUsage(status) : void 0;
   const customUsageDialog = usageDialog && !nativeUsage;
-  (0, import_react23.useEffect)(() => {
+  (0, import_react29.useEffect)(() => {
     setOpen((current) => current === "activity" && !activityDialog || current === "usage" && !customUsageDialog || current === "context" && !showContext ? null : current);
   }, [activityDialog, customUsageDialog, showContext]);
-  (0, import_react23.useEffect)(() => {
+  (0, import_react29.useEffect)(() => {
     if (open !== "summary") return;
     const mobile = window.matchMedia("(width < 768px)");
     const resized = () => {
@@ -9247,8 +12747,8 @@ function SessionStatus({ sessionId, engine, profileId, engineCapabilities, messa
     onOpenChange: (value) => setOpen((current) => value ? key : current === key ? null : current)
   });
   const summary = [speed, accountRemaining === void 0 ? void 0 : t("status.accountRemaining", { value: accountRemaining })].filter(Boolean);
-  return /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(import_jsx_runtime27.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(import_jsx_runtime33.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(
       "button",
       {
         type: "button",
@@ -9257,89 +12757,89 @@ function SessionStatus({ sessionId, engine, profileId, engineCapabilities, messa
         "aria-expanded": open === "summary",
         onClick: () => setOpen("summary"),
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_dsh_client_ui_primitives25.IconGaugeOutlineRegular, { size: 14 }),
-          /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("span", { children: t("status.title") }),
-          summary.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("span", { className: "dchat-mobile-stat-reading", children: summary.join(" \xB7 ") }),
-          /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_dsh_client_ui_primitives25.IconChevronRightOutlineRegular, { size: 12 })
+          /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(import_dsh_client_ui_primitives31.IconGaugeOutlineRegular, { size: 14 }),
+          /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("span", { children: t("status.title") }),
+          summary.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("span", { className: "dchat-mobile-stat-reading", children: summary.join(" \xB7 ") }),
+          /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(import_dsh_client_ui_primitives31.IconChevronRightOutlineRegular, { size: 12 })
         ]
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_dsh_client_ui_primitives25.Modal, { className: "dchat-mobile-stat-dialog", contentClassName: "dchat-mobile-stat-content", open: open === "summary", onClose: () => setOpen(null), title: t("status.title"), closeLabel: t("close"), children: /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)("div", { className: "dchat-mobile-stat-details", children: [
-      timeRows.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)("section", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("h3", { children: t("status.time") }),
-        /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(StatDetails, { rows: timeRows, t })
+    /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(import_dsh_client_ui_primitives31.Modal, { className: "dchat-mobile-stat-dialog", contentClassName: "dchat-mobile-stat-content", open: open === "summary", onClose: () => setOpen(null), title: t("status.title"), closeLabel: t("close"), children: /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)("div", { className: "dchat-mobile-stat-details", children: [
+      timeRows.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)("section", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("h3", { children: t("status.time") }),
+        /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(StatDetails, { rows: timeRows, t })
       ] }),
-      showUsage && /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)("section", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("h3", { children: t("status.usage") }),
-        hasUsage && /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(UsageDetails, { status, cache, t }),
-        totalRows.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(import_jsx_runtime27.Fragment, { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("h4", { children: t("status.cumulativeUsage") }),
-          /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(StatDetails, { rows: totalRows, t })
+      showUsage && /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)("section", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("h3", { children: t("status.usage") }),
+        hasUsage && /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(UsageDetails, { status, cache, t }),
+        totalRows.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(import_jsx_runtime33.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("h4", { children: t("status.cumulativeUsage") }),
+          /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(StatDetails, { rows: totalRows, t })
         ] })
       ] }),
-      showContext && /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)("section", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("h3", { children: t("status.context") }),
-        /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(ContextDetails, { context: status.context, report: contextReport, t })
+      showContext && /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)("section", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("h3", { children: t("status.context") }),
+        /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(ContextDetails, { context: status.context, report: contextReport, t })
       ] }),
-      sessionId && /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)("section", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("h3", { children: t("status.account") }),
-        /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(AccountReport, { account, t })
+      sessionId && /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)("section", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("h3", { children: t("status.account") }),
+        /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(AccountReport, { account, t })
       ] })
     ] }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)("div", { className: "dchat-session-status", role: "group", "aria-label": t("status.title"), children: [
-      hasActivity && /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)("div", { className: "dchat-session-status", role: "group", "aria-label": t("status.title"), children: [
+      hasActivity && /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
         StatusPill,
         {
           stat: "activity",
-          icon: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_dsh_client_ui_primitives25.IconGaugeOutlineRegular, {}),
+          icon: /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(import_dsh_client_ui_primitives31.IconGaugeOutlineRegular, {}),
           readings: activityReadings,
           heading: t("status.time"),
           titleValue: counts,
           t,
           ...select("activity"),
-          children: activityDialog && /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(StatDetails, { rows: timeRows, t })
+          children: activityDialog && /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(StatDetails, { rows: timeRows, t })
         }
       ),
-      nativeUsage ? /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("span", { className: "dchat-native-usage", "data-composer-stat": "usage", onClickCapture: () => setOpen(null), children: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(TurnUsagePanel, { usage: nativeUsage, t: (key, params) => turnUsageTranslate(t, cacheSummary, key, params) }) }) : showUsage && /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
+      nativeUsage ? /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("span", { className: "dchat-native-usage", "data-composer-stat": "usage", onClickCapture: () => setOpen(null), children: /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(TurnUsagePanel, { usage: nativeUsage, t: (key, params) => turnUsageTranslate(t, cacheSummary, key, params) }) }) : showUsage && /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
         StatusPill,
         {
           stat: "usage",
-          icon: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_dsh_client_ui_primitives25.IconDatabaseOutlineRegular, {}),
+          icon: /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(import_dsh_client_ui_primitives31.IconDatabaseOutlineRegular, {}),
           readings: usageReadings,
           heading: t("status.usage"),
           titleValue: status.total === void 0 ? void 0 : exact(status.total, t),
           t,
           ...select("usage"),
-          children: usageDialog && /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(import_jsx_runtime27.Fragment, { children: [
-            hasUsage && /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(UsageDetails, { status, cache, t }),
-            totalRows.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(import_jsx_runtime27.Fragment, { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("h3", { className: "dchat-stat-subheading", children: t("status.cumulativeUsage") }),
-              /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(StatDetails, { rows: totalRows, t })
+          children: usageDialog && /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(import_jsx_runtime33.Fragment, { children: [
+            hasUsage && /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(UsageDetails, { status, cache, t }),
+            totalRows.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(import_jsx_runtime33.Fragment, { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("h3", { className: "dchat-stat-subheading", children: t("status.cumulativeUsage") }),
+              /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(StatDetails, { rows: totalRows, t })
             ] })
           ] })
         }
       ),
-      showContext && /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(ContextPill, { context: status.context, report: contextReport, ...select("context"), t }),
-      sessionId && /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
+      showContext && /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(ContextPill, { context: status.context, report: contextReport, ...select("context"), t }),
+      sessionId && /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
         StatusPill,
         {
           stat: "account",
-          icon: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_dsh_client_ui_primitives25.IconGaugeOutlineRegular, {}),
+          icon: /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(import_dsh_client_ui_primitives31.IconGaugeOutlineRegular, {}),
           readings: accountReadings,
           fullLabel: accountLabel,
           heading: t("status.account"),
           t,
           ...select("account"),
-          children: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(AccountReport, { account, t })
+          children: /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(AccountReport, { account, t })
         }
       )
     ] })
   ] });
 }
 function UsageDetails({ status, cache, t }) {
-  const output = status.output === void 0 ? void 0 : /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(import_jsx_runtime27.Fragment, { children: [
+  const output = status.output === void 0 ? void 0 : /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(import_jsx_runtime33.Fragment, { children: [
     exact(status.output, t),
-    status.reasoning !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("span", { className: stat_dialog_default.reasoning, children: t("status.reasoningSubset", { value: exact(status.reasoning, t) }) })
+    status.reasoning !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("span", { className: stat_dialog_default.reasoning, children: t("status.reasoningSubset", { value: exact(status.reasoning, t) }) })
   ] });
   const counts = [
     [status.uncachedInput === void 0 ? "status.input" : "status.uncachedInput", status.uncachedInput ?? status.input],
@@ -9347,7 +12847,7 @@ function UsageDetails({ status, cache, t }) {
     ["status.cacheWrite", status.cacheWrite > 0 ? status.cacheWrite : void 0],
     ["status.reasoning", status.output === void 0 ? status.reasoning : void 0]
   ].filter(([, value]) => value !== void 0).map(([label, value]) => [label, exact(value, t)]);
-  return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(StatDetails, { t, rows: [
+  return /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(StatDetails, { t, rows: [
     ["status.scope", t("status.lastTurn")],
     ...cache ? [["status.cacheHit", cache]] : [],
     ...counts,
@@ -9355,15 +12855,15 @@ function UsageDetails({ status, cache, t }) {
   ] });
 }
 function StatDetails({ rows, t }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("dl", { className: `${stat_dialog_default.details} dchat-stat-details`, children: rows.map(([label, value]) => /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(import_react23.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("dt", { children: t(label) }),
-    /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("dd", { children: value })
+  return /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("dl", { className: `${stat_dialog_default.details} dchat-stat-details`, children: rows.map(([label, value]) => /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(import_react29.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("dt", { children: t(label) }),
+    /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("dd", { children: value })
   ] }, label)) });
 }
 function ContextRing({ percent }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)("svg", { width: "14", height: "14", viewBox: "0 0 14 14", "aria-hidden": "true", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("circle", { className: "dchat-context-track", cx: "7", cy: "7", r: ringRadius }),
-    percent > 0 && /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)("svg", { width: "14", height: "14", viewBox: "0 0 14 14", "aria-hidden": "true", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("circle", { className: "dchat-context-track", cx: "7", cy: "7", r: ringRadius }),
+    percent > 0 && /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
       "circle",
       {
         className: "dchat-context-fill",
@@ -9389,17 +12889,17 @@ function ContextPill({ context, report, t, ...popover }) {
   const { percent, usedCompact, sizeCompact } = contextReading(context, report, t);
   const reading2 = percent !== void 0 ? `${percent}%` : usedCompact !== void 0 ? t("status.usedSummary", { value: usedCompact }) : sizeCompact !== void 0 ? t("status.windowSummary", { value: sizeCompact }) : t("status.context");
   const label = percent === void 0 ? void 0 : t("status.contextUsedPercent", { percent: reading2 });
-  return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
     StatusPill,
     {
       stat: "context",
-      icon: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(ContextRing, { percent }),
+      icon: /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(ContextRing, { percent }),
       readings: [reading2],
       fullLabel: label,
       heading: t("status.context"),
       t,
       ...popover,
-      children: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(ContextDetails, { context, report, t })
+      children: /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(ContextDetails, { context, report, t })
     }
   );
 }
@@ -9422,46 +12922,46 @@ function ContextDetails({ context, report, t }) {
     ["status.contextWindow", size === void 0 ? void 0 : exact(size, t)],
     ["status.contextRemaining", used !== void 0 && size >= used ? `${estimated ? "~" : ""}${exact(size - used, t)}` : void 0]
   ].filter(([, value]) => value !== void 0);
-  return /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(import_jsx_runtime27.Fragment, { children: [
-    percent !== void 0 ? /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(import_jsx_runtime27.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)("div", { className: "dchat-context-heading", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("span", { children: before }),
-        /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("strong", { children: reading2 }),
-        /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("span", { children: after }),
-        /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)("strong", { className: "dchat-context-figures", title: `${exact(used, t)} / ${exact(size, t)}`, children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(import_jsx_runtime33.Fragment, { children: [
+    percent !== void 0 ? /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(import_jsx_runtime33.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)("div", { className: "dchat-context-heading", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("span", { children: before }),
+        /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("strong", { children: reading2 }),
+        /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("span", { children: after }),
+        /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)("strong", { className: "dchat-context-figures", title: `${exact(used, t)} / ${exact(size, t)}`, children: [
           usedCompact,
           " / ",
           sizeCompact
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("div", { className: "dchat-context-bar", "aria-hidden": "true", children: percent > 0 && /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("div", { style: { width: `${percent}%` } }) })
+      /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("div", { className: "dchat-context-bar", "aria-hidden": "true", children: percent > 0 && /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("div", { style: { width: `${percent}%` } }) })
     ] }) : null,
-    contextRows.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(StatDetails, { t, rows: contextRows }),
-    report?.categories?.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(import_jsx_runtime27.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("h3", { className: "dchat-stat-subheading", children: t("status.contextBreakdown") }),
-      /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("dl", { className: `${stat_dialog_default.details} dchat-stat-details`, children: report.categories.map((item, i) => /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(import_react23.Fragment, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("dt", { children: item.name }),
-        /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("dd", { children: exact(item.tokens, t) })
+    contextRows.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(StatDetails, { t, rows: contextRows }),
+    report?.categories?.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(import_jsx_runtime33.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("h3", { className: "dchat-stat-subheading", children: t("status.contextBreakdown") }),
+      /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("dl", { className: `${stat_dialog_default.details} dchat-stat-details`, children: report.categories.map((item, i) => /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(import_react29.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("dt", { children: item.name }),
+        /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("dd", { children: exact(item.tokens, t) })
       ] }, i)) })
     ] }),
-    requestRows.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(import_jsx_runtime27.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("h3", { className: "dchat-stat-subheading", children: t("status.requestTokens") }),
-      /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(StatDetails, { t, rows: requestRows })
+    requestRows.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(import_jsx_runtime33.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("h3", { className: "dchat-stat-subheading", children: t("status.requestTokens") }),
+      /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(StatDetails, { t, rows: requestRows })
     ] }),
-    used === void 0 && size === void 0 && !report?.categories?.length && /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("small", { role: "status", children: t(report ? "status.contextUnavailable" : "status.accountLoading") })
+    used === void 0 && size === void 0 && !report?.categories?.length && /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("small", { role: "status", children: t(report ? "status.contextUnavailable" : "status.accountLoading") })
   ] });
 }
 function StatusPill({ stat, icon: icon2, readings, fullLabel, heading, titleValue, children, open, onOpenChange, t }) {
-  const trigger = (0, import_react23.useRef)(null);
-  const panel = (0, import_react23.useRef)(null);
-  const id = (0, import_react23.useId)();
+  const trigger = (0, import_react29.useRef)(null);
+  const panel = (0, import_react29.useRef)(null);
+  const id = (0, import_react29.useId)();
   const hasDialog = Boolean(children);
   const expanded = hasDialog && open;
   const context = stat === "context";
   const hoverable = context || stat === "account";
-  const hoverTimer = (0, import_react23.useRef)(null);
-  const transient = (0, import_react23.useRef)(false);
-  (0, import_react23.useEffect)(() => () => clearTimeout(hoverTimer.current), []);
+  const hoverTimer = (0, import_react29.useRef)(null);
+  const transient = (0, import_react29.useRef)(false);
+  (0, import_react29.useEffect)(() => () => clearTimeout(hoverTimer.current), []);
   const hover = hoverable ? {
     onPointerEnter(event2) {
       if (event2.pointerType !== "mouse") return;
@@ -9482,8 +12982,8 @@ function StatusPill({ stat, icon: icon2, readings, fullLabel, heading, titleValu
   } : {};
   const segments = readings.filter(Boolean);
   const label = fullLabel ?? segments.join(" \xB7 ");
-  (0, import_dsh_client_ui_primitives25.useDismissOnOutsidePointer)(trigger, expanded, onOpenChange, panel);
-  (0, import_react23.useLayoutEffect)(() => {
+  (0, import_dsh_client_ui_primitives31.useDismissOnOutsidePointer)(trigger, expanded, onOpenChange, panel);
+  (0, import_react29.useLayoutEffect)(() => {
     const anchor = trigger.current;
     const dialog = panel.current;
     if (!expanded || !anchor || !dialog) return;
@@ -9501,7 +13001,7 @@ function StatusPill({ stat, icon: icon2, readings, fullLabel, heading, titleValu
       dialog.style.top = `${Math.max(topLimit, Math.min(top, bottomLimit))}px`;
     };
     place();
-    if (!transient.current) (0, import_dsh_client_ui_primitives25.focusWithoutRing)(dialog, { preventScroll: true });
+    if (!transient.current) (0, import_dsh_client_ui_primitives31.focusWithoutRing)(dialog, { preventScroll: true });
     window.addEventListener("scroll", place, true);
     window.addEventListener("resize", place);
     const observer = typeof ResizeObserver === "function" ? new ResizeObserver(place) : void 0;
@@ -9512,7 +13012,7 @@ function StatusPill({ stat, icon: icon2, readings, fullLabel, heading, titleValu
       observer?.disconnect();
     };
   }, [expanded]);
-  (0, import_react23.useEffect)(() => {
+  (0, import_react29.useEffect)(() => {
     if (!expanded) return;
     const escape = (event2) => {
       if (event2.key !== "Escape" || event2.defaultPrevented) return;
@@ -9526,18 +13026,18 @@ function StatusPill({ stat, icon: icon2, readings, fullLabel, heading, titleValu
     document.addEventListener("keydown", escape);
     return () => document.removeEventListener("keydown", escape);
   }, [expanded, onOpenChange]);
-  const content = /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(import_jsx_runtime27.Fragment, { children: [
+  const content = /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(import_jsx_runtime33.Fragment, { children: [
     icon2,
-    /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)("span", { className: StatsPills_default.label, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)("span", { className: StatsPills_default.label, children: [
       segments[0],
-      segments[1] && /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(import_jsx_runtime27.Fragment, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("span", { className: StatsPills_default.sep, "aria-hidden": "true", children: "\xB7" }),
+      segments[1] && /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(import_jsx_runtime33.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("span", { className: StatsPills_default.sep, "aria-hidden": "true", children: "\xB7" }),
         segments[1]
       ] })
     ] })
   ] });
-  return /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)("span", { className: `${StatsPills_default.anchor} dchat-stat-anchor`, "data-composer-stat": stat, ...hover, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_dsh_client_ui_primitives25.Tooltip, { label, side: "top", delayMs: 200, portal: true, onlyWhenClipped: !hoverable, openOnClick: !hasDialog, disabled: expanded, children: hasDialog ? /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)("span", { className: `${StatsPills_default.anchor} dchat-stat-anchor`, "data-composer-stat": stat, ...hover, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(import_dsh_client_ui_primitives31.Tooltip, { label, side: "top", delayMs: 200, portal: true, onlyWhenClipped: !hoverable, openOnClick: !hasDialog, disabled: expanded, children: hasDialog ? /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
       "button",
       {
         className: `${StatsPills_default.pill} dchat-stat-pill`,
@@ -9551,7 +13051,7 @@ function StatusPill({ stat, icon: icon2, readings, fullLabel, heading, titleValu
           clearTimeout(hoverTimer.current);
           if (transient.current && expanded) {
             transient.current = false;
-            (0, import_dsh_client_ui_primitives25.focusWithoutRing)(panel.current, { preventScroll: true });
+            (0, import_dsh_client_ui_primitives31.focusWithoutRing)(panel.current, { preventScroll: true });
           } else {
             transient.current = false;
             onOpenChange(!expanded);
@@ -9559,8 +13059,8 @@ function StatusPill({ stat, icon: icon2, readings, fullLabel, heading, titleValu
         },
         children: content
       }
-    ) : /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("span", { className: `${StatsPills_default.pill} dchat-stat-pill`, children: content }) }),
-    expanded && (0, import_react_dom4.createPortal)(/* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(
+    ) : /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("span", { className: `${StatsPills_default.pill} dchat-stat-pill`, children: content }) }),
+    expanded && (0, import_react_dom4.createPortal)(/* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(
       "div",
       {
         className: `${stat_dialog_default.panel} dchat-stat-panel`,
@@ -9572,15 +13072,15 @@ function StatusPill({ stat, icon: icon2, readings, fullLabel, heading, titleValu
         "aria-label": heading,
         tabIndex: -1,
         children: [
-          (!context || fullLabel === void 0) && /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(import_jsx_runtime27.Fragment, { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)("div", { className: stat_dialog_default.title, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)("span", { className: stat_dialog_default.titleLabel, children: [
+          (!context || fullLabel === void 0) && /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(import_jsx_runtime33.Fragment, { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)("div", { className: stat_dialog_default.title, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)("span", { className: stat_dialog_default.titleLabel, children: [
                 icon2,
                 heading
               ] }),
-              titleValue !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("span", { className: stat_dialog_default.titleValue, children: titleValue })
+              titleValue !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("span", { className: stat_dialog_default.titleValue, children: titleValue })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("div", { className: stat_dialog_default.titleRule, "aria-hidden": "true" })
+            /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("div", { className: stat_dialog_default.titleRule, "aria-hidden": "true" })
           ] }),
           children
         ]
@@ -10158,8 +13658,8 @@ button.dchat-stat-pill:focus-visible {
 `;
 
 // MessageQueue.jsx
-var import_react24 = require("react");
-var import_jsx_runtime28 = require("react/jsx-runtime");
+var import_react30 = require("react");
+var import_jsx_runtime34 = require("react/jsx-runtime");
 function createQueueDockSource(ctx) {
   const slot = "conversation.input.dock";
   return {
@@ -10196,13 +13696,13 @@ function nativeQueueRow(item) {
   return { id: item.id, source: { kind: "user", rpcId: item.clientRequestId }, content };
 }
 function MessageQueue({ source: source2, renderFactorySlot, id, queue, pending, canSteer, enabled, change, fallback }) {
-  const Dock = (0, import_react24.useSyncExternalStore)(source2.subscribe, source2.getSnapshot, source2.getSnapshot);
-  const inbox = (0, import_react24.useMemo)(() => ({ "next-turn": queue.map(nativeQueueRow) }), [queue]);
-  const pendingSubmissions = (0, import_react24.useMemo)(() => pending ? [pending] : [], [pending]);
-  const loadImage = (0, import_react24.useCallback)(async ({ itemId, index: index2 }) => "/api/direct-chat/sessions/" + encodeURIComponent(id) + "/queue-image?" + new URLSearchParams({ item: itemId, index: index2 }), [id]);
+  const Dock = (0, import_react30.useSyncExternalStore)(source2.subscribe, source2.getSnapshot, source2.getSnapshot);
+  const inbox = (0, import_react30.useMemo)(() => ({ "next-turn": queue.map(nativeQueueRow) }), [queue]);
+  const pendingSubmissions = (0, import_react30.useMemo)(() => pending ? [pending] : [], [pending]);
+  const loadImage = (0, import_react30.useCallback)(async ({ itemId, index: index2 }) => "/api/direct-chat/sessions/" + encodeURIComponent(id) + "/queue-image?" + new URLSearchParams({ item: itemId, index: index2 }), [id]);
   if (!Dock) return fallback;
   const state = { pendingSubmissions, running: canSteer, subagent: enabled ? null : { address: { mode: "readonly" } } };
-  return /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(
     Dock,
     {
       renderFactorySlot,
@@ -10218,15 +13718,15 @@ function MessageQueue({ source: source2, renderFactorySlot, id, queue, pending, 
 }
 
 // DirectChat.jsx
-var import_react38 = require("react");
+var import_react44 = require("react");
 var import_react_dom7 = require("react-dom");
-var import_dsh_client_ui_primitives37 = require("@deepseek-ai/dsh-client-ui-primitives");
+var import_dsh_client_ui_primitives43 = require("@deepseek-ai/dsh-client-ui-primitives");
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-attachment/src/AttachmentRail.tsx
-var import_react25 = require("react");
-var import_dsh_client_ui_primitives26 = require("@deepseek-ai/dsh-client-ui-primitives");
+// ../node_modules/@deepseek-ai/dsh-client-ui-attachment/src/AttachmentRail.tsx
+var import_react31 = require("react");
+var import_dsh_client_ui_primitives32 = require("@deepseek-ai/dsh-client-ui-primitives");
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-attachment/src/AttachmentRail.module.css
+// ../node_modules/@deepseek-ai/dsh-client-ui-attachment/src/AttachmentRail.module.css
 var AttachmentRail_default = {
   root: "AttachmentRail_root",
   rail: "AttachmentRail_rail",
@@ -10238,25 +13738,25 @@ var AttachmentRail_default = {
   arrowRight: "AttachmentRail_arrowRight"
 };
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-attachment/src/AttachmentRail.tsx
-var import_jsx_runtime29 = require("react/jsx-runtime");
+// ../node_modules/@deepseek-ai/dsh-client-ui-attachment/src/AttachmentRail.tsx
+var import_jsx_runtime35 = require("react/jsx-runtime");
 var WHEEL_LINE_PX = 16;
 function pageBehavior() {
   const matchMedia2 = window.matchMedia;
   return matchMedia2?.("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
 }
 function AttachmentRail({ items, labels, renderItem }) {
-  const railRef = (0, import_react25.useRef)(null);
-  const countRef = (0, import_react25.useRef)(null);
-  const [edges, setEdges] = (0, import_react25.useState)({ left: false, right: false });
-  const updateEdges = (0, import_react25.useCallback)(() => {
+  const railRef = (0, import_react31.useRef)(null);
+  const countRef = (0, import_react31.useRef)(null);
+  const [edges, setEdges] = (0, import_react31.useState)({ left: false, right: false });
+  const updateEdges = (0, import_react31.useCallback)(() => {
     const el = railRef.current;
     if (el === null) return;
     const left = el.scrollLeft > 1;
     const right = el.scrollLeft < el.scrollWidth - el.clientWidth - 1;
     setEdges((prev) => prev.left === left && prev.right === right ? prev : { left, right });
   }, []);
-  (0, import_react25.useLayoutEffect)(() => {
+  (0, import_react31.useLayoutEffect)(() => {
     const grew = countRef.current !== null && items.length > countRef.current;
     countRef.current = items.length;
     const el = railRef.current;
@@ -10264,7 +13764,7 @@ function AttachmentRail({ items, labels, renderItem }) {
     if (grew) el.scrollLeft = el.scrollWidth - el.clientWidth;
     updateEdges();
   }, [items.length, updateEdges]);
-  (0, import_react25.useEffect)(() => {
+  (0, import_react31.useEffect)(() => {
     const el = railRef.current;
     if (el === null) return;
     let disconnect = () => {
@@ -10296,8 +13796,8 @@ function AttachmentRail({ items, labels, renderItem }) {
     if (el === null) return;
     el.scrollBy({ left: direction * Math.max(el.clientWidth - 64, 200), behavior: pageBehavior() });
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: AttachmentRail_default.root, children: [
-    edges.left && /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime35.jsxs)("div", { className: AttachmentRail_default.root, children: [
+    edges.left && /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(
       "button",
       {
         type: "button",
@@ -10306,10 +13806,10 @@ function AttachmentRail({ items, labels, renderItem }) {
         onClick: () => {
           page(-1);
         },
-        children: /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_dsh_client_ui_primitives26.IconChevronLeftOutlineRegular, {})
+        children: /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(import_dsh_client_ui_primitives32.IconChevronLeftOutlineRegular, {})
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(
       "div",
       {
         ref: railRef,
@@ -10317,10 +13817,10 @@ function AttachmentRail({ items, labels, renderItem }) {
         role: "group",
         "aria-label": labels.group,
         onScroll: updateEdges,
-        children: items.map((item) => /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("div", { className: AttachmentRail_default.item, children: renderItem(item) }, item.id))
+        children: items.map((item) => /* @__PURE__ */ (0, import_jsx_runtime35.jsx)("div", { className: AttachmentRail_default.item, children: renderItem(item) }, item.id))
       }
     ),
-    edges.right && /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+    edges.right && /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(
       "button",
       {
         type: "button",
@@ -10329,14 +13829,14 @@ function AttachmentRail({ items, labels, renderItem }) {
         onClick: () => {
           page(1);
         },
-        children: /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_dsh_client_ui_primitives26.IconChevronRightOutlineRegular, {})
+        children: /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(import_dsh_client_ui_primitives32.IconChevronRightOutlineRegular, {})
       }
     )
   ] });
 }
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/TurnNavigator.tsx
-var import_react26 = require("react");
+// ../node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/TurnNavigator.tsx
+var import_react32 = require("react");
 
 // ../node_modules/@tanstack/react-virtual/dist/esm/index.js
 var React3 = __toESM(require("react"), 1);
@@ -11816,7 +15316,7 @@ function useVirtualizer(options) {
   });
 }
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/TurnNavigator.module.css
+// ../node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/TurnNavigator.module.css
 var TurnNavigator_default = {
   slot: "TurnNavigator_slot",
   frame: "TurnNavigator_frame",
@@ -11836,15 +15336,15 @@ var TurnNavigator_default = {
   previewResponse: "TurnNavigator_previewResponse"
 };
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/TurnNavigator.tsx
-var import_jsx_runtime30 = require("react/jsx-runtime");
+// ../node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/TurnNavigator.tsx
+var import_jsx_runtime36 = require("react/jsx-runtime");
 var TURN_SPACING_PX = 10;
 var RAIL_INSET_PX = 6;
 var FADE_PX = 24;
 function preferredScrollBehavior() {
   return typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
 }
-var TurnMark = (0, import_react26.memo)(function TurnMark2({
+var TurnMark = (0, import_react32.memo)(function TurnMark2({
   item,
   index: index2,
   active,
@@ -11861,7 +15361,7 @@ var TurnMark = (0, import_react26.memo)(function TurnMark2({
   if (active) classes.push(TurnNavigator_default.markActive);
   else if (previewId !== void 0) classes.push(TurnNavigator_default.markPreview);
   if (busy) classes.push(TurnNavigator_default.markBusy);
-  return /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(
     "button",
     {
       ref: registerElement,
@@ -11891,18 +15391,18 @@ var TurnMark = (0, import_react26.memo)(function TurnMark2({
   );
 });
 function TurnNavigatorRail({ items, activeTurn, busyTurn, onNavigate, t }, ref) {
-  const [previewTurn, setPreviewTurn] = (0, import_react26.useState)(null);
-  const [focusedTurn, setFocusedTurn] = (0, import_react26.useState)(null);
-  const scrollerRef = (0, import_react26.useRef)(null);
-  const initialization = (0, import_react26.useRef)({
+  const [previewTurn, setPreviewTurn] = (0, import_react32.useState)(null);
+  const [focusedTurn, setFocusedTurn] = (0, import_react32.useState)(null);
+  const scrollerRef = (0, import_react32.useRef)(null);
+  const initialization = (0, import_react32.useRef)({
     placed: false,
     index: 0,
     follow: null,
     publishOffset: null
   });
-  const pointerInsideRef = (0, import_react26.useRef)(false);
-  const previewId = (0, import_react26.useId)();
-  const turnIndexes = (0, import_react26.useMemo)(() => {
+  const pointerInsideRef = (0, import_react32.useRef)(false);
+  const previewId = (0, import_react32.useId)();
+  const turnIndexes = (0, import_react32.useMemo)(() => {
     const indexes = /* @__PURE__ */ new Map();
     items.forEach((item, index2) => {
       indexes.set(item.turn, index2);
@@ -11910,12 +15410,12 @@ function TurnNavigatorRail({ items, activeTurn, busyTurn, onNavigate, t }, ref) 
     return indexes;
   }, [items]);
   const activeIndex = activeTurn === null ? void 0 : turnIndexes.get(activeTurn);
-  (0, import_react26.useLayoutEffect)(() => {
+  (0, import_react32.useLayoutEffect)(() => {
     initialization.current.index = activeIndex ?? 0;
   }, [activeIndex]);
   const focusedIndex = focusedTurn === null ? void 0 : turnIndexes.get(focusedTurn);
   const previewIndex = previewTurn === null ? void 0 : turnIndexes.get(previewTurn);
-  const onFocusChange = (0, import_react26.useCallback)((turn) => {
+  const onFocusChange = (0, import_react32.useCallback)((turn) => {
     setFocusedTurn(turn);
     setPreviewTurn(turn);
   }, []);
@@ -11925,8 +15425,8 @@ function TurnNavigatorRail({ items, activeTurn, busyTurn, onNavigate, t }, ref) 
     directDomUpdates: true,
     directDomUpdatesMode: "transform",
     useScrollendEvent: true,
-    getScrollElement: (0, import_react26.useCallback)(() => scrollerRef.current, []),
-    getItemKey: (0, import_react26.useCallback)((index2) => items[index2]?.turn ?? index2, [items]),
+    getScrollElement: (0, import_react32.useCallback)(() => scrollerRef.current, []),
+    getItemKey: (0, import_react32.useCallback)((index2) => items[index2]?.turn ?? index2, [items]),
     estimateSize: () => TURN_SPACING_PX,
     measureElement: () => TURN_SPACING_PX,
     initialRect: { width: 0, height: 0 },
@@ -11977,7 +15477,7 @@ function TurnNavigatorRail({ items, activeTurn, busyTurn, onNavigate, t }, ref) 
     scrollPaddingStart: FADE_PX,
     scrollPaddingEnd: FADE_PX,
     overscan: 3,
-    rangeExtractor: (0, import_react26.useCallback)((range) => {
+    rangeExtractor: (0, import_react32.useCallback)((range) => {
       const indexes = defaultRangeExtractor(range);
       if (focusedIndex !== void 0) {
         const last = Math.min(range.count - 1, focusedIndex + 1);
@@ -11992,7 +15492,7 @@ function TurnNavigatorRail({ items, activeTurn, busyTurn, onNavigate, t }, ref) 
   const scrollTop = virtualizer.scrollOffset ?? 0;
   const viewHeight = virtualizer.scrollRect?.height ?? 0;
   const virtualItems = virtualizer.getVirtualItems();
-  const scrollToIndex = (0, import_react26.useCallback)((index2, reveal, behavior = preferredScrollBehavior()) => {
+  const scrollToIndex = (0, import_react32.useCallback)((index2, reveal, behavior = preferredScrollBehavior()) => {
     const item = virtualizer.measurementsCache[index2];
     const height = virtualizer.scrollRect?.height ?? 0;
     if (item === void 0 || height <= 0) return;
@@ -12007,7 +15507,7 @@ function TurnNavigatorRail({ items, activeTurn, busyTurn, onNavigate, t }, ref) 
     const delta = Math.max(0, Math.min(max, target)) - current;
     if (delta !== 0) virtualizer.scrollBy(delta, { behavior });
   }, [virtualizer]);
-  (0, import_react26.useImperativeHandle)(ref, () => ({
+  (0, import_react32.useImperativeHandle)(ref, () => ({
     activateTurn(turn) {
       const index2 = turnIndexes.get(turn);
       const item = index2 === void 0 ? void 0 : items[index2];
@@ -12018,7 +15518,7 @@ function TurnNavigatorRail({ items, activeTurn, busyTurn, onNavigate, t }, ref) 
       if (index2 !== void 0) scrollToIndex(index2, "always");
     }
   }), [items, turnIndexes, onNavigate, scrollToIndex]);
-  (0, import_react26.useEffect)(() => {
+  (0, import_react32.useEffect)(() => {
     if (viewHeight <= 0) {
       initialization.current.follow = null;
       return;
@@ -12036,7 +15536,7 @@ function TurnNavigatorRail({ items, activeTurn, busyTurn, onNavigate, t }, ref) 
   const fadeClasses = [TurnNavigator_default.scroller];
   if (scrollTop > 1) fadeClasses.push(TurnNavigator_default.fadeTop);
   if (scrollTop < virtualizer.getTotalSize() - viewHeight - 1) fadeClasses.push(TurnNavigator_default.fadeBottom);
-  return /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("div", { className: TurnNavigator_default.slot, children: /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime36.jsx)("div", { className: TurnNavigator_default.slot, children: /* @__PURE__ */ (0, import_jsx_runtime36.jsxs)(
     "nav",
     {
       className: TurnNavigator_default.frame,
@@ -12049,10 +15549,10 @@ function TurnNavigatorRail({ items, activeTurn, busyTurn, onNavigate, t }, ref) 
         setPreviewTurn(null);
       },
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("div", { ref: scrollerRef, className: fadeClasses.join(" "), children: /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("div", { ref: virtualizer.containerRef, className: TurnNavigator_default.marks, children: virtualItems.map(({ index: index2, key }) => {
+        /* @__PURE__ */ (0, import_jsx_runtime36.jsx)("div", { ref: scrollerRef, className: fadeClasses.join(" "), children: /* @__PURE__ */ (0, import_jsx_runtime36.jsx)("div", { ref: virtualizer.containerRef, className: TurnNavigator_default.marks, children: virtualItems.map(({ index: index2, key }) => {
           const item = items[index2];
           if (item === void 0) return null;
-          return /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
+          return /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(
             TurnMark,
             {
               item,
@@ -12069,7 +15569,7 @@ function TurnNavigatorRail({ items, activeTurn, busyTurn, onNavigate, t }, ref) 
             key
           );
         }) }) }),
-        preview !== void 0 && previewPosition !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(
+        preview !== void 0 && previewPosition !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime36.jsxs)(
           "div",
           {
             id: previewId,
@@ -12079,8 +15579,8 @@ function TurnNavigatorRail({ items, activeTurn, busyTurn, onNavigate, t }, ref) 
               "--turn-preview-center": `${String(previewPosition.start + previewPosition.size / 2 - scrollTop)}px`
             },
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("div", { className: TurnNavigator_default.previewPrompt, children: preview.prompt || t("chat.turnNavigation.turn", { turn: preview.turn }) }),
-              preview.response !== "" && /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("div", { className: TurnNavigator_default.previewResponse, children: preview.response })
+              /* @__PURE__ */ (0, import_jsx_runtime36.jsx)("div", { className: TurnNavigator_default.previewPrompt, children: preview.prompt || t("chat.turnNavigation.turn", { turn: preview.turn }) }),
+              preview.response !== "" && /* @__PURE__ */ (0, import_jsx_runtime36.jsx)("div", { className: TurnNavigator_default.previewResponse, children: preview.response })
             ]
           }
         )
@@ -12088,13 +15588,13 @@ function TurnNavigatorRail({ items, activeTurn, busyTurn, onNavigate, t }, ref) 
     }
   ) });
 }
-var TurnNavigator = (0, import_react26.memo)((0, import_react26.forwardRef)(TurnNavigatorRail));
+var TurnNavigator = (0, import_react32.memo)((0, import_react32.forwardRef)(TurnNavigatorRail));
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/RunningStatus.tsx
-var import_react27 = require("react");
-var import_dsh_client_ui_primitives27 = require("@deepseek-ai/dsh-client-ui-primitives");
+// ../node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/RunningStatus.tsx
+var import_react33 = require("react");
+var import_dsh_client_ui_primitives33 = require("@deepseek-ai/dsh-client-ui-primitives");
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/ChatView.module.css
+// ../node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/ChatView.module.css
 var ChatView_default = {
   frame: "ChatView_frame",
   root: "ChatView_root",
@@ -12121,26 +15621,26 @@ var ChatView_default = {
   modalAction: "ChatView_modalAction"
 };
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/RunningWhaleTail.tsx
-var import_jsx_runtime31 = require("react/jsx-runtime");
+// ../node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/RunningWhaleTail.tsx
+var import_jsx_runtime37 = require("react/jsx-runtime");
 var REST_PATH = "M8.844 13.742C8.967 12.328 8.45 10.4 8.45 9.65C8.45 8.94 8.88 8.43 9.6 8.43C11.285 8.43 12.106 8.281 12.685 8.104C13.71 7.791 14.585 6.768 15.055 5.945C15.137 5.803 14.99 5.641 14.829 5.671C13.829 5.86 12.828 5.376 11.827 4.978C10.659 4.514 9.491 4.707 8.935 4.876C8.805 4.915 8.658 4.819 8.636 4.686C8.468 3.643 7.405 2.615 5.498 2.238C4.54 2.048 3.748 1.574 3.347 1.202C3.252 1.113 3.088 1.125 3.03 1.242C2.628 2.059 2.168 3.82 5.248 6.115C5.82 6.494 6.31 6.785 6.574 7.637C6.72 8.104 6.157 9.168 6.061 9.368C5.157 11.27 5.089 12.19 4.926 13.742";
 function RunningWhaleTail() {
-  return /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("span", { className: ChatView_default.runningIcon, "aria-hidden": "true", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("span", { className: ChatView_default.runningWhaleAnimated }),
-    /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("svg", { className: ChatView_default.runningWhaleStill, width: "100%", height: "100%", viewBox: "0 0 16 16", fill: "none", children: /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("path", { d: REST_PATH, stroke: "currentColor", strokeWidth: 1 }) })
+  return /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)("span", { className: ChatView_default.runningIcon, "aria-hidden": "true", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("span", { className: ChatView_default.runningWhaleAnimated }),
+    /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("svg", { className: ChatView_default.runningWhaleStill, width: "100%", height: "100%", viewBox: "0 0 16 16", fill: "none", children: /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("path", { d: REST_PATH, stroke: "currentColor", strokeWidth: 1 }) })
   ] });
 }
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/accessibility.module.css
+// ../node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/accessibility.module.css
 var accessibility_default = {
   visuallyHidden: "accessibility_visuallyHidden"
 };
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/RunningStatus.tsx
-var import_jsx_runtime32 = require("react/jsx-runtime");
-var RunningStatus = (0, import_react27.memo)(function RunningStatus2({ startTime, paused, holding = false, t }) {
-  const [now, setNow] = (0, import_react27.useState)(Date.now);
-  (0, import_react27.useEffect)(() => {
+// ../node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/RunningStatus.tsx
+var import_jsx_runtime38 = require("react/jsx-runtime");
+var RunningStatus = (0, import_react33.memo)(function RunningStatus2({ startTime, paused, holding = false, t }) {
+  const [now, setNow] = (0, import_react33.useState)(Date.now);
+  (0, import_react33.useEffect)(() => {
     if (startTime === void 0 || paused || holding) return;
     setNow(Date.now());
     const timer = setInterval(() => {
@@ -12153,20 +15653,20 @@ var RunningStatus = (0, import_react27.memo)(function RunningStatus2({ startTime
   const label = startTime === void 0 ? t("chat.deepDiving") : t("chat.deepDivingFor", {
     duration: formatRunDuration(Math.max(1e3, now - startTime), t).map((part) => part.text).join("")
   });
-  return /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)("div", { className: ChatView_default.running, "data-chat-running": true, "data-holding": holding ? "" : void 0, "aria-hidden": holding || void 0, children: [
-    holding ? null : /* @__PURE__ */ (0, import_jsx_runtime32.jsx)("span", { className: accessibility_default.visuallyHidden, role: "status", "aria-live": "polite", "aria-atomic": "true", children: t("chat.deepDiving") }),
-    /* @__PURE__ */ (0, import_jsx_runtime32.jsx)("span", { className: ChatView_default.runningDivider, "aria-hidden": "true" }),
-    /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)("span", { className: ChatView_default.runningContent, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(RunningWhaleTail, {}),
-      /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(import_dsh_client_ui_primitives27.TextShimmer, { active: !holding, className: ChatView_default.runningText, children: label })
+  return /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)("div", { className: ChatView_default.running, "data-chat-running": true, "data-holding": holding ? "" : void 0, "aria-hidden": holding || void 0, children: [
+    holding ? null : /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("span", { className: accessibility_default.visuallyHidden, role: "status", "aria-live": "polite", "aria-atomic": "true", children: t("chat.deepDiving") }),
+    /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("span", { className: ChatView_default.runningDivider, "aria-hidden": "true" }),
+    /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)("span", { className: ChatView_default.runningContent, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(RunningWhaleTail, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(import_dsh_client_ui_primitives33.TextShimmer, { active: !holding, className: ChatView_default.runningText, children: label })
     ] })
   ] });
 });
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-conversation/src/client/skeleton/ConversationWidthControls.tsx
-var import_react28 = require("react");
+// ../node_modules/@deepseek-ai/dsh-client-ui-conversation/src/client/skeleton/ConversationWidthControls.tsx
+var import_react34 = require("react");
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-conversation/src/client/skeleton/ConversationRoot.module.css
+// ../node_modules/@deepseek-ai/dsh-client-ui-conversation/src/client/skeleton/ConversationRoot.module.css
 var ConversationRoot_default = {
   root: "ConversationRoot_root",
   header: "ConversationRoot_header",
@@ -12204,8 +15704,8 @@ var ConversationRoot_default = {
   heroOptions: "ConversationRoot_heroOptions"
 };
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-conversation/src/client/skeleton/ConversationWidthControls.tsx
-var import_jsx_runtime33 = require("react/jsx-runtime");
+// ../node_modules/@deepseek-ai/dsh-client-ui-conversation/src/client/skeleton/ConversationWidthControls.tsx
+var import_jsx_runtime39 = require("react/jsx-runtime");
 var WIDTH_PREF_KEY = "dsh.conversation.contentWidth";
 var CONTENT_MIN = 640;
 var CONTENT_EDGE_BUDGET = 176;
@@ -12232,12 +15732,12 @@ function wheelDeltaY(event2, scrollport) {
   return event2.deltaY;
 }
 function WidthHandle(props) {
-  const dragging = (0, import_react28.useRef)(false);
-  const base = (0, import_react28.useRef)(0);
-  const origin = (0, import_react28.useRef)(0);
-  const latest = (0, import_react28.useRef)(0);
-  const frame = (0, import_react28.useRef)(null);
-  const callbacks = (0, import_react28.useRef)(props);
+  const dragging = (0, import_react34.useRef)(false);
+  const base = (0, import_react34.useRef)(0);
+  const origin = (0, import_react34.useRef)(0);
+  const latest = (0, import_react34.useRef)(0);
+  const frame = (0, import_react34.useRef)(null);
+  const callbacks = (0, import_react34.useRef)(props);
   callbacks.current = props;
   const outwardWidth = () => {
     const dx = latest.current - origin.current;
@@ -12250,7 +15750,7 @@ function WidthHandle(props) {
       frame.current = null;
     }
   };
-  const onPointerDown = (0, import_react28.useCallback)((event2) => {
+  const onPointerDown = (0, import_react34.useCallback)((event2) => {
     if (event2.button !== 0) return;
     event2.preventDefault();
     event2.currentTarget.setPointerCapture(event2.pointerId);
@@ -12260,7 +15760,7 @@ function WidthHandle(props) {
     dragging.current = true;
     event2.currentTarget.toggleAttribute("data-dragging", true);
   }, []);
-  const onPointerMove = (0, import_react28.useCallback)((event2) => {
+  const onPointerMove = (0, import_react34.useCallback)((event2) => {
     if (!dragging.current) return;
     if (!event2.currentTarget.hasPointerCapture(event2.pointerId)) return;
     const box = event2.currentTarget.getBoundingClientRect();
@@ -12271,7 +15771,7 @@ function WidthHandle(props) {
       callbacks.current.onDrag(outwardWidth());
     });
   }, []);
-  const onPointerUp = (0, import_react28.useCallback)((event2) => {
+  const onPointerUp = (0, import_react34.useCallback)((event2) => {
     if (!dragging.current) return;
     if (!event2.currentTarget.hasPointerCapture(event2.pointerId)) return;
     dragging.current = false;
@@ -12282,14 +15782,14 @@ function WidthHandle(props) {
     if (latest.current !== origin.current) callbacks.current.onCommit(outwardWidth());
     callbacks.current.onEnd();
   }, []);
-  const onPointerCancel = (0, import_react28.useCallback)((event2) => {
+  const onPointerCancel = (0, import_react34.useCallback)((event2) => {
     if (!dragging.current) return;
     dragging.current = false;
     event2.currentTarget.toggleAttribute("data-dragging", false);
     cancelFrame();
     callbacks.current.onEnd();
   }, []);
-  const onWheel = (0, import_react28.useCallback)((event2) => {
+  const onWheel = (0, import_react34.useCallback)((event2) => {
     const body = event2.currentTarget.parentElement;
     if (body === null) return;
     const scrollport = body.querySelector("[data-conversation-scroll]");
@@ -12297,7 +15797,7 @@ function WidthHandle(props) {
     if (event2.ctrlKey || event2.deltaY === 0) return;
     scrollport.scrollBy({ top: wheelDeltaY(event2, scrollport) });
   }, []);
-  return /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
     "div",
     {
       className: ConversationRoot_default.widthHandle,
@@ -12313,7 +15813,7 @@ function WidthHandle(props) {
   );
 }
 function ConversationWidthControls({ container, phase }) {
-  const publishWidths = (0, import_react28.useCallback)((container2) => {
+  const publishWidths = (0, import_react34.useCallback)((container2) => {
     const target = container2.parentElement ?? container2;
     const column = container2.offsetWidth;
     target.style.setProperty("--dsh-conversation-column-width", `${column}px`);
@@ -12321,7 +15821,7 @@ function ConversationWidthControls({ container, phase }) {
     if (preference === null) target.style.removeProperty("--dsh-chat-user-width");
     else target.style.setProperty("--dsh-chat-user-width", `${resolveContentWidth(column, preference)}px`);
   }, []);
-  (0, import_react28.useLayoutEffect)(() => {
+  (0, import_react34.useLayoutEffect)(() => {
     if (container === null) return;
     const observer = new ResizeObserver(() => {
       publishWidths(container);
@@ -12332,24 +15832,24 @@ function ConversationWidthControls({ container, phase }) {
       observer.disconnect();
     };
   }, [container, publishWidths]);
-  const onStart = (0, import_react28.useCallback)(() => {
+  const onStart = (0, import_react34.useCallback)(() => {
     if (container === null) return 680;
     return resolveContentWidth(container.offsetWidth, readWidthPreference());
   }, [container]);
-  const onDrag = (0, import_react28.useCallback)((width) => {
+  const onDrag = (0, import_react34.useCallback)((width) => {
     if (container === null) return;
     const target = container.parentElement ?? container;
     target.style.setProperty("--dsh-chat-user-width", `${resolveContentWidth(container.offsetWidth, width)}px`);
   }, [container]);
-  const onCommit = (0, import_react28.useCallback)((width) => {
+  const onCommit = (0, import_react34.useCallback)((width) => {
     if (container === null) return;
     localStorage.setItem(WIDTH_PREF_KEY, `${resolveContentWidth(container.offsetWidth, width)}`);
   }, [container]);
-  const onEnd = (0, import_react28.useCallback)(() => {
+  const onEnd = (0, import_react34.useCallback)(() => {
     if (container !== null) publishWidths(container);
   }, [container, publishWidths]);
   if (container === null || phase !== "active") return null;
-  return ["left", "right"].map((side) => /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
+  return ["left", "right"].map((side) => /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
     WidthHandle,
     {
       side,
@@ -12362,7 +15862,7 @@ function ConversationWidthControls({ container, phase }) {
   ));
 }
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-conversation/src/client/skeleton/InputBar.module.css
+// ../node_modules/@deepseek-ai/dsh-client-ui-conversation/src/client/skeleton/InputBar.module.css
 var InputBar_default = {
   root: "InputBar_root",
   dock: "InputBar_dock",
@@ -12396,11 +15896,11 @@ var InputBar_default = {
   activityExpanded: "InputBar_activityExpanded"
 };
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-conversation/src/client/skeleton/TodoPanel.tsx
-var import_react29 = require("react");
-var import_dsh_client_ui_primitives28 = require("@deepseek-ai/dsh-client-ui-primitives");
+// ../node_modules/@deepseek-ai/dsh-client-ui-conversation/src/client/skeleton/TodoPanel.tsx
+var import_react35 = require("react");
+var import_dsh_client_ui_primitives34 = require("@deepseek-ai/dsh-client-ui-primitives");
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-conversation/src/client/skeleton/TodoPanel.module.css
+// ../node_modules/@deepseek-ai/dsh-client-ui-conversation/src/client/skeleton/TodoPanel.module.css
 var TodoPanel_default = {
   root: "TodoPanel_root",
   body: "TodoPanel_body",
@@ -12415,9 +15915,9 @@ var TodoPanel_default = {
   content: "TodoPanel_content"
 };
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-conversation/src/client/skeleton/TodoPanel.tsx
-var import_jsx_runtime34 = require("react/jsx-runtime");
-function assertNever2(value) {
+// ../node_modules/@deepseek-ai/dsh-client-ui-conversation/src/client/skeleton/TodoPanel.tsx
+var import_jsx_runtime40 = require("react/jsx-runtime");
+function assertNever3(value) {
   throw new Error(`unreachable todo status: ${String(value)}`);
 }
 function statusDotState(status) {
@@ -12430,7 +15930,7 @@ function statusDotState(status) {
       return "idle";
     /* v8 ignore next -- closed TodoItem status union */
     default:
-      return assertNever2(status);
+      return assertNever3(status);
   }
 }
 function statusLabel(status, t) {
@@ -12443,7 +15943,7 @@ function statusLabel(status, t) {
       return t("todo.status.pending");
     /* v8 ignore next -- closed TodoItem status union */
     default:
-      return assertNever2(status);
+      return assertNever3(status);
   }
 }
 function progressLabel(todos, t) {
@@ -12457,10 +15957,10 @@ function progressLabel(todos, t) {
   ].join("\u2002\xB7\u2002");
 }
 function TodoPanel({ todos, t }) {
-  const [collapsed, setCollapsed] = (0, import_react29.useState)(true);
+  const [collapsed, setCollapsed] = (0, import_react35.useState)(true);
   if (todos.length === 0) return null;
-  return /* @__PURE__ */ (0, import_jsx_runtime34.jsx)("section", { className: TodoPanel_default.root, "data-testid": "todo-panel", "aria-label": t("todo.title"), children: /* @__PURE__ */ (0, import_jsx_runtime34.jsxs)("div", { className: TodoPanel_default.body, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime34.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("section", { className: TodoPanel_default.root, "data-testid": "todo-panel", "aria-label": t("todo.title"), children: /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)("div", { className: TodoPanel_default.body, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(
       "button",
       {
         type: "button",
@@ -12470,30 +15970,30 @@ function TodoPanel({ todos, t }) {
           setCollapsed((v) => !v);
         },
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime34.jsx)("span", { className: TodoPanel_default.lead, "aria-hidden": true, children: /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(import_dsh_client_ui_primitives28.IconChecklistOutlineRegular, {}) }),
-          /* @__PURE__ */ (0, import_jsx_runtime34.jsx)("span", { className: TodoPanel_default.title, children: t("todo.title") }),
-          /* @__PURE__ */ (0, import_jsx_runtime34.jsx)("span", { className: TodoPanel_default.progress, children: progressLabel(todos, t) }),
-          /* @__PURE__ */ (0, import_jsx_runtime34.jsx)("span", { className: TodoPanel_default.chevron, "aria-hidden": true, children: collapsed ? /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(import_dsh_client_ui_primitives28.IconChevronUpOutlineRegular, {}) : /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(import_dsh_client_ui_primitives28.IconChevronDownOutlineRegular, {}) })
+          /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("span", { className: TodoPanel_default.lead, "aria-hidden": true, children: /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(import_dsh_client_ui_primitives34.IconChecklistOutlineRegular, {}) }),
+          /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("span", { className: TodoPanel_default.title, children: t("todo.title") }),
+          /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("span", { className: TodoPanel_default.progress, children: progressLabel(todos, t) }),
+          /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("span", { className: TodoPanel_default.chevron, "aria-hidden": true, children: collapsed ? /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(import_dsh_client_ui_primitives34.IconChevronUpOutlineRegular, {}) : /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(import_dsh_client_ui_primitives34.IconChevronDownOutlineRegular, {}) })
         ]
       }
     ),
-    !collapsed && /* @__PURE__ */ (0, import_jsx_runtime34.jsx)("ul", { className: TodoPanel_default.list, children: todos.map((item) => /* @__PURE__ */ (0, import_jsx_runtime34.jsxs)("li", { className: TodoPanel_default.item, "data-status": item.status, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime34.jsx)("span", { className: TodoPanel_default.glyph, role: "img", "aria-label": statusLabel(item.status, t), children: /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(import_dsh_client_ui_primitives28.StateDot, { state: statusDotState(item.status) }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime34.jsx)("span", { className: TodoPanel_default.content, children: item.content })
+    !collapsed && /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("ul", { className: TodoPanel_default.list, children: todos.map((item) => /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)("li", { className: TodoPanel_default.item, "data-status": item.status, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("span", { className: TodoPanel_default.glyph, role: "img", "aria-label": statusLabel(item.status, t), children: /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(import_dsh_client_ui_primitives34.StateDot, { state: statusDotState(item.status) }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("span", { className: TodoPanel_default.content, children: item.content })
     ] }, item.content)) })
   ] }) });
 }
 
 // ComposerCommands.jsx
-var import_react31 = require("react");
-var import_dsh_client_ui_primitives31 = require("@deepseek-ai/dsh-client-ui-primitives");
+var import_react37 = require("react");
+var import_dsh_client_ui_primitives37 = require("@deepseek-ai/dsh-client-ui-primitives");
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-input-trigger/src/client/MenuView.tsx
-var import_dsh_client_ui_primitives29 = require("@deepseek-ai/dsh-client-ui-primitives");
-var import_react30 = require("react");
-var import_dsh_client_ui_primitives30 = require("@deepseek-ai/dsh-client-ui-primitives");
+// ../node_modules/@deepseek-ai/dsh-client-ui-input-trigger/src/client/MenuView.tsx
+var import_dsh_client_ui_primitives35 = require("@deepseek-ai/dsh-client-ui-primitives");
+var import_react36 = require("react");
+var import_dsh_client_ui_primitives36 = require("@deepseek-ai/dsh-client-ui-primitives");
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-input-trigger/src/client/MenuView.module.css
+// ../node_modules/@deepseek-ai/dsh-client-ui-input-trigger/src/client/MenuView.module.css
 var MenuView_default = {
   menu: "MenuView_menu",
   viewport: "MenuView_viewport",
@@ -12518,39 +16018,39 @@ var MenuView_default = {
   crumbSeparator: "MenuView_crumbSeparator"
 };
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-input-trigger/src/client/MenuView.tsx
-var import_jsx_runtime35 = require("react/jsx-runtime");
+// ../node_modules/@deepseek-ai/dsh-client-ui-input-trigger/src/client/MenuView.tsx
+var import_jsx_runtime41 = require("react/jsx-runtime");
 var MAX_HEIGHT = 400;
 var TOP_MARGIN = 84;
 function optionId(source2, index2) {
   return `dsh-slash-option-${source2}-${index2}`;
 }
 function MenuView({ menu, headers, onPick, onCrumb, onHover, onDismiss, t }) {
-  const state = (0, import_react30.useSyncExternalStore)(
+  const state = (0, import_react36.useSyncExternalStore)(
     (fn) => menu.subscribe(fn),
     () => menu.getSnapshot()
   );
-  const crumbs = (0, import_react30.useSyncExternalStore)(
+  const crumbs = (0, import_react36.useSyncExternalStore)(
     (fn) => headers.subscribe(fn),
     () => headers.getSnapshot()
   );
-  const listRef = (0, import_react30.useRef)(null);
-  const viewportRef = (0, import_react30.useRef)(null);
-  const [hasOverflowBelow, setHasOverflowBelow] = (0, import_react30.useState)(false);
-  const maxHeight = (0, import_dsh_client_ui_primitives30.useAnchoredMaxHeight)(listRef, MAX_HEIGHT, state, TOP_MARGIN);
-  const updateOverflowHint = (0, import_react30.useCallback)(() => {
+  const listRef = (0, import_react36.useRef)(null);
+  const viewportRef = (0, import_react36.useRef)(null);
+  const [hasOverflowBelow, setHasOverflowBelow] = (0, import_react36.useState)(false);
+  const maxHeight = (0, import_dsh_client_ui_primitives36.useAnchoredMaxHeight)(listRef, MAX_HEIGHT, state, TOP_MARGIN);
+  const updateOverflowHint = (0, import_react36.useCallback)(() => {
     const viewport = viewportRef.current;
     setHasOverflowBelow(viewport !== null && viewport.scrollTop + viewport.clientHeight < viewport.scrollHeight - 1);
   }, []);
-  (0, import_react30.useLayoutEffect)(() => {
+  (0, import_react36.useLayoutEffect)(() => {
     updateOverflowHint();
   }, [state, maxHeight, updateOverflowHint]);
   const highlight = state.open ? state.highlight : null;
-  (0, import_react30.useEffect)(() => {
+  (0, import_react36.useEffect)(() => {
     if (highlight === null) return;
     document.getElementById(optionId(highlight.source, highlight.index))?.scrollIntoView({ block: "nearest" });
   }, [highlight]);
-  (0, import_react30.useEffect)(() => {
+  (0, import_react36.useEffect)(() => {
     if (!state.open) return;
     const onPointerDown = (ev) => {
       if (!(ev.target instanceof Node)) return;
@@ -12568,8 +16068,8 @@ function MenuView({ menu, headers, onPick, onCrumb, onHover, onDismiss, t }) {
   return (
     // The listbox role sits on the scrolling viewport, not this shell: a
     // breadcrumb header is not an option, and a listbox may not carry one.
-    /* @__PURE__ */ (0, import_jsx_runtime35.jsxs)(
-      import_dsh_client_ui_primitives29.MenuSurface,
+    /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(
+      import_dsh_client_ui_primitives35.MenuSurface,
       {
         ref: listRef,
         className: MenuView_default.menu,
@@ -12579,9 +16079,9 @@ function MenuView({ menu, headers, onPick, onCrumb, onHover, onDismiss, t }) {
         children: [
           state.groups.map((group) => {
             const trail = crumbs.get(group.source);
-            return trail === void 0 ? null : /* @__PURE__ */ (0, import_jsx_runtime35.jsx)("nav", { className: MenuView_default.crumbs, "aria-label": t("crumbs.aria"), children: trail.map((crumb, index2) => /* @__PURE__ */ (0, import_jsx_runtime35.jsxs)(import_react30.Fragment, { children: [
-              index2 > 0 && /* @__PURE__ */ (0, import_jsx_runtime35.jsx)("span", { className: MenuView_default.crumbSeparator, "aria-hidden": true, children: /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(import_dsh_client_ui_primitives30.IconChevronRightOutlineRegular, {}) }),
-              /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(
+            return trail === void 0 ? null : /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("nav", { className: MenuView_default.crumbs, "aria-label": t("crumbs.aria"), children: trail.map((crumb, index2) => /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(import_react36.Fragment, { children: [
+              index2 > 0 && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("span", { className: MenuView_default.crumbSeparator, "aria-hidden": true, children: /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.IconChevronRightOutlineRegular, {}) }),
+              /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
                 "button",
                 {
                   type: "button",
@@ -12597,7 +16097,7 @@ function MenuView({ menu, headers, onPick, onCrumb, onHover, onDismiss, t }) {
               )
             ] }, `${String(index2)}-${crumb.value}`)) }, group.source);
           }),
-          /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
             "div",
             {
               ref: viewportRef,
@@ -12606,16 +16106,16 @@ function MenuView({ menu, headers, onPick, onCrumb, onHover, onDismiss, t }) {
               "aria-label": t("suggestions.aria"),
               "aria-activedescendant": highlight !== null ? optionId(highlight.source, highlight.index) : void 0,
               onScroll: updateOverflowHint,
-              children: state.groups.map((group) => group.status === "ready" && group.items.length === 0 ? null : /* @__PURE__ */ (0, import_jsx_runtime35.jsxs)(import_react30.Fragment, { children: [
-                group.showGroupTitle === false || group.items.some((item) => item.section !== void 0) ? null : /* @__PURE__ */ (0, import_jsx_runtime35.jsx)("div", { className: MenuView_default.groupTitle, role: "presentation", "data-source": group.source, children: t(group.source) }),
-                group.status === "pending" && group.items.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime35.jsxs)("div", { role: "status", "aria-label": t("loading"), "data-source": group.source, children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime35.jsx)("div", { className: MenuView_default.skeletonRow, children: /* @__PURE__ */ (0, import_jsx_runtime35.jsx)("span", { className: MenuView_default.skeletonBar, style: { width: "32%" } }) }),
-                  /* @__PURE__ */ (0, import_jsx_runtime35.jsx)("div", { className: MenuView_default.skeletonRow, children: /* @__PURE__ */ (0, import_jsx_runtime35.jsx)("span", { className: MenuView_default.skeletonBar, style: { width: "48%" } }) })
+              children: state.groups.map((group) => group.status === "ready" && group.items.length === 0 ? null : /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(import_react36.Fragment, { children: [
+                group.showGroupTitle === false || group.items.some((item) => item.section !== void 0) ? null : /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("div", { className: MenuView_default.groupTitle, role: "presentation", "data-source": group.source, children: t(group.source) }),
+                group.status === "pending" && group.items.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { role: "status", "aria-label": t("loading"), "data-source": group.source, children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("div", { className: MenuView_default.skeletonRow, children: /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("span", { className: MenuView_default.skeletonBar, style: { width: "32%" } }) }),
+                  /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("div", { className: MenuView_default.skeletonRow, children: /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("span", { className: MenuView_default.skeletonBar, style: { width: "48%" } }) })
                 ] }) : group.items.map((item, index2) => {
                   const active = highlight !== null && highlight.source === group.source && highlight.index === index2;
-                  return /* @__PURE__ */ (0, import_jsx_runtime35.jsxs)(import_react30.Fragment, { children: [
-                    item.section !== void 0 && item.section !== group.items[index2 - 1]?.section ? /* @__PURE__ */ (0, import_jsx_runtime35.jsx)("div", { className: MenuView_default.sectionTitle, role: "presentation", children: item.section }) : null,
-                    /* @__PURE__ */ (0, import_jsx_runtime35.jsxs)(
+                  return /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(import_react36.Fragment, { children: [
+                    item.section !== void 0 && item.section !== group.items[index2 - 1]?.section ? /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("div", { className: MenuView_default.sectionTitle, role: "presentation", children: item.section }) : null,
+                    /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(
                       "button",
                       {
                         id: optionId(group.source, index2),
@@ -12631,14 +16131,14 @@ function MenuView({ menu, headers, onPick, onCrumb, onHover, onDismiss, t }) {
                           onHover(group.source, index2);
                         },
                         children: [
-                          item.icon !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime35.jsx)("span", { className: MenuView_default.itemIcon, "aria-hidden": true, children: typeof item.icon === "string" ? /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(import_dsh_client_ui_primitives30.ReferenceIconRegular, { kind: item.icon, size: 14 }) : /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(item.icon, { size: 14 }) }),
-                          /* @__PURE__ */ (0, import_jsx_runtime35.jsx)("span", { className: MenuView_default.itemName, children: item.label ?? item.name }),
-                          item.label !== void 0 && item.label.toLowerCase() !== item.name.toLowerCase() && /* @__PURE__ */ (0, import_jsx_runtime35.jsx)("span", { className: MenuView_default.itemAlias, children: item.name }),
-                          item.description !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime35.jsx)("span", { className: MenuView_default.itemDescription, children: item.description }),
-                          item.drill === true && /* @__PURE__ */ (0, import_jsx_runtime35.jsxs)("span", { className: MenuView_default.trailing, children: [
-                            /* @__PURE__ */ (0, import_jsx_runtime35.jsx)("span", { className: MenuView_default.drillHintText, "aria-hidden": true, children: t("drill.hint") }),
-                            /* @__PURE__ */ (0, import_jsx_runtime35.jsx)("kbd", { className: MenuView_default.drillHint, "aria-hidden": true, children: t("drill.key") }),
-                            /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(
+                          item.icon !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("span", { className: MenuView_default.itemIcon, "aria-hidden": true, children: typeof item.icon === "string" ? /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.ReferenceIconRegular, { kind: item.icon, size: 14 }) : /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(item.icon, { size: 14 }) }),
+                          /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("span", { className: MenuView_default.itemName, children: item.label ?? item.name }),
+                          item.label !== void 0 && item.label.toLowerCase() !== item.name.toLowerCase() && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("span", { className: MenuView_default.itemAlias, children: item.name }),
+                          item.description !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("span", { className: MenuView_default.itemDescription, children: item.description }),
+                          item.drill === true && /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("span", { className: MenuView_default.trailing, children: [
+                            /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("span", { className: MenuView_default.drillHintText, "aria-hidden": true, children: t("drill.hint") }),
+                            /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("kbd", { className: MenuView_default.drillHint, "aria-hidden": true, children: t("drill.key") }),
+                            /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
                               "span",
                               {
                                 role: "button",
@@ -12649,7 +16149,7 @@ function MenuView({ menu, headers, onPick, onCrumb, onHover, onDismiss, t }) {
                                   ev.stopPropagation();
                                   onPick(group.source, index2, "drill");
                                 },
-                                children: /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(import_dsh_client_ui_primitives30.IconChevronRightOutlineRegular, { size: 12 })
+                                children: /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.IconChevronRightOutlineRegular, { size: 12 })
                               }
                             )
                           ] })
@@ -12760,31 +16260,31 @@ function composerMenuEntries(entries, addItems, query, t) {
 }
 
 // ComposerCommands.jsx
-var import_jsx_runtime36 = require("react/jsx-runtime");
+var import_jsx_runtime42 = require("react/jsx-runtime");
 var noSubscription2 = () => () => {
 };
 var emptyHeaders = /* @__PURE__ */ new Map();
 function useComposerCommands({ input, draft, onDraft, onNativeChoice, entries, addItems, sessionId, disabled, t }) {
-  const source2 = `direct-chat-command-${(0, import_react31.useId)()}`;
-  const mentionSource = `direct-chat-mention-${(0, import_react31.useId)()}`;
-  const caretAfterUpdate = (0, import_react31.useRef)(null);
-  const composing = (0, import_react31.useRef)(false);
-  const compositionEnded = (0, import_react31.useRef)(false);
-  const fileCache = (0, import_react31.useRef)(/* @__PURE__ */ new Map());
-  const [selection2, setSelection] = (0, import_react31.useState)(null);
-  const [dismissedDraft, setDismissedDraft] = (0, import_react31.useState)(null);
-  const [plusOpen, setPlusOpen] = (0, import_react31.useState)(false);
-  const [selectedId, setSelectedId] = (0, import_react31.useState)(null);
-  const [mentionState, setMentionState] = (0, import_react31.useState)({ key: "", status: "idle", entries: [] });
+  const source2 = `direct-chat-command-${(0, import_react37.useId)()}`;
+  const mentionSource = `direct-chat-mention-${(0, import_react37.useId)()}`;
+  const caretAfterUpdate = (0, import_react37.useRef)(null);
+  const composing = (0, import_react37.useRef)(false);
+  const compositionEnded = (0, import_react37.useRef)(false);
+  const fileCache = (0, import_react37.useRef)(/* @__PURE__ */ new Map());
+  const [selection2, setSelection] = (0, import_react37.useState)(null);
+  const [dismissedDraft, setDismissedDraft] = (0, import_react37.useState)(null);
+  const [plusOpen, setPlusOpen] = (0, import_react37.useState)(false);
+  const [selectedId, setSelectedId] = (0, import_react37.useState)(null);
+  const [mentionState, setMentionState] = (0, import_react37.useState)({ key: "", status: "idle", entries: [] });
   const typedRange = selection2 && slashCommandAt(draft, selection2.start, selection2.end);
   const slashRange = !plusOpen && dismissedDraft !== draft ? typedRange : null;
   const mentionRange = !disabled && !plusOpen && !slashRange && dismissedDraft !== draft && selection2 ? atMentionAt(draft, selection2.start, selection2.end) : null;
   const mentionParts = mentionRange ? splitMentionQuery(mentionRange.query) : null;
   const mentionKey = mentionParts && sessionId ? `${sessionId}:${mentionParts.dir}` : "";
-  (0, import_react31.useEffect)(() => {
+  (0, import_react37.useEffect)(() => {
     fileCache.current.clear();
   }, [sessionId]);
-  (0, import_react31.useEffect)(() => {
+  (0, import_react37.useEffect)(() => {
     if (!mentionKey || !sessionId || !mentionParts) return;
     const cached = fileCache.current.get(mentionKey);
     if (cached) {
@@ -12869,14 +16369,14 @@ function useComposerCommands({ input, draft, onDraft, onNativeChoice, entries, a
     if (node2?.value === text) node2.setSelectionRange(caret, caret);
     else caretAfterUpdate.current = caret;
   };
-  (0, import_react31.useLayoutEffect)(() => {
+  (0, import_react37.useLayoutEffect)(() => {
     if (caretAfterUpdate.current === null) return;
     const caret = caretAfterUpdate.current;
     caretAfterUpdate.current = null;
     input.current?.setSelectionRange(caret, caret);
     setSelection({ start: caret, end: caret });
   }, [draft, input]);
-  (0, import_react31.useEffect)(() => {
+  (0, import_react37.useEffect)(() => {
     if (disabled) setPlusOpen(false);
   }, [disabled]);
   const choose = (entry, range = slashRange, action) => {
@@ -12944,7 +16444,7 @@ function useComposerCommands({ input, draft, onDraft, onNativeChoice, entries, a
     "drill.aria": t("mention.drillAria")
   })[key] ?? key;
   return {
-    dropdown: open && /* @__PURE__ */ (0, import_jsx_runtime36.jsx)("div", { className: InputBar_default.overlayAnchor, "data-composer-overlay": true, children: /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(
+    dropdown: open && /* @__PURE__ */ (0, import_jsx_runtime42.jsx)("div", { className: InputBar_default.overlayAnchor, "data-composer-overlay": true, children: /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(
       MenuView,
       {
         menu,
@@ -12964,7 +16464,7 @@ function useComposerCommands({ input, draft, onDraft, onNativeChoice, entries, a
         onDismiss: close
       }
     ) }),
-    plus: (addItems.length > 0 || entries.length > 0) && /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(import_dsh_client_ui_primitives31.Tooltip, { label: t("plus.title"), side: "top", delayMs: 500, portal: true, children: /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(
+    plus: (addItems.length > 0 || entries.length > 0) && /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(import_dsh_client_ui_primitives37.Tooltip, { label: t("plus.title"), side: "top", delayMs: 500, portal: true, children: /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(
       "button",
       {
         type: "button",
@@ -12975,12 +16475,12 @@ function useComposerCommands({ input, draft, onDraft, onNativeChoice, entries, a
         disabled,
         onMouseDown: (event2) => event2.preventDefault(),
         onClick: (event2) => {
-          if (!event2.detail || !(0, import_dsh_client_ui_primitives31.isMobileDevice)()) refocus();
+          if (!event2.detail || !(0, import_dsh_client_ui_primitives37.isMobileDevice)()) refocus();
           if (plusOpen) return close();
           setSelectedId(null);
           setPlusOpen(true);
         },
-        children: /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(import_dsh_client_ui_primitives31.IconPlusOutlineMedium, { size: 14 })
+        children: /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(import_dsh_client_ui_primitives37.IconPlusOutlineMedium, { size: 14 })
       }
     ) }),
     stageText(text) {
@@ -13028,8 +16528,8 @@ function useComposerCommands({ input, draft, onDraft, onNativeChoice, entries, a
 }
 
 // ReviewCommand.jsx
-var import_react32 = require("react");
-var import_dsh_client_ui_primitives32 = require("@deepseek-ai/dsh-client-ui-primitives");
+var import_react38 = require("react");
+var import_dsh_client_ui_primitives38 = require("@deepseek-ai/dsh-client-ui-primitives");
 
 // review-command.mjs
 function codexPromptCommand(text) {
@@ -13044,7 +16544,7 @@ function reviewDraft(target, value) {
 }
 
 // ReviewCommand.jsx
-var import_jsx_runtime37 = require("react/jsx-runtime");
+var import_jsx_runtime43 = require("react/jsx-runtime");
 var targets = [
   ["uncommitted", "/review uncommitted"],
   ["base", "/review base <branch>"],
@@ -13052,12 +16552,12 @@ var targets = [
   ["custom", "/review custom <instructions>"]
 ];
 function ReviewCommand({ replaceDraft, close, stage, t }) {
-  const name = (0, import_react32.useId)();
-  const [target, setTarget] = (0, import_react32.useState)(null);
-  const [value, setValue] = (0, import_react32.useState)("");
+  const name = (0, import_react38.useId)();
+  const [target, setTarget] = (0, import_react38.useState)(null);
+  const [value, setValue] = (0, import_react38.useState)("");
   const command = reviewDraft(target, value);
-  return /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)(
-    import_dsh_client_ui_primitives32.Modal,
+  return /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(
+    import_dsh_client_ui_primitives38.Modal,
     {
       open: true,
       title: t("composer.reviewTitle"),
@@ -13066,15 +16566,15 @@ function ReviewCommand({ replaceDraft, close, stage, t }) {
       onClose: close,
       className: "dchat-command-dialog",
       contentClassName: "dchat-command-dialog-content",
-      footer: /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)(import_jsx_runtime37.Fragment, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(import_dsh_client_ui_primitives32.Button, { variant: "outline", onClick: close, children: t("cancel") }),
-        /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(import_dsh_client_ui_primitives32.Button, { variant: "primary", disabled: !command, onClick: () => {
+      footer: /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(import_jsx_runtime43.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives38.Button, { variant: "outline", onClick: close, children: t("cancel") }),
+        /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives38.Button, { variant: "primary", disabled: !command, onClick: () => {
           if (command) stage(command);
         }, children: t("composer.stageCommand") })
       ] }),
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("div", { className: "dchat-review-targets", role: "radiogroup", "aria-label": t("composer.reviewTarget"), children: targets.map(([key, syntax], index2) => /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)("label", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("div", { className: "dchat-review-targets", role: "radiogroup", "aria-label": t("composer.reviewTarget"), children: targets.map(([key, syntax], index2) => /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("label", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
             "input",
             {
               name,
@@ -13087,25 +16587,25 @@ function ReviewCommand({ replaceDraft, close, stage, t }) {
               }
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)("span", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("span", { children: [
             t(`composer.review.${key}`),
-            /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("code", { children: syntax })
+            /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("code", { children: syntax })
           ] })
         ] }, key)) }),
-        target && target !== "uncommitted" && /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)("label", { className: "dchat-review-argument", children: [
+        target && target !== "uncommitted" && /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("label", { className: "dchat-review-argument", children: [
           t(`composer.reviewValue.${target}`),
-          target === "custom" ? /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("textarea", { rows: 3, value, onChange: (event2) => setValue(event2.currentTarget.value) }) : /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("input", { value, onChange: (event2) => setValue(event2.currentTarget.value), autoComplete: "off", spellCheck: false })
+          target === "custom" ? /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("textarea", { rows: 3, value, onChange: (event2) => setValue(event2.currentTarget.value) }) : /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("input", { value, onChange: (event2) => setValue(event2.currentTarget.value), autoComplete: "off", spellCheck: false })
         ] }),
-        replaceDraft && /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("p", { className: "dchat-command-replace-note", children: t("composer.replacesDraft") })
+        replaceDraft && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("p", { className: "dchat-command-replace-note", children: t("composer.replacesDraft") })
       ]
     }
   );
 }
 
 // SessionPet.jsx
-var import_react33 = require("react");
-var import_dsh_client_ui_primitives33 = require("@deepseek-ai/dsh-client-ui-primitives");
-var import_jsx_runtime38 = require("react/jsx-runtime");
+var import_react39 = require("react");
+var import_dsh_client_ui_primitives39 = require("@deepseek-ai/dsh-client-ui-primitives");
+var import_jsx_runtime44 = require("react/jsx-runtime");
 var PET_POS_KEY = "dsh-direct-chat.pet-pos";
 var emptyNative = { byId: {}, ids: [] };
 var emptyNativeStore = { getSnapshot: () => emptyNative, subscribe: () => () => {
@@ -13133,26 +16633,26 @@ function clampPos(x, y) {
   };
 }
 function PetSprite({ mood }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)("svg", { className: "dchat-pet-svg", width: "30", height: "30", viewBox: "0 0 32 32", fill: "none", "aria-hidden": "true", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("rect", { x: "4", y: "7", width: "24", height: "19", rx: "9", fill: "currentColor", fillOpacity: "0.12", stroke: "currentColor", strokeWidth: "1.6" }),
-    /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("path", { d: "M11 7.5C11 5.3 12.8 4 16 4C19.2 4 21 5.3 21 7.5", stroke: "currentColor", strokeWidth: "1.5", strokeLinecap: "round" }),
-    mood === "idle" ? /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(import_jsx_runtime38.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("path", { d: "M10.5 16.5C11.3 17.3 12.7 17.3 13.5 16.5", stroke: "currentColor", strokeWidth: "1.6", strokeLinecap: "round" }),
-      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("path", { d: "M18.5 16.5C19.3 17.3 20.7 17.3 21.5 16.5", stroke: "currentColor", strokeWidth: "1.6", strokeLinecap: "round" }),
-      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("path", { d: "M14.5 20.5H17.5", stroke: "currentColor", strokeWidth: "1.4", strokeLinecap: "round" })
-    ] }) : mood === "running" ? /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(import_jsx_runtime38.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("circle", { cx: "12", cy: "16", r: "1.7", fill: "currentColor" }),
-      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("circle", { cx: "20", cy: "16", r: "1.7", fill: "currentColor" }),
-      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("path", { d: "M13.5 20.2C14.5 21.4 17.5 21.4 18.5 20.2", stroke: "currentColor", strokeWidth: "1.5", strokeLinecap: "round" }),
-      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("circle", { className: "dchat-pet-spark", cx: "26.5", cy: "6.5", r: "2", fill: "currentColor" })
-    ] }) : mood === "attention" ? /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(import_jsx_runtime38.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("circle", { cx: "12", cy: "16", r: "1.8", fill: "currentColor" }),
-      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("circle", { cx: "20", cy: "16", r: "1.8", fill: "currentColor" }),
-      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("circle", { cx: "16", cy: "20.5", r: "1.5", stroke: "currentColor", strokeWidth: "1.4" })
-    ] }) : /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(import_jsx_runtime38.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("path", { d: "M10.5 16.5L12 15L13.5 16.5", stroke: "currentColor", strokeWidth: "1.6", strokeLinecap: "round", strokeLinejoin: "round" }),
-      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("path", { d: "M18.5 16.5L20 15L21.5 16.5", stroke: "currentColor", strokeWidth: "1.6", strokeLinecap: "round", strokeLinejoin: "round" }),
-      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("path", { d: "M13 20C14.3 21.7 17.7 21.7 19 20", stroke: "currentColor", strokeWidth: "1.6", strokeLinecap: "round" })
+  return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("svg", { className: "dchat-pet-svg", width: "30", height: "30", viewBox: "0 0 32 32", fill: "none", "aria-hidden": "true", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("rect", { x: "4", y: "7", width: "24", height: "19", rx: "9", fill: "currentColor", fillOpacity: "0.12", stroke: "currentColor", strokeWidth: "1.6" }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M11 7.5C11 5.3 12.8 4 16 4C19.2 4 21 5.3 21 7.5", stroke: "currentColor", strokeWidth: "1.5", strokeLinecap: "round" }),
+    mood === "idle" ? /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(import_jsx_runtime44.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M10.5 16.5C11.3 17.3 12.7 17.3 13.5 16.5", stroke: "currentColor", strokeWidth: "1.6", strokeLinecap: "round" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M18.5 16.5C19.3 17.3 20.7 17.3 21.5 16.5", stroke: "currentColor", strokeWidth: "1.6", strokeLinecap: "round" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M14.5 20.5H17.5", stroke: "currentColor", strokeWidth: "1.4", strokeLinecap: "round" })
+    ] }) : mood === "running" ? /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(import_jsx_runtime44.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "12", cy: "16", r: "1.7", fill: "currentColor" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "20", cy: "16", r: "1.7", fill: "currentColor" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M13.5 20.2C14.5 21.4 17.5 21.4 18.5 20.2", stroke: "currentColor", strokeWidth: "1.5", strokeLinecap: "round" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { className: "dchat-pet-spark", cx: "26.5", cy: "6.5", r: "2", fill: "currentColor" })
+    ] }) : mood === "attention" ? /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(import_jsx_runtime44.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "12", cy: "16", r: "1.8", fill: "currentColor" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "20", cy: "16", r: "1.8", fill: "currentColor" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "16", cy: "20.5", r: "1.5", stroke: "currentColor", strokeWidth: "1.4" })
+    ] }) : /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(import_jsx_runtime44.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M10.5 16.5L12 15L13.5 16.5", stroke: "currentColor", strokeWidth: "1.6", strokeLinecap: "round", strokeLinejoin: "round" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M18.5 16.5L20 15L21.5 16.5", stroke: "currentColor", strokeWidth: "1.6", strokeLinecap: "round", strokeLinejoin: "round" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M13 20C14.3 21.7 17.7 21.7 19 20", stroke: "currentColor", strokeWidth: "1.6", strokeLinecap: "round" })
     ] })
   ] });
 }
@@ -13167,26 +16667,26 @@ function SessionPet({
   openNative,
   t
 }) {
-  const directSnap = (0, import_react33.useSyncExternalStore)(statusStore.subscribe, statusStore.getSnapshot);
-  const nativeSnap = (0, import_react33.useSyncExternalStore)(nativeSessions.subscribe, nativeSessions.getSnapshot);
+  const directSnap = (0, import_react39.useSyncExternalStore)(statusStore.subscribe, statusStore.getSnapshot);
+  const nativeSnap = (0, import_react39.useSyncExternalStore)(nativeSessions.subscribe, nativeSessions.getSnapshot);
   const nativeStatus = useSessionStatus((snapshot) => snapshot);
   const archivedNativeIds = useWorkspaces((snapshot) => snapshot?.archivedSessionIds);
-  const { engines } = (0, import_react33.useSyncExternalStore)(engineSource.subscribe, engineSource.getSnapshot);
-  const [open, setOpen] = (0, import_react33.useState)(false);
-  const [approvingKey, setApprovingKey] = (0, import_react33.useState)(null);
-  const [pos, setPos] = (0, import_react33.useState)(() => readSavedPos());
-  const dragRef = (0, import_react33.useRef)(null);
-  const rootRef = (0, import_react33.useRef)(null);
-  const panelRef = (0, import_react33.useRef)(null);
-  const closeRef = (0, import_react33.useRef)(null);
+  const { engines } = (0, import_react39.useSyncExternalStore)(engineSource.subscribe, engineSource.getSnapshot);
+  const [open, setOpen] = (0, import_react39.useState)(false);
+  const [approvingKey, setApprovingKey] = (0, import_react39.useState)(null);
+  const [pos, setPos] = (0, import_react39.useState)(() => readSavedPos());
+  const dragRef = (0, import_react39.useRef)(null);
+  const rootRef = (0, import_react39.useRef)(null);
+  const panelRef = (0, import_react39.useRef)(null);
+  const closeRef = (0, import_react39.useRef)(null);
   const isHeader = variant === "header";
   const closePanel = () => setOpen(false);
-  (0, import_react33.useEffect)(() => {
+  (0, import_react39.useEffect)(() => {
     const onResize = () => setPos((prev) => prev ? clampPos(prev.x, prev.y) : prev);
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
-  (0, import_react33.useEffect)(() => {
+  (0, import_react39.useEffect)(() => {
     if (!open || isHeader) return;
     const onPointerDown2 = (event2) => {
       const inRoot = rootRef.current && rootRef.current.contains(event2.target);
@@ -13196,7 +16696,7 @@ function SessionPet({
     window.addEventListener("pointerdown", onPointerDown2);
     return () => window.removeEventListener("pointerdown", onPointerDown2);
   }, [open, isHeader]);
-  (0, import_react33.useEffect)(() => {
+  (0, import_react39.useEffect)(() => {
     if (!open || !isHeader) return;
     const viewport = window.matchMedia(mobileViewport);
     const onChange = (event2) => {
@@ -13205,7 +16705,7 @@ function SessionPet({
     viewport.addEventListener("change", onChange);
     return () => viewport.removeEventListener("change", onChange);
   }, [open, isHeader]);
-  const tasks = (0, import_react33.useMemo)(() => {
+  const tasks = (0, import_react39.useMemo)(() => {
     const items = [];
     for (const item of directSnap.list ?? []) {
       items.push({
@@ -13240,7 +16740,7 @@ function SessionPet({
     const rank = { attention: 0, running: 1, done: 2 };
     return items.sort((a, b) => rank[a.state] - rank[b.state] || b.updatedAt - a.updatedAt);
   }, [directSnap.list, nativeSnap, nativeStatus, archivedNativeIds, engines]);
-  const counts = (0, import_react33.useMemo)(() => {
+  const counts = (0, import_react39.useMemo)(() => {
     let running = 0;
     let attention = 0;
     let done = 0;
@@ -13299,15 +16799,15 @@ function SessionPet({
   const style = variant === "floating" && pos ? { left: `${pos.x}px`, top: `${pos.y}px`, right: "auto", bottom: "auto" } : void 0;
   const hasDirectCompletion = tasks.some((item) => item.kind === "direct" && item.state === "done");
   const hasNativeCompletion = tasks.some((item) => item.kind === "native" && item.state === "done");
-  const panel = /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(import_jsx_runtime38.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)("header", { className: "dchat-pet-panel-header", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("h2", { className: "dchat-pet-panel-title", children: t("pet.title") }),
-      /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)("div", { className: "dchat-pet-panel-actions", children: [
-        hasDirectCompletion && /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("button", { type: "button", className: "dchat-pet-ack", onClick: () => {
+  const panel = /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(import_jsx_runtime44.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("header", { className: "dchat-pet-panel-header", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("h2", { className: "dchat-pet-panel-title", children: t("pet.title") }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "dchat-pet-panel-actions", children: [
+        hasDirectCompletion && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { type: "button", className: "dchat-pet-ack", onClick: () => {
           if (isHeader) closeRef.current?.focus();
           void statusStore.ack();
         }, children: t(hasNativeCompletion ? "pet.clearDirectDone" : "pet.clearDone") }),
-        /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
           "button",
           {
             type: "button",
@@ -13316,16 +16816,16 @@ function SessionPet({
             "aria-label": t("close"),
             onClick: closePanel,
             "data-modal-autofocus": isHeader ? "" : void 0,
-            children: /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(import_dsh_client_ui_primitives33.IconCloseOutlineRegular, { size: isHeader ? 20 : 16 })
+            children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(import_dsh_client_ui_primitives39.IconCloseOutlineRegular, { size: isHeader ? 20 : 16 })
           }
         )
       ] })
     ] }),
-    tasks.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)("div", { className: "dchat-pet-empty", children: [
-      isHeader && /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(PetSprite, { mood: "idle" }),
-      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("p", { children: t("pet.empty") })
-    ] }) : /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("ul", { className: "dchat-pet-list", children: tasks.map((item) => /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)("li", { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)("button", { type: "button", className: "dchat-pet-item", "data-live-state": item.state, onClick: () => {
+    tasks.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "dchat-pet-empty", children: [
+      isHeader && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(PetSprite, { mood: "idle" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("p", { children: t("pet.empty") })
+    ] }) : /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("ul", { className: "dchat-pet-list", children: tasks.map((item) => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("li", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("button", { type: "button", className: "dchat-pet-item", "data-live-state": item.state, onClick: () => {
         if (item.kind === "direct") {
           openDirect(item.id);
           if (item.state === "done") void statusStore.ack(item.id);
@@ -13334,18 +16834,18 @@ function SessionPet({
         }
         closePanel();
       }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("span", { className: "dchat-pet-item-logo", "aria-hidden": "true", children: item.kind === "direct" ? /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(EngineLogo, { engine: item.engine, label: item.source, size: 16 }) : /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(import_dsh_client_ui_primitives33.FishLogo, { size: 16 }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)("span", { className: "dchat-pet-item-body", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("span", { className: "dchat-pet-item-title", children: item.title }),
-          /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)("span", { className: "dchat-pet-item-meta", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "dchat-pet-item-logo", "aria-hidden": "true", children: item.kind === "direct" ? /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(EngineLogo, { engine: item.engine, label: item.source, size: 16 }) : /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(import_dsh_client_ui_primitives39.FishLogo, { size: 16 }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("span", { className: "dchat-pet-item-body", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "dchat-pet-item-title", children: item.title }),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("span", { className: "dchat-pet-item-meta", children: [
             item.source,
             !isHeader && ` \xB7 ${t(`sidebar.status.${item.state}`)}`
           ] })
         ] }),
-        isHeader && /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(import_jsx_runtime38.Fragment, { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)("span", { className: "dchat-pet-item-status", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
-              import_dsh_client_ui_primitives33.StateDot,
+        isHeader && /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(import_jsx_runtime44.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("span", { className: "dchat-pet-item-status", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+              import_dsh_client_ui_primitives39.StateDot,
               {
                 size: item.state === "running" ? 12 : 7,
                 state: item.state === "running" ? "ongoing" : item.state === "attention" ? "warning" : "done"
@@ -13353,17 +16853,17 @@ function SessionPet({
             ),
             t(item.kind === "native" && item.state === "attention" ? "pet.nativeAttention" : `sidebar.status.${item.state}`)
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(import_dsh_client_ui_primitives33.IconChevronRightOutlineRegular, { className: "dchat-pet-item-chevron", size: 16, "aria-hidden": "true" })
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(import_dsh_client_ui_primitives39.IconChevronRightOutlineRegular, { className: "dchat-pet-item-chevron", size: 16, "aria-hidden": "true" })
         ] })
       ] }),
-      item.kind === "direct" && item.state === "attention" && item.permissions.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("div", { className: "dchat-pet-approval", onClick: (event2) => event2.stopPropagation(), children: item.permissions.map((perm) => {
+      item.kind === "direct" && item.state === "attention" && item.permissions.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "dchat-pet-approval", onClick: (event2) => event2.stopPropagation(), children: item.permissions.map((perm) => {
         const key = `${item.id}:${perm.id}`;
         const busy = approvingKey === key;
-        return /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)("div", { className: "dchat-pet-approval-card", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("div", { className: "dchat-pet-approval-title", children: perm.title || t("permission.tool") }),
-          perm.detail && /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("div", { className: "dchat-pet-approval-detail", title: String(perm.detail), children: String(perm.detail) }),
-          /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("div", { className: "dchat-pet-approval-actions", children: perm.options.map((option) => /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
-            import_dsh_client_ui_primitives33.Button,
+        return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "dchat-pet-approval-card", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "dchat-pet-approval-title", children: perm.title || t("permission.tool") }),
+          perm.detail && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "dchat-pet-approval-detail", title: String(perm.detail), children: String(perm.detail) }),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "dchat-pet-approval-actions", children: perm.options.map((option) => /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+            import_dsh_client_ui_primitives39.Button,
             {
               size: "sm",
               variant: option.kind?.startsWith("allow") ? "primary" : "outline",
@@ -13387,9 +16887,9 @@ function SessionPet({
       }) })
     ] }, item.key)) })
   ] });
-  return /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)("div", { ref: rootRef, className: isHeader ? "dchat-pet-header-slot" : "dchat-pet-root", "data-mood": mood, style, children: [
-    isHeader ? /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
-      import_dsh_client_ui_primitives33.Modal,
+  return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { ref: rootRef, className: isHeader ? "dchat-pet-header-slot" : "dchat-pet-root", "data-mood": mood, style, children: [
+    isHeader ? /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+      import_dsh_client_ui_primitives39.Modal,
       {
         open,
         onClose: closePanel,
@@ -13399,7 +16899,7 @@ function SessionPet({
         className: "dchat-pet-panel-fullscreen",
         children: panel
       }
-    ) : open && /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+    ) : open && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
       "div",
       {
         ref: panelRef,
@@ -13411,7 +16911,7 @@ function SessionPet({
         children: panel
       }
     ),
-    isHeader ? /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
+    isHeader ? /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
       "button",
       {
         type: "button",
@@ -13425,11 +16925,11 @@ function SessionPet({
           setOpen(true);
         },
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(PetSprite, { mood }),
-          activeCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("span", { className: "dchat-pet-badge", "data-mood": mood, children: activeCount > 99 ? "99+" : activeCount })
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(PetSprite, { mood }),
+          activeCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "dchat-pet-badge", "data-mood": mood, children: activeCount > 99 ? "99+" : activeCount })
         ]
       }
-    ) : /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
+    ) : /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
       "button",
       {
         type: "button",
@@ -13441,8 +16941,8 @@ function SessionPet({
         onPointerMove,
         onPointerUp,
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(PetSprite, { mood }),
-          activeCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("span", { className: "dchat-pet-badge", "data-mood": mood, children: activeCount })
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(PetSprite, { mood }),
+          activeCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "dchat-pet-badge", "data-mood": mood, children: activeCount })
         ]
       }
     )
@@ -13450,14 +16950,14 @@ function SessionPet({
 }
 
 // RunningJobs.jsx
-var import_react36 = require("react");
+var import_react42 = require("react");
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-jobs/src/client/JobListAction.tsx
-var import_react34 = require("react");
+// ../node_modules/@deepseek-ai/dsh-client-ui-jobs/src/client/JobListAction.tsx
+var import_react40 = require("react");
 var import_react_dom6 = require("react-dom");
-var import_dsh_client_ui_primitives34 = require("@deepseek-ai/dsh-client-ui-primitives");
+var import_dsh_client_ui_primitives40 = require("@deepseek-ai/dsh-client-ui-primitives");
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-jobs/src/client/JobListAction.module.css
+// ../node_modules/@deepseek-ai/dsh-client-ui-jobs/src/client/JobListAction.module.css
 var JobListAction_default = {
   trigger: "JobListAction_trigger",
   activitySlot: "JobListAction_activitySlot",
@@ -13497,8 +16997,8 @@ var JobListAction_default = {
   noticeError: "JobListAction_noticeError"
 };
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-jobs/src/client/JobListAction.tsx
-var import_jsx_runtime39 = require("react/jsx-runtime");
+// ../node_modules/@deepseek-ai/dsh-client-ui-jobs/src/client/JobListAction.tsx
+var import_jsx_runtime45 = require("react/jsx-runtime");
 var NO_JOBS = [];
 var FOCUSABLE = 'button:not(:disabled), a[href], [tabindex]:not([tabindex="-1"])';
 var KILL_ARM_MS = 3e3;
@@ -13512,7 +17012,7 @@ function isObservable(job) {
 function jobDetail(job) {
   return job.progress ?? job.detail;
 }
-function assertNever3(value) {
+function assertNever4(value) {
   throw new Error(`unhandled job status: ${JSON.stringify(value)}`);
 }
 function dotState(status) {
@@ -13529,7 +17029,7 @@ function dotState(status) {
       return "error";
     /* v8 ignore next -- closed wire status union */
     default:
-      return assertNever3(status);
+      return assertNever4(status);
   }
 }
 function statusLabel2(status, t) {
@@ -13546,7 +17046,7 @@ function statusLabel2(status, t) {
       return t("status.failed");
     /* v8 ignore next -- closed wire status union */
     default:
-      return assertNever3(status);
+      return assertNever4(status);
   }
 }
 function formatDuration2(elapsedMs, t) {
@@ -13598,10 +17098,10 @@ function JobItem({ job, view, expanded, now, onToggle, kill, t }) {
   const status = statusLabel2(job.status, t);
   const detail = jobDetail(job);
   const observable = isObservable(job);
-  const labels = (0, import_react34.useMemo)(() => terminalLabels(t), [t]);
+  const labels = (0, import_react40.useMemo)(() => terminalLabels(t), [t]);
   const elapsed = live ? now - job.startedAt : (job.finishedAt ?? job.startedAt) - job.startedAt;
   const duration = formatDuration2(elapsed, t);
-  const durationCell = /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
+  const durationCell = /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
     "span",
     {
       className: JobListAction_default.duration,
@@ -13609,29 +17109,29 @@ function JobItem({ job, view, expanded, now, onToggle, kill, t }) {
       children: duration
     }
   );
-  const body = live ? /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(import_jsx_runtime39.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(import_dsh_client_ui_primitives34.StateDot, { state: dotState(job.status), className: JobListAction_default.rowDot }),
-    /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("span", { className: JobListAction_default.main, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("span", { className: JobListAction_default.primary, children: /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("span", { className: JobListAction_default.label, title: job.label, children: job.label }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("span", { className: JobListAction_default.secondary, title: detail ?? status, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("span", { className: JobListAction_default.kind, children: job.kind }),
-        detail !== void 0 ? /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("span", { className: JobListAction_default.status, children: detail }) : null,
+  const body = live ? /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(import_jsx_runtime45.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(import_dsh_client_ui_primitives40.StateDot, { state: dotState(job.status), className: JobListAction_default.rowDot }),
+    /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("span", { className: JobListAction_default.main, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: JobListAction_default.primary, children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: JobListAction_default.label, title: job.label, children: job.label }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("span", { className: JobListAction_default.secondary, title: detail ?? status, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: JobListAction_default.kind, children: job.kind }),
+        detail !== void 0 ? /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: JobListAction_default.status, children: detail }) : null,
         durationCell
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("span", { className: JobListAction_default.chevronBox, children: /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(import_dsh_client_ui_primitives34.IconChevronDownOutlineRegular, { size: 12, className: expanded ? `${JobListAction_default.chevron} ${JobListAction_default.chevronOpen}` : JobListAction_default.chevron }) })
-  ] }) : /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(import_jsx_runtime39.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(import_dsh_client_ui_primitives34.StateDot, { state: dotState(job.status), className: JobListAction_default.rowDot }),
-    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("span", { className: JobListAction_default.kind, children: job.kind }),
-    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("span", { className: JobListAction_default.label, title: job.label, children: job.label }),
-    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("span", { className: JobListAction_default.status, title: detail ?? status, children: detail ?? status }),
+    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: JobListAction_default.chevronBox, children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(import_dsh_client_ui_primitives40.IconChevronDownOutlineRegular, { size: 12, className: expanded ? `${JobListAction_default.chevron} ${JobListAction_default.chevronOpen}` : JobListAction_default.chevron }) })
+  ] }) : /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(import_jsx_runtime45.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(import_dsh_client_ui_primitives40.StateDot, { state: dotState(job.status), className: JobListAction_default.rowDot }),
+    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: JobListAction_default.kind, children: job.kind }),
+    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: JobListAction_default.label, title: job.label, children: job.label }),
+    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: JobListAction_default.status, title: detail ?? status, children: detail ?? status }),
     durationCell,
-    observable ? /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("span", { className: JobListAction_default.chevronBox, children: /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(import_dsh_client_ui_primitives34.IconChevronDownOutlineRegular, { size: 12, className: expanded ? `${JobListAction_default.chevron} ${JobListAction_default.chevronOpen}` : JobListAction_default.chevron }) }) : null
+    observable ? /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: JobListAction_default.chevronBox, children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(import_dsh_client_ui_primitives40.IconChevronDownOutlineRegular, { size: 12, className: expanded ? `${JobListAction_default.chevron} ${JobListAction_default.chevronOpen}` : JobListAction_default.chevron }) }) : null
   ] });
   const killTitle = kill === void 0 ? void 0 : kill.state === "armed" ? t("kill.confirm") : kill.state === "failed" ? t("kill.failed") : t("kill.stop", { label: job.label });
-  return /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("li", { className: JobListAction_default.item, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("div", { className: live ? `${JobListAction_default.rowLine} ${JobListAction_default.rowLineLive}` : JobListAction_default.rowLine, children: [
-      observable ? /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("li", { className: JobListAction_default.item, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: live ? `${JobListAction_default.rowLine} ${JobListAction_default.rowLineLive}` : JobListAction_default.rowLine, children: [
+      observable ? /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
         "button",
         {
           type: "button",
@@ -13641,8 +17141,8 @@ function JobItem({ job, view, expanded, now, onToggle, kill, t }) {
           onClick: onToggle,
           children: body
         }
-      ) : /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("span", { className: `${JobListAction_default.row} ${JobListAction_default.rowSettled} ${JobListAction_default.rowStatic}`, children: body }),
-      kill !== void 0 ? /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(
+      ) : /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: `${JobListAction_default.row} ${JobListAction_default.rowSettled} ${JobListAction_default.rowStatic}`, children: body }),
+      kill !== void 0 ? /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
         "button",
         {
           type: "button",
@@ -13653,17 +17153,17 @@ function JobItem({ job, view, expanded, now, onToggle, kill, t }) {
           title: killTitle,
           onClick: kill.onPress,
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(import_dsh_client_ui_primitives34.IconStopFillRegular, { size: 10 }),
-            kill.state === "armed" ? /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("span", { className: JobListAction_default.stopLabel, children: t("kill.confirmAction") }) : null
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(import_dsh_client_ui_primitives40.IconStopFillRegular, { size: 10 }),
+            kill.state === "armed" ? /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: JobListAction_default.stopLabel, children: t("kill.confirmAction") }) : null
           ]
         }
       ) : null
     ] }),
-    expanded && view !== void 0 ? /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("div", { className: JobListAction_default.panel, children: [
-      view.gapBefore ? /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("div", { className: JobListAction_default.notice, children: t("output.gap") }) : null,
-      view.error !== void 0 ? /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("div", { className: `${JobListAction_default.notice} ${JobListAction_default.noticeError}`, children: t("output.error", { error: view.error }) }) : null,
-      /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
-        import_dsh_client_ui_primitives34.TerminalBlock,
+    expanded && view !== void 0 ? /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: JobListAction_default.panel, children: [
+      view.gapBefore ? /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: JobListAction_default.notice, children: t("output.gap") }) : null,
+      view.error !== void 0 ? /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: `${JobListAction_default.notice} ${JobListAction_default.noticeError}`, children: t("output.error", { error: view.error }) }) : null,
+      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+        import_dsh_client_ui_primitives40.TerminalBlock,
         {
           command: job.label,
           output: view.text,
@@ -13678,27 +17178,27 @@ function JobItem({ job, view, expanded, now, onToggle, kill, t }) {
   ] });
 }
 function JobListAction({ sessionId, useJobs, watchRows, observe, killJob, t }) {
-  const activityId = (0, import_react34.useId)();
+  const activityId = (0, import_react40.useId)();
   const jobs = useJobs((state) => state.rows[sessionId]) ?? NO_JOBS;
   const observedViews = useJobs((state) => state.observed);
-  const [menuState, setMenuState] = (0, import_react34.useState)(
+  const [menuState, setMenuState] = (0, import_react40.useState)(
     { sessionId, mode: "closed" }
   );
-  const hoverOpenTimer = (0, import_react34.useRef)(void 0);
-  const hoverCloseTimer = (0, import_react34.useRef)(void 0);
+  const hoverOpenTimer = (0, import_react40.useRef)(void 0);
+  const hoverCloseTimer = (0, import_react40.useRef)(void 0);
   if (menuState.sessionId !== sessionId) setMenuState({ sessionId, mode: "closed" });
-  const [expandedKey, setExpandedKey] = (0, import_react34.useState)(void 0);
-  const [now, setNow] = (0, import_react34.useState)(() => Date.now());
-  const [settledOpen, setSettledOpen] = (0, import_react34.useState)(void 0);
-  const [clearedKeys, setClearedKeys] = (0, import_react34.useState)(() => /* @__PURE__ */ new Set());
-  const [killPhase, setKillPhase] = (0, import_react34.useState)(void 0);
-  const rootRef = (0, import_react34.useRef)(null);
-  const triggerRef = (0, import_react34.useRef)(null);
-  const countRef = (0, import_react34.useRef)(null);
-  const menuRef = (0, import_react34.useRef)(null);
-  const rows = (0, import_react34.useMemo)(() => ordered(jobs), [jobs]);
-  const liveRows = (0, import_react34.useMemo)(() => rows.filter(isLive), [rows]);
-  const settledRows = (0, import_react34.useMemo)(
+  const [expandedKey, setExpandedKey] = (0, import_react40.useState)(void 0);
+  const [now, setNow] = (0, import_react40.useState)(() => Date.now());
+  const [settledOpen, setSettledOpen] = (0, import_react40.useState)(void 0);
+  const [clearedKeys, setClearedKeys] = (0, import_react40.useState)(() => /* @__PURE__ */ new Set());
+  const [killPhase, setKillPhase] = (0, import_react40.useState)(void 0);
+  const rootRef = (0, import_react40.useRef)(null);
+  const triggerRef = (0, import_react40.useRef)(null);
+  const countRef = (0, import_react40.useRef)(null);
+  const menuRef = (0, import_react40.useRef)(null);
+  const rows = (0, import_react40.useMemo)(() => ordered(jobs), [jobs]);
+  const liveRows = (0, import_react40.useMemo)(() => rows.filter(isLive), [rows]);
+  const settledRows = (0, import_react40.useMemo)(
     () => rows.filter((job) => !isLive(job) && !clearedKeys.has(String(job.id))),
     [rows, clearedKeys]
   );
@@ -13706,13 +17206,13 @@ function JobListAction({ sessionId, useJobs, watchRows, observe, killJob, t }) {
   const visibleCount = liveRows.length + settledRows.length;
   const hasJobs = visibleCount > 0;
   const open = hasJobs && menuState.sessionId === sessionId && menuState.mode !== "closed";
-  const cancelHover = (0, import_react34.useCallback)(() => {
+  const cancelHover = (0, import_react40.useCallback)(() => {
     clearTimeout(hoverOpenTimer.current);
     clearTimeout(hoverCloseTimer.current);
     hoverOpenTimer.current = void 0;
     hoverCloseTimer.current = void 0;
   }, []);
-  const changeOpen = (0, import_react34.useCallback)((next) => {
+  const changeOpen = (0, import_react40.useCallback)((next) => {
     cancelHover();
     if (next) setNow(Date.now());
     setMenuState({ sessionId, mode: next ? "pinned" : "closed" });
@@ -13738,10 +17238,10 @@ function JobListAction({ sessionId, useJobs, watchRows, observe, killJob, t }) {
       setMenuState({ sessionId, mode: "closed" });
     }, 120);
   };
-  (0, import_react34.useEffect)(() => cancelHover, [cancelHover, sessionId, hasJobs]);
-  const anchorName = `--dsh-jobs-${(0, import_react34.useId)().replaceAll(":", "")}`;
-  (0, import_dsh_client_ui_primitives34.useDismissOnOutsidePointer)(rootRef, open, changeOpen, menuRef);
-  (0, import_react34.useEffect)(() => {
+  (0, import_react40.useEffect)(() => cancelHover, [cancelHover, sessionId, hasJobs]);
+  const anchorName = `--dsh-jobs-${(0, import_react40.useId)().replaceAll(":", "")}`;
+  (0, import_dsh_client_ui_primitives40.useDismissOnOutsidePointer)(rootRef, open, changeOpen, menuRef);
+  (0, import_react40.useEffect)(() => {
     if (!open) return;
     const dismiss = (event2) => {
       if (event2.key !== "Escape" || event2.defaultPrevented) return;
@@ -13753,8 +17253,8 @@ function JobListAction({ sessionId, useJobs, watchRows, observe, killJob, t }) {
       document.removeEventListener("keydown", dismiss);
     };
   }, [open, changeOpen]);
-  (0, import_react34.useEffect)(() => watchRows(sessionId), [sessionId, watchRows]);
-  (0, import_react34.useEffect)(() => {
+  (0, import_react40.useEffect)(() => watchRows(sessionId), [sessionId, watchRows]);
+  (0, import_react40.useEffect)(() => {
     if (!open || liveRows.length === 0) return;
     setNow(Date.now());
     const timer = setInterval(() => {
@@ -13766,19 +17266,19 @@ function JobListAction({ sessionId, useJobs, watchRows, observe, killJob, t }) {
   }, [open, liveRows.length]);
   const expandedRow = open && expandedKey !== void 0 ? rows.find((job) => String(job.id) === expandedKey) : void 0;
   const activeJob = expandedRow !== void 0 && isObservable(expandedRow) ? expandedRow.id : void 0;
-  (0, import_react34.useEffect)(() => {
+  (0, import_react40.useEffect)(() => {
     if (activeJob === void 0) return;
     return observe(sessionId, activeJob);
   }, [sessionId, activeJob, observe]);
-  (0, import_react34.useEffect)(() => {
+  (0, import_react40.useEffect)(() => {
     if (!hasJobs) changeOpen(false);
   }, [hasJobs, changeOpen]);
-  (0, import_react34.useEffect)(() => {
+  (0, import_react40.useEffect)(() => {
     if (expandedKey !== void 0 && !rows.some((job) => String(job.id) === expandedKey)) {
       setExpandedKey(void 0);
     }
   }, [rows, expandedKey]);
-  (0, import_react34.useEffect)(() => {
+  (0, import_react40.useEffect)(() => {
     if (killPhase === void 0 || killPhase.state === "pending") return;
     const timer = setTimeout(
       () => {
@@ -13790,7 +17290,7 @@ function JobListAction({ sessionId, useJobs, watchRows, observe, killJob, t }) {
       clearTimeout(timer);
     };
   }, [killPhase]);
-  (0, import_react34.useEffect)(() => {
+  (0, import_react40.useEffect)(() => {
     if (killPhase !== void 0 && !rows.some((job) => String(job.id) === killPhase.key && job.status === "running")) {
       setKillPhase(void 0);
     }
@@ -13840,7 +17340,7 @@ function JobListAction({ sessionId, useJobs, watchRows, observe, killJob, t }) {
       trigger.focus();
     }
   };
-  const item = (job) => /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
+  const item = (job) => /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
     JobItem,
     {
       job,
@@ -13862,8 +17362,8 @@ function JobListAction({ sessionId, useJobs, watchRows, observe, killJob, t }) {
     },
     String(job.id)
   );
-  return /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("div", { ref: rootRef, style: { anchorName }, onKeyDown, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(import_dsh_client_ui_primitives34.Tooltip, { label: countLabel, disabled: open, delayMs: 500, portal: true, side: "bottom", children: /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { ref: rootRef, style: { anchorName }, onKeyDown, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(import_dsh_client_ui_primitives40.Tooltip, { label: countLabel, disabled: open, delayMs: 500, portal: true, side: "bottom", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
       "button",
       {
         ref: triggerRef,
@@ -13886,18 +17386,18 @@ function JobListAction({ sessionId, useJobs, watchRows, observe, killJob, t }) {
           });
         },
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("span", { className: JobListAction_default.activitySlot, "aria-hidden": true, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(import_dsh_client_ui_primitives34.IconLayersOutlineRegular, { size: 14, className: liveRows.length > 0 ? JobListAction_default.compactIcon : void 0 }),
-            liveRows.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(import_dsh_client_ui_primitives34.StateDot, { state: "ongoing", className: JobListAction_default.textModeActivity })
+          /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("span", { className: JobListAction_default.activitySlot, "aria-hidden": true, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(import_dsh_client_ui_primitives40.IconLayersOutlineRegular, { size: 14, className: liveRows.length > 0 ? JobListAction_default.compactIcon : void 0 }),
+            liveRows.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(import_dsh_client_ui_primitives40.StateDot, { state: "ongoing", className: JobListAction_default.textModeActivity })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("span", { ref: countRef, className: JobListAction_default.count, "data-job-count": true, children: countLabel })
+          /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { ref: countRef, className: JobListAction_default.count, "data-job-count": true, children: countLabel })
         ]
       }
     ) }),
-    liveRows.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("span", { id: activityId, hidden: true, children: t("section.live") }),
+    liveRows.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { id: activityId, hidden: true, children: t("section.live") }),
     open ? (0, import_react_dom6.createPortal)(
-      /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
-        import_dsh_client_ui_primitives34.MenuSurface,
+      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+        import_dsh_client_ui_primitives40.MenuSurface,
         {
           ref: menuRef,
           className: JobListAction_default.menu,
@@ -13910,11 +17410,11 @@ function JobListAction({ sessionId, useJobs, watchRows, observe, killJob, t }) {
           onFocusCapture: () => {
             changeOpen(true);
           },
-          children: /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("ul", { className: JobListAction_default.menuBody, "aria-label": t("list.aria"), children: [
-            liveRows.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("li", { className: JobListAction_default.sectionHeader, "aria-hidden": "true", children: t("section.live") }) : null,
+          children: /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("ul", { className: JobListAction_default.menuBody, "aria-label": t("list.aria"), children: [
+            liveRows.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("li", { className: JobListAction_default.sectionHeader, "aria-hidden": "true", children: t("section.live") }) : null,
             liveRows.map(item),
-            settledRows.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("li", { className: JobListAction_default.sectionHeader, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(
+            settledRows.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("li", { className: JobListAction_default.sectionHeader, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
                 "button",
                 {
                   type: "button",
@@ -13924,12 +17424,12 @@ function JobListAction({ sessionId, useJobs, watchRows, observe, killJob, t }) {
                     setSettledOpen(!settledExpanded);
                   },
                   children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(import_dsh_client_ui_primitives34.IconChevronDownOutlineRegular, { size: 12, className: settledExpanded ? `${JobListAction_default.sectionChevron} ${JobListAction_default.sectionChevronOpen}` : JobListAction_default.sectionChevron }),
+                    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(import_dsh_client_ui_primitives40.IconChevronDownOutlineRegular, { size: 12, className: settledExpanded ? `${JobListAction_default.sectionChevron} ${JobListAction_default.sectionChevronOpen}` : JobListAction_default.sectionChevron }),
                     t("section.settledCount", { count: settledRows.length })
                   ]
                 }
               ),
-              /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("button", { type: "button", className: JobListAction_default.sectionClear, onClick: clearSettled, children: t("section.clear") })
+              /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("button", { type: "button", className: JobListAction_default.sectionClear, onClick: clearSettled, children: t("section.clear") })
             ] }) : null,
             settledExpanded ? settledRows.map(item) : null
           ] })
@@ -13940,7 +17440,7 @@ function JobListAction({ sessionId, useJobs, watchRows, observe, killJob, t }) {
   ] });
 }
 
-// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-jobs/src/client/locales.ts
+// ../node_modules/@deepseek-ai/dsh-client-ui-jobs/src/client/locales.ts
 var zh3 = {
   "count.idle.one": "{count} \u4E2A\u540E\u53F0\u4EFB\u52A1",
   "count.idle.other": "{count} \u4E2A\u540E\u53F0\u4EFB\u52A1",
@@ -14023,23 +17523,23 @@ var en3 = {
 };
 
 // TranscriptActivity.jsx
-var import_react35 = require("react");
-var import_dsh_client_ui_primitives35 = require("@deepseek-ai/dsh-client-ui-primitives");
-var import_jsx_runtime40 = require("react/jsx-runtime");
+var import_react41 = require("react");
+var import_dsh_client_ui_primitives41 = require("@deepseek-ai/dsh-client-ui-primitives");
+var import_jsx_runtime46 = require("react/jsx-runtime");
 var toolIcons = {
-  read: import_dsh_client_ui_primitives35.IconBrowseOutlineRegular,
-  edit: import_dsh_client_ui_primitives35.IconEditOutlineRegular,
-  write: import_dsh_client_ui_primitives35.IconEditOutlineRegular,
-  delete: import_dsh_client_ui_primitives35.IconTrashOutlineRegular,
-  search: import_dsh_client_ui_primitives35.IconSearchOutlineRegular,
-  move: import_dsh_client_ui_primitives35.IconFolderOpenRegular,
-  fetch: import_dsh_client_ui_primitives35.IconGlobeOutlineRegular,
-  execute: import_dsh_client_ui_primitives35.IconApiOutlineRegular
+  read: import_dsh_client_ui_primitives41.IconBrowseOutlineRegular,
+  edit: import_dsh_client_ui_primitives41.IconEditOutlineRegular,
+  write: import_dsh_client_ui_primitives41.IconEditOutlineRegular,
+  delete: import_dsh_client_ui_primitives41.IconTrashOutlineRegular,
+  search: import_dsh_client_ui_primitives41.IconSearchOutlineRegular,
+  move: import_dsh_client_ui_primitives41.IconFolderOpenRegular,
+  fetch: import_dsh_client_ui_primitives41.IconGlobeOutlineRegular,
+  execute: import_dsh_client_ui_primitives41.IconApiOutlineRegular
 };
 function describeTool(tool, t) {
   const execution = tool.execution;
   const locations = Array.isArray(tool.locations) ? tool.locations : [];
-  const Icon = toolIcons[tool.kind] ?? import_dsh_client_ui_primitives35.IconSparkleRegular;
+  const Icon = toolIcons[tool.kind] ?? import_dsh_client_ui_primitives41.IconSparkleRegular;
   const title = Object.hasOwn(toolIcons, tool.kind) ? t(`activity.${tool.kind}`) : tool.title || t("permission.tool");
   const legacyCommand = !execution && tool.kind === "execute" && !locations.length && typeof tool.title === "string";
   const command = legacyCommand ? tool.title.trim() : execution?.command?.trim() ?? "";
@@ -14058,7 +17558,7 @@ function FileLocation({ location, openFile, t }) {
   const path = uri?.path ?? raw;
   const line2 = Number.isSafeInteger(location.line) && location.line > 0 ? location.line : uri?.line;
   const label = line2 ? `${path}:${line2}` : path;
-  return /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
     "button",
     {
       type: "button",
@@ -14109,9 +17609,9 @@ ${stderr}` : combined ?? stdout ?? stderr;
     expandAria: (n) => t("activity.expandOutput", { n }),
     expand: (n) => t("activity.expandOutput", { n })
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(import_jsx_runtime40.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
-      import_dsh_client_ui_primitives35.TerminalBlock,
+  return /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(import_jsx_runtime46.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+      import_dsh_client_ui_primitives41.TerminalBlock,
       {
         command: command ?? t("activity.commandUnavailable"),
         output,
@@ -14124,11 +17624,11 @@ ${stderr}` : combined ?? stdout ?? stderr;
         className: "dchat-flow-terminal"
       }
     ),
-    input && /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)("div", { className: "dchat-flow-input", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("span", { children: t("activity.input") }),
-      /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("pre", { children: input })
+    input && /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "dchat-flow-input", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { children: t("activity.input") }),
+      /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("pre", { children: input })
     ] }),
-    (commandTruncated || inputTruncated || outputTruncated) && /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("small", { className: "dchat-flow-truncated", children: [
+    (commandTruncated || inputTruncated || outputTruncated) && /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("small", { className: "dchat-flow-truncated", children: [
       commandTruncated && t("activity.commandTruncated"),
       inputTruncated && t("activity.inputTruncated"),
       outputTruncated && t("activity.outputTruncated")
@@ -14136,7 +17636,7 @@ ${stderr}` : combined ?? stdout ?? stderr;
   ] });
 }
 function ToolActivityRow({ tool, openFile, expandedTools, toggleExecution, t }) {
-  const [localOpen, setLocalOpen] = (0, import_react35.useState)(false);
+  const [localOpen, setLocalOpen] = (0, import_react41.useState)(false);
   const { execution, locations, Icon, title, command, detailedCommand, summary } = describeTool(tool, t);
   const sharedDisclosure = execution && tool.toolCallId && toggleExecution;
   const open = sharedDisclosure ? expandedTools?.has(tool.toolCallId) ?? false : localOpen;
@@ -14146,10 +17646,10 @@ function ToolActivityRow({ tool, openFile, expandedTools, toggleExecution, t }) 
   const exitCode = !running && Number.isSafeInteger(execution?.exitCode) ? execution.exitCode : void 0;
   const failed = tool.status === "failed" || exitCode !== void 0 && exitCode !== 0;
   const status = running ? tool.status : stopped && execution ? "activity.stopped" : failed ? "failed" : execution && tool.status === "completed" ? "completed" : void 0;
-  return /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(
-    import_dsh_client_ui_primitives35.DisclosureRow,
+  return /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
+    import_dsh_client_ui_primitives41.DisclosureRow,
     {
-      icon: /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(Icon, { size: 14 }),
+      icon: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(Icon, { size: 14 }),
       title,
       running,
       open: open && expandable,
@@ -14157,60 +17657,60 @@ function ToolActivityRow({ tool, openFile, expandedTools, toggleExecution, t }) 
       expandOnRowClick: !execution || !locations.length,
       keepContentWhenOpen: true,
       onToggle: () => sharedDisclosure ? toggleExecution(tool.toolCallId) : setLocalOpen((value) => !value),
-      collapsedContent: /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(import_jsx_runtime40.Fragment, { children: [
-        locations.length ? /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(import_jsx_runtime40.Fragment, { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("span", { className: "dchat-flow-separator", "aria-hidden": "true", "data-shimmer-decoration": true, children: "\xB7" }),
-          /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(FileLocation, { location: locations[0], openFile, t })
-        ] }) : summary && summary !== title && /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("span", { className: "dchat-flow-summary", title: summary, children: summary }),
-        locations.length > 1 && /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)("small", { className: "dchat-flow-count", children: [
+      collapsedContent: /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(import_jsx_runtime46.Fragment, { children: [
+        locations.length ? /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(import_jsx_runtime46.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "dchat-flow-separator", "aria-hidden": "true", "data-shimmer-decoration": true, children: "\xB7" }),
+          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(FileLocation, { location: locations[0], openFile, t })
+        ] }) : summary && summary !== title && /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "dchat-flow-summary", title: summary, children: summary }),
+        locations.length > 1 && /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("small", { className: "dchat-flow-count", children: [
           "+",
           locations.length - 1
         ] }),
-        exitCode !== void 0 ? /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(import_dsh_client_ui_primitives35.Tag, { tone: "neutral", className: "dchat-flow-exit", children: [
-          failed && /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("span", { className: "dchat-flow-exit-dot", "aria-hidden": "true" }),
+        exitCode !== void 0 ? /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(import_dsh_client_ui_primitives41.Tag, { tone: "neutral", className: "dchat-flow-exit", children: [
+          failed && /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "dchat-flow-exit-dot", "aria-hidden": "true" }),
           t("activity.exitCode", { code: exitCode })
-        ] }) : status && /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("small", { className: "dchat-flow-status", "data-failed": failed || void 0, children: t(status) })
+        ] }) : status && /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("small", { className: "dchat-flow-status", "data-failed": failed || void 0, children: t(status) })
       ] }),
       children: [
-        open && (execution ? /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(CommandDetails, { execution, exitCode, running, failed, stopped, t }) : detailedCommand && /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("pre", { className: "dchat-flow-command", children: command })),
-        locations.length > 1 && /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("ul", { className: "dchat-flow-files", children: locations.slice(1).map((location, index2) => /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(FileLocation, { location, openFile, t }) }, index2)) })
+        open && (execution ? /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(CommandDetails, { execution, exitCode, running, failed, stopped, t }) : detailedCommand && /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("pre", { className: "dchat-flow-command", children: command })),
+        locations.length > 1 && /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("ul", { className: "dchat-flow-files", children: locations.slice(1).map((location, index2) => /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(FileLocation, { location, openFile, t }) }, index2)) })
       ]
     }
   );
 }
 function ReasoningRow({ text, streaming, markdown, t }) {
-  const [open, setOpen] = (0, import_react35.useState)(false);
+  const [open, setOpen] = (0, import_react41.useState)(false);
   const summary = text.trim().split("\n", 1)[0].replaceAll("**", "");
-  return /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
-    import_dsh_client_ui_primitives35.DisclosureRow,
+  return /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+    import_dsh_client_ui_primitives41.DisclosureRow,
     {
-      icon: /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(import_dsh_client_ui_primitives35.IconThinkOutlineRegular, { size: 14 }),
+      icon: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(import_dsh_client_ui_primitives41.IconThinkOutlineRegular, { size: 14 }),
       title: t("thought"),
       running: streaming,
       open,
       expandable: true,
       expandOnRowClick: true,
       onToggle: () => setOpen((value) => !value),
-      collapsedContent: summary && /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("span", { className: "dchat-flow-summary", children: summary }),
-      children: open && /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("div", { className: "dchat-flow-body", children: /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(import_dsh_client_ui_primitives35.MarkdownText, { ...markdown, text: normalizeMarkdownFileUrls(text), streaming, variant: "compact" }) })
+      collapsedContent: summary && /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "dchat-flow-summary", children: summary }),
+      children: open && /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "dchat-flow-body", children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(import_dsh_client_ui_primitives41.MarkdownText, { ...markdown, text: normalizeMarkdownFileUrls(text), streaming, variant: "compact" }) })
     }
   );
 }
 function PlanRow({ plan, t }) {
-  const [open, setOpen] = (0, import_react35.useState)(false);
-  return /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
-    import_dsh_client_ui_primitives35.DisclosureRow,
+  const [open, setOpen] = (0, import_react41.useState)(false);
+  return /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+    import_dsh_client_ui_primitives41.DisclosureRow,
     {
-      icon: /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(import_dsh_client_ui_primitives35.IconChecklistOutlineRegular, { size: 14 }),
+      icon: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(import_dsh_client_ui_primitives41.IconChecklistOutlineRegular, { size: 14 }),
       title: t("plan"),
       open,
       expandable: true,
       expandOnRowClick: true,
       onToggle: () => setOpen((value) => !value),
-      children: /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("ul", { className: "dchat-flow-files", children: plan.map((entry, index2) => /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)("li", { children: [
+      children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("ul", { className: "dchat-flow-files", children: plan.map((entry, index2) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("li", { children: [
         entry.content,
         " ",
-        /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("small", { children: ["pending", "in_progress", "completed", "failed"].includes(entry.status) ? t(entry.status) : entry.status })
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("small", { children: ["pending", "in_progress", "completed", "failed"].includes(entry.status) ? t(entry.status) : entry.status })
       ] }, index2)) })
     }
   );
@@ -14219,14 +17719,14 @@ function TranscriptActivity({ activity, openFile, streaming, markdown, expandedT
   const { thought, plan, tools, steps } = activity;
   const hasSteps = Array.isArray(steps) && steps.length > 0;
   if (!thought && !plan.length && !tools.length && !hasSteps) return null;
-  return /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)("div", { className: "dchat-flow", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "dchat-flow", children: [
     hasSteps ? steps.map((step, index2) => {
       if (step.kind === "thought") {
         const isTail = index2 === steps.length - 1;
-        return /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(ReasoningRow, { text: step.text, streaming: streaming && isTail, markdown, t }, `thought-${index2}`);
+        return /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(ReasoningRow, { text: step.text, streaming: streaming && isTail, markdown, t }, `thought-${index2}`);
       }
       if (step.kind === "tool" && step.tool) {
-        return /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
+        return /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
           ToolActivityRow,
           {
             tool: step.tool,
@@ -14239,12 +17739,12 @@ function TranscriptActivity({ activity, openFile, streaming, markdown, expandedT
         );
       }
       if (step.kind === "plan" && step.entries?.length) {
-        return /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(PlanRow, { plan: step.entries, t }, `plan-${index2}`);
+        return /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(PlanRow, { plan: step.entries, t }, `plan-${index2}`);
       }
       return null;
-    }) : /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(import_jsx_runtime40.Fragment, { children: [
-      thought && /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(ReasoningRow, { text: thought, streaming, markdown, t }),
-      tools.map((tool, index2) => /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
+    }) : /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(import_jsx_runtime46.Fragment, { children: [
+      thought && /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(ReasoningRow, { text: thought, streaming, markdown, t }),
+      tools.map((tool, index2) => /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
         ToolActivityRow,
         {
           tool,
@@ -14256,12 +17756,12 @@ function TranscriptActivity({ activity, openFile, streaming, markdown, expandedT
         tool.toolCallId ?? index2
       ))
     ] }),
-    plan.length > 0 && !steps?.some((step) => step.kind === "plan") && /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(PlanRow, { plan, t })
+    plan.length > 0 && !steps?.some((step) => step.kind === "plan") && /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(PlanRow, { plan, t })
   ] });
 }
 
 // RunningJobs.jsx
-var import_jsx_runtime41 = require("react/jsx-runtime");
+var import_jsx_runtime47 = require("react/jsx-runtime");
 var noTools = [];
 function withOutputTail2(head, tail, omission) {
   if (tail === void 0) return head;
@@ -14305,11 +17805,11 @@ function createJobTranslator(t) {
 }
 function RunningJobsAction({ sessionId, summary, t }) {
   const tools = summary?.tools ?? noTools;
-  const timestampsRef = (0, import_react36.useRef)(/* @__PURE__ */ new Map());
-  const stopRef = (0, import_react36.useRef)(summary?.stop);
+  const timestampsRef = (0, import_react42.useRef)(/* @__PURE__ */ new Map());
+  const stopRef = (0, import_react42.useRef)(summary?.stop);
   stopRef.current = summary?.stop;
-  const jobT = (0, import_react36.useMemo)(() => createJobTranslator(t), [t]);
-  const snapshot = (0, import_react36.useMemo)(() => {
+  const jobT = (0, import_react42.useMemo)(() => createJobTranslator(t), [t]);
+  const snapshot = (0, import_react42.useMemo)(() => {
     const now = Date.now();
     const timestamps = timestampsRef.current;
     const rows = [];
@@ -14347,15 +17847,15 @@ function RunningJobsAction({ sessionId, summary, t }) {
       observed
     };
   }, [sessionId, tools, t]);
-  const storeRef = (0, import_react36.useRef)({
+  const storeRef = (0, import_react42.useRef)({
     snapshot,
     listeners: /* @__PURE__ */ new Set()
   });
-  (0, import_react36.useEffect)(() => {
+  (0, import_react42.useEffect)(() => {
     storeRef.current.snapshot = snapshot;
     for (const listener of storeRef.current.listeners) listener();
   }, [snapshot]);
-  const useJobs = (0, import_react36.useCallback)((selector) => (0, import_react36.useSyncExternalStore)(
+  const useJobs = (0, import_react42.useCallback)((selector) => (0, import_react42.useSyncExternalStore)(
     (listener) => {
       storeRef.current.listeners.add(listener);
       return () => {
@@ -14364,17 +17864,17 @@ function RunningJobsAction({ sessionId, summary, t }) {
     },
     () => selector(storeRef.current.snapshot)
   ), []);
-  const watchRows = (0, import_react36.useCallback)(() => () => {
+  const watchRows = (0, import_react42.useCallback)(() => () => {
   }, []);
-  const observe = (0, import_react36.useCallback)(() => () => {
+  const observe = (0, import_react42.useCallback)(() => () => {
   }, []);
-  const killJob = (0, import_react36.useCallback)(async () => {
+  const killJob = (0, import_react42.useCallback)(async () => {
     if (!stopRef.current) return false;
     stopRef.current();
     return true;
   }, []);
   if (!sessionId) return null;
-  return /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(JobListAction, { sessionId, useJobs, watchRows, observe, killJob, t: jobT });
+  return /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(JobListAction, { sessionId, useJobs, watchRows, observe, killJob, t: jobT });
 }
 
 // codex-transcript.mjs
@@ -14400,19 +17900,19 @@ function questionReply(text) {
 }
 
 // WorkspacePicker.jsx
-var import_react37 = require("react");
-var import_dsh_client_ui_primitives36 = require("@deepseek-ai/dsh-client-ui-primitives");
-var import_jsx_runtime42 = require("react/jsx-runtime");
+var import_react43 = require("react");
+var import_dsh_client_ui_primitives42 = require("@deepseek-ai/dsh-client-ui-primitives");
+var import_jsx_runtime48 = require("react/jsx-runtime");
 function WorkspacePicker({ value, onChange, disabled, t, renderFactorySlot, workspaceSource }) {
-  const [open, setOpen] = (0, import_react37.useState)(false);
-  const anchorRef = (0, import_react37.useRef)(null);
-  const valueId = (0, import_react37.useId)();
-  const { items } = (0, import_react37.useSyncExternalStore)(workspaceSource.subscribe, workspaceSource.getSnapshot, workspaceSource.getSnapshot);
+  const [open, setOpen] = (0, import_react43.useState)(false);
+  const anchorRef = (0, import_react43.useRef)(null);
+  const valueId = (0, import_react43.useId)();
+  const { items } = (0, import_react43.useSyncExternalStore)(workspaceSource.subscribe, workspaceSource.getSnapshot, workspaceSource.getSnapshot);
   const selected = items.find((workspace) => workspace.path === value);
   const folderName = value?.split(/[/\\]/).filter(Boolean).at(-1) || value;
-  const Folder = value ? import_dsh_client_ui_primitives36.IconFolderOpenRegular : import_dsh_client_ui_primitives36.IconFolderCloseRegular;
-  return /* @__PURE__ */ (0, import_jsx_runtime42.jsxs)("div", { className: "dchat-workspace-picker", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime42.jsxs)(
+  const Folder = value ? import_dsh_client_ui_primitives42.IconFolderOpenRegular : import_dsh_client_ui_primitives42.IconFolderCloseRegular;
+  return /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "dchat-workspace-picker", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
       "button",
       {
         ref: anchorRef,
@@ -14431,9 +17931,9 @@ function WorkspacePicker({ value, onChange, disabled, t, renderFactorySlot, work
           setOpen(true);
         },
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(Folder, { size: 16 }),
-          /* @__PURE__ */ (0, import_jsx_runtime42.jsx)("span", { className: "dchat-workspace-selection", id: valueId, children: selected?.title || folderName || t("cwd.default") }),
-          /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(import_dsh_client_ui_primitives36.IconChevronDownOutlineRegular, { className: "dchat-workspace-chevron", size: 12 })
+          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(Folder, { size: 16 }),
+          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "dchat-workspace-selection", id: valueId, children: selected?.title || folderName || t("cwd.default") }),
+          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(import_dsh_client_ui_primitives42.IconChevronDownOutlineRegular, { className: "dchat-workspace-chevron", size: 12 })
         ]
       }
     ),
@@ -14517,7 +18017,7 @@ function createTranscriptFollow(onChange) {
 }
 
 // DirectChat.jsx
-var import_jsx_runtime43 = require("react/jsx-runtime");
+var import_jsx_runtime49 = require("react/jsx-runtime");
 var noAgents = [];
 var noTools2 = [];
 var isBackgroundTool = (tool) => {
@@ -14534,124 +18034,211 @@ var defaultSubmissionSettings = { getSnapshot: () => void 0, subscribe: () => ()
 var INITIAL_VISIBLE_MESSAGES = 24;
 var LOAD_MORE_MESSAGES_STEP = 32;
 var commandIcons = /* @__PURE__ */ new Map([
-  ["compact", import_dsh_client_ui_primitives37.IconCompactOutlineRegular],
-  ["permission", import_dsh_client_ui_primitives37.PermissionIconFullAccessRegular],
-  ["model", import_dsh_client_ui_primitives37.IconDataOutlineRegular],
-  ["goal", import_dsh_client_ui_primitives37.IconGoalOutlineRegular],
-  ["plan", import_dsh_client_ui_primitives37.IconPlanOutlineRegular],
-  ["feedback", import_dsh_client_ui_primitives37.IconPaperPlaneOutlineRegular],
-  ["export", import_dsh_client_ui_primitives37.IconDownloadOutlineRegular]
+  ["compact", import_dsh_client_ui_primitives43.IconCompactOutlineRegular],
+  ["permission", import_dsh_client_ui_primitives43.PermissionIconFullAccessRegular],
+  ["model", import_dsh_client_ui_primitives43.IconDataOutlineRegular],
+  ["goal", import_dsh_client_ui_primitives43.IconGoalOutlineRegular],
+  ["plan", import_dsh_client_ui_primitives43.IconPlanOutlineRegular],
+  ["feedback", import_dsh_client_ui_primitives43.IconPaperPlaneOutlineRegular],
+  ["export", import_dsh_client_ui_primitives43.IconDownloadOutlineRegular]
 ]);
-function DirectChat({ navigation, startNative, renderFactorySlot, workspaceSource, engineSource, diffController, performanceSettings, submissionSettings, queueDock, statusStore, nativeSessions, useSessionStatus, useWorkspaces, openDirect, openNative, t }) {
-  const target = (0, import_react38.useSyncExternalStore)(navigation.subscribe, navigation.getSnapshot);
-  const { engines, status: engineStatus } = (0, import_react38.useSyncExternalStore)(engineSource.subscribe, engineSource.getSnapshot);
-  const [column, setColumn] = (0, import_react38.useState)(null);
-  const [metadata, setMetadata] = (0, import_react38.useState)(null);
-  const parent = (0, import_react38.useRef)(null);
-  const [agentSummary, setAgentSummary] = (0, import_react38.useState)(null);
-  const [runtimeSummary, setRuntimeSummary] = (0, import_react38.useState)(null);
+var RIGHTBAR_MIN = 300;
+var RIGHTBAR_MAX = 520;
+var RIGHTBAR_DEFAULT = 360;
+var RIGHTBAR_WIDTH_KEY = "dsh-direct-chat.rightbar-width";
+function clampRightbarWidth(width) {
+  return Math.min(RIGHTBAR_MAX, Math.max(RIGHTBAR_MIN, Math.round(width)));
+}
+function readSavedRightbarWidth() {
+  try {
+    const raw = Number(localStorage.getItem(RIGHTBAR_WIDTH_KEY));
+    return Number.isFinite(raw) && raw > 0 ? clampRightbarWidth(raw) : RIGHTBAR_DEFAULT;
+  } catch {
+    return RIGHTBAR_DEFAULT;
+  }
+}
+var noopRightbarLayout = { openRightbar() {
+}, closeRightbar() {
+} };
+function DirectChat({ navigation, startNative, renderFactorySlot, workspaceSource, engineSource, diffController, renderRightbar, performanceSettings, submissionSettings, queueDock, statusStore, nativeSessions, useSessionStatus, useWorkspaces, openDirect, openNative, t }) {
+  const target = (0, import_react44.useSyncExternalStore)(navigation.subscribe, navigation.getSnapshot);
+  const { engines, status: engineStatus } = (0, import_react44.useSyncExternalStore)(engineSource.subscribe, engineSource.getSnapshot);
+  const diffState = (0, import_react44.useSyncExternalStore)(
+    diffController?.subscribe ?? defaultSubmissionSettings.subscribe,
+    diffController?.getSnapshot ?? (() => ({ open: false }))
+  );
+  const [column, setColumn] = (0, import_react44.useState)(null);
+  const [metadata, setMetadata] = (0, import_react44.useState)(null);
+  const parent = (0, import_react44.useRef)(null);
+  const [agentSummary, setAgentSummary] = (0, import_react44.useState)(null);
+  const [runtimeSummary, setRuntimeSummary] = (0, import_react44.useState)(null);
+  const shellRef = (0, import_react44.useRef)(null);
+  const [shellWidth, setShellWidth] = (0, import_react44.useState)(() => typeof window !== "undefined" ? window.innerWidth : 1200);
+  const [rightbarWidth, setRightbarWidth] = (0, import_react44.useState)(readSavedRightbarWidth);
+  const [draggingSplit, setDraggingSplit] = (0, import_react44.useState)(false);
+  const dragOriginRef = (0, import_react44.useRef)(null);
+  (0, import_react44.useLayoutEffect)(() => {
+    const node2 = shellRef.current;
+    if (!node2 || typeof ResizeObserver === "undefined") return;
+    const update = () => {
+      const next = node2.getBoundingClientRect().width;
+      if (next > 0) setShellWidth(next);
+    };
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(node2);
+    return () => observer.disconnect();
+  }, []);
+  const viewportWidth = typeof window !== "undefined" ? window.innerWidth : shellWidth;
+  const canShowSplit = Boolean(renderRightbar) && viewportWidth >= 768 && shellWidth >= 760;
+  const maxSplitWidth = Math.max(RIGHTBAR_MIN, Math.min(RIGHTBAR_MAX, Math.floor(shellWidth * 0.52)));
+  const resolvedRightbarWidth = Math.min(rightbarWidth, maxSplitWidth);
+  (0, import_react44.useLayoutEffect)(() => {
+    if (!diffController) return;
+    diffController.useLayoutSeat(canShowSplit);
+    return () => diffController.useLayoutSeat(false);
+  }, [diffController, canShowSplit]);
+  const startSplitDrag = (event2) => {
+    if (event2.button !== 0) return;
+    event2.preventDefault();
+    event2.currentTarget.setPointerCapture?.(event2.pointerId);
+    dragOriginRef.current = { x: event2.clientX, width: resolvedRightbarWidth };
+    setDraggingSplit(true);
+  };
+  const moveSplitDrag = (event2) => {
+    if (!dragOriginRef.current) return;
+    const next = clampRightbarWidth(dragOriginRef.current.width + (dragOriginRef.current.x - event2.clientX));
+    setRightbarWidth(Math.min(next, maxSplitWidth));
+  };
+  const endSplitDrag = () => {
+    if (!dragOriginRef.current) return;
+    dragOriginRef.current = null;
+    setDraggingSplit(false);
+    try {
+      localStorage.setItem(RIGHTBAR_WIDTH_KEY, String(rightbarWidth));
+    } catch {
+    }
+  };
   const current = metadata?.id === target.id ? metadata : null;
   const currentAgents = agentSummary?.id === target.id ? agentSummary : null;
   const currentRuntime = runtimeSummary?.id === target.id ? runtimeSummary : null;
   const engine = target.engine ?? engines[0]?.id;
   const engineMeta = engines.find((item) => item.id === engine)?.meta;
-  return /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(
-    "section",
-    {
-      className: "dchat",
-      "data-blank": !target.id || void 0,
-      "data-hero-engine": !target.id ? engine : void 0,
-      style: !target.id && engineMeta?.accentColor ? { "--dchat-hero-accent": engineMeta.accentColor } : void 0,
-      "aria-label": t("panel"),
-      children: [
-        /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("header", { className: "dchat-header", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("div", { className: "dchat-title", children: target.id && /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(import_jsx_runtime43.Fragment, { children: [
-            current?.parentId && /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(
-              import_dsh_client_ui_primitives37.Button,
+  const showSplitPane = canShowSplit && Boolean(diffState?.open);
+  return /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { ref: shellRef, className: "dchat-shell", "data-dragging-split": draggingSplit || void 0, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
+      "section",
+      {
+        className: "dchat",
+        "data-blank": !target.id || void 0,
+        "data-hero-engine": !target.id ? engine : void 0,
+        style: !target.id && engineMeta?.accentColor ? { "--dchat-hero-accent": engineMeta.accentColor } : void 0,
+        "aria-label": t("panel"),
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("header", { className: "dchat-header", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("div", { className: "dchat-title", children: target.id && /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(import_jsx_runtime49.Fragment, { children: [
+              current?.parentId && /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
+                import_dsh_client_ui_primitives43.Button,
+                {
+                  size: "sm",
+                  className: "dchat-parent",
+                  "aria-label": t("parallel.parent"),
+                  title: t("parallel.parent"),
+                  onClick: () => navigation.open(current.parentId),
+                  children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.IconChevronLeftOutlineRegular, { size: 16 }),
+                    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { children: parent.current?.id === current.parentId ? parent.current.title : t("agents.parent") })
+                  ]
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("h1", { title: current?.title, children: current?.title || t("panel") }),
+              current && (() => {
+                const engInfo = engines.find((item) => item.id === current.engine);
+                const engStatus = engInfo?.status;
+                return /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("span", { className: "dchat-engine-label", title: current.cwd, children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(EngineLogo, { engine: current.engine, size: 14 }),
+                  engineLabel(engines, current.engine),
+                  engStatus?.version && /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("span", { className: "dchat-engine-version", children: [
+                    "v",
+                    engStatus.version
+                  ] }),
+                  engStatus?.updateAvailable && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "dchat-engine-pill", "data-tone": "update", children: t("engine.updateAvailable", { version: engStatus.latestVersion }) })
+                ] });
+              })(),
+              /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(SubagentCatalog, { summary: currentAgents, openChild: (id) => {
+                parent.current = current;
+                navigation.open(id);
+              }, t }, target.id)
+            ] }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "dchat-header-actions", children: [
+              target.id && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(RunningJobsAction, { sessionId: target.id, summary: currentRuntime, t }, target.id),
+              diffController && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(WorkspaceDiff, { controller: diffController, t }),
+              statusStore && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+                SessionPet,
+                {
+                  variant: "header",
+                  statusStore,
+                  nativeSessions,
+                  useSessionStatus,
+                  useWorkspaces,
+                  engineSource,
+                  openDirect: openDirect || ((sessionId) => navigation.open(sessionId)),
+                  openNative,
+                  t
+                }
+              )
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { ref: setColumn, className: ConversationRoot_default.body, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("div", { className: ConversationRoot_default.scrollBody, children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+              SessionPane,
               {
-                size: "sm",
-                className: "dchat-parent",
-                "aria-label": t("parallel.parent"),
-                title: t("parallel.parent"),
-                onClick: () => navigation.open(current.parentId),
-                children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconChevronLeftOutlineRegular, { size: 16 }),
-                  /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { children: parent.current?.id === current.parentId ? parent.current.title : t("agents.parent") })
-                ]
-              }
-            ),
-            /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("h1", { title: current?.title, children: current?.title || t("panel") }),
-            current && (() => {
-              const engInfo = engines.find((item) => item.id === current.engine);
-              const engStatus = engInfo?.status;
-              return /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("span", { className: "dchat-engine-label", title: current.cwd, children: [
-                /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(EngineLogo, { engine: current.engine, size: 14 }),
-                engineLabel(engines, current.engine),
-                engStatus?.version && /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("span", { className: "dchat-engine-version", children: [
-                  "v",
-                  engStatus.version
-                ] }),
-                engStatus?.updateAvailable && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { className: "dchat-engine-pill", "data-tone": "update", children: t("engine.updateAvailable", { version: engStatus.latestVersion }) })
-              ] });
-            })(),
-            /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(SubagentCatalog, { summary: currentAgents, openChild: (id) => {
-              parent.current = current;
-              navigation.open(id);
-            }, t }, target.id)
-          ] }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { className: "dchat-header-actions", children: [
-            target.id && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(RunningJobsAction, { sessionId: target.id, summary: currentRuntime, t }, target.id),
-            diffController && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(WorkspaceDiff, { controller: diffController, t }),
-            statusStore && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
-              SessionPet,
-              {
-                variant: "header",
-                statusStore,
-                nativeSessions,
-                useSessionStatus,
-                useWorkspaces,
-                engineSource,
-                openDirect: openDirect || ((sessionId) => navigation.open(sessionId)),
-                openNative,
+                target,
+                navigation,
+                startNative,
+                performanceSettings,
+                submissionSettings,
+                engine,
+                engines,
+                engineStatus,
+                reloadEngines: engineSource.refresh,
+                diffController,
+                queueDock,
+                onAgentSummary: setAgentSummary,
+                onRuntimeSummary: setRuntimeSummary,
+                onSession: setMetadata,
+                renderFactorySlot,
+                workspaceSource,
                 t
-              }
-            )
+              },
+              target.key ?? target.id ?? target.engine
+            ) }),
+            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(ConversationWidthControls, { container: column, phase: target.id ? "active" : "hero" })
           ] })
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { ref: setColumn, className: ConversationRoot_default.body, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("div", { className: ConversationRoot_default.scrollBody, children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
-            SessionPane,
-            {
-              target,
-              navigation,
-              startNative,
-              performanceSettings,
-              submissionSettings,
-              engine,
-              engines,
-              engineStatus,
-              reloadEngines: engineSource.refresh,
-              diffController,
-              queueDock,
-              onAgentSummary: setAgentSummary,
-              onRuntimeSummary: setRuntimeSummary,
-              onSession: setMetadata,
-              renderFactorySlot,
-              workspaceSource,
-              t
-            },
-            target.key ?? target.id ?? target.engine
-          ) }),
-          /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(ConversationWidthControls, { container: column, phase: target.id ? "active" : "hero" })
-        ] })
-      ]
-    }
-  );
+        ]
+      }
+    ),
+    showSplitPane && /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(import_jsx_runtime49.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+        "div",
+        {
+          className: "dchat-split-handle",
+          role: "separator",
+          "aria-orientation": "vertical",
+          onPointerDown: startSplitDrag,
+          onPointerMove: moveSplitDrag,
+          onPointerUp: endSplitDrag,
+          onPointerCancel: endSplitDrag
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("aside", { className: "dchat-split-rightbar", style: { width: `${resolvedRightbarWidth}px` }, children: renderRightbar({ width: resolvedRightbarWidth, viewportWidth, canShow: true, layout: noopRightbarLayout }) })
+    ] })
+  ] });
 }
 function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navigation, startNative, performanceSettings, submissionSettings = defaultSubmissionSettings, onSession, renderFactorySlot, workspaceSource, engine, engines, engineStatus, reloadEngines, diffController, t }) {
   const blank = !target.id;
   const cwd = target.cwd ?? "";
-  const [draftProfiles, setDraftProfiles] = (0, import_react38.useState)(() => {
+  const [draftProfiles, setDraftProfiles] = (0, import_react44.useState)(() => {
     try {
       const saved3 = JSON.parse(sessionStorage.getItem("dsh-direct-chat.draft-profiles") ?? "null");
       return saved3 && typeof saved3 === "object" ? saved3 : {};
@@ -14670,51 +18257,51 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
     });
   };
   const profileId = engine && typeof draftProfiles[engine] === "string" ? draftProfiles[engine] : void 0;
-  const [prepared, setPrepared] = (0, import_react38.useState)(null);
-  const [prepareAttempt, setPrepareAttempt] = (0, import_react38.useState)(0);
+  const [prepared, setPrepared] = (0, import_react44.useState)(null);
+  const [prepareAttempt, setPrepareAttempt] = (0, import_react44.useState)(0);
   const preparation = prepared?.engine === engine && prepared?.cwd === cwd && prepared.profileId === profileId && prepared.attempt === prepareAttempt ? prepared : null;
   const id = target.id ?? preparation?.session?.id;
-  const [feed, setFeed] = (0, import_react38.useState)(null);
+  const [feed, setFeed] = (0, import_react44.useState)(null);
   const session = feed?.id === id ? feed : preparation?.session ?? null;
-  const [stream, setStream] = (0, import_react38.useState)(null);
+  const [stream, setStream] = (0, import_react44.useState)(null);
   const connection = stream && stream.id === id ? stream.phase : "connecting";
-  const [connectAttempt, setConnectAttempt] = (0, import_react38.useState)(0);
+  const [connectAttempt, setConnectAttempt] = (0, import_react44.useState)(0);
   const composer = navigation.draftFor(target, engine);
-  const { text: draft, command: stagedCommand, attachments, sending, error: sendError } = (0, import_react38.useSyncExternalStore)(composer.subscribe, composer.getSnapshot);
+  const { text: draft, command: stagedCommand, attachments, sending, error: sendError } = (0, import_react44.useSyncExternalStore)(composer.subscribe, composer.getSnapshot);
   const { setText: setDraft, setCommand: setStagedCommand, setAttachments } = composer;
-  const [draggingFiles, setDraggingFiles] = (0, import_react38.useState)(false);
-  const fileDragDepth = (0, import_react38.useRef)(0);
-  const [error, setError] = (0, import_react38.useState)("");
-  const [invalidEvent, setInvalidEvent] = (0, import_react38.useState)(false);
-  const [pendingAction, setPending] = (0, import_react38.useState)(null);
+  const [draggingFiles, setDraggingFiles] = (0, import_react44.useState)(false);
+  const fileDragDepth = (0, import_react44.useRef)(0);
+  const [error, setError] = (0, import_react44.useState)("");
+  const [invalidEvent, setInvalidEvent] = (0, import_react44.useState)(false);
+  const [pendingAction, setPending] = (0, import_react44.useState)(null);
   const pending = sending ? "prompt" : pendingAction;
-  const [queueEcho, setQueueEcho] = (0, import_react38.useState)(null);
-  const [deliveryMenuOpen, setDeliveryMenuOpen] = (0, import_react38.useState)(false);
-  const subscribeSubmission = (0, import_react38.useCallback)((listener) => submissionSettings.subscribe(listener), [submissionSettings]);
-  const readSubmission = (0, import_react38.useCallback)(() => submissionSettings.getSnapshot()?.value?.busyEnter, [submissionSettings]);
-  const busyEnter = (0, import_react38.useSyncExternalStore)(subscribeSubmission, readSubmission, readSubmission);
-  const [mobileOptionsOpen, setMobileOptionsOpen] = (0, import_react38.useState)(false);
-  const optionsRowId = (0, import_react38.useId)();
-  const [modeMenuOpen, setModeMenuOpen] = (0, import_react38.useState)(false);
-  const [parallelOpen, setParallelOpen] = (0, import_react38.useState)(false);
-  const [visibleWindow, setVisibleWindow] = (0, import_react38.useState)({ id: null, count: INITIAL_VISIBLE_MESSAGES });
-  const [followingTail, setFollowingTail] = (0, import_react38.useState)(true);
-  const [follow] = (0, import_react38.useState)(() => createTranscriptFollow(setFollowingTail));
-  const [activeTurn, setActiveTurn] = (0, import_react38.useState)(null);
-  const [expandedTools, setExpandedTools] = (0, import_react38.useState)({ id: null, tools: /* @__PURE__ */ new Set() });
-  const pendingTurnJumpRef = (0, import_react38.useRef)(null);
-  const scrollAnchorRef = (0, import_react38.useRef)(null);
-  const lastScrollTopRef = (0, import_react38.useRef)(0);
-  const scrollRafRef = (0, import_react38.useRef)(0);
-  const modelTriggerRef = (0, import_react38.useRef)(null);
-  const [commandDialog, setCommandDialog] = (0, import_react38.useState)(null);
-  const transcript = (0, import_react38.useRef)(null);
-  const transcriptContent = (0, import_react38.useRef)(null);
-  const input = (0, import_react38.useRef)(null);
-  const fileInput = (0, import_react38.useRef)(null);
-  const reviewInput = (0, import_react38.useRef)(null);
-  const focusReviewInput = (0, import_react38.useRef)(false);
-  const nextAttachment = (0, import_react38.useRef)(Math.max(-1, ...attachments.map((item) => item.id)) + 1);
+  const [queueEcho, setQueueEcho] = (0, import_react44.useState)(null);
+  const [deliveryMenuOpen, setDeliveryMenuOpen] = (0, import_react44.useState)(false);
+  const subscribeSubmission = (0, import_react44.useCallback)((listener) => submissionSettings.subscribe(listener), [submissionSettings]);
+  const readSubmission = (0, import_react44.useCallback)(() => submissionSettings.getSnapshot()?.value?.busyEnter, [submissionSettings]);
+  const busyEnter = (0, import_react44.useSyncExternalStore)(subscribeSubmission, readSubmission, readSubmission);
+  const [mobileOptionsOpen, setMobileOptionsOpen] = (0, import_react44.useState)(false);
+  const optionsRowId = (0, import_react44.useId)();
+  const [modeMenuOpen, setModeMenuOpen] = (0, import_react44.useState)(false);
+  const [parallelOpen, setParallelOpen] = (0, import_react44.useState)(false);
+  const [visibleWindow, setVisibleWindow] = (0, import_react44.useState)({ id: null, count: INITIAL_VISIBLE_MESSAGES });
+  const [followingTail, setFollowingTail] = (0, import_react44.useState)(true);
+  const [follow] = (0, import_react44.useState)(() => createTranscriptFollow(setFollowingTail));
+  const [activeTurn, setActiveTurn] = (0, import_react44.useState)(null);
+  const [expandedTools, setExpandedTools] = (0, import_react44.useState)({ id: null, tools: /* @__PURE__ */ new Set() });
+  const pendingTurnJumpRef = (0, import_react44.useRef)(null);
+  const scrollAnchorRef = (0, import_react44.useRef)(null);
+  const lastScrollTopRef = (0, import_react44.useRef)(0);
+  const scrollRafRef = (0, import_react44.useRef)(0);
+  const modelTriggerRef = (0, import_react44.useRef)(null);
+  const [commandDialog, setCommandDialog] = (0, import_react44.useState)(null);
+  const transcript = (0, import_react44.useRef)(null);
+  const transcriptContent = (0, import_react44.useRef)(null);
+  const input = (0, import_react44.useRef)(null);
+  const fileInput = (0, import_react44.useRef)(null);
+  const reviewInput = (0, import_react44.useRef)(null);
+  const focusReviewInput = (0, import_react44.useRef)(false);
+  const nextAttachment = (0, import_react44.useRef)(Math.max(-1, ...attachments.map((item) => item.id)) + 1);
   const diffId = blank && !cwd ? void 0 : id;
   const diffCwd = diffId ? session?.cwd || (blank ? cwd : void 0) : void 0;
   reviewInput.current = (format) => {
@@ -14723,13 +18310,13 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
     setDraft((current) => appendReviewQuote(current, format));
     return true;
   };
-  (0, import_react38.useLayoutEffect)(() => {
+  (0, import_react44.useLayoutEffect)(() => {
     if (!focusReviewInput.current) return;
     focusReviewInput.current = false;
     input.current?.focus({ preventScroll: true });
     input.current?.setSelectionRange(draft.length, draft.length);
   }, [draft]);
-  (0, import_react38.useLayoutEffect)(
+  (0, import_react44.useLayoutEffect)(
     () => diffController?.bindTarget(diffId && diffCwd ? {
       id: diffId,
       cwd: diffCwd,
@@ -14737,7 +18324,7 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
     } : null),
     [diffController, diffId, diffCwd]
   );
-  (0, import_react38.useEffect)(() => {
+  (0, import_react44.useEffect)(() => {
     if (!blank || !engine) return;
     let current = true;
     createSession(engine, cwd, profileId).then((session2) => {
@@ -14749,7 +18336,7 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
       current = false;
     };
   }, [blank, engine, cwd, profileId, prepareAttempt]);
-  (0, import_react38.useEffect)(() => {
+  (0, import_react44.useEffect)(() => {
     if (!id) return;
     setStream({ id, phase: "connecting" });
     const source2 = openEvents(id);
@@ -14771,7 +18358,7 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
     };
     return () => source2.close();
   }, [id, connectAttempt, onSession, navigation]);
-  (0, import_react38.useLayoutEffect)(() => {
+  (0, import_react44.useLayoutEffect)(() => {
     follow.setFollowing(true);
     lastScrollTopRef.current = 0;
     scrollAnchorRef.current = null;
@@ -14783,7 +18370,7 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
       scrollRafRef.current = 0;
     };
   }, [follow, id]);
-  (0, import_react38.useLayoutEffect)(() => {
+  (0, import_react44.useLayoutEffect)(() => {
     const node2 = transcript.current;
     if (!node2 || blank) return;
     const settle = () => follow.settle(node2);
@@ -14798,7 +18385,7 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
       node2.removeEventListener("scrollend", settle);
     };
   }, [blank, follow, id]);
-  (0, import_react38.useLayoutEffect)(() => {
+  (0, import_react44.useLayoutEffect)(() => {
     const node2 = transcript.current;
     if (!node2 || blank) return;
     if (pendingTurnJumpRef.current !== null) {
@@ -14840,8 +18427,8 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
     }
   };
   const busy = Boolean(session?.busy);
-  const [fallbackStartedAt, setFallbackStartedAt] = (0, import_react38.useState)(void 0);
-  (0, import_react38.useEffect)(() => {
+  const [fallbackStartedAt, setFallbackStartedAt] = (0, import_react44.useState)(void 0);
+  (0, import_react44.useEffect)(() => {
     setFallbackStartedAt(busy && !session?.runStartedAt ? Date.now() : void 0);
   }, [busy, session?.runStartedAt, id]);
   const runStartedAt = busy ? session?.runStartedAt ?? fallbackStartedAt : void 0;
@@ -14865,7 +18452,7 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
   const deliveryFor = (alternate) => promptDelivery(busy, canSteerDraft, busyEnter, alternate, queue.length > 0);
   const primaryDelivery = deliveryFor(false);
   const sendLabel = t(primaryDelivery ? `send.${primaryDelivery}` : "send");
-  (0, import_react38.useEffect)(() => {
+  (0, import_react44.useEffect)(() => {
     if (!canSteerDraft || !hasDraft) setDeliveryMenuOpen(false);
   }, [canSteerDraft, hasDraft]);
   const stage = (files) => {
@@ -14889,8 +18476,8 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
     settle(sent, failure);
     if (sent) {
       const editor = input.current;
-      if (editor?.form && editor.ownerDocument.activeElement === editor && (0, import_dsh_client_ui_primitives37.isMobileDevice)()) {
-        (0, import_dsh_client_ui_primitives37.focusWithoutRing)(editor.form, { preventScroll: true });
+      if (editor?.form && editor.ownerDocument.activeElement === editor && (0, import_dsh_client_ui_primitives43.isMobileDevice)()) {
+        (0, import_dsh_client_ui_primitives43.focusWithoutRing)(editor.form, { preventScroll: true });
       }
       if (blank) navigation.open(id, target);
       else navigation.refreshHistory?.();
@@ -14935,9 +18522,9 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
       for (const file of echo.attachments) if (file.type === "image") URL.revokeObjectURL(file.value.previewUrl);
     }
   };
-  const activity = (0, import_react38.useMemo)(() => projectActivity(session?.updates ?? []), [session?.updates]);
+  const activity = (0, import_react44.useMemo)(() => projectActivity(session?.updates ?? []), [session?.updates]);
   const hasLiveActivity = activity.steps.length > 0;
-  const toggleExecution = (0, import_react38.useCallback)((toolId) => setExpandedTools((previous) => {
+  const toggleExecution = (0, import_react44.useCallback)((toolId) => setExpandedTools((previous) => {
     const tools = new Set(previous.id === id ? previous.tools : void 0);
     if (tools.has(toolId)) tools.delete(toolId);
     else tools.add(toolId);
@@ -14947,15 +18534,15 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
   const footnotes = t("footnotes");
   const copyLabel = t("copy");
   const copiedLabel = t("copied");
-  const markdownLabels = (0, import_react38.useMemo)(() => ({ footnotes, code: { copyLabel, copiedLabel } }), [footnotes, copyLabel, copiedLabel]);
-  const openFile = (0, import_react38.useCallback)((path, { line: line2 } = {}) => {
+  const markdownLabels = (0, import_react44.useMemo)(() => ({ footnotes, code: { copyLabel, copiedLabel } }), [footnotes, copyLabel, copiedLabel]);
+  const openFile = (0, import_react44.useCallback)((path, { line: line2 } = {}) => {
     if (id && typeof path === "string" && path) diffController.openFile(id, { path, line: line2 });
   }, [diffController, id]);
-  const openMarkdownFile = (0, import_react38.useCallback)((path, { line: line2 } = {}) => {
+  const openMarkdownFile = (0, import_react44.useCallback)((path, { line: line2 } = {}) => {
     const location = markdownFileReference(path, line2);
     openFile(location.path, location);
   }, [openFile]);
-  const openMarkdownExternalLink = (0, import_react38.useCallback)((href) => {
+  const openMarkdownExternalLink = (0, import_react44.useCallback)((href) => {
     const file = fileUriReference(href);
     if (file) {
       openFile(file.path, { line: file.line });
@@ -14963,16 +18550,16 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
     }
     window.open(href, "_blank", "noopener,noreferrer");
   }, [openFile]);
-  const fileMentions = (0, import_react38.useMemo)(() => ({
+  const fileMentions = (0, import_react44.useMemo)(() => ({
     resolve(value) {
       const file = inlineFileReference(value);
       if (!file) return;
       return { open: () => openFile(file.path, { line: file.line }), label: t("file.open", { path: value }), title: value };
     }
   }), [openFile, t]);
-  const reasoningMarkdown = (0, import_react38.useMemo)(() => ({ labels: markdownLabels, fileMentions }), [markdownLabels, fileMentions]);
+  const reasoningMarkdown = (0, import_react44.useMemo)(() => ({ labels: markdownLabels, fileMentions }), [markdownLabels, fileMentions]);
   const connectionError = preparation?.error || (connection === "disconnected" ? t("disconnected") : "");
-  const configOptions = (0, import_react38.useMemo)(
+  const configOptions = (0, import_react44.useMemo)(
     () => Array.isArray(session?.options) ? session.options.filter((item) => item?.type === "select" && configGroups(item).length > 0) : [],
     [session?.options]
   );
@@ -14991,14 +18578,14 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
       id: "ui:attachment",
       name: "file",
       title: t("plus.file"),
-      icon: import_dsh_client_ui_primitives37.IconPaperclipOutlineRegular,
+      icon: import_dsh_client_ui_primitives43.IconPaperclipOutlineRegular,
       onSelect: () => fileInput.current?.click()
     }] : [],
     ...canStartParallel ? [{
       id: "ui:parallel",
       name: "parallel",
       title: t("parallel.title"),
-      icon: import_dsh_client_ui_primitives37.IconBranchOutlineRegular,
+      icon: import_dsh_client_ui_primitives43.IconBranchOutlineRegular,
       onSelect: () => setParallelOpen(true)
     }] : []
   ];
@@ -15013,7 +18600,7 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
       name: "permission",
       label: "/permission",
       title: t("cmd.permission"),
-      icon: import_dsh_client_ui_primitives37.PermissionIconFullAccessRegular,
+      icon: import_dsh_client_ui_primitives43.PermissionIconFullAccessRegular,
       description: modeOption.name,
       onSelect: () => {
         setMobileOptionsOpen(true);
@@ -15025,7 +18612,7 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
       name: "model",
       label: "/model",
       title: t("cmd.model"),
-      icon: import_dsh_client_ui_primitives37.IconDataOutlineRegular,
+      icon: import_dsh_client_ui_primitives43.IconDataOutlineRegular,
       description: t("plus.model"),
       onSelect: () => modelTriggerRef.current?.click()
     }] : [],
@@ -15075,8 +18662,8 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
   const visibleCount = visibleWindow.id === id ? visibleWindow.count : INITIAL_VISIBLE_MESSAGES;
   const hiddenMessageCount = Math.max(0, allMessages.length - visibleCount);
   const visibleMessages = hiddenMessageCount > 0 ? allMessages.slice(hiddenMessageCount) : allMessages;
-  const turnItems = (0, import_react38.useMemo)(() => transcriptTurnItems(allMessages, hiddenMessageCount), [allMessages, hiddenMessageCount]);
-  const jumpToTurn = (0, import_react38.useCallback)((item) => {
+  const turnItems = (0, import_react44.useMemo)(() => transcriptTurnItems(allMessages, hiddenMessageCount), [allMessages, hiddenMessageCount]);
+  const jumpToTurn = (0, import_react44.useCallback)((item) => {
     const node2 = transcript.current;
     if (!node2) return;
     const messageIndex = item.anchor.kind === "loaded" ? Number(item.anchor.key) : item.anchor.seq;
@@ -15094,7 +18681,7 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
     const neededCount = allMessages.length - messageIndex + 4;
     setVisibleWindow({ id, count: Math.min(allMessages.length, Math.max(visibleCount, neededCount)) });
   }, [allMessages.length, follow, id, visibleCount]);
-  const returnToBottom = (0, import_react38.useCallback)(() => {
+  const returnToBottom = (0, import_react44.useCallback)(() => {
     const node2 = transcript.current;
     if (!node2) return;
     pendingTurnJumpRef.current = null;
@@ -15102,7 +18689,7 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
     lastScrollTopRef.current = follow.toBottom(node2);
     if (turnItems.length) setActiveTurn(turnItems.at(-1).turn);
   }, [follow, turnItems]);
-  const loadEarlierMessages = (0, import_react38.useCallback)(() => {
+  const loadEarlierMessages = (0, import_react44.useCallback)(() => {
     if (hiddenMessageCount <= 0 || scrollAnchorRef.current || pendingTurnJumpRef.current !== null) return;
     const node2 = transcript.current;
     if (node2) {
@@ -15113,8 +18700,8 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
       return { id, count: Math.min(allMessages.length, base + LOAD_MORE_MESSAGES_STEP) };
     });
   }, [hiddenMessageCount, id, allMessages.length]);
-  const seenLiveToolsRef = (0, import_react38.useRef)(/* @__PURE__ */ new Set());
-  const runtimeTools = (0, import_react38.useMemo)(() => {
+  const seenLiveToolsRef = (0, import_react44.useRef)(/* @__PURE__ */ new Set());
+  const runtimeTools = (0, import_react44.useMemo)(() => {
     const byId = /* @__PURE__ */ new Map();
     for (const tool of activity.tools) {
       const idKey = tool.toolCallId ?? `live-${byId.size}`;
@@ -15135,15 +18722,15 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
     }
     return byId.size ? [...byId.values()] : noTools2;
   }, [session?.messages, activity.tools]);
-  const performRef = (0, import_react38.useRef)(perform);
+  const performRef = (0, import_react44.useRef)(perform);
   performRef.current = perform;
-  const stopCurrentTurn = (0, import_react38.useCallback)(() => {
+  const stopCurrentTurn = (0, import_react44.useCallback)(() => {
     void performRef.current("cancel");
   }, []);
-  (0, import_react38.useEffect)(() => {
+  (0, import_react44.useEffect)(() => {
     if (!blank && id) onAgentSummary({ id, agents, ready, error: connectionError });
   }, [blank, id, agents, ready, connectionError, onAgentSummary]);
-  (0, import_react38.useEffect)(() => {
+  (0, import_react44.useEffect)(() => {
     if (!blank && id && onRuntimeSummary) {
       onRuntimeSummary({
         id,
@@ -15153,9 +18740,9 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
     }
   }, [blank, id, runtimeTools, busy, ready, pending, stopCurrentTurn, onRuntimeSummary]);
   const resolvedActiveTurn = activeTurn ?? turnItems.at(-1)?.turn ?? null;
-  return /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(import_jsx_runtime43.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { className: "dchat-transcript-area", hidden: blank, children: [
-      !blank && turnItems.length >= 2 && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(import_jsx_runtime49.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "dchat-transcript-area", hidden: blank, children: [
+      !blank && turnItems.length >= 2 && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
         TurnNavigator,
         {
           items: turnItems,
@@ -15165,7 +18752,7 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
           t
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("div", { className: "dchat-transcript", "data-conversation-scroll": "", ref: transcript, tabIndex: 0, "aria-label": t("transcript"), onScroll: (event2) => {
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("div", { className: "dchat-transcript", "data-conversation-scroll": "", ref: transcript, tabIndex: 0, "aria-label": t("transcript"), onScroll: (event2) => {
         const node2 = event2.currentTarget;
         const currentTop = node2.scrollTop;
         const previousTop = lastScrollTopRef.current;
@@ -15194,8 +18781,8 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
             }
           });
         }
-      }, children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.MarkdownDelegateProvider, { openFile: openMarkdownFile, openExternalLink: openMarkdownExternalLink, children: /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { ref: transcriptContent, className: "dchat-transcript-content", children: [
-        session?.historyNotice && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("p", { className: "dchat-history-notice", role: "status", children: session.historyNotice }),
+      }, children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.MarkdownDelegateProvider, { openFile: openMarkdownFile, openExternalLink: openMarkdownExternalLink, children: /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { ref: transcriptContent, className: "dchat-transcript-content", children: [
+        session?.historyNotice && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("p", { className: "dchat-history-notice", role: "status", children: session.historyNotice }),
         visibleMessages.map((message, index2) => {
           const i = hiddenMessageCount + index2;
           const isLastAssistant = message.role === "assistant" && i === allMessages.length - 1;
@@ -15206,15 +18793,15 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
             tools: (message.tools || []).map(settleTool),
             steps: message.steps?.map((step) => step?.kind === "tool" ? { ...step, tool: settleTool(step.tool) } : step)
           } : null;
-          return /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+          return /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
             "article",
             {
               className: "dchat-message",
               "data-role": message.role,
               "data-message-index": i,
               "aria-label": message.role === "user" ? t("you") : engineLabel(engines, session.engine),
-              children: message.role === "assistant" ? /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(import_jsx_runtime43.Fragment, { children: [
-                savedActivity && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+              children: message.role === "assistant" ? /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(import_jsx_runtime49.Fragment, { children: [
+                savedActivity && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
                   TranscriptActivity,
                   {
                     activity: savedActivity,
@@ -15225,7 +18812,7 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
                     t
                   }
                 ),
-                /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
                   AssistantMessage,
                   {
                     message,
@@ -15234,9 +18821,9 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
                     streaming: busy && isLastAssistant && !hasLiveActivity
                   }
                 )
-              ] }) : /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(import_jsx_runtime43.Fragment, { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(UserMessage, { text: message.text, structuredReply: Boolean(currentCapabilities?.structuredUserReply) }),
-                message.attachments?.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+              ] }) : /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(import_jsx_runtime49.Fragment, { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(UserMessage, { text: message.text, structuredReply: Boolean(currentCapabilities?.structuredUserReply) }),
+                message.attachments?.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
                   Attachments,
                   {
                     items: message.attachments,
@@ -15249,7 +18836,7 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
             i
           );
         }),
-        hasLiveActivity && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+        hasLiveActivity && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
           TranscriptActivity,
           {
             activity,
@@ -15261,70 +18848,92 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
             t
           }
         ),
-        busy && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(RunningStatus, { startTime: runStartedAt, paused: false, t }),
-        session?.stopReason === "cancelled" && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { className: "dchat-status", role: "status", children: t("cancelled") })
+        busy && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(RunningStatus, { startTime: runStartedAt, paused: false, t }),
+        session?.stopReason === "cancelled" && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "dchat-status", role: "status", children: t("cancelled") })
       ] }) }) })
     ] }),
-    !blank && !followingTail && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("div", { className: "dchat-to-bottom-slot", children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("button", { type: "button", className: "dchat-to-bottom", "aria-label": t("transcript.toBottom"), onClick: returnToBottom, children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconChevronDownOutlineRegular, {}) }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { className: "dchat-input-region", "data-centered": blank || void 0, children: [
-      blank && /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(import_jsx_runtime43.Fragment, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
-          EngineHero,
-          {
-            selected: engine,
-            engines,
-            status: engineStatus,
-            reload: reloadEngines,
-            onSelect: async (next) => {
-              if (next === engine) return;
-              if (next === null) {
-                const workspace = workspaceSource.getSnapshot().items.find((item) => item.path === cwd);
-                try {
-                  await startNative(workspace?.workspaceId, cwd);
-                } catch (reason) {
-                  setError(reason.message || t("request.failed"));
+    !blank && !followingTail && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("div", { className: "dchat-to-bottom-slot", children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("button", { type: "button", className: "dchat-to-bottom", "aria-label": t("transcript.toBottom"), onClick: returnToBottom, children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.IconChevronDownOutlineRegular, {}) }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "dchat-input-region", "data-centered": blank || void 0, children: [
+      blank && /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(import_jsx_runtime49.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("div", { className: "dchat-engine-hero", children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("h1", { className: "dchat-engine-headline", children: /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("span", { className: "dchat-engine-headline-button", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(EngineLogo, { engine, label: engineLabel(engines, engine), icon: engines.find((item) => item.id === engine)?.meta?.icon, size: 38 }),
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { children: engineLabel(engines, engine) })
+        ] }) }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "dchat-workspace-row", children: [
+          engine && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+            WorkspacePicker,
+            {
+              value: cwd,
+              onChange: (path) => {
+                if (path !== cwd) {
+                  const nextComposer = navigation.draftFor({ ...target, cwd: path }, engine);
+                  const nextSnap = nextComposer.getSnapshot();
+                  if (!nextSnap.sending && !nextSnap.text && !nextSnap.attachments.length && (draft || attachments.length)) {
+                    if (draft) nextComposer.setText(draft);
+                    if (attachments.length) nextComposer.setAttachments(attachments);
+                  }
                 }
-              } else {
-                const nextComposer = navigation.draftFor(target, next);
-                const nextSnap = nextComposer.getSnapshot();
-                if (!nextSnap.sending && !nextSnap.text && !nextSnap.attachments.length && (draft || attachments.length)) {
-                  if (draft) nextComposer.setText(draft);
-                  if (attachments.length) nextComposer.setAttachments(attachments);
+                navigation.rememberCwd(path);
+                navigation.start(engine, path);
+              },
+              disabled: Boolean(pending),
+              t,
+              renderFactorySlot,
+              workspaceSource
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+            EngineDropdown,
+            {
+              selected: engine,
+              engines,
+              status: engineStatus,
+              reload: reloadEngines,
+              disabled: Boolean(pending),
+              onSelect: async (next) => {
+                if (next === engine) return;
+                if (next === null) {
+                  const workspace = workspaceSource.getSnapshot().items.find((item) => item.path === cwd);
+                  const effectiveDraft = stagedCommand ? `/${stagedCommand}${draft.trim() ? ` ${draft.trim()}` : ""}` : draft;
+                  try {
+                    const transferred = await startNative(workspace?.workspaceId, cwd, effectiveDraft);
+                    if (transferred && effectiveDraft && !composer.getSnapshot().sending) {
+                      setDraft("");
+                      if (stagedCommand) setStagedCommand(null);
+                    }
+                  } catch (reason) {
+                    setError(reason.message || t("request.failed"));
+                  }
+                } else {
+                  const nextComposer = navigation.draftFor(target, next);
+                  const nextSnap = nextComposer.getSnapshot();
+                  if (!nextSnap.sending && !nextSnap.text && !nextSnap.attachments.length && (draft || attachments.length)) {
+                    if (draft) {
+                      nextComposer.setText(draft);
+                      if (!composer.getSnapshot().sending) setDraft("");
+                    }
+                    if (attachments.length) {
+                      nextComposer.setAttachments(attachments);
+                      if (!composer.getSnapshot().sending) setAttachments([]);
+                    }
+                  }
+                  if (stagedCommand && !nextSnap.sending && !nextSnap.command) {
+                    nextComposer.setCommand(stagedCommand);
+                    if (!composer.getSnapshot().sending) setStagedCommand(null);
+                  }
+                  navigation.start(next, cwd);
                 }
-                navigation.start(next, cwd);
-              }
-            },
-            t
-          }
-        ),
-        engine && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("div", { className: "dchat-workspace-row", children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
-          WorkspacePicker,
-          {
-            value: cwd,
-            onChange: (path) => {
-              if (path !== cwd) {
-                const nextComposer = navigation.draftFor({ ...target, cwd: path }, engine);
-                const nextSnap = nextComposer.getSnapshot();
-                if (!nextSnap.sending && !nextSnap.text && !nextSnap.attachments.length && (draft || attachments.length)) {
-                  if (draft) nextComposer.setText(draft);
-                  if (attachments.length) nextComposer.setAttachments(attachments);
-                }
-              }
-              navigation.rememberCwd(path);
-              navigation.start(engine, path);
-            },
-            disabled: Boolean(pending),
-            t,
-            renderFactorySlot,
-            workspaceSource
-          }
-        ) })
+              },
+              t
+            }
+          )
+        ] })
       ] }),
-      needsEngine && /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { className: "dchat-connection", role: "status", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { children: t(engineStatus === "ready" ? "engine.empty" : engineStatus === "error" ? "engine.failed" : "engine.loading") }),
-        engineStatus === "error" && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.Button, { size: "sm", onClick: () => void reloadEngines(), children: t("engine.retry") })
+      needsEngine && /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "dchat-connection", role: "status", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { children: t(engineStatus === "ready" ? "engine.empty" : engineStatus === "error" ? "engine.failed" : "engine.loading") }),
+        engineStatus === "error" && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.Button, { size: "sm", onClick: () => void reloadEngines(), children: t("engine.retry") })
       ] }),
-      !readOnly && session?.permissions.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("div", { className: "dchat-approvals", children: session.permissions.map((permission) => /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+      !readOnly && session?.permissions.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("div", { className: "dchat-approvals", children: session.permissions.map((permission) => /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
         PermissionCard,
         {
           request: permission,
@@ -15335,25 +18944,25 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
         },
         permissionId(permission)
       )) }),
-      (error || sendError || session?.error || invalidEvent) && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("p", { role: "alert", className: "dchat-error", children: error || sendError || session?.error || t("stream.invalid") }),
-      connectionError && /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { className: "dchat-connection", role: "status", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { children: connectionError }),
-        /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.Button, { size: "sm", onClick: () => {
+      (error || sendError || session?.error || invalidEvent) && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("p", { role: "alert", className: "dchat-error", children: error || sendError || session?.error || t("stream.invalid") }),
+      connectionError && /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "dchat-connection", role: "status", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { children: connectionError }),
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.Button, { size: "sm", onClick: () => {
           if (id) setConnectAttempt((value) => value + 1);
           else setPrepareAttempt((value) => value + 1);
         }, children: t("reconnect") })
       ] }),
-      readOnly && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("p", { className: "dchat-history-notice", role: "status", children: t(session?.archived ? "session.archived" : "session.readOnly") }),
+      readOnly && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("p", { className: "dchat-history-notice", role: "status", children: t(session?.archived ? "session.archived" : "session.readOnly") }),
       !needsEngine && !readOnly && (() => {
         const planItems = activity.plan.length ? activity.plan : session?.messages?.at(-1)?.plan ?? [];
         const todos = planItems.map((item) => ({
           content: String(item.content ?? ""),
           status: ["completed", "in_progress", "pending"].includes(item.status) ? item.status : "pending"
         })).filter((item) => item.content);
-        return todos.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(TodoPanel, { todos, t: queueDock?.t ?? t }) : null;
+        return todos.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(TodoPanel, { todos, t: queueDock?.t ?? t }) : null;
       })(),
-      session?.queuePaused && queue.length > 0 && !readOnly && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.Button, { size: "sm", disabled: !ready || busy || Boolean(pending), onClick: () => void perform("queue", { action: "resume" }), children: t("queue.resume") }),
-      !needsEngine && !readOnly && (queue.length > 0 || queueEcho) && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+      session?.queuePaused && queue.length > 0 && !readOnly && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.Button, { size: "sm", disabled: !ready || busy || Boolean(pending), onClick: () => void perform("queue", { action: "resume" }), children: t("queue.resume") }),
+      !needsEngine && !readOnly && (queue.length > 0 || queueEcho) && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
         MessageQueue,
         {
           source: queueDock,
@@ -15367,7 +18976,7 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
             const ok = await perform("queue", { action, id: queuedId, text });
             if (!ok) throw new Error("Queue action was not applied");
           },
-          fallback: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+          fallback: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
             QueuedMessages,
             {
               queue,
@@ -15379,7 +18988,7 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
           )
         }
       ),
-      !needsEngine && !readOnly && /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(
+      !needsEngine && !readOnly && /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
         "form",
         {
           className: InputBar_default.card + " dchat-composer",
@@ -15420,7 +19029,7 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
           },
           children: [
             commandPicker.dropdown,
-            attachments.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+            attachments.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
               Attachments,
               {
                 items: attachments.map(({ id: id2, file }) => ({ id: id2, name: file.name })),
@@ -15432,16 +19041,16 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
                 t
               }
             ),
-            stagedCommand && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("div", { className: "dchat-staged-commands", children: /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("span", { className: "dchat-staged-command", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("span", { className: "dchat-staged-command-label", children: [
+            stagedCommand && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("div", { className: "dchat-staged-commands", children: /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("span", { className: "dchat-staged-command", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("span", { className: "dchat-staged-command-label", children: [
                 "/",
                 stagedTitle || stagedCommand,
-                stagedTitle && /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("code", { children: [
+                stagedTitle && /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("code", { children: [
                   "/",
                   stagedCommand
                 ] })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
                 "button",
                 {
                   type: "button",
@@ -15452,12 +19061,12 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
                     setStagedCommand(null);
                     input.current?.focus({ preventScroll: true });
                   },
-                  children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconCloseOutlineRegular, { size: 12 })
+                  children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.IconCloseOutlineRegular, { size: 12 })
                 }
               )
             ] }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { className: "dchat-composer-input-wrap", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "dchat-composer-input-wrap", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
                 "textarea",
                 {
                   className: InputBar_default.input,
@@ -15487,16 +19096,16 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
                   }
                 }
               ),
-              !draft && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { className: InputBar_default.placeholder + " dchat-composer-placeholder", "aria-hidden": "true", children: canSteerQueue ? queueDock.t("placeholder.steerQueue") : t(blank ? "message.hero" : "message") })
+              !draft && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: InputBar_default.placeholder + " dchat-composer-placeholder", "aria-hidden": "true", children: canSteerQueue ? queueDock.t("placeholder.steerQueue") : t(blank ? "message.hero" : "message") })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { className: InputBar_default.row + " dchat-composer-bar", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { className: "dchat-composer-tools", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("input", { type: "file", hidden: true, multiple: true, ref: fileInput, onChange: (event2) => {
+            /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: InputBar_default.row + " dchat-composer-bar", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "dchat-composer-tools", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("input", { type: "file", hidden: true, multiple: true, ref: fileInput, onChange: (event2) => {
                   stage(Array.from(event2.target.files));
                   event2.target.value = "";
                 } }),
                 commandPicker.plus,
-                (otherOptions.length > 0 || displayedAccount) && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+                (otherOptions.length > 0 || displayedAccount) && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
                   "button",
                   {
                     type: "button",
@@ -15505,12 +19114,12 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
                     "aria-controls": optionsRowId,
                     "aria-expanded": mobileOptionsOpen,
                     onClick: () => setMobileOptionsOpen((value) => !value),
-                    children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconSlidersTwoOutlineRegular, { size: 18 })
+                    children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.IconSlidersTwoOutlineRegular, { size: 18 })
                   }
                 )
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { id: optionsRowId, className: "dchat-composer-options", "data-expanded": mobileOptionsOpen || void 0, children: [
-                otherOptions.map((option) => /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { id: optionsRowId, className: "dchat-composer-options", "data-expanded": mobileOptionsOpen || void 0, children: [
+                otherOptions.map((option) => /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
                   ConfigMenu,
                   {
                     option,
@@ -15522,7 +19131,7 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
                   },
                   option.id
                 )),
-                displayedAccount && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+                displayedAccount && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
                   SessionAccount,
                   {
                     engine: currentEngine,
@@ -15533,8 +19142,8 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
                   }
                 )
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { className: "dchat-composer-trailing", children: [
-                model || effort ? /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "dchat-composer-trailing", children: [
+                model || effort ? /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
                   ModelConfigMenu,
                   {
                     model,
@@ -15546,8 +19155,8 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
                     disabled: configDisabled,
                     t
                   }
-                ) : !connectionError && (ready ? /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(
-                  import_dsh_client_ui_primitives37.Button,
+                ) : !connectionError && (ready ? /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
+                  import_dsh_client_ui_primitives43.Button,
                   {
                     size: "sm",
                     className: "dchat-option-trigger",
@@ -15556,15 +19165,15 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
                     disabled: configDisabled,
                     onClick: () => setConnectAttempt((value) => value + 1),
                     children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconDataOutlineRegular, { size: 16 }),
-                      /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { children: t("model.pending") })
+                      /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.IconDataOutlineRegular, { size: 16 }),
+                      /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { children: t("model.pending") })
                     ]
                   }
-                ) : /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("span", { className: "dchat-status", role: "status", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.StateDot, { state: "ongoing" }),
+                ) : /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("span", { className: "dchat-status", role: "status", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.StateDot, { state: "ongoing" }),
                   t("connecting")
                 ] })),
-                busy && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+                busy && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
                   "button",
                   {
                     type: "button",
@@ -15574,12 +19183,12 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
                     "aria-label": t("stop.current"),
                     disabled: !ready || Boolean(pending),
                     onClick: () => perform("cancel"),
-                    children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconStopFillRegular, { size: 16 })
+                    children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.IconStopFillRegular, { size: 16 })
                   }
                 ),
-                (!busy || hasDraft) && /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(import_jsx_runtime43.Fragment, { children: [
-                  canSteerDraft && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
-                    import_dsh_client_ui_primitives37.Menu,
+                (!busy || hasDraft) && /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(import_jsx_runtime49.Fragment, { children: [
+                  canSteerDraft && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+                    import_dsh_client_ui_primitives43.Menu,
                     {
                       open: deliveryMenuOpen && canSendPrompt,
                       portal: true,
@@ -15592,28 +19201,28 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
                         setDeliveryMenuOpen(false);
                         void send(delivery);
                       },
-                      anchor: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
-                        import_dsh_client_ui_primitives37.Button,
+                      anchor: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+                        import_dsh_client_ui_primitives43.Button,
                         {
                           size: "sm",
                           "aria-label": t("send.options"),
                           title: t("send.options"),
                           disabled: !canSendPrompt,
                           onClick: () => setDeliveryMenuOpen((open) => !open),
-                          children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconChevronDownOutlineRegular, { size: 14 })
+                          children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.IconChevronDownOutlineRegular, { size: 14 })
                         }
                       )
                     }
                   ),
-                  /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("button", { type: "submit", className: InputBar_default.primary + " dchat-send", title: sendLabel, "aria-label": sendLabel, disabled: !canSendPrompt, children: pending === "prompt" ? /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.StateDot, { state: "ongoing" }) : /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconSendOutlineRegular, { size: 18 }) })
+                  /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("button", { type: "submit", className: InputBar_default.primary + " dchat-send", title: sendLabel, "aria-label": sendLabel, disabled: !canSendPrompt, children: pending === "prompt" ? /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.StateDot, { state: "ongoing" }) : /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.IconSendOutlineRegular, { size: 18 }) })
                 ] })
               ] })
             ] })
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { className: "dchat-session-footer", children: [
-        (needsEngine || readOnly) && displayedAccount && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "dchat-session-footer", children: [
+        (needsEngine || readOnly) && displayedAccount && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
           SessionAccount,
           {
             engine: currentEngine,
@@ -15623,7 +19232,7 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
             t
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
           SessionStatus,
           {
             sessionId: id,
@@ -15645,7 +19254,7 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
         )
       ] })
     ] }),
-    commandDialog === "review" && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+    commandDialog === "review" && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
       ReviewCommand,
       {
         t,
@@ -15658,25 +19267,25 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
         }
       }
     ),
-    commandDialog === "compact" && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
-      import_dsh_client_ui_primitives37.Modal,
+    commandDialog === "compact" && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+      import_dsh_client_ui_primitives43.Modal,
       {
         open: true,
         title: t("composer.compactTitle"),
         description: t("composer.compactDescription"),
         closeLabel: t("close"),
         onClose: () => setCommandDialog(null),
-        footer: /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(import_jsx_runtime43.Fragment, { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.Button, { variant: "outline", "data-modal-autofocus": true, onClick: () => setCommandDialog(null), children: t("cancel") }),
-          /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.Button, { variant: "primary", onClick: () => {
+        footer: /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(import_jsx_runtime49.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.Button, { variant: "outline", "data-modal-autofocus": true, onClick: () => setCommandDialog(null), children: t("cancel") }),
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.Button, { variant: "primary", onClick: () => {
             setCommandDialog(null);
             void executeImmediateCommand("/compact");
           }, children: t("composer.stageCommand") })
         ] })
       }
     ),
-    commandDialog === "mcp" && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(McpStatusDialog, { id, close: () => setCommandDialog(null), t }),
-    !readOnly && parallelOpen && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+    commandDialog === "mcp" && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(McpStatusDialog, { id, close: () => setCommandDialog(null), t }),
+    !readOnly && parallelOpen && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
       ParallelTasks,
       {
         id,
@@ -15689,8 +19298,8 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
   ] });
 }
 function McpStatusDialog({ id, close, t }) {
-  const [state, setState] = (0, import_react38.useState)({ loading: true });
-  (0, import_react38.useEffect)(() => {
+  const [state, setState] = (0, import_react44.useState)({ loading: true });
+  (0, import_react44.useEffect)(() => {
     if (!id) return;
     const controller = new AbortController();
     fetch(`/api/direct-chat/sessions/${encodeURIComponent(id)}/mcp`, { signal: controller.signal, credentials: "same-origin" }).then(async (response) => {
@@ -15707,52 +19316,52 @@ function McpStatusDialog({ id, close, t }) {
     );
     return () => controller.abort();
   }, [id]);
-  return /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
-    import_dsh_client_ui_primitives37.Modal,
+  return /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+    import_dsh_client_ui_primitives43.Modal,
     {
       open: true,
       title: t("composer.mcpTitle"),
       closeLabel: t("close"),
       onClose: close,
-      footer: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.Button, { variant: "primary", "data-modal-autofocus": true, onClick: close, children: t("close") }),
-      children: state.loading ? /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("p", { className: "dchat-status", role: "status", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.StateDot, { state: "ongoing" }),
+      footer: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.Button, { variant: "primary", "data-modal-autofocus": true, onClick: close, children: t("close") }),
+      children: state.loading ? /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("p", { className: "dchat-status", role: "status", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.StateDot, { state: "ongoing" }),
         t("composer.mcpLoading")
-      ] }) : state.error ? /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("p", { className: "dchat-error", role: "alert", children: state.error }) : state.status !== "available" || !state.text ? /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("p", { className: "dchat-status", children: t("composer.mcpUnavailable") }) : /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("div", { className: "dchat-mcp-body", children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.MarkdownText, { text: state.text }) })
+      ] }) : state.error ? /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("p", { className: "dchat-error", role: "alert", children: state.error }) : state.status !== "available" || !state.text ? /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("p", { className: "dchat-status", children: t("composer.mcpUnavailable") }) : /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("div", { className: "dchat-mcp-body", children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.MarkdownText, { text: state.text }) })
     }
   );
 }
 function QueuedMessages({ queue, paused, busy, canSteer, disabled, change, t }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("section", { className: "dchat-queue", "aria-label": t("queue.title"), children: [
-    /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { className: "dchat-queue-heading", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { children: t("queue.count", { count: queue.length }) }),
-      paused && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.Button, { size: "sm", disabled: disabled || busy, onClick: () => void change("resume"), children: t("queue.resume") })
+  return /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("section", { className: "dchat-queue", "aria-label": t("queue.title"), children: [
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "dchat-queue-heading", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { children: t("queue.count", { count: queue.length }) }),
+      paused && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.Button, { size: "sm", disabled: disabled || busy, onClick: () => void change("resume"), children: t("queue.resume") })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("ol", { className: "dchat-queue-list", children: queue.map((item) => {
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("ol", { className: "dchat-queue-list", children: queue.map((item) => {
       const text = [item.text, ...(item.attachments ?? []).map((file) => file.name)].filter(Boolean).join(" \xB7 ");
       const steerable = canSteer && !item.attachments?.length && item.text?.trim() && !item.text.trimStart().startsWith("/");
-      return /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("li", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { className: "dchat-queue-text", title: text, children: text }),
-        steerable && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
-          import_dsh_client_ui_primitives37.Button,
+      return /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("li", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "dchat-queue-text", title: text, children: text }),
+        steerable && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+          import_dsh_client_ui_primitives43.Button,
           {
             size: "sm",
             disabled,
             title: t("send.steer"),
             "aria-label": t("send.steer"),
             onClick: () => void change("steer", item.id),
-            children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconSendOutlineRegular, { size: 14 })
+            children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.IconSendOutlineRegular, { size: 14 })
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
-          import_dsh_client_ui_primitives37.Button,
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+          import_dsh_client_ui_primitives43.Button,
           {
             size: "sm",
             disabled,
             title: t("queue.remove"),
             "aria-label": t("queue.remove"),
             onClick: () => void change("remove", item.id),
-            children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconCloseOutlineRegular, { size: 14 })
+            children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.IconCloseOutlineRegular, { size: 14 })
           }
         )
       ] }, item.id);
@@ -15760,14 +19369,14 @@ function QueuedMessages({ queue, paused, busy, canSteer, disabled, change, t }) 
   ] });
 }
 function Attachments({ items, open, remove, disabled, t }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("div", { className: "dchat-attachments", children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("div", { className: "dchat-attachments", children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
     AttachmentRail,
     {
       items: items.map((item, index2) => ({ id: String(remove ? item.id : index2), item })),
       labels: { group: t("attachments"), scrollLeft: t("attachment.scrollLeft"), scrollRight: t("attachment.scrollRight") },
-      renderItem: ({ item }) => /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { className: "dchat-attachment", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconPaperclipOutlineRegular, { size: 14 }),
-        open && item.previewId ? /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+      renderItem: ({ item }) => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "dchat-attachment", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.IconPaperclipOutlineRegular, { size: 14 }),
+        open && item.previewId ? /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
           "button",
           {
             type: "button",
@@ -15777,16 +19386,16 @@ function Attachments({ items, open, remove, disabled, t }) {
             onClick: () => open(item),
             children: item.name
           }
-        ) : /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { title: item.name, children: item.name }),
-        remove && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
-          import_dsh_client_ui_primitives37.Button,
+        ) : /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { title: item.name, children: item.name }),
+        remove && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+          import_dsh_client_ui_primitives43.Button,
           {
             type: "button",
             size: "sm",
             "aria-label": t("attachment.remove", { name: item.name }),
             disabled,
             onClick: () => remove(item.id),
-            children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconCloseOutlineRegular, { size: 12 })
+            children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.IconCloseOutlineRegular, { size: 12 })
           }
         )
       ] })
@@ -15794,9 +19403,9 @@ function Attachments({ items, open, remove, disabled, t }) {
   ) });
 }
 function SessionAccount({ engine, account, disabled, change, t }) {
-  const [open, setOpen] = (0, import_react38.useState)(false);
+  const [open, setOpen] = (0, import_react44.useState)(false);
   const selectable = account.canSwitch && !disabled && account.choices?.some((choice) => choice.id !== account.id);
-  (0, import_react38.useEffect)(() => {
+  (0, import_react44.useEffect)(() => {
     if (!selectable) setOpen(false);
   }, [selectable]);
   const baseLabel = (item) => accountChoiceLabel(item, t("engine.defaultAccount"));
@@ -15811,15 +19420,15 @@ function SessionAccount({ engine, account, disabled, change, t }) {
   const blocked = account.switchBlockedReason;
   const reason = ["busy", "history", "readOnly", "unavailable"].includes(blocked) ? t("engine.switch." + blocked) : "";
   const title = [t("engine.profileLabel") + " \xB7 " + label, reason].filter(Boolean).join(" \u2014 ");
-  const content = /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(import_jsx_runtime43.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconUsersOutlineRegular, { size: 14 }),
-    /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { children: label })
+  const content = /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(import_jsx_runtime49.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.IconUsersOutlineRegular, { size: 14 }),
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { children: label })
   ] });
   if (!selectable) {
-    return /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.Button, { type: "button", size: "sm", className: "dchat-session-account", disabled: true, title, "aria-label": title, children: content });
+    return /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.Button, { type: "button", size: "sm", className: "dchat-session-account", disabled: true, title, "aria-label": title, children: content });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
-    import_dsh_client_ui_primitives37.Menu,
+  return /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+    import_dsh_client_ui_primitives43.Menu,
     {
       open,
       portal: true,
@@ -15833,8 +19442,8 @@ function SessionAccount({ engine, account, disabled, change, t }) {
         setOpen(false);
         if (id !== account.id) void change(id);
       },
-      anchor: /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(
-        import_dsh_client_ui_primitives37.Button,
+      anchor: /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
+        import_dsh_client_ui_primitives43.Button,
         {
           size: "sm",
           className: "dchat-session-account",
@@ -15845,7 +19454,7 @@ function SessionAccount({ engine, account, disabled, change, t }) {
           onClick: () => setOpen((value) => !value),
           children: [
             content,
-            /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconChevronDownOutlineRegular, { size: 12 })
+            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.IconChevronDownOutlineRegular, { size: 12 })
           ]
         }
       )
@@ -15853,7 +19462,7 @@ function SessionAccount({ engine, account, disabled, change, t }) {
   );
 }
 function ConfigMenu({ option, change, open: controlledOpen, onOpenChange, disabled, t }) {
-  const [uncontrolledOpen, setUncontrolledOpen] = (0, import_react38.useState)(false);
+  const [uncontrolledOpen, setUncontrolledOpen] = (0, import_react44.useState)(false);
   const open = controlledOpen ?? uncontrolledOpen;
   const setOpen = onOpenChange ?? setUncontrolledOpen;
   const label = ["model", "thought_level", "mode"].includes(option.category) ? t(option.category) : option.name;
@@ -15861,10 +19470,10 @@ function ConfigMenu({ option, change, open: controlledOpen, onOpenChange, disabl
   const selected = groups.flatMap((group) => group.choices).find((choice) => choice.value === option.currentValue);
   const rows = groups.flatMap(({ name, choices }, index2) => [
     ...name ? [{ type: "label", id: `group:${index2}`, text: name }] : [],
-    ...choices.map((choice) => ({ id: choice.value, label: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { title: choice.description, children: choice.name }) }))
+    ...choices.map((choice) => ({ id: choice.value, label: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { title: choice.description, children: choice.name }) }))
   ]);
-  return /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
-    import_dsh_client_ui_primitives37.Menu,
+  return /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+    import_dsh_client_ui_primitives43.Menu,
     {
       open,
       portal: true,
@@ -15881,8 +19490,8 @@ function ConfigMenu({ option, change, open: controlledOpen, onOpenChange, disabl
         setOpen(false);
         if (value !== option.currentValue) change(option.id, value);
       },
-      anchor: /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(
-        import_dsh_client_ui_primitives37.Button,
+      anchor: /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
+        import_dsh_client_ui_primitives43.Button,
         {
           size: "sm",
           className: "dchat-option-trigger",
@@ -15893,8 +19502,8 @@ function ConfigMenu({ option, change, open: controlledOpen, onOpenChange, disabl
           "aria-expanded": open,
           onClick: () => setOpen(!open),
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { className: "dchat-option-selection", children: selected?.name ?? label }),
-            /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconChevronDownOutlineRegular, { size: 12 })
+            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "dchat-option-selection", children: selected?.name ?? label }),
+            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.IconChevronDownOutlineRegular, { size: 12 })
           ]
         }
       )
@@ -15902,46 +19511,46 @@ function ConfigMenu({ option, change, open: controlledOpen, onOpenChange, disabl
   );
 }
 function ModelConfigMenu({ model, effort, commands, chooseCommand, change, triggerRef, disabled, t }) {
-  const [pane, setPane] = (0, import_react38.useState)(null);
-  const [query, setQuery] = (0, import_react38.useState)("");
-  const [highlight, setHighlight] = (0, import_react38.useState)(null);
-  const [selection2, setSelection] = (0, import_react38.useState)(null);
+  const [pane, setPane] = (0, import_react44.useState)(null);
+  const [query, setQuery] = (0, import_react44.useState)("");
+  const [highlight, setHighlight] = (0, import_react44.useState)(null);
+  const [selection2, setSelection] = (0, import_react44.useState)(null);
   const selecting = selection2 !== null;
-  const root = (0, import_react38.useRef)(null);
-  const trigger = (0, import_react38.useRef)(null);
+  const root = (0, import_react44.useRef)(null);
+  const trigger = (0, import_react44.useRef)(null);
   const setTriggerRef = (node2) => {
     trigger.current = node2;
     if (triggerRef) triggerRef.current = node2;
   };
-  const menu = (0, import_react38.useRef)(null);
-  const search = (0, import_react38.useRef)(null);
-  const scroll = (0, import_react38.useRef)(null);
-  const returnTo = (0, import_react38.useRef)(null);
-  const id = (0, import_react38.useId)().replace(/[^a-z\d-]/gi, "");
+  const menu = (0, import_react44.useRef)(null);
+  const search = (0, import_react44.useRef)(null);
+  const scroll = (0, import_react44.useRef)(null);
+  const returnTo = (0, import_react44.useRef)(null);
+  const id = (0, import_react44.useId)().replace(/[^a-z\d-]/gi, "");
   const anchor = { "--dchat-model-anchor": `--dchat-model-${id}` };
-  const modelGroups = (0, import_react38.useMemo)(() => configGroups(model), [model]);
-  const effortGroups = (0, import_react38.useMemo)(() => configGroups(effort), [effort]);
-  const models = (0, import_react38.useMemo)(() => modelGroups.flatMap((group) => group.choices), [modelGroups]);
+  const modelGroups = (0, import_react44.useMemo)(() => configGroups(model), [model]);
+  const effortGroups = (0, import_react44.useMemo)(() => configGroups(effort), [effort]);
+  const models = (0, import_react44.useMemo)(() => modelGroups.flatMap((group) => group.choices), [modelGroups]);
   const currentModel = models.find((choice) => choice.value === model?.currentValue)?.name;
   const currentEffort = effortGroups.flatMap((group) => group.choices).find((choice) => choice.value === effort?.currentValue)?.name;
   const modelLabel = model && (currentModel ?? t("model.choose"));
   const effortLabel = effort && (currentEffort ?? t("model.effort"));
   const label = currentModel && currentEffort ? t("model.currentEffort", { model: currentModel, effort: currentEffort }) : currentModel ? t("model.current", { model: currentModel }) : modelLabel ?? effortLabel;
   const showSearch = pane === "model" && models.length > 4;
-  const groups = (0, import_react38.useMemo)(() => {
+  const groups = (0, import_react44.useMemo)(() => {
     if (pane === "effort") return effortGroups;
     if (pane !== "model") return [];
     if (!showSearch || !query.trim()) return modelGroups;
-    return modelGroups.map((group) => ({ ...group, choices: (0, import_dsh_client_ui_primitives37.rankByName)(group.choices, query.trim()) })).filter((group) => group.choices.length > 0);
+    return modelGroups.map((group) => ({ ...group, choices: (0, import_dsh_client_ui_primitives43.rankByName)(group.choices, query.trim()) })).filter((group) => group.choices.length > 0);
   }, [pane, effortGroups, modelGroups, showSearch, query]);
-  const choices = (0, import_react38.useMemo)(() => groups.flatMap((group) => group.choices), [groups]);
+  const choices = (0, import_react44.useMemo)(() => groups.flatMap((group) => group.choices), [groups]);
   const activeOption = pane === "effort" ? effort : model;
   const selectedIndex = choices.findIndex((choice) => choice.value === activeOption?.currentValue);
   const activeIndex = Math.min(highlight ?? Math.max(0, selectedIndex), choices.length - 1);
   const open = pane !== null;
   const hasRoot = Boolean(currentModel) || commands.length > 0;
   const close = (restoreFocus) => {
-    if (restoreFocus && trigger.current) (0, import_dsh_client_ui_primitives37.focusWithoutRing)(trigger.current, { preventScroll: true });
+    if (restoreFocus && trigger.current) (0, import_dsh_client_ui_primitives43.focusWithoutRing)(trigger.current, { preventScroll: true });
     setPane(null);
   };
   const show = (next) => {
@@ -15959,7 +19568,7 @@ function ModelConfigMenu({ model, effort, commands, chooseCommand, change, trigg
     }
   };
   const openPane = hasRoot ? "root" : model ? "model" : "effort";
-  (0, import_react38.useEffect)(() => {
+  (0, import_react44.useEffect)(() => {
     if (!open) return;
     const onPointerDown = (event2) => {
       if (!root.current?.contains(event2.target) && !menu.current?.contains(event2.target)) setPane(null);
@@ -15967,15 +19576,15 @@ function ModelConfigMenu({ model, effort, commands, chooseCommand, change, trigg
     document.addEventListener("pointerdown", onPointerDown);
     return () => document.removeEventListener("pointerdown", onPointerDown);
   }, [open]);
-  (0, import_react38.useEffect)(() => {
+  (0, import_react44.useEffect)(() => {
     if (disabled && !selecting) setPane(null);
   }, [disabled, selecting]);
-  (0, import_react38.useLayoutEffect)(() => {
+  (0, import_react44.useLayoutEffect)(() => {
     if (!pane) return;
     if (pane === "root") {
       if (returnTo.current) menu.current?.querySelector(`[data-pane="${returnTo.current}"]`)?.focus({ preventScroll: true });
       returnTo.current = null;
-    } else if (showSearch && !(0, import_dsh_client_ui_primitives37.isMobileDevice)()) {
+    } else if (showSearch && !(0, import_dsh_client_ui_primitives43.isMobileDevice)()) {
       search.current?.focus({ preventScroll: true });
     } else {
       const checked = menu.current?.querySelector('[aria-checked="true"]');
@@ -15984,10 +19593,10 @@ function ModelConfigMenu({ model, effort, commands, chooseCommand, change, trigg
       initial?.focus({ preventScroll: true });
     }
   }, [pane, showSearch]);
-  (0, import_react38.useEffect)(() => {
-    if (scroll.current && groups.some((group) => group.name)) return (0, import_dsh_client_ui_primitives37.observeStickyMenuGroups)(scroll.current);
+  (0, import_react44.useEffect)(() => {
+    if (scroll.current && groups.some((group) => group.name)) return (0, import_dsh_client_ui_primitives43.observeStickyMenuGroups)(scroll.current);
   }, [groups]);
-  (0, import_react38.useLayoutEffect)(() => {
+  (0, import_react44.useLayoutEffect)(() => {
     if (showSearch && activeIndex >= 0) {
       scroll.current?.querySelector(`[data-choice="${activeIndex}"]`)?.scrollIntoView({ block: "nearest" });
     }
@@ -15998,7 +19607,7 @@ function ModelConfigMenu({ model, effort, commands, chooseCommand, change, trigg
       close(true);
       return;
     }
-    (0, import_dsh_client_ui_primitives37.focusWithoutRing)(trigger.current, { preventScroll: true });
+    (0, import_dsh_client_ui_primitives43.focusWithoutRing)(trigger.current, { preventScroll: true });
     setSelection(choice.value);
     try {
       if (await change(activeOption.id, choice.value)) close(true);
@@ -16052,12 +19661,12 @@ function ModelConfigMenu({ model, effort, commands, chooseCommand, change, trigg
   };
   const menuLabel = model && effort ? t("model.menu") : t(model ? "model" : "thought_level");
   let choiceIndex = 0;
-  return /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { ref: root, className: "dchat-model", onKeyDown, onBlur: (event2) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { ref: root, className: "dchat-model", onKeyDown, onBlur: (event2) => {
     if (event2.relatedTarget && !root.current?.contains(event2.relatedTarget) && !menu.current?.contains(event2.relatedTarget)) close();
   }, onMouseDown: (event2) => {
     if (event2.target.closest("button")) event2.preventDefault();
   }, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
       "button",
       {
         ref: setTriggerRef,
@@ -16079,15 +19688,15 @@ function ModelConfigMenu({ model, effort, commands, chooseCommand, change, trigg
           else show(openPane);
         },
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconDataOutlineRegular, { className: "dchat-model-icon", size: 16 }),
-          modelLabel && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { className: "dchat-model-name", children: modelLabel }),
-          effortLabel && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { className: "dchat-model-effort", children: effortLabel }),
-          selecting ? /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.StateDot, { state: "ongoing" }) : /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconChevronDownOutlineRegular, { className: "dchat-model-chevron", size: 12 })
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.IconDataOutlineRegular, { className: "dchat-model-icon", size: 16 }),
+          modelLabel && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "dchat-model-name", children: modelLabel }),
+          effortLabel && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "dchat-model-effort", children: effortLabel }),
+          selecting ? /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.StateDot, { state: "ongoing" }) : /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.IconChevronDownOutlineRegular, { className: "dchat-model-chevron", size: 12 })
         ]
       }
     ),
-    open && (0, import_react_dom7.createPortal)(/* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
-      import_dsh_client_ui_primitives37.MenuSurface,
+    open && (0, import_react_dom7.createPortal)(/* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+      import_dsh_client_ui_primitives43.MenuSurface,
       {
         ref: menu,
         className: "dchat-model-menu",
@@ -16096,18 +19705,18 @@ function ModelConfigMenu({ model, effort, commands, chooseCommand, change, trigg
         role: showSearch ? "group" : "menu",
         "aria-label": menuLabel,
         "aria-busy": selecting,
-        children: pane === "root" ? /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(import_jsx_runtime43.Fragment, { children: [
-          model && /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("button", { className: "dchat-model-cell", type: "button", role: "menuitem", "data-pane": "model", onClick: () => show("model"), children: [
-            /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { children: t("model") }),
-            /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { children: modelLabel }),
-            /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconChevronRightOutlineRegular, { size: 12 })
+        children: pane === "root" ? /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(import_jsx_runtime49.Fragment, { children: [
+          model && /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("button", { className: "dchat-model-cell", type: "button", role: "menuitem", "data-pane": "model", onClick: () => show("model"), children: [
+            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { children: t("model") }),
+            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { children: modelLabel }),
+            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.IconChevronRightOutlineRegular, { size: 12 })
           ] }),
-          effort && /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("button", { className: "dchat-model-cell", type: "button", role: "menuitem", "data-pane": "effort", onClick: () => show("effort"), children: [
-            /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { children: t("model.effort") }),
-            /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { children: effortLabel }),
-            /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconChevronRightOutlineRegular, { size: 12 })
+          effort && /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("button", { className: "dchat-model-cell", type: "button", role: "menuitem", "data-pane": "effort", onClick: () => show("effort"), children: [
+            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { children: t("model.effort") }),
+            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { children: effortLabel }),
+            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.IconChevronRightOutlineRegular, { size: 12 })
           ] }),
-          commands.map((command) => /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(
+          commands.map((command) => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
             "button",
             {
               className: "dchat-model-cell dchat-model-command",
@@ -16119,10 +19728,10 @@ function ModelConfigMenu({ model, effort, commands, chooseCommand, change, trigg
                 chooseCommand(command.name);
               },
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { children: t(`model.${command.name}`) }),
-                /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("span", { children: [
-                  command.name === "swarm" && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("small", { children: t("model.swarmUsage") }),
-                  /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("code", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { children: t(`model.${command.name}`) }),
+                /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("span", { children: [
+                  command.name === "swarm" && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("small", { children: t("model.swarmUsage") }),
+                  /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("code", { children: [
                     "/",
                     command.name
                   ] })
@@ -16131,10 +19740,10 @@ function ModelConfigMenu({ model, effort, commands, chooseCommand, change, trigg
             },
             command.name
           ))
-        ] }) : /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(import_jsx_runtime43.Fragment, { children: [
-          showSearch && /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { className: "dchat-model-search", "data-query": Boolean(query) || void 0, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
-              import_dsh_client_ui_primitives37.Input,
+        ] }) : /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(import_jsx_runtime49.Fragment, { children: [
+          showSearch && /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "dchat-model-search", "data-query": Boolean(query) || void 0, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+              import_dsh_client_ui_primitives43.Input,
               {
                 ref: search,
                 type: "text",
@@ -16149,12 +19758,12 @@ function ModelConfigMenu({ model, effort, commands, chooseCommand, change, trigg
                 onChange: (event2) => changeQuery(event2.target.value)
               }
             ),
-            query && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("button", { type: "button", "aria-label": t("model.clearSearch"), disabled, onClick: () => {
+            query && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("button", { type: "button", "aria-label": t("model.clearSearch"), disabled, onClick: () => {
               changeQuery("");
               search.current?.focus();
-            }, children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconCloseFillRegular, { size: 16 }) })
+            }, children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.IconCloseFillRegular, { size: 16 }) })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
             "div",
             {
               ref: scroll,
@@ -16167,7 +19776,7 @@ function ModelConfigMenu({ model, effort, commands, chooseCommand, change, trigg
                 const rows = groupChoices.map((choice) => {
                   const index2 = choiceIndex++;
                   const selected = index2 === selectedIndex;
-                  return /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(
+                  return /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
                     "button",
                     {
                       type: "button",
@@ -16182,34 +19791,34 @@ function ModelConfigMenu({ model, effort, commands, chooseCommand, change, trigg
                       onMouseMove: showSearch ? () => setHighlight(index2) : void 0,
                       onClick: () => choose(choice),
                       children: [
-                        /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { title: choice.description || choice.name, children: choice.name }),
-                        selection2 === choice.value ? /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.StateDot, { state: "ongoing" }) : selected && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconCheckOutlineRegular, { size: 14 })
+                        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { title: choice.description || choice.name, children: choice.name }),
+                        selection2 === choice.value ? /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.StateDot, { state: "ongoing" }) : selected && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.IconCheckOutlineRegular, { size: 14 })
                       ]
                     },
                     choice.value
                   );
                 });
-                return name ? /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.MenuGroup, { label: name, children: rows }, groupIndex) : rows;
+                return name ? /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.MenuGroup, { label: name, children: rows }, groupIndex) : rows;
               })
             }
           ),
-          showSearch && choices.length === 0 && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { className: "dchat-model-empty", role: "status", children: t("model.noMatches") })
+          showSearch && choices.length === 0 && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "dchat-model-empty", role: "status", children: t("model.noMatches") })
         ] })
       }
     ), document.body)
   ] });
 }
 function ParallelTasks({ id, ready, launched, close, t }) {
-  const formId = (0, import_react38.useId)();
-  const form = (0, import_react38.useRef)(null);
-  const nextId = (0, import_react38.useRef)(2);
-  const focusTask = (0, import_react38.useRef)(null);
-  const lastRequest = (0, import_react38.useRef)(null);
-  const [items, setItems] = (0, import_react38.useState)([{ id: 0, text: "" }, { id: 1, text: "" }]);
-  const [pending, setPending] = (0, import_react38.useState)(false);
-  const [error, setError] = (0, import_react38.useState)("");
+  const formId = (0, import_react44.useId)();
+  const form = (0, import_react44.useRef)(null);
+  const nextId = (0, import_react44.useRef)(2);
+  const focusTask = (0, import_react44.useRef)(null);
+  const lastRequest = (0, import_react44.useRef)(null);
+  const [items, setItems] = (0, import_react44.useState)([{ id: 0, text: "" }, { id: 1, text: "" }]);
+  const [pending, setPending] = (0, import_react44.useState)(false);
+  const [error, setError] = (0, import_react44.useState)("");
   const tasks = items.map((item) => item.text.trim()).filter(Boolean);
-  (0, import_react38.useLayoutEffect)(() => {
+  (0, import_react44.useLayoutEffect)(() => {
     if (focusTask.current === null) return;
     form.current?.querySelector(`[data-task-id="${focusTask.current}"]`)?.focus();
     focusTask.current = null;
@@ -16237,8 +19846,8 @@ function ParallelTasks({ id, ready, launched, close, t }) {
   const dismiss = () => {
     if (!pending) close();
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
-    import_dsh_client_ui_primitives37.Modal,
+  return /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+    import_dsh_client_ui_primitives43.Modal,
     {
       open: true,
       onClose: dismiss,
@@ -16247,17 +19856,17 @@ function ParallelTasks({ id, ready, launched, close, t }) {
       description: t("parallel.description"),
       className: "dchat-parallel-dialog",
       contentClassName: "dchat-parallel-content",
-      footer: /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(import_jsx_runtime43.Fragment, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.Button, { size: "sm", onClick: dismiss, disabled: pending, children: t("cancel") }),
-        /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.Button, { size: "sm", variant: "primary", type: "submit", form: formId, disabled: pending || !ready || tasks.length === 0, children: t(pending ? "parallel.starting" : "parallel.start") })
+      footer: /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(import_jsx_runtime49.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.Button, { size: "sm", onClick: dismiss, disabled: pending, children: t("cancel") }),
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.Button, { size: "sm", variant: "primary", type: "submit", form: formId, disabled: pending || !ready || tasks.length === 0, children: t(pending ? "parallel.starting" : "parallel.start") })
       ] }),
-      children: /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("form", { id: formId, ref: form, className: "dchat-parallel-form", onSubmit: submit, children: [
-        items.map((item, index2) => /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { className: "dchat-parallel-task", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { className: "dchat-parallel-task-header", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("label", { htmlFor: `${formId}-task-${item.id}`, className: "dchat-parallel-badge", children: index2 + 1 }),
-            /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { className: "dchat-parallel-task-title", children: t("parallel.task", { index: index2 + 1 }) }),
-            items.length > 1 && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
-              import_dsh_client_ui_primitives37.Button,
+      children: /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("form", { id: formId, ref: form, className: "dchat-parallel-form", onSubmit: submit, children: [
+        items.map((item, index2) => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "dchat-parallel-task", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "dchat-parallel-task-header", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("label", { htmlFor: `${formId}-task-${item.id}`, className: "dchat-parallel-badge", children: index2 + 1 }),
+            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "dchat-parallel-task-title", children: t("parallel.task", { index: index2 + 1 }) }),
+            items.length > 1 && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+              import_dsh_client_ui_primitives43.Button,
               {
                 size: "sm",
                 className: "dchat-parallel-remove",
@@ -16267,11 +19876,11 @@ function ParallelTasks({ id, ready, launched, close, t }) {
                   focusTask.current = items[index2 + 1]?.id ?? items[index2 - 1]?.id;
                   setItems(items.filter((task) => task.id !== item.id));
                 },
-                children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconCloseOutlineRegular, { size: 12 })
+                children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.IconCloseOutlineRegular, { size: 12 })
               }
             )
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
             "textarea",
             {
               id: `${formId}-task-${item.id}`,
@@ -16291,12 +19900,12 @@ function ParallelTasks({ id, ready, launched, close, t }) {
             }
           )
         ] }, item.id)),
-        items.length < 4 && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
-          import_dsh_client_ui_primitives37.Button,
+        items.length < 4 && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+          import_dsh_client_ui_primitives43.Button,
           {
             size: "sm",
             className: "dchat-parallel-add",
-            icon: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconPlusOutlineRegular, { size: 14 }),
+            icon: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.IconPlusOutlineRegular, { size: 14 }),
             disabled: pending,
             onClick: () => {
               const task = { id: nextId.current++, text: "" };
@@ -16306,35 +19915,35 @@ function ParallelTasks({ id, ready, launched, close, t }) {
             children: t("parallel.add")
           }
         ),
-        error && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("p", { role: "alert", className: "dchat-error", children: error }),
-        !ready && !error && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("p", { role: "status", className: "dchat-status", children: t("disconnected") })
+        error && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("p", { role: "alert", className: "dchat-error", children: error }),
+        !ready && !error && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("p", { role: "status", className: "dchat-status", children: t("disconnected") })
       ] })
     }
   );
 }
 function SubagentCatalog({ summary, openChild, t }) {
-  const [open, setOpen] = (0, import_react38.useState)(false);
-  const root = (0, import_react38.useRef)(null);
-  const trigger = (0, import_react38.useRef)(null);
-  const count = (0, import_react38.useRef)(null);
-  const panel = (0, import_react38.useRef)(null);
-  const hover = (0, import_react38.useRef)(null);
-  const pinned = (0, import_react38.useRef)(false);
-  const nextFocus = (0, import_react38.useRef)(null);
-  const id = (0, import_react38.useId)();
+  const [open, setOpen] = (0, import_react44.useState)(false);
+  const root = (0, import_react44.useRef)(null);
+  const trigger = (0, import_react44.useRef)(null);
+  const count = (0, import_react44.useRef)(null);
+  const panel = (0, import_react44.useRef)(null);
+  const hover = (0, import_react44.useRef)(null);
+  const pinned = (0, import_react44.useRef)(false);
+  const nextFocus = (0, import_react44.useRef)(null);
+  const id = (0, import_react44.useId)();
   const anchorName = `--dchat-subagents-${id.replace(/[^a-z\d-]/gi, "")}`;
   const agents = summary?.agents ?? noAgents;
   const running = agents.filter((agent) => agent.status === "running" || agent.status === "in_progress").length;
   const label = summary?.ready || agents.length ? t(agents.length === 1 ? "agents.count.one" : "agents.count.other", { count: agents.length }) : t("agents.title");
   const rows = () => Array.from(panel.current?.querySelectorAll('[role="treeitem"]:not([aria-disabled="true"])') ?? []);
-  const close = (0, import_react38.useCallback)((restoreFocus = false) => {
+  const close = (0, import_react44.useCallback)((restoreFocus = false) => {
     clearTimeout(hover.current);
     pinned.current = false;
     nextFocus.current = null;
     setOpen(false);
-    if (restoreFocus && trigger.current) (0, import_dsh_client_ui_primitives37.focusWithoutRing)(trigger.current);
+    if (restoreFocus && trigger.current) (0, import_dsh_client_ui_primitives43.focusWithoutRing)(trigger.current);
   }, []);
-  (0, import_react38.useEffect)(() => {
+  (0, import_react44.useEffect)(() => {
     if (!open) return;
     const inside = (node2) => root.current?.contains(node2) || panel.current?.contains(node2);
     const pointerDown = (event2) => {
@@ -16353,8 +19962,8 @@ function SubagentCatalog({ summary, openChild, t }) {
       document.removeEventListener("keydown", onEscape);
     };
   }, [open, close]);
-  (0, import_react38.useEffect)(() => () => clearTimeout(hover.current), []);
-  (0, import_react38.useLayoutEffect)(() => {
+  (0, import_react44.useEffect)(() => () => clearTimeout(hover.current), []);
+  (0, import_react44.useLayoutEffect)(() => {
     if (!open || !nextFocus.current) return;
     const destination = nextFocus.current === "first" ? rows()[0] ?? panel.current : panel.current;
     nextFocus.current = null;
@@ -16394,8 +20003,8 @@ function SubagentCatalog({ summary, openChild, t }) {
     const next = event2.key === "Home" ? 0 : event2.key === "End" ? items.length - 1 : event2.key === "ArrowDown" ? current + 1 : current < 0 ? items.length - 1 : current - 1;
     items[(next + items.length) % items.length].focus();
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { className: "dchat-agent-catalog", ref: root, onKeyDown: navigate, onPointerLeave: hoverClose, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.Tooltip, { label, disabled: open, delayMs: 500, portal: true, side: "bottom", children: /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "dchat-agent-catalog", ref: root, onKeyDown: navigate, onPointerLeave: hoverClose, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.Tooltip, { label, disabled: open, delayMs: 500, portal: true, side: "bottom", children: /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
       "button",
       {
         type: "button",
@@ -16413,17 +20022,17 @@ function SubagentCatalog({ summary, openChild, t }) {
           else show("panel");
         },
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("span", { className: "dchat-agent-glyph", "aria-hidden": true, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconUsersOutlineRegular, { size: 14, className: running ? "dchat-agent-compact-icon" : void 0 }),
-            running > 0 && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.StateDot, { state: "ongoing", className: "dchat-agent-trigger-spinner" })
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("span", { className: "dchat-agent-glyph", "aria-hidden": true, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.IconUsersOutlineRegular, { size: 14, className: running ? "dchat-agent-compact-icon" : void 0 }),
+            running > 0 && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.StateDot, { state: "ongoing", className: "dchat-agent-trigger-spinner" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { className: "dchat-agent-count", ref: count, children: label })
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "dchat-agent-count", ref: count, children: label })
         ]
       }
     ) }),
-    running > 0 && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { id: `${id}-running`, hidden: true, children: t("agents.activity", { count: running }) }),
-    open && (0, import_react_dom7.createPortal)(/* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
-      import_dsh_client_ui_primitives37.MenuSurface,
+    running > 0 && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { id: `${id}-running`, hidden: true, children: t("agents.activity", { count: running }) }),
+    open && (0, import_react_dom7.createPortal)(/* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+      import_dsh_client_ui_primitives43.MenuSurface,
       {
         ref: panel,
         id: `${id}-catalog`,
@@ -16434,12 +20043,12 @@ function SubagentCatalog({ summary, openChild, t }) {
         style: { positionAnchor: anchorName },
         onPointerEnter: () => clearTimeout(hover.current),
         onPointerLeave: hoverClose,
-        children: /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { className: "dchat-agent-panel-body", children: [
-          summary?.error && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("p", { className: "dchat-agent-notice", role: "alert", children: summary.error }),
-          agents.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("div", { role: "tree", "aria-label": t("agents.catalog"), children: agents.map((agent) => /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(SubagentRow, { agent, openChild: (id2) => {
+        children: /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "dchat-agent-panel-body", children: [
+          summary?.error && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("p", { className: "dchat-agent-notice", role: "alert", children: summary.error }),
+          agents.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("div", { role: "tree", "aria-label": t("agents.catalog"), children: agents.map((agent) => /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(SubagentRow, { agent, openChild: (id2) => {
             close();
             openChild(id2);
-          }, t }, agent.id)) }) : !summary?.error && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("p", { className: "dchat-agent-notice", role: "status", children: t(summary?.ready ? "agents.empty" : "agents.loading") })
+          }, t }, agent.id)) }) : !summary?.error && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("p", { className: "dchat-agent-notice", role: "status", children: t(summary?.ready ? "agents.empty" : "agents.loading") })
         ] })
       }
     ), document.body)
@@ -16470,7 +20079,7 @@ function SubagentRow({ agent, openChild, t }) {
   const caption = [parallel ? t("agents.parallel") : null, agent.detail].filter(Boolean).join(" \xB7 ");
   const status = Object.hasOwn(labels, agent.status) ? t(labels[agent.status]) : agent.status;
   const launch = agent.sessionId ? () => openChild(agent.sessionId) : void 0;
-  return /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
     "div",
     {
       className: "dchat-agent-row",
@@ -16486,13 +20095,13 @@ function SubagentRow({ agent, openChild, t }) {
         launch();
       },
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { className: "dchat-agent-glyph", children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.StateDot, { state: Object.hasOwn(states, agent.status) ? states[agent.status] : "idle" }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("span", { className: "dchat-agent-name", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { children: name }),
-          caption && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("small", { children: caption })
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "dchat-agent-glyph", children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.StateDot, { state: Object.hasOwn(states, agent.status) ? states[agent.status] : "idle" }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("span", { className: "dchat-agent-name", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { children: name }),
+          caption && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("small", { children: caption })
         ] }),
-        status && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("small", { className: "dchat-agent-status", children: status }),
-        /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { className: "dchat-agent-open", "aria-hidden": true, children: launch && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconChevronRightOutlineRegular, { size: 14 }) })
+        status && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("small", { className: "dchat-agent-status", children: status }),
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "dchat-agent-open", "aria-hidden": true, children: launch && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.IconChevronRightOutlineRegular, { size: 14 }) })
       ]
     }
   );
@@ -16521,9 +20130,9 @@ function ToolLocations({ tool, openFile, t }) {
     tool.rawInput?.uri
   ]) add(candidate);
   if (locations.size === 0) return null;
-  return /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("ul", { className: "dchat-tool-paths", children: [...locations].map(([path, line2]) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("ul", { className: "dchat-tool-paths", children: [...locations].map(([path, line2]) => {
     const label = line2 === void 0 ? path : `${path}:${line2}`;
-    return /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
       "button",
       {
         className: "dchat-tool-path",
@@ -16543,13 +20152,13 @@ function PermissionCard({ request: request3, select, disabled, openFile, t }) {
     return [];
   }).join("\n");
   const detail = text || (toolCall.rawInput != null ? JSON.stringify(toolCall.rawInput, null, 2) : "");
-  return /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("section", { className: "dchat-approval", "aria-label": t("permission.title"), children: [
-    /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("h3", { children: t("permission.title") }),
-    /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("p", { children: toolCall.title || t("permission.tool") }),
-    /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(ToolLocations, { tool: toolCall, openFile, t }),
-    detail && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("pre", { children: detail }),
-    /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("div", { className: "dchat-approval-actions", children: options.map((option) => /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
-      import_dsh_client_ui_primitives37.Button,
+  return /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("section", { className: "dchat-approval", "aria-label": t("permission.title"), children: [
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("h3", { children: t("permission.title") }),
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("p", { children: toolCall.title || t("permission.tool") }),
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(ToolLocations, { tool: toolCall, openFile, t }),
+    detail && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("pre", { children: detail }),
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("div", { className: "dchat-approval-actions", children: options.map((option) => /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+      import_dsh_client_ui_primitives43.Button,
       {
         size: "sm",
         variant: "outline",
@@ -16563,15 +20172,15 @@ function PermissionCard({ request: request3, select, disabled, openFile, t }) {
 }
 function UserMessage({ text, structuredReply }) {
   const replies = structuredReply && questionReply(text);
-  if (replies) return /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("dl", { className: "dchat-question-reply", children: replies.map(({ question, answer }, i) => /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("dt", { children: question }),
-    /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("dd", { children: answer })
+  if (replies) return /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("dl", { className: "dchat-question-reply", children: replies.map(({ question, answer }, i) => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("dt", { children: question }),
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("dd", { children: answer })
   ] }, i)) });
-  return text ? /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("p", { children: text }) : null;
+  return text ? /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("p", { children: text }) : null;
 }
 function AssistantMessage({ message, ...props }) {
-  const normalized = (0, import_react38.useMemo)(() => normalizeMarkdownFileUrls(message.text), [message.text]);
-  return normalized ? /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.MarkdownText, { text: normalized, ...props }) : null;
+  const normalized = (0, import_react44.useMemo)(() => normalizeMarkdownFileUrls(message.text), [message.text]);
+  return normalized ? /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_dsh_client_ui_primitives43.MarkdownText, { text: normalized, ...props }) : null;
 }
 
 // composer-draft.mjs
@@ -16737,14 +20346,33 @@ function createNavigation(refreshHistory, storage = browserStorage()) {
 function startDirectFromNative(ctx, navigation, engine, cwd) {
   const sessionId = ctx.get("uiSession")?.adapter.current.getSnapshot()?.key;
   const scope = sessionId === void 0 ? void 0 : ctx.get("sessions")?.scope(sessionId);
-  const text = scope && ctx.get("conversation")?.input.for(scope).state.getSnapshot().draft;
+  const nativeInput = scope && ctx.get("conversation")?.input.for(scope);
+  const text = nativeInput?.state.getSnapshot().draft;
+  if (cwd) navigation.rememberCwd(cwd);
   navigation.start(engine, cwd);
   if (!text) return;
   const composer = navigation.draftFor(navigation.getSnapshot(), engine);
   const target = composer.getSnapshot();
   if (!target.sending && !target.text && !target.command && !target.attachments.length) {
     composer.setText(text);
+    nativeInput?.setDraft?.("");
   }
+}
+async function startNativeFromDirect(ctx, workspaceId, cwd, draft) {
+  if (!workspaceId && cwd) {
+    const navigationSignal = ctx.layout.beginNavigation();
+    workspaceId = (await ctx.workspaces.create({ path: cwd })).workspaceId;
+    if (navigationSignal.aborted) return false;
+  }
+  if (workspaceId) await ctx.uiWorkspace.openWorkspace(workspaceId);
+  else ctx.uiWorkspace.startSession();
+  if (!draft) return false;
+  const sessionId = ctx.get("uiSession")?.adapter.current.getSnapshot()?.key;
+  const scope = sessionId === void 0 ? void 0 : ctx.get("sessions")?.scope(sessionId);
+  const nativeInput = scope && ctx.get("conversation")?.input.for(scope);
+  if (!nativeInput || nativeInput.state.getSnapshot().draft) return false;
+  nativeInput.setDraft(draft);
+  return true;
 }
 
 // session-pet.css
@@ -17921,724 +21549,6 @@ var zh4 = {
   "engineSettings.apiKeySaved": "\u5DF2\u4FDD\u5B58\uFF08\u7559\u7A7A\u5219\u4FDD\u6301\u4E0D\u53D8\uFF09",
   "engineSettings.missingKey": "\u7F3A\u5C11 {key}"
 };
-
-// sidebar.jsx
-var import_react39 = require("react");
-var import_dsh_client_ui_primitives38 = require("@deepseek-ai/dsh-client-ui-primitives");
-var import_jsx_runtime44 = require("react/jsx-runtime");
-var workspaceSessionsSlot = "sidebar.workspaces.external-sessions";
-var workspaceProjectionSlot = "sidebar.workspaces.direct-chat-projection";
-var sidebarCopy = {
-  en: {
-    "sidebar.refresh": "Refresh direct conversations",
-    "sidebar.failed": "Could not load direct conversations. Refresh to try again.",
-    "sidebar.terminal": "Terminal",
-    "sidebar.moreActions": "Actions for {name}",
-    "sidebar.copyPath": "Copy directory path",
-    "sidebar.copyId": "Copy session ID",
-    "sidebar.register": "Add to DSH workspaces",
-    "sidebar.registered": "Added to DSH workspaces",
-    "sidebar.registerFailed": "Could not add the directory to DSH workspaces",
-    "sidebar.copied": "Copied to clipboard",
-    "sidebar.copyFailed": "Could not copy to clipboard",
-    "sidebar.rename": "Rename",
-    "sidebar.localRename": "Rename in DSH",
-    "sidebar.renameTitle": "Rename session",
-    "sidebar.sessionName": "Session name",
-    "sidebar.delete": "Delete conversation",
-    "sidebar.deleteTitle": "Delete conversation?",
-    "sidebar.deleteDescription": "\u201C{name}\u201D and any associated subagent conversations will be permanently deleted.",
-    "sidebar.confirmDelete": "Delete permanently",
-    "sidebar.deleting": "Deleting conversation\u2026",
-    "sidebar.deleted": "Conversation deleted",
-    "sidebar.deleteFailed": "Could not delete the conversation.",
-    "sidebar.fork": "Fork session",
-    "sidebar.forkUnavailable": "The engine or current session state does not allow forking.",
-    "sidebar.agyForkUnavailable": "Open this conversation in the Antigravity terminal and run /fork.",
-    "sidebar.forkArchived": "Restore this session before forking.",
-    "sidebar.forked": "Session forked",
-    "sidebar.pin": "Pin session",
-    "sidebar.unpin": "Unpin session",
-    "sidebar.pinned": "Pinned session",
-    "sidebar.archive": "Archive",
-    "sidebar.archiveUnavailable": "Native archiving is unavailable for this session.",
-    "sidebar.restoreLegacy": "Restore from the old DSH archive",
-    "sidebar.restore": "Restore",
-    "sidebar.archived": "Conversation archived",
-    "sidebar.restored": "Conversation restored",
-    "sidebar.restoreToOpen": "Restore the conversation to open it.",
-    "sidebar.archiveFolder": "Archive all sessions",
-    "sidebar.archiveFolderTitle": "Archive all conversations in folder?",
-    "sidebar.archiveFolderDescription": "Archive {count} active conversation(s) in \u201C{name}\u201D to hide this folder from the sidebar. You can restore them anytime in Settings.",
-    "sidebar.confirmArchiveFolder": "Archive all",
-    "sidebar.archivingFolder": "Archiving conversations\u2026",
-    "sidebar.archivedFolder": "Archived {count} conversation(s)",
-    "sidebar.archivedFolderPartial": "Archived {count} conversation(s); {skipped} active or unsupported session(s) remained.",
-    "sidebar.archiveFolderNone": "No idle archivable conversations in this folder.",
-    "sidebar.archiveFolderFailed": "Could not archive conversations in this folder.",
-    "sidebar.actionFailed": "Could not complete the session action",
-    "sidebar.updatedAt": "Updated {date}",
-    "sidebar.createdAt": "Created {date}",
-    "sidebar.status.running": "Running",
-    "sidebar.status.attention": "Needs approval",
-    "sidebar.status.done": "Completed"
-  },
-  zh: {
-    "sidebar.refresh": "\u5237\u65B0\u76F4\u8FDE\u4F1A\u8BDD",
-    "sidebar.failed": "\u65E0\u6CD5\u52A0\u8F7D\u76F4\u8FDE\u4F1A\u8BDD\u3002\u70B9\u51FB\u5237\u65B0\u91CD\u8BD5\u3002",
-    "sidebar.terminal": "\u7EC8\u7AEF",
-    "sidebar.moreActions": "{name}\u7684\u66F4\u591A\u64CD\u4F5C",
-    "sidebar.copyPath": "\u590D\u5236\u76EE\u5F55\u8DEF\u5F84",
-    "sidebar.copyId": "\u590D\u5236\u4F1A\u8BDD ID",
-    "sidebar.register": "\u6DFB\u52A0\u5230 DSH \u5DE5\u4F5C\u533A",
-    "sidebar.registered": "\u5DF2\u6DFB\u52A0\u5230 DSH \u5DE5\u4F5C\u533A",
-    "sidebar.registerFailed": "\u65E0\u6CD5\u5C06\u76EE\u5F55\u6DFB\u52A0\u5230 DSH \u5DE5\u4F5C\u533A",
-    "sidebar.copied": "\u5DF2\u590D\u5236\u5230\u526A\u8D34\u677F",
-    "sidebar.copyFailed": "\u65E0\u6CD5\u590D\u5236\u5230\u526A\u8D34\u677F",
-    "sidebar.rename": "\u91CD\u547D\u540D",
-    "sidebar.localRename": "\u4FEE\u6539\u7F51\u9875\u663E\u793A\u540D",
-    "sidebar.renameTitle": "\u91CD\u547D\u540D\u4F1A\u8BDD",
-    "sidebar.sessionName": "\u4F1A\u8BDD\u540D\u79F0",
-    "sidebar.delete": "\u5220\u9664\u4F1A\u8BDD",
-    "sidebar.deleteTitle": "\u5220\u9664\u4F1A\u8BDD\uFF1F",
-    "sidebar.deleteDescription": "\u300C{name}\u300D\u53CA\u5176\u5173\u8054\u7684\u5B50\u4EE3\u7406\u4F1A\u8BDD\u5C06\u88AB\u6C38\u4E45\u5220\u9664\u3002",
-    "sidebar.confirmDelete": "\u6C38\u4E45\u5220\u9664",
-    "sidebar.deleting": "\u6B63\u5728\u5220\u9664\u4F1A\u8BDD\u2026",
-    "sidebar.deleted": "\u5DF2\u5220\u9664\u4F1A\u8BDD",
-    "sidebar.deleteFailed": "\u65E0\u6CD5\u5220\u9664\u4F1A\u8BDD\u3002",
-    "sidebar.fork": "\u5206\u53C9\u4F1A\u8BDD",
-    "sidebar.forkUnavailable": "\u5F53\u524D\u5F15\u64CE\u6216\u4F1A\u8BDD\u72B6\u6001\u4E0D\u652F\u6301\u5206\u53C9\u3002",
-    "sidebar.agyForkUnavailable": "\u8BF7\u5728 Antigravity \u7EC8\u7AEF\u6253\u5F00\u6B64\u4F1A\u8BDD\u5E76\u6267\u884C /fork\u3002",
-    "sidebar.forkArchived": "\u8BF7\u5148\u6062\u590D\u6B64\u4F1A\u8BDD\uFF0C\u518D\u521B\u5EFA\u5206\u53C9\u3002",
-    "sidebar.forked": "\u5DF2\u5206\u53C9\u4F1A\u8BDD",
-    "sidebar.pin": "\u7F6E\u9876\u4F1A\u8BDD",
-    "sidebar.unpin": "\u53D6\u6D88\u7F6E\u9876",
-    "sidebar.pinned": "\u5DF2\u7F6E\u9876\u4F1A\u8BDD",
-    "sidebar.archive": "\u5F52\u6863",
-    "sidebar.archiveUnavailable": "\u6B64\u4F1A\u8BDD\u6682\u4E0D\u652F\u6301\u539F\u751F\u5F52\u6863\u3002",
-    "sidebar.restoreLegacy": "\u4ECE\u65E7\u7248 DSH \u5F52\u6863\u6062\u590D",
-    "sidebar.restore": "\u6062\u590D",
-    "sidebar.archived": "\u5DF2\u5F52\u6863\u4F1A\u8BDD",
-    "sidebar.restored": "\u5DF2\u6062\u590D\u4F1A\u8BDD",
-    "sidebar.restoreToOpen": "\u6062\u590D\u4F1A\u8BDD\u540E\u5373\u53EF\u6253\u5F00\u3002",
-    "sidebar.archiveFolder": "\u5F52\u6863\u5168\u90E8\u4F1A\u8BDD",
-    "sidebar.archiveFolderTitle": "\u5F52\u6863\u76EE\u5F55\u4E2D\u7684\u5168\u90E8\u4F1A\u8BDD\uFF1F",
-    "sidebar.archiveFolderDescription": "\u5C06\u5F52\u6863\u300C{name}\u300D\u4E2D\u7684 {count} \u4E2A\u4F1A\u8BDD\u5E76\u4F7F\u5176\u4ECE\u5DE6\u4FA7\u8FB9\u680F\u9690\u85CF\uFF1B\u4E4B\u540E\u53EF\u968F\u65F6\u5728\u300C\u8BBE\u7F6E \u2192 CLI \u4F1A\u8BDD\u5F52\u6863\u300D\u4E2D\u6062\u590D\u3002",
-    "sidebar.confirmArchiveFolder": "\u5168\u90E8\u5F52\u6863",
-    "sidebar.archivingFolder": "\u6B63\u5728\u5F52\u6863\u4F1A\u8BDD\u2026",
-    "sidebar.archivedFolder": "\u5DF2\u5F52\u6863 {count} \u4E2A\u4F1A\u8BDD",
-    "sidebar.archivedFolderPartial": "\u5DF2\u5F52\u6863 {count} \u4E2A\u4F1A\u8BDD\uFF1B\u53E6\u6709 {skipped} \u4E2A\u8FD0\u884C\u4E2D\u6216\u4E0D\u652F\u6301\u5F52\u6863\u7684\u4F1A\u8BDD\u4FDD\u7559\u3002",
-    "sidebar.archiveFolderNone": "\u8BE5\u76EE\u5F55\u4E2D\u6CA1\u6709\u53EF\u5F52\u6863\u7684\u7A7A\u95F2\u4F1A\u8BDD\u3002",
-    "sidebar.archiveFolderFailed": "\u65E0\u6CD5\u5F52\u6863\u8BE5\u76EE\u5F55\u4E2D\u7684\u4F1A\u8BDD\u3002",
-    "sidebar.actionFailed": "\u65E0\u6CD5\u5B8C\u6210\u6B64\u4F1A\u8BDD\u64CD\u4F5C",
-    "sidebar.updatedAt": "\u66F4\u65B0\u4E8E {date}",
-    "sidebar.createdAt": "\u521B\u5EFA\u4E8E {date}",
-    "sidebar.status.running": "\u8FD0\u884C\u4E2D",
-    "sidebar.status.attention": "\u7B49\u5F85\u5BA1\u6279",
-    "sidebar.status.done": "\u5DF2\u5B8C\u6210"
-  }
-};
-function SidebarSessions({ placement, history, t }) {
-  const { pending, error } = (0, import_react39.useSyncExternalStore)(history.subscribe, history.getSnapshot);
-  if (placement !== "toolbar") return null;
-  const label = t(error ? "sidebar.failed" : "sidebar.refresh");
-  return /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
-    "button",
-    {
-      type: "button",
-      className: "dchat-sidebar-refresh",
-      title: label,
-      "aria-label": label,
-      "data-error": error || void 0,
-      "aria-disabled": pending || void 0,
-      onClick: () => {
-        if (!pending) void history.refresh();
-      },
-      children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(import_dsh_client_ui_primitives38.IconRefreshOutlineRegular, { size: 14 })
-    }
-  );
-}
-var emptyStatusSnapshot = { list: [], byId: /* @__PURE__ */ new Map() };
-var fallbackStatusStore = { getSnapshot: () => emptyStatusSnapshot, subscribe: () => () => {
-} };
-function SidebarProjection({ render, history, statusStore = fallbackStatusStore, navigation, openDirect, usePanelInfo, panelId: panelId2, engineSource, registerWorkspace, archiveRequest, t }) {
-  const { byCwd } = (0, import_react39.useSyncExternalStore)(history.subscribe, history.getSnapshot);
-  const { engines } = (0, import_react39.useSyncExternalStore)(engineSource.subscribe, engineSource.getSnapshot);
-  const statusSnapshot = (0, import_react39.useSyncExternalStore)(statusStore.subscribe, statusStore.getSnapshot);
-  const target = (0, import_react39.useSyncExternalStore)(navigation.subscribe, navigation.getSnapshot);
-  const active = usePanelInfo((info) => info.activePanelId === panelId2);
-  const [expanded, setExpanded] = (0, import_react39.useState)(() => /* @__PURE__ */ new Set());
-  const [notice, setNotice] = (0, import_react39.useState)(null);
-  const [renameTarget, setRenameTarget] = (0, import_react39.useState)(null);
-  const [deleteTarget, setDeleteTarget] = (0, import_react39.useState)(null);
-  const [localArchiveTarget, setLocalArchiveTarget] = (0, import_react39.useState)(null);
-  const externalArchiveTarget = (0, import_react39.useSyncExternalStore)(
-    archiveRequest?.subscribe ?? fallbackStatusStore.subscribe,
-    archiveRequest?.getSnapshot ?? (() => null)
-  );
-  const archiveTarget = externalArchiveTarget ?? localArchiveTarget;
-  const setArchiveTarget = (next) => {
-    if (archiveRequest) archiveRequest.set(next);
-    else setLocalArchiveTarget(next);
-  };
-  const groupCwdsRef = (0, import_react39.useRef)(/* @__PURE__ */ new Map());
-  const report = (text, success) => setNotice((old) => ({ id: (old?.id ?? 0) + 1, text, success }));
-  const copy = async (text) => {
-    const copied = await (0, import_dsh_client_ui_primitives38.writeClipboard)(text).catch(() => false);
-    report(t(copied ? "sidebar.copied" : "sidebar.copyFailed"), copied);
-  };
-  const updateSession = async (row, action, data) => {
-    await sessionAction(row.id, action, data);
-    await history.refresh();
-  };
-  const removeSession = async (row) => {
-    const { deletedIds } = await deleteSession(row.id);
-    const removed = new Set(deletedIds);
-    history.remove(removed);
-    navigation.forget(removed, row);
-    void history.refresh();
-    report(t("sidebar.deleted"), true);
-  };
-  const extension = {
-    activeId: active && target.id ? `direct-chat:session:${target.id}` : void 0,
-    groups: (groups, workspaces, expandedGroups, filter) => {
-      const projected = projectSidebarGroups(groups, workspaces, expandedGroups, expanded, byCwd, filter, t("cwd.default"), active);
-      const nextCwds = /* @__PURE__ */ new Map();
-      for (const group of projected) {
-        const path = group.directCwd ?? group.cwd;
-        if (path) nextCwds.set(group.key, path);
-      }
-      groupCwdsRef.current = nextCwds;
-      return projected;
-    },
-    flat: (rows, filter) => mergeSidebarRows(hideNativeDraft(rows, active), [...byCwd.values()].flat().filter((row) => sidebarRowVisible(row, filter))),
-    expandGroup(key, open) {
-      if (!isVirtualGroup(key)) return false;
-      setExpanded((current) => {
-        const next = new Set(current);
-        if (open) next.add(key);
-        else next.delete(key);
-        return next;
-      });
-      return true;
-    },
-    renderRow: (node2, css, compactTime, formatTime) => {
-      const isRowActive = active && node2.directChat.id === target.id;
-      const live = !node2.archived ? statusSnapshot.byId.get(node2.directChat.id) : void 0;
-      const liveState = live?.state === "done" && isRowActive ? void 0 : live?.state;
-      return /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
-        ExternalSessionRow,
-        {
-          node: node2,
-          css,
-          label: engineLabel(engines, node2.directChat.engine),
-          compactTime,
-          formatTime,
-          active: isRowActive,
-          liveState,
-          openDirect,
-          updateSession,
-          rename: setRenameTarget,
-          confirmDelete: setDeleteTarget,
-          copy,
-          report,
-          t
-        },
-        node2.id
-      );
-    },
-    renderFolderActions: (group, css, setGroupExpanded) => {
-      if (group.directCwd === void 0) return null;
-      const rows = byCwd.get(group.directCwd) ?? [];
-      const archivableCount = rows.filter((row) => !row.archived && row.archiveMode !== "unsupported").length;
-      return /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
-        FolderActions,
-        {
-          path: group.directCwd,
-          name: group.label,
-          css,
-          archivableCount,
-          copy,
-          archiveAll: () => setArchiveTarget({ cwd: group.directCwd, name: group.label, count: archivableCount }),
-          register: async () => {
-            try {
-              const workspace = await registerWorkspace(group.directCwd);
-              setGroupExpanded(workspace.workspaceId, true);
-              report(t("sidebar.registered"), true);
-            } catch (error) {
-              report(error.message || t("sidebar.registerFailed"), false);
-            }
-          },
-          t
-        }
-      );
-    }
-  };
-  (0, import_react39.useLayoutEffect)(() => {
-    if (typeof document === "undefined") return;
-    const rank = { attention: 3, running: 2, done: 1 };
-    const cwdState = /* @__PURE__ */ new Map();
-    for (const item of statusSnapshot.list ?? []) {
-      if (!item?.cwd || !item.state) continue;
-      if (item.state === "done" && active && item.id === target.id) continue;
-      const prev = cwdState.get(item.cwd);
-      if (!prev || rank[item.state] > rank[prev]) cwdState.set(item.cwd, item.state);
-    }
-    for (const el of document.querySelectorAll('[data-row-key^="workspace:"]')) {
-      const key = el.dataset.rowKey?.slice("workspace:".length);
-      const cwd = key ? groupCwdsRef.current.get(key) ?? (key.startsWith("direct-chat:cwd:") ? key.slice("direct-chat:cwd:".length) : void 0) : void 0;
-      const state = cwd ? cwdState.get(cwd) : void 0;
-      if (state) el.dataset.directWorkspaceState = state;
-      else delete el.dataset.directWorkspaceState;
-    }
-  }, [statusSnapshot, byCwd, expanded, active, target.id]);
-  return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(import_jsx_runtime44.Fragment, { children: [
-    render(extension),
-    renameTarget && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
-      SessionRename,
-      {
-        row: renameTarget,
-        save: (title) => updateSession(renameTarget, "rename", renameTarget.renameMode === "local" ? { title, mode: "local" } : { title }),
-        close: () => setRenameTarget(null),
-        t
-      },
-      renameTarget.id
-    ),
-    deleteTarget && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
-      SessionDelete,
-      {
-        name: deleteTarget.title || engineLabel(engines, deleteTarget.engine),
-        remove: () => removeSession(deleteTarget),
-        close: () => setDeleteTarget(null),
-        t
-      },
-      deleteTarget.id
-    ),
-    archiveTarget && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
-      WorkspaceArchive,
-      {
-        name: archiveTarget.name,
-        count: archiveTarget.count,
-        archive: async () => {
-          const result = await archiveWorkspace(archiveTarget.cwd);
-          await history.refresh();
-          const archivedCount = result?.archivedIds?.length ?? 0;
-          const skipped = (result?.skippedActive ?? 0) + (result?.skippedUnsupported ?? 0);
-          if (archivedCount > 0 && skipped === 0) report(t("sidebar.archivedFolder", { count: archivedCount }), true);
-          else if (archivedCount > 0) report(t("sidebar.archivedFolderPartial", { count: archivedCount, skipped }), true);
-          else report(t("sidebar.archiveFolderNone"), false);
-        },
-        close: () => setArchiveTarget(null),
-        t
-      },
-      archiveTarget.cwd
-    ),
-    notice && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
-      import_dsh_client_ui_primitives38.Toast,
-      {
-        text: notice.text,
-        tone: notice.success ? "success" : void 0,
-        onDone: () => setNotice(null)
-      },
-      notice.id
-    )
-  ] });
-}
-function MoreMenu({ name, css, open, setOpen, point, setPoint, items, select, t }) {
-  const label = t("sidebar.moreActions", { name });
-  return /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
-    import_dsh_client_ui_primitives38.Menu,
-    {
-      open,
-      portal: true,
-      dense: true,
-      autoFocus: true,
-      align: "end",
-      items,
-      getAnchorRect: point ? () => point : void 0,
-      onClose: () => {
-        setOpen(false);
-        setPoint?.(null);
-      },
-      onSelect: (id) => {
-        setOpen(false);
-        setPoint?.(null);
-        select(id);
-      },
-      anchor: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
-        "button",
-        {
-          type: "button",
-          className: css.iconButton,
-          "aria-label": label,
-          title: label,
-          "data-direct-menu-trigger": "",
-          "aria-haspopup": "menu",
-          "aria-expanded": open,
-          onClick: (event2) => {
-            event2.stopPropagation();
-            setPoint?.(null);
-            setOpen(!open);
-          },
-          children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(import_dsh_client_ui_primitives38.IconEllipsisOutlineRegular, { size: 16 })
-        }
-      )
-    }
-  );
-}
-var icon = (Icon) => /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(Icon, { size: 16 });
-function SessionRename({ row, save, close, t }) {
-  const [draft, setDraft] = (0, import_react39.useState)(row.title || "");
-  const [pending, setPending] = (0, import_react39.useState)(false);
-  const [error, setError] = (0, import_react39.useState)("");
-  const composing = (0, import_react39.useRef)(false);
-  const title = draft.trim();
-  const confirm = async () => {
-    if (!title || pending) return;
-    setPending(true);
-    setError("");
-    try {
-      await save(title);
-      close();
-    } catch (reason) {
-      setError(reason.message || t("sidebar.actionFailed"));
-      setPending(false);
-    }
-  };
-  const dismiss = () => {
-    if (!pending) close();
-  };
-  return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
-    import_dsh_client_ui_primitives38.Modal,
-    {
-      open: true,
-      title: t("sidebar.renameTitle"),
-      closeLabel: t("close"),
-      onClose: dismiss,
-      footer: /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(import_jsx_runtime44.Fragment, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(import_dsh_client_ui_primitives38.Button, { variant: "outline", disabled: pending, onClick: dismiss, children: t("cancel") }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(import_dsh_client_ui_primitives38.Button, { variant: "primary", disabled: !title || pending, onClick: () => {
-          void confirm();
-        }, children: t("sidebar.rename") })
-      ] }),
-      children: [
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
-          "input",
-          {
-            "aria-label": t("sidebar.sessionName"),
-            className: "dchat-sidebar-rename-input",
-            "data-modal-autofocus": true,
-            maxLength: 256,
-            value: draft,
-            onFocus: (event2) => event2.currentTarget.select(),
-            disabled: pending,
-            onChange: (event2) => {
-              setDraft(event2.currentTarget.value);
-              setError("");
-            },
-            onCompositionStart: () => {
-              composing.current = true;
-            },
-            onCompositionEnd: () => {
-              composing.current = false;
-            },
-            onKeyDown: (event2) => {
-              if (event2.key !== "Enter" || composing.current || event2.nativeEvent.isComposing || event2.keyCode === 229) return;
-              event2.preventDefault();
-              void confirm();
-            }
-          }
-        ),
-        error && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "dchat-sidebar-dialog-error", role: "alert", children: error })
-      ]
-    }
-  );
-}
-function ActionConfirmModal({ title, description, confirmLabel, pendingLabel, failedLabel, actionClassName, run, close, t }) {
-  const running = (0, import_react39.useRef)(false);
-  const [pending, setPending] = (0, import_react39.useState)(false);
-  const [error, setError] = (0, import_react39.useState)("");
-  const dismiss = () => {
-    if (!running.current) close();
-  };
-  const confirm = async () => {
-    if (running.current) return;
-    running.current = true;
-    setPending(true);
-    setError("");
-    try {
-      await run();
-      close();
-    } catch (reason) {
-      setError(reason.message || failedLabel);
-      running.current = false;
-      setPending(false);
-    }
-  };
-  return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
-    import_dsh_client_ui_primitives38.Modal,
-    {
-      open: true,
-      title,
-      description,
-      className: "dchat-sidebar-delete-dialog",
-      contentClassName: "dchat-sidebar-delete-content",
-      closeLabel: t("close"),
-      onClose: dismiss,
-      footer: /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "dchat-sidebar-delete-actions", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(import_dsh_client_ui_primitives38.Button, { variant: "outline", "data-modal-autofocus": true, disabled: pending, onClick: dismiss, children: t("cancel") }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
-          import_dsh_client_ui_primitives38.Button,
-          {
-            variant: "outline",
-            className: actionClassName,
-            disabled: pending,
-            onClick: () => void confirm(),
-            children: confirmLabel
-          }
-        )
-      ] }),
-      children: [
-        pending && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "dchat-sidebar-delete-status", role: "status", children: pendingLabel }),
-        error && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "dchat-sidebar-dialog-error", role: "alert", children: error })
-      ]
-    }
-  );
-}
-function SessionDelete({ name, remove, close, t }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
-    ActionConfirmModal,
-    {
-      title: t("sidebar.deleteTitle"),
-      description: t("sidebar.deleteDescription", { name }),
-      confirmLabel: t("sidebar.confirmDelete"),
-      pendingLabel: t("sidebar.deleting"),
-      failedLabel: t("sidebar.deleteFailed"),
-      actionClassName: "dchat-sidebar-delete-action",
-      run: remove,
-      close,
-      t
-    }
-  );
-}
-function WorkspaceArchive({ name, count, archive, close, t }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
-    ActionConfirmModal,
-    {
-      title: t("sidebar.archiveFolderTitle"),
-      description: t("sidebar.archiveFolderDescription", { name, count }),
-      confirmLabel: t("sidebar.confirmArchiveFolder"),
-      pendingLabel: t("sidebar.archivingFolder"),
-      failedLabel: t("sidebar.archiveFolderFailed"),
-      run: archive,
-      close,
-      t
-    }
-  );
-}
-function FolderActions({ path, name, css, archivableCount, register, archiveAll, copy, t }) {
-  const [open, setOpen] = (0, import_react39.useState)(false);
-  const [pending, setPending] = (0, import_react39.useState)(false);
-  const items = [
-    ...path ? [
-      { id: "register", label: t("sidebar.register"), icon: icon(import_dsh_client_ui_primitives38.IconProjectAddOutlineRegular), disabled: pending },
-      { id: "path", label: t("sidebar.copyPath"), icon: icon(import_dsh_client_ui_primitives38.IconCopyOutlineRegular) },
-      { type: "separator", id: "archive-separator" }
-    ] : [],
-    { id: "archiveAll", label: t("sidebar.archiveFolder"), icon: icon(import_dsh_client_ui_primitives38.IconArchiveOutlineRegular), disabled: pending || archivableCount === 0 }
-  ];
-  return /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
-    MoreMenu,
-    {
-      name,
-      css,
-      open,
-      setOpen,
-      t,
-      items,
-      select: async (id) => {
-        if (id === "path") return copy(path);
-        if (id === "archiveAll") {
-          if (!pending && archivableCount > 0) archiveAll();
-          return;
-        }
-        if (pending) return;
-        setPending(true);
-        try {
-          await register();
-        } finally {
-          setPending(false);
-        }
-      }
-    }
-  );
-}
-function QuickAction({ css, label, Icon, disabled, onClick, pinned = false }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(import_dsh_client_ui_primitives38.Tooltip, { label, side: "bottom", align: "end", delayMs: 500, portal: true, children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
-    "button",
-    {
-      type: "button",
-      className: pinned ? `${css.iconButton} ${css.pinnedAction}` : css.iconButton,
-      "aria-label": label,
-      disabled,
-      "data-direct-pinned-action": pinned || void 0,
-      onClick,
-      children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(Icon, { size: 14 })
-    }
-  ) });
-}
-function ExternalSessionRow({ node: node2, css, label, compactTime, formatTime, active, liveState, openDirect, updateSession, rename, confirmDelete, copy, report, t }) {
-  const row = node2.directChat;
-  const [open, setOpen] = (0, import_react39.useState)(false);
-  const [point, setPoint] = (0, import_react39.useState)(null);
-  const [pending, setPending] = (0, import_react39.useState)(false);
-  const title = row.title || label;
-  const origin = row.origin === "terminal" ? t("sidebar.terminal") : void 0;
-  const created = sidebarTime(row.createdAt);
-  const fullTime = node2.updatedAt ? formatTime(node2.updatedAt) : void 0;
-  const canArchive = row.archiveMode !== "unsupported";
-  const canDelete = row.actions?.delete === true;
-  const canRename = row.actions?.rename === true || row.renameMode === "local";
-  const archiveLabel = t(node2.archived ? row.archiveMode === "legacy" ? "sidebar.restoreLegacy" : "sidebar.restore" : "sidebar.archive");
-  const pinLabel = t(node2.pinned ? "sidebar.unpin" : "sidebar.pin");
-  const ArchiveIcon = node2.archived ? import_dsh_client_ui_primitives38.IconUnarchiveOutlineRegular : import_dsh_client_ui_primitives38.IconArchiveOutlineRegular;
-  const PinIcon = node2.pinned ? import_dsh_client_ui_primitives38.IconPinFillRegular : import_dsh_client_ui_primitives38.IconPinOutlineRegular;
-  const canFork = row.canFork === true && !node2.archived;
-  const forkReason = t(node2.archived ? "sidebar.forkArchived" : row.forkUnavailableReason === "agy-acp" ? "sidebar.agyForkUnavailable" : "sidebar.forkUnavailable");
-  const items = [
-    ...!node2.archived ? [{ id: "pin", label: pinLabel, icon: icon(PinIcon), disabled: pending }] : [],
-    { id: "rename", label: t(row.renameMode === "local" ? "sidebar.localRename" : "sidebar.rename"), icon: icon(import_dsh_client_ui_primitives38.IconEditOutlineRegular), disabled: pending || !canRename },
-    { id: "fork", label: t("sidebar.fork"), icon: icon(import_dsh_client_ui_primitives38.IconBranchOutlineRegular), disabled: pending || !canFork },
-    ...!canFork ? [{ type: "label", id: "fork-unavailable", text: forkReason }] : [],
-    { type: "separator", id: "copy-separator" },
-    { id: "id", label: t("sidebar.copyId"), icon: icon(import_dsh_client_ui_primitives38.IconCopyOutlineRegular) },
-    ...row.cwd ? [{ id: "path", label: t("sidebar.copyPath"), icon: icon(import_dsh_client_ui_primitives38.IconCopyOutlineRegular) }] : [],
-    { type: "separator", id: "archive-separator" },
-    { id: "archive", label: archiveLabel, disabled: pending || !canArchive, icon: icon(ArchiveIcon) },
-    ...!canArchive ? [{ type: "label", id: "archive-unavailable", text: t("sidebar.archiveUnavailable") }] : [],
-    ...canDelete ? [
-      { type: "separator", id: "delete-separator" },
-      { id: "delete", label: t("sidebar.delete"), icon: icon(import_dsh_client_ui_primitives38.IconTrashOutlineRegular), danger: true, disabled: pending }
-    ] : []
-  ];
-  const mutate = async (action, data, notice) => {
-    if (pending) return;
-    setPending(true);
-    try {
-      await updateSession(row, action, data);
-      if (notice) report(t(notice), true);
-    } catch (error) {
-      report(error.message || t("sidebar.actionFailed"), false);
-    } finally {
-      setPending(false);
-    }
-  };
-  const select = async (id) => {
-    if (id === "id" || id === "path") return copy(id === "id" ? row.id : row.cwd);
-    if (pending) return;
-    if (id === "rename" && canRename) rename(row);
-    else if (id === "delete" && canDelete) confirmDelete(row);
-    else if (id === "archive") await mutate("archive", { archived: !node2.archived }, node2.archived ? "sidebar.restored" : "sidebar.archived");
-    else if (id === "pin" && !node2.archived) await mutate("pin", { pinned: !node2.pinned });
-    else if (id === "fork" && canFork) await mutate("fork", {}, "sidebar.forked");
-  };
-  const activate = () => node2.archived ? report(t("sidebar.restoreToOpen"), false) : openDirect(row.id);
-  const anchor = /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
-    "div",
-    {
-      role: "treeitem",
-      tabIndex: 0,
-      "data-row-key": `session:${node2.id}`,
-      "data-direct-row": "",
-      "data-live-state": liveState || void 0,
-      className: [css.sessionRow, active && css.selected, node2.archived && css.archived, open && css.menuOpen].filter(Boolean).join(" "),
-      "aria-selected": active,
-      "aria-description": node2.archived ? t("sidebar.restoreToOpen") : void 0,
-      onClick: activate,
-      onKeyDown: (event2) => {
-        if (event2.currentTarget !== event2.target || event2.key !== "Enter" && event2.key !== " " || event2.altKey || event2.ctrlKey || event2.metaKey || event2.shiftKey) return;
-        event2.preventDefault();
-        activate();
-      },
-      onContextMenu: (event2) => {
-        event2.preventDefault();
-        event2.stopPropagation();
-        setPoint(new DOMRect(event2.clientX, event2.clientY, 0, 0));
-        setOpen(true);
-      },
-      children: [
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: `${css.slot} dchat-sidebar-slot`, "aria-hidden": "true", children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(EngineLogo, { engine: row.engine, label, size: 14 }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: css.title, onDoubleClick: (event2) => {
-          event2.stopPropagation();
-          if (!pending && canRename) rename(row);
-        }, children: title }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("span", { className: css.rowResting, children: [
-          fullTime && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("time", { className: `${css.time} ${css.timestamp}`, dateTime: new Date(node2.updatedAt).toISOString(), title: fullTime, children: compactTime }),
-          node2.pinned && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: css.pinIndicator, role: "img", title: t("sidebar.pinned"), "aria-label": t("sidebar.pinned"), children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(import_dsh_client_ui_primitives38.IconPinFillRegular, { size: 14 }) })
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("span", { className: css.rowActions, onClick: (event2) => event2.stopPropagation(), children: [
-          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
-            MoreMenu,
-            {
-              name: title,
-              css,
-              open,
-              setOpen,
-              point,
-              setPoint,
-              items,
-              select: (id) => {
-                void select(id);
-              },
-              t
-            }
-          ),
-          /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("span", { className: css.rowQuickActions, "data-direct-quick-actions": "", children: [
-            canArchive && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(QuickAction, { css, label: archiveLabel, Icon: ArchiveIcon, disabled: pending, onClick: () => {
-              void select("archive");
-            } }),
-            !node2.archived && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
-              QuickAction,
-              {
-                css,
-                label: pinLabel,
-                Icon: PinIcon,
-                disabled: pending,
-                pinned: node2.pinned,
-                onClick: () => {
-                  void select("pin");
-                }
-              }
-            )
-          ] })
-        ] })
-      ]
-    }
-  );
-  return /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
-    import_dsh_client_ui_primitives38.HoverCard,
-    {
-      anchor,
-      openDelayMs: 800,
-      grouped: true,
-      disabled: open,
-      copyText: title,
-      copyLabel: t("copy"),
-      copiedLabel: t("sidebar.copied"),
-      content: /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: css.hoverContent, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: css.hoverTitle, children: title }),
-        row.cwd && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: css.hoverPath, children: row.cwd }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: css.hoverTime, children: origin ? `${label} \xB7 ${origin}` : label }),
-        fullTime && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: css.hoverTime, children: t("sidebar.updatedAt", { date: fullTime }) }),
-        created > 0 && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: css.hoverTime, children: t("sidebar.createdAt", { date: formatTime(created) }) }),
-        liveState && /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: css.hoverStatus, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(import_dsh_client_ui_primitives38.StateDot, { state: liveState === "running" ? "ongoing" : liveState === "attention" ? "warning" : "done" }),
-          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { children: t(`sidebar.status.${liveState}`) })
-        ] })
-      ] })
-    }
-  );
-}
 
 // archive-settings.css
 var archive_settings_default = `.dchat-archive-settings {
@@ -20485,6 +23395,56 @@ html:not([data-platform]) [data-sidebar-drawer] .dchat-title {
 }
 .dchat-composer > .dchat-attachments,
 .dchat-composer > .dchat-staged-commands { margin-inline: 8px; }
+
+.dchat-shell {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.dchat-shell > .dchat {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.dchat-shell[data-dragging-split] {
+  user-select: none;
+  cursor: col-resize;
+}
+
+.dchat-split-handle {
+  flex: 0 0 4px;
+  margin-inline-start: -2px;
+  margin-inline-end: -2px;
+  z-index: 3;
+  cursor: col-resize;
+  background: transparent;
+  transition: background-color 120ms ease;
+}
+
+.dchat-split-handle:hover,
+.dchat-shell[data-dragging-split] .dchat-split-handle {
+  background: var(--dsw-alias-border-l1, rgba(128, 128, 128, 0.35));
+}
+
+.dchat-split-rightbar {
+  flex: 0 0 auto;
+  min-width: 0;
+  height: 100%;
+  position: relative;
+  border-inline-start: 1px solid var(--dsw-alias-border-l2);
+}
+
+.dchat-native-hero-dock {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-block-end: 8px;
+}
 `;
 
 // workspace-picker.css
@@ -20494,14 +23454,14 @@ var workspace_picker_default = ".dchat-workspace-picker {\n  min-width: 0;\n}\n\
 var workspace_diff_default = ".dchat-diff-pane {\n  position: absolute;\n  inset: 0 0 0 auto;\n  display: flex;\n  flex-direction: column;\n  box-sizing: border-box;\n  min-width: 0;\n  color: var(--dsw-alias-label-primary);\n}\n\n.dchat-diff-pane[data-fullscreen] {\n  position: fixed;\n  z-index: 40;\n  inset: var(--dsh-frame-chrome-top, 0px) 0 0;\n  width: auto;\n}\n\n.dchat-diff-pane[data-fallback] {\n  z-index: 40;\n  width: min(480px, 100%);\n\n}\n\n.dchat-diff-pane[data-fallback] [data-sidebar-right-mode] {\n  display: none;\n}\n\n.dchat-preview-markdown {\n  flex: 1;\n  min-height: 0;\n  overflow: auto;\n  padding: 16px 20px;\n  font-size: 13px;\n  line-height: 1.65;\n}\n\n.dchat .dchat-diff-icon,\n.dchat .dchat-files-icon,\n.dchat-diff-pane .dchat-diff-icon {\n  width: 28px;\n  height: 28px;\n  padding: 0;\n  color: var(--dsw-alias-label-secondary);\n}\n\n.dchat-rightbar-toggle-icon {\n  transform: scaleX(-1);\n}\n\n.dchat :is(.dchat-diff-icon, .dchat-files-icon)[aria-pressed='true'] {\n  background: var(--dsw-alias-interactive-bg-hover);\n  color: var(--dsw-alias-label-primary);\n}\n\n.dchat-diff-workspace {\n  flex: 1 1 120px;\n  min-width: 0;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 12px;\n}\n\n.dchat-diff-pane .dchat-diff-select {\n  gap: 4px;\n  padding: 0 7px;\n}\n\n.dchat-diff-visually-hidden {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  overflow: hidden;\n  clip-path: inset(50%);\n  white-space: nowrap;\n}\n\n[data-dchat-forge-changes] {\n  flex: 1;\n  min-width: 0;\n}\n\n.dchat-forge-body {\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  min-height: 0;\n  min-width: 0;\n}\n\n.dchat-preview-toolbar {\n  display: flex;\n  flex: none;\n  align-items: center;\n  gap: 4px;\n  box-sizing: border-box;\n  min-height: 38px;\n  padding: 0 6px 0 16px;\n  border-bottom: 0.5px solid var(--dsw-alias-border-l3);\n}\n\n.dchat-preview-path { flex: 1; min-width: 0; margin-inline-end: 8px; }\n.dchat-preview-toolbar .dchat-diff-icon { flex: none; }\n\n.dchat-files-pane,\n.dchat-preview-content {\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  min-width: 0;\n  min-height: 0;\n}\n\n.dchat-files-pane[hidden] { display: none; }\n\n.dchat-files-content {\n  flex: 1;\n  min-height: 0;\n  padding: 8px;\n  overflow: auto;\n  overscroll-behavior: contain;\n}\n\n.dchat-files-list {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\n\n.dchat-files-entry > .dchat-files-list { padding-inline-start: min(12px, 3cqw); }\n\n.dchat-files-row {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  width: 100%;\n  min-width: 0;\n  min-height: 29px;\n  padding: 5px 10px;\n  border: 0;\n  border-radius: var(--dsw-radius-md);\n  background: transparent;\n  color: var(--dsw-alias-label-primary);\n  font: inherit;\n  font-size: var(--dsh-content-font-size-secondary, 13px);\n  text-align: start;\n  cursor: pointer;\n}\n\n.dchat-files-row:hover { background: var(--dsw-alias-interactive-bg-hover); }\n.dchat-files-row > svg { flex: none; }\n.dchat-files-row[aria-expanded] > svg { color: var(--dsw-alias-label-tertiary); }\n.dchat-files-row[aria-expanded='true'] .dchat-files-chevron svg { transform: rotate(90deg); }\n\n.dchat-files-chevron {\n  display: flex;\n  flex: none;\n  align-items: center;\n  justify-content: center;\n  width: 12px;\n  color: var(--dsw-alias-label-tertiary);\n}\n\n.dchat-files-name { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }\n\n.dchat-files-note,\n.dchat-preview-status {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  margin: 0;\n  padding: 9px 12px;\n  color: var(--dsw-alias-label-secondary);\n  font-size: var(--dsh-content-font-size-secondary, 13px);\n  overflow-wrap: anywhere;\n}\n\n.dchat-files-entry > .dchat-files-note { margin-inline-start: 12px; }\n\n.dchat-preview-notice {\n  margin: 0;\n  padding: 6px 12px;\n  border-top: 0.5px solid var(--dsw-alias-border-l3);\n  color: var(--dsw-alias-label-secondary);\n  font-size: 12px;\n}\n\n.dchat-preview-scroll {\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  min-width: 0;\n  min-height: 0;\n}\n\n.dchat-preview-scroll > .md-code-block {\n  --dsl-code-block-border-radius: 0px;\n  --dsl-code-block-background: transparent;\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  min-width: 0;\n  min-height: 0;\n  margin: 0;\n}\n\n.dchat-preview-scroll > .md-code-block > [data-code-block-content] {\n  position: relative;\n  display: block;\n  flex: 1;\n  min-width: 0;\n  min-height: 0;\n  overflow: auto;\n  overscroll-behavior: contain;\n}\n\n.dchat-preview-scroll .md-code-block pre {\n  box-sizing: border-box;\n  min-width: 100%;\n  padding: 16px;\n  overflow: visible;\n}\n\n.dchat-preview-scroll [data-line-numbers] pre code {\n  --dsl-code-block-line-number-width: var(--dchat-file-number-width);\n  counter-reset: source-line var(--dchat-file-first-line, 0);\n}\n\n.dchat-preview-scroll [data-dchat-file-line] { background: var(--dsw-alias-interactive-bg-hover); }\n\n.dchat-preview-image-scroll,\n.dchat-preview-media-scroll {\n  display: flex;\n  flex: 1;\n  align-items: center;\n  justify-content: center;\n  min-width: 0;\n  min-height: 0;\n  padding: 12px;\n  overflow: auto;\n}\n\n.dchat-preview-image-scroll > img,\n.dchat-preview-video {\n  max-width: 100%;\n  max-height: 100%;\n  object-fit: contain;\n  border-radius: var(--dsw-radius-md);\n}\n\n.dchat-preview-audio {\n  width: min(100%, 420px);\n}\n\n.dchat-browser-toolbar {\n  padding-inline: 8px;\n}\n\n.dchat-browser-url {\n  flex: 1;\n  min-width: 0;\n}\n\n.dchat-browser-frame {\n  flex: 1;\n  width: 100%;\n  height: 100%;\n  border: 0;\n  background: #fff;\n}\n\n.dchat-native-terminal-host {\n  position: relative;\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  min-width: 0;\n  min-height: 0;\n  overflow: hidden;\n}\n\n.dchat-native-terminal-host > [data-sidebar-terminal] {\n  flex: 1;\n  min-width: 0;\n  min-height: 0;\n}\n\n.dchat-document-html {\n  display: block;\n  flex: 1;\n  width: 100%;\n  min-height: 0;\n  border: 0;\n  background: white;\n}\n\n.dchat-document-pdf {\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  min-width: 0;\n  min-height: 0;\n}\n\n.dchat-document-zoom {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  gap: 4px;\n  padding: 4px;\n  border-bottom: 1px solid var(--dsw-alias-border-l3);\n}\n\n.dchat-document-pdf-scroll {\n  flex: 1;\n  min-width: 0;\n  min-height: 0;\n  overflow: auto;\n  background: var(--dsw-alias-bg-module-platform);\n}\n\n.dchat-document-pdf-surface {\n  width: calc(var(--document-zoom-width) * var(--dchat-document-zoom));\n  --document-zoom-scale: var(--dchat-document-zoom);\n}\n";
 
 // index.jsx
-var import_jsx_runtime45 = require("react/jsx-runtime");
+var import_jsx_runtime50 = require("react/jsx-runtime");
 var panelId = "direct-chat";
 var forgeLocale = "direct-chat-forge";
 var inject = ["slots", "layout", "locale", "uiWorkspace", "workspaces", "contextMenus"];
 function apply(ctx) {
   const getModules = () => ctx.get?.("modules") ?? ctx.modules;
   const forgeT = ctx.locale.bind(forgeLocale);
-  const DocumentWorkspacePane = (props) => /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(DocumentModulesContext.Provider, { value: getModules, children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(WorkspaceDiffPane, { ...props, forgeT }) });
+  const DocumentWorkspacePane = (props) => /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(DocumentModulesContext.Provider, { value: getModules, children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(WorkspaceDiffPane, { ...props, forgeT }) });
   const history = createSidebarHistory();
   const statusStore = createDirectStatusStore();
   const engineSource = createEngineCatalog();
@@ -20584,15 +23544,7 @@ function apply(ctx) {
       }
     }
   };
-  const startNative = async (workspaceId, cwd) => {
-    if (!workspaceId && cwd) {
-      const navigationSignal = ctx.layout.beginNavigation();
-      workspaceId = (await ctx.workspaces.create({ path: cwd })).workspaceId;
-      if (navigationSignal.aborted) return;
-    }
-    if (workspaceId) await ctx.uiWorkspace.openWorkspace(workspaceId);
-    else ctx.uiWorkspace.startSession();
-  };
+  const startNative = (workspaceId, cwd, draft) => startNativeFromDirect(ctx, workspaceId, cwd, draft);
   const startDirect = (engine, cwd) => {
     startDirectFromNative(ctx, navigation, engine, cwd);
     ctx.layout.selectPanel(panelId);
@@ -20619,6 +23571,26 @@ function apply(ctx) {
       }
     }
   });
+  ctx.effect(() => {
+    const sync = () => {
+      if (ctx.layout.panelInfo.getSnapshot()?.activePanelId === panelId) {
+        ctx.layout.closeRightbar();
+      }
+    };
+    sync();
+    return ctx.layout.panelInfo.subscribe(sync);
+  }, "direct-chat: close-native-rightbar");
+  const renderRightbar = (props) => /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+    DocumentWorkspacePane,
+    {
+      ...props,
+      controller: diffController,
+      contextMenus: ctx.contextMenus,
+      panelSource,
+      panelId,
+      terminalHost
+    }
+  );
   ctx.slots.inject("main", () => ctx.slots.register({
     name: "main",
     key: panelId,
@@ -20629,23 +23601,12 @@ function apply(ctx) {
       startNative,
       workspaceSource,
       diffController,
+      renderRightbar,
       queueDock,
       performanceSettings: ctx.get("configForms")?.get("ui-chat"),
       submissionSettings: ctx.get("configForms")?.get("ui-conversation")
     })
   }, DirectChat));
-  ctx.slots.inject(workspaceDiffSlot, () => {
-    const dispose = ctx.slots.register({
-      name: workspaceDiffSlot,
-      locale: panelId,
-      inject: () => ({ controller: diffController, contextMenus: ctx.contextMenus, panelSource, panelId, layout: ctx.layout, terminalHost })
-    }, DocumentWorkspacePane);
-    diffController.useLayoutSeat(true);
-    return () => {
-      diffController.useLayoutSeat(false);
-      dispose();
-    };
-  });
   ctx.slots.inject("shell.overlay", () => ctx.slots.register({
     name: "shell.overlay",
     id: "direct-chat-workspace-diff",
@@ -20666,7 +23627,7 @@ function apply(ctx) {
     locale: panelId,
     label: () => t("engineSettings.pluginLabel"),
     inject: () => ({ engineSource })
-  }, ({ view, ...props }) => view === "page" ? /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(EngineSettings, { ...props }) : t("engineSettings.pluginSummary")));
+  }, ({ view, ...props }) => view === "page" ? /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(EngineSettings, { ...props }) : t("engineSettings.pluginSummary")));
   ctx.slots.inject("settings.section", () => ctx.slots.register({
     name: "settings.section",
     id: "archived-sessions",
@@ -20675,36 +23636,122 @@ function apply(ctx) {
     label: () => t("archiveSettings.title"),
     inject: () => ({ history, engineSource })
   }, ArchiveSettings));
-  ctx.slots.inject("conversation.hero.engine", () => ctx.slots.register({
-    name: "conversation.hero.engine",
+  ctx.slots.inject("conversation.hero.agentPreset", () => ctx.slots.register({
+    name: "conversation.hero.agentPreset",
+    priority: -10,
     locale: panelId,
-    inject: () => ({ engineSource, startDirect })
-  }, NativeEngineHero));
-  ctx.slots.inject(workspaceSessionsSlot, () => ctx.slots.register({
-    name: workspaceSessionsSlot,
-    id: panelId,
-    locale: panelId,
-    inject: () => ({ history })
-  }, SidebarSessions));
-  ctx.slots.inject(workspaceProjectionSlot, () => ctx.slots.register({
-    name: workspaceProjectionSlot,
-    locale: panelId,
-    inject: () => ({
-      history,
-      statusStore,
-      navigation,
-      openDirect,
-      panelId,
-      engineSource,
-      archiveRequest,
-      registerWorkspace: (path) => ctx.workspaces.create({ path })
-    })
-  }, SidebarProjection));
+    inject: (sessionId) => ({ sessionId, engineSource, startDirect })
+  }, NativeInputDockHero));
+  const viewHandle = createWorkspaceViewStore();
+  const viewInstance = viewHandle.create();
+  const viewStore = { ...viewHandle, create: () => viewInstance };
+  const shortcutControls = createWorkspaceShortcutControls();
+  const getDirectoryPicker = () => {
+    try {
+      return ctx.get?.("remote.directoryPicker");
+    } catch {
+      return void 0;
+    }
+  };
+  const getShortcutsCatalog = () => {
+    try {
+      return ctx.get?.("shortcuts")?.catalog;
+    } catch {
+      return void 0;
+    }
+  };
+  const directoryFlowSource = { getSnapshot: () => Boolean(getDirectoryPicker()), subscribe: () => () => {
+  } };
+  const hostInfoSource = {
+    getSnapshot: () => {
+      try {
+        return ctx.get?.("remote")?.$host ?? {};
+      } catch {
+        return {};
+      }
+    },
+    subscribe: (listener) => {
+      try {
+        return ctx.on?.("connection/reset", listener) ?? (() => {
+        });
+      } catch {
+        return () => {
+        };
+      }
+    }
+  };
+  ctx.slots.inject("sidebar.workspaces", () => ctx.slots.register({
+    name: "sidebar.workspaces",
+    priority: -10,
+    store: viewStore,
+    locale: "workspace",
+    inject: () => {
+      const sessionsApi = (() => {
+        try {
+          return ctx.get?.("sessions");
+        } catch {
+          return void 0;
+        }
+      })();
+      const directoryPicker = getDirectoryPicker();
+      return {
+        history,
+        statusStore,
+        navigation,
+        openDirect,
+        panelId,
+        engineSource,
+        archiveRequest,
+        registerWorkspace: (path) => ctx.workspaces.create({ path }),
+        directoryPicker,
+        uiWorkspace: ctx.uiWorkspace,
+        sessionsApi,
+        workspacesApi: ctx.workspaces,
+        directT: t,
+        startSession: (workspaceId) => ctx.uiWorkspace.startSession(workspaceId),
+        open: (sessionId) => ctx.uiWorkspace.openSession(sessionId),
+        searchSessions: async (query, signal) => {
+          const result = await sessionsApi?.search(query, signal);
+          if (result && !result.ok) throw new Error(result.error?.message || "Search failed");
+          return result?.value ?? { items: [], truncated: false };
+        },
+        searchResultLimit: sessionsApi?.searchResultLimit ?? 50,
+        requestSessionRename: shortcutControls.rename,
+        notifyArchivedNotOpenable: () => {
+        },
+        renameWorkspace: async (workspaceId, title) => {
+          await ctx.workspaces.rename(workspaceId, title);
+        },
+        deleteWorkspace: async (workspaceId) => {
+          await ctx.workspaces.delete(workspaceId);
+        },
+        insertWorkspaceBefore: async (workspaceId, beforeWorkspaceId) => {
+          await ctx.workspaces.insertBefore(workspaceId, beforeWorkspaceId);
+        },
+        unarchiveSession: async (sessionId) => {
+          await ctx.uiWorkspace.unarchiveSession(sessionId);
+        },
+        createWorkspace: (input) => ctx.workspaces.create(input),
+        requestSearch: shortcutControls.search,
+        requestAddWorkspace: shortcutControls.add,
+        closeAddWorkspace: shortcutControls.closeAdd,
+        setDirectoryBusy: shortcutControls.directoryBusy,
+        dismissForkError: shortcutControls.dismissForkError,
+        hooks: {
+          directoryFlow: directoryFlowSource,
+          hostInfo: hostInfoSource,
+          workspaceShortcuts: shortcutControls.state,
+          shortcuts: getShortcutsCatalog() ?? { getSnapshot: () => [], subscribe: () => () => {
+          } }
+        }
+      };
+    }
+  }, MergedWorkspaceBrowser));
   ctx.effect(() => ctx.contextMenus.register({
     id: "direct-chat.workspace.archive",
     target: "workspace",
     order: 290,
-    resolve: ({ path, displayTitle }) => {
+    resolve: ({ path, displayTitle: displayTitle2 }) => {
       const cwd = path || "";
       const rows = history.getSnapshot().byCwd.get(cwd) ?? [];
       const count = rows.filter((row) => !row.archived && row.archiveMode !== "unsupported").length;
@@ -20713,7 +23760,7 @@ function apply(ctx) {
         label: t("sidebar.archiveFolder"),
         icon: { key: "workspace.archive" },
         separatorBefore: true,
-        run: () => archiveRequest.set({ cwd, name: displayTitle, count })
+        run: () => archiveRequest.set({ cwd, name: displayTitle2, count })
       }] : [];
     }
   }), "direct-chat: workspace archive menu");
@@ -20722,7 +23769,7 @@ function apply(ctx) {
     id: "direct-chat-native-logo",
     order: 100,
     locale: panelId
-  }, () => /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "dchat-sidebar-native-logo", "aria-hidden": "true", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(import_dsh_client_ui_primitives39.FishLogo, { size: 14 }) })));
+  }, () => /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "dchat-sidebar-native-logo", "aria-hidden": "true", children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(import_dsh_client_ui_primitives44.FishLogo, { size: 14 }) })));
   ctx.slots.inject("shell.overlay", () => ctx.slots.register({
     name: "shell.overlay",
     id: "direct-chat-session-pet",
@@ -20736,17 +23783,21 @@ function apply(ctx) {
     inject: () => ({ ...sessionPetProps(), variant: "header" })
   }, SessionPet));
 }
-function NativeEngineHero({ cwd, headline, startDirect, engineSource, t }) {
-  const { engines, status } = (0, import_react40.useSyncExternalStore)(engineSource.subscribe, engineSource.getSnapshot);
-  return /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
-    EngineHero,
+function NativeInputDockHero({ sessionId, useSessions, useWorkspaces, engineSource, startDirect, t }) {
+  const session = useSessions((s) => sessionId ? s.byId[sessionId] : void 0);
+  const workspacePath = useWorkspaces((w) => sessionId ? w.items.find((workspace) => workspace.sessionIds.includes(sessionId))?.path : void 0) ?? (session?.cwd || void 0);
+  const { engines, status } = (0, import_react45.useSyncExternalStore)(engineSource.subscribe, engineSource.getSnapshot);
+  if (!session?.blank) return null;
+  return /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+    EngineDropdown,
     {
       selected: null,
       engines,
       status,
       reload: engineSource.refresh,
-      nativeHeadline: headline,
-      onSelect: (engine) => startDirect(engine, cwd),
+      onSelect: (engine) => {
+        if (engine !== null) startDirect(engine, workspacePath);
+      },
       t
     }
   );
