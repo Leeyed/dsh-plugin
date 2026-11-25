@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Direct CLI Chat",
+    "description": "Connect Claude Code, Codex, and Antigravity CLI (agy) directly into DSH with multi-account isolation, status monitoring, and workspace tools."
+  }
+}

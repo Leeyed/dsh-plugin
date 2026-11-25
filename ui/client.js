@@ -18136,7 +18136,18 @@ var styles_default = `.dchat {
   min-height: 46px;
   padding: 8px var(--dchat-padding);
   padding-inline-start: max(var(--dchat-padding), var(--dsh-frame-leading-clearance, 0px));
+  padding-inline-end: max(var(--dchat-padding), var(--dsh-frame-trailing-clearance, 0px));
   border-bottom: 1px solid var(--dsw-alias-border-l2);
+}
+
+html[data-platform='darwin'] .dchat-header {
+  -webkit-app-region: drag;
+}
+
+html[data-platform='darwin'] .dchat-header-actions,
+html[data-platform='darwin'] .dchat-title button,
+html[data-platform='darwin'] .dchat-title a {
+  -webkit-app-region: no-drag;
 }
 
 /* The web drawer already places its sidebar opener over this header. */
@@ -19787,14 +19798,6 @@ function apply(ctx) {
     label: () => t("engineSettings.pluginLabel"),
     inject: () => ({ engineSource })
   }, ({ view, ...props }) => view === "page" ? /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(EngineSettings, { ...props }) : t("engineSettings.pluginSummary")));
-  ctx.slots.inject("settings.plugins.tab", () => ctx.slots.register({
-    name: "settings.plugins.tab",
-    id: "direct-chat-engines",
-    order: 50,
-    locale: panelId,
-    label: () => t("engineSettings.pluginLabel"),
-    inject: () => ({ engineSource })
-  }, EngineSettings));
   ctx.slots.inject("settings.section", () => ctx.slots.register({
     name: "settings.section",
     id: "archived-sessions",
