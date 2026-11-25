@@ -1,6 +1,7 @@
 {
   "name": "dsh-direct-chat",
   "version": "0.1.0",
+  "description": "Direct CLI chat for DeepSeek Harness (Claude Code, Codex, AGY) with multi-account isolation, workspace tools, and mobile UI.",
   "private": true,
   "type": "module",
   "main": "./index.mjs",
@@ -9,11 +10,12 @@
     "./client": "./ui/client.js",
     "./registry": "./registry.mjs",
     "./engines/*": "./engines/*.mjs",
+    "./locale/*.json": "./locale/*.json",
     "./package.json": "./package.json"
   },
   "dsh": {
     "bundle": {
-      "patch": "cordis.patch.yml"
+      "patch": "./cordis.patch.yml"
     },
     "client": {
       "platform": "web",

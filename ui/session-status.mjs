@@ -67,9 +67,9 @@ function modelKey(value) {
   return typeof value === 'string' ? value.trim().toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim() : ''
 }
 
-export function modelAccountWindow(engine, model, displayName, limits = []) {
+export function modelAccountWindows(engine, model, displayName, limits = []) {
   const id = modelKey(model)
-  if (!id) return
+  if (!id) return []
   const names = [id, modelKey(displayName)].filter(Boolean)
   const pools = accountLimitGroups(limits)
   const exact = pools.filter(pool => names.includes(modelKey(pool.name)) ||
@@ -88,15 +88,23 @@ export function modelAccountWindow(engine, model, displayName, limits = []) {
       return exact.includes(pool) || (['opus','sonnet','haiku'].includes(key) && names.some(name => name.split(' ').includes(key)))
     })
   }
-  if (engine !== 'claude' && applicable.length !== 1) return
-  let tightest
+  if (engine !== 'claude' && applicable.length !== 1) return []
+  const windows = []
   for (const pool of applicable) {
     for (const row of pool.windows) {
       const remaining = accountRemainingPercent(row.usedPercent)
-      if (remaining !== undefined && (!tightest || remaining < tightest.remaining)) {
-        tightest = { remaining, pool: pool.name, window: row.windowLabel }
+      if (remaining !== undefined) {
+        windows.push({ remaining, pool: pool.name, window: row.windowLabel })
       }
     }
+  }
+  return windows
+}
+
+export function modelAccountWindow(engine, model, displayName, limits = []) {
+  let tightest
+  for (const row of modelAccountWindows(engine, model, displayName, limits)) {
+    if (!tightest || row.remaining < tightest.remaining) tightest = row
   }
   return tightest
 }

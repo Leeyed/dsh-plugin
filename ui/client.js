@@ -1,5 +1,5 @@
 // Built from ui/index.jsx by npm run build:ui.
-/*! @deepseek-ai/dsh-experimental-client-ui-forge, @deepseek-ai/dsh-client-ui-attachment, @deepseek-ai/dsh-client-ui-chat, @deepseek-ai/dsh-client-ui-conversation, @deepseek-ai/dsh-client-ui-input-trigger, @deepseek-ai/dsh-client-ui-sidebar-right, @deepseek-ai/dsh-client-ui-sidebar-terminal
+/*! @deepseek-ai/dsh-experimental-client-ui-forge, @deepseek-ai/dsh-client-ui-attachment, @deepseek-ai/dsh-client-ui-chat, @deepseek-ai/dsh-client-ui-conversation, @deepseek-ai/dsh-client-ui-input-trigger, @deepseek-ai/dsh-client-ui-jobs, @deepseek-ai/dsh-client-ui-sidebar-right, @deepseek-ai/dsh-client-ui-sidebar-terminal
 MIT License
 
 Copyright (c) 2026 DeepSeek
@@ -24,7 +24,7 @@ SOFTWARE.
 */
 window.__ModuleLoader__.load({ id: "dsh-direct-chat", factory(require) {
 const module = { exports: {} };
-const compiledNativeStyles = "/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ReviewComposer.module.css */\n.ReviewComposer_root,\n.ReviewComposer_thread {\n  box-sizing: border-box;\n  width: calc(100% - 20px);\n  max-width: 680px;\n  margin: 10px;\n  padding: 12px;\n  border: 0.5px solid var(--dsw-alias-border-l3);\n  border-radius: var(--dsw-radius-md);\n  background: var(--dsw-alias-bg-layer-1);\n  color: var(--dsw-alias-label-primary);\n  font: var(--dsw-font-xs-13);\n  font-family: Inter, var(--dsw-font-family);\n  white-space: normal;\n}\n.ReviewComposer_root {\n  background: var(--dsw-alias-bg-layer-2);\n  border-radius: var(--dsw-radius-lg);\n}\n.ReviewComposer_root:focus-within {\n  border-color: var(--dsw-alias-border-l4);\n}\n[data-forge-comments] > .ReviewComposer_root,\n[data-forge-comments] > .ReviewComposer_thread {\n  width: auto;\n  max-width: none;\n  margin: 0;\n}\n.ReviewComposer_title {\n  margin-bottom: 12px;\n  color: var(--dsw-alias-label-secondary);\n  overflow-wrap: anywhere;\n}\n.ReviewComposer_input {\n  display: block;\n  box-sizing: border-box;\n  width: 100%;\n  height: 88px;\n  min-height: 88px;\n  contain: strict;\n  padding: 10px 12px;\n  resize: vertical;\n  border: 0.5px solid var(--dsw-alias-border-l4);\n  border-radius: var(--dsw-radius-md);\n  outline: none;\n  background: var(--dsw-alias-bg-layer-3);\n  color: var(--dsw-alias-label-primary);\n  font: inherit;\n}\n.ReviewComposer_input::placeholder {\n  color: var(--dsw-alias-label-dimmed);\n}\n.ReviewComposer_input:focus {\n  border-color: var(--dsw-alias-state-business-primary);\n}\n.ReviewComposer_root .ReviewComposer_input {\n  padding: 0;\n  border: 0;\n  border-radius: 0;\n  background: transparent;\n}\n.ReviewComposer_actions {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  justify-content: flex-end;\n  gap: 8px;\n  padding-top: 10px;\n  margin-top: 10px;\n  border-top: 0.5px solid var(--dsw-alias-border-l2);\n}\n.ReviewComposer_cancel {\n  margin-inline-end: auto;\n}\n.ReviewComposer_error {\n  margin-top: 8px;\n  color: var(--dsw-alias-state-error-primary);\n  overflow-wrap: anywhere;\n}\n.ReviewComposer_gitAction {\n  display: inline-flex;\n  flex: none;\n  align-items: stretch;\n}\n.ReviewComposer_gitMain {\n  border-start-end-radius: 0;\n  border-end-end-radius: 0;\n}\n.ReviewComposer_gitArrow {\n  width: 30px;\n  padding: 0;\n  border-start-start-radius: 0;\n  border-end-start-radius: 0;\n  border-inline-start: 0.5px solid color-mix(in srgb, var(--dsw-alias-label-primary-foreground) 25%, transparent);\n}\n.ReviewComposer_threadHeader {\n  display: flex;\n  align-items: center;\n  flex-wrap: wrap;\n  gap: 8px;\n  margin-bottom: 8px;\n}\n.ReviewComposer_author {\n  font-weight: 500;\n}\n.ReviewComposer_range {\n  color: var(--dsw-alias-label-secondary);\n  font-size: 12px;\n}\n.ReviewComposer_commentBody {\n  white-space: pre-wrap;\n  overflow-wrap: anywhere;\n}\n.ReviewComposer_threadActions {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 4px;\n  margin: 8px -8px -4px;\n}\n.ReviewComposer_gutter {\n  position: relative;\n}\n.ReviewComposer_line {\n  display: block;\n  width: 100%;\n  height: 100%;\n  padding: 0;\n  color: inherit;\n  text-align: inherit;\n  cursor: pointer;\n  border: 0;\n  border-radius: 0;\n  background: transparent;\n  font: inherit;\n  user-select: none;\n  touch-action: pan-y;\n}\n.ReviewComposer_selected {\n  background: var(--dsw-alias-interactive-bg-hover);\n  outline: 1px solid var(--dsw-alias-border-l2);\n  outline-offset: -1px;\n}\n@media (hover: hover) {\n  .ReviewComposer_line:hover {\n    color: var(--dsw-alias-state-business-primary);\n  }\n}\n@media (pointer: coarse) {\n  .ReviewComposer_input {\n    font-size: 16px;\n  }\n  .ReviewComposer_line {\n    min-height: 28px;\n  }\n}\n.ReviewComposer_add,\n.ReviewComposer_hoverAdd {\n  position: absolute;\n  z-index: 1;\n  inset-inline-start: calc(100% - 4px);\n  top: 50%;\n  transform: translateY(-50%);\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  width: 22px;\n  height: 22px;\n  padding: 0;\n  border: 0;\n  border-radius: var(--dsw-radius-xs);\n  background: var(--dsw-alias-button-primary-fill);\n  color: var(--dsw-alias-label-primary-foreground);\n  font: inherit;\n  cursor: pointer;\n  user-select: none;\n}\n[data-review]:not([data-split]):not([data-single-side]) [data-review-side=L] .ReviewComposer_add,\n[data-review]:not([data-split]):not([data-single-side]) [data-review-side=L] .ReviewComposer_hoverAdd {\n  inset-inline-start: calc(100% + var(--forge-number-width, 3.5em) - 4px);\n}\n.ReviewComposer_hoverAdd {\n  display: none;\n}\n@media (hover: hover) {\n  [data-diff-side]:hover .ReviewComposer_hoverAdd,\n  [data-diff-line]:hover .ReviewComposer_hoverAdd {\n    display: inline-flex;\n  }\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ReviewThreads.module.css */\n.ReviewThreads_card,\n.ReviewThreads_folded {\n  box-sizing: border-box;\n  width: calc(100% - 20px);\n  max-width: 720px;\n  margin: 10px;\n  border: 0.5px solid var(--dsw-alias-border-l3);\n  border-radius: var(--dsw-radius-md);\n  background: var(--dsw-alias-bg-layer-1);\n  color: var(--dsw-alias-label-primary);\n  font: var(--dsw-font-xs-13);\n  font-family: Inter, var(--dsw-font-family);\n  white-space: normal;\n}\n.ReviewThreads_card {\n  padding: 10px 12px;\n}\n.ReviewThreads_card:focus {\n  outline: none;\n}\n.ReviewThreads_card:focus-visible {\n  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: -1px;\n}\n[data-forge-comments] > .ReviewThreads_card,\n[data-forge-comments] > .ReviewThreads_folded {\n  width: auto;\n  max-width: none;\n  margin: 0;\n}\n.ReviewThreads_card[data-resolved] {\n  --dsh-scrollbar-thumb: var(--dsw-alias-scrollbar-bg-l2);\n  --dsh-scrollbar-thumb-hover: var(--dsw-alias-scrollbar-hover-l2);\n  background: var(--dsw-alias-bg-layer-2);\n}\n.ReviewThreads_folded {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  min-height: 32px;\n  padding: 4px 12px;\n  color: var(--dsw-alias-label-secondary);\n}\n.ReviewThreads_folded > svg {\n  flex: none;\n  color: var(--dsw-alias-state-success-primary);\n}\n.ReviewThreads_foldedText {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ReviewThreads_header {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 6px;\n  margin-bottom: 8px;\n}\n.ReviewThreads_place {\n  min-width: 0;\n  color: var(--dsw-alias-label-secondary);\n  font-size: 12px;\n  overflow-wrap: anywhere;\n}\n.ReviewThreads_spacer {\n  flex: 1;\n}\n.ReviewThreads_link {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  gap: 2px;\n  padding: 0;\n  border: 0;\n  background: transparent;\n  color: var(--dsw-alias-state-business-primary);\n  font: inherit;\n  font-size: 12px;\n  cursor: pointer;\n}\n.ReviewThreads_link:disabled {\n  color: var(--dsw-alias-label-dimmed);\n  cursor: default;\n}\n.ReviewThreads_link:focus-visible {\n  border-radius: var(--dsw-radius-xs);\n  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: 2px;\n}\n@media (hover: hover) {\n  .ReviewThreads_link:not(:disabled):hover {\n    text-decoration: underline;\n  }\n}\n.ReviewThreads_turned {\n  transform: rotate(-90deg);\n}\n.ReviewThreads_comments {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n.ReviewThreads_comment {\n  display: flex;\n  gap: 8px;\n  min-width: 0;\n}\n.ReviewThreads_avatar {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  justify-content: center;\n  overflow: hidden;\n  border-radius: 50%;\n  corner-shape: round;\n  background: var(--dsw-alias-interactive-bg-hover);\n  color: var(--dsw-alias-label-secondary);\n  font-weight: 500;\n  line-height: 1;\n  user-select: none;\n}\n.ReviewThreads_avatar img {\n  display: block;\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n  corner-shape: round;\n  object-fit: cover;\n}\n.ReviewThreads_commentMain {\n  flex: 1;\n  min-width: 0;\n}\n.ReviewThreads_commentHeader {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 6px;\n  min-height: 20px;\n}\n.ReviewThreads_login {\n  font-weight: 500;\n  overflow-wrap: anywhere;\n}\n.ReviewThreads_time {\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 12px;\n}\n.ReviewThreads_body {\n  min-width: 0;\n  margin-top: 2px;\n  overflow-wrap: anywhere;\n}\n.ReviewThreads_actions {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 4px;\n  margin: 10px -8px -4px;\n}\n.ReviewThreads_form {\n  margin-top: 10px;\n}\n.ReviewThreads_formActions {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  justify-content: flex-end;\n  gap: 8px;\n  margin-top: 8px;\n}\n.ReviewThreads_replyPrompt {\n  display: block;\n  box-sizing: border-box;\n  width: 100%;\n  min-height: 32px;\n  margin-top: 10px;\n  padding: 6px 12px;\n  border: 0.5px solid var(--dsw-alias-border-l4);\n  border-radius: var(--dsw-radius-md);\n  background: var(--dsw-alias-bg-layer-3);\n  color: var(--dsw-alias-label-dimmed);\n  font: inherit;\n  text-align: start;\n  cursor: text;\n}\n.ReviewThreads_replyPrompt:focus-visible {\n  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: 2px;\n}\n.ReviewThreads_menuAnchor {\n  display: inline-flex;\n  flex: none;\n}\n.ReviewThreads_icon {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  width: 20px;\n  height: 20px;\n  padding: 0;\n  border: 0;\n  border-radius: var(--dsw-radius-xs);\n  background: transparent;\n  color: var(--dsw-alias-label-secondary);\n  cursor: pointer;\n}\n.ReviewThreads_icon[aria-expanded=true] {\n  background: var(--dsw-alias-interactive-bg-hover);\n  color: var(--dsw-alias-label-primary);\n}\n.ReviewThreads_icon:focus-visible {\n  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: 1px;\n}\n@media (hover: hover) {\n  .ReviewThreads_icon:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n    color: var(--dsw-alias-label-primary);\n  }\n}\n.ReviewThreads_confirm {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 8px;\n  margin-top: 8px;\n}\n.ReviewThreads_confirmText {\n  flex: 1 1 auto;\n  min-width: 0;\n  color: var(--dsw-alias-label-secondary);\n  overflow-wrap: anywhere;\n}\n.ReviewThreads_confirmError,\n.ReviewThreads_actionError {\n  flex-basis: 100%;\n  margin-top: 0;\n}\n.ReviewThreads_actionError {\n  padding-inline: 8px;\n}\n.ReviewThreads_excerpt,\n.ReviewThreads_original {\n  margin-bottom: 10px;\n  overflow-x: auto;\n  border: 0.5px solid var(--dsw-alias-border-l2);\n  border-radius: var(--dsw-radius-sm);\n  font: var(--dsw-font-markdown-code-block);\n}\n.ReviewThreads_excerptLine,\n.ReviewThreads_originalLine {\n  min-height: 20px;\n  padding: 0 10px;\n  line-height: 20px;\n  white-space: pre;\n}\n.ReviewThreads_excerptHeader {\n  color: var(--dsw-alias-label-tertiary);\n}\n.ReviewThreads_added {\n  background: var(--dsw-alias-file-diff-added-bg);\n}\n.ReviewThreads_deleted {\n  background: var(--dsw-alias-file-diff-deleted-bg);\n}\n.ReviewThreads_original {\n  max-height: 320px;\n  overflow: auto;\n}\n.ReviewThreads_originalLine {\n  display: grid;\n  grid-template-columns: max-content minmax(0, 1fr);\n  gap: 12px;\n}\n.ReviewThreads_originalNumber {\n  min-width: 3ch;\n  color: var(--dsw-alias-label-tertiary);\n  text-align: right;\n  user-select: none;\n}\n.ReviewThreads_marked {\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n.ReviewThreads_originalNote {\n  padding: 8px 10px;\n  color: var(--dsw-alias-label-secondary);\n  font-family: Inter, var(--dsw-font-family);\n}\n.ReviewThreads_outdated {\n  border-top: 0.5px solid var(--dsw-alias-border-l3);\n  padding-bottom: 2px;\n}\n.ReviewThreads_outdatedHeader {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  min-height: 32px;\n  padding: 0 12px;\n  color: var(--dsw-alias-label-secondary);\n  font: var(--dsw-font-xs-13);\n  font-family: Inter, var(--dsw-font-family);\n}\n@container (max-width: 479px) {\n  .ReviewThreads_card,\n  .ReviewThreads_folded {\n    width: calc(100% - 12px);\n    margin: 6px;\n  }\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/FileLabel.module.css */\n.FileLabel_label {\n  position: relative;\n  display: flex;\n  min-width: 0;\n}\n.FileLabel_parts {\n  display: flex;\n  align-items: baseline;\n  gap: 6px;\n  min-width: 0;\n  overflow: hidden;\n  white-space: nowrap;\n}\n.FileLabel_name {\n  flex: 0 1 auto;\n  color: var(--dsw-alias-label-primary);\n}\n.FileLabel_directory {\n  flex: 1 1 0;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 11px;\n}\n.FileLabel_shortened {\n  display: flex;\n  min-width: 0;\n  overflow: hidden;\n}\n.FileLabel_head {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.FileLabel_tail {\n  flex: none;\n}\n.FileLabel_visuallyHidden {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  overflow: hidden;\n  clip-path: inset(50%);\n  white-space: nowrap;\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ChangesTab.module.css */\n.ChangesTab_root {\n  container: ChangesTab_forge-changes / inline-size;\n  --forge-changes-bg: var(--dsw-alias-bg-base);\n  --forge-fill: var(--dsw-alias-card-fill);\n  --forge-diff-empty: color-mix(in srgb, var(--dsw-alias-interactive-bg-hover) 50%, transparent);\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n  min-height: 0;\n  background: var(--forge-changes-bg);\n  color: var(--dsw-alias-label-primary);\n  font-size: 12px;\n  line-height: 18px;\n}\n.ChangesTab_header {\n  display: flex;\n  flex: none;\n  align-items: center;\n  gap: 8px;\n  box-sizing: border-box;\n  min-height: 44px;\n  padding: 0 8px 0 14px;\n  border-bottom: 0.5px solid var(--dsw-alias-border-l3);\n}\n.ChangesTab_headerIcon {\n  display: inline-flex;\n  flex: none;\n  color: var(--dsw-alias-label-secondary);\n}\n.ChangesTab_headerTitle {\n  min-width: 0;\n  overflow: hidden;\n  font-size: 13px;\n  font-weight: 500;\n  line-height: 20px;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ChangesTab_headerNumber {\n  flex: none;\n  color: var(--dsw-alias-label-tertiary);\n  font-family: var(--ds-font-family-code);\n}\n.ChangesTab_headerNote {\n  min-width: 0;\n  overflow: hidden;\n  color: var(--dsw-alias-label-secondary);\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ChangesTab_headerHead {\n  flex: 0 100 auto;\n  min-width: 2.5em;\n  overflow: hidden;\n  color: var(--dsw-alias-label-secondary);\n  font-family: var(--ds-font-family-code);\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ChangesTab_headerArrow {\n  flex: none;\n  color: var(--dsw-alias-label-tertiary);\n}\n.ChangesTab_headerSuffix {\n  color: var(--dsw-alias-label-tertiary);\n}\n@container ChangesTab_forge-changes (max-width: 520px) {\n  .ChangesTab_headerSuffix {\n    display: none;\n  }\n}\n@container ChangesTab_forge-changes (max-width: 380px) {\n  .ChangesTab_headerHead,\n  .ChangesTab_headerArrow {\n    display: none;\n  }\n}\n.ChangesTab_headerEnd {\n  display: inline-flex;\n  flex: 0 1 auto;\n  align-items: center;\n  gap: 4px;\n  min-width: 0;\n  margin-left: auto;\n}\n.ChangesTab_toolbar {\n  display: flex;\n  flex: none;\n  align-items: stretch;\n  box-sizing: border-box;\n  border-bottom: 0.5px solid var(--dsw-alias-border-l3);\n}\n.ChangesTab_lensCell {\n  display: none;\n  flex: none;\n  align-items: center;\n  box-sizing: border-box;\n  width: var(--forge-tree-width);\n  padding: 0 8px;\n  border-inline-end: 0.5px solid var(--dsw-alias-border-l3);\n}\n.ChangesTab_toolbar[data-tree=right] .ChangesTab_lensCell {\n  order: 1;\n  border-inline-start: 0.5px solid var(--dsw-alias-border-l3);\n  border-inline-end: 0;\n}\n.ChangesTab_toolbarMain {\n  display: flex;\n  flex: 1;\n  align-items: center;\n  gap: 0 4px;\n  box-sizing: border-box;\n  min-width: 0;\n  min-height: 38px;\n  padding: 5px 8px;\n}\n.ChangesTab_lensMenu {\n  display: inline-flex;\n}\n@container ChangesTab_forge-changes (min-width: 760px) {\n  .ChangesTab_toolbar:not([data-tree=hidden]) .ChangesTab_lensCell {\n    display: flex;\n  }\n  .ChangesTab_toolbar:not([data-tree=hidden]) .ChangesTab_lensMenu {\n    display: none;\n  }\n}\n.ChangesTab_spacer {\n  flex: 1;\n}\n.ChangesTab_progressSlot,\n.ChangesTab_foldTests,\n.ChangesTab_filesSlot {\n  display: inline-flex;\n  flex: none;\n  min-width: 0;\n}\n.ChangesTab_select {\n  display: inline-flex;\n  flex: 0 1 auto;\n  align-items: center;\n  gap: 4px;\n  box-sizing: border-box;\n  min-width: 0;\n  height: 28px;\n  padding: 0 6px 0 8px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-primary);\n  cursor: pointer;\n  font: inherit;\n  white-space: nowrap;\n}\n.ChangesTab_select[aria-expanded=true] {\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n@media (hover: hover) {\n  .ChangesTab_select:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.ChangesTab_select:disabled {\n  color: var(--dsw-alias-label-tertiary);\n  cursor: default;\n}\n@media (hover: hover) {\n  .ChangesTab_select:disabled:hover {\n    background: transparent;\n  }\n}\n.ChangesTab_select svg {\n  flex: none;\n}\n.ChangesTab_counts {\n  display: inline-flex;\n  flex: none;\n  gap: 6px;\n  font-family: var(--ds-font-family-code);\n}\n.ChangesTab_totals {\n  padding: 0 4px;\n}\n.ChangesTab_added {\n  color: var(--dsw-alias-state-success-primary);\n}\n.ChangesTab_deleted {\n  color: var(--dsw-alias-state-error-primary);\n}\n.ChangesTab_tools {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  gap: 2px;\n}\n.ChangesTab_tool {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  justify-content: center;\n  width: 28px;\n  height: 28px;\n  padding: 0;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-secondary);\n  cursor: pointer;\n}\n.ChangesTab_tool[aria-pressed=true],\n.ChangesTab_tool[aria-expanded=true],\n.ChangesTab_tool[data-expanded] {\n  background: var(--dsw-alias-interactive-bg-hover);\n  color: var(--dsw-alias-label-primary);\n}\n@media (hover: hover) {\n  .ChangesTab_tool:hover:not(:disabled) {\n    background: var(--dsw-alias-interactive-bg-hover);\n    color: var(--dsw-alias-label-primary);\n  }\n}\n.ChangesTab_tool:disabled {\n  color: var(--dsw-alias-label-tertiary);\n  cursor: default;\n}\n.ChangesTab_tool svg {\n  width: 15px;\n  height: 15px;\n}\n.ChangesTab_tool[aria-pressed=true] .ChangesTab_compareIcon {\n  transform: rotate(90deg);\n}\n.ChangesTab_more {\n  display: none;\n}\n.ChangesTab_toolbarMain:is([data-fold=\"1\"], [data-fold=\"2\"], [data-fold=\"3\"]) .ChangesTab_foldViews,\n.ChangesTab_toolbarMain:is([data-fold=\"2\"], [data-fold=\"3\"]) .ChangesTab_foldTests,\n.ChangesTab_toolbarMain[data-fold=\"3\"] .ChangesTab_foldRefresh {\n  display: none;\n}\n.ChangesTab_toolbarMain[data-fold=\"3\"] .ChangesTab_filesSlot {\n  flex-shrink: 1;\n}\n.ChangesTab_toolbarMain:is([data-fold=\"1\"], [data-fold=\"2\"], [data-fold=\"3\"]) .ChangesTab_more {\n  display: inline-flex;\n}\n.ChangesTab_toolbarMain:is([data-fold=\"2\"], [data-fold=\"3\"]) .ChangesTab_progressSlot [data-forge-progress=full] {\n  display: none;\n}\n.ChangesTab_toolbarMain:is([data-fold=\"2\"], [data-fold=\"3\"]) .ChangesTab_progressSlot [data-forge-progress=compact] {\n  display: inline-flex;\n}\n.ChangesTab_menuRow {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 12px;\n  min-width: 0;\n}\n.ChangesTab_menuPath {\n  flex: 1;\n  min-width: 0;\n}\n.ChangesTab_menuList {\n  min-width: 280px;\n  max-width: min(420px, 80vw);\n}\n.ChangesTab_notice {\n  display: flex;\n  flex: none;\n  align-items: center;\n  gap: 8px;\n  padding: 8px 14px;\n  border-bottom: 0.5px solid var(--dsw-alias-border-l3);\n  background: var(--forge-fill);\n  color: var(--dsw-alias-label-secondary);\n}\n.ChangesTab_notice > svg {\n  flex: none;\n}\n.ChangesTab_noticeAction {\n  flex: none;\n  margin-left: auto;\n}\n.ChangesTab_body {\n  position: relative;\n  display: flex;\n  flex: 1;\n  min-height: 0;\n}\n.ChangesTab_treeToggle {\n  display: none;\n}\n@container ChangesTab_forge-changes (min-width: 760px) {\n  .ChangesTab_treeToggle {\n    display: inline-flex;\n  }\n  .ChangesTab_treePane:not([hidden]) {\n    display: block;\n  }\n}\n.ChangesTab_files {\n  --forge-files-inset: 10px;\n  flex: 1;\n  box-sizing: border-box;\n  min-width: 0;\n  min-height: 0;\n  padding: var(--forge-files-inset);\n  overflow: auto;\n}\n.ChangesTab_files:focus {\n  outline: none;\n}\n.ChangesTab_actions {\n  display: flex;\n  gap: 8px;\n}\n.ChangesTab_centered {\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  gap: 8px;\n  box-sizing: border-box;\n  padding: 24px;\n  color: var(--dsw-alias-label-secondary);\n  font-size: var(--dsh-content-font-size-secondary, 13px);\n  text-align: center;\n}\n.ChangesTab_file {\n  overflow: clip;\n  border: 0.5px solid var(--dsw-alias-border-l4);\n  border-radius: var(--dsw-radius-lg);\n  background: var(--forge-changes-bg);\n}\n.ChangesTab_file + .ChangesTab_file {\n  margin-top: 12px;\n}\n@container ChangesTab_forge-changes (max-width: 380px) {\n  .ChangesTab_files {\n    --forge-files-inset: 6px;\n  }\n  .ChangesTab_file + .ChangesTab_file {\n    margin-top: 8px;\n  }\n}\n.ChangesTab_fileHeader {\n  position: sticky;\n  top: calc(-1 * var(--forge-files-inset, 0px));\n  z-index: 2;\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  box-sizing: border-box;\n  min-height: 36px;\n  padding: 0 4px 0 8px;\n  border-bottom: 0.5px solid var(--dsw-alias-border-l3);\n  background: linear-gradient(var(--dsw-alias-interactive-bg-hover), var(--dsw-alias-interactive-bg-hover)), var(--forge-changes-bg);\n}\n.ChangesTab_fileToggle {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  justify-content: center;\n  width: 20px;\n  height: 24px;\n  padding: 0;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-tertiary);\n  cursor: pointer;\n}\n@media (hover: hover) {\n  .ChangesTab_fileToggle:hover {\n    color: var(--dsw-alias-label-primary);\n  }\n}\n.ChangesTab_file:not([data-expanded]) .ChangesTab_fileHeader {\n  border-bottom: 0;\n}\n.ChangesTab_fileTitle {\n  display: flex;\n  flex: 1 1 0;\n  align-items: center;\n  gap: 6px;\n  min-width: 0;\n  overflow: hidden;\n}\n.ChangesTab_fileIcon {\n  flex: none;\n}\n.ChangesTab_filePath {\n  display: flex;\n  flex: 0 1 auto;\n  min-width: 0;\n}\n.ChangesTab_fileSpacer {\n  flex: 1;\n  align-self: stretch;\n}\n.ChangesTab_chevron {\n  transition: transform 120ms ease;\n}\n.ChangesTab_file:not([data-expanded]) .ChangesTab_chevron {\n  transform: rotate(-90deg);\n}\n.ChangesTab_changedTag {\n  flex: none;\n  max-width: 30%;\n}\n.ChangesTab_changedText {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.ChangesTab_viewed {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  gap: 6px;\n  box-sizing: border-box;\n  height: 24px;\n  padding: 0 8px 0 6px;\n  border: 0.5px solid var(--dsw-alias-border-l2);\n  border-radius: var(--dsw-radius-sm);\n  color: var(--dsw-alias-label-secondary);\n  white-space: nowrap;\n  cursor: pointer;\n  user-select: none;\n}\n.ChangesTab_viewed input {\n  margin: 0;\n  accent-color: var(--dsw-alias-state-business-primary);\n  cursor: pointer;\n}\n.ChangesTab_viewed:has(input:checked) {\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n@media (hover: hover) {\n  .ChangesTab_viewed:hover {\n    color: var(--dsw-alias-label-primary);\n  }\n}\n.ChangesTab_viewed[data-disabled],\n.ChangesTab_viewed[data-disabled] input {\n  color: var(--dsw-alias-label-tertiary);\n  cursor: default;\n}\n.ChangesTab_viewed:has(input:focus-visible) {\n  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: -1px;\n}\n.ChangesTab_viewed input:focus-visible {\n  outline: none;\n}\n@container ChangesTab_forge-changes (max-width: 520px) {\n  .ChangesTab_viewed {\n    padding: 0 6px;\n  }\n  .ChangesTab_viewedLabel {\n    display: none;\n  }\n}\n.ChangesTab_badge {\n  flex: 0 1 auto;\n  min-width: 0;\n  max-width: 50%;\n  overflow: hidden;\n  padding: 0 6px;\n  border-radius: 4px;\n  background: var(--forge-fill);\n  color: var(--dsw-alias-label-secondary);\n  font-size: 11px;\n  line-height: 18px;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ChangesTab_code {\n  overflow-x: auto;\n  font: var(--dsw-font-markdown-code-block);\n}\n.ChangesTab_unreached {\n  height: calc(var(--forge-rows) * 22px);\n}\n.ChangesTab_code:not([data-wrap]):not([data-split]) {\n  display: grid;\n  grid-template-columns: minmax(max-content, 100%);\n}\n.ChangesTab_line {\n  display: grid;\n  grid-template-columns: var(--forge-number-width, 3.5em) var(--forge-number-width, 3.5em) 1.4em minmax(0, 1fr);\n  box-sizing: border-box;\n  min-height: 22px;\n  line-height: 22px;\n  white-space: pre;\n}\n.ChangesTab_code:not([data-wrap]):not([data-split]) .ChangesTab_line {\n  grid-template-columns: var(--forge-number-width, 3.5em) var(--forge-number-width, 3.5em) 1.4em max-content;\n}\n.ChangesTab_pair {\n  display: grid;\n  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);\n  min-height: 22px;\n  line-height: 22px;\n  white-space: pre;\n}\n.ChangesTab_cell {\n  display: grid;\n  grid-template-columns: var(--forge-number-width, 3.5em) minmax(0, 1fr);\n  box-sizing: border-box;\n  min-width: 0;\n}\n.ChangesTab_cell + .ChangesTab_cell {\n  border-left: 0.5px solid var(--dsw-alias-border-l3);\n}\n.ChangesTab_cell .ChangesTab_text {\n  overflow: hidden;\n}\n.ChangesTab_code[data-wrap] .ChangesTab_line,\n.ChangesTab_code[data-wrap] .ChangesTab_pair {\n  white-space: pre-wrap;\n}\n.ChangesTab_code[data-wrap] .ChangesTab_text {\n  overflow-wrap: anywhere;\n}\n.ChangesTab_number {\n  box-sizing: border-box;\n  padding-right: 6px;\n  color: var(--dsw-alias-label-tertiary);\n  text-align: right;\n  user-select: none;\n}\n.ChangesTab_sign {\n  text-align: center;\n  user-select: none;\n}\n.ChangesTab_text {\n  padding: 0 16px 0 6px;\n}\n.ChangesTab_code[data-split][data-review] .ChangesTab_text {\n  padding-left: calc(1.4em + 6px);\n}\n.ChangesTab_add {\n  --forge-diff-gutter: var(--dsw-alias-file-diff-added-gutter);\n  --forge-diff-marker: var(--dsw-alias-file-diff-added-marker);\n  background: var(--dsw-alias-file-diff-added-bg);\n}\n.ChangesTab_del {\n  --forge-diff-gutter: var(--dsw-alias-file-diff-deleted-gutter);\n  --forge-diff-marker: var(--dsw-alias-file-diff-deleted-marker);\n  background: var(--dsw-alias-file-diff-deleted-bg);\n}\n.ChangesTab_add .ChangesTab_number,\n.ChangesTab_del .ChangesTab_number {\n  background: var(--forge-diff-gutter);\n  color: var(--forge-diff-marker);\n}\n.ChangesTab_add .ChangesTab_sign,\n.ChangesTab_del .ChangesTab_sign {\n  color: var(--forge-diff-marker);\n}\n.ChangesTab_context .ChangesTab_text {\n  color: var(--dsw-alias-label-secondary);\n}\n.ChangesTab_empty {\n  background: var(--forge-diff-empty);\n}\n.ChangesTab_notes {\n  display: grid;\n  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);\n  white-space: normal;\n}\n.ChangesTab_noteCell {\n  display: grid;\n  grid-template-columns: var(--forge-number-width, 3.5em) minmax(0, 1fr);\n  min-width: 0;\n}\n.ChangesTab_noteCell + .ChangesTab_noteCell {\n  border-left: 0.5px solid var(--dsw-alias-border-l3);\n}\n.ChangesTab_noteStack {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  min-width: 0;\n  padding: 8px 12px 10px calc(1.4em + 6px);\n}\n.ChangesTab_noteStack:empty {\n  padding: 0;\n}\n.ChangesTab_gap,\n.ChangesTab_fileNote {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  box-sizing: border-box;\n  width: 100%;\n  min-height: 26px;\n  margin: 0;\n  padding: 0 12px;\n  border: 0;\n  background: var(--forge-fill);\n  color: var(--dsw-alias-label-tertiary);\n  font-family: var(--dsw-font-family);\n  font-size: 12px;\n  line-height: 18px;\n  text-align: left;\n}\n.ChangesTab_gap {\n  cursor: pointer;\n}\n@media (hover: hover) {\n  .ChangesTab_gap:hover:not(:disabled) {\n    background: var(--dsw-alias-interactive-bg-hover);\n    color: var(--dsw-alias-label-primary);\n  }\n}\n.ChangesTab_gap:disabled {\n  cursor: progress;\n}\n.ChangesTab_local {\n  min-width: 0;\n  border: 0.5px solid var(--dsw-alias-border-l2);\n  border-radius: var(--dsw-radius-md);\n  background: var(--dsw-alias-bg-layer-1);\n}\n.ChangesTab_localHead {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  min-width: 0;\n  padding: 8px 12px 2px 6px;\n}\n.ChangesTab_localToggle {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  gap: 6px;\n  min-height: 26px;\n  padding: 0 6px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-primary);\n  cursor: pointer;\n  font: inherit;\n  font-weight: 500;\n}\n@media (hover: hover) {\n  .ChangesTab_localToggle:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.ChangesTab_localToggle svg {\n  color: var(--dsw-alias-label-tertiary);\n  transition: transform 120ms ease;\n}\n.ChangesTab_localToggle[aria-expanded=true] svg {\n  transform: rotate(180deg);\n}\n.ChangesTab_localRefs {\n  min-width: 0;\n  margin-left: auto;\n  overflow: hidden;\n  color: var(--dsw-alias-label-tertiary);\n  font-family: var(--ds-font-family-code);\n  font-size: 12px;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ChangesTab_localRow {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  padding: 4px 10px 10px 12px;\n  font-size: 12px;\n}\n.ChangesTab_localView {\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  min-width: 0;\n  min-height: 28px;\n  margin-left: -6px;\n  padding: 0 6px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-secondary);\n  cursor: pointer;\n  font: inherit;\n}\n@media (hover: hover) {\n  .ChangesTab_localView:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.ChangesTab_localCreate {\n  flex: none;\n  margin-left: auto;\n}\n.ChangesTab_localFiles {\n  margin: 0;\n  padding: 4px 6px 8px;\n  border-top: 0.5px solid var(--dsw-alias-border-l2);\n  list-style: none;\n}\n.ChangesTab_localFile {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  box-sizing: border-box;\n  width: 100%;\n  min-height: 28px;\n  padding: 0 6px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-primary);\n  cursor: pointer;\n  font: inherit;\n  font-size: 12px;\n  text-align: left;\n}\n@media (hover: hover) {\n  .ChangesTab_localFile:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.ChangesTab_localFile .ChangesTab_menuPath {\n  flex: 1;\n}\n.ChangesTab_localView:focus-visible,\n.ChangesTab_localToggle:focus-visible,\n.ChangesTab_fileToggle:focus-visible,\n.ChangesTab_localFile:focus-visible,\n.ChangesTab_select:focus-visible,\n.ChangesTab_gap:focus-visible {\n  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: -2px;\n}\n.ChangesTab_reviewNotice {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 8px;\n  padding: 10px;\n}\n.ChangesTab_code[data-split][data-native-side=L] [data-diff-side=R],\n.ChangesTab_code[data-split][data-native-side=L] [data-diff-side=R] *,\n.ChangesTab_code[data-split][data-native-side=R] [data-diff-side=L],\n.ChangesTab_code[data-split][data-native-side=R] [data-diff-side=L] * {\n  user-select: none;\n}\n.ChangesTab_headerAction {\n  flex: none;\n  white-space: nowrap;\n}\n.ChangesTab_code[data-single-side] .ChangesTab_line {\n  grid-template-columns: var(--forge-number-width) 1.4em minmax(0, 1fr);\n}\n.ChangesTab_code[data-single-side]:not([data-wrap]) .ChangesTab_line {\n  grid-template-columns: var(--forge-number-width) 1.4em max-content;\n}\n.ChangesTab_reviewFile {\n  padding: 12px 0;\n}\n.ChangesTab_reviewFile > h3 {\n  margin: 0 10px;\n  font-size: 12px;\n  font-weight: 500;\n  overflow-wrap: anywhere;\n}\n.ChangesTab_threadCount {\n  flex: none;\n  height: 20px;\n  padding: 0 6px;\n  border: 0;\n  border-radius: var(--dsw-radius-xs);\n  background: color-mix(in srgb, var(--dsw-alias-state-business-primary) 12%, transparent);\n  color: var(--dsw-alias-state-business-primary);\n  font: inherit;\n  font-size: 11px;\n  line-height: 20px;\n  white-space: nowrap;\n  cursor: pointer;\n}\n.ChangesTab_threadCount:focus-visible {\n  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: -1px;\n}\n@media (hover: hover) {\n  .ChangesTab_threadCount:hover {\n    background: color-mix(in srgb, var(--dsw-alias-state-business-primary) 20%, transparent);\n  }\n}\n.ChangesTab_threadCountNumber {\n  display: none;\n}\n@container ChangesTab_forge-changes (max-width: 479px) {\n  .ChangesTab_threadCountText {\n    display: none;\n  }\n  .ChangesTab_threadCountNumber {\n    display: inline;\n  }\n}\n.ChangesTab_threadsToggle {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  gap: 6px;\n  height: 28px;\n  padding: 0 8px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-primary);\n  font: inherit;\n  white-space: nowrap;\n  cursor: pointer;\n}\n.ChangesTab_threadsToggle[aria-pressed=true] {\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n@media (hover: hover) {\n  .ChangesTab_threadsToggle:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.ChangesTab_threadsTotal {\n  padding: 0 5px;\n  border-radius: var(--dsw-radius-xs);\n  background: var(--forge-fill);\n  color: var(--dsw-alias-label-secondary);\n  font-size: 11px;\n  line-height: 16px;\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ChangedFiles.module.css */\n.ChangedFiles_root {\n  box-sizing: border-box;\n  width: 100%;\n  min-width: 0;\n  display: flex;\n  flex-direction: column;\n  min-height: 0;\n  color: var(--dsw-alias-label-primary);\n  font-size: 12px;\n}\n.ChangedFiles_search {\n  padding: 8px;\n}\n.ChangedFiles_rows {\n  overflow: auto;\n  min-height: 0;\n  padding: 0 4px 6px;\n}\n.ChangedFiles_row {\n  box-sizing: border-box;\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  width: 100%;\n  min-width: 0;\n  min-height: 30px;\n  padding: 4px 6px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: inherit;\n  font: inherit;\n  text-align: start;\n  cursor: pointer;\n}\n.ChangedFiles_row svg {\n  flex: none;\n}\n.ChangedFiles_name {\n  flex: 1;\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ChangedFiles_threads {\n  flex: none;\n  min-width: 16px;\n  padding: 0 5px;\n  box-sizing: border-box;\n  border-radius: var(--dsw-radius-xs);\n  background: color-mix(in srgb, var(--dsw-alias-state-business-primary) 12%, transparent);\n  color: var(--dsw-alias-state-business-primary);\n  font-size: 11px;\n  line-height: 16px;\n  text-align: center;\n}\n.ChangedFiles_selected {\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n.ChangedFiles_chevron {\n  display: inline-flex;\n  flex: 0 0 12px;\n}\n.ChangedFiles_collapsed {\n  transform: rotate(-90deg);\n}\n.ChangedFiles_empty {\n  padding: 12px 8px;\n  color: var(--dsw-alias-label-secondary);\n}\n.ChangedFiles_menu {\n  width: min(360px, calc(100vw - 24px));\n}\n.ChangedFiles_trigger {\n  display: inline-flex;\n  align-items: center;\n  gap: 4px;\n  height: 28px;\n  padding: 0 8px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-primary);\n  font: inherit;\n  white-space: nowrap;\n  cursor: pointer;\n}\n.ChangedFiles_trigger:disabled {\n  color: var(--dsw-alias-label-tertiary);\n  cursor: default;\n}\n.ChangedFiles_anchor {\n  min-width: 0;\n  max-width: 100%;\n}\n.ChangedFiles_trigger {\n  min-width: 0;\n  max-width: 100%;\n}\n.ChangedFiles_triggerLabel {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.ChangedFiles_triggerChevron {\n  flex: none;\n}\n@media (hover: hover) {\n  .ChangedFiles_row:hover,\n  .ChangedFiles_trigger:hover:not(:disabled) {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n@media (pointer: coarse) {\n  .ChangedFiles_row {\n    min-height: 44px;\n  }\n  .ChangedFiles_search input {\n    font-size: 16px;\n  }\n}\n.ChangedFiles_searchInput {\n  box-sizing: border-box;\n  width: 100%;\n  max-width: 100%;\n}\n.ChangedFiles_searchInput input::placeholder {\n  color: var(--dsw-alias-label-secondary);\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/FileTreePane.module.css */\n.FileTreePane_pane {\n  display: none;\n  position: relative;\n  flex: none;\n  min-width: 0;\n  min-height: 0;\n  box-sizing: border-box;\n  border-inline-start: 0.5px solid var(--dsw-alias-border-l3);\n}\n.FileTreePane_pane[hidden] {\n  display: none;\n}\n.FileTreePane_pane[data-position=left] {\n  order: -1;\n  border-inline-start: 0;\n  border-inline-end: 0.5px solid var(--dsw-alias-border-l3);\n}\n.FileTreePane_navigation {\n  height: 100%;\n  min-width: 0;\n  overflow-y: auto;\n}\n.FileTreePane_resize {\n  position: absolute;\n  inset-block: 0;\n  inset-inline-start: -4px;\n  width: 8px;\n  z-index: 2;\n  cursor: col-resize;\n  touch-action: none;\n  user-select: none;\n}\n.FileTreePane_resize::after {\n  content: \"\";\n  position: absolute;\n  inset-block: 0;\n  inset-inline-start: 3px;\n  width: 2px;\n}\n.FileTreePane_pane[data-position=left] .FileTreePane_resize {\n  inset-inline-start: auto;\n  inset-inline-end: -4px;\n}\n.FileTreePane_resize:focus-visible::after {\n  background: var(--dsw-alias-state-business-primary);\n}\n@media (hover: hover) {\n  .FileTreePane_resize:hover::after {\n    background: var(--dsw-alias-state-business-primary);\n  }\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/RefreshGlyph.module.css */\n.RefreshGlyph_glyph {\n  display: inline-flex;\n}\n.RefreshGlyph_glyph[data-turning] {\n  animation: RefreshGlyph_forge-refresh-turn 1s linear infinite;\n}\n@keyframes RefreshGlyph_forge-refresh-turn {\n  to {\n    transform: rotate(360deg);\n  }\n}\n@media (prefers-reduced-motion: reduce) {\n  .RefreshGlyph_glyph[data-turning] {\n    animation-name: RefreshGlyph_forge-refresh-dim;\n  }\n}\n@keyframes RefreshGlyph_forge-refresh-dim {\n  50% {\n    opacity: 0.4;\n  }\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ReviewControls.module.css */\n.ReviewControls_segmented {\n  box-sizing: border-box;\n  display: grid;\n  grid-auto-columns: minmax(0, 1fr);\n  grid-auto-flow: column;\n  gap: 2px;\n  width: 100%;\n  min-width: 0;\n  height: 28px;\n  padding: 2px;\n  border-radius: var(--dsw-radius-md);\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n.ReviewControls_segment {\n  box-sizing: border-box;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: 4px;\n  min-width: 0;\n  height: 24px;\n  padding: 0 4px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-secondary);\n  font: inherit;\n  white-space: nowrap;\n  cursor: pointer;\n}\n.ReviewControls_segment[aria-checked=true] {\n  background: var(--dsw-alias-bg-layer-1);\n  box-shadow: var(--dsw-elevation-soft);\n  color: var(--dsw-alias-label-primary);\n}\n@media (hover: hover) {\n  .ReviewControls_segment:hover:not(:disabled) {\n    color: var(--dsw-alias-label-primary);\n  }\n}\n.ReviewControls_segment:disabled {\n  color: var(--dsw-alias-label-tertiary);\n  cursor: default;\n}\n.ReviewControls_segment:focus-visible {\n  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: -2px;\n}\n.ReviewControls_segmentLabel {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.ReviewControls_count {\n  flex: none;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 11px;\n  font-variant-numeric: tabular-nums;\n}\n.ReviewControls_menuRow {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 16px;\n  min-width: 120px;\n}\n.ReviewControls_trigger {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  gap: 4px;\n  height: 28px;\n  padding: 0 6px 0 8px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-primary);\n  font: inherit;\n  white-space: nowrap;\n  cursor: pointer;\n}\n.ReviewControls_trigger[aria-expanded=true] {\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n@media (hover: hover) {\n  .ReviewControls_trigger:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.ReviewControls_switch {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  gap: 6px;\n  height: 28px;\n  padding: 0 4px;\n  color: var(--dsw-alias-label-secondary);\n  white-space: nowrap;\n  cursor: pointer;\n}\n.ReviewControls_switchLabel {\n  user-select: none;\n}\n.ReviewControls_progress {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  gap: 6px;\n  padding: 0 4px;\n  color: var(--dsw-alias-label-secondary);\n  white-space: nowrap;\n  font-variant-numeric: tabular-nums;\n}\n.ReviewControls_progressForm {\n  display: inline-flex;\n  align-items: center;\n}\n.ReviewControls_progressForm[data-forge-progress=compact] {\n  display: none;\n}\n.ReviewControls_ring {\n  flex: none;\n  width: 14px;\n  height: 14px;\n  transform: rotate(-90deg);\n}\n.ReviewControls_ringTrack,\n.ReviewControls_ringFill {\n  fill: none;\n  stroke-width: 2px;\n}\n.ReviewControls_ringTrack {\n  stroke: var(--dsw-alias-border-l3);\n}\n.ReviewControls_ringFill {\n  stroke: var(--dsw-alias-state-success-primary);\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/shell/SidebarRight.module.css */\n.SidebarRight_session {\n  display: contents;\n}\n.SidebarRight_session[hidden] {\n  display: none;\n}\n.SidebarRight_panel {\n  --dsh-dockkit-dock-layer: 10;\n  --dsh-dockkit-float-layer: 60;\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  display: flex;\n  flex-direction: column;\n  min-width: 0;\n  overflow: clip;\n  pointer-events: none;\n}\n.SidebarRight_panel [data-dockkit-host=dock],\n.SidebarRight_panel [data-dockkit-empty],\n.SidebarRight_panel [data-dockkit-divider] {\n  transform: translateX(var(--dsh-sidebar-width));\n  visibility: hidden;\n  transition: transform var(--ds-transition-duration-slow) var(--ds-ease-in-out), visibility 0s linear var(--ds-transition-duration-slow);\n}\n.SidebarRight_panel[data-sidebar-right-open] [data-dockkit-host=dock],\n.SidebarRight_panel[data-sidebar-right-open] [data-dockkit-empty],\n.SidebarRight_panel[data-sidebar-right-open] [data-dockkit-divider] {\n  transform: none;\n  visibility: visible;\n  transition: transform var(--ds-transition-duration-slow) var(--ds-ease-in-out);\n}\n@starting-style {\n  .SidebarRight_panel[data-sidebar-right-opening] [data-dockkit-host=dock],\n  .SidebarRight_panel[data-sidebar-right-opening] [data-dockkit-empty],\n  .SidebarRight_panel[data-sidebar-right-opening] [data-dockkit-divider] {\n    transform: translateX(var(--dsh-sidebar-width));\n  }\n}\n.SidebarRight_panel[data-sidebar-right-panel=fullscreen] {\n  --dsh-dockkit-dock-layer: 40;\n}\n[data-windows-titlebar] .SidebarRight_panel[data-sidebar-right-panel=fullscreen] {\n  max-width: calc(100vw - var(--dsh-windows-sidebar-width));\n}\n[data-windows-titlebar] .SidebarRight_panel[data-sidebar-right-panel=fullscreen] [data-dockkit-column=\"0\"][data-dockkit-pane] {\n  border-radius: var(--dsh-windows-content-radius) 0 0 0;\n  corner-shape: round;\n}\n[data-platform=darwin] .SidebarRight_panel[data-sidebar-right-panel=fullscreen] [data-dockkit-host=dock][data-dockkit-column=\"0\"] {\n  --dsh-dockkit-strip-inline-start: 88px;\n}\n[data-platform=darwin] .SidebarRight_panel[data-sidebar-right-panel=fullscreen] [data-dockkit-host=dock][data-dockkit-column=\"1\"] {\n  --dsh-dockkit-strip-inline-start: 10px;\n}\n[data-platform=darwin][data-fullscreen] .SidebarRight_panel[data-sidebar-right-panel=fullscreen] [data-dockkit-host=dock][data-dockkit-column=\"0\"] {\n  --dsh-dockkit-strip-inline-start: 10px;\n}\n@media (prefers-reduced-motion: reduce) {\n  .SidebarRight_panel [data-dockkit-host=dock],\n  .SidebarRight_panel [data-dockkit-empty],\n  .SidebarRight_panel [data-dockkit-divider],\n  .SidebarRight_panel[data-sidebar-right-open] [data-dockkit-host=dock],\n  .SidebarRight_panel[data-sidebar-right-open] [data-dockkit-empty],\n  .SidebarRight_panel[data-sidebar-right-open] [data-dockkit-divider] {\n    transition: none;\n  }\n}\n.SidebarRight_iconButton {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  justify-content: center;\n  width: 28px;\n  height: 28px;\n  padding: 6px;\n  color: var(--dsw-alias-label-secondary);\n  line-height: 1;\n  background: transparent;\n  border: none;\n  border-radius: var(--dsw-radius-sm);\n  cursor: pointer;\n}\n.SidebarRight_iconButton svg {\n  width: 15px;\n  height: 15px;\n}\n@media (hover: hover) {\n  .SidebarRight_iconButton:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.SidebarRight_collapseGlyph {\n  transform: scaleX(-1);\n}\n.SidebarRight_panelBody {\n  display: flex;\n  flex: 1 1 auto;\n  min-height: 0;\n}\n@media (pointer: coarse) {\n  .SidebarRight_panelBody [data-dockkit-split-control]:has(> [data-dockkit-split-blocked]) {\n    visibility: hidden;\n  }\n}\n.SidebarRight_unavailable {\n  margin: 0;\n  padding: 12px;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: var(--dsh-content-font-size-secondary, 13px);\n}\n.SidebarRight_tabTitle {\n  display: contents;\n}\n.SidebarRight_tabBody {\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n  min-height: 0;\n  min-width: 0;\n  overflow: hidden;\n}\n.SidebarRight_panel [data-dockkit-pane][data-sidebar-right-flash],\n.SidebarRight_panel [data-dockkit-float][data-sidebar-right-flash] {\n  --sidebar-right-flash-color: var(--dsw-specific-sidebar-right-flash);\n  --sidebar-right-flash-ring: color-mix(in srgb, var(--sidebar-right-flash-color) 48%, transparent);\n  --sidebar-right-flash-near: color-mix(in srgb, var(--sidebar-right-flash-color) 16%, transparent);\n  --sidebar-right-flash-far: color-mix(in srgb, var(--sidebar-right-flash-color) 10%, transparent);\n}\n.SidebarRight_panel [data-dockkit-pane][data-sidebar-right-flash] {\n  position: relative;\n}\n.SidebarRight_panel [data-dockkit-pane][data-sidebar-right-flash]::after {\n  content: \"\";\n  position: absolute;\n  inset: 0;\n  z-index: 7;\n  pointer-events: none;\n  --sidebar-right-flash-from:\n    inset 0 0 0 1px var(--sidebar-right-flash-ring),\n    inset 0 2px 4px 0 var(--sidebar-right-flash-near),\n    inset 0 0 10px 0 var(--sidebar-right-flash-far);\n  --sidebar-right-flash-to:\n    inset 0 0 0 1px transparent,\n    inset 0 2px 4px 0 transparent,\n    inset 0 0 10px 0 transparent;\n}\n.SidebarRight_panel [data-dockkit-float][data-sidebar-right-flash] {\n  --sidebar-right-flash-from:\n    var(--dsw-elevation-prominent),\n    0 0 0 1px var(--sidebar-right-flash-ring),\n    0 2px 4px 0 var(--sidebar-right-flash-near),\n    0 0 10px 0 var(--sidebar-right-flash-far);\n  --sidebar-right-flash-to:\n    var(--dsw-elevation-prominent),\n    0 0 0 1px transparent,\n    0 2px 4px 0 transparent,\n    0 0 10px 0 transparent;\n}\n.SidebarRight_panel [data-dockkit-pane][data-sidebar-right-flash]::after,\n.SidebarRight_panel [data-dockkit-float][data-sidebar-right-flash] {\n  animation-duration: calc(var(--ds-transition-duration-slow) * 2);\n  animation-timing-function: var(--ds-ease-in-out);\n}\n.SidebarRight_panel [data-dockkit-pane][data-sidebar-right-flash=odd]::after,\n.SidebarRight_panel [data-dockkit-float][data-sidebar-right-flash=odd] {\n  animation-name: SidebarRight_flashOdd;\n}\n.SidebarRight_panel [data-dockkit-pane][data-sidebar-right-flash=even]::after,\n.SidebarRight_panel [data-dockkit-float][data-sidebar-right-flash=even] {\n  animation-name: SidebarRight_flashEven;\n}\n@keyframes SidebarRight_flashOdd {\n  from {\n    box-shadow: var(--sidebar-right-flash-from);\n  }\n  to {\n    box-shadow: var(--sidebar-right-flash-to);\n  }\n}\n@keyframes SidebarRight_flashEven {\n  from {\n    box-shadow: var(--sidebar-right-flash-from);\n  }\n  to {\n    box-shadow: var(--sidebar-right-flash-to);\n  }\n}\n@media (prefers-reduced-motion: reduce) {\n  .SidebarRight_panel [data-dockkit-pane][data-sidebar-right-flash]::after,\n  .SidebarRight_panel [data-dockkit-float][data-sidebar-right-flash] {\n    animation-timing-function: step-end;\n  }\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/tabs/guide/GuideBody.module.css */\n.GuideBody_guide {\n  --dsl-guide-entry-radius: var(--dsw-radius-xl);\n  display: flex;\n  flex-direction: column;\n  gap: 14px;\n  align-items: center;\n  justify-content: center;\n  box-sizing: border-box;\n  min-height: 100%;\n  padding: 0 24px;\n}\n.GuideBody_guide::after {\n  content: \"\";\n  flex: 0 1 10%;\n}\n.GuideBody_hero {\n  display: flex;\n  margin-bottom: 16px;\n  color: var(--dsw-specific-guide-hero);\n}\n.GuideBody_entry {\n  display: flex;\n  gap: 14px;\n  align-items: center;\n  box-sizing: border-box;\n  width: 380px;\n  max-width: 100%;\n  min-height: 56px;\n  padding: 14px 20px;\n  color: var(--dsw-alias-label-primary);\n  font: inherit;\n  text-align: left;\n  background: var(--dsw-alias-bg-layer-1);\n  border: 0.5px solid var(--dsw-alias-border-l3);\n  border-radius: var(--dsl-guide-entry-radius);\n  cursor: pointer;\n}\n@media (hover: hover) {\n  .GuideBody_entry:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.GuideBody_entryIcon {\n  display: flex;\n  flex: none;\n  align-items: center;\n  justify-content: center;\n  width: 26px;\n  height: 26px;\n  color: var(--dsw-alias-label-secondary);\n}\n.GuideBody_placeholderInk {\n  color: var(--dsw-alias-label-tertiary);\n}\n.GuideBody_entryText {\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  gap: 3px;\n  min-width: 0;\n}\n.GuideBody_entryTitle {\n  overflow: hidden;\n  font-size: 14px;\n  line-height: 1.4;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n}\n.GuideBody_entryDescription {\n  overflow: hidden;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 11px;\n  line-height: 1.4;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n}\n.GuideBody_titleIcon {\n  flex: none;\n  color: var(--dsw-alias-label-tertiary);\n}\n.GuideBody_entryCell {\n  width: 380px;\n  max-width: 100%;\n}\n.GuideBody_moreAnchor {\n  display: flex;\n  width: 380px;\n  max-width: 100%;\n}\n.GuideBody_moreAnchor .GuideBody_entry[aria-expanded=true] {\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n.GuideBody_moreMenu {\n  width: max-content;\n  max-width: min(480px, calc(100vw - 24px));\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/StatsPills.module.css */\n.StatsPills_anchor {\n  display: inline-flex;\n  min-width: 0;\n  font-size: calc(var(--dsh-content-font-size-secondary, 13px) - 1px);\n  line-height: calc(20px + var(--dsh-content-font-delta-secondary, 0px));\n}\n.StatsPills_pill {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  box-sizing: border-box;\n  max-width: 100%;\n  padding: 1px 8px;\n  border: none;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-tertiary);\n  font: inherit;\n  font-variant-numeric: tabular-nums;\n  line-height: inherit;\n  white-space: nowrap;\n}\n.StatsPills_pill svg {\n  width: 14px;\n  height: 14px;\n  flex: none;\n}\nbutton.StatsPills_pill {\n  cursor: pointer;\n}\nbutton.StatsPills_pill[aria-expanded=true] {\n  background: var(--dsw-alias-interactive-bg-hover);\n  color: var(--dsw-alias-label-secondary);\n}\n@media (hover: hover) {\n  button.StatsPills_pill:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n    color: var(--dsw-alias-label-secondary);\n  }\n}\n.StatsPills_label {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.StatsPills_sep {\n  color: var(--dsw-alias-separator-primary);\n  margin: 0 6px;\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/stat-dialog.module.css */\n.stat_dialog_panel {\n  position: fixed;\n  z-index: 1100;\n  box-sizing: border-box;\n  width: max-content;\n  min-width: min(300px, calc(100vw - 24px));\n  max-width: min(440px, calc(100vw - 24px));\n  padding: 16px;\n  border: 0;\n  border-radius: var(--dsw-radius-lg);\n  background: var(--dsw-specific-menu);\n  backdrop-filter: var(--dsw-menu-backdrop-filter);\n  --dsw-elevation-stroke-color: var(--dsw-alias-border-l1);\n  box-shadow: var(--dsw-elevation-prominent);\n  font-size: 12px;\n  line-height: 18px;\n  color: var(--dsw-alias-label-secondary);\n  cursor: default;\n  max-height: calc(100dvh - 12px - max(12px, var(--dsh-frame-overlay-top, 12px)));\n  overflow-x: hidden;\n  overflow-y: auto;\n  --dsh-scrollbar-thumb: var(--dsw-alias-scrollbar-bg-l2);\n  --dsh-scrollbar-thumb-hover: var(--dsw-alias-scrollbar-hover-l2);\n  position-area: none;\n  top: max(12px, var(--dsh-frame-overlay-top, 12px));\n  bottom: max(12px, calc(anchor(top) + 8px));\n  left: max(12px, anchor(left));\n  right: 12px;\n  position-try-fallbacks:\n    --dsh-stat-window,\n    --dsh-stat-opposite,\n    --dsh-stat-wide-opposite,\n    --dsh-stat-tall,\n    --dsh-stat-viewport;\n  align-self: end;\n  justify-self: start;\n  height: fit-content;\n  min-height: 0;\n  margin: 0;\n}\n.stat_dialog_title {\n  display: flex;\n  justify-content: space-between;\n  gap: 16px;\n  margin-bottom: 8px;\n  color: var(--dsw-alias-label-primary);\n  font-weight: 500;\n}\n.stat_dialog_titleRule {\n  margin-bottom: 10px;\n  border-top: 0.5px solid var(--dsw-alias-border-l2);\n}\n.stat_dialog_titleValue {\n  font-variant-numeric: tabular-nums;\n}\n.stat_dialog_titleLabel {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  min-width: 0;\n}\n.stat_dialog_titleLabel svg {\n  width: 14px;\n  height: 14px;\n  flex: none;\n}\n.stat_dialog_details {\n  display: grid;\n  grid-template-columns: minmax(76px, auto) minmax(0, 1fr);\n  gap: 6px 16px;\n  margin: 0;\n  color: var(--dsw-alias-label-tertiary);\n}\n.stat_dialog_details dt,\n.stat_dialog_details dd {\n  min-width: 0;\n  margin: 0;\n}\n.stat_dialog_details dd {\n  color: var(--dsw-alias-label-secondary);\n  font-variant-numeric: tabular-nums;\n  text-align: right;\n}\n.stat_dialog_details .stat_dialog_route {\n  overflow-wrap: anywhere;\n}\n.stat_dialog_reasoning {\n  color: var(--dsw-alias-label-tertiary);\n  white-space: nowrap;\n}\n@position-try --dsh-stat-window {\n  position-area: none;\n  top: max(12px, var(--dsh-frame-overlay-top, 12px));\n  bottom: max(12px, calc(anchor(top) + 8px));\n  left: 12px;\n  right: 12px;\n  margin: 0;\n  align-self: safe end;\n  justify-self: safe end;\n}\n@position-try --dsh-stat-opposite {\n  top: max(12px, calc(anchor(bottom) + 8px));\n  bottom: 12px;\n  align-self: start;\n}\n@position-try --dsh-stat-wide-opposite {\n  top: max(12px, calc(anchor(bottom) + 8px));\n  bottom: 12px;\n  left: 12px;\n  right: 12px;\n  align-self: start;\n  justify-self: safe end;\n}\n@position-try --dsh-stat-tall {\n  position-area: none;\n  top: max(12px, var(--dsh-frame-overlay-top, 12px));\n  bottom: 12px;\n  left: max(12px, anchor(left));\n  right: 12px;\n  margin: 0;\n  align-self: safe start;\n  justify-self: start;\n}\n@position-try --dsh-stat-viewport {\n  position-area: none;\n  inset: max(12px, var(--dsh-frame-overlay-top, 12px)) 12px 12px;\n  margin: 0;\n  align-self: safe start;\n  justify-self: safe end;\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/TurnUsagePanel.module.css */\n.TurnUsagePanel_root {\n  display: inline-flex;\n  min-width: 0;\n}\n.TurnUsagePanel_root + .TurnUsagePanel_root {\n  margin-left: -6px;\n}\n.TurnUsagePanel_trigger {\n  display: inline-flex;\n  align-items: center;\n  gap: 4px;\n  min-width: 0;\n  height: calc(28px + var(--dsh-content-font-delta, 0px));\n  padding: 6px 8px;\n  border: none;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: calc(var(--dsh-content-font-size-secondary, 13px) - 1px);\n  font-variant-numeric: tabular-nums;\n  line-height: calc(24px + var(--dsh-content-font-delta, 0px));\n  white-space: nowrap;\n  cursor: pointer;\n}\n.TurnUsagePanel_label {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.TurnUsagePanel_trigger svg {\n  width: calc(15px + var(--dsh-content-font-delta, 0px));\n  height: calc(15px + var(--dsh-content-font-delta, 0px));\n  flex: none;\n}\n.TurnUsagePanel_trigger[aria-expanded=true] {\n  background: var(--dsw-alias-interactive-bg-hover);\n  color: var(--dsw-alias-label-tertiary);\n}\n@media (hover: hover) {\n  .TurnUsagePanel_trigger:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n    color: var(--dsw-alias-label-tertiary);\n  }\n}\n@media (max-width: 480px) {\n  .TurnUsagePanel_trigger {\n    justify-content: center;\n    width: calc(28px + var(--dsh-content-font-delta, 0px));\n    padding: 6px;\n  }\n  .TurnUsagePanel_trigger .TurnUsagePanel_label {\n    display: none;\n  }\n  .TurnUsagePanel_root + .TurnUsagePanel_root {\n    margin-left: 0;\n  }\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-attachment/src/AttachmentRail.module.css */\n.AttachmentRail_root {\n  position: relative;\n  min-width: 0;\n}\n.AttachmentRail_rail {\n  display: flex;\n  align-items: stretch;\n  gap: 10px;\n  overflow-x: auto;\n  overflow-y: hidden;\n  scrollbar-width: none;\n  --dsh-scrollbar-thumb: var(--dsw-alias-scrollbar-bg-l2);\n  --dsh-scrollbar-thumb-hover: var(--dsw-alias-scrollbar-hover-l2);\n}\n.AttachmentRail_rail::-webkit-scrollbar {\n  display: none;\n}\n.AttachmentRail_item {\n  flex: none;\n  height: 64px;\n}\n.AttachmentRail_thumbnail {\n  width: 64px;\n  height: 64px;\n  padding: 0;\n  overflow: hidden;\n  border: 0.5px solid var(--dsw-alias-border-l2-darkmode-thin);\n  border-radius: var(--dsw-radius-xl);\n  background: var(--dsw-alias-interactive-bg-hover);\n  cursor: zoom-in;\n}\n.AttachmentRail_thumbnail img {\n  display: block;\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n}\n.AttachmentRail_remove {\n  position: absolute;\n  top: 4px;\n  right: 4px;\n  z-index: 1;\n  display: grid;\n  place-items: center;\n  width: 18px;\n  height: 18px;\n  padding: 0;\n  border: none;\n  border-radius: 50%;\n  corner-shape: round;\n  background: var(--dsw-alias-button-contrast-fill);\n  color: var(--dsw-alias-label-primary-inverted);\n  cursor: pointer;\n  opacity: 0;\n  transition: opacity 0.2s ease-in-out;\n}\n.AttachmentRail_remove:focus-visible {\n  opacity: 1;\n}\n@media (hover: hover) {\n  .AttachmentRail_item:hover .AttachmentRail_remove {\n    opacity: 1;\n  }\n}\n@media (hover: none), (pointer: coarse) {\n  .AttachmentRail_remove {\n    opacity: 1;\n  }\n}\n@media (prefers-reduced-motion: reduce) {\n  .AttachmentRail_remove {\n    transition: none;\n  }\n}\n.AttachmentRail_arrow {\n  position: absolute;\n  top: 50%;\n  z-index: 2;\n  display: grid;\n  place-items: center;\n  width: 24px;\n  height: 24px;\n  padding: 0;\n  border: 0;\n  --dsw-elevation-stroke-color: var(--dsw-alias-border-l2-darkmode-thin);\n  border-radius: 999px;\n  corner-shape: round;\n  background: var(--dsw-specific-input-major);\n  color: var(--dsw-alias-label-secondary);\n  box-shadow: var(--dsw-elevation-panel);\n  cursor: pointer;\n  transform: translateY(-50%);\n}\n@media (hover: hover) {\n  .AttachmentRail_arrow:hover {\n    background: var(--dsw-alias-interactive-bg-hover-solid);\n  }\n}\n.AttachmentRail_arrowLeft {\n  left: 4px;\n}\n.AttachmentRail_arrowRight {\n  right: 4px;\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/TurnNavigator.module.css */\n.TurnNavigator_slot {\n  position: absolute;\n  top: 0;\n  right: 0;\n  left: 0;\n  z-index: 7;\n  height: 0;\n  padding-inline: calc(var(--dsh-composer-side-clearance) + 16px);\n  container-type: inline-size;\n  pointer-events: none;\n}\n[data-conversation-scroll] .TurnNavigator_slot {\n  position: sticky;\n}\n.TurnNavigator_frame {\n  --turn-rail-band: calc( var(--dsh-conversation-viewport-height, 100dvh) - var(--dsh-composer-height, 152px) );\n  --turn-preview-height: 100px;\n  position: absolute;\n  top: calc(var(--turn-rail-band) / 2);\n  right: 12px;\n  width: 28px;\n  max-height: min(max(0px, calc(var(--turn-rail-band) - 64px)), 420px);\n  contain: layout;\n  cursor: pointer;\n  pointer-events: auto;\n  transform: translateY(-50%);\n}\n.TurnNavigator_scroller {\n  position: relative;\n  max-height: inherit;\n  overflow-y: auto;\n  overscroll-behavior: contain;\n  scrollbar-width: none;\n}\n.TurnNavigator_scroller::-webkit-scrollbar {\n  display: none;\n}\n.TurnNavigator_fadeTop {\n  mask-image:\n    linear-gradient(\n      to bottom,\n      transparent 0,\n      #000 24px,\n      #000 100%);\n}\n.TurnNavigator_fadeBottom {\n  mask-image:\n    linear-gradient(\n      to bottom,\n      #000 0,\n      #000 calc(100% - 24px),\n      transparent 100%);\n}\n.TurnNavigator_fadeTop.TurnNavigator_fadeBottom {\n  mask-image:\n    linear-gradient(\n      to bottom,\n      transparent 0,\n      #000 24px,\n      #000 calc(100% - 24px),\n      transparent 100%);\n}\n.TurnNavigator_marks {\n  position: relative;\n}\n.TurnNavigator_mark {\n  position: absolute;\n  top: 0;\n  right: 0;\n  left: 0;\n  height: 10px;\n  padding: 0;\n  border: 0;\n  border-radius: 8px;\n  background: transparent;\n  cursor: pointer;\n}\n.TurnNavigator_mark::before {\n  position: absolute;\n  top: 50%;\n  right: 0;\n  width: 20px;\n  height: 2px;\n  border-radius: 2px;\n  background: var(--dsw-alias-border-l4);\n  content: \"\";\n  transform: translateY(-50%) scaleX(0.6);\n  transform-origin: right center;\n  transition: transform 140ms ease, background-color 140ms ease;\n}\n.TurnNavigator_markUnloaded::before {\n  transform: translateY(-50%) scaleX(0.4);\n  opacity: 0.6;\n}\n.TurnNavigator_markPreview::before {\n  transform: translateY(-50%) scaleX(0.9);\n  background: var(--dsw-alias-label-tertiary);\n}\n.TurnNavigator_markBusy::before {\n  animation: TurnNavigator_dsh-turn-mark-busy 1s ease-in-out infinite;\n}\n.TurnNavigator_markActive::before {\n  transform: translateY(-50%) scaleX(1);\n  background: var(--dsw-alias-label-primary);\n}\n.TurnNavigator_mark:focus-visible::before {\n  transform: translateY(-50%) scaleX(1);\n  background: var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n}\n.TurnNavigator_mark:focus-visible {\n  outline: none;\n}\n.TurnNavigator_mark:focus-visible::after {\n  position: absolute;\n  inset: 0 0 0 auto;\n  width: 20px;\n  border-radius: inherit;\n  outline: 1px solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: -1px;\n  content: \"\";\n}\n.TurnNavigator_preview {\n  position: absolute;\n  top: clamp(0px, calc(var(--turn-preview-center) - var(--turn-preview-height) / 2), calc(100% - var(--turn-preview-height)));\n  right: calc(100% + 10px);\n  box-sizing: border-box;\n  width: min(300px, calc(100cqw - 120px));\n  max-height: var(--turn-preview-height);\n  overflow: hidden;\n  padding: 10px 12px;\n  border: 0;\n  border-radius: var(--dsw-radius-lg);\n  color: var(--dsw-alias-label-primary);\n  background: var(--dsw-alias-bg-layer-1);\n  box-shadow: var(--dsw-elevation-panel);\n  pointer-events: none;\n  animation: TurnNavigator_dsh-turn-preview-enter 120ms ease-out;\n  transition: top 140ms cubic-bezier(0.2, 0.8, 0.2, 1);\n}\n.TurnNavigator_previewPrompt,\n.TurnNavigator_previewResponse {\n  display: -webkit-box;\n  overflow: hidden;\n  -webkit-box-orient: vertical;\n}\n.TurnNavigator_previewPrompt {\n  font: var(--dsw-font-xs-strong-13);\n  -webkit-line-clamp: 1;\n}\n.TurnNavigator_previewResponse {\n  margin-top: 4px;\n  color: var(--dsw-alias-label-caption);\n  font: var(--dsw-font-xxs-12);\n  -webkit-line-clamp: 3;\n}\n@keyframes TurnNavigator_dsh-turn-preview-enter {\n  from {\n    opacity: 0;\n    transform: translateX(4px);\n  }\n  to {\n    opacity: 1;\n    transform: translateX(0);\n  }\n}\n@keyframes TurnNavigator_dsh-turn-mark-busy {\n  0%, 100% {\n    opacity: 1;\n  }\n  50% {\n    opacity: 0.35;\n  }\n}\n@container (max-width: 900px) {\n  .TurnNavigator_frame {\n    display: none;\n  }\n}\n@media (prefers-reduced-motion: reduce) {\n  .TurnNavigator_frame,\n  .TurnNavigator_scroller,\n  .TurnNavigator_mark::before,\n  .TurnNavigator_markBusy::before,\n  .TurnNavigator_preview {\n    transition: none;\n    animation: none;\n    scroll-behavior: auto;\n  }\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/ChatView.module.css */\n.ChatView_frame {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  min-height: 0;\n  flex: 1 1 auto;\n  container-type: inline-size;\n}\n.ChatView_root {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  min-height: 0;\n  flex: 1 1 auto;\n  overflow-x: visible;\n  overflow-y: clip;\n}\n.ChatView_scroll {\n  flex: 1 1 auto;\n  min-height: 0;\n  overflow-x: clip;\n  overflow-y: auto;\n  padding: 16px calc(var(--dsh-composer-side-clearance) + 16px);\n  container-type: inline-size;\n}\n.ChatView_scroll,\n[data-conversation-scroll]:has(.ChatView_root) {\n  overscroll-behavior-y: none;\n}\n.ChatView_root[data-chat-following-tail] .ChatView_scroll,\n[data-conversation-scroll]:has(.ChatView_root[data-chat-following-tail]) {\n  overflow-anchor: none;\n}\n[data-conversation-scroll] .ChatView_frame,\n[data-conversation-scroll] .ChatView_root {\n  flex: 0 0 auto;\n  min-height: auto;\n  height: auto;\n}\n[data-conversation-scroll] .ChatView_scroll {\n  overflow-x: clip;\n  overflow-y: visible;\n  flex: 0 0 auto;\n  min-height: auto;\n}\n.ChatView_column {\n  position: relative;\n  max-width: var(--dsh-chat-content-width);\n  width: 100%;\n  margin: 0 auto;\n  display: flex;\n  flex-direction: column;\n}\n:is(.ChatView_column, [data-slot=\"conversation.chat.flow\"]) > :not([hidden]):not(.ChatView_textInteraction):not(.ChatView_flowItem:is(:empty, :has(> [data-slot=\"conversation.chat.node\"]:empty))) ~ :not([hidden]):not(.ChatView_textInteraction):not(.ChatView_flowItem:is(:empty, :has(> [data-slot=\"conversation.chat.node\"]:empty))),\n.ChatView_column > .ChatView_older + [data-slot=\"conversation.chat.flow\"] > :not([hidden]):not(.ChatView_textInteraction):not(.ChatView_flowItem:is(:empty, :has(> [data-slot=\"conversation.chat.node\"]:empty))) {\n  margin-top: var(--dsh-chat-flow-gap, 4px);\n}\n.ChatView_flowItem[data-chat-group-part=response] {\n  --dsh-chat-flow-gap: 12px;\n}\n:is(.ChatView_column, [data-slot=\"conversation.chat.flow\"]) > [data-chat-group-part=response]:not([hidden]):not(:empty) + :not([hidden]):not(.ChatView_flowItem:is(:empty, :has(> [data-slot=\"conversation.chat.node\"]:empty))):not(.ChatView_running):not(:has(> [data-slot=\"conversation.chat.node\"] > [data-chat-steering-batch])) {\n  --dsh-chat-flow-gap: 12px;\n}\n.ChatView_flowItem {\n  min-width: 0;\n}\n.ChatView_turnSpacer {\n  height: 0;\n}\n.ChatView_column[data-chat-motion] > :not([data-chat-motion]),\n.ChatView_column[data-chat-motion] > [data-slot=\"conversation.chat.flow\"] > :not([data-chat-motion]) {\n  transition: margin-top 160ms cubic-bezier(0.4, 0, 0.2, 1);\n}\n.ChatView_column[data-input-fold] > :not([data-chat-motion]),\n.ChatView_column[data-input-fold] > [data-slot=\"conversation.chat.flow\"] > :not([data-chat-motion]) {\n  transition: none;\n}\n.ChatView_column[data-chat-motion] > [data-chat-flow-kind=turn-process],\n.ChatView_column[data-chat-motion] > [data-slot=\"conversation.chat.flow\"] > [data-chat-flow-kind=turn-process] {\n  transition: none;\n}\n@media (prefers-reduced-motion: reduce) {\n  .ChatView_column[data-chat-motion] > :not([data-chat-motion]),\n  .ChatView_column[data-chat-motion] > [data-slot=\"conversation.chat.flow\"] > :not([data-chat-motion]) {\n    transition: none;\n  }\n}\n.ChatView_flowItem[data-chat-flow-kind=turn-process],\n:is(.ChatView_column, [data-slot=\"conversation.chat.flow\"]) > [data-chat-flow-kind=turn-process]:not(:empty, :has(> [data-slot=\"conversation.chat.node\"]:empty)) + :not([hidden]):not(.ChatView_flowItem:is(:empty, :has(> [data-slot=\"conversation.chat.node\"]:empty))):not(.ChatView_running):not(:has(> [data-slot=\"conversation.chat.node\"] > [data-chat-steering-batch])),\n:is(.ChatView_column, [data-slot=\"conversation.chat.flow\"]) > [data-chat-flow-kind=turn-process] + :not([hidden]):not(.ChatView_flowItem:is(:empty, :has(> [data-slot=\"conversation.chat.node\"]:empty))):not(.ChatView_running):not([data-submission-echo], [data-pending-steering]):not(:has(> [data-slot=\"conversation.chat.node\"] > [data-chat-steering-batch])) {\n  --dsh-chat-flow-gap: 16px;\n}\n:is(.ChatView_column, [data-slot=\"conversation.chat.flow\"]) > .ChatView_flowItem:has(> [data-slot=\"conversation.chat.node\"] > [data-chat-steering-batch=start]) {\n  --dsh-chat-flow-gap: calc(44px + var(--dsh-content-font-delta, 0px));\n}\n.ChatView_running + [data-pending-steering] {\n  --dsh-chat-flow-gap: 0px;\n}\n.ChatView_flowItem[data-chat-flow-kind=turn-tail] + .ChatView_running {\n  display: none;\n}\n@media (prefers-reduced-motion: no-preference) {\n  :where(.ChatView_column > [data-slot=\"conversation.chat.flow\"] > .ChatView_flowItem[data-chat-flow-kind=steering]) + .ChatView_running {\n    animation: ChatView_running-enters-slot 140ms cubic-bezier(0.2, 0.8, 0.2, 1);\n  }\n  .ChatView_column[data-input-fold] .ChatView_running {\n    animation-duration: 0s;\n  }\n}\n@keyframes ChatView_running-enters-slot {\n  from {\n    opacity: 0;\n    translate: 0 calc(-44px - var(--dsh-content-font-delta, 0px));\n  }\n  40% {\n    opacity: 1;\n  }\n}\n.ChatView_flowItem:is(:empty, :has(> [data-slot=\"conversation.chat.node\"]:empty)) {\n  height: 0;\n}\n.ChatView_callRow {\n  border-radius: var(--dsw-radius-sm);\n}\n.ChatView_hint {\n  color: var(--dsw-alias-label-tertiary);\n  font-size: var(--dsh-content-font-size-secondary, 13px);\n  line-height: calc(18px + var(--dsh-content-font-delta-secondary, 0px));\n}\n.ChatView_running {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  --dsh-chat-flow-gap: 12px;\n  --dsw-alias-label-shimmer: var(--dsw-alias-label-deep-diving-shimmer);\n  color: var(--dsw-alias-label-deep-diving);\n  font-size: calc(var(--dsh-content-font-size, 14px) - 2px);\n  line-height: calc(22px + var(--dsh-content-font-delta, 0px));\n}\n.ChatView_running[data-holding] {\n  visibility: hidden;\n  opacity: 0;\n}\n:is(.ChatView_column, [data-slot=\"conversation.chat.flow\"]) > :nth-last-child(2 of :not([hidden]):not([data-pending-steering]):not(.ChatView_flowItem:is(:empty, :has(> [data-slot=\"conversation.chat.node\"]:empty)))):is(.ChatView_flowItem:not([data-chat-flow-kind=user]):not([data-chat-flow-kind=steering]):not([data-chat-flow-kind=turn-trigger]), [data-chat-group-key]) ~ .ChatView_running > .ChatView_runningDivider {\n  opacity: 1;\n}\n.ChatView_runningDivider {\n  position: absolute;\n  top: -4px;\n  left: 0;\n  right: 0;\n  height: 0.5px;\n  background: color-mix(in srgb, var(--dsw-alias-border-l1) 75%, var(--dsw-alias-border-l2));\n  opacity: 0;\n  pointer-events: none;\n}\n@media (prefers-reduced-motion: no-preference) {\n  .ChatView_runningDivider {\n    transition: opacity 160ms ease;\n  }\n}\n.ChatView_runningContent {\n  display: inline-flex;\n  align-items: center;\n  min-width: 0;\n  gap: 6px;\n  margin-top: 4px;\n  height: calc(28px + var(--dsh-content-font-delta, 0px));\n}\n.ChatView_runningText {\n  min-width: 0;\n  font-variant-numeric: tabular-nums;\n}\n.ChatView_runningIcon {\n  position: relative;\n  display: inline-flex;\n  flex: none;\n  width: calc(14px + var(--dsh-content-font-delta, 0px));\n  height: calc(14px + var(--dsh-content-font-delta, 0px));\n  contain: strict;\n  overflow: hidden;\n}\n.ChatView_runningWhaleAnimated {\n  display: none;\n  position: absolute;\n  inset: 0;\n}\n.ChatView_runningWhaleStill {\n  display: initial;\n}\n@supports (mask-mode: alpha) and (mask-image: url()) {\n  @media (prefers-reduced-motion: no-preference) and (forced-colors: none) {\n    .ChatView_runningWhaleAnimated {\n      display: block;\n      background: currentColor;\n      mask: url(data:image/png;base64,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) center / 100% 100% no-repeat;\n      mask-mode: alpha;\n      will-change: transform;\n    }\n    .ChatView_runningWhaleStill {\n      display: none;\n    }\n  }\n}\n.ChatView_openError {\n  color: var(--dsw-alias-state-error-primary);\n  font-size: var(--dsh-content-font-size-secondary, 13px);\n  line-height: calc(18px + var(--dsh-content-font-delta-secondary, 0px));\n}\n.ChatView_older {\n  overflow-anchor: none;\n  display: flex;\n  justify-content: center;\n}\n.ChatView_older button {\n  display: grid;\n  line-height: 18px;\n  white-space: nowrap;\n  border: none;\n  border-radius: var(--dsw-radius-sm);\n  padding: 4px 12px;\n  font-size: 12px;\n  color: var(--dsw-alias-label-secondary);\n  background: var(--dsw-alias-interactive-bg-hover-solid);\n  cursor: pointer;\n}\n.ChatView_older button > span {\n  grid-area: 1 / 1;\n}\n.ChatView_historyHidden {\n  visibility: hidden;\n}\n.ChatView_older button:disabled {\n  cursor: default;\n  opacity: 0.6;\n}\n.ChatView_toBottomSlot {\n  position: absolute;\n  right: 0;\n  bottom: 16px;\n  left: 0;\n  z-index: 8;\n  height: 0;\n  display: flex;\n  justify-content: flex-end;\n  padding-right: max(calc(var(--dsh-composer-side-clearance) + 16px), calc((100% - var(--dsh-chat-content-width)) / 2));\n  pointer-events: none;\n}\n[data-conversation-scroll] .ChatView_toBottomSlot {\n  position: sticky;\n  bottom: calc(var(--dsh-composer-height, 152px) + 16px);\n}\n.ChatView_toBottom {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 34px;\n  height: 34px;\n  margin-top: -34px;\n  padding: 0;\n  border: 0;\n  --dsw-elevation-stroke-color: var(--dsw-alias-border-l3);\n  border-radius: 100px;\n  corner-shape: round;\n  color: var(--dsw-alias-label-primary);\n  background: var(--dsw-alias-button-floating-fill);\n  box-shadow: var(--dsw-elevation-panel);\n  cursor: pointer;\n  pointer-events: auto;\n}\n@media (hover: hover) {\n  .ChatView_toBottom:hover {\n    background: var(--dsw-alias-button-floating-hover);\n  }\n}\n.ChatView_modalAction {\n  min-width: 72px;\n}\n.ChatView_column > .ChatView_textInteraction {\n  position: absolute;\n  z-index: 6;\n  visibility: hidden;\n  margin: 0;\n  width: max-content;\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/accessibility.module.css */\n.accessibility_visuallyHidden {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  overflow: hidden;\n  clip: rect(0 0 0 0);\n  white-space: nowrap;\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-conversation/src/client/skeleton/ConversationRoot.module.css */\n.ConversationRoot_root {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n  min-width: 0;\n  background: var(--dsw-alias-bg-base);\n}\n.ConversationRoot_root[data-phase=hero] {\n  isolation: isolate;\n}\n.ConversationRoot_header {\n  display: grid;\n  grid-template-columns: auto minmax(0, 1fr);\n  flex: none;\n  box-sizing: border-box;\n  min-height: 76px;\n  padding: 10px 28px 0 20px;\n  border-bottom: 0.5px solid var(--dsw-alias-border-l3);\n}\n.ConversationRoot_header:where(:not(:has(.ConversationRoot_tabs))) {\n  min-height: 0;\n  padding-bottom: 10px;\n}\n.ConversationRoot_headerBlank {\n  min-height: 0;\n  padding-bottom: 0;\n  border-bottom: none;\n}\n.ConversationRoot_headerBlank .ConversationRoot_headerCorner {\n  margin-left: auto;\n}\n[data-platform=darwin] .ConversationRoot_headerLeading,\n[data-platform=darwin] .ConversationRoot_headerActions,\n[data-platform=darwin] .ConversationRoot_headerUtilities,\n[data-platform=darwin] .ConversationRoot_headerCorner {\n  -webkit-app-region: no-drag;\n}\n.ConversationRoot_titleRow {\n  grid-column: 2;\n  container-type: inline-size;\n  display: flex;\n  align-items: center;\n  gap: 0;\n  min-height: 30px;\n  padding-inline-start: max(0px, calc(var(--dsh-frame-leading-clearance, 0px) - 20px));\n}\n.ConversationRoot_titleCluster {\n  display: flex;\n  flex: 1;\n  align-items: center;\n  gap: 10px;\n  min-width: 0;\n  --title-cluster-fade: 20px;\n  margin: -4px calc(-1 * var(--title-cluster-fade)) -4px -4px;\n  padding: 4px var(--title-cluster-fade) 4px 4px;\n  overflow: clip;\n  mask-image:\n    linear-gradient(\n      to left,\n      transparent calc(0.3 * var(--title-cluster-fade)),\n      #000 var(--title-cluster-fade));\n}\n.ConversationRoot_titleCluster:has(+ .ConversationRoot_headerUtilities:empty) {\n  --title-cluster-fade: 8px;\n}\n.ConversationRoot_headerLeading {\n  grid-column: 1;\n  grid-row: 1;\n  display: flex;\n  flex: none;\n  align-items: center;\n  gap: 8px;\n}\n.ConversationRoot_crumbs {\n  display: flex;\n  align-items: center;\n  gap: 4px;\n  min-width: 0;\n  overflow: hidden;\n  white-space: nowrap;\n}\n.ConversationRoot_crumbSeg {\n  display: inline-flex;\n  align-items: center;\n  gap: 4px;\n  min-width: 0;\n}\n.ConversationRoot_crumbSep {\n  color: var(--dsw-alias-label-caption);\n  font-size: 14px;\n  line-height: 20px;\n}\n.ConversationRoot_crumb {\n  display: inline-block;\n  max-width: 220px;\n  overflow: hidden;\n  padding: 4px 8px;\n  border: none;\n  border-radius: var(--dsw-radius-md);\n  background: transparent;\n  font-size: 14px;\n  line-height: 20px;\n  color: var(--dsw-alias-label-tertiary);\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  cursor: pointer;\n}\n@media (hover: hover) {\n  button.ConversationRoot_crumb:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.ConversationRoot_crumbCurrent {\n  font-weight: 500;\n  color: var(--dsw-alias-label-primary);\n  cursor: default;\n}\n.ConversationRoot_headerActions {\n  display: flex;\n  flex: none;\n  align-items: center;\n  gap: 10px;\n}\n@container (max-width: 460px) {\n  .ConversationRoot_headerActions {\n    gap: 8px;\n  }\n}\n.ConversationRoot_headerUtilities {\n  display: flex;\n  flex: none;\n  align-items: center;\n  gap: 8px;\n  margin-left: 20px;\n}\n.ConversationRoot_headerUtilities:empty {\n  display: none;\n}\n.ConversationRoot_headerMenuButton {\n  flex: none;\n  width: 28px;\n  padding: 0;\n  color: var(--dsw-alias-label-secondary);\n}\n.ConversationRoot_headerMenuButton svg {\n  width: 15px;\n  height: 15px;\n}\n.ConversationRoot_headerCorner {\n  display: flex;\n  flex: none;\n  align-items: center;\n  margin-left: 8px;\n  margin-right: -16px;\n}\n.ConversationRoot_headerCorner:empty {\n  display: none;\n}\n.ConversationRoot_tabs {\n  grid-column: 1 / -1;\n  position: relative;\n  z-index: 1;\n  display: flex;\n  gap: 16px 20px;\n  width: 100%;\n  min-width: 0;\n  box-sizing: border-box;\n  align-items: flex-start;\n  flex-wrap: wrap;\n  margin-top: 10px;\n  padding-left: 8px;\n}\n@media (max-width: 767px) {\n  html:not([data-platform]) .ConversationRoot_tabs {\n    padding-left: 0;\n  }\n}\n.ConversationRoot_viewTabs {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 32px;\n  min-width: 0;\n  min-height: 25px;\n}\n.ConversationRoot_tab {\n  --dsh-tab-hit-inline: 10px;\n  position: relative;\n  box-sizing: border-box;\n  min-height: 35px;\n  margin: -10px calc(-1 * var(--dsh-tab-hit-inline)) 0;\n  padding: 10px var(--dsh-tab-hit-inline) 9px;\n  border: none;\n  background: transparent;\n  font-size: 13px;\n  line-height: 16px;\n  font-weight: 500;\n  color: var(--dsw-alias-label-tertiary);\n  cursor: pointer;\n}\n.ConversationRoot_tab::after {\n  content: \"\";\n  position: absolute;\n  right: var(--dsh-tab-hit-inline);\n  bottom: -1px;\n  left: var(--dsh-tab-hit-inline);\n  height: 2px;\n  border-radius: 2px;\n  background: transparent;\n}\n.ConversationRoot_tabActive {\n  color: var(--dsw-alias-state-business-primary);\n}\n.ConversationRoot_tabActive::after {\n  background: var(--dsw-alias-state-business-primary);\n}\n.ConversationRoot_viewsMoreAnchor {\n  flex: none;\n}\n.ConversationRoot_viewsMore {\n  width: 22px;\n  height: 22px;\n  margin-top: -3px;\n  padding: 0;\n  color: var(--dsw-alias-label-secondary);\n}\n.ConversationRoot_viewsMoreActive {\n  color: var(--dsw-alias-state-business-primary);\n}\n.ConversationRoot_tabLabel {\n  display: block;\n  max-width: 88px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ConversationRoot_viewsMore[aria-expanded=true] {\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n.ConversationRoot_viewsMoreMenu {\n  width: 288px;\n  max-width: calc(100vw - 24px);\n}\n.ConversationRoot_viewArea {\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  min-height: 0;\n}\n.ConversationRoot_widthHandle {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  z-index: 0;\n  width: min(10px, calc((100% - var(--dsh-chat-content-width)) / 2 - 24px - 24px));\n  cursor: col-resize;\n}\n.ConversationRoot_widthHandle[data-side=left] {\n  right: calc(50% + var(--dsh-chat-content-width) / 2 + 24px);\n}\n.ConversationRoot_widthHandle[data-side=right] {\n  left: calc(50% + var(--dsh-chat-content-width) / 2 + 24px);\n}\n.ConversationRoot_widthHandle::after {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  width: 2px;\n  border-radius: 2px;\n  background:\n    linear-gradient(\n      to bottom,\n      transparent calc(var(--dsh-width-handle-pointer-y, 50%) - 36px),\n      var(--dsw-alias-scrollbar-bg-l1) calc(var(--dsh-width-handle-pointer-y, 50%) - 8px),\n      var(--dsw-alias-scrollbar-bg-l1) calc(var(--dsh-width-handle-pointer-y, 50%) + 8px),\n      transparent calc(var(--dsh-width-handle-pointer-y, 50%) + 36px));\n  opacity: 0;\n  pointer-events: none;\n}\n.ConversationRoot_widthHandle[data-side=left]::after {\n  right: 4px;\n}\n.ConversationRoot_widthHandle[data-side=right]::after {\n  left: 4px;\n}\n.ConversationRoot_widthHandle[data-dragging]::after {\n  opacity: 1;\n}\n@media (hover: hover) {\n  .ConversationRoot_widthHandle:hover::after {\n    opacity: 1;\n  }\n}\n.ConversationRoot_root:has([data-conversation-composer-overlay]) .ConversationRoot_widthHandle {\n  display: none;\n}\n.ConversationRoot_composerStack {\n  --dsh-composer-stack-gap: 6px;\n  display: flex;\n  flex-direction: column;\n  gap: var(--dsh-composer-stack-gap);\n}\n.ConversationRoot_composerSeat {\n  display: flex;\n  flex: none;\n  flex-direction: column;\n  --dsh-composer-text-max-height: 336px;\n}\n.ConversationRoot_root[data-phase=active] {\n  overflow: hidden;\n}\n.ConversationRoot_root[data-phase=active] .ConversationRoot_header {\n  flex: none;\n}\n.ConversationRoot_body {\n  position: relative;\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  min-height: 0;\n  --dsh-chat-content-width: var( --dsh-chat-user-width, clamp(680px, calc(var(--dsh-conversation-column-width, 0px) * 0.64), 920px) );\n  --dsh-composer-card-max-width: calc(var(--dsh-chat-content-width) + 32px);\n  --dsh-composer-side-clearance: 16px;\n  --dsh-composer-dock-inset: 8px;\n}\n.ConversationRoot_embeddedBody {\n  overflow: hidden;\n  --dsh-chat-content-width: min(calc(100% - 32px), 920px);\n  --dsh-composer-card-max-width: min(calc(100% - 16px), 952px);\n  --dsh-composer-side-clearance: 8px;\n  --dsh-composer-dock-inset: 8px;\n}\n.ConversationRoot_scrollBody {\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  min-height: 0;\n  margin-right: 2px;\n  overflow-y: auto;\n  scrollbar-gutter: stable;\n}\n.ConversationRoot_scrollBody::-webkit-scrollbar-track {\n  margin: 2px;\n}\n.ConversationRoot_root[data-phase=active] .ConversationRoot_viewArea,\n.ConversationRoot_embeddedBody[data-content-phase=active] .ConversationRoot_viewArea {\n  flex: 1 0 auto;\n  min-height: auto;\n}\n.ConversationRoot_root[data-phase=active] .ConversationRoot_composerSeat,\n.ConversationRoot_embeddedBody[data-content-phase=active] .ConversationRoot_composerSeat {\n  position: sticky;\n  bottom: 0;\n  margin-top: auto;\n  z-index: 9;\n  will-change: transform;\n  overflow-anchor: none;\n  background:\n    linear-gradient(\n      180deg,\n      color-mix(in srgb, var(--dsw-alias-bg-base) 0%, transparent) 0px,\n      var(--dsw-alias-bg-base) 36px);\n}\n.ConversationRoot_scrollBody:has([data-conversation-composer-overlay]) {\n  position: relative;\n  overflow-x: hidden;\n  overflow-y: auto;\n  scrollbar-gutter: auto;\n}\n.ConversationRoot_scrollBody:has([data-conversation-composer-overlay]) > [data-slot=\"conversation.session\"] > .ConversationRoot_viewArea {\n  flex: 1 1 0;\n  min-height: 0;\n  overflow: hidden;\n}\n.ConversationRoot_scrollBody:has([data-conversation-composer-overlay]) > .ConversationRoot_composerSeat {\n  position: absolute;\n  right: var(--dsh-scrollbar-width);\n  bottom: 0;\n  left: 0;\n}\n.ConversationRoot_composerHero {\n  align-self: center;\n  gap: 8px;\n  padding-bottom: 32px;\n  width: min(calc(var(--dsh-composer-card-max-width) + 2 * var(--dsh-composer-side-clearance)), 100%);\n  z-index: 1;\n}\n.ConversationRoot_heroWorkspaceRow {\n  display: flex;\n  align-items: center;\n  gap: 2px;\n  min-width: 0;\n  margin-top: 4px;\n  padding: 0 16px 0 20px;\n}\n.ConversationRoot_heroOptions {\n  display: flex;\n  flex: none;\n  align-items: center;\n  gap: 2px;\n  min-width: 0;\n  margin-left: auto;\n}\n.ConversationRoot_heroOptions:empty {\n  display: none;\n}\n.ConversationRoot_root[data-phase=hero] .ConversationRoot_scrollBody,\n.ConversationRoot_embeddedBody[data-content-phase=hero] .ConversationRoot_scrollBody {\n  justify-content: center;\n  overflow-y: auto;\n}\n.ConversationRoot_root[data-phase=settling] .ConversationRoot_composerSeat,\n.ConversationRoot_embeddedBody[data-content-phase=settling] .ConversationRoot_composerSeat {\n  visibility: hidden;\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-conversation/src/client/skeleton/InputBar.module.css */\n.InputBar_root {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding: 0 var(--dsh-composer-side-clearance) 4px;\n}\n.InputBar_dock {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 12px;\n  max-width: 100%;\n  padding-top: 4px;\n}\n.InputBar_root:not(.InputBar_hero) > .InputBar_dock {\n  min-height: calc(22px + var(--dsh-content-font-delta-secondary, 0px));\n}\n.InputBar_hero .InputBar_dock:empty {\n  display: none;\n}\n.InputBar_hero {\n  padding: 0 var(--dsh-composer-side-clearance);\n}\n.InputBar_notice {\n  width: 100%;\n  max-width: var(--dsh-composer-card-max-width);\n  margin-bottom: 6px;\n  padding: 4px 8px;\n  border-radius: var(--dsw-radius-md);\n  background: var(--dsw-alias-interactive-bg-hover);\n  color: var(--dsw-alias-label-secondary);\n  font-size: 12px;\n  line-height: 18px;\n}\n.InputBar_card {\n  box-sizing: border-box;\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n  width: 100%;\n  max-width: var(--dsh-composer-card-max-width);\n  padding-top: 8px;\n  border: 0;\n  --dsw-elevation-stroke-color: var(--dsw-alias-border-l2);\n  border-radius: var(--dsw-radius-panel);\n  background: var(--dsw-specific-input-major);\n  box-shadow: var(--dsw-elevation-soft);\n  font-size: var(--dsh-content-font-size, 14px);\n  line-height: calc(24px + var(--dsh-content-font-delta, 0px));\n  --dsh-scrollbar-thumb: var(--dsw-alias-scrollbar-bg-l2);\n  --dsh-scrollbar-thumb-hover: var(--dsw-alias-scrollbar-hover-l2);\n}\n@media (pointer: coarse) {\n  .InputBar_card {\n    font-size: max(16px, var(--dsh-content-font-size, 14px));\n  }\n}\n.InputBar_cardWorkspaceTrigger {\n  --dsw-elevation-stroke-color: transparent;\n  cursor: pointer;\n}\n.InputBar_cardWorkspaceTrigger::after {\n  content: \"\";\n  position: absolute;\n  inset: 0;\n  box-sizing: border-box;\n  border: 1px dashed currentColor;\n  border-radius: var(--dsw-radius-panel);\n  color: var(--dsw-alias-border-l4);\n  transition: color 100ms ease;\n  pointer-events: none;\n}\n.InputBar_cardWorkspaceTrigger :disabled {\n  pointer-events: none;\n}\n@media (hover: hover) {\n  .InputBar_cardWorkspaceTrigger:hover::after {\n    color: var(--dsw-alias-state-business-primary);\n  }\n}\n.InputBar_accessory {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  padding: 10px 12px 0;\n}\n.InputBar_overlayAnchor {\n  position: absolute;\n  inset: 0 0 auto;\n  height: 0;\n}\n.InputBar_scroll {\n  max-height: var(--dsh-composer-text-max-height);\n  overflow-y: auto;\n  margin-right: 4px;\n}\n.InputBar_scroll::-webkit-scrollbar-track {\n  margin-top: 8px;\n}\n.InputBar_grow {\n  position: relative;\n}\n.InputBar_pending {\n  width: 8px;\n  height: 8px;\n  border-radius: 50%;\n  corner-shape: round;\n  background: var(--dsw-alias-state-business-primary);\n  animation: InputBar_input-pending 1s ease-in-out infinite alternate;\n}\n@keyframes InputBar_input-pending {\n  from {\n    opacity: 0.35;\n  }\n  to {\n    opacity: 1;\n  }\n}\n.InputBar_input {\n  box-sizing: border-box;\n  min-height: 36px;\n  padding: 4px 8px 0 14px;\n  font-family: var(--dsw-font-family);\n  font-size: inherit;\n  line-height: inherit;\n  white-space: pre-wrap;\n  word-break: break-word;\n  overflow-wrap: anywhere;\n  outline: none;\n  color: var(--dsw-alias-label-primary);\n  caret-color: var(--dsw-alias-state-business-primary);\n}\n.InputBar_input p {\n  margin: 0;\n}\n.InputBar_input p:last-child::after {\n  content: var(--dsh-composer-hint);\n  color: var(--dsw-alias-label-caption);\n}\n.InputBar_input[data-composer-composing] p:last-child::after {\n  content: none;\n}\n.InputBar_input[data-composer-chip-selected] {\n  caret-color: transparent;\n}\n.InputBar_input[data-composer-composing] + .InputBar_placeholder {\n  visibility: hidden;\n}\n.InputBar_placeholder {\n  position: absolute;\n  inset: 4px 8px auto 14px;\n  color: var(--dsw-alias-label-caption);\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  pointer-events: none;\n  user-select: none;\n}\n.InputBar_inputDisabled {\n  color: var(--dsw-alias-label-tertiary);\n  cursor: not-allowed;\n}\n.InputBar_input[aria-haspopup=menu] {\n  cursor: pointer;\n}\n.InputBar_hero .InputBar_input {\n  min-height: 52px;\n}\n.InputBar_hero .InputBar_placeholder {\n  white-space: normal;\n  display: -webkit-box;\n  -webkit-box-orient: vertical;\n  -webkit-line-clamp: 2;\n  line-clamp: 2;\n}\n.InputBar_row {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  justify-content: space-between;\n  gap: 12px;\n  padding: 2px 8px 6px;\n  min-width: 0;\n  container-type: inline-size;\n}\n.InputBar_row[data-model-compact] {\n  --dsh-composer-model-text-display: none;\n  --dsh-composer-model-icon-display: block;\n}\n.InputBar_tools,\n.InputBar_modes,\n.InputBar_trailing {\n  display: flex;\n  align-items: center;\n  min-width: 0;\n}\n.InputBar_tools {\n  gap: 12px;\n}\n.InputBar_modes {\n  gap: 12px;\n}\n.InputBar_trailing {\n  flex: none;\n  margin-left: auto;\n  gap: 12px;\n}\n@container (max-width: 560px) {\n  .InputBar_tools,\n  .InputBar_modes,\n  .InputBar_trailing {\n    gap: 8px;\n  }\n}\n.InputBar_add {\n  display: grid;\n  place-items: center;\n  flex: none;\n  width: 28px;\n  height: 28px;\n  border: none;\n  border-radius: 999px;\n  corner-shape: round;\n  background: var(--dsw-specific-selector);\n  color: var(--dsw-alias-label-primary);\n  cursor: pointer;\n}\n@media (hover: hover) {\n  .InputBar_add:hover:not(:disabled) {\n    background: var(--dsw-alias-interactive-bg-hover-solid);\n  }\n}\n.InputBar_add:disabled {\n  opacity: 0.5;\n  cursor: default;\n}\n.InputBar_select {\n  max-width: 220px;\n  height: 28px;\n  padding: 0 20px 0 8px;\n  border: none;\n  border-radius: var(--dsw-radius-sm);\n  outline: none;\n  background-color: transparent;\n  background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M3 4.5L6 7.5L9 4.5' stroke='%2381858C' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E\");\n  background-repeat: no-repeat;\n  background-position: right 4px center;\n  background-size: 12px 12px;\n  color: var(--dsw-alias-label-secondary);\n  font-size: 13px;\n  line-height: 20px;\n  font-weight: 500;\n  white-space: nowrap;\n  cursor: pointer;\n  appearance: none;\n}\n@media (hover: hover) {\n  .InputBar_select:hover:not(:disabled) {\n    background-color: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.InputBar_select:disabled {\n  opacity: 0.5;\n  cursor: default;\n}\n.InputBar_primary {\n  display: grid;\n  place-items: center;\n  flex: none;\n  width: 34px;\n  height: 34px;\n  border: none;\n  border-radius: 999px;\n  corner-shape: round;\n  background: var(--dsw-alias-button-info-fill);\n  color: var(--dsw-alias-label-on-color);\n  cursor: pointer;\n  transition: background-color 100ms ease;\n  transform: translateY(-2px);\n}\n.InputBar_continueIcon {\n  transform: scale(1.5);\n}\n@media (hover: hover) {\n  .InputBar_primary:hover:not(:disabled) {\n    background: var(--dsw-alias-button-info-hover);\n  }\n}\n.InputBar_primary:disabled {\n  opacity: 0.4;\n  cursor: default;\n}\n.InputBar_primary[data-sending]:disabled {\n  opacity: 1;\n  cursor: progress;\n}\n.InputBar_sendingSpinner {\n  animation: InputBar_input-sending 800ms linear infinite;\n}\n@media (prefers-reduced-motion: reduce) {\n  .InputBar_sendingSpinner {\n    animation-duration: 2400ms;\n  }\n}\n@keyframes InputBar_input-sending {\n  to {\n    transform: rotate(360deg);\n  }\n}\n.InputBar_retry {\n  margin-left: 8px;\n  padding: 1px 8px;\n  border: 1px solid currentColor;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: inherit;\n  font-size: 12px;\n  cursor: pointer;\n}\n.InputBar_standardControls {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  min-width: 0;\n}\n.InputBar_tools[hidden],\n.InputBar_standardControls[hidden] {\n  display: none;\n}\n.InputBar_trailingActive {\n  flex: 1;\n  margin-left: 0;\n}\n.InputBar_activity {\n  display: flex;\n  align-items: center;\n  flex: none;\n}\n.InputBar_activity:empty {\n  display: none;\n}\n.InputBar_activityExpanded {\n  flex: 1;\n  min-width: 0;\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-conversation/src/client/skeleton/TodoPanel.module.css */\n.TodoPanel_root {\n  box-sizing: border-box;\n  flex: none;\n  overflow: hidden;\n  margin: 0 auto;\n  width: calc(100% - var(--dsh-composer-side-clearance) - var(--dsh-composer-side-clearance) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset));\n  max-width: calc(var(--dsh-composer-card-max-width) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset));\n  border: 0;\n  --dsw-elevation-stroke-color: var(--dsw-alias-border-l1);\n  border-radius: var(--dsw-radius-lg);\n  background: var(--dsw-specific-menu);\n  backdrop-filter: var(--dsw-menu-backdrop-filter);\n  box-shadow: var(--dsw-elevation-panel);\n  --dsh-scrollbar-thumb: var(--dsw-alias-scrollbar-bg-l2);\n  --dsh-scrollbar-thumb-hover: var(--dsw-alias-scrollbar-hover-l2);\n}\n.TodoPanel_body {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  padding: 6px 12px;\n}\n.TodoPanel_header {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  width: 100%;\n  padding: 0;\n  border: none;\n  background: transparent;\n  text-align: left;\n  cursor: pointer;\n}\n.TodoPanel_lead {\n  display: grid;\n  flex: none;\n  place-items: center;\n  color: var(--dsw-alias-label-tertiary);\n}\n.TodoPanel_title {\n  flex: none;\n  font-size: 13px;\n  line-height: 24px;\n  font-weight: 500;\n  color: var(--dsw-alias-label-primary);\n}\n.TodoPanel_progress {\n  flex: 1 1 auto;\n  min-width: 0;\n  overflow: hidden;\n  font-size: 13px;\n  line-height: 20px;\n  font-weight: 400;\n  color: var(--dsw-alias-label-tertiary);\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.TodoPanel_chevron {\n  display: grid;\n  flex: none;\n  place-items: center;\n  color: var(--dsw-alias-label-tertiary);\n}\n.TodoPanel_list {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  margin: 0;\n  padding: 0;\n  list-style: none;\n  max-height: 180px;\n  overflow-y: auto;\n}\n.TodoPanel_item {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  min-width: 0;\n  font-size: 13px;\n  line-height: 20px;\n  color: var(--dsw-alias-label-secondary);\n}\n.TodoPanel_glyph {\n  display: grid;\n  flex: none;\n  place-items: center;\n  width: 16px;\n  height: 16px;\n}\n.TodoPanel_content {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-input-trigger/src/client/MenuView.module.css */\n.MenuView_menu {\n  position: absolute;\n  bottom: calc(100% + 4px);\n  left: 0;\n  right: 0;\n  z-index: 100;\n  box-sizing: border-box;\n  max-height: 400px;\n  overflow: hidden;\n  --dsh-scrollbar-thumb: var(--dsw-alias-scrollbar-bg-l2);\n  --dsh-scrollbar-thumb-hover: var(--dsw-alias-scrollbar-hover-l2);\n  --dsh-scrollbar-width: 6px;\n  --dsh-scrollbar-thumb-border: 2px;\n  --dsh-scrollbar-track-margin: 12px;\n  padding: 4px;\n  display: flex;\n  flex-direction: column;\n  border: 0;\n  --dsw-elevation-stroke-color: var(--dsw-alias-border-l1);\n  box-shadow: var(--dsw-elevation-prominent);\n}\n.MenuView_menu[data-overflow-below]::after {\n  content: \"\";\n  position: absolute;\n  right: 14px;\n  bottom: 4px;\n  left: 4px;\n  height: 16px;\n  background:\n    linear-gradient(\n      to bottom,\n      transparent,\n      var(--dsw-specific-menu));\n  pointer-events: none;\n}\n.MenuView_viewport {\n  display: flex;\n  flex-direction: column;\n  min-height: 0;\n  overflow-y: auto;\n}\n.MenuView_item {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  width: 100%;\n  min-height: 34px;\n  padding: 6px 8px;\n  border: none;\n  border-radius: var(--dsw-radius-md);\n  background: transparent;\n  cursor: pointer;\n  font-size: 13px;\n  line-height: 20px;\n  color: var(--dsw-alias-label-primary);\n  text-align: left;\n}\n.MenuView_item.MenuView_active {\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n.MenuView_sectionTitle {\n  flex: none;\n  min-height: 23px;\n  padding: 5px 8px 2px;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 11px;\n  font-weight: 500;\n  line-height: 16px;\n}\n.MenuView_sectionTitle:not(:first-child) {\n  margin-top: 3px;\n}\n.MenuView_itemIcon {\n  display: inline-flex;\n  flex: none;\n  width: 14px;\n  height: 14px;\n  align-items: center;\n  justify-content: center;\n  color: var(--dsw-alias-menu-icon);\n}\n.MenuView_itemIcon svg {\n  width: 14px;\n  height: 14px;\n}\n.MenuView_itemName {\n  flex: none;\n  max-width: 40%;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.MenuView_itemAlias {\n  flex: none;\n  max-width: 20%;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 12px;\n  line-height: 18px;\n}\n.MenuView_itemDescription {\n  flex: 1;\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  text-align: right;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 12px;\n  line-height: 18px;\n}\n.MenuView_trailing {\n  flex: none;\n  display: inline-flex;\n  align-items: center;\n  gap: 3px;\n  margin-left: auto;\n}\n.MenuView_drillHintText {\n  display: none;\n  color: var(--dsw-alias-label-caption);\n  font-size: 10px;\n  line-height: 16px;\n  white-space: nowrap;\n}\n.MenuView_drillHint {\n  display: none;\n  padding: 0 4px;\n  border-radius: var(--dsw-radius-xs);\n  background: var(--dsw-alias-interactive-bg-hover);\n  color: var(--dsw-alias-label-caption);\n  font-family: inherit;\n  font-size: 10px;\n  line-height: 16px;\n}\n.MenuView_item.MenuView_active .MenuView_drillHintText,\n.MenuView_item.MenuView_active .MenuView_drillHint {\n  display: inline-flex;\n}\n.MenuView_drill {\n  flex: none;\n  display: inline-grid;\n  place-items: center;\n  width: 18px;\n  height: 18px;\n  border-radius: var(--dsw-radius-xs);\n  color: var(--dsw-alias-menu-icon);\n}\n@media (hover: hover) {\n  .MenuView_drill:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n    color: var(--dsw-alias-label-primary);\n  }\n}\n.MenuView_groupTitle {\n  padding: 6px 8px;\n  font-size: 11px;\n  line-height: 15px;\n  color: var(--dsw-alias-label-tertiary);\n}\n.MenuView_skeletonRow {\n  display: flex;\n  align-items: center;\n  box-sizing: border-box;\n  min-height: 34px;\n  padding: 6px 8px;\n}\n.MenuView_skeletonBar {\n  height: 18px;\n  border-radius: var(--dsw-radius-xs);\n  background: var(--dsw-alias-bg-skeleton);\n  animation: MenuView_dsh-menu-skeleton 2s cubic-bezier(0.36, 0, 0.64, 1) infinite;\n}\n@keyframes MenuView_dsh-menu-skeleton {\n  0% {\n    opacity: 1;\n  }\n  40% {\n    opacity: 0.6;\n  }\n  80%, 100% {\n    opacity: 1;\n  }\n}\n.MenuView_crumbs {\n  flex: none;\n  display: flex;\n  align-items: center;\n  flex-wrap: wrap;\n  gap: 2px;\n  padding: 3px 3px 5px;\n  margin-bottom: 2px;\n  border-bottom: 0.5px solid var(--dsw-alias-border-l1);\n}\n.MenuView_crumb {\n  flex: 0 1 auto;\n  max-width: 40%;\n  overflow: hidden;\n  padding: 2px 5px;\n  border: none;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-tertiary);\n  cursor: pointer;\n  font-family: inherit;\n  font-size: 11px;\n  line-height: 16px;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n@media (hover: hover) {\n  .MenuView_crumb:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n    color: var(--dsw-alias-label-primary);\n  }\n}\n.MenuView_crumbCurrent {\n  background: transparent;\n  color: var(--dsw-alias-label-primary);\n  cursor: default;\n}\n@media (hover: hover) {\n  .MenuView_crumbCurrent:hover {\n    background: transparent;\n    color: var(--dsw-alias-label-primary);\n    cursor: default;\n  }\n}\n.MenuView_crumbSeparator {\n  flex: none;\n  display: inline-flex;\n  color: var(--dsw-alias-menu-icon);\n}\n";
+const compiledNativeStyles = "/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ReviewComposer.module.css */\n.ReviewComposer_root,\n.ReviewComposer_thread {\n  box-sizing: border-box;\n  width: calc(100% - 20px);\n  max-width: 680px;\n  margin: 10px;\n  padding: 12px;\n  border: 0.5px solid var(--dsw-alias-border-l3);\n  border-radius: var(--dsw-radius-md);\n  background: var(--dsw-alias-bg-layer-1);\n  color: var(--dsw-alias-label-primary);\n  font: var(--dsw-font-xs-13);\n  font-family: Inter, var(--dsw-font-family);\n  white-space: normal;\n}\n.ReviewComposer_root {\n  background: var(--dsw-alias-bg-layer-2);\n  border-radius: var(--dsw-radius-lg);\n}\n.ReviewComposer_root:focus-within {\n  border-color: var(--dsw-alias-border-l4);\n}\n[data-forge-comments] > .ReviewComposer_root,\n[data-forge-comments] > .ReviewComposer_thread {\n  width: auto;\n  max-width: none;\n  margin: 0;\n}\n.ReviewComposer_title {\n  margin-bottom: 12px;\n  color: var(--dsw-alias-label-secondary);\n  overflow-wrap: anywhere;\n}\n.ReviewComposer_input {\n  display: block;\n  box-sizing: border-box;\n  width: 100%;\n  height: 88px;\n  min-height: 88px;\n  contain: strict;\n  padding: 10px 12px;\n  resize: vertical;\n  border: 0.5px solid var(--dsw-alias-border-l4);\n  border-radius: var(--dsw-radius-md);\n  outline: none;\n  background: var(--dsw-alias-bg-layer-3);\n  color: var(--dsw-alias-label-primary);\n  font: inherit;\n}\n.ReviewComposer_input::placeholder {\n  color: var(--dsw-alias-label-dimmed);\n}\n.ReviewComposer_input:focus {\n  border-color: var(--dsw-alias-state-business-primary);\n}\n.ReviewComposer_root .ReviewComposer_input {\n  padding: 0;\n  border: 0;\n  border-radius: 0;\n  background: transparent;\n}\n.ReviewComposer_actions {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  justify-content: flex-end;\n  gap: 8px;\n  padding-top: 10px;\n  margin-top: 10px;\n  border-top: 0.5px solid var(--dsw-alias-border-l2);\n}\n.ReviewComposer_cancel {\n  margin-inline-end: auto;\n}\n.ReviewComposer_error {\n  margin-top: 8px;\n  color: var(--dsw-alias-state-error-primary);\n  overflow-wrap: anywhere;\n}\n.ReviewComposer_gitAction {\n  display: inline-flex;\n  flex: none;\n  align-items: stretch;\n}\n.ReviewComposer_gitMain {\n  border-start-end-radius: 0;\n  border-end-end-radius: 0;\n}\n.ReviewComposer_gitArrow {\n  width: 30px;\n  padding: 0;\n  border-start-start-radius: 0;\n  border-end-start-radius: 0;\n  border-inline-start: 0.5px solid color-mix(in srgb, var(--dsw-alias-label-primary-foreground) 25%, transparent);\n}\n.ReviewComposer_threadHeader {\n  display: flex;\n  align-items: center;\n  flex-wrap: wrap;\n  gap: 8px;\n  margin-bottom: 8px;\n}\n.ReviewComposer_author {\n  font-weight: 500;\n}\n.ReviewComposer_range {\n  color: var(--dsw-alias-label-secondary);\n  font-size: 12px;\n}\n.ReviewComposer_commentBody {\n  white-space: pre-wrap;\n  overflow-wrap: anywhere;\n}\n.ReviewComposer_threadActions {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 4px;\n  margin: 8px -8px -4px;\n}\n.ReviewComposer_gutter {\n  position: relative;\n}\n.ReviewComposer_line {\n  display: block;\n  width: 100%;\n  height: 100%;\n  padding: 0;\n  color: inherit;\n  text-align: inherit;\n  cursor: pointer;\n  border: 0;\n  border-radius: 0;\n  background: transparent;\n  font: inherit;\n  user-select: none;\n  touch-action: pan-y;\n}\n.ReviewComposer_selected {\n  background: var(--dsw-alias-interactive-bg-hover);\n  outline: 1px solid var(--dsw-alias-border-l2);\n  outline-offset: -1px;\n}\n@media (hover: hover) {\n  .ReviewComposer_line:hover {\n    color: var(--dsw-alias-state-business-primary);\n  }\n}\n@media (pointer: coarse) {\n  .ReviewComposer_input {\n    font-size: 16px;\n  }\n  .ReviewComposer_line {\n    min-height: 28px;\n  }\n}\n.ReviewComposer_add,\n.ReviewComposer_hoverAdd {\n  position: absolute;\n  z-index: 1;\n  inset-inline-start: calc(100% - 4px);\n  top: 50%;\n  transform: translateY(-50%);\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  width: 22px;\n  height: 22px;\n  padding: 0;\n  border: 0;\n  border-radius: var(--dsw-radius-xs);\n  background: var(--dsw-alias-button-primary-fill);\n  color: var(--dsw-alias-label-primary-foreground);\n  font: inherit;\n  cursor: pointer;\n  user-select: none;\n}\n[data-review]:not([data-split]):not([data-single-side]) [data-review-side=L] .ReviewComposer_add,\n[data-review]:not([data-split]):not([data-single-side]) [data-review-side=L] .ReviewComposer_hoverAdd {\n  inset-inline-start: calc(100% + var(--forge-number-width, 3.5em) - 4px);\n}\n.ReviewComposer_hoverAdd {\n  display: none;\n}\n@media (hover: hover) {\n  [data-diff-side]:hover .ReviewComposer_hoverAdd,\n  [data-diff-line]:hover .ReviewComposer_hoverAdd {\n    display: inline-flex;\n  }\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ReviewThreads.module.css */\n.ReviewThreads_card,\n.ReviewThreads_folded {\n  box-sizing: border-box;\n  width: calc(100% - 20px);\n  max-width: 720px;\n  margin: 10px;\n  border: 0.5px solid var(--dsw-alias-border-l3);\n  border-radius: var(--dsw-radius-md);\n  background: var(--dsw-alias-bg-layer-1);\n  color: var(--dsw-alias-label-primary);\n  font: var(--dsw-font-xs-13);\n  font-family: Inter, var(--dsw-font-family);\n  white-space: normal;\n}\n.ReviewThreads_card {\n  padding: 10px 12px;\n}\n.ReviewThreads_card:focus {\n  outline: none;\n}\n.ReviewThreads_card:focus-visible {\n  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: -1px;\n}\n[data-forge-comments] > .ReviewThreads_card,\n[data-forge-comments] > .ReviewThreads_folded {\n  width: auto;\n  max-width: none;\n  margin: 0;\n}\n.ReviewThreads_card[data-resolved] {\n  --dsh-scrollbar-thumb: var(--dsw-alias-scrollbar-bg-l2);\n  --dsh-scrollbar-thumb-hover: var(--dsw-alias-scrollbar-hover-l2);\n  background: var(--dsw-alias-bg-layer-2);\n}\n.ReviewThreads_folded {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  min-height: 32px;\n  padding: 4px 12px;\n  color: var(--dsw-alias-label-secondary);\n}\n.ReviewThreads_folded > svg {\n  flex: none;\n  color: var(--dsw-alias-state-success-primary);\n}\n.ReviewThreads_foldedText {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ReviewThreads_header {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 6px;\n  margin-bottom: 8px;\n}\n.ReviewThreads_place {\n  min-width: 0;\n  color: var(--dsw-alias-label-secondary);\n  font-size: 12px;\n  overflow-wrap: anywhere;\n}\n.ReviewThreads_spacer {\n  flex: 1;\n}\n.ReviewThreads_link {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  gap: 2px;\n  padding: 0;\n  border: 0;\n  background: transparent;\n  color: var(--dsw-alias-state-business-primary);\n  font: inherit;\n  font-size: 12px;\n  cursor: pointer;\n}\n.ReviewThreads_link:disabled {\n  color: var(--dsw-alias-label-dimmed);\n  cursor: default;\n}\n.ReviewThreads_link:focus-visible {\n  border-radius: var(--dsw-radius-xs);\n  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: 2px;\n}\n@media (hover: hover) {\n  .ReviewThreads_link:not(:disabled):hover {\n    text-decoration: underline;\n  }\n}\n.ReviewThreads_turned {\n  transform: rotate(-90deg);\n}\n.ReviewThreads_comments {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n.ReviewThreads_comment {\n  display: flex;\n  gap: 8px;\n  min-width: 0;\n}\n.ReviewThreads_avatar {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  justify-content: center;\n  overflow: hidden;\n  border-radius: 50%;\n  corner-shape: round;\n  background: var(--dsw-alias-interactive-bg-hover);\n  color: var(--dsw-alias-label-secondary);\n  font-weight: 500;\n  line-height: 1;\n  user-select: none;\n}\n.ReviewThreads_avatar img {\n  display: block;\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n  corner-shape: round;\n  object-fit: cover;\n}\n.ReviewThreads_commentMain {\n  flex: 1;\n  min-width: 0;\n}\n.ReviewThreads_commentHeader {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 6px;\n  min-height: 20px;\n}\n.ReviewThreads_login {\n  font-weight: 500;\n  overflow-wrap: anywhere;\n}\n.ReviewThreads_time {\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 12px;\n}\n.ReviewThreads_body {\n  min-width: 0;\n  margin-top: 2px;\n  overflow-wrap: anywhere;\n}\n.ReviewThreads_actions {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 4px;\n  margin: 10px -8px -4px;\n}\n.ReviewThreads_form {\n  margin-top: 10px;\n}\n.ReviewThreads_formActions {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  justify-content: flex-end;\n  gap: 8px;\n  margin-top: 8px;\n}\n.ReviewThreads_replyPrompt {\n  display: block;\n  box-sizing: border-box;\n  width: 100%;\n  min-height: 32px;\n  margin-top: 10px;\n  padding: 6px 12px;\n  border: 0.5px solid var(--dsw-alias-border-l4);\n  border-radius: var(--dsw-radius-md);\n  background: var(--dsw-alias-bg-layer-3);\n  color: var(--dsw-alias-label-dimmed);\n  font: inherit;\n  text-align: start;\n  cursor: text;\n}\n.ReviewThreads_replyPrompt:focus-visible {\n  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: 2px;\n}\n.ReviewThreads_menuAnchor {\n  display: inline-flex;\n  flex: none;\n}\n.ReviewThreads_icon {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  width: 20px;\n  height: 20px;\n  padding: 0;\n  border: 0;\n  border-radius: var(--dsw-radius-xs);\n  background: transparent;\n  color: var(--dsw-alias-label-secondary);\n  cursor: pointer;\n}\n.ReviewThreads_icon[aria-expanded=true] {\n  background: var(--dsw-alias-interactive-bg-hover);\n  color: var(--dsw-alias-label-primary);\n}\n.ReviewThreads_icon:focus-visible {\n  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: 1px;\n}\n@media (hover: hover) {\n  .ReviewThreads_icon:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n    color: var(--dsw-alias-label-primary);\n  }\n}\n.ReviewThreads_confirm {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 8px;\n  margin-top: 8px;\n}\n.ReviewThreads_confirmText {\n  flex: 1 1 auto;\n  min-width: 0;\n  color: var(--dsw-alias-label-secondary);\n  overflow-wrap: anywhere;\n}\n.ReviewThreads_confirmError,\n.ReviewThreads_actionError {\n  flex-basis: 100%;\n  margin-top: 0;\n}\n.ReviewThreads_actionError {\n  padding-inline: 8px;\n}\n.ReviewThreads_excerpt,\n.ReviewThreads_original {\n  margin-bottom: 10px;\n  overflow-x: auto;\n  border: 0.5px solid var(--dsw-alias-border-l2);\n  border-radius: var(--dsw-radius-sm);\n  font: var(--dsw-font-markdown-code-block);\n}\n.ReviewThreads_excerptLine,\n.ReviewThreads_originalLine {\n  min-height: 20px;\n  padding: 0 10px;\n  line-height: 20px;\n  white-space: pre;\n}\n.ReviewThreads_excerptHeader {\n  color: var(--dsw-alias-label-tertiary);\n}\n.ReviewThreads_added {\n  background: var(--dsw-alias-file-diff-added-bg);\n}\n.ReviewThreads_deleted {\n  background: var(--dsw-alias-file-diff-deleted-bg);\n}\n.ReviewThreads_original {\n  max-height: 320px;\n  overflow: auto;\n}\n.ReviewThreads_originalLine {\n  display: grid;\n  grid-template-columns: max-content minmax(0, 1fr);\n  gap: 12px;\n}\n.ReviewThreads_originalNumber {\n  min-width: 3ch;\n  color: var(--dsw-alias-label-tertiary);\n  text-align: right;\n  user-select: none;\n}\n.ReviewThreads_marked {\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n.ReviewThreads_originalNote {\n  padding: 8px 10px;\n  color: var(--dsw-alias-label-secondary);\n  font-family: Inter, var(--dsw-font-family);\n}\n.ReviewThreads_outdated {\n  border-top: 0.5px solid var(--dsw-alias-border-l3);\n  padding-bottom: 2px;\n}\n.ReviewThreads_outdatedHeader {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  min-height: 32px;\n  padding: 0 12px;\n  color: var(--dsw-alias-label-secondary);\n  font: var(--dsw-font-xs-13);\n  font-family: Inter, var(--dsw-font-family);\n}\n@container (max-width: 479px) {\n  .ReviewThreads_card,\n  .ReviewThreads_folded {\n    width: calc(100% - 12px);\n    margin: 6px;\n  }\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/FileLabel.module.css */\n.FileLabel_label {\n  position: relative;\n  display: flex;\n  min-width: 0;\n}\n.FileLabel_parts {\n  display: flex;\n  align-items: baseline;\n  gap: 6px;\n  min-width: 0;\n  overflow: hidden;\n  white-space: nowrap;\n}\n.FileLabel_name {\n  flex: 0 1 auto;\n  color: var(--dsw-alias-label-primary);\n}\n.FileLabel_directory {\n  flex: 1 1 0;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 11px;\n}\n.FileLabel_shortened {\n  display: flex;\n  min-width: 0;\n  overflow: hidden;\n}\n.FileLabel_head {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.FileLabel_tail {\n  flex: none;\n}\n.FileLabel_visuallyHidden {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  overflow: hidden;\n  clip-path: inset(50%);\n  white-space: nowrap;\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ChangesTab.module.css */\n.ChangesTab_root {\n  container: ChangesTab_forge-changes / inline-size;\n  --forge-changes-bg: var(--dsw-alias-bg-base);\n  --forge-fill: var(--dsw-alias-card-fill);\n  --forge-diff-empty: color-mix(in srgb, var(--dsw-alias-interactive-bg-hover) 50%, transparent);\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n  min-height: 0;\n  background: var(--forge-changes-bg);\n  color: var(--dsw-alias-label-primary);\n  font-size: 12px;\n  line-height: 18px;\n}\n.ChangesTab_header {\n  display: flex;\n  flex: none;\n  align-items: center;\n  gap: 8px;\n  box-sizing: border-box;\n  min-height: 44px;\n  padding: 0 8px 0 14px;\n  border-bottom: 0.5px solid var(--dsw-alias-border-l3);\n}\n.ChangesTab_headerIcon {\n  display: inline-flex;\n  flex: none;\n  color: var(--dsw-alias-label-secondary);\n}\n.ChangesTab_headerTitle {\n  min-width: 0;\n  overflow: hidden;\n  font-size: 13px;\n  font-weight: 500;\n  line-height: 20px;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ChangesTab_headerNumber {\n  flex: none;\n  color: var(--dsw-alias-label-tertiary);\n  font-family: var(--ds-font-family-code);\n}\n.ChangesTab_headerNote {\n  min-width: 0;\n  overflow: hidden;\n  color: var(--dsw-alias-label-secondary);\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ChangesTab_headerHead {\n  flex: 0 100 auto;\n  min-width: 2.5em;\n  overflow: hidden;\n  color: var(--dsw-alias-label-secondary);\n  font-family: var(--ds-font-family-code);\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ChangesTab_headerArrow {\n  flex: none;\n  color: var(--dsw-alias-label-tertiary);\n}\n.ChangesTab_headerSuffix {\n  color: var(--dsw-alias-label-tertiary);\n}\n@container ChangesTab_forge-changes (max-width: 520px) {\n  .ChangesTab_headerSuffix {\n    display: none;\n  }\n}\n@container ChangesTab_forge-changes (max-width: 380px) {\n  .ChangesTab_headerHead,\n  .ChangesTab_headerArrow {\n    display: none;\n  }\n}\n.ChangesTab_headerEnd {\n  display: inline-flex;\n  flex: 0 1 auto;\n  align-items: center;\n  gap: 4px;\n  min-width: 0;\n  margin-left: auto;\n}\n.ChangesTab_toolbar {\n  display: flex;\n  flex: none;\n  align-items: stretch;\n  box-sizing: border-box;\n  border-bottom: 0.5px solid var(--dsw-alias-border-l3);\n}\n.ChangesTab_lensCell {\n  display: none;\n  flex: none;\n  align-items: center;\n  box-sizing: border-box;\n  width: var(--forge-tree-width);\n  padding: 0 8px;\n  border-inline-end: 0.5px solid var(--dsw-alias-border-l3);\n}\n.ChangesTab_toolbar[data-tree=right] .ChangesTab_lensCell {\n  order: 1;\n  border-inline-start: 0.5px solid var(--dsw-alias-border-l3);\n  border-inline-end: 0;\n}\n.ChangesTab_toolbarMain {\n  display: flex;\n  flex: 1;\n  align-items: center;\n  gap: 0 4px;\n  box-sizing: border-box;\n  min-width: 0;\n  min-height: 38px;\n  padding: 5px 8px;\n}\n.ChangesTab_lensMenu {\n  display: inline-flex;\n}\n@container ChangesTab_forge-changes (min-width: 760px) {\n  .ChangesTab_toolbar:not([data-tree=hidden]) .ChangesTab_lensCell {\n    display: flex;\n  }\n  .ChangesTab_toolbar:not([data-tree=hidden]) .ChangesTab_lensMenu {\n    display: none;\n  }\n}\n.ChangesTab_spacer {\n  flex: 1;\n}\n.ChangesTab_progressSlot,\n.ChangesTab_foldTests,\n.ChangesTab_filesSlot {\n  display: inline-flex;\n  flex: none;\n  min-width: 0;\n}\n.ChangesTab_select {\n  display: inline-flex;\n  flex: 0 1 auto;\n  align-items: center;\n  gap: 4px;\n  box-sizing: border-box;\n  min-width: 0;\n  height: 28px;\n  padding: 0 6px 0 8px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-primary);\n  cursor: pointer;\n  font: inherit;\n  white-space: nowrap;\n}\n.ChangesTab_select[aria-expanded=true] {\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n@media (hover: hover) {\n  .ChangesTab_select:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.ChangesTab_select:disabled {\n  color: var(--dsw-alias-label-tertiary);\n  cursor: default;\n}\n@media (hover: hover) {\n  .ChangesTab_select:disabled:hover {\n    background: transparent;\n  }\n}\n.ChangesTab_select svg {\n  flex: none;\n}\n.ChangesTab_counts {\n  display: inline-flex;\n  flex: none;\n  gap: 6px;\n  font-family: var(--ds-font-family-code);\n}\n.ChangesTab_totals {\n  padding: 0 4px;\n}\n.ChangesTab_added {\n  color: var(--dsw-alias-state-success-primary);\n}\n.ChangesTab_deleted {\n  color: var(--dsw-alias-state-error-primary);\n}\n.ChangesTab_tools {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  gap: 2px;\n}\n.ChangesTab_tool {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  justify-content: center;\n  width: 28px;\n  height: 28px;\n  padding: 0;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-secondary);\n  cursor: pointer;\n}\n.ChangesTab_tool[aria-pressed=true],\n.ChangesTab_tool[aria-expanded=true],\n.ChangesTab_tool[data-expanded] {\n  background: var(--dsw-alias-interactive-bg-hover);\n  color: var(--dsw-alias-label-primary);\n}\n@media (hover: hover) {\n  .ChangesTab_tool:hover:not(:disabled) {\n    background: var(--dsw-alias-interactive-bg-hover);\n    color: var(--dsw-alias-label-primary);\n  }\n}\n.ChangesTab_tool:disabled {\n  color: var(--dsw-alias-label-tertiary);\n  cursor: default;\n}\n.ChangesTab_tool svg {\n  width: 15px;\n  height: 15px;\n}\n.ChangesTab_tool[aria-pressed=true] .ChangesTab_compareIcon {\n  transform: rotate(90deg);\n}\n.ChangesTab_more {\n  display: none;\n}\n.ChangesTab_toolbarMain:is([data-fold=\"1\"], [data-fold=\"2\"], [data-fold=\"3\"]) .ChangesTab_foldViews,\n.ChangesTab_toolbarMain:is([data-fold=\"2\"], [data-fold=\"3\"]) .ChangesTab_foldTests,\n.ChangesTab_toolbarMain[data-fold=\"3\"] .ChangesTab_foldRefresh {\n  display: none;\n}\n.ChangesTab_toolbarMain[data-fold=\"3\"] .ChangesTab_filesSlot {\n  flex-shrink: 1;\n}\n.ChangesTab_toolbarMain:is([data-fold=\"1\"], [data-fold=\"2\"], [data-fold=\"3\"]) .ChangesTab_more {\n  display: inline-flex;\n}\n.ChangesTab_toolbarMain:is([data-fold=\"2\"], [data-fold=\"3\"]) .ChangesTab_progressSlot [data-forge-progress=full] {\n  display: none;\n}\n.ChangesTab_toolbarMain:is([data-fold=\"2\"], [data-fold=\"3\"]) .ChangesTab_progressSlot [data-forge-progress=compact] {\n  display: inline-flex;\n}\n.ChangesTab_menuRow {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 12px;\n  min-width: 0;\n}\n.ChangesTab_menuPath {\n  flex: 1;\n  min-width: 0;\n}\n.ChangesTab_menuList {\n  min-width: 280px;\n  max-width: min(420px, 80vw);\n}\n.ChangesTab_notice {\n  display: flex;\n  flex: none;\n  align-items: center;\n  gap: 8px;\n  padding: 8px 14px;\n  border-bottom: 0.5px solid var(--dsw-alias-border-l3);\n  background: var(--forge-fill);\n  color: var(--dsw-alias-label-secondary);\n}\n.ChangesTab_notice > svg {\n  flex: none;\n}\n.ChangesTab_noticeAction {\n  flex: none;\n  margin-left: auto;\n}\n.ChangesTab_body {\n  position: relative;\n  display: flex;\n  flex: 1;\n  min-height: 0;\n}\n.ChangesTab_treeToggle {\n  display: none;\n}\n@container ChangesTab_forge-changes (min-width: 760px) {\n  .ChangesTab_treeToggle {\n    display: inline-flex;\n  }\n  .ChangesTab_treePane:not([hidden]) {\n    display: block;\n  }\n}\n.ChangesTab_files {\n  --forge-files-inset: 10px;\n  flex: 1;\n  box-sizing: border-box;\n  min-width: 0;\n  min-height: 0;\n  padding: var(--forge-files-inset);\n  overflow: auto;\n}\n.ChangesTab_files:focus {\n  outline: none;\n}\n.ChangesTab_actions {\n  display: flex;\n  gap: 8px;\n}\n.ChangesTab_centered {\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  gap: 8px;\n  box-sizing: border-box;\n  padding: 24px;\n  color: var(--dsw-alias-label-secondary);\n  font-size: var(--dsh-content-font-size-secondary, 13px);\n  text-align: center;\n}\n.ChangesTab_file {\n  overflow: clip;\n  border: 0.5px solid var(--dsw-alias-border-l4);\n  border-radius: var(--dsw-radius-lg);\n  background: var(--forge-changes-bg);\n}\n.ChangesTab_file + .ChangesTab_file {\n  margin-top: 12px;\n}\n@container ChangesTab_forge-changes (max-width: 380px) {\n  .ChangesTab_files {\n    --forge-files-inset: 6px;\n  }\n  .ChangesTab_file + .ChangesTab_file {\n    margin-top: 8px;\n  }\n}\n.ChangesTab_fileHeader {\n  position: sticky;\n  top: calc(-1 * var(--forge-files-inset, 0px));\n  z-index: 2;\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  box-sizing: border-box;\n  min-height: 36px;\n  padding: 0 4px 0 8px;\n  border-bottom: 0.5px solid var(--dsw-alias-border-l3);\n  background: linear-gradient(var(--dsw-alias-interactive-bg-hover), var(--dsw-alias-interactive-bg-hover)), var(--forge-changes-bg);\n}\n.ChangesTab_fileToggle {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  justify-content: center;\n  width: 20px;\n  height: 24px;\n  padding: 0;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-tertiary);\n  cursor: pointer;\n}\n@media (hover: hover) {\n  .ChangesTab_fileToggle:hover {\n    color: var(--dsw-alias-label-primary);\n  }\n}\n.ChangesTab_file:not([data-expanded]) .ChangesTab_fileHeader {\n  border-bottom: 0;\n}\n.ChangesTab_fileTitle {\n  display: flex;\n  flex: 1 1 0;\n  align-items: center;\n  gap: 6px;\n  min-width: 0;\n  overflow: hidden;\n}\n.ChangesTab_fileIcon {\n  flex: none;\n}\n.ChangesTab_filePath {\n  display: flex;\n  flex: 0 1 auto;\n  min-width: 0;\n}\n.ChangesTab_fileSpacer {\n  flex: 1;\n  align-self: stretch;\n}\n.ChangesTab_chevron {\n  transition: transform 120ms ease;\n}\n.ChangesTab_file:not([data-expanded]) .ChangesTab_chevron {\n  transform: rotate(-90deg);\n}\n.ChangesTab_changedTag {\n  flex: none;\n  max-width: 30%;\n}\n.ChangesTab_changedText {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.ChangesTab_viewed {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  gap: 6px;\n  box-sizing: border-box;\n  height: 24px;\n  padding: 0 8px 0 6px;\n  border: 0.5px solid var(--dsw-alias-border-l2);\n  border-radius: var(--dsw-radius-sm);\n  color: var(--dsw-alias-label-secondary);\n  white-space: nowrap;\n  cursor: pointer;\n  user-select: none;\n}\n.ChangesTab_viewed input {\n  margin: 0;\n  accent-color: var(--dsw-alias-state-business-primary);\n  cursor: pointer;\n}\n.ChangesTab_viewed:has(input:checked) {\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n@media (hover: hover) {\n  .ChangesTab_viewed:hover {\n    color: var(--dsw-alias-label-primary);\n  }\n}\n.ChangesTab_viewed[data-disabled],\n.ChangesTab_viewed[data-disabled] input {\n  color: var(--dsw-alias-label-tertiary);\n  cursor: default;\n}\n.ChangesTab_viewed:has(input:focus-visible) {\n  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: -1px;\n}\n.ChangesTab_viewed input:focus-visible {\n  outline: none;\n}\n@container ChangesTab_forge-changes (max-width: 520px) {\n  .ChangesTab_viewed {\n    padding: 0 6px;\n  }\n  .ChangesTab_viewedLabel {\n    display: none;\n  }\n}\n.ChangesTab_badge {\n  flex: 0 1 auto;\n  min-width: 0;\n  max-width: 50%;\n  overflow: hidden;\n  padding: 0 6px;\n  border-radius: 4px;\n  background: var(--forge-fill);\n  color: var(--dsw-alias-label-secondary);\n  font-size: 11px;\n  line-height: 18px;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ChangesTab_code {\n  overflow-x: auto;\n  font: var(--dsw-font-markdown-code-block);\n}\n.ChangesTab_unreached {\n  height: calc(var(--forge-rows) * 22px);\n}\n.ChangesTab_code:not([data-wrap]):not([data-split]) {\n  display: grid;\n  grid-template-columns: minmax(max-content, 100%);\n}\n.ChangesTab_line {\n  display: grid;\n  grid-template-columns: var(--forge-number-width, 3.5em) var(--forge-number-width, 3.5em) 1.4em minmax(0, 1fr);\n  box-sizing: border-box;\n  min-height: 22px;\n  line-height: 22px;\n  white-space: pre;\n}\n.ChangesTab_code:not([data-wrap]):not([data-split]) .ChangesTab_line {\n  grid-template-columns: var(--forge-number-width, 3.5em) var(--forge-number-width, 3.5em) 1.4em max-content;\n}\n.ChangesTab_pair {\n  display: grid;\n  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);\n  min-height: 22px;\n  line-height: 22px;\n  white-space: pre;\n}\n.ChangesTab_cell {\n  display: grid;\n  grid-template-columns: var(--forge-number-width, 3.5em) minmax(0, 1fr);\n  box-sizing: border-box;\n  min-width: 0;\n}\n.ChangesTab_cell + .ChangesTab_cell {\n  border-left: 0.5px solid var(--dsw-alias-border-l3);\n}\n.ChangesTab_cell .ChangesTab_text {\n  overflow: hidden;\n}\n.ChangesTab_code[data-wrap] .ChangesTab_line,\n.ChangesTab_code[data-wrap] .ChangesTab_pair {\n  white-space: pre-wrap;\n}\n.ChangesTab_code[data-wrap] .ChangesTab_text {\n  overflow-wrap: anywhere;\n}\n.ChangesTab_number {\n  box-sizing: border-box;\n  padding-right: 6px;\n  color: var(--dsw-alias-label-tertiary);\n  text-align: right;\n  user-select: none;\n}\n.ChangesTab_sign {\n  text-align: center;\n  user-select: none;\n}\n.ChangesTab_text {\n  padding: 0 16px 0 6px;\n}\n.ChangesTab_code[data-split][data-review] .ChangesTab_text {\n  padding-left: calc(1.4em + 6px);\n}\n.ChangesTab_add {\n  --forge-diff-gutter: var(--dsw-alias-file-diff-added-gutter);\n  --forge-diff-marker: var(--dsw-alias-file-diff-added-marker);\n  background: var(--dsw-alias-file-diff-added-bg);\n}\n.ChangesTab_del {\n  --forge-diff-gutter: var(--dsw-alias-file-diff-deleted-gutter);\n  --forge-diff-marker: var(--dsw-alias-file-diff-deleted-marker);\n  background: var(--dsw-alias-file-diff-deleted-bg);\n}\n.ChangesTab_add .ChangesTab_number,\n.ChangesTab_del .ChangesTab_number {\n  background: var(--forge-diff-gutter);\n  color: var(--forge-diff-marker);\n}\n.ChangesTab_add .ChangesTab_sign,\n.ChangesTab_del .ChangesTab_sign {\n  color: var(--forge-diff-marker);\n}\n.ChangesTab_context .ChangesTab_text {\n  color: var(--dsw-alias-label-secondary);\n}\n.ChangesTab_empty {\n  background: var(--forge-diff-empty);\n}\n.ChangesTab_notes {\n  display: grid;\n  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);\n  white-space: normal;\n}\n.ChangesTab_noteCell {\n  display: grid;\n  grid-template-columns: var(--forge-number-width, 3.5em) minmax(0, 1fr);\n  min-width: 0;\n}\n.ChangesTab_noteCell + .ChangesTab_noteCell {\n  border-left: 0.5px solid var(--dsw-alias-border-l3);\n}\n.ChangesTab_noteStack {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  min-width: 0;\n  padding: 8px 12px 10px calc(1.4em + 6px);\n}\n.ChangesTab_noteStack:empty {\n  padding: 0;\n}\n.ChangesTab_gap,\n.ChangesTab_fileNote {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  box-sizing: border-box;\n  width: 100%;\n  min-height: 26px;\n  margin: 0;\n  padding: 0 12px;\n  border: 0;\n  background: var(--forge-fill);\n  color: var(--dsw-alias-label-tertiary);\n  font-family: var(--dsw-font-family);\n  font-size: 12px;\n  line-height: 18px;\n  text-align: left;\n}\n.ChangesTab_gap {\n  cursor: pointer;\n}\n@media (hover: hover) {\n  .ChangesTab_gap:hover:not(:disabled) {\n    background: var(--dsw-alias-interactive-bg-hover);\n    color: var(--dsw-alias-label-primary);\n  }\n}\n.ChangesTab_gap:disabled {\n  cursor: progress;\n}\n.ChangesTab_local {\n  min-width: 0;\n  border: 0.5px solid var(--dsw-alias-border-l2);\n  border-radius: var(--dsw-radius-md);\n  background: var(--dsw-alias-bg-layer-1);\n}\n.ChangesTab_localHead {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  min-width: 0;\n  padding: 8px 12px 2px 6px;\n}\n.ChangesTab_localToggle {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  gap: 6px;\n  min-height: 26px;\n  padding: 0 6px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-primary);\n  cursor: pointer;\n  font: inherit;\n  font-weight: 500;\n}\n@media (hover: hover) {\n  .ChangesTab_localToggle:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.ChangesTab_localToggle svg {\n  color: var(--dsw-alias-label-tertiary);\n  transition: transform 120ms ease;\n}\n.ChangesTab_localToggle[aria-expanded=true] svg {\n  transform: rotate(180deg);\n}\n.ChangesTab_localRefs {\n  min-width: 0;\n  margin-left: auto;\n  overflow: hidden;\n  color: var(--dsw-alias-label-tertiary);\n  font-family: var(--ds-font-family-code);\n  font-size: 12px;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ChangesTab_localRow {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  padding: 4px 10px 10px 12px;\n  font-size: 12px;\n}\n.ChangesTab_localView {\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  min-width: 0;\n  min-height: 28px;\n  margin-left: -6px;\n  padding: 0 6px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-secondary);\n  cursor: pointer;\n  font: inherit;\n}\n@media (hover: hover) {\n  .ChangesTab_localView:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.ChangesTab_localCreate {\n  flex: none;\n  margin-left: auto;\n}\n.ChangesTab_localFiles {\n  margin: 0;\n  padding: 4px 6px 8px;\n  border-top: 0.5px solid var(--dsw-alias-border-l2);\n  list-style: none;\n}\n.ChangesTab_localFile {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  box-sizing: border-box;\n  width: 100%;\n  min-height: 28px;\n  padding: 0 6px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-primary);\n  cursor: pointer;\n  font: inherit;\n  font-size: 12px;\n  text-align: left;\n}\n@media (hover: hover) {\n  .ChangesTab_localFile:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.ChangesTab_localFile .ChangesTab_menuPath {\n  flex: 1;\n}\n.ChangesTab_localView:focus-visible,\n.ChangesTab_localToggle:focus-visible,\n.ChangesTab_fileToggle:focus-visible,\n.ChangesTab_localFile:focus-visible,\n.ChangesTab_select:focus-visible,\n.ChangesTab_gap:focus-visible {\n  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: -2px;\n}\n.ChangesTab_reviewNotice {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 8px;\n  padding: 10px;\n}\n.ChangesTab_code[data-split][data-native-side=L] [data-diff-side=R],\n.ChangesTab_code[data-split][data-native-side=L] [data-diff-side=R] *,\n.ChangesTab_code[data-split][data-native-side=R] [data-diff-side=L],\n.ChangesTab_code[data-split][data-native-side=R] [data-diff-side=L] * {\n  user-select: none;\n}\n.ChangesTab_headerAction {\n  flex: none;\n  white-space: nowrap;\n}\n.ChangesTab_code[data-single-side] .ChangesTab_line {\n  grid-template-columns: var(--forge-number-width) 1.4em minmax(0, 1fr);\n}\n.ChangesTab_code[data-single-side]:not([data-wrap]) .ChangesTab_line {\n  grid-template-columns: var(--forge-number-width) 1.4em max-content;\n}\n.ChangesTab_reviewFile {\n  padding: 12px 0;\n}\n.ChangesTab_reviewFile > h3 {\n  margin: 0 10px;\n  font-size: 12px;\n  font-weight: 500;\n  overflow-wrap: anywhere;\n}\n.ChangesTab_threadCount {\n  flex: none;\n  height: 20px;\n  padding: 0 6px;\n  border: 0;\n  border-radius: var(--dsw-radius-xs);\n  background: color-mix(in srgb, var(--dsw-alias-state-business-primary) 12%, transparent);\n  color: var(--dsw-alias-state-business-primary);\n  font: inherit;\n  font-size: 11px;\n  line-height: 20px;\n  white-space: nowrap;\n  cursor: pointer;\n}\n.ChangesTab_threadCount:focus-visible {\n  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: -1px;\n}\n@media (hover: hover) {\n  .ChangesTab_threadCount:hover {\n    background: color-mix(in srgb, var(--dsw-alias-state-business-primary) 20%, transparent);\n  }\n}\n.ChangesTab_threadCountNumber {\n  display: none;\n}\n@container ChangesTab_forge-changes (max-width: 479px) {\n  .ChangesTab_threadCountText {\n    display: none;\n  }\n  .ChangesTab_threadCountNumber {\n    display: inline;\n  }\n}\n.ChangesTab_threadsToggle {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  gap: 6px;\n  height: 28px;\n  padding: 0 8px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-primary);\n  font: inherit;\n  white-space: nowrap;\n  cursor: pointer;\n}\n.ChangesTab_threadsToggle[aria-pressed=true] {\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n@media (hover: hover) {\n  .ChangesTab_threadsToggle:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.ChangesTab_threadsTotal {\n  padding: 0 5px;\n  border-radius: var(--dsw-radius-xs);\n  background: var(--forge-fill);\n  color: var(--dsw-alias-label-secondary);\n  font-size: 11px;\n  line-height: 16px;\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ChangedFiles.module.css */\n.ChangedFiles_root {\n  box-sizing: border-box;\n  width: 100%;\n  min-width: 0;\n  display: flex;\n  flex-direction: column;\n  min-height: 0;\n  color: var(--dsw-alias-label-primary);\n  font-size: 12px;\n}\n.ChangedFiles_search {\n  padding: 8px;\n}\n.ChangedFiles_rows {\n  overflow: auto;\n  min-height: 0;\n  padding: 0 4px 6px;\n}\n.ChangedFiles_row {\n  box-sizing: border-box;\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  width: 100%;\n  min-width: 0;\n  min-height: 30px;\n  padding: 4px 6px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: inherit;\n  font: inherit;\n  text-align: start;\n  cursor: pointer;\n}\n.ChangedFiles_row svg {\n  flex: none;\n}\n.ChangedFiles_name {\n  flex: 1;\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ChangedFiles_threads {\n  flex: none;\n  min-width: 16px;\n  padding: 0 5px;\n  box-sizing: border-box;\n  border-radius: var(--dsw-radius-xs);\n  background: color-mix(in srgb, var(--dsw-alias-state-business-primary) 12%, transparent);\n  color: var(--dsw-alias-state-business-primary);\n  font-size: 11px;\n  line-height: 16px;\n  text-align: center;\n}\n.ChangedFiles_selected {\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n.ChangedFiles_chevron {\n  display: inline-flex;\n  flex: 0 0 12px;\n}\n.ChangedFiles_collapsed {\n  transform: rotate(-90deg);\n}\n.ChangedFiles_empty {\n  padding: 12px 8px;\n  color: var(--dsw-alias-label-secondary);\n}\n.ChangedFiles_menu {\n  width: min(360px, calc(100vw - 24px));\n}\n.ChangedFiles_trigger {\n  display: inline-flex;\n  align-items: center;\n  gap: 4px;\n  height: 28px;\n  padding: 0 8px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-primary);\n  font: inherit;\n  white-space: nowrap;\n  cursor: pointer;\n}\n.ChangedFiles_trigger:disabled {\n  color: var(--dsw-alias-label-tertiary);\n  cursor: default;\n}\n.ChangedFiles_anchor {\n  min-width: 0;\n  max-width: 100%;\n}\n.ChangedFiles_trigger {\n  min-width: 0;\n  max-width: 100%;\n}\n.ChangedFiles_triggerLabel {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.ChangedFiles_triggerChevron {\n  flex: none;\n}\n@media (hover: hover) {\n  .ChangedFiles_row:hover,\n  .ChangedFiles_trigger:hover:not(:disabled) {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n@media (pointer: coarse) {\n  .ChangedFiles_row {\n    min-height: 44px;\n  }\n  .ChangedFiles_search input {\n    font-size: 16px;\n  }\n}\n.ChangedFiles_searchInput {\n  box-sizing: border-box;\n  width: 100%;\n  max-width: 100%;\n}\n.ChangedFiles_searchInput input::placeholder {\n  color: var(--dsw-alias-label-secondary);\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/FileTreePane.module.css */\n.FileTreePane_pane {\n  display: none;\n  position: relative;\n  flex: none;\n  min-width: 0;\n  min-height: 0;\n  box-sizing: border-box;\n  border-inline-start: 0.5px solid var(--dsw-alias-border-l3);\n}\n.FileTreePane_pane[hidden] {\n  display: none;\n}\n.FileTreePane_pane[data-position=left] {\n  order: -1;\n  border-inline-start: 0;\n  border-inline-end: 0.5px solid var(--dsw-alias-border-l3);\n}\n.FileTreePane_navigation {\n  height: 100%;\n  min-width: 0;\n  overflow-y: auto;\n}\n.FileTreePane_resize {\n  position: absolute;\n  inset-block: 0;\n  inset-inline-start: -4px;\n  width: 8px;\n  z-index: 2;\n  cursor: col-resize;\n  touch-action: none;\n  user-select: none;\n}\n.FileTreePane_resize::after {\n  content: \"\";\n  position: absolute;\n  inset-block: 0;\n  inset-inline-start: 3px;\n  width: 2px;\n}\n.FileTreePane_pane[data-position=left] .FileTreePane_resize {\n  inset-inline-start: auto;\n  inset-inline-end: -4px;\n}\n.FileTreePane_resize:focus-visible::after {\n  background: var(--dsw-alias-state-business-primary);\n}\n@media (hover: hover) {\n  .FileTreePane_resize:hover::after {\n    background: var(--dsw-alias-state-business-primary);\n  }\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/RefreshGlyph.module.css */\n.RefreshGlyph_glyph {\n  display: inline-flex;\n}\n.RefreshGlyph_glyph[data-turning] {\n  animation: RefreshGlyph_forge-refresh-turn 1s linear infinite;\n}\n@keyframes RefreshGlyph_forge-refresh-turn {\n  to {\n    transform: rotate(360deg);\n  }\n}\n@media (prefers-reduced-motion: reduce) {\n  .RefreshGlyph_glyph[data-turning] {\n    animation-name: RefreshGlyph_forge-refresh-dim;\n  }\n}\n@keyframes RefreshGlyph_forge-refresh-dim {\n  50% {\n    opacity: 0.4;\n  }\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-experimental-client-ui-forge/src/client/ReviewControls.module.css */\n.ReviewControls_segmented {\n  box-sizing: border-box;\n  display: grid;\n  grid-auto-columns: minmax(0, 1fr);\n  grid-auto-flow: column;\n  gap: 2px;\n  width: 100%;\n  min-width: 0;\n  height: 28px;\n  padding: 2px;\n  border-radius: var(--dsw-radius-md);\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n.ReviewControls_segment {\n  box-sizing: border-box;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: 4px;\n  min-width: 0;\n  height: 24px;\n  padding: 0 4px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-secondary);\n  font: inherit;\n  white-space: nowrap;\n  cursor: pointer;\n}\n.ReviewControls_segment[aria-checked=true] {\n  background: var(--dsw-alias-bg-layer-1);\n  box-shadow: var(--dsw-elevation-soft);\n  color: var(--dsw-alias-label-primary);\n}\n@media (hover: hover) {\n  .ReviewControls_segment:hover:not(:disabled) {\n    color: var(--dsw-alias-label-primary);\n  }\n}\n.ReviewControls_segment:disabled {\n  color: var(--dsw-alias-label-tertiary);\n  cursor: default;\n}\n.ReviewControls_segment:focus-visible {\n  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: -2px;\n}\n.ReviewControls_segmentLabel {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.ReviewControls_count {\n  flex: none;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 11px;\n  font-variant-numeric: tabular-nums;\n}\n.ReviewControls_menuRow {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 16px;\n  min-width: 120px;\n}\n.ReviewControls_trigger {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  gap: 4px;\n  height: 28px;\n  padding: 0 6px 0 8px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-primary);\n  font: inherit;\n  white-space: nowrap;\n  cursor: pointer;\n}\n.ReviewControls_trigger[aria-expanded=true] {\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n@media (hover: hover) {\n  .ReviewControls_trigger:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.ReviewControls_switch {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  gap: 6px;\n  height: 28px;\n  padding: 0 4px;\n  color: var(--dsw-alias-label-secondary);\n  white-space: nowrap;\n  cursor: pointer;\n}\n.ReviewControls_switchLabel {\n  user-select: none;\n}\n.ReviewControls_progress {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  gap: 6px;\n  padding: 0 4px;\n  color: var(--dsw-alias-label-secondary);\n  white-space: nowrap;\n  font-variant-numeric: tabular-nums;\n}\n.ReviewControls_progressForm {\n  display: inline-flex;\n  align-items: center;\n}\n.ReviewControls_progressForm[data-forge-progress=compact] {\n  display: none;\n}\n.ReviewControls_ring {\n  flex: none;\n  width: 14px;\n  height: 14px;\n  transform: rotate(-90deg);\n}\n.ReviewControls_ringTrack,\n.ReviewControls_ringFill {\n  fill: none;\n  stroke-width: 2px;\n}\n.ReviewControls_ringTrack {\n  stroke: var(--dsw-alias-border-l3);\n}\n.ReviewControls_ringFill {\n  stroke: var(--dsw-alias-state-success-primary);\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/shell/SidebarRight.module.css */\n.SidebarRight_session {\n  display: contents;\n}\n.SidebarRight_session[hidden] {\n  display: none;\n}\n.SidebarRight_panel {\n  --dsh-dockkit-dock-layer: 10;\n  --dsh-dockkit-float-layer: 60;\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  display: flex;\n  flex-direction: column;\n  min-width: 0;\n  overflow: clip;\n  pointer-events: none;\n}\n.SidebarRight_panel [data-dockkit-host=dock],\n.SidebarRight_panel [data-dockkit-empty],\n.SidebarRight_panel [data-dockkit-divider] {\n  transform: translateX(var(--dsh-sidebar-width));\n  visibility: hidden;\n  transition: transform var(--ds-transition-duration-slow) var(--ds-ease-in-out), visibility 0s linear var(--ds-transition-duration-slow);\n}\n.SidebarRight_panel[data-sidebar-right-open] [data-dockkit-host=dock],\n.SidebarRight_panel[data-sidebar-right-open] [data-dockkit-empty],\n.SidebarRight_panel[data-sidebar-right-open] [data-dockkit-divider] {\n  transform: none;\n  visibility: visible;\n  transition: transform var(--ds-transition-duration-slow) var(--ds-ease-in-out);\n}\n@starting-style {\n  .SidebarRight_panel[data-sidebar-right-opening] [data-dockkit-host=dock],\n  .SidebarRight_panel[data-sidebar-right-opening] [data-dockkit-empty],\n  .SidebarRight_panel[data-sidebar-right-opening] [data-dockkit-divider] {\n    transform: translateX(var(--dsh-sidebar-width));\n  }\n}\n.SidebarRight_panel[data-sidebar-right-panel=fullscreen] {\n  --dsh-dockkit-dock-layer: 40;\n}\n[data-windows-titlebar] .SidebarRight_panel[data-sidebar-right-panel=fullscreen] {\n  max-width: calc(100vw - var(--dsh-windows-sidebar-width));\n}\n[data-windows-titlebar] .SidebarRight_panel[data-sidebar-right-panel=fullscreen] [data-dockkit-column=\"0\"][data-dockkit-pane] {\n  border-radius: var(--dsh-windows-content-radius) 0 0 0;\n  corner-shape: round;\n}\n[data-platform=darwin] .SidebarRight_panel[data-sidebar-right-panel=fullscreen] [data-dockkit-host=dock][data-dockkit-column=\"0\"] {\n  --dsh-dockkit-strip-inline-start: 88px;\n}\n[data-platform=darwin] .SidebarRight_panel[data-sidebar-right-panel=fullscreen] [data-dockkit-host=dock][data-dockkit-column=\"1\"] {\n  --dsh-dockkit-strip-inline-start: 10px;\n}\n[data-platform=darwin][data-fullscreen] .SidebarRight_panel[data-sidebar-right-panel=fullscreen] [data-dockkit-host=dock][data-dockkit-column=\"0\"] {\n  --dsh-dockkit-strip-inline-start: 10px;\n}\n@media (prefers-reduced-motion: reduce) {\n  .SidebarRight_panel [data-dockkit-host=dock],\n  .SidebarRight_panel [data-dockkit-empty],\n  .SidebarRight_panel [data-dockkit-divider],\n  .SidebarRight_panel[data-sidebar-right-open] [data-dockkit-host=dock],\n  .SidebarRight_panel[data-sidebar-right-open] [data-dockkit-empty],\n  .SidebarRight_panel[data-sidebar-right-open] [data-dockkit-divider] {\n    transition: none;\n  }\n}\n.SidebarRight_iconButton {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  justify-content: center;\n  width: 28px;\n  height: 28px;\n  padding: 6px;\n  color: var(--dsw-alias-label-secondary);\n  line-height: 1;\n  background: transparent;\n  border: none;\n  border-radius: var(--dsw-radius-sm);\n  cursor: pointer;\n}\n.SidebarRight_iconButton svg {\n  width: 15px;\n  height: 15px;\n}\n@media (hover: hover) {\n  .SidebarRight_iconButton:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.SidebarRight_collapseGlyph {\n  transform: scaleX(-1);\n}\n.SidebarRight_panelBody {\n  display: flex;\n  flex: 1 1 auto;\n  min-height: 0;\n}\n@media (pointer: coarse) {\n  .SidebarRight_panelBody [data-dockkit-split-control]:has(> [data-dockkit-split-blocked]) {\n    visibility: hidden;\n  }\n}\n.SidebarRight_unavailable {\n  margin: 0;\n  padding: 12px;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: var(--dsh-content-font-size-secondary, 13px);\n}\n.SidebarRight_tabTitle {\n  display: contents;\n}\n.SidebarRight_tabBody {\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n  min-height: 0;\n  min-width: 0;\n  overflow: hidden;\n}\n.SidebarRight_panel [data-dockkit-pane][data-sidebar-right-flash],\n.SidebarRight_panel [data-dockkit-float][data-sidebar-right-flash] {\n  --sidebar-right-flash-color: var(--dsw-specific-sidebar-right-flash);\n  --sidebar-right-flash-ring: color-mix(in srgb, var(--sidebar-right-flash-color) 48%, transparent);\n  --sidebar-right-flash-near: color-mix(in srgb, var(--sidebar-right-flash-color) 16%, transparent);\n  --sidebar-right-flash-far: color-mix(in srgb, var(--sidebar-right-flash-color) 10%, transparent);\n}\n.SidebarRight_panel [data-dockkit-pane][data-sidebar-right-flash] {\n  position: relative;\n}\n.SidebarRight_panel [data-dockkit-pane][data-sidebar-right-flash]::after {\n  content: \"\";\n  position: absolute;\n  inset: 0;\n  z-index: 7;\n  pointer-events: none;\n  --sidebar-right-flash-from:\n    inset 0 0 0 1px var(--sidebar-right-flash-ring),\n    inset 0 2px 4px 0 var(--sidebar-right-flash-near),\n    inset 0 0 10px 0 var(--sidebar-right-flash-far);\n  --sidebar-right-flash-to:\n    inset 0 0 0 1px transparent,\n    inset 0 2px 4px 0 transparent,\n    inset 0 0 10px 0 transparent;\n}\n.SidebarRight_panel [data-dockkit-float][data-sidebar-right-flash] {\n  --sidebar-right-flash-from:\n    var(--dsw-elevation-prominent),\n    0 0 0 1px var(--sidebar-right-flash-ring),\n    0 2px 4px 0 var(--sidebar-right-flash-near),\n    0 0 10px 0 var(--sidebar-right-flash-far);\n  --sidebar-right-flash-to:\n    var(--dsw-elevation-prominent),\n    0 0 0 1px transparent,\n    0 2px 4px 0 transparent,\n    0 0 10px 0 transparent;\n}\n.SidebarRight_panel [data-dockkit-pane][data-sidebar-right-flash]::after,\n.SidebarRight_panel [data-dockkit-float][data-sidebar-right-flash] {\n  animation-duration: calc(var(--ds-transition-duration-slow) * 2);\n  animation-timing-function: var(--ds-ease-in-out);\n}\n.SidebarRight_panel [data-dockkit-pane][data-sidebar-right-flash=odd]::after,\n.SidebarRight_panel [data-dockkit-float][data-sidebar-right-flash=odd] {\n  animation-name: SidebarRight_flashOdd;\n}\n.SidebarRight_panel [data-dockkit-pane][data-sidebar-right-flash=even]::after,\n.SidebarRight_panel [data-dockkit-float][data-sidebar-right-flash=even] {\n  animation-name: SidebarRight_flashEven;\n}\n@keyframes SidebarRight_flashOdd {\n  from {\n    box-shadow: var(--sidebar-right-flash-from);\n  }\n  to {\n    box-shadow: var(--sidebar-right-flash-to);\n  }\n}\n@keyframes SidebarRight_flashEven {\n  from {\n    box-shadow: var(--sidebar-right-flash-from);\n  }\n  to {\n    box-shadow: var(--sidebar-right-flash-to);\n  }\n}\n@media (prefers-reduced-motion: reduce) {\n  .SidebarRight_panel [data-dockkit-pane][data-sidebar-right-flash]::after,\n  .SidebarRight_panel [data-dockkit-float][data-sidebar-right-flash] {\n    animation-timing-function: step-end;\n  }\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-sidebar-right/src/client/tabs/guide/GuideBody.module.css */\n.GuideBody_guide {\n  --dsl-guide-entry-radius: var(--dsw-radius-xl);\n  display: flex;\n  flex-direction: column;\n  gap: 14px;\n  align-items: center;\n  justify-content: center;\n  box-sizing: border-box;\n  min-height: 100%;\n  padding: 0 24px;\n}\n.GuideBody_guide::after {\n  content: \"\";\n  flex: 0 1 10%;\n}\n.GuideBody_hero {\n  display: flex;\n  margin-bottom: 16px;\n  color: var(--dsw-specific-guide-hero);\n}\n.GuideBody_entry {\n  display: flex;\n  gap: 14px;\n  align-items: center;\n  box-sizing: border-box;\n  width: 380px;\n  max-width: 100%;\n  min-height: 56px;\n  padding: 14px 20px;\n  color: var(--dsw-alias-label-primary);\n  font: inherit;\n  text-align: left;\n  background: var(--dsw-alias-bg-layer-1);\n  border: 0.5px solid var(--dsw-alias-border-l3);\n  border-radius: var(--dsl-guide-entry-radius);\n  cursor: pointer;\n}\n@media (hover: hover) {\n  .GuideBody_entry:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.GuideBody_entryIcon {\n  display: flex;\n  flex: none;\n  align-items: center;\n  justify-content: center;\n  width: 26px;\n  height: 26px;\n  color: var(--dsw-alias-label-secondary);\n}\n.GuideBody_placeholderInk {\n  color: var(--dsw-alias-label-tertiary);\n}\n.GuideBody_entryText {\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  gap: 3px;\n  min-width: 0;\n}\n.GuideBody_entryTitle {\n  overflow: hidden;\n  font-size: 14px;\n  line-height: 1.4;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n}\n.GuideBody_entryDescription {\n  overflow: hidden;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 11px;\n  line-height: 1.4;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n}\n.GuideBody_titleIcon {\n  flex: none;\n  color: var(--dsw-alias-label-tertiary);\n}\n.GuideBody_entryCell {\n  width: 380px;\n  max-width: 100%;\n}\n.GuideBody_moreAnchor {\n  display: flex;\n  width: 380px;\n  max-width: 100%;\n}\n.GuideBody_moreAnchor .GuideBody_entry[aria-expanded=true] {\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n.GuideBody_moreMenu {\n  width: max-content;\n  max-width: min(480px, calc(100vw - 24px));\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/StatsPills.module.css */\n.StatsPills_anchor {\n  display: inline-flex;\n  min-width: 0;\n  font-size: calc(var(--dsh-content-font-size-secondary, 13px) - 1px);\n  line-height: calc(20px + var(--dsh-content-font-delta-secondary, 0px));\n}\n.StatsPills_pill {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  box-sizing: border-box;\n  max-width: 100%;\n  padding: 1px 8px;\n  border: none;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-tertiary);\n  font: inherit;\n  font-variant-numeric: tabular-nums;\n  line-height: inherit;\n  white-space: nowrap;\n}\n.StatsPills_pill svg {\n  width: 14px;\n  height: 14px;\n  flex: none;\n}\nbutton.StatsPills_pill {\n  cursor: pointer;\n}\nbutton.StatsPills_pill[aria-expanded=true] {\n  background: var(--dsw-alias-interactive-bg-hover);\n  color: var(--dsw-alias-label-secondary);\n}\n@media (hover: hover) {\n  button.StatsPills_pill:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n    color: var(--dsw-alias-label-secondary);\n  }\n}\n.StatsPills_label {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.StatsPills_sep {\n  color: var(--dsw-alias-separator-primary);\n  margin: 0 6px;\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/stat-dialog.module.css */\n.stat_dialog_panel {\n  position: fixed;\n  z-index: 1100;\n  box-sizing: border-box;\n  width: max-content;\n  min-width: min(300px, calc(100vw - 24px));\n  max-width: min(440px, calc(100vw - 24px));\n  padding: 16px;\n  border: 0;\n  border-radius: var(--dsw-radius-lg);\n  background: var(--dsw-specific-menu);\n  backdrop-filter: var(--dsw-menu-backdrop-filter);\n  --dsw-elevation-stroke-color: var(--dsw-alias-border-l1);\n  box-shadow: var(--dsw-elevation-prominent);\n  font-size: 12px;\n  line-height: 18px;\n  color: var(--dsw-alias-label-secondary);\n  cursor: default;\n  max-height: calc(100dvh - 12px - max(12px, var(--dsh-frame-overlay-top, 12px)));\n  overflow-x: hidden;\n  overflow-y: auto;\n  --dsh-scrollbar-thumb: var(--dsw-alias-scrollbar-bg-l2);\n  --dsh-scrollbar-thumb-hover: var(--dsw-alias-scrollbar-hover-l2);\n  position-area: none;\n  top: max(12px, var(--dsh-frame-overlay-top, 12px));\n  bottom: max(12px, calc(anchor(top) + 8px));\n  left: max(12px, anchor(left));\n  right: 12px;\n  position-try-fallbacks:\n    --dsh-stat-window,\n    --dsh-stat-opposite,\n    --dsh-stat-wide-opposite,\n    --dsh-stat-tall,\n    --dsh-stat-viewport;\n  align-self: end;\n  justify-self: start;\n  height: fit-content;\n  min-height: 0;\n  margin: 0;\n}\n.stat_dialog_title {\n  display: flex;\n  justify-content: space-between;\n  gap: 16px;\n  margin-bottom: 8px;\n  color: var(--dsw-alias-label-primary);\n  font-weight: 500;\n}\n.stat_dialog_titleRule {\n  margin-bottom: 10px;\n  border-top: 0.5px solid var(--dsw-alias-border-l2);\n}\n.stat_dialog_titleValue {\n  font-variant-numeric: tabular-nums;\n}\n.stat_dialog_titleLabel {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  min-width: 0;\n}\n.stat_dialog_titleLabel svg {\n  width: 14px;\n  height: 14px;\n  flex: none;\n}\n.stat_dialog_details {\n  display: grid;\n  grid-template-columns: minmax(76px, auto) minmax(0, 1fr);\n  gap: 6px 16px;\n  margin: 0;\n  color: var(--dsw-alias-label-tertiary);\n}\n.stat_dialog_details dt,\n.stat_dialog_details dd {\n  min-width: 0;\n  margin: 0;\n}\n.stat_dialog_details dd {\n  color: var(--dsw-alias-label-secondary);\n  font-variant-numeric: tabular-nums;\n  text-align: right;\n}\n.stat_dialog_details .stat_dialog_route {\n  overflow-wrap: anywhere;\n}\n.stat_dialog_reasoning {\n  color: var(--dsw-alias-label-tertiary);\n  white-space: nowrap;\n}\n@position-try --dsh-stat-window {\n  position-area: none;\n  top: max(12px, var(--dsh-frame-overlay-top, 12px));\n  bottom: max(12px, calc(anchor(top) + 8px));\n  left: 12px;\n  right: 12px;\n  margin: 0;\n  align-self: safe end;\n  justify-self: safe end;\n}\n@position-try --dsh-stat-opposite {\n  top: max(12px, calc(anchor(bottom) + 8px));\n  bottom: 12px;\n  align-self: start;\n}\n@position-try --dsh-stat-wide-opposite {\n  top: max(12px, calc(anchor(bottom) + 8px));\n  bottom: 12px;\n  left: 12px;\n  right: 12px;\n  align-self: start;\n  justify-self: safe end;\n}\n@position-try --dsh-stat-tall {\n  position-area: none;\n  top: max(12px, var(--dsh-frame-overlay-top, 12px));\n  bottom: 12px;\n  left: max(12px, anchor(left));\n  right: 12px;\n  margin: 0;\n  align-self: safe start;\n  justify-self: start;\n}\n@position-try --dsh-stat-viewport {\n  position-area: none;\n  inset: max(12px, var(--dsh-frame-overlay-top, 12px)) 12px 12px;\n  margin: 0;\n  align-self: safe start;\n  justify-self: safe end;\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/TurnUsagePanel.module.css */\n.TurnUsagePanel_root {\n  display: inline-flex;\n  min-width: 0;\n}\n.TurnUsagePanel_root + .TurnUsagePanel_root {\n  margin-left: -6px;\n}\n.TurnUsagePanel_trigger {\n  display: inline-flex;\n  align-items: center;\n  gap: 4px;\n  min-width: 0;\n  height: calc(28px + var(--dsh-content-font-delta, 0px));\n  padding: 6px 8px;\n  border: none;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: calc(var(--dsh-content-font-size-secondary, 13px) - 1px);\n  font-variant-numeric: tabular-nums;\n  line-height: calc(24px + var(--dsh-content-font-delta, 0px));\n  white-space: nowrap;\n  cursor: pointer;\n}\n.TurnUsagePanel_label {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.TurnUsagePanel_trigger svg {\n  width: calc(15px + var(--dsh-content-font-delta, 0px));\n  height: calc(15px + var(--dsh-content-font-delta, 0px));\n  flex: none;\n}\n.TurnUsagePanel_trigger[aria-expanded=true] {\n  background: var(--dsw-alias-interactive-bg-hover);\n  color: var(--dsw-alias-label-tertiary);\n}\n@media (hover: hover) {\n  .TurnUsagePanel_trigger:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n    color: var(--dsw-alias-label-tertiary);\n  }\n}\n@media (max-width: 480px) {\n  .TurnUsagePanel_trigger {\n    justify-content: center;\n    width: calc(28px + var(--dsh-content-font-delta, 0px));\n    padding: 6px;\n  }\n  .TurnUsagePanel_trigger .TurnUsagePanel_label {\n    display: none;\n  }\n  .TurnUsagePanel_root + .TurnUsagePanel_root {\n    margin-left: 0;\n  }\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-attachment/src/AttachmentRail.module.css */\n.AttachmentRail_root {\n  position: relative;\n  min-width: 0;\n}\n.AttachmentRail_rail {\n  display: flex;\n  align-items: stretch;\n  gap: 10px;\n  overflow-x: auto;\n  overflow-y: hidden;\n  scrollbar-width: none;\n  --dsh-scrollbar-thumb: var(--dsw-alias-scrollbar-bg-l2);\n  --dsh-scrollbar-thumb-hover: var(--dsw-alias-scrollbar-hover-l2);\n}\n.AttachmentRail_rail::-webkit-scrollbar {\n  display: none;\n}\n.AttachmentRail_item {\n  flex: none;\n  height: 64px;\n}\n.AttachmentRail_thumbnail {\n  width: 64px;\n  height: 64px;\n  padding: 0;\n  overflow: hidden;\n  border: 0.5px solid var(--dsw-alias-border-l2-darkmode-thin);\n  border-radius: var(--dsw-radius-xl);\n  background: var(--dsw-alias-interactive-bg-hover);\n  cursor: zoom-in;\n}\n.AttachmentRail_thumbnail img {\n  display: block;\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n}\n.AttachmentRail_remove {\n  position: absolute;\n  top: 4px;\n  right: 4px;\n  z-index: 1;\n  display: grid;\n  place-items: center;\n  width: 18px;\n  height: 18px;\n  padding: 0;\n  border: none;\n  border-radius: 50%;\n  corner-shape: round;\n  background: var(--dsw-alias-button-contrast-fill);\n  color: var(--dsw-alias-label-primary-inverted);\n  cursor: pointer;\n  opacity: 0;\n  transition: opacity 0.2s ease-in-out;\n}\n.AttachmentRail_remove:focus-visible {\n  opacity: 1;\n}\n@media (hover: hover) {\n  .AttachmentRail_item:hover .AttachmentRail_remove {\n    opacity: 1;\n  }\n}\n@media (hover: none), (pointer: coarse) {\n  .AttachmentRail_remove {\n    opacity: 1;\n  }\n}\n@media (prefers-reduced-motion: reduce) {\n  .AttachmentRail_remove {\n    transition: none;\n  }\n}\n.AttachmentRail_arrow {\n  position: absolute;\n  top: 50%;\n  z-index: 2;\n  display: grid;\n  place-items: center;\n  width: 24px;\n  height: 24px;\n  padding: 0;\n  border: 0;\n  --dsw-elevation-stroke-color: var(--dsw-alias-border-l2-darkmode-thin);\n  border-radius: 999px;\n  corner-shape: round;\n  background: var(--dsw-specific-input-major);\n  color: var(--dsw-alias-label-secondary);\n  box-shadow: var(--dsw-elevation-panel);\n  cursor: pointer;\n  transform: translateY(-50%);\n}\n@media (hover: hover) {\n  .AttachmentRail_arrow:hover {\n    background: var(--dsw-alias-interactive-bg-hover-solid);\n  }\n}\n.AttachmentRail_arrowLeft {\n  left: 4px;\n}\n.AttachmentRail_arrowRight {\n  right: 4px;\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/TurnNavigator.module.css */\n.TurnNavigator_slot {\n  position: absolute;\n  top: 0;\n  right: 0;\n  left: 0;\n  z-index: 7;\n  height: 0;\n  padding-inline: calc(var(--dsh-composer-side-clearance) + 16px);\n  container-type: inline-size;\n  pointer-events: none;\n}\n[data-conversation-scroll] .TurnNavigator_slot {\n  position: sticky;\n}\n.TurnNavigator_frame {\n  --turn-rail-band: calc( var(--dsh-conversation-viewport-height, 100dvh) - var(--dsh-composer-height, 152px) );\n  --turn-preview-height: 100px;\n  position: absolute;\n  top: calc(var(--turn-rail-band) / 2);\n  right: 12px;\n  width: 28px;\n  max-height: min(max(0px, calc(var(--turn-rail-band) - 64px)), 420px);\n  contain: layout;\n  cursor: pointer;\n  pointer-events: auto;\n  transform: translateY(-50%);\n}\n.TurnNavigator_scroller {\n  position: relative;\n  max-height: inherit;\n  overflow-y: auto;\n  overscroll-behavior: contain;\n  scrollbar-width: none;\n}\n.TurnNavigator_scroller::-webkit-scrollbar {\n  display: none;\n}\n.TurnNavigator_fadeTop {\n  mask-image:\n    linear-gradient(\n      to bottom,\n      transparent 0,\n      #000 24px,\n      #000 100%);\n}\n.TurnNavigator_fadeBottom {\n  mask-image:\n    linear-gradient(\n      to bottom,\n      #000 0,\n      #000 calc(100% - 24px),\n      transparent 100%);\n}\n.TurnNavigator_fadeTop.TurnNavigator_fadeBottom {\n  mask-image:\n    linear-gradient(\n      to bottom,\n      transparent 0,\n      #000 24px,\n      #000 calc(100% - 24px),\n      transparent 100%);\n}\n.TurnNavigator_marks {\n  position: relative;\n}\n.TurnNavigator_mark {\n  position: absolute;\n  top: 0;\n  right: 0;\n  left: 0;\n  height: 10px;\n  padding: 0;\n  border: 0;\n  border-radius: 8px;\n  background: transparent;\n  cursor: pointer;\n}\n.TurnNavigator_mark::before {\n  position: absolute;\n  top: 50%;\n  right: 0;\n  width: 20px;\n  height: 2px;\n  border-radius: 2px;\n  background: var(--dsw-alias-border-l4);\n  content: \"\";\n  transform: translateY(-50%) scaleX(0.6);\n  transform-origin: right center;\n  transition: transform 140ms ease, background-color 140ms ease;\n}\n.TurnNavigator_markUnloaded::before {\n  transform: translateY(-50%) scaleX(0.4);\n  opacity: 0.6;\n}\n.TurnNavigator_markPreview::before {\n  transform: translateY(-50%) scaleX(0.9);\n  background: var(--dsw-alias-label-tertiary);\n}\n.TurnNavigator_markBusy::before {\n  animation: TurnNavigator_dsh-turn-mark-busy 1s ease-in-out infinite;\n}\n.TurnNavigator_markActive::before {\n  transform: translateY(-50%) scaleX(1);\n  background: var(--dsw-alias-label-primary);\n}\n.TurnNavigator_mark:focus-visible::before {\n  transform: translateY(-50%) scaleX(1);\n  background: var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n}\n.TurnNavigator_mark:focus-visible {\n  outline: none;\n}\n.TurnNavigator_mark:focus-visible::after {\n  position: absolute;\n  inset: 0 0 0 auto;\n  width: 20px;\n  border-radius: inherit;\n  outline: 1px solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: -1px;\n  content: \"\";\n}\n.TurnNavigator_preview {\n  position: absolute;\n  top: clamp(0px, calc(var(--turn-preview-center) - var(--turn-preview-height) / 2), calc(100% - var(--turn-preview-height)));\n  right: calc(100% + 10px);\n  box-sizing: border-box;\n  width: min(300px, calc(100cqw - 120px));\n  max-height: var(--turn-preview-height);\n  overflow: hidden;\n  padding: 10px 12px;\n  border: 0;\n  border-radius: var(--dsw-radius-lg);\n  color: var(--dsw-alias-label-primary);\n  background: var(--dsw-alias-bg-layer-1);\n  box-shadow: var(--dsw-elevation-panel);\n  pointer-events: none;\n  animation: TurnNavigator_dsh-turn-preview-enter 120ms ease-out;\n  transition: top 140ms cubic-bezier(0.2, 0.8, 0.2, 1);\n}\n.TurnNavigator_previewPrompt,\n.TurnNavigator_previewResponse {\n  display: -webkit-box;\n  overflow: hidden;\n  -webkit-box-orient: vertical;\n}\n.TurnNavigator_previewPrompt {\n  font: var(--dsw-font-xs-strong-13);\n  -webkit-line-clamp: 1;\n}\n.TurnNavigator_previewResponse {\n  margin-top: 4px;\n  color: var(--dsw-alias-label-caption);\n  font: var(--dsw-font-xxs-12);\n  -webkit-line-clamp: 3;\n}\n@keyframes TurnNavigator_dsh-turn-preview-enter {\n  from {\n    opacity: 0;\n    transform: translateX(4px);\n  }\n  to {\n    opacity: 1;\n    transform: translateX(0);\n  }\n}\n@keyframes TurnNavigator_dsh-turn-mark-busy {\n  0%, 100% {\n    opacity: 1;\n  }\n  50% {\n    opacity: 0.35;\n  }\n}\n@container (max-width: 900px) {\n  .TurnNavigator_frame {\n    display: none;\n  }\n}\n@media (prefers-reduced-motion: reduce) {\n  .TurnNavigator_frame,\n  .TurnNavigator_scroller,\n  .TurnNavigator_mark::before,\n  .TurnNavigator_markBusy::before,\n  .TurnNavigator_preview {\n    transition: none;\n    animation: none;\n    scroll-behavior: auto;\n  }\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/ChatView.module.css */\n.ChatView_frame {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  min-height: 0;\n  flex: 1 1 auto;\n  container-type: inline-size;\n}\n.ChatView_root {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  min-height: 0;\n  flex: 1 1 auto;\n  overflow-x: visible;\n  overflow-y: clip;\n}\n.ChatView_scroll {\n  flex: 1 1 auto;\n  min-height: 0;\n  overflow-x: clip;\n  overflow-y: auto;\n  padding: 16px calc(var(--dsh-composer-side-clearance) + 16px);\n  container-type: inline-size;\n}\n.ChatView_scroll,\n[data-conversation-scroll]:has(.ChatView_root) {\n  overscroll-behavior-y: none;\n}\n.ChatView_root[data-chat-following-tail] .ChatView_scroll,\n[data-conversation-scroll]:has(.ChatView_root[data-chat-following-tail]) {\n  overflow-anchor: none;\n}\n[data-conversation-scroll] .ChatView_frame,\n[data-conversation-scroll] .ChatView_root {\n  flex: 0 0 auto;\n  min-height: auto;\n  height: auto;\n}\n[data-conversation-scroll] .ChatView_scroll {\n  overflow-x: clip;\n  overflow-y: visible;\n  flex: 0 0 auto;\n  min-height: auto;\n}\n.ChatView_column {\n  position: relative;\n  max-width: var(--dsh-chat-content-width);\n  width: 100%;\n  margin: 0 auto;\n  display: flex;\n  flex-direction: column;\n}\n:is(.ChatView_column, [data-slot=\"conversation.chat.flow\"]) > :not([hidden]):not(.ChatView_textInteraction):not(.ChatView_flowItem:is(:empty, :has(> [data-slot=\"conversation.chat.node\"]:empty))) ~ :not([hidden]):not(.ChatView_textInteraction):not(.ChatView_flowItem:is(:empty, :has(> [data-slot=\"conversation.chat.node\"]:empty))),\n.ChatView_column > .ChatView_older + [data-slot=\"conversation.chat.flow\"] > :not([hidden]):not(.ChatView_textInteraction):not(.ChatView_flowItem:is(:empty, :has(> [data-slot=\"conversation.chat.node\"]:empty))) {\n  margin-top: var(--dsh-chat-flow-gap, 4px);\n}\n.ChatView_flowItem[data-chat-group-part=response] {\n  --dsh-chat-flow-gap: 12px;\n}\n:is(.ChatView_column, [data-slot=\"conversation.chat.flow\"]) > [data-chat-group-part=response]:not([hidden]):not(:empty) + :not([hidden]):not(.ChatView_flowItem:is(:empty, :has(> [data-slot=\"conversation.chat.node\"]:empty))):not(.ChatView_running):not(:has(> [data-slot=\"conversation.chat.node\"] > [data-chat-steering-batch])) {\n  --dsh-chat-flow-gap: 12px;\n}\n.ChatView_flowItem {\n  min-width: 0;\n}\n.ChatView_turnSpacer {\n  height: 0;\n}\n.ChatView_column[data-chat-motion] > :not([data-chat-motion]),\n.ChatView_column[data-chat-motion] > [data-slot=\"conversation.chat.flow\"] > :not([data-chat-motion]) {\n  transition: margin-top 160ms cubic-bezier(0.4, 0, 0.2, 1);\n}\n.ChatView_column[data-input-fold] > :not([data-chat-motion]),\n.ChatView_column[data-input-fold] > [data-slot=\"conversation.chat.flow\"] > :not([data-chat-motion]) {\n  transition: none;\n}\n.ChatView_column[data-chat-motion] > [data-chat-flow-kind=turn-process],\n.ChatView_column[data-chat-motion] > [data-slot=\"conversation.chat.flow\"] > [data-chat-flow-kind=turn-process] {\n  transition: none;\n}\n@media (prefers-reduced-motion: reduce) {\n  .ChatView_column[data-chat-motion] > :not([data-chat-motion]),\n  .ChatView_column[data-chat-motion] > [data-slot=\"conversation.chat.flow\"] > :not([data-chat-motion]) {\n    transition: none;\n  }\n}\n.ChatView_flowItem[data-chat-flow-kind=turn-process],\n:is(.ChatView_column, [data-slot=\"conversation.chat.flow\"]) > [data-chat-flow-kind=turn-process]:not(:empty, :has(> [data-slot=\"conversation.chat.node\"]:empty)) + :not([hidden]):not(.ChatView_flowItem:is(:empty, :has(> [data-slot=\"conversation.chat.node\"]:empty))):not(.ChatView_running):not(:has(> [data-slot=\"conversation.chat.node\"] > [data-chat-steering-batch])),\n:is(.ChatView_column, [data-slot=\"conversation.chat.flow\"]) > [data-chat-flow-kind=turn-process] + :not([hidden]):not(.ChatView_flowItem:is(:empty, :has(> [data-slot=\"conversation.chat.node\"]:empty))):not(.ChatView_running):not([data-submission-echo], [data-pending-steering]):not(:has(> [data-slot=\"conversation.chat.node\"] > [data-chat-steering-batch])) {\n  --dsh-chat-flow-gap: 16px;\n}\n:is(.ChatView_column, [data-slot=\"conversation.chat.flow\"]) > .ChatView_flowItem:has(> [data-slot=\"conversation.chat.node\"] > [data-chat-steering-batch=start]) {\n  --dsh-chat-flow-gap: calc(44px + var(--dsh-content-font-delta, 0px));\n}\n.ChatView_running + [data-pending-steering] {\n  --dsh-chat-flow-gap: 0px;\n}\n.ChatView_flowItem[data-chat-flow-kind=turn-tail] + .ChatView_running {\n  display: none;\n}\n@media (prefers-reduced-motion: no-preference) {\n  :where(.ChatView_column > [data-slot=\"conversation.chat.flow\"] > .ChatView_flowItem[data-chat-flow-kind=steering]) + .ChatView_running {\n    animation: ChatView_running-enters-slot 140ms cubic-bezier(0.2, 0.8, 0.2, 1);\n  }\n  .ChatView_column[data-input-fold] .ChatView_running {\n    animation-duration: 0s;\n  }\n}\n@keyframes ChatView_running-enters-slot {\n  from {\n    opacity: 0;\n    translate: 0 calc(-44px - var(--dsh-content-font-delta, 0px));\n  }\n  40% {\n    opacity: 1;\n  }\n}\n.ChatView_flowItem:is(:empty, :has(> [data-slot=\"conversation.chat.node\"]:empty)) {\n  height: 0;\n}\n.ChatView_callRow {\n  border-radius: var(--dsw-radius-sm);\n}\n.ChatView_hint {\n  color: var(--dsw-alias-label-tertiary);\n  font-size: var(--dsh-content-font-size-secondary, 13px);\n  line-height: calc(18px + var(--dsh-content-font-delta-secondary, 0px));\n}\n.ChatView_running {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  --dsh-chat-flow-gap: 12px;\n  --dsw-alias-label-shimmer: var(--dsw-alias-label-deep-diving-shimmer);\n  color: var(--dsw-alias-label-deep-diving);\n  font-size: calc(var(--dsh-content-font-size, 14px) - 2px);\n  line-height: calc(22px + var(--dsh-content-font-delta, 0px));\n}\n.ChatView_running[data-holding] {\n  visibility: hidden;\n  opacity: 0;\n}\n:is(.ChatView_column, [data-slot=\"conversation.chat.flow\"]) > :nth-last-child(2 of :not([hidden]):not([data-pending-steering]):not(.ChatView_flowItem:is(:empty, :has(> [data-slot=\"conversation.chat.node\"]:empty)))):is(.ChatView_flowItem:not([data-chat-flow-kind=user]):not([data-chat-flow-kind=steering]):not([data-chat-flow-kind=turn-trigger]), [data-chat-group-key]) ~ .ChatView_running > .ChatView_runningDivider {\n  opacity: 1;\n}\n.ChatView_runningDivider {\n  position: absolute;\n  top: -4px;\n  left: 0;\n  right: 0;\n  height: 0.5px;\n  background: color-mix(in srgb, var(--dsw-alias-border-l1) 75%, var(--dsw-alias-border-l2));\n  opacity: 0;\n  pointer-events: none;\n}\n@media (prefers-reduced-motion: no-preference) {\n  .ChatView_runningDivider {\n    transition: opacity 160ms ease;\n  }\n}\n.ChatView_runningContent {\n  display: inline-flex;\n  align-items: center;\n  min-width: 0;\n  gap: 6px;\n  margin-top: 4px;\n  height: calc(28px + var(--dsh-content-font-delta, 0px));\n}\n.ChatView_runningText {\n  min-width: 0;\n  font-variant-numeric: tabular-nums;\n}\n.ChatView_runningIcon {\n  position: relative;\n  display: inline-flex;\n  flex: none;\n  width: calc(14px + var(--dsh-content-font-delta, 0px));\n  height: calc(14px + var(--dsh-content-font-delta, 0px));\n  contain: strict;\n  overflow: hidden;\n}\n.ChatView_runningWhaleAnimated {\n  display: none;\n  position: absolute;\n  inset: 0;\n}\n.ChatView_runningWhaleStill {\n  display: initial;\n}\n@supports (mask-mode: alpha) and (mask-image: url()) {\n  @media (prefers-reduced-motion: no-preference) and (forced-colors: none) {\n    .ChatView_runningWhaleAnimated {\n      display: block;\n      background: currentColor;\n      mask: url(data:image/png;base64,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) center / 100% 100% no-repeat;\n      mask-mode: alpha;\n      will-change: transform;\n    }\n    .ChatView_runningWhaleStill {\n      display: none;\n    }\n  }\n}\n.ChatView_openError {\n  color: var(--dsw-alias-state-error-primary);\n  font-size: var(--dsh-content-font-size-secondary, 13px);\n  line-height: calc(18px + var(--dsh-content-font-delta-secondary, 0px));\n}\n.ChatView_older {\n  overflow-anchor: none;\n  display: flex;\n  justify-content: center;\n}\n.ChatView_older button {\n  display: grid;\n  line-height: 18px;\n  white-space: nowrap;\n  border: none;\n  border-radius: var(--dsw-radius-sm);\n  padding: 4px 12px;\n  font-size: 12px;\n  color: var(--dsw-alias-label-secondary);\n  background: var(--dsw-alias-interactive-bg-hover-solid);\n  cursor: pointer;\n}\n.ChatView_older button > span {\n  grid-area: 1 / 1;\n}\n.ChatView_historyHidden {\n  visibility: hidden;\n}\n.ChatView_older button:disabled {\n  cursor: default;\n  opacity: 0.6;\n}\n.ChatView_toBottomSlot {\n  position: absolute;\n  right: 0;\n  bottom: 16px;\n  left: 0;\n  z-index: 8;\n  height: 0;\n  display: flex;\n  justify-content: flex-end;\n  padding-right: max(calc(var(--dsh-composer-side-clearance) + 16px), calc((100% - var(--dsh-chat-content-width)) / 2));\n  pointer-events: none;\n}\n[data-conversation-scroll] .ChatView_toBottomSlot {\n  position: sticky;\n  bottom: calc(var(--dsh-composer-height, 152px) + 16px);\n}\n.ChatView_toBottom {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 34px;\n  height: 34px;\n  margin-top: -34px;\n  padding: 0;\n  border: 0;\n  --dsw-elevation-stroke-color: var(--dsw-alias-border-l3);\n  border-radius: 100px;\n  corner-shape: round;\n  color: var(--dsw-alias-label-primary);\n  background: var(--dsw-alias-button-floating-fill);\n  box-shadow: var(--dsw-elevation-panel);\n  cursor: pointer;\n  pointer-events: auto;\n}\n@media (hover: hover) {\n  .ChatView_toBottom:hover {\n    background: var(--dsw-alias-button-floating-hover);\n  }\n}\n.ChatView_modalAction {\n  min-width: 72px;\n}\n.ChatView_column > .ChatView_textInteraction {\n  position: absolute;\n  z-index: 6;\n  visibility: hidden;\n  margin: 0;\n  width: max-content;\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-chat/src/client/chat/accessibility.module.css */\n.accessibility_visuallyHidden {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  overflow: hidden;\n  clip: rect(0 0 0 0);\n  white-space: nowrap;\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-conversation/src/client/skeleton/ConversationRoot.module.css */\n.ConversationRoot_root {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n  min-width: 0;\n  background: var(--dsw-alias-bg-base);\n}\n.ConversationRoot_root[data-phase=hero] {\n  isolation: isolate;\n}\n.ConversationRoot_header {\n  display: grid;\n  grid-template-columns: auto minmax(0, 1fr);\n  flex: none;\n  box-sizing: border-box;\n  min-height: 76px;\n  padding: 10px 28px 0 20px;\n  border-bottom: 0.5px solid var(--dsw-alias-border-l3);\n}\n.ConversationRoot_header:where(:not(:has(.ConversationRoot_tabs))) {\n  min-height: 0;\n  padding-bottom: 10px;\n}\n.ConversationRoot_headerBlank {\n  min-height: 0;\n  padding-bottom: 0;\n  border-bottom: none;\n}\n.ConversationRoot_headerBlank .ConversationRoot_headerCorner {\n  margin-left: auto;\n}\n[data-platform=darwin] .ConversationRoot_headerLeading,\n[data-platform=darwin] .ConversationRoot_headerActions,\n[data-platform=darwin] .ConversationRoot_headerUtilities,\n[data-platform=darwin] .ConversationRoot_headerCorner {\n  -webkit-app-region: no-drag;\n}\n.ConversationRoot_titleRow {\n  grid-column: 2;\n  container-type: inline-size;\n  display: flex;\n  align-items: center;\n  gap: 0;\n  min-height: 30px;\n  padding-inline-start: max(0px, calc(var(--dsh-frame-leading-clearance, 0px) - 20px));\n}\n.ConversationRoot_titleCluster {\n  display: flex;\n  flex: 1;\n  align-items: center;\n  gap: 10px;\n  min-width: 0;\n  --title-cluster-fade: 20px;\n  margin: -4px calc(-1 * var(--title-cluster-fade)) -4px -4px;\n  padding: 4px var(--title-cluster-fade) 4px 4px;\n  overflow: clip;\n  mask-image:\n    linear-gradient(\n      to left,\n      transparent calc(0.3 * var(--title-cluster-fade)),\n      #000 var(--title-cluster-fade));\n}\n.ConversationRoot_titleCluster:has(+ .ConversationRoot_headerUtilities:empty) {\n  --title-cluster-fade: 8px;\n}\n.ConversationRoot_headerLeading {\n  grid-column: 1;\n  grid-row: 1;\n  display: flex;\n  flex: none;\n  align-items: center;\n  gap: 8px;\n}\n.ConversationRoot_crumbs {\n  display: flex;\n  align-items: center;\n  gap: 4px;\n  min-width: 0;\n  overflow: hidden;\n  white-space: nowrap;\n}\n.ConversationRoot_crumbSeg {\n  display: inline-flex;\n  align-items: center;\n  gap: 4px;\n  min-width: 0;\n}\n.ConversationRoot_crumbSep {\n  color: var(--dsw-alias-label-caption);\n  font-size: 14px;\n  line-height: 20px;\n}\n.ConversationRoot_crumb {\n  display: inline-block;\n  max-width: 220px;\n  overflow: hidden;\n  padding: 4px 8px;\n  border: none;\n  border-radius: var(--dsw-radius-md);\n  background: transparent;\n  font-size: 14px;\n  line-height: 20px;\n  color: var(--dsw-alias-label-tertiary);\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  cursor: pointer;\n}\n@media (hover: hover) {\n  button.ConversationRoot_crumb:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.ConversationRoot_crumbCurrent {\n  font-weight: 500;\n  color: var(--dsw-alias-label-primary);\n  cursor: default;\n}\n.ConversationRoot_headerActions {\n  display: flex;\n  flex: none;\n  align-items: center;\n  gap: 10px;\n}\n@container (max-width: 460px) {\n  .ConversationRoot_headerActions {\n    gap: 8px;\n  }\n}\n.ConversationRoot_headerUtilities {\n  display: flex;\n  flex: none;\n  align-items: center;\n  gap: 8px;\n  margin-left: 20px;\n}\n.ConversationRoot_headerUtilities:empty {\n  display: none;\n}\n.ConversationRoot_headerMenuButton {\n  flex: none;\n  width: 28px;\n  padding: 0;\n  color: var(--dsw-alias-label-secondary);\n}\n.ConversationRoot_headerMenuButton svg {\n  width: 15px;\n  height: 15px;\n}\n.ConversationRoot_headerCorner {\n  display: flex;\n  flex: none;\n  align-items: center;\n  margin-left: 8px;\n  margin-right: -16px;\n}\n.ConversationRoot_headerCorner:empty {\n  display: none;\n}\n.ConversationRoot_tabs {\n  grid-column: 1 / -1;\n  position: relative;\n  z-index: 1;\n  display: flex;\n  gap: 16px 20px;\n  width: 100%;\n  min-width: 0;\n  box-sizing: border-box;\n  align-items: flex-start;\n  flex-wrap: wrap;\n  margin-top: 10px;\n  padding-left: 8px;\n}\n@media (max-width: 767px) {\n  html:not([data-platform]) .ConversationRoot_tabs {\n    padding-left: 0;\n  }\n}\n.ConversationRoot_viewTabs {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 32px;\n  min-width: 0;\n  min-height: 25px;\n}\n.ConversationRoot_tab {\n  --dsh-tab-hit-inline: 10px;\n  position: relative;\n  box-sizing: border-box;\n  min-height: 35px;\n  margin: -10px calc(-1 * var(--dsh-tab-hit-inline)) 0;\n  padding: 10px var(--dsh-tab-hit-inline) 9px;\n  border: none;\n  background: transparent;\n  font-size: 13px;\n  line-height: 16px;\n  font-weight: 500;\n  color: var(--dsw-alias-label-tertiary);\n  cursor: pointer;\n}\n.ConversationRoot_tab::after {\n  content: \"\";\n  position: absolute;\n  right: var(--dsh-tab-hit-inline);\n  bottom: -1px;\n  left: var(--dsh-tab-hit-inline);\n  height: 2px;\n  border-radius: 2px;\n  background: transparent;\n}\n.ConversationRoot_tabActive {\n  color: var(--dsw-alias-state-business-primary);\n}\n.ConversationRoot_tabActive::after {\n  background: var(--dsw-alias-state-business-primary);\n}\n.ConversationRoot_viewsMoreAnchor {\n  flex: none;\n}\n.ConversationRoot_viewsMore {\n  width: 22px;\n  height: 22px;\n  margin-top: -3px;\n  padding: 0;\n  color: var(--dsw-alias-label-secondary);\n}\n.ConversationRoot_viewsMoreActive {\n  color: var(--dsw-alias-state-business-primary);\n}\n.ConversationRoot_tabLabel {\n  display: block;\n  max-width: 88px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.ConversationRoot_viewsMore[aria-expanded=true] {\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n.ConversationRoot_viewsMoreMenu {\n  width: 288px;\n  max-width: calc(100vw - 24px);\n}\n.ConversationRoot_viewArea {\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  min-height: 0;\n}\n.ConversationRoot_widthHandle {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  z-index: 0;\n  width: min(10px, calc((100% - var(--dsh-chat-content-width)) / 2 - 24px - 24px));\n  cursor: col-resize;\n}\n.ConversationRoot_widthHandle[data-side=left] {\n  right: calc(50% + var(--dsh-chat-content-width) / 2 + 24px);\n}\n.ConversationRoot_widthHandle[data-side=right] {\n  left: calc(50% + var(--dsh-chat-content-width) / 2 + 24px);\n}\n.ConversationRoot_widthHandle::after {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  width: 2px;\n  border-radius: 2px;\n  background:\n    linear-gradient(\n      to bottom,\n      transparent calc(var(--dsh-width-handle-pointer-y, 50%) - 36px),\n      var(--dsw-alias-scrollbar-bg-l1) calc(var(--dsh-width-handle-pointer-y, 50%) - 8px),\n      var(--dsw-alias-scrollbar-bg-l1) calc(var(--dsh-width-handle-pointer-y, 50%) + 8px),\n      transparent calc(var(--dsh-width-handle-pointer-y, 50%) + 36px));\n  opacity: 0;\n  pointer-events: none;\n}\n.ConversationRoot_widthHandle[data-side=left]::after {\n  right: 4px;\n}\n.ConversationRoot_widthHandle[data-side=right]::after {\n  left: 4px;\n}\n.ConversationRoot_widthHandle[data-dragging]::after {\n  opacity: 1;\n}\n@media (hover: hover) {\n  .ConversationRoot_widthHandle:hover::after {\n    opacity: 1;\n  }\n}\n.ConversationRoot_root:has([data-conversation-composer-overlay]) .ConversationRoot_widthHandle {\n  display: none;\n}\n.ConversationRoot_composerStack {\n  --dsh-composer-stack-gap: 6px;\n  display: flex;\n  flex-direction: column;\n  gap: var(--dsh-composer-stack-gap);\n}\n.ConversationRoot_composerSeat {\n  display: flex;\n  flex: none;\n  flex-direction: column;\n  --dsh-composer-text-max-height: 336px;\n}\n.ConversationRoot_root[data-phase=active] {\n  overflow: hidden;\n}\n.ConversationRoot_root[data-phase=active] .ConversationRoot_header {\n  flex: none;\n}\n.ConversationRoot_body {\n  position: relative;\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  min-height: 0;\n  --dsh-chat-content-width: var( --dsh-chat-user-width, clamp(680px, calc(var(--dsh-conversation-column-width, 0px) * 0.64), 920px) );\n  --dsh-composer-card-max-width: calc(var(--dsh-chat-content-width) + 32px);\n  --dsh-composer-side-clearance: 16px;\n  --dsh-composer-dock-inset: 8px;\n}\n.ConversationRoot_embeddedBody {\n  overflow: hidden;\n  --dsh-chat-content-width: min(calc(100% - 32px), 920px);\n  --dsh-composer-card-max-width: min(calc(100% - 16px), 952px);\n  --dsh-composer-side-clearance: 8px;\n  --dsh-composer-dock-inset: 8px;\n}\n.ConversationRoot_scrollBody {\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  min-height: 0;\n  margin-right: 2px;\n  overflow-y: auto;\n  scrollbar-gutter: stable;\n}\n.ConversationRoot_scrollBody::-webkit-scrollbar-track {\n  margin: 2px;\n}\n.ConversationRoot_root[data-phase=active] .ConversationRoot_viewArea,\n.ConversationRoot_embeddedBody[data-content-phase=active] .ConversationRoot_viewArea {\n  flex: 1 0 auto;\n  min-height: auto;\n}\n.ConversationRoot_root[data-phase=active] .ConversationRoot_composerSeat,\n.ConversationRoot_embeddedBody[data-content-phase=active] .ConversationRoot_composerSeat {\n  position: sticky;\n  bottom: 0;\n  margin-top: auto;\n  z-index: 9;\n  will-change: transform;\n  overflow-anchor: none;\n  background:\n    linear-gradient(\n      180deg,\n      color-mix(in srgb, var(--dsw-alias-bg-base) 0%, transparent) 0px,\n      var(--dsw-alias-bg-base) 36px);\n}\n.ConversationRoot_scrollBody:has([data-conversation-composer-overlay]) {\n  position: relative;\n  overflow-x: hidden;\n  overflow-y: auto;\n  scrollbar-gutter: auto;\n}\n.ConversationRoot_scrollBody:has([data-conversation-composer-overlay]) > [data-slot=\"conversation.session\"] > .ConversationRoot_viewArea {\n  flex: 1 1 0;\n  min-height: 0;\n  overflow: hidden;\n}\n.ConversationRoot_scrollBody:has([data-conversation-composer-overlay]) > .ConversationRoot_composerSeat {\n  position: absolute;\n  right: var(--dsh-scrollbar-width);\n  bottom: 0;\n  left: 0;\n}\n.ConversationRoot_composerHero {\n  align-self: center;\n  gap: 8px;\n  padding-bottom: 32px;\n  width: min(calc(var(--dsh-composer-card-max-width) + 2 * var(--dsh-composer-side-clearance)), 100%);\n  z-index: 1;\n}\n.ConversationRoot_heroWorkspaceRow {\n  display: flex;\n  align-items: center;\n  gap: 2px;\n  min-width: 0;\n  margin-top: 4px;\n  padding: 0 16px 0 20px;\n}\n.ConversationRoot_heroOptions {\n  display: flex;\n  flex: none;\n  align-items: center;\n  gap: 2px;\n  min-width: 0;\n  margin-left: auto;\n}\n.ConversationRoot_heroOptions:empty {\n  display: none;\n}\n.ConversationRoot_root[data-phase=hero] .ConversationRoot_scrollBody,\n.ConversationRoot_embeddedBody[data-content-phase=hero] .ConversationRoot_scrollBody {\n  justify-content: center;\n  overflow-y: auto;\n}\n.ConversationRoot_root[data-phase=settling] .ConversationRoot_composerSeat,\n.ConversationRoot_embeddedBody[data-content-phase=settling] .ConversationRoot_composerSeat {\n  visibility: hidden;\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-conversation/src/client/skeleton/InputBar.module.css */\n.InputBar_root {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding: 0 var(--dsh-composer-side-clearance) 4px;\n}\n.InputBar_dock {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 12px;\n  max-width: 100%;\n  padding-top: 4px;\n}\n.InputBar_root:not(.InputBar_hero) > .InputBar_dock {\n  min-height: calc(22px + var(--dsh-content-font-delta-secondary, 0px));\n}\n.InputBar_hero .InputBar_dock:empty {\n  display: none;\n}\n.InputBar_hero {\n  padding: 0 var(--dsh-composer-side-clearance);\n}\n.InputBar_notice {\n  width: 100%;\n  max-width: var(--dsh-composer-card-max-width);\n  margin-bottom: 6px;\n  padding: 4px 8px;\n  border-radius: var(--dsw-radius-md);\n  background: var(--dsw-alias-interactive-bg-hover);\n  color: var(--dsw-alias-label-secondary);\n  font-size: 12px;\n  line-height: 18px;\n}\n.InputBar_card {\n  box-sizing: border-box;\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n  width: 100%;\n  max-width: var(--dsh-composer-card-max-width);\n  padding-top: 8px;\n  border: 0;\n  --dsw-elevation-stroke-color: var(--dsw-alias-border-l2);\n  border-radius: var(--dsw-radius-panel);\n  background: var(--dsw-specific-input-major);\n  box-shadow: var(--dsw-elevation-soft);\n  font-size: var(--dsh-content-font-size, 14px);\n  line-height: calc(24px + var(--dsh-content-font-delta, 0px));\n  --dsh-scrollbar-thumb: var(--dsw-alias-scrollbar-bg-l2);\n  --dsh-scrollbar-thumb-hover: var(--dsw-alias-scrollbar-hover-l2);\n}\n@media (pointer: coarse) {\n  .InputBar_card {\n    font-size: max(16px, var(--dsh-content-font-size, 14px));\n  }\n}\n.InputBar_cardWorkspaceTrigger {\n  --dsw-elevation-stroke-color: transparent;\n  cursor: pointer;\n}\n.InputBar_cardWorkspaceTrigger::after {\n  content: \"\";\n  position: absolute;\n  inset: 0;\n  box-sizing: border-box;\n  border: 1px dashed currentColor;\n  border-radius: var(--dsw-radius-panel);\n  color: var(--dsw-alias-border-l4);\n  transition: color 100ms ease;\n  pointer-events: none;\n}\n.InputBar_cardWorkspaceTrigger :disabled {\n  pointer-events: none;\n}\n@media (hover: hover) {\n  .InputBar_cardWorkspaceTrigger:hover::after {\n    color: var(--dsw-alias-state-business-primary);\n  }\n}\n.InputBar_accessory {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  padding: 10px 12px 0;\n}\n.InputBar_overlayAnchor {\n  position: absolute;\n  inset: 0 0 auto;\n  height: 0;\n}\n.InputBar_scroll {\n  max-height: var(--dsh-composer-text-max-height);\n  overflow-y: auto;\n  margin-right: 4px;\n}\n.InputBar_scroll::-webkit-scrollbar-track {\n  margin-top: 8px;\n}\n.InputBar_grow {\n  position: relative;\n}\n.InputBar_pending {\n  width: 8px;\n  height: 8px;\n  border-radius: 50%;\n  corner-shape: round;\n  background: var(--dsw-alias-state-business-primary);\n  animation: InputBar_input-pending 1s ease-in-out infinite alternate;\n}\n@keyframes InputBar_input-pending {\n  from {\n    opacity: 0.35;\n  }\n  to {\n    opacity: 1;\n  }\n}\n.InputBar_input {\n  box-sizing: border-box;\n  min-height: 36px;\n  padding: 4px 8px 0 14px;\n  font-family: var(--dsw-font-family);\n  font-size: inherit;\n  line-height: inherit;\n  white-space: pre-wrap;\n  word-break: break-word;\n  overflow-wrap: anywhere;\n  outline: none;\n  color: var(--dsw-alias-label-primary);\n  caret-color: var(--dsw-alias-state-business-primary);\n}\n.InputBar_input p {\n  margin: 0;\n}\n.InputBar_input p:last-child::after {\n  content: var(--dsh-composer-hint);\n  color: var(--dsw-alias-label-caption);\n}\n.InputBar_input[data-composer-composing] p:last-child::after {\n  content: none;\n}\n.InputBar_input[data-composer-chip-selected] {\n  caret-color: transparent;\n}\n.InputBar_input[data-composer-composing] + .InputBar_placeholder {\n  visibility: hidden;\n}\n.InputBar_placeholder {\n  position: absolute;\n  inset: 4px 8px auto 14px;\n  color: var(--dsw-alias-label-caption);\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  pointer-events: none;\n  user-select: none;\n}\n.InputBar_inputDisabled {\n  color: var(--dsw-alias-label-tertiary);\n  cursor: not-allowed;\n}\n.InputBar_input[aria-haspopup=menu] {\n  cursor: pointer;\n}\n.InputBar_hero .InputBar_input {\n  min-height: 52px;\n}\n.InputBar_hero .InputBar_placeholder {\n  white-space: normal;\n  display: -webkit-box;\n  -webkit-box-orient: vertical;\n  -webkit-line-clamp: 2;\n  line-clamp: 2;\n}\n.InputBar_row {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  justify-content: space-between;\n  gap: 12px;\n  padding: 2px 8px 6px;\n  min-width: 0;\n  container-type: inline-size;\n}\n.InputBar_row[data-model-compact] {\n  --dsh-composer-model-text-display: none;\n  --dsh-composer-model-icon-display: block;\n}\n.InputBar_tools,\n.InputBar_modes,\n.InputBar_trailing {\n  display: flex;\n  align-items: center;\n  min-width: 0;\n}\n.InputBar_tools {\n  gap: 12px;\n}\n.InputBar_modes {\n  gap: 12px;\n}\n.InputBar_trailing {\n  flex: none;\n  margin-left: auto;\n  gap: 12px;\n}\n@container (max-width: 560px) {\n  .InputBar_tools,\n  .InputBar_modes,\n  .InputBar_trailing {\n    gap: 8px;\n  }\n}\n.InputBar_add {\n  display: grid;\n  place-items: center;\n  flex: none;\n  width: 28px;\n  height: 28px;\n  border: none;\n  border-radius: 999px;\n  corner-shape: round;\n  background: var(--dsw-specific-selector);\n  color: var(--dsw-alias-label-primary);\n  cursor: pointer;\n}\n@media (hover: hover) {\n  .InputBar_add:hover:not(:disabled) {\n    background: var(--dsw-alias-interactive-bg-hover-solid);\n  }\n}\n.InputBar_add:disabled {\n  opacity: 0.5;\n  cursor: default;\n}\n.InputBar_select {\n  max-width: 220px;\n  height: 28px;\n  padding: 0 20px 0 8px;\n  border: none;\n  border-radius: var(--dsw-radius-sm);\n  outline: none;\n  background-color: transparent;\n  background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M3 4.5L6 7.5L9 4.5' stroke='%2381858C' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E\");\n  background-repeat: no-repeat;\n  background-position: right 4px center;\n  background-size: 12px 12px;\n  color: var(--dsw-alias-label-secondary);\n  font-size: 13px;\n  line-height: 20px;\n  font-weight: 500;\n  white-space: nowrap;\n  cursor: pointer;\n  appearance: none;\n}\n@media (hover: hover) {\n  .InputBar_select:hover:not(:disabled) {\n    background-color: var(--dsw-alias-interactive-bg-hover);\n  }\n}\n.InputBar_select:disabled {\n  opacity: 0.5;\n  cursor: default;\n}\n.InputBar_primary {\n  display: grid;\n  place-items: center;\n  flex: none;\n  width: 34px;\n  height: 34px;\n  border: none;\n  border-radius: 999px;\n  corner-shape: round;\n  background: var(--dsw-alias-button-info-fill);\n  color: var(--dsw-alias-label-on-color);\n  cursor: pointer;\n  transition: background-color 100ms ease;\n  transform: translateY(-2px);\n}\n.InputBar_continueIcon {\n  transform: scale(1.5);\n}\n@media (hover: hover) {\n  .InputBar_primary:hover:not(:disabled) {\n    background: var(--dsw-alias-button-info-hover);\n  }\n}\n.InputBar_primary:disabled {\n  opacity: 0.4;\n  cursor: default;\n}\n.InputBar_primary[data-sending]:disabled {\n  opacity: 1;\n  cursor: progress;\n}\n.InputBar_sendingSpinner {\n  animation: InputBar_input-sending 800ms linear infinite;\n}\n@media (prefers-reduced-motion: reduce) {\n  .InputBar_sendingSpinner {\n    animation-duration: 2400ms;\n  }\n}\n@keyframes InputBar_input-sending {\n  to {\n    transform: rotate(360deg);\n  }\n}\n.InputBar_retry {\n  margin-left: 8px;\n  padding: 1px 8px;\n  border: 1px solid currentColor;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: inherit;\n  font-size: 12px;\n  cursor: pointer;\n}\n.InputBar_standardControls {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  min-width: 0;\n}\n.InputBar_tools[hidden],\n.InputBar_standardControls[hidden] {\n  display: none;\n}\n.InputBar_trailingActive {\n  flex: 1;\n  margin-left: 0;\n}\n.InputBar_activity {\n  display: flex;\n  align-items: center;\n  flex: none;\n}\n.InputBar_activity:empty {\n  display: none;\n}\n.InputBar_activityExpanded {\n  flex: 1;\n  min-width: 0;\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-conversation/src/client/skeleton/TodoPanel.module.css */\n.TodoPanel_root {\n  box-sizing: border-box;\n  flex: none;\n  overflow: hidden;\n  margin: 0 auto;\n  width: calc(100% - var(--dsh-composer-side-clearance) - var(--dsh-composer-side-clearance) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset));\n  max-width: calc(var(--dsh-composer-card-max-width) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset));\n  border: 0;\n  --dsw-elevation-stroke-color: var(--dsw-alias-border-l1);\n  border-radius: var(--dsw-radius-lg);\n  background: var(--dsw-specific-menu);\n  backdrop-filter: var(--dsw-menu-backdrop-filter);\n  box-shadow: var(--dsw-elevation-panel);\n  --dsh-scrollbar-thumb: var(--dsw-alias-scrollbar-bg-l2);\n  --dsh-scrollbar-thumb-hover: var(--dsw-alias-scrollbar-hover-l2);\n}\n.TodoPanel_body {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  padding: 6px 12px;\n}\n.TodoPanel_header {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  width: 100%;\n  padding: 0;\n  border: none;\n  background: transparent;\n  text-align: left;\n  cursor: pointer;\n}\n.TodoPanel_lead {\n  display: grid;\n  flex: none;\n  place-items: center;\n  color: var(--dsw-alias-label-tertiary);\n}\n.TodoPanel_title {\n  flex: none;\n  font-size: 13px;\n  line-height: 24px;\n  font-weight: 500;\n  color: var(--dsw-alias-label-primary);\n}\n.TodoPanel_progress {\n  flex: 1 1 auto;\n  min-width: 0;\n  overflow: hidden;\n  font-size: 13px;\n  line-height: 20px;\n  font-weight: 400;\n  color: var(--dsw-alias-label-tertiary);\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.TodoPanel_chevron {\n  display: grid;\n  flex: none;\n  place-items: center;\n  color: var(--dsw-alias-label-tertiary);\n}\n.TodoPanel_list {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  margin: 0;\n  padding: 0;\n  list-style: none;\n  max-height: 180px;\n  overflow-y: auto;\n}\n.TodoPanel_item {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  min-width: 0;\n  font-size: 13px;\n  line-height: 20px;\n  color: var(--dsw-alias-label-secondary);\n}\n.TodoPanel_glyph {\n  display: grid;\n  flex: none;\n  place-items: center;\n  width: 16px;\n  height: 16px;\n}\n.TodoPanel_content {\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-input-trigger/src/client/MenuView.module.css */\n.MenuView_menu {\n  position: absolute;\n  bottom: calc(100% + 4px);\n  left: 0;\n  right: 0;\n  z-index: 100;\n  box-sizing: border-box;\n  max-height: 400px;\n  overflow: hidden;\n  --dsh-scrollbar-thumb: var(--dsw-alias-scrollbar-bg-l2);\n  --dsh-scrollbar-thumb-hover: var(--dsw-alias-scrollbar-hover-l2);\n  --dsh-scrollbar-width: 6px;\n  --dsh-scrollbar-thumb-border: 2px;\n  --dsh-scrollbar-track-margin: 12px;\n  padding: 4px;\n  display: flex;\n  flex-direction: column;\n  border: 0;\n  --dsw-elevation-stroke-color: var(--dsw-alias-border-l1);\n  box-shadow: var(--dsw-elevation-prominent);\n}\n.MenuView_menu[data-overflow-below]::after {\n  content: \"\";\n  position: absolute;\n  right: 14px;\n  bottom: 4px;\n  left: 4px;\n  height: 16px;\n  background:\n    linear-gradient(\n      to bottom,\n      transparent,\n      var(--dsw-specific-menu));\n  pointer-events: none;\n}\n.MenuView_viewport {\n  display: flex;\n  flex-direction: column;\n  min-height: 0;\n  overflow-y: auto;\n}\n.MenuView_item {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  width: 100%;\n  min-height: 34px;\n  padding: 6px 8px;\n  border: none;\n  border-radius: var(--dsw-radius-md);\n  background: transparent;\n  cursor: pointer;\n  font-size: 13px;\n  line-height: 20px;\n  color: var(--dsw-alias-label-primary);\n  text-align: left;\n}\n.MenuView_item.MenuView_active {\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n.MenuView_sectionTitle {\n  flex: none;\n  min-height: 23px;\n  padding: 5px 8px 2px;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 11px;\n  font-weight: 500;\n  line-height: 16px;\n}\n.MenuView_sectionTitle:not(:first-child) {\n  margin-top: 3px;\n}\n.MenuView_itemIcon {\n  display: inline-flex;\n  flex: none;\n  width: 14px;\n  height: 14px;\n  align-items: center;\n  justify-content: center;\n  color: var(--dsw-alias-menu-icon);\n}\n.MenuView_itemIcon svg {\n  width: 14px;\n  height: 14px;\n}\n.MenuView_itemName {\n  flex: none;\n  max-width: 40%;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.MenuView_itemAlias {\n  flex: none;\n  max-width: 20%;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 12px;\n  line-height: 18px;\n}\n.MenuView_itemDescription {\n  flex: 1;\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  text-align: right;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 12px;\n  line-height: 18px;\n}\n.MenuView_trailing {\n  flex: none;\n  display: inline-flex;\n  align-items: center;\n  gap: 3px;\n  margin-left: auto;\n}\n.MenuView_drillHintText {\n  display: none;\n  color: var(--dsw-alias-label-caption);\n  font-size: 10px;\n  line-height: 16px;\n  white-space: nowrap;\n}\n.MenuView_drillHint {\n  display: none;\n  padding: 0 4px;\n  border-radius: var(--dsw-radius-xs);\n  background: var(--dsw-alias-interactive-bg-hover);\n  color: var(--dsw-alias-label-caption);\n  font-family: inherit;\n  font-size: 10px;\n  line-height: 16px;\n}\n.MenuView_item.MenuView_active .MenuView_drillHintText,\n.MenuView_item.MenuView_active .MenuView_drillHint {\n  display: inline-flex;\n}\n.MenuView_drill {\n  flex: none;\n  display: inline-grid;\n  place-items: center;\n  width: 18px;\n  height: 18px;\n  border-radius: var(--dsw-radius-xs);\n  color: var(--dsw-alias-menu-icon);\n}\n@media (hover: hover) {\n  .MenuView_drill:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n    color: var(--dsw-alias-label-primary);\n  }\n}\n.MenuView_groupTitle {\n  padding: 6px 8px;\n  font-size: 11px;\n  line-height: 15px;\n  color: var(--dsw-alias-label-tertiary);\n}\n.MenuView_skeletonRow {\n  display: flex;\n  align-items: center;\n  box-sizing: border-box;\n  min-height: 34px;\n  padding: 6px 8px;\n}\n.MenuView_skeletonBar {\n  height: 18px;\n  border-radius: var(--dsw-radius-xs);\n  background: var(--dsw-alias-bg-skeleton);\n  animation: MenuView_dsh-menu-skeleton 2s cubic-bezier(0.36, 0, 0.64, 1) infinite;\n}\n@keyframes MenuView_dsh-menu-skeleton {\n  0% {\n    opacity: 1;\n  }\n  40% {\n    opacity: 0.6;\n  }\n  80%, 100% {\n    opacity: 1;\n  }\n}\n.MenuView_crumbs {\n  flex: none;\n  display: flex;\n  align-items: center;\n  flex-wrap: wrap;\n  gap: 2px;\n  padding: 3px 3px 5px;\n  margin-bottom: 2px;\n  border-bottom: 0.5px solid var(--dsw-alias-border-l1);\n}\n.MenuView_crumb {\n  flex: 0 1 auto;\n  max-width: 40%;\n  overflow: hidden;\n  padding: 2px 5px;\n  border: none;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-tertiary);\n  cursor: pointer;\n  font-family: inherit;\n  font-size: 11px;\n  line-height: 16px;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n@media (hover: hover) {\n  .MenuView_crumb:hover {\n    background: var(--dsw-alias-interactive-bg-hover);\n    color: var(--dsw-alias-label-primary);\n  }\n}\n.MenuView_crumbCurrent {\n  background: transparent;\n  color: var(--dsw-alias-label-primary);\n  cursor: default;\n}\n@media (hover: hover) {\n  .MenuView_crumbCurrent:hover {\n    background: transparent;\n    color: var(--dsw-alias-label-primary);\n    cursor: default;\n  }\n}\n.MenuView_crumbSeparator {\n  flex: none;\n  display: inline-flex;\n  color: var(--dsw-alias-menu-icon);\n}\n\n/* ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-jobs/src/client/JobListAction.module.css */\n.JobListAction_trigger {\n  display: inline-flex;\n  align-items: center;\n  gap: 4px;\n  min-height: 28px;\n  padding: 3px 2px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 12px;\n  line-height: 18px;\n  cursor: pointer;\n}\n.JobListAction_trigger:focus-visible {\n  color: var(--dsw-alias-label-secondary);\n}\n@media (hover: hover) {\n  .JobListAction_trigger:hover {\n    color: var(--dsw-alias-label-secondary);\n  }\n}\n.JobListAction_activitySlot {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  justify-content: center;\n  width: 14px;\n  height: 14px;\n}\n.JobListAction_trigger .JobListAction_compactIcon {\n  display: none;\n}\n@container (max-width: 460px) {\n  .JobListAction_trigger .JobListAction_compactIcon {\n    display: block;\n  }\n  .JobListAction_trigger .JobListAction_textModeActivity {\n    display: none;\n  }\n  .JobListAction_trigger .JobListAction_count {\n    display: none;\n  }\n  .JobListAction_trigger {\n    box-sizing: border-box;\n    width: 28px;\n    height: 28px;\n    padding: 0;\n    justify-content: center;\n    color: var(--dsw-alias-label-secondary);\n  }\n  .JobListAction_trigger .JobListAction_activitySlot,\n  .JobListAction_trigger .JobListAction_activitySlot > svg {\n    width: 15px;\n    height: 15px;\n  }\n  .JobListAction_trigger:focus-visible {\n    color: var(--dsw-alias-label-secondary);\n  }\n  .JobListAction_trigger:active {\n    background: var(--dsw-alias-interactive-bg-active);\n  }\n  @media (hover: hover) {\n    .JobListAction_trigger:hover {\n      color: var(--dsw-alias-label-secondary);\n      background: var(--dsw-alias-interactive-bg-hover);\n    }\n  }\n}\n.JobListAction_menu {\n  position: fixed;\n  z-index: 100;\n  box-sizing: border-box;\n  display: flex;\n  flex-direction: column;\n  width: 500px;\n  max-width: min(560px, calc(100vw - 32px));\n  max-height: min(480px, calc(100dvh - 140px));\n  overflow: hidden;\n  --dsh-scrollbar-thumb: var(--dsw-alias-scrollbar-bg-l2);\n  --dsh-scrollbar-thumb-hover: var(--dsw-alias-scrollbar-hover-l2);\n  --dsw-elevation-stroke-color: var(--dsw-alias-border-l1);\n  box-shadow: var(--dsw-elevation-prominent);\n  position-area: none;\n  top: max(12px, calc(anchor(bottom) + 5px));\n  bottom: 12px;\n  left: max(12px, anchor(left));\n  right: 12px;\n  position-try-fallbacks:\n    --dsh-jobs-window,\n    --dsh-jobs-opposite,\n    --dsh-jobs-wide-opposite,\n    --dsh-jobs-tall,\n    --dsh-jobs-viewport;\n  align-self: start;\n  justify-self: start;\n  height: fit-content;\n  min-height: 0;\n  margin: 0;\n}\n.JobListAction_menuBody {\n  display: flex;\n  flex-direction: column;\n  gap: 1px;\n  min-height: 0;\n  margin: 0;\n  padding: 4px;\n  overflow: auto;\n  list-style: none;\n}\n.JobListAction_sectionHeader {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  margin: 4px 4px 1px;\n  padding: 4px 0 3px;\n  border-top: 0.5px solid var(--dsw-alias-border-l1);\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 11px;\n  line-height: 16px;\n}\n.JobListAction_sectionHeader:first-child {\n  margin-top: 0;\n  border-top: 0;\n}\n.JobListAction_sectionToggle,\n.JobListAction_sectionClear {\n  display: inline-flex;\n  gap: 3px;\n  align-items: center;\n  padding: 2px 4px;\n  border: 0;\n  border-radius: var(--dsw-radius-sm);\n  background: transparent;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 11px;\n  line-height: 16px;\n  cursor: pointer;\n}\n.JobListAction_sectionToggle:focus-visible,\n.JobListAction_sectionClear:focus-visible {\n  background: var(--dsw-alias-fill-l1);\n  color: var(--dsw-alias-label-secondary);\n}\n@media (hover: hover) {\n  .JobListAction_sectionToggle:hover,\n  .JobListAction_sectionClear:hover {\n    background: var(--dsw-alias-fill-l1);\n    color: var(--dsw-alias-label-secondary);\n  }\n}\n.JobListAction_sectionChevron {\n  transform: rotate(-90deg);\n  transition: transform 120ms ease;\n}\n.JobListAction_sectionChevronOpen {\n  transform: none;\n}\n.JobListAction_item {\n  display: flex;\n  flex-direction: column;\n}\n.JobListAction_rowLine {\n  display: flex;\n  gap: 6px;\n  align-items: stretch;\n}\n.JobListAction_rowLineLive {\n  padding: 4px 8px 4px 2px;\n  border-radius: var(--dsw-radius-md);\n  background: var(--dsw-alias-fill-l2);\n}\n@media (hover: hover) {\n  .JobListAction_rowLineLive:hover {\n    background: color-mix(in srgb, var(--dsw-alias-label-primary) 9%, transparent);\n  }\n}\n.JobListAction_rowLineLive .JobListAction_kind {\n  background: var(--dsw-specific-menu);\n}\n.JobListAction_rowLine .JobListAction_row {\n  flex: 1;\n  min-width: 0;\n}\n@media (hover: hover) {\n  .JobListAction_rowLineLive .JobListAction_row:hover {\n    background: transparent;\n  }\n}\n.JobListAction_rowLineLive .JobListAction_row {\n  border-radius: var(--dsw-radius-sm);\n}\n.JobListAction_rowLineLive .JobListAction_row:focus-visible {\n  background: color-mix(in srgb, var(--dsw-alias-label-primary) 6%, transparent);\n}\n.JobListAction_chevronBox {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  align-self: center;\n  justify-content: center;\n  width: 20px;\n  height: 20px;\n  border: 0.5px solid var(--dsw-alias-border-l2);\n  border-radius: var(--dsw-radius-sm);\n  background: var(--dsw-specific-menu);\n}\n.JobListAction_stop {\n  display: inline-flex;\n  flex: none;\n  align-items: center;\n  align-self: center;\n  justify-content: center;\n  width: 20px;\n  height: 20px;\n  padding: 0;\n  border: 0.5px solid var(--dsw-alias-border-l2);\n  border-radius: var(--dsw-radius-sm);\n  background: var(--dsw-specific-menu);\n  color: var(--dsw-alias-label-secondary);\n  cursor: pointer;\n}\n.JobListAction_stop:focus-visible {\n  border-color: color-mix(in srgb, var(--dsw-alias-state-error-primary) 45%, transparent);\n  color: var(--dsw-alias-state-error-primary);\n}\n@media (hover: hover) {\n  .JobListAction_stop:hover {\n    border-color: color-mix(in srgb, var(--dsw-alias-state-error-primary) 45%, transparent);\n    color: var(--dsw-alias-state-error-primary);\n  }\n}\n.JobListAction_stopArmed,\n.JobListAction_stopArmed:focus-visible {\n  gap: 4px;\n  width: auto;\n  padding: 0 7px;\n  border-color: color-mix(in srgb, var(--dsw-alias-state-error-primary) 45%, transparent);\n  background: color-mix(in srgb, var(--dsw-alias-state-error-primary) 12%, transparent);\n  color: var(--dsw-alias-state-error-primary);\n}\n@media (hover: hover) {\n  .JobListAction_stopArmed:hover {\n    gap: 4px;\n    width: auto;\n    padding: 0 7px;\n    border-color: color-mix(in srgb, var(--dsw-alias-state-error-primary) 45%, transparent);\n    background: color-mix(in srgb, var(--dsw-alias-state-error-primary) 12%, transparent);\n    color: var(--dsw-alias-state-error-primary);\n  }\n}\n.JobListAction_stopLabel {\n  font-size: 11px;\n  line-height: 18px;\n  white-space: nowrap;\n}\n.JobListAction_stopFailed {\n  color: var(--dsw-alias-state-error-primary);\n}\n.JobListAction_row {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  box-sizing: border-box;\n  width: 100%;\n  min-height: 28px;\n  padding: 4px 7px;\n  border: 0;\n  border-radius: var(--dsw-radius-md);\n  background: transparent;\n  color: var(--dsw-alias-label-primary);\n  font-size: 12px;\n  line-height: 17px;\n  text-align: left;\n  cursor: pointer;\n}\n.JobListAction_row:focus-visible {\n  background: var(--dsw-alias-fill-l1);\n}\n@media (hover: hover) {\n  .JobListAction_row:hover {\n    background: var(--dsw-alias-fill-l1);\n  }\n}\n.JobListAction_rowStatic {\n  cursor: default;\n}\n@media (hover: hover) {\n  .JobListAction_rowStatic:hover {\n    background: transparent;\n  }\n}\n.JobListAction_rowSettled {\n  color: var(--dsw-alias-label-tertiary);\n}\n.JobListAction_row .JobListAction_rowDot {\n  flex: none;\n}\n.JobListAction_main {\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  gap: 2px;\n  min-width: 0;\n}\n.JobListAction_primary {\n  display: flex;\n  align-items: baseline;\n  gap: 8px;\n  min-width: 0;\n}\n.JobListAction_secondary {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  min-width: 0;\n}\n.JobListAction_kind {\n  flex: none;\n  padding: 0 5px;\n  border-radius: var(--dsw-radius-xs);\n  background: var(--dsw-alias-fill-l2);\n  color: var(--dsw-alias-label-secondary);\n  font-size: 10px;\n  line-height: 16px;\n}\n.JobListAction_label {\n  flex: 1;\n  min-width: 0;\n  overflow: hidden;\n  font-family: var(--dsw-font-mono);\n  white-space: nowrap;\n  text-overflow: ellipsis;\n}\n.JobListAction_status {\n  flex: none;\n  max-width: 60%;\n  overflow: hidden;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 10px;\n  line-height: 16px;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n}\n.JobListAction_duration {\n  flex: none;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 11px;\n  line-height: 18px;\n  font-variant-numeric: tabular-nums;\n}\n.JobListAction_chevron {\n  flex: none;\n  color: var(--dsw-alias-label-tertiary);\n}\n.JobListAction_chevronOpen {\n  transform: rotate(180deg);\n}\n.JobListAction_panel {\n  margin: 0 8px 8px;\n  --dsl-terminal-command-whitespace: pre-wrap;\n  --dsl-terminal-line-whitespace: pre-wrap;\n  --dsl-terminal-output-max-height: 288px;\n}\n.JobListAction_panel [data-terminal] {\n  --dsl-terminal-gutter: 12px;\n}\n.JobListAction_notice {\n  margin: 0 8px 6px;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 11px;\n  line-height: 16px;\n}\n.JobListAction_noticeError {\n  color: var(--dsw-alias-state-error-primary);\n}\n@position-try --dsh-jobs-window {\n  position-area: none;\n  top: max(12px, calc(anchor(bottom) + 5px));\n  bottom: 12px;\n  left: 12px;\n  right: 12px;\n  margin: 0;\n  align-self: safe start;\n  justify-self: safe end;\n}\n@position-try --dsh-jobs-opposite {\n  top: max(12px, var(--dsh-frame-overlay-top, 12px));\n  bottom: max(12px, calc(anchor(top) + 5px));\n  align-self: end;\n}\n@position-try --dsh-jobs-wide-opposite {\n  top: max(12px, var(--dsh-frame-overlay-top, 12px));\n  bottom: max(12px, calc(anchor(top) + 5px));\n  left: 12px;\n  right: 12px;\n  align-self: end;\n  justify-self: safe end;\n}\n@position-try --dsh-jobs-tall {\n  position-area: none;\n  top: max(12px, var(--dsh-frame-overlay-top, 12px));\n  bottom: 12px;\n  left: max(12px, anchor(left));\n  right: 12px;\n  margin: 0;\n  align-self: safe start;\n  justify-self: start;\n}\n@position-try --dsh-jobs-viewport {\n  position-area: none;\n  inset: max(12px, var(--dsh-frame-overlay-top, 12px)) 12px 12px;\n  margin: 0;\n  align-self: safe start;\n  justify-self: safe end;\n}\n";
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -60,8 +60,8 @@ __export(index_exports, {
   inject: () => inject
 });
 module.exports = __toCommonJS(index_exports);
-var import_react38 = require("react");
-var import_dsh_client_ui_primitives38 = require("@deepseek-ai/dsh-client-ui-primitives");
+var import_react40 = require("react");
+var import_dsh_client_ui_primitives39 = require("@deepseek-ai/dsh-client-ui-primitives");
 
 // DocumentPreview.jsx
 var import_react = require("react");
@@ -374,7 +374,8 @@ function composerAccount(bound, engine, draft, requestedId) {
   const id = requestedId ?? bound?.id ?? engine.defaultProfileId ?? "default";
   const choices = profiles.map((profile) => {
     const known = bound?.choices?.find((choice) => choice.id === profile.id);
-    return { id: profile.id, label: known?.label || profile.name, account: known?.account || profile.account };
+    const account = engine.id === "agy" && known ? known.account : known?.account || profile.account;
+    return { id: profile.id, label: known?.label || profile.name, account };
   });
   const selected = choices.find((choice) => choice.id === id);
   return {
@@ -651,9 +652,9 @@ function applyEvent(session, { type, data }) {
     case "permission_resolved":
       return { ...session, permissions: session.permissions.filter((item) => permissionId(item) !== data.id) };
     case "done":
-      return { ...session, busy: false, permissions: [], stopReason: data.stopReason };
+      return { ...session, busy: false, runStartedAt: void 0, permissions: [], stopReason: data.stopReason };
     case "error":
-      return { ...session, busy: false, permissions: [], error: data.message };
+      return { ...session, busy: false, runStartedAt: void 0, permissions: [], error: data.message };
     case "message": {
       const { index: index2, message, clearActivity } = data;
       if (!Number.isInteger(index2) || index2 < 0 || index2 > session.messages.length) return session;
@@ -4234,8 +4235,8 @@ function childrenOf(directory) {
     return { kind: "directory", path: leaf.path, name, children: childrenOf(leaf) };
   });
   const files = directory.files.map((file) => ({ kind: "file", path: file.path, name: file.path.slice(file.path.lastIndexOf("/") + 1), file }));
-  const ordered = (nodes) => nodes.sort((a, b) => a.name < b.name ? -1 : a.name > b.name ? 1 : 0);
-  return [...ordered(directories), ...ordered(files)];
+  const ordered2 = (nodes) => nodes.sort((a, b) => a.name < b.name ? -1 : a.name > b.name ? 1 : 0);
+  return [...ordered2(directories), ...ordered2(files)];
 }
 function changedFileTree(files) {
   const root = { path: "", name: "", directories: /* @__PURE__ */ new Map(), files: [] };
@@ -8988,9 +8989,9 @@ function accountRemainingPercent(used) {
 function modelKey(value) {
   return typeof value === "string" ? value.trim().toLowerCase().replace(/[^a-z0-9]+/g, " ").trim() : "";
 }
-function modelAccountWindow(engine, model, displayName, limits = []) {
+function modelAccountWindows(engine, model, displayName, limits = []) {
   const id = modelKey(model);
-  if (!id) return;
+  if (!id) return [];
   const names = [id, modelKey(displayName)].filter(Boolean);
   const pools = accountLimitGroups(limits);
   const exact2 = pools.filter((pool) => names.includes(modelKey(pool.name)) || engine === "codex" && names.includes(modelKey(pool.windows[0]?.poolId)));
@@ -9007,17 +9008,17 @@ function modelAccountWindow(engine, model, displayName, limits = []) {
       return exact2.includes(pool) || ["opus", "sonnet", "haiku"].includes(key) && names.some((name) => name.split(" ").includes(key));
     });
   }
-  if (engine !== "claude" && applicable.length !== 1) return;
-  let tightest;
+  if (engine !== "claude" && applicable.length !== 1) return [];
+  const windows = [];
   for (const pool of applicable) {
     for (const row of pool.windows) {
       const remaining = accountRemainingPercent(row.usedPercent);
-      if (remaining !== void 0 && (!tightest || remaining < tightest.remaining)) {
-        tightest = { remaining, pool: pool.name, window: row.windowLabel };
+      if (remaining !== void 0) {
+        windows.push({ remaining, pool: pool.name, window: row.windowLabel });
       }
     }
   }
-  return tightest;
+  return windows;
 }
 function transcriptCounts(messages = []) {
   const counts = { turns: 0, replies: 0, commentary: 0, tools: 0 };
@@ -9182,10 +9183,10 @@ function SessionStatus({ sessionId, engine, profileId, engineCapabilities, messa
   const [open, setOpen] = (0, import_react23.useState)(null);
   const contextReport = useStatusReport(sessionId, "context", open === "context" || open === "summary");
   const account = useAccountReport(sessionId, engine, profileId, open === "account" || open === "summary");
-  const accountWindow = modelAccountWindow(engine, model, modelName, account.report?.limits);
-  const accountRemaining = accountWindow?.remaining;
-  const accountReading = accountRemaining === void 0 ? t("status.account") : t("status.accountSummary", { value: accountRemaining });
-  const accountTitle = accountRemaining === void 0 ? void 0 : [accountWindow.pool, accountWindow.window, t("status.accountRemaining", { value: accountRemaining })].filter(Boolean).join(" \xB7 ");
+  const accountWindows = modelAccountWindows(engine, model, modelName, account.report?.limits);
+  const accountRemaining = accountWindows.reduce((min, row) => min === void 0 || row.remaining < min ? row.remaining : min, void 0);
+  const accountReadings = accountWindows.length === 0 ? [t("status.account")] : accountWindows.length === 1 ? [t("status.accountSummary", { value: accountWindows[0].remaining })] : accountWindows.slice(0, 2).map((row) => row.window ? `${row.window} ${t("status.accountSummary", { value: row.remaining })}` : t("status.accountSummary", { value: row.remaining }));
+  const accountTitle = accountWindows.length === 0 ? void 0 : accountWindows.map((row) => [row.pool, row.window, t("status.accountRemaining", { value: row.remaining })].filter(Boolean).join(" \xB7 ")).join(" / ");
   const accountLabel = [t("status.account"), accountTitle].filter(Boolean).join(" \xB7 ");
   const status = sessionStatus(metrics, usage, engine, engineCapabilities);
   const speed = status.tps === void 0 ? void 0 : t("status.tps", { value: status.tps >= 10 ? Math.round(status.tps) : Math.round(status.tps * 10) / 10 });
@@ -9324,10 +9325,9 @@ function SessionStatus({ sessionId, engine, profileId, engineCapabilities, messa
         {
           stat: "account",
           icon: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_dsh_client_ui_primitives25.IconGaugeOutlineRegular, {}),
-          readings: [accountReading],
+          readings: accountReadings,
           fullLabel: accountLabel,
           heading: t("status.account"),
-          titleValue: accountTitle,
           t,
           ...select("account"),
           children: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(AccountReport, { account, t })
@@ -10218,9 +10218,9 @@ function MessageQueue({ source: source2, renderFactorySlot, id, queue, pending, 
 }
 
 // DirectChat.jsx
-var import_react36 = require("react");
-var import_react_dom6 = require("react-dom");
-var import_dsh_client_ui_primitives36 = require("@deepseek-ai/dsh-client-ui-primitives");
+var import_react38 = require("react");
+var import_react_dom7 = require("react-dom");
+var import_dsh_client_ui_primitives37 = require("@deepseek-ai/dsh-client-ui-primitives");
 
 // ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-attachment/src/AttachmentRail.tsx
 var import_react25 = require("react");
@@ -13449,20 +13449,608 @@ function SessionPet({
   ] });
 }
 
-// TranscriptActivity.jsx
+// RunningJobs.jsx
+var import_react36 = require("react");
+
+// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-jobs/src/client/JobListAction.tsx
 var import_react34 = require("react");
+var import_react_dom6 = require("react-dom");
 var import_dsh_client_ui_primitives34 = require("@deepseek-ai/dsh-client-ui-primitives");
-var import_jsx_runtime39 = require("react/jsx-runtime");
-var toolIcons = {
-  read: import_dsh_client_ui_primitives34.IconBrowseOutlineRegular,
-  edit: import_dsh_client_ui_primitives34.IconEditOutlineRegular,
-  write: import_dsh_client_ui_primitives34.IconEditOutlineRegular,
-  delete: import_dsh_client_ui_primitives34.IconTrashOutlineRegular,
-  search: import_dsh_client_ui_primitives34.IconSearchOutlineRegular,
-  move: import_dsh_client_ui_primitives34.IconFolderOpenRegular,
-  fetch: import_dsh_client_ui_primitives34.IconGlobeOutlineRegular,
-  execute: import_dsh_client_ui_primitives34.IconApiOutlineRegular
+
+// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-jobs/src/client/JobListAction.module.css
+var JobListAction_default = {
+  trigger: "JobListAction_trigger",
+  activitySlot: "JobListAction_activitySlot",
+  compactIcon: "JobListAction_compactIcon",
+  textModeActivity: "JobListAction_textModeActivity",
+  count: "JobListAction_count",
+  menu: "JobListAction_menu",
+  menuBody: "JobListAction_menuBody",
+  sectionHeader: "JobListAction_sectionHeader",
+  sectionToggle: "JobListAction_sectionToggle",
+  sectionClear: "JobListAction_sectionClear",
+  sectionChevron: "JobListAction_sectionChevron",
+  sectionChevronOpen: "JobListAction_sectionChevronOpen",
+  item: "JobListAction_item",
+  rowLine: "JobListAction_rowLine",
+  rowLineLive: "JobListAction_rowLineLive",
+  kind: "JobListAction_kind",
+  row: "JobListAction_row",
+  chevronBox: "JobListAction_chevronBox",
+  stop: "JobListAction_stop",
+  stopArmed: "JobListAction_stopArmed",
+  stopLabel: "JobListAction_stopLabel",
+  stopFailed: "JobListAction_stopFailed",
+  rowStatic: "JobListAction_rowStatic",
+  rowSettled: "JobListAction_rowSettled",
+  rowDot: "JobListAction_rowDot",
+  main: "JobListAction_main",
+  primary: "JobListAction_primary",
+  secondary: "JobListAction_secondary",
+  label: "JobListAction_label",
+  status: "JobListAction_status",
+  duration: "JobListAction_duration",
+  chevron: "JobListAction_chevron",
+  chevronOpen: "JobListAction_chevronOpen",
+  panel: "JobListAction_panel",
+  notice: "JobListAction_notice",
+  noticeError: "JobListAction_noticeError"
 };
+
+// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-jobs/src/client/JobListAction.tsx
+var import_jsx_runtime39 = require("react/jsx-runtime");
+var NO_JOBS = [];
+var FOCUSABLE = 'button:not(:disabled), a[href], [tabindex]:not([tabindex="-1"])';
+var KILL_ARM_MS = 3e3;
+var KILL_FAILED_MS = 4e3;
+function isLive(job) {
+  return job.status === "running" || job.status === "stopping";
+}
+function isObservable(job) {
+  return isLive(job) || job.output.total > 0;
+}
+function jobDetail(job) {
+  return job.progress ?? job.detail;
+}
+function assertNever3(value) {
+  throw new Error(`unhandled job status: ${JSON.stringify(value)}`);
+}
+function dotState(status) {
+  switch (status) {
+    case "running":
+      return "ongoing";
+    case "stopping":
+      return "warning";
+    case "completed":
+      return "done";
+    case "killed":
+      return "warning";
+    case "failed":
+      return "error";
+    /* v8 ignore next -- closed wire status union */
+    default:
+      return assertNever3(status);
+  }
+}
+function statusLabel2(status, t) {
+  switch (status) {
+    case "running":
+      return t("status.running");
+    case "stopping":
+      return t("status.stopping");
+    case "completed":
+      return t("status.completed");
+    case "killed":
+      return t("status.killed");
+    case "failed":
+      return t("status.failed");
+    /* v8 ignore next -- closed wire status union */
+    default:
+      return assertNever3(status);
+  }
+}
+function formatDuration2(elapsedMs, t) {
+  const total = Math.max(0, Math.floor(elapsedMs / 1e3));
+  const seconds = total % 60;
+  const minutes = Math.floor(total / 60) % 60;
+  const hours = Math.floor(total / 3600);
+  if (hours > 0) return t("duration.hours", { hours, minutes });
+  if (minutes > 0) return t("duration.minutes", { minutes, seconds });
+  return t("duration.seconds", { seconds });
+}
+function terminalLabels(t) {
+  return {
+    commandLine: (line2) => t("terminal.commandLine", { n: line2 }),
+    // The labels contract requires exit-fact formatters, but this panel never
+    // passes exit facts, so TerminalBlock never invokes them.
+    /* v8 ignore next */
+    signal: (signal) => t("terminal.signal", { signal }),
+    /* v8 ignore next */
+    exitCode: (code) => t("terminal.exitCode", { code }),
+    noExitCode: t("terminal.noExitCode"),
+    running: t("terminal.running"),
+    failed: t("terminal.failed"),
+    done: t("terminal.done"),
+    copy: t("terminal.copy"),
+    copied: t("terminal.copied"),
+    noOutput: t("terminal.noOutput"),
+    collapseAria: t("terminal.collapseAria"),
+    collapse: t("terminal.collapse"),
+    // The panel never caps lines (it scrolls), so the fold controls that
+    // would invoke these stay unrendered.
+    /* v8 ignore next */
+    expandAria: (hidden) => t("terminal.expandAria", { n: hidden }),
+    /* v8 ignore next */
+    expand: (hidden) => t("terminal.expand", { n: hidden })
+  };
+}
+function ordered(jobs) {
+  return [...jobs].sort((left, right) => {
+    const liveLeft = isLive(left);
+    if (liveLeft !== isLive(right)) return liveLeft ? -1 : 1;
+    if (liveLeft) return left.startedAt - right.startedAt;
+    const finished = (right.finishedAt ?? right.startedAt) - (left.finishedAt ?? left.startedAt);
+    return finished !== 0 ? finished : left.startedAt - right.startedAt;
+  });
+}
+function JobItem({ job, view, expanded, now, onToggle, kill, t }) {
+  const live = isLive(job);
+  const status = statusLabel2(job.status, t);
+  const detail = jobDetail(job);
+  const observable = isObservable(job);
+  const labels = (0, import_react34.useMemo)(() => terminalLabels(t), [t]);
+  const elapsed = live ? now - job.startedAt : (job.finishedAt ?? job.startedAt) - job.startedAt;
+  const duration = formatDuration2(elapsed, t);
+  const durationCell = /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
+    "span",
+    {
+      className: JobListAction_default.duration,
+      title: t(live ? "duration.title.live" : "duration.title.done", { duration }),
+      children: duration
+    }
+  );
+  const body = live ? /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(import_jsx_runtime39.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(import_dsh_client_ui_primitives34.StateDot, { state: dotState(job.status), className: JobListAction_default.rowDot }),
+    /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("span", { className: JobListAction_default.main, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("span", { className: JobListAction_default.primary, children: /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("span", { className: JobListAction_default.label, title: job.label, children: job.label }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("span", { className: JobListAction_default.secondary, title: detail ?? status, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("span", { className: JobListAction_default.kind, children: job.kind }),
+        detail !== void 0 ? /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("span", { className: JobListAction_default.status, children: detail }) : null,
+        durationCell
+      ] })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("span", { className: JobListAction_default.chevronBox, children: /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(import_dsh_client_ui_primitives34.IconChevronDownOutlineRegular, { size: 12, className: expanded ? `${JobListAction_default.chevron} ${JobListAction_default.chevronOpen}` : JobListAction_default.chevron }) })
+  ] }) : /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(import_jsx_runtime39.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(import_dsh_client_ui_primitives34.StateDot, { state: dotState(job.status), className: JobListAction_default.rowDot }),
+    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("span", { className: JobListAction_default.kind, children: job.kind }),
+    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("span", { className: JobListAction_default.label, title: job.label, children: job.label }),
+    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("span", { className: JobListAction_default.status, title: detail ?? status, children: detail ?? status }),
+    durationCell,
+    observable ? /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("span", { className: JobListAction_default.chevronBox, children: /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(import_dsh_client_ui_primitives34.IconChevronDownOutlineRegular, { size: 12, className: expanded ? `${JobListAction_default.chevron} ${JobListAction_default.chevronOpen}` : JobListAction_default.chevron }) }) : null
+  ] });
+  const killTitle = kill === void 0 ? void 0 : kill.state === "armed" ? t("kill.confirm") : kill.state === "failed" ? t("kill.failed") : t("kill.stop", { label: job.label });
+  return /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("li", { className: JobListAction_default.item, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("div", { className: live ? `${JobListAction_default.rowLine} ${JobListAction_default.rowLineLive}` : JobListAction_default.rowLine, children: [
+      observable ? /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
+        "button",
+        {
+          type: "button",
+          className: live ? JobListAction_default.row : `${JobListAction_default.row} ${JobListAction_default.rowSettled}`,
+          "aria-expanded": expanded,
+          "aria-label": t(expanded ? "row.collapseAria" : "row.expandAria", { label: job.label }),
+          onClick: onToggle,
+          children: body
+        }
+      ) : /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("span", { className: `${JobListAction_default.row} ${JobListAction_default.rowSettled} ${JobListAction_default.rowStatic}`, children: body }),
+      kill !== void 0 ? /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(
+        "button",
+        {
+          type: "button",
+          className: kill.state === "armed" ? `${JobListAction_default.stop} ${JobListAction_default.stopArmed}` : kill.state === "failed" ? `${JobListAction_default.stop} ${JobListAction_default.stopFailed}` : JobListAction_default.stop,
+          "data-kill-state": kill.state,
+          disabled: kill.state === "pending",
+          "aria-label": killTitle,
+          title: killTitle,
+          onClick: kill.onPress,
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(import_dsh_client_ui_primitives34.IconStopFillRegular, { size: 10 }),
+            kill.state === "armed" ? /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("span", { className: JobListAction_default.stopLabel, children: t("kill.confirmAction") }) : null
+          ]
+        }
+      ) : null
+    ] }),
+    expanded && view !== void 0 ? /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("div", { className: JobListAction_default.panel, children: [
+      view.gapBefore ? /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("div", { className: JobListAction_default.notice, children: t("output.gap") }) : null,
+      view.error !== void 0 ? /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("div", { className: `${JobListAction_default.notice} ${JobListAction_default.noticeError}`, children: t("output.error", { error: view.error }) }) : null,
+      /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
+        import_dsh_client_ui_primitives34.TerminalBlock,
+        {
+          command: job.label,
+          output: view.text,
+          running: live,
+          copyText: job.label,
+          runStateDot: false,
+          maxLines: Number.POSITIVE_INFINITY,
+          labels
+        }
+      )
+    ] }) : null
+  ] });
+}
+function JobListAction({ sessionId, useJobs, watchRows, observe, killJob, t }) {
+  const activityId = (0, import_react34.useId)();
+  const jobs = useJobs((state) => state.rows[sessionId]) ?? NO_JOBS;
+  const observedViews = useJobs((state) => state.observed);
+  const [menuState, setMenuState] = (0, import_react34.useState)(
+    { sessionId, mode: "closed" }
+  );
+  const hoverOpenTimer = (0, import_react34.useRef)(void 0);
+  const hoverCloseTimer = (0, import_react34.useRef)(void 0);
+  if (menuState.sessionId !== sessionId) setMenuState({ sessionId, mode: "closed" });
+  const [expandedKey, setExpandedKey] = (0, import_react34.useState)(void 0);
+  const [now, setNow] = (0, import_react34.useState)(() => Date.now());
+  const [settledOpen, setSettledOpen] = (0, import_react34.useState)(void 0);
+  const [clearedKeys, setClearedKeys] = (0, import_react34.useState)(() => /* @__PURE__ */ new Set());
+  const [killPhase, setKillPhase] = (0, import_react34.useState)(void 0);
+  const rootRef = (0, import_react34.useRef)(null);
+  const triggerRef = (0, import_react34.useRef)(null);
+  const countRef = (0, import_react34.useRef)(null);
+  const menuRef = (0, import_react34.useRef)(null);
+  const rows = (0, import_react34.useMemo)(() => ordered(jobs), [jobs]);
+  const liveRows = (0, import_react34.useMemo)(() => rows.filter(isLive), [rows]);
+  const settledRows = (0, import_react34.useMemo)(
+    () => rows.filter((job) => !isLive(job) && !clearedKeys.has(String(job.id))),
+    [rows, clearedKeys]
+  );
+  const settledExpanded = settledOpen ?? liveRows.length === 0;
+  const visibleCount = liveRows.length + settledRows.length;
+  const hasJobs = visibleCount > 0;
+  const open = hasJobs && menuState.sessionId === sessionId && menuState.mode !== "closed";
+  const cancelHover = (0, import_react34.useCallback)(() => {
+    clearTimeout(hoverOpenTimer.current);
+    clearTimeout(hoverCloseTimer.current);
+    hoverOpenTimer.current = void 0;
+    hoverCloseTimer.current = void 0;
+  }, []);
+  const changeOpen = (0, import_react34.useCallback)((next) => {
+    cancelHover();
+    if (next) setNow(Date.now());
+    setMenuState({ sessionId, mode: next ? "pinned" : "closed" });
+  }, [cancelHover, sessionId]);
+  const allowsHoverOpen = () => countRef.current !== null && getComputedStyle(countRef.current).display !== "none";
+  const hoverEnter = (event2) => {
+    if (event2.pointerType === "touch") return;
+    cancelHover();
+    if (open || !allowsHoverOpen()) return;
+    hoverOpenTimer.current = setTimeout(() => {
+      hoverOpenTimer.current = void 0;
+      if (!allowsHoverOpen()) return;
+      setNow(Date.now());
+      setMenuState({ sessionId, mode: "hover" });
+    }, 150);
+  };
+  const hoverLeave = (event2) => {
+    if (event2.pointerType === "touch") return;
+    cancelHover();
+    if (!open || menuState.mode === "pinned") return;
+    hoverCloseTimer.current = setTimeout(() => {
+      hoverCloseTimer.current = void 0;
+      setMenuState({ sessionId, mode: "closed" });
+    }, 120);
+  };
+  (0, import_react34.useEffect)(() => cancelHover, [cancelHover, sessionId, hasJobs]);
+  const anchorName = `--dsh-jobs-${(0, import_react34.useId)().replaceAll(":", "")}`;
+  (0, import_dsh_client_ui_primitives34.useDismissOnOutsidePointer)(rootRef, open, changeOpen, menuRef);
+  (0, import_react34.useEffect)(() => {
+    if (!open) return;
+    const dismiss = (event2) => {
+      if (event2.key !== "Escape" || event2.defaultPrevented) return;
+      event2.preventDefault();
+      changeOpen(false);
+    };
+    document.addEventListener("keydown", dismiss);
+    return () => {
+      document.removeEventListener("keydown", dismiss);
+    };
+  }, [open, changeOpen]);
+  (0, import_react34.useEffect)(() => watchRows(sessionId), [sessionId, watchRows]);
+  (0, import_react34.useEffect)(() => {
+    if (!open || liveRows.length === 0) return;
+    setNow(Date.now());
+    const timer = setInterval(() => {
+      setNow(Date.now());
+    }, 1e3);
+    return () => {
+      clearInterval(timer);
+    };
+  }, [open, liveRows.length]);
+  const expandedRow = open && expandedKey !== void 0 ? rows.find((job) => String(job.id) === expandedKey) : void 0;
+  const activeJob = expandedRow !== void 0 && isObservable(expandedRow) ? expandedRow.id : void 0;
+  (0, import_react34.useEffect)(() => {
+    if (activeJob === void 0) return;
+    return observe(sessionId, activeJob);
+  }, [sessionId, activeJob, observe]);
+  (0, import_react34.useEffect)(() => {
+    if (!hasJobs) changeOpen(false);
+  }, [hasJobs, changeOpen]);
+  (0, import_react34.useEffect)(() => {
+    if (expandedKey !== void 0 && !rows.some((job) => String(job.id) === expandedKey)) {
+      setExpandedKey(void 0);
+    }
+  }, [rows, expandedKey]);
+  (0, import_react34.useEffect)(() => {
+    if (killPhase === void 0 || killPhase.state === "pending") return;
+    const timer = setTimeout(
+      () => {
+        setKillPhase(void 0);
+      },
+      killPhase.state === "armed" ? KILL_ARM_MS : KILL_FAILED_MS
+    );
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [killPhase]);
+  (0, import_react34.useEffect)(() => {
+    if (killPhase !== void 0 && !rows.some((job) => String(job.id) === killPhase.key && job.status === "running")) {
+      setKillPhase(void 0);
+    }
+  }, [rows, killPhase]);
+  const pressKill = (job) => {
+    const key = String(job.id);
+    if (killPhase?.key !== key || killPhase.state !== "armed") {
+      setKillPhase({ key, state: "armed" });
+      return;
+    }
+    setKillPhase({ key, state: "pending" });
+    void killJob(sessionId, key).then((ok) => {
+      setKillPhase((current) => current?.key === key && !ok ? { key, state: "failed" } : current);
+    });
+  };
+  if (visibleCount === 0) return null;
+  const count = liveRows.length > 0 ? liveRows.length : visibleCount;
+  const countLabel = t(count === 1 ? "count.idle.one" : "count.idle.other", { count });
+  const clearSettled = () => {
+    setClearedKeys((current) => {
+      const next = new Set(current);
+      for (const job of settledRows) next.add(String(job.id));
+      return next;
+    });
+    if (expandedKey !== void 0 && settledRows.some((job) => String(job.id) === expandedKey)) {
+      setExpandedKey(void 0);
+    }
+  };
+  const onKeyDown = (event2) => {
+    const trigger = triggerRef.current;
+    if (event2.key === "Escape") {
+      event2.preventDefault();
+      changeOpen(false);
+      trigger?.focus();
+      return;
+    }
+    if (!open) return;
+    const menu = menuRef.current;
+    if (event2.key !== "Tab" || trigger === null || menu === null) return;
+    const focusable = [...menu.querySelectorAll(FOCUSABLE)];
+    if (event2.target === trigger) {
+      if (event2.shiftKey) return;
+      event2.preventDefault();
+      focusable[0]?.focus();
+    } else if (event2.shiftKey ? event2.target === focusable[0] : event2.target === focusable.at(-1)) {
+      if (event2.shiftKey) event2.preventDefault();
+      trigger.focus();
+    }
+  };
+  const item = (job) => /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
+    JobItem,
+    {
+      job,
+      view: isObservable(job) ? observedViews[String(job.id)] : void 0,
+      expanded: expandedKey === String(job.id),
+      now,
+      onToggle: () => {
+        setExpandedKey((current) => current === String(job.id) ? void 0 : String(job.id));
+      },
+      ...job.status === "running" ? {
+        kill: {
+          state: killPhase?.key === String(job.id) ? killPhase.state : "idle",
+          onPress: () => {
+            pressKill(job);
+          }
+        }
+      } : {},
+      t
+    },
+    String(job.id)
+  );
+  return /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("div", { ref: rootRef, style: { anchorName }, onKeyDown, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(import_dsh_client_ui_primitives34.Tooltip, { label: countLabel, disabled: open, delayMs: 500, portal: true, side: "bottom", children: /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(
+      "button",
+      {
+        ref: triggerRef,
+        type: "button",
+        className: JobListAction_default.trigger,
+        "aria-expanded": open,
+        "aria-label": countLabel,
+        "aria-describedby": liveRows.length > 0 ? activityId : void 0,
+        onPointerEnter: hoverEnter,
+        onPointerLeave: hoverLeave,
+        onClick: () => {
+          changeOpen(!open || allowsHoverOpen() && menuState.mode !== "pinned");
+        },
+        onKeyDown: (event2) => {
+          if (event2.key !== "ArrowDown") return;
+          event2.preventDefault();
+          changeOpen(true);
+          queueMicrotask(() => {
+            menuRef.current?.querySelector(FOCUSABLE)?.focus();
+          });
+        },
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("span", { className: JobListAction_default.activitySlot, "aria-hidden": true, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(import_dsh_client_ui_primitives34.IconLayersOutlineRegular, { size: 14, className: liveRows.length > 0 ? JobListAction_default.compactIcon : void 0 }),
+            liveRows.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(import_dsh_client_ui_primitives34.StateDot, { state: "ongoing", className: JobListAction_default.textModeActivity })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("span", { ref: countRef, className: JobListAction_default.count, "data-job-count": true, children: countLabel })
+        ]
+      }
+    ) }),
+    liveRows.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("span", { id: activityId, hidden: true, children: t("section.live") }),
+    open ? (0, import_react_dom6.createPortal)(
+      /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
+        import_dsh_client_ui_primitives34.MenuSurface,
+        {
+          ref: menuRef,
+          className: JobListAction_default.menu,
+          style: { positionAnchor: anchorName },
+          onPointerEnter: hoverEnter,
+          onPointerLeave: hoverLeave,
+          onPointerDownCapture: () => {
+            changeOpen(true);
+          },
+          onFocusCapture: () => {
+            changeOpen(true);
+          },
+          children: /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("ul", { className: JobListAction_default.menuBody, "aria-label": t("list.aria"), children: [
+            liveRows.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("li", { className: JobListAction_default.sectionHeader, "aria-hidden": "true", children: t("section.live") }) : null,
+            liveRows.map(item),
+            settledRows.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("li", { className: JobListAction_default.sectionHeader, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(
+                "button",
+                {
+                  type: "button",
+                  className: JobListAction_default.sectionToggle,
+                  "aria-expanded": settledExpanded,
+                  onClick: () => {
+                    setSettledOpen(!settledExpanded);
+                  },
+                  children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(import_dsh_client_ui_primitives34.IconChevronDownOutlineRegular, { size: 12, className: settledExpanded ? `${JobListAction_default.sectionChevron} ${JobListAction_default.sectionChevronOpen}` : JobListAction_default.sectionChevron }),
+                    t("section.settledCount", { count: settledRows.length })
+                  ]
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("button", { type: "button", className: JobListAction_default.sectionClear, onClick: clearSettled, children: t("section.clear") })
+            ] }) : null,
+            settledExpanded ? settledRows.map(item) : null
+          ] })
+        }
+      ),
+      document.body
+    ) : null
+  ] });
+}
+
+// ../../../.nvm/versions/node/v24.22.3/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-client-ui-jobs/src/client/locales.ts
+var zh3 = {
+  "count.idle.one": "{count} \u4E2A\u540E\u53F0\u4EFB\u52A1",
+  "count.idle.other": "{count} \u4E2A\u540E\u53F0\u4EFB\u52A1",
+  "list.aria": "\u540E\u53F0\u4EFB\u52A1",
+  "section.live": "\u8FDB\u884C\u4E2D",
+  "section.settledCount": "\u5DF2\u7ED3\u675F {count}",
+  "section.clear": "\u6E05\u7A7A",
+  "row.expandAria": "\u5C55\u5F00 {label} \u7684\u5B9E\u65F6\u8F93\u51FA",
+  "row.collapseAria": "\u6536\u8D77 {label} \u7684\u5B9E\u65F6\u8F93\u51FA",
+  "kill.stop": "\u505C\u6B62\u4EFB\u52A1 {label}",
+  "kill.confirm": "\u518D\u6B21\u70B9\u51FB\u786E\u8BA4\u505C\u6B62",
+  "kill.confirmAction": "\u786E\u8BA4\u505C\u6B62",
+  "kill.failed": "\u505C\u6B62\u5931\u8D25",
+  "status.running": "\u8FD0\u884C\u4E2D",
+  "status.stopping": "\u6B63\u5728\u505C\u6B62",
+  "status.completed": "\u5DF2\u5B8C\u6210",
+  "status.killed": "\u5DF2\u53D6\u6D88",
+  "status.failed": "\u5DF2\u5931\u8D25",
+  "duration.seconds": "{seconds}\u79D2",
+  "duration.minutes": "{minutes}\u5206{seconds}\u79D2",
+  "duration.hours": "{hours}\u5C0F\u65F6{minutes}\u5206",
+  "duration.title.live": "\u5DF2\u8FD0\u884C {duration}",
+  "duration.title.done": "\u8017\u65F6 {duration}",
+  "output.gap": "\u2026\u2026\u8F83\u65E9\u7684\u8F93\u51FA\u5DF2\u4E22\u5F03\u2026\u2026",
+  "output.error": "\u5B9E\u65F6\u8F93\u51FA\u6D41\u4E2D\u65AD\uFF1A{error}",
+  "terminal.signal": "\u4FE1\u53F7 {signal}",
+  "terminal.exitCode": "\u9000\u51FA\u7801 {code}",
+  "terminal.noExitCode": "\u672A\u6B63\u5E38\u9000\u51FA",
+  "terminal.commandLine": "\u547D\u4EE4\u7B2C {n} \u884C",
+  "terminal.running": "\u8FD0\u884C\u4E2D",
+  "terminal.failed": "\u5DF2\u5931\u8D25",
+  "terminal.done": "\u5DF2\u5B8C\u6210",
+  "terminal.copy": "\u590D\u5236",
+  "terminal.copied": "\u5DF2\u590D\u5236",
+  "terminal.noOutput": "\uFF08\u65E0\u8F93\u51FA\uFF09",
+  "terminal.collapse": "\u6536\u8D77",
+  "terminal.collapseAria": "\u6536\u8D77\u8F93\u51FA",
+  "terminal.expand": "\u5C55\u5F00\u5176\u4F59 {n} \u884C",
+  "terminal.expandAria": "\u5C55\u5F00\u88AB\u6298\u53E0\u7684 {n} \u884C\u8F93\u51FA"
+};
+var en3 = {
+  "count.idle.one": "{count} background job",
+  "count.idle.other": "{count} background jobs",
+  "list.aria": "Background jobs",
+  "section.live": "Running",
+  "section.settledCount": "Finished {count}",
+  "section.clear": "Clear",
+  "row.expandAria": "Show live output of {label}",
+  "row.collapseAria": "Hide live output of {label}",
+  "kill.stop": "Stop task {label}",
+  "kill.confirm": "Click again to confirm",
+  "kill.confirmAction": "Confirm stop",
+  "kill.failed": "Stop failed",
+  "status.running": "running",
+  "status.stopping": "stopping",
+  "status.completed": "completed",
+  "status.killed": "cancelled",
+  "status.failed": "failed",
+  "duration.seconds": "{seconds}s",
+  "duration.minutes": "{minutes}m {seconds}s",
+  "duration.hours": "{hours}h {minutes}m",
+  "duration.title.live": "Running for {duration}",
+  "duration.title.done": "Took {duration}",
+  "output.gap": "\u2026 earlier output dropped \u2026",
+  "output.error": "live output stream interrupted: {error}",
+  "terminal.signal": "signal {signal}",
+  "terminal.exitCode": "exit {code}",
+  "terminal.noExitCode": "no exit code",
+  "terminal.commandLine": "Command line {n}",
+  "terminal.running": "running",
+  "terminal.failed": "failed",
+  "terminal.done": "done",
+  "terminal.copy": "Copy",
+  "terminal.copied": "Copied",
+  "terminal.noOutput": "(no output)",
+  "terminal.collapse": "Collapse",
+  "terminal.collapseAria": "Collapse output",
+  "terminal.expand": "Show {n} more lines",
+  "terminal.expandAria": "Expand {n} collapsed output lines"
+};
+
+// TranscriptActivity.jsx
+var import_react35 = require("react");
+var import_dsh_client_ui_primitives35 = require("@deepseek-ai/dsh-client-ui-primitives");
+var import_jsx_runtime40 = require("react/jsx-runtime");
+var toolIcons = {
+  read: import_dsh_client_ui_primitives35.IconBrowseOutlineRegular,
+  edit: import_dsh_client_ui_primitives35.IconEditOutlineRegular,
+  write: import_dsh_client_ui_primitives35.IconEditOutlineRegular,
+  delete: import_dsh_client_ui_primitives35.IconTrashOutlineRegular,
+  search: import_dsh_client_ui_primitives35.IconSearchOutlineRegular,
+  move: import_dsh_client_ui_primitives35.IconFolderOpenRegular,
+  fetch: import_dsh_client_ui_primitives35.IconGlobeOutlineRegular,
+  execute: import_dsh_client_ui_primitives35.IconApiOutlineRegular
+};
+function describeTool(tool, t) {
+  const execution = tool.execution;
+  const locations = Array.isArray(tool.locations) ? tool.locations : [];
+  const Icon = toolIcons[tool.kind] ?? import_dsh_client_ui_primitives35.IconSparkleRegular;
+  const title = Object.hasOwn(toolIcons, tool.kind) ? t(`activity.${tool.kind}`) : tool.title || t("permission.tool");
+  const legacyCommand = !execution && tool.kind === "execute" && !locations.length && typeof tool.title === "string";
+  const command = legacyCommand ? tool.title.trim() : execution?.command?.trim() ?? "";
+  const shell = /^(?:\/[^\s]+\/)?(bash|sh|zsh|fish)\s+-[a-z]*c\s+/.exec(command);
+  const script = shell ? command.slice(shell[0].length).replace(/^(['"])([\s\S]*)\1$/, "$2") : command;
+  const lines = script.split("\n").map((line2) => line2.trim()).filter(Boolean);
+  const preview = lines.find((line2) => !/^(?:cd\s|[A-Za-z_][A-Za-z0-9_]*=)/.test(line2)) || lines[0] || "";
+  const detailedCommand = Boolean(command && (shell || lines.length > 1 || command.length > 88));
+  const summary = detailedCommand ? preview.slice(0, 84) + (preview.length > 84 || lines.length > 1 ? "\u2026" : "") : command || tool.title;
+  return { execution, locations, Icon, title, command, detailedCommand, summary };
+}
 function FileLocation({ location, openFile, t }) {
   const raw = location?.path ?? location?.uri;
   if (typeof raw !== "string" || !raw) return null;
@@ -13470,7 +14058,7 @@ function FileLocation({ location, openFile, t }) {
   const path = uri?.path ?? raw;
   const line2 = Number.isSafeInteger(location.line) && location.line > 0 ? location.line : uri?.line;
   const label = line2 ? `${path}:${line2}` : path;
-  return /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
     "button",
     {
       type: "button",
@@ -13521,9 +14109,9 @@ ${stderr}` : combined ?? stdout ?? stderr;
     expandAria: (n) => t("activity.expandOutput", { n }),
     expand: (n) => t("activity.expandOutput", { n })
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(import_jsx_runtime39.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
-      import_dsh_client_ui_primitives34.TerminalBlock,
+  return /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(import_jsx_runtime40.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
+      import_dsh_client_ui_primitives35.TerminalBlock,
       {
         command: command ?? t("activity.commandUnavailable"),
         output,
@@ -13536,11 +14124,11 @@ ${stderr}` : combined ?? stdout ?? stderr;
         className: "dchat-flow-terminal"
       }
     ),
-    input && /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("div", { className: "dchat-flow-input", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("span", { children: t("activity.input") }),
-      /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("pre", { children: input })
+    input && /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)("div", { className: "dchat-flow-input", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("span", { children: t("activity.input") }),
+      /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("pre", { children: input })
     ] }),
-    (commandTruncated || inputTruncated || outputTruncated) && /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("small", { className: "dchat-flow-truncated", children: [
+    (commandTruncated || inputTruncated || outputTruncated) && /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("small", { className: "dchat-flow-truncated", children: [
       commandTruncated && t("activity.commandTruncated"),
       inputTruncated && t("activity.inputTruncated"),
       outputTruncated && t("activity.outputTruncated")
@@ -13548,31 +14136,20 @@ ${stderr}` : combined ?? stdout ?? stderr;
   ] });
 }
 function ToolActivityRow({ tool, openFile, expandedTools, toggleExecution, t }) {
-  const [localOpen, setLocalOpen] = (0, import_react34.useState)(false);
-  const execution = tool.execution;
+  const [localOpen, setLocalOpen] = (0, import_react35.useState)(false);
+  const { execution, locations, Icon, title, command, detailedCommand, summary } = describeTool(tool, t);
   const sharedDisclosure = execution && tool.toolCallId && toggleExecution;
   const open = sharedDisclosure ? expandedTools?.has(tool.toolCallId) ?? false : localOpen;
-  const locations = Array.isArray(tool.locations) ? tool.locations : [];
-  const Icon = toolIcons[tool.kind] ?? import_dsh_client_ui_primitives34.IconSparkleRegular;
-  const title = Object.hasOwn(toolIcons, tool.kind) ? t(`activity.${tool.kind}`) : tool.title || t("permission.tool");
-  const legacyCommand = !execution && tool.kind === "execute" && !locations.length && typeof tool.title === "string";
-  const command = legacyCommand ? tool.title.trim() : execution?.command?.trim() ?? "";
-  const shell = /^(?:\/[^\s]+\/)?(bash|sh|zsh|fish)\s+-[a-z]*c\s+/.exec(command);
-  const script = shell ? command.slice(shell[0].length).replace(/^(['"])([\s\S]*)\1$/, "$2") : command;
-  const lines = script.split("\n").map((line2) => line2.trim()).filter(Boolean);
-  const preview = lines.find((line2) => !/^(?:cd\s|[A-Za-z_][A-Za-z0-9_]*=)/.test(line2)) || lines[0] || "";
-  const detailedCommand = command && (shell || lines.length > 1 || command.length > 88);
-  const summary = detailedCommand ? preview.slice(0, 84) + (preview.length > 84 || lines.length > 1 ? "\u2026" : "") : command || tool.title;
   const expandable = Boolean(execution || detailedCommand) || locations.length > 1;
   const running = tool.status === "in_progress" || tool.status === "pending";
   const stopped = tool.status === "cancelled" || tool.status === "interrupted";
   const exitCode = !running && Number.isSafeInteger(execution?.exitCode) ? execution.exitCode : void 0;
   const failed = tool.status === "failed" || exitCode !== void 0 && exitCode !== 0;
   const status = running ? tool.status : stopped && execution ? "activity.stopped" : failed ? "failed" : execution && tool.status === "completed" ? "completed" : void 0;
-  return /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(
-    import_dsh_client_ui_primitives34.DisclosureRow,
+  return /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(
+    import_dsh_client_ui_primitives35.DisclosureRow,
     {
-      icon: /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(Icon, { size: 14 }),
+      icon: /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(Icon, { size: 14 }),
       title,
       running,
       open: open && expandable,
@@ -13580,60 +14157,60 @@ function ToolActivityRow({ tool, openFile, expandedTools, toggleExecution, t }) 
       expandOnRowClick: !execution || !locations.length,
       keepContentWhenOpen: true,
       onToggle: () => sharedDisclosure ? toggleExecution(tool.toolCallId) : setLocalOpen((value) => !value),
-      collapsedContent: /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(import_jsx_runtime39.Fragment, { children: [
-        locations.length ? /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(import_jsx_runtime39.Fragment, { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("span", { className: "dchat-flow-separator", "aria-hidden": "true", "data-shimmer-decoration": true, children: "\xB7" }),
-          /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(FileLocation, { location: locations[0], openFile, t })
-        ] }) : summary && summary !== title && /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("span", { className: "dchat-flow-summary", title: summary, children: summary }),
-        locations.length > 1 && /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("small", { className: "dchat-flow-count", children: [
+      collapsedContent: /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(import_jsx_runtime40.Fragment, { children: [
+        locations.length ? /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(import_jsx_runtime40.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("span", { className: "dchat-flow-separator", "aria-hidden": "true", "data-shimmer-decoration": true, children: "\xB7" }),
+          /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(FileLocation, { location: locations[0], openFile, t })
+        ] }) : summary && summary !== title && /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("span", { className: "dchat-flow-summary", title: summary, children: summary }),
+        locations.length > 1 && /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)("small", { className: "dchat-flow-count", children: [
           "+",
           locations.length - 1
         ] }),
-        exitCode !== void 0 ? /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(import_dsh_client_ui_primitives34.Tag, { tone: "neutral", className: "dchat-flow-exit", children: [
-          failed && /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("span", { className: "dchat-flow-exit-dot", "aria-hidden": "true" }),
+        exitCode !== void 0 ? /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(import_dsh_client_ui_primitives35.Tag, { tone: "neutral", className: "dchat-flow-exit", children: [
+          failed && /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("span", { className: "dchat-flow-exit-dot", "aria-hidden": "true" }),
           t("activity.exitCode", { code: exitCode })
-        ] }) : status && /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("small", { className: "dchat-flow-status", "data-failed": failed || void 0, children: t(status) })
+        ] }) : status && /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("small", { className: "dchat-flow-status", "data-failed": failed || void 0, children: t(status) })
       ] }),
       children: [
-        open && (execution ? /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(CommandDetails, { execution, exitCode, running, failed, stopped, t }) : detailedCommand && /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("pre", { className: "dchat-flow-command", children: command })),
-        locations.length > 1 && /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("ul", { className: "dchat-flow-files", children: locations.slice(1).map((location, index2) => /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(FileLocation, { location, openFile, t }) }, index2)) })
+        open && (execution ? /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(CommandDetails, { execution, exitCode, running, failed, stopped, t }) : detailedCommand && /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("pre", { className: "dchat-flow-command", children: command })),
+        locations.length > 1 && /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("ul", { className: "dchat-flow-files", children: locations.slice(1).map((location, index2) => /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(FileLocation, { location, openFile, t }) }, index2)) })
       ]
     }
   );
 }
 function ReasoningRow({ text, streaming, markdown, t }) {
-  const [open, setOpen] = (0, import_react34.useState)(false);
+  const [open, setOpen] = (0, import_react35.useState)(false);
   const summary = text.trim().split("\n", 1)[0].replaceAll("**", "");
-  return /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
-    import_dsh_client_ui_primitives34.DisclosureRow,
+  return /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
+    import_dsh_client_ui_primitives35.DisclosureRow,
     {
-      icon: /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(import_dsh_client_ui_primitives34.IconThinkOutlineRegular, { size: 14 }),
+      icon: /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(import_dsh_client_ui_primitives35.IconThinkOutlineRegular, { size: 14 }),
       title: t("thought"),
       running: streaming,
       open,
       expandable: true,
       expandOnRowClick: true,
       onToggle: () => setOpen((value) => !value),
-      collapsedContent: summary && /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("span", { className: "dchat-flow-summary", children: summary }),
-      children: open && /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("div", { className: "dchat-flow-body", children: /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(import_dsh_client_ui_primitives34.MarkdownText, { ...markdown, text: normalizeMarkdownFileUrls(text), streaming, variant: "compact" }) })
+      collapsedContent: summary && /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("span", { className: "dchat-flow-summary", children: summary }),
+      children: open && /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("div", { className: "dchat-flow-body", children: /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(import_dsh_client_ui_primitives35.MarkdownText, { ...markdown, text: normalizeMarkdownFileUrls(text), streaming, variant: "compact" }) })
     }
   );
 }
 function PlanRow({ plan, t }) {
-  const [open, setOpen] = (0, import_react34.useState)(false);
-  return /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
-    import_dsh_client_ui_primitives34.DisclosureRow,
+  const [open, setOpen] = (0, import_react35.useState)(false);
+  return /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
+    import_dsh_client_ui_primitives35.DisclosureRow,
     {
-      icon: /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(import_dsh_client_ui_primitives34.IconChecklistOutlineRegular, { size: 14 }),
+      icon: /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(import_dsh_client_ui_primitives35.IconChecklistOutlineRegular, { size: 14 }),
       title: t("plan"),
       open,
       expandable: true,
       expandOnRowClick: true,
       onToggle: () => setOpen((value) => !value),
-      children: /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("ul", { className: "dchat-flow-files", children: plan.map((entry, index2) => /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("li", { children: [
+      children: /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("ul", { className: "dchat-flow-files", children: plan.map((entry, index2) => /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)("li", { children: [
         entry.content,
         " ",
-        /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("small", { children: ["pending", "in_progress", "completed", "failed"].includes(entry.status) ? t(entry.status) : entry.status })
+        /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("small", { children: ["pending", "in_progress", "completed", "failed"].includes(entry.status) ? t(entry.status) : entry.status })
       ] }, index2)) })
     }
   );
@@ -13642,14 +14219,14 @@ function TranscriptActivity({ activity, openFile, streaming, markdown, expandedT
   const { thought, plan, tools, steps } = activity;
   const hasSteps = Array.isArray(steps) && steps.length > 0;
   if (!thought && !plan.length && !tools.length && !hasSteps) return null;
-  return /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("div", { className: "dchat-flow", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)("div", { className: "dchat-flow", children: [
     hasSteps ? steps.map((step, index2) => {
       if (step.kind === "thought") {
         const isTail = index2 === steps.length - 1;
-        return /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(ReasoningRow, { text: step.text, streaming: streaming && isTail, markdown, t }, `thought-${index2}`);
+        return /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(ReasoningRow, { text: step.text, streaming: streaming && isTail, markdown, t }, `thought-${index2}`);
       }
       if (step.kind === "tool" && step.tool) {
-        return /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
+        return /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
           ToolActivityRow,
           {
             tool: step.tool,
@@ -13662,12 +14239,12 @@ function TranscriptActivity({ activity, openFile, streaming, markdown, expandedT
         );
       }
       if (step.kind === "plan" && step.entries?.length) {
-        return /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(PlanRow, { plan: step.entries, t }, `plan-${index2}`);
+        return /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(PlanRow, { plan: step.entries, t }, `plan-${index2}`);
       }
       return null;
-    }) : /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(import_jsx_runtime39.Fragment, { children: [
-      thought && /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(ReasoningRow, { text: thought, streaming, markdown, t }),
-      tools.map((tool, index2) => /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
+    }) : /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(import_jsx_runtime40.Fragment, { children: [
+      thought && /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(ReasoningRow, { text: thought, streaming, markdown, t }),
+      tools.map((tool, index2) => /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
         ToolActivityRow,
         {
           tool,
@@ -13679,8 +14256,125 @@ function TranscriptActivity({ activity, openFile, streaming, markdown, expandedT
         tool.toolCallId ?? index2
       ))
     ] }),
-    plan.length > 0 && !steps?.some((step) => step.kind === "plan") && /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(PlanRow, { plan, t })
+    plan.length > 0 && !steps?.some((step) => step.kind === "plan") && /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(PlanRow, { plan, t })
   ] });
+}
+
+// RunningJobs.jsx
+var import_jsx_runtime41 = require("react/jsx-runtime");
+var noTools = [];
+function withOutputTail2(head, tail, omission) {
+  if (tail === void 0) return head;
+  const before = head && !head.endsWith("\n") ? "\n" : "";
+  const after = tail.startsWith("\n") ? "" : "\n";
+  return `${head ?? ""}${before}${omission}${after}${tail}`;
+}
+function toolOutputText(execution, command, detailedCommand, t) {
+  if (!execution) return detailedCommand ? command : "";
+  const omitted = t("activity.outputOmitted");
+  const combined = withOutputTail2(execution.output, execution.outputTail, omitted);
+  const stdout = withOutputTail2(execution.stdout, execution.stdoutTail, omitted);
+  const stderr = withOutputTail2(execution.stderr, execution.stderrTail, omitted);
+  if (combined !== void 0) return combined;
+  if (stderr) {
+    const separator = stdout && !stdout.endsWith("\n") ? "\n" : "";
+    return `${stdout ? `${t("activity.stdout")}
+${stdout}${separator}` : ""}${t("activity.stderr")}
+${stderr}`;
+  }
+  return stdout ?? "";
+}
+function toJobStatus(tool) {
+  if (tool.status === "pending" || tool.status === "in_progress") return "running";
+  if (tool.status === "cancelled" || tool.status === "interrupted") return "killed";
+  const exitCode = Number.isSafeInteger(tool.execution?.exitCode) ? tool.execution.exitCode : void 0;
+  if (tool.status === "failed" || exitCode !== void 0 && exitCode !== 0) return "failed";
+  return "completed";
+}
+function createJobTranslator(t) {
+  const dict = t("panel") === "\u76F4\u63A5\u5BF9\u8BDD" ? zh3 : en3;
+  return (key, params) => {
+    let text = dict[key] ?? en3[key] ?? key;
+    if (params) {
+      for (const [name, value] of Object.entries(params)) {
+        text = text.replaceAll(`{${name}}`, String(value));
+      }
+    }
+    return text;
+  };
+}
+function RunningJobsAction({ sessionId, summary, t }) {
+  const tools = summary?.tools ?? noTools;
+  const timestampsRef = (0, import_react36.useRef)(/* @__PURE__ */ new Map());
+  const stopRef = (0, import_react36.useRef)(summary?.stop);
+  stopRef.current = summary?.stop;
+  const jobT = (0, import_react36.useMemo)(() => createJobTranslator(t), [t]);
+  const snapshot = (0, import_react36.useMemo)(() => {
+    const now = Date.now();
+    const timestamps = timestampsRef.current;
+    const rows = [];
+    const observed = {};
+    tools.forEach((tool, index2) => {
+      const id = String(tool.toolCallId ?? `tool-${index2}`);
+      const status = toJobStatus(tool);
+      const isRunning = status === "running";
+      let timing = timestamps.get(id);
+      if (!timing) {
+        timing = { startedAt: now };
+        timestamps.set(id, timing);
+      }
+      if (!isRunning && timing.finishedAt === void 0) timing.finishedAt = now;
+      else if (isRunning && timing.finishedAt !== void 0) delete timing.finishedAt;
+      const { execution, locations, title, command, detailedCommand, summary: toolSummary } = describeTool(tool, t);
+      const label = command || toolSummary || title || t("permission.tool");
+      const exitCode = !isRunning && Number.isSafeInteger(execution?.exitCode) ? execution.exitCode : void 0;
+      const detail = isRunning ? locations[0]?.path ?? locations[0]?.uri : exitCode !== void 0 ? t("activity.exitCode", { code: exitCode }) : void 0;
+      const text = toolOutputText(execution, command, detailedCommand, t);
+      if (text || isRunning) observed[id] = { text };
+      rows.push({
+        id,
+        kind: title,
+        label,
+        status,
+        detail,
+        startedAt: timing.startedAt,
+        finishedAt: timing.finishedAt,
+        output: { total: text.length }
+      });
+    });
+    return {
+      rows: sessionId ? { [sessionId]: rows } : {},
+      observed
+    };
+  }, [sessionId, tools, t]);
+  const storeRef = (0, import_react36.useRef)({
+    snapshot,
+    listeners: /* @__PURE__ */ new Set()
+  });
+  (0, import_react36.useEffect)(() => {
+    storeRef.current.snapshot = snapshot;
+    for (const listener of storeRef.current.listeners) listener();
+  }, [snapshot]);
+  const useJobs = (0, import_react36.useCallback)((selector) => (0, import_react36.useSyncExternalStore)(
+    (listener) => {
+      storeRef.current.listeners.add(listener);
+      return () => {
+        storeRef.current.listeners.delete(listener);
+      };
+    },
+    () => selector(storeRef.current.snapshot)
+  ), []);
+  const watchRows = (0, import_react36.useCallback)(() => () => {
+  }, []);
+  const observe = (0, import_react36.useCallback)(() => () => {
+  }, []);
+  const killJob = (0, import_react36.useCallback)(async () => {
+    if (!stopRef.current) return false;
+    stopRef.current();
+    return true;
+  }, []);
+  if (!sessionId) return null;
+  return /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(JobListAction, { sessionId, useJobs, watchRows, observe, killJob, t: jobT });
 }
 
 // codex-transcript.mjs
@@ -13706,19 +14400,19 @@ function questionReply(text) {
 }
 
 // WorkspacePicker.jsx
-var import_react35 = require("react");
-var import_dsh_client_ui_primitives35 = require("@deepseek-ai/dsh-client-ui-primitives");
-var import_jsx_runtime40 = require("react/jsx-runtime");
+var import_react37 = require("react");
+var import_dsh_client_ui_primitives36 = require("@deepseek-ai/dsh-client-ui-primitives");
+var import_jsx_runtime42 = require("react/jsx-runtime");
 function WorkspacePicker({ value, onChange, disabled, t, renderFactorySlot, workspaceSource }) {
-  const [open, setOpen] = (0, import_react35.useState)(false);
-  const anchorRef = (0, import_react35.useRef)(null);
-  const valueId = (0, import_react35.useId)();
-  const { items } = (0, import_react35.useSyncExternalStore)(workspaceSource.subscribe, workspaceSource.getSnapshot, workspaceSource.getSnapshot);
+  const [open, setOpen] = (0, import_react37.useState)(false);
+  const anchorRef = (0, import_react37.useRef)(null);
+  const valueId = (0, import_react37.useId)();
+  const { items } = (0, import_react37.useSyncExternalStore)(workspaceSource.subscribe, workspaceSource.getSnapshot, workspaceSource.getSnapshot);
   const selected = items.find((workspace) => workspace.path === value);
   const folderName = value?.split(/[/\\]/).filter(Boolean).at(-1) || value;
-  const Folder = value ? import_dsh_client_ui_primitives35.IconFolderOpenRegular : import_dsh_client_ui_primitives35.IconFolderCloseRegular;
-  return /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)("div", { className: "dchat-workspace-picker", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(
+  const Folder = value ? import_dsh_client_ui_primitives36.IconFolderOpenRegular : import_dsh_client_ui_primitives36.IconFolderCloseRegular;
+  return /* @__PURE__ */ (0, import_jsx_runtime42.jsxs)("div", { className: "dchat-workspace-picker", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime42.jsxs)(
       "button",
       {
         ref: anchorRef,
@@ -13737,9 +14431,9 @@ function WorkspacePicker({ value, onChange, disabled, t, renderFactorySlot, work
           setOpen(true);
         },
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(Folder, { size: 16 }),
-          /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("span", { className: "dchat-workspace-selection", id: valueId, children: selected?.title || folderName || t("cwd.default") }),
-          /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(import_dsh_client_ui_primitives35.IconChevronDownOutlineRegular, { className: "dchat-workspace-chevron", size: 12 })
+          /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(Folder, { size: 16 }),
+          /* @__PURE__ */ (0, import_jsx_runtime42.jsx)("span", { className: "dchat-workspace-selection", id: valueId, children: selected?.title || folderName || t("cwd.default") }),
+          /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(import_dsh_client_ui_primitives36.IconChevronDownOutlineRegular, { className: "dchat-workspace-chevron", size: 12 })
         ]
       }
     ),
@@ -13823,33 +14517,45 @@ function createTranscriptFollow(onChange) {
 }
 
 // DirectChat.jsx
-var import_jsx_runtime41 = require("react/jsx-runtime");
+var import_jsx_runtime43 = require("react/jsx-runtime");
 var noAgents = [];
+var noTools2 = [];
+var isBackgroundTool = (tool) => {
+  if (!tool) return false;
+  if (tool.execution?.background || tool._meta?.background) return true;
+  const text = `${tool.execution?.output ?? ""}
+${tool.execution?.outputTail ?? ""}
+${tool.execution?.stdout ?? ""}`;
+  return /running as a background task|background task with task id:/i.test(text);
+};
+var isActiveTool = (tool) => tool?.status === "pending" || tool?.status === "in_progress";
 var defaultSubmissionSettings = { getSnapshot: () => void 0, subscribe: () => () => {
 } };
 var INITIAL_VISIBLE_MESSAGES = 24;
 var LOAD_MORE_MESSAGES_STEP = 32;
 var commandIcons = /* @__PURE__ */ new Map([
-  ["compact", import_dsh_client_ui_primitives36.IconCompactOutlineRegular],
-  ["permission", import_dsh_client_ui_primitives36.PermissionIconFullAccessRegular],
-  ["model", import_dsh_client_ui_primitives36.IconDataOutlineRegular],
-  ["goal", import_dsh_client_ui_primitives36.IconGoalOutlineRegular],
-  ["plan", import_dsh_client_ui_primitives36.IconPlanOutlineRegular],
-  ["feedback", import_dsh_client_ui_primitives36.IconPaperPlaneOutlineRegular],
-  ["export", import_dsh_client_ui_primitives36.IconDownloadOutlineRegular]
+  ["compact", import_dsh_client_ui_primitives37.IconCompactOutlineRegular],
+  ["permission", import_dsh_client_ui_primitives37.PermissionIconFullAccessRegular],
+  ["model", import_dsh_client_ui_primitives37.IconDataOutlineRegular],
+  ["goal", import_dsh_client_ui_primitives37.IconGoalOutlineRegular],
+  ["plan", import_dsh_client_ui_primitives37.IconPlanOutlineRegular],
+  ["feedback", import_dsh_client_ui_primitives37.IconPaperPlaneOutlineRegular],
+  ["export", import_dsh_client_ui_primitives37.IconDownloadOutlineRegular]
 ]);
 function DirectChat({ navigation, startNative, renderFactorySlot, workspaceSource, engineSource, diffController, performanceSettings, submissionSettings, queueDock, statusStore, nativeSessions, useSessionStatus, useWorkspaces, openDirect, openNative, t }) {
-  const target = (0, import_react36.useSyncExternalStore)(navigation.subscribe, navigation.getSnapshot);
-  const { engines, status: engineStatus } = (0, import_react36.useSyncExternalStore)(engineSource.subscribe, engineSource.getSnapshot);
-  const [column, setColumn] = (0, import_react36.useState)(null);
-  const [metadata, setMetadata] = (0, import_react36.useState)(null);
-  const parent = (0, import_react36.useRef)(null);
-  const [agentSummary, setAgentSummary] = (0, import_react36.useState)(null);
+  const target = (0, import_react38.useSyncExternalStore)(navigation.subscribe, navigation.getSnapshot);
+  const { engines, status: engineStatus } = (0, import_react38.useSyncExternalStore)(engineSource.subscribe, engineSource.getSnapshot);
+  const [column, setColumn] = (0, import_react38.useState)(null);
+  const [metadata, setMetadata] = (0, import_react38.useState)(null);
+  const parent = (0, import_react38.useRef)(null);
+  const [agentSummary, setAgentSummary] = (0, import_react38.useState)(null);
+  const [runtimeSummary, setRuntimeSummary] = (0, import_react38.useState)(null);
   const current = metadata?.id === target.id ? metadata : null;
   const currentAgents = agentSummary?.id === target.id ? agentSummary : null;
+  const currentRuntime = runtimeSummary?.id === target.id ? runtimeSummary : null;
   const engine = target.engine ?? engines[0]?.id;
   const engineMeta = engines.find((item) => item.id === engine)?.meta;
-  return /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(
     "section",
     {
       className: "dchat",
@@ -13858,10 +14564,10 @@ function DirectChat({ navigation, startNative, renderFactorySlot, workspaceSourc
       style: !target.id && engineMeta?.accentColor ? { "--dchat-hero-accent": engineMeta.accentColor } : void 0,
       "aria-label": t("panel"),
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("header", { className: "dchat-header", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("div", { className: "dchat-title", children: target.id && /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(import_jsx_runtime41.Fragment, { children: [
-            current?.parentId && /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(
-              import_dsh_client_ui_primitives36.Button,
+        /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("header", { className: "dchat-header", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("div", { className: "dchat-title", children: target.id && /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(import_jsx_runtime43.Fragment, { children: [
+            current?.parentId && /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(
+              import_dsh_client_ui_primitives37.Button,
               {
                 size: "sm",
                 className: "dchat-parent",
@@ -13869,33 +14575,34 @@ function DirectChat({ navigation, startNative, renderFactorySlot, workspaceSourc
                 title: t("parallel.parent"),
                 onClick: () => navigation.open(current.parentId),
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.IconChevronLeftOutlineRegular, { size: 16 }),
-                  /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("span", { children: parent.current?.id === current.parentId ? parent.current.title : t("agents.parent") })
+                  /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconChevronLeftOutlineRegular, { size: 16 }),
+                  /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { children: parent.current?.id === current.parentId ? parent.current.title : t("agents.parent") })
                 ]
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("h1", { title: current?.title, children: current?.title || t("panel") }),
+            /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("h1", { title: current?.title, children: current?.title || t("panel") }),
             current && (() => {
               const engInfo = engines.find((item) => item.id === current.engine);
               const engStatus = engInfo?.status;
-              return /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("span", { className: "dchat-engine-label", title: current.cwd, children: [
-                /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(EngineLogo, { engine: current.engine, size: 14 }),
+              return /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("span", { className: "dchat-engine-label", title: current.cwd, children: [
+                /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(EngineLogo, { engine: current.engine, size: 14 }),
                 engineLabel(engines, current.engine),
-                engStatus?.version && /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("span", { className: "dchat-engine-version", children: [
+                engStatus?.version && /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("span", { className: "dchat-engine-version", children: [
                   "v",
                   engStatus.version
                 ] }),
-                engStatus?.updateAvailable && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("span", { className: "dchat-engine-pill", "data-tone": "update", children: t("engine.updateAvailable", { version: engStatus.latestVersion }) })
+                engStatus?.updateAvailable && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { className: "dchat-engine-pill", "data-tone": "update", children: t("engine.updateAvailable", { version: engStatus.latestVersion }) })
               ] });
             })(),
-            /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(SubagentCatalog, { summary: currentAgents, openChild: (id) => {
+            /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(SubagentCatalog, { summary: currentAgents, openChild: (id) => {
               parent.current = current;
               navigation.open(id);
             }, t }, target.id)
           ] }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { className: "dchat-header-actions", children: [
-            diffController && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(WorkspaceDiff, { controller: diffController, t }),
-            statusStore && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { className: "dchat-header-actions", children: [
+            target.id && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(RunningJobsAction, { sessionId: target.id, summary: currentRuntime, t }, target.id),
+            diffController && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(WorkspaceDiff, { controller: diffController, t }),
+            statusStore && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
               SessionPet,
               {
                 variant: "header",
@@ -13911,8 +14618,8 @@ function DirectChat({ navigation, startNative, renderFactorySlot, workspaceSourc
             )
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { ref: setColumn, className: ConversationRoot_default.body, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("div", { className: ConversationRoot_default.scrollBody, children: /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { ref: setColumn, className: ConversationRoot_default.body, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("div", { className: ConversationRoot_default.scrollBody, children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
             SessionPane,
             {
               target,
@@ -13927,6 +14634,7 @@ function DirectChat({ navigation, startNative, renderFactorySlot, workspaceSourc
               diffController,
               queueDock,
               onAgentSummary: setAgentSummary,
+              onRuntimeSummary: setRuntimeSummary,
               onSession: setMetadata,
               renderFactorySlot,
               workspaceSource,
@@ -13934,16 +14642,16 @@ function DirectChat({ navigation, startNative, renderFactorySlot, workspaceSourc
             },
             target.key ?? target.id ?? target.engine
           ) }),
-          /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(ConversationWidthControls, { container: column, phase: target.id ? "active" : "hero" })
+          /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(ConversationWidthControls, { container: column, phase: target.id ? "active" : "hero" })
         ] })
       ]
     }
   );
 }
-function SessionPane({ queueDock, onAgentSummary, target, navigation, startNative, performanceSettings, submissionSettings = defaultSubmissionSettings, onSession, renderFactorySlot, workspaceSource, engine, engines, engineStatus, reloadEngines, diffController, t }) {
+function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navigation, startNative, performanceSettings, submissionSettings = defaultSubmissionSettings, onSession, renderFactorySlot, workspaceSource, engine, engines, engineStatus, reloadEngines, diffController, t }) {
   const blank = !target.id;
   const cwd = target.cwd ?? "";
-  const [draftProfiles, setDraftProfiles] = (0, import_react36.useState)(() => {
+  const [draftProfiles, setDraftProfiles] = (0, import_react38.useState)(() => {
     try {
       const saved3 = JSON.parse(sessionStorage.getItem("dsh-direct-chat.draft-profiles") ?? "null");
       return saved3 && typeof saved3 === "object" ? saved3 : {};
@@ -13962,51 +14670,51 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
     });
   };
   const profileId = engine && typeof draftProfiles[engine] === "string" ? draftProfiles[engine] : void 0;
-  const [prepared, setPrepared] = (0, import_react36.useState)(null);
-  const [prepareAttempt, setPrepareAttempt] = (0, import_react36.useState)(0);
+  const [prepared, setPrepared] = (0, import_react38.useState)(null);
+  const [prepareAttempt, setPrepareAttempt] = (0, import_react38.useState)(0);
   const preparation = prepared?.engine === engine && prepared?.cwd === cwd && prepared.profileId === profileId && prepared.attempt === prepareAttempt ? prepared : null;
   const id = target.id ?? preparation?.session?.id;
-  const [feed, setFeed] = (0, import_react36.useState)(null);
+  const [feed, setFeed] = (0, import_react38.useState)(null);
   const session = feed?.id === id ? feed : preparation?.session ?? null;
-  const [stream, setStream] = (0, import_react36.useState)(null);
+  const [stream, setStream] = (0, import_react38.useState)(null);
   const connection = stream && stream.id === id ? stream.phase : "connecting";
-  const [connectAttempt, setConnectAttempt] = (0, import_react36.useState)(0);
+  const [connectAttempt, setConnectAttempt] = (0, import_react38.useState)(0);
   const composer = navigation.draftFor(target, engine);
-  const { text: draft, command: stagedCommand, attachments, sending, error: sendError } = (0, import_react36.useSyncExternalStore)(composer.subscribe, composer.getSnapshot);
+  const { text: draft, command: stagedCommand, attachments, sending, error: sendError } = (0, import_react38.useSyncExternalStore)(composer.subscribe, composer.getSnapshot);
   const { setText: setDraft, setCommand: setStagedCommand, setAttachments } = composer;
-  const [draggingFiles, setDraggingFiles] = (0, import_react36.useState)(false);
-  const fileDragDepth = (0, import_react36.useRef)(0);
-  const [error, setError] = (0, import_react36.useState)("");
-  const [invalidEvent, setInvalidEvent] = (0, import_react36.useState)(false);
-  const [pendingAction, setPending] = (0, import_react36.useState)(null);
+  const [draggingFiles, setDraggingFiles] = (0, import_react38.useState)(false);
+  const fileDragDepth = (0, import_react38.useRef)(0);
+  const [error, setError] = (0, import_react38.useState)("");
+  const [invalidEvent, setInvalidEvent] = (0, import_react38.useState)(false);
+  const [pendingAction, setPending] = (0, import_react38.useState)(null);
   const pending = sending ? "prompt" : pendingAction;
-  const [queueEcho, setQueueEcho] = (0, import_react36.useState)(null);
-  const [deliveryMenuOpen, setDeliveryMenuOpen] = (0, import_react36.useState)(false);
-  const subscribeSubmission = (0, import_react36.useCallback)((listener) => submissionSettings.subscribe(listener), [submissionSettings]);
-  const readSubmission = (0, import_react36.useCallback)(() => submissionSettings.getSnapshot()?.value?.busyEnter, [submissionSettings]);
-  const busyEnter = (0, import_react36.useSyncExternalStore)(subscribeSubmission, readSubmission, readSubmission);
-  const [mobileOptionsOpen, setMobileOptionsOpen] = (0, import_react36.useState)(false);
-  const optionsRowId = (0, import_react36.useId)();
-  const [modeMenuOpen, setModeMenuOpen] = (0, import_react36.useState)(false);
-  const [parallelOpen, setParallelOpen] = (0, import_react36.useState)(false);
-  const [visibleWindow, setVisibleWindow] = (0, import_react36.useState)({ id: null, count: INITIAL_VISIBLE_MESSAGES });
-  const [followingTail, setFollowingTail] = (0, import_react36.useState)(true);
-  const [follow] = (0, import_react36.useState)(() => createTranscriptFollow(setFollowingTail));
-  const [activeTurn, setActiveTurn] = (0, import_react36.useState)(null);
-  const [expandedTools, setExpandedTools] = (0, import_react36.useState)({ id: null, tools: /* @__PURE__ */ new Set() });
-  const pendingTurnJumpRef = (0, import_react36.useRef)(null);
-  const scrollAnchorRef = (0, import_react36.useRef)(null);
-  const lastScrollTopRef = (0, import_react36.useRef)(0);
-  const scrollRafRef = (0, import_react36.useRef)(0);
-  const modelTriggerRef = (0, import_react36.useRef)(null);
-  const [commandDialog, setCommandDialog] = (0, import_react36.useState)(null);
-  const transcript = (0, import_react36.useRef)(null);
-  const transcriptContent = (0, import_react36.useRef)(null);
-  const input = (0, import_react36.useRef)(null);
-  const fileInput = (0, import_react36.useRef)(null);
-  const reviewInput = (0, import_react36.useRef)(null);
-  const focusReviewInput = (0, import_react36.useRef)(false);
-  const nextAttachment = (0, import_react36.useRef)(Math.max(-1, ...attachments.map((item) => item.id)) + 1);
+  const [queueEcho, setQueueEcho] = (0, import_react38.useState)(null);
+  const [deliveryMenuOpen, setDeliveryMenuOpen] = (0, import_react38.useState)(false);
+  const subscribeSubmission = (0, import_react38.useCallback)((listener) => submissionSettings.subscribe(listener), [submissionSettings]);
+  const readSubmission = (0, import_react38.useCallback)(() => submissionSettings.getSnapshot()?.value?.busyEnter, [submissionSettings]);
+  const busyEnter = (0, import_react38.useSyncExternalStore)(subscribeSubmission, readSubmission, readSubmission);
+  const [mobileOptionsOpen, setMobileOptionsOpen] = (0, import_react38.useState)(false);
+  const optionsRowId = (0, import_react38.useId)();
+  const [modeMenuOpen, setModeMenuOpen] = (0, import_react38.useState)(false);
+  const [parallelOpen, setParallelOpen] = (0, import_react38.useState)(false);
+  const [visibleWindow, setVisibleWindow] = (0, import_react38.useState)({ id: null, count: INITIAL_VISIBLE_MESSAGES });
+  const [followingTail, setFollowingTail] = (0, import_react38.useState)(true);
+  const [follow] = (0, import_react38.useState)(() => createTranscriptFollow(setFollowingTail));
+  const [activeTurn, setActiveTurn] = (0, import_react38.useState)(null);
+  const [expandedTools, setExpandedTools] = (0, import_react38.useState)({ id: null, tools: /* @__PURE__ */ new Set() });
+  const pendingTurnJumpRef = (0, import_react38.useRef)(null);
+  const scrollAnchorRef = (0, import_react38.useRef)(null);
+  const lastScrollTopRef = (0, import_react38.useRef)(0);
+  const scrollRafRef = (0, import_react38.useRef)(0);
+  const modelTriggerRef = (0, import_react38.useRef)(null);
+  const [commandDialog, setCommandDialog] = (0, import_react38.useState)(null);
+  const transcript = (0, import_react38.useRef)(null);
+  const transcriptContent = (0, import_react38.useRef)(null);
+  const input = (0, import_react38.useRef)(null);
+  const fileInput = (0, import_react38.useRef)(null);
+  const reviewInput = (0, import_react38.useRef)(null);
+  const focusReviewInput = (0, import_react38.useRef)(false);
+  const nextAttachment = (0, import_react38.useRef)(Math.max(-1, ...attachments.map((item) => item.id)) + 1);
   const diffId = blank && !cwd ? void 0 : id;
   const diffCwd = diffId ? session?.cwd || (blank ? cwd : void 0) : void 0;
   reviewInput.current = (format) => {
@@ -14015,13 +14723,13 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
     setDraft((current) => appendReviewQuote(current, format));
     return true;
   };
-  (0, import_react36.useLayoutEffect)(() => {
+  (0, import_react38.useLayoutEffect)(() => {
     if (!focusReviewInput.current) return;
     focusReviewInput.current = false;
     input.current?.focus({ preventScroll: true });
     input.current?.setSelectionRange(draft.length, draft.length);
   }, [draft]);
-  (0, import_react36.useLayoutEffect)(
+  (0, import_react38.useLayoutEffect)(
     () => diffController?.bindTarget(diffId && diffCwd ? {
       id: diffId,
       cwd: diffCwd,
@@ -14029,7 +14737,7 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
     } : null),
     [diffController, diffId, diffCwd]
   );
-  (0, import_react36.useEffect)(() => {
+  (0, import_react38.useEffect)(() => {
     if (!blank || !engine) return;
     let current = true;
     createSession(engine, cwd, profileId).then((session2) => {
@@ -14041,7 +14749,7 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
       current = false;
     };
   }, [blank, engine, cwd, profileId, prepareAttempt]);
-  (0, import_react36.useEffect)(() => {
+  (0, import_react38.useEffect)(() => {
     if (!id) return;
     setStream({ id, phase: "connecting" });
     const source2 = openEvents(id);
@@ -14063,7 +14771,7 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
     };
     return () => source2.close();
   }, [id, connectAttempt, onSession, navigation]);
-  (0, import_react36.useLayoutEffect)(() => {
+  (0, import_react38.useLayoutEffect)(() => {
     follow.setFollowing(true);
     lastScrollTopRef.current = 0;
     scrollAnchorRef.current = null;
@@ -14075,7 +14783,7 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
       scrollRafRef.current = 0;
     };
   }, [follow, id]);
-  (0, import_react36.useLayoutEffect)(() => {
+  (0, import_react38.useLayoutEffect)(() => {
     const node2 = transcript.current;
     if (!node2 || blank) return;
     const settle = () => follow.settle(node2);
@@ -14090,7 +14798,7 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
       node2.removeEventListener("scrollend", settle);
     };
   }, [blank, follow, id]);
-  (0, import_react36.useLayoutEffect)(() => {
+  (0, import_react38.useLayoutEffect)(() => {
     const node2 = transcript.current;
     if (!node2 || blank) return;
     if (pendingTurnJumpRef.current !== null) {
@@ -14132,10 +14840,11 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
     }
   };
   const busy = Boolean(session?.busy);
-  const [runStartedAt, setRunStartedAt] = (0, import_react36.useState)(void 0);
-  (0, import_react36.useEffect)(() => {
-    setRunStartedAt(busy ? Date.now() : void 0);
-  }, [busy, id]);
+  const [fallbackStartedAt, setFallbackStartedAt] = (0, import_react38.useState)(void 0);
+  (0, import_react38.useEffect)(() => {
+    setFallbackStartedAt(busy && !session?.runStartedAt ? Date.now() : void 0);
+  }, [busy, session?.runStartedAt, id]);
+  const runStartedAt = busy ? session?.runStartedAt ?? fallbackStartedAt : void 0;
   const ready = connection === "ready";
   const capabilities = session?.capabilities ?? {};
   const currentEngine = session?.engine ?? (blank ? engine : void 0);
@@ -14156,7 +14865,7 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
   const deliveryFor = (alternate) => promptDelivery(busy, canSteerDraft, busyEnter, alternate, queue.length > 0);
   const primaryDelivery = deliveryFor(false);
   const sendLabel = t(primaryDelivery ? `send.${primaryDelivery}` : "send");
-  (0, import_react36.useEffect)(() => {
+  (0, import_react38.useEffect)(() => {
     if (!canSteerDraft || !hasDraft) setDeliveryMenuOpen(false);
   }, [canSteerDraft, hasDraft]);
   const stage = (files) => {
@@ -14180,8 +14889,8 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
     settle(sent, failure);
     if (sent) {
       const editor = input.current;
-      if (editor?.form && editor.ownerDocument.activeElement === editor && (0, import_dsh_client_ui_primitives36.isMobileDevice)()) {
-        (0, import_dsh_client_ui_primitives36.focusWithoutRing)(editor.form, { preventScroll: true });
+      if (editor?.form && editor.ownerDocument.activeElement === editor && (0, import_dsh_client_ui_primitives37.isMobileDevice)()) {
+        (0, import_dsh_client_ui_primitives37.focusWithoutRing)(editor.form, { preventScroll: true });
       }
       if (blank) navigation.open(id, target);
       else navigation.refreshHistory?.();
@@ -14226,9 +14935,9 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
       for (const file of echo.attachments) if (file.type === "image") URL.revokeObjectURL(file.value.previewUrl);
     }
   };
-  const activity = (0, import_react36.useMemo)(() => projectActivity(session?.updates ?? []), [session?.updates]);
+  const activity = (0, import_react38.useMemo)(() => projectActivity(session?.updates ?? []), [session?.updates]);
   const hasLiveActivity = activity.steps.length > 0;
-  const toggleExecution = (0, import_react36.useCallback)((toolId) => setExpandedTools((previous) => {
+  const toggleExecution = (0, import_react38.useCallback)((toolId) => setExpandedTools((previous) => {
     const tools = new Set(previous.id === id ? previous.tools : void 0);
     if (tools.has(toolId)) tools.delete(toolId);
     else tools.add(toolId);
@@ -14238,15 +14947,15 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
   const footnotes = t("footnotes");
   const copyLabel = t("copy");
   const copiedLabel = t("copied");
-  const markdownLabels = (0, import_react36.useMemo)(() => ({ footnotes, code: { copyLabel, copiedLabel } }), [footnotes, copyLabel, copiedLabel]);
-  const openFile = (0, import_react36.useCallback)((path, { line: line2 } = {}) => {
+  const markdownLabels = (0, import_react38.useMemo)(() => ({ footnotes, code: { copyLabel, copiedLabel } }), [footnotes, copyLabel, copiedLabel]);
+  const openFile = (0, import_react38.useCallback)((path, { line: line2 } = {}) => {
     if (id && typeof path === "string" && path) diffController.openFile(id, { path, line: line2 });
   }, [diffController, id]);
-  const openMarkdownFile = (0, import_react36.useCallback)((path, { line: line2 } = {}) => {
+  const openMarkdownFile = (0, import_react38.useCallback)((path, { line: line2 } = {}) => {
     const location = markdownFileReference(path, line2);
     openFile(location.path, location);
   }, [openFile]);
-  const openMarkdownExternalLink = (0, import_react36.useCallback)((href) => {
+  const openMarkdownExternalLink = (0, import_react38.useCallback)((href) => {
     const file = fileUriReference(href);
     if (file) {
       openFile(file.path, { line: file.line });
@@ -14254,16 +14963,16 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
     }
     window.open(href, "_blank", "noopener,noreferrer");
   }, [openFile]);
-  const fileMentions = (0, import_react36.useMemo)(() => ({
+  const fileMentions = (0, import_react38.useMemo)(() => ({
     resolve(value) {
       const file = inlineFileReference(value);
       if (!file) return;
       return { open: () => openFile(file.path, { line: file.line }), label: t("file.open", { path: value }), title: value };
     }
   }), [openFile, t]);
-  const reasoningMarkdown = (0, import_react36.useMemo)(() => ({ labels: markdownLabels, fileMentions }), [markdownLabels, fileMentions]);
+  const reasoningMarkdown = (0, import_react38.useMemo)(() => ({ labels: markdownLabels, fileMentions }), [markdownLabels, fileMentions]);
   const connectionError = preparation?.error || (connection === "disconnected" ? t("disconnected") : "");
-  const configOptions = (0, import_react36.useMemo)(
+  const configOptions = (0, import_react38.useMemo)(
     () => Array.isArray(session?.options) ? session.options.filter((item) => item?.type === "select" && configGroups(item).length > 0) : [],
     [session?.options]
   );
@@ -14282,14 +14991,14 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
       id: "ui:attachment",
       name: "file",
       title: t("plus.file"),
-      icon: import_dsh_client_ui_primitives36.IconPaperclipOutlineRegular,
+      icon: import_dsh_client_ui_primitives37.IconPaperclipOutlineRegular,
       onSelect: () => fileInput.current?.click()
     }] : [],
     ...canStartParallel ? [{
       id: "ui:parallel",
       name: "parallel",
       title: t("parallel.title"),
-      icon: import_dsh_client_ui_primitives36.IconBranchOutlineRegular,
+      icon: import_dsh_client_ui_primitives37.IconBranchOutlineRegular,
       onSelect: () => setParallelOpen(true)
     }] : []
   ];
@@ -14304,7 +15013,7 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
       name: "permission",
       label: "/permission",
       title: t("cmd.permission"),
-      icon: import_dsh_client_ui_primitives36.PermissionIconFullAccessRegular,
+      icon: import_dsh_client_ui_primitives37.PermissionIconFullAccessRegular,
       description: modeOption.name,
       onSelect: () => {
         setMobileOptionsOpen(true);
@@ -14316,7 +15025,7 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
       name: "model",
       label: "/model",
       title: t("cmd.model"),
-      icon: import_dsh_client_ui_primitives36.IconDataOutlineRegular,
+      icon: import_dsh_client_ui_primitives37.IconDataOutlineRegular,
       description: t("plus.model"),
       onSelect: () => modelTriggerRef.current?.click()
     }] : [],
@@ -14366,8 +15075,8 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
   const visibleCount = visibleWindow.id === id ? visibleWindow.count : INITIAL_VISIBLE_MESSAGES;
   const hiddenMessageCount = Math.max(0, allMessages.length - visibleCount);
   const visibleMessages = hiddenMessageCount > 0 ? allMessages.slice(hiddenMessageCount) : allMessages;
-  const turnItems = (0, import_react36.useMemo)(() => transcriptTurnItems(allMessages, hiddenMessageCount), [allMessages, hiddenMessageCount]);
-  const jumpToTurn = (0, import_react36.useCallback)((item) => {
+  const turnItems = (0, import_react38.useMemo)(() => transcriptTurnItems(allMessages, hiddenMessageCount), [allMessages, hiddenMessageCount]);
+  const jumpToTurn = (0, import_react38.useCallback)((item) => {
     const node2 = transcript.current;
     if (!node2) return;
     const messageIndex = item.anchor.kind === "loaded" ? Number(item.anchor.key) : item.anchor.seq;
@@ -14385,7 +15094,7 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
     const neededCount = allMessages.length - messageIndex + 4;
     setVisibleWindow({ id, count: Math.min(allMessages.length, Math.max(visibleCount, neededCount)) });
   }, [allMessages.length, follow, id, visibleCount]);
-  const returnToBottom = (0, import_react36.useCallback)(() => {
+  const returnToBottom = (0, import_react38.useCallback)(() => {
     const node2 = transcript.current;
     if (!node2) return;
     pendingTurnJumpRef.current = null;
@@ -14393,7 +15102,7 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
     lastScrollTopRef.current = follow.toBottom(node2);
     if (turnItems.length) setActiveTurn(turnItems.at(-1).turn);
   }, [follow, turnItems]);
-  const loadEarlierMessages = (0, import_react36.useCallback)(() => {
+  const loadEarlierMessages = (0, import_react38.useCallback)(() => {
     if (hiddenMessageCount <= 0 || scrollAnchorRef.current || pendingTurnJumpRef.current !== null) return;
     const node2 = transcript.current;
     if (node2) {
@@ -14404,13 +15113,49 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
       return { id, count: Math.min(allMessages.length, base + LOAD_MORE_MESSAGES_STEP) };
     });
   }, [hiddenMessageCount, id, allMessages.length]);
-  (0, import_react36.useEffect)(() => {
+  const seenLiveToolsRef = (0, import_react38.useRef)(/* @__PURE__ */ new Set());
+  const runtimeTools = (0, import_react38.useMemo)(() => {
+    const byId = /* @__PURE__ */ new Map();
+    for (const tool of activity.tools) {
+      const idKey = tool.toolCallId ?? `live-${byId.size}`;
+      if (isActiveTool(tool) && (tool.kind === "execute" || tool.execution)) {
+        seenLiveToolsRef.current.add(idKey);
+      }
+      if (isBackgroundTool(tool) || seenLiveToolsRef.current.has(idKey)) {
+        byId.set(idKey, tool);
+      }
+    }
+    for (const msg of session?.messages ?? noTools2) {
+      for (const tool of msg?.tools ?? noTools2) {
+        const idKey = tool?.toolCallId;
+        if (idKey && (isBackgroundTool(tool) || seenLiveToolsRef.current.has(idKey)) && !byId.has(idKey)) {
+          byId.set(idKey, tool);
+        }
+      }
+    }
+    return byId.size ? [...byId.values()] : noTools2;
+  }, [session?.messages, activity.tools]);
+  const performRef = (0, import_react38.useRef)(perform);
+  performRef.current = perform;
+  const stopCurrentTurn = (0, import_react38.useCallback)(() => {
+    void performRef.current("cancel");
+  }, []);
+  (0, import_react38.useEffect)(() => {
     if (!blank && id) onAgentSummary({ id, agents, ready, error: connectionError });
   }, [blank, id, agents, ready, connectionError, onAgentSummary]);
+  (0, import_react38.useEffect)(() => {
+    if (!blank && id && onRuntimeSummary) {
+      onRuntimeSummary({
+        id,
+        tools: runtimeTools,
+        stop: busy && ready && !pending ? stopCurrentTurn : null
+      });
+    }
+  }, [blank, id, runtimeTools, busy, ready, pending, stopCurrentTurn, onRuntimeSummary]);
   const resolvedActiveTurn = activeTurn ?? turnItems.at(-1)?.turn ?? null;
-  return /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(import_jsx_runtime41.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { className: "dchat-transcript-area", hidden: blank, children: [
-      !blank && turnItems.length >= 2 && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(import_jsx_runtime43.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { className: "dchat-transcript-area", hidden: blank, children: [
+      !blank && turnItems.length >= 2 && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
         TurnNavigator,
         {
           items: turnItems,
@@ -14420,7 +15165,7 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
           t
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("div", { className: "dchat-transcript", "data-conversation-scroll": "", ref: transcript, tabIndex: 0, "aria-label": t("transcript"), onScroll: (event2) => {
+      /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("div", { className: "dchat-transcript", "data-conversation-scroll": "", ref: transcript, tabIndex: 0, "aria-label": t("transcript"), onScroll: (event2) => {
         const node2 = event2.currentTarget;
         const currentTop = node2.scrollTop;
         const previousTop = lastScrollTopRef.current;
@@ -14449,21 +15194,27 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
             }
           });
         }
-      }, children: /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.MarkdownDelegateProvider, { openFile: openMarkdownFile, openExternalLink: openMarkdownExternalLink, children: /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { ref: transcriptContent, className: "dchat-transcript-content", children: [
-        session?.historyNotice && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("p", { className: "dchat-history-notice", role: "status", children: session.historyNotice }),
+      }, children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.MarkdownDelegateProvider, { openFile: openMarkdownFile, openExternalLink: openMarkdownExternalLink, children: /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { ref: transcriptContent, className: "dchat-transcript-content", children: [
+        session?.historyNotice && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("p", { className: "dchat-history-notice", role: "status", children: session.historyNotice }),
         visibleMessages.map((message, index2) => {
           const i = hiddenMessageCount + index2;
           const isLastAssistant = message.role === "assistant" && i === allMessages.length - 1;
-          const savedActivity = message.thought || message.tools?.length || message.plan?.length || message.steps?.length ? { thought: message.thought || "", plan: message.plan || [], tools: message.tools || [], steps: message.steps } : null;
-          return /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+          const settleTool = (tool) => !busy && tool && (tool.status === "in_progress" || tool.status === "pending") ? { ...tool, status: "interrupted" } : tool;
+          const savedActivity = message.thought || message.tools?.length || message.plan?.length || message.steps?.length ? {
+            thought: message.thought || "",
+            plan: message.plan || [],
+            tools: (message.tools || []).map(settleTool),
+            steps: message.steps?.map((step) => step?.kind === "tool" ? { ...step, tool: settleTool(step.tool) } : step)
+          } : null;
+          return /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
             "article",
             {
               className: "dchat-message",
               "data-role": message.role,
               "data-message-index": i,
               "aria-label": message.role === "user" ? t("you") : engineLabel(engines, session.engine),
-              children: message.role === "assistant" ? /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(import_jsx_runtime41.Fragment, { children: [
-                savedActivity && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+              children: message.role === "assistant" ? /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(import_jsx_runtime43.Fragment, { children: [
+                savedActivity && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
                   TranscriptActivity,
                   {
                     activity: savedActivity,
@@ -14474,7 +15225,7 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
                     t
                   }
                 ),
-                /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
                   AssistantMessage,
                   {
                     message,
@@ -14483,9 +15234,9 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
                     streaming: busy && isLastAssistant && !hasLiveActivity
                   }
                 )
-              ] }) : /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(import_jsx_runtime41.Fragment, { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(UserMessage, { text: message.text, structuredReply: Boolean(currentCapabilities?.structuredUserReply) }),
-                message.attachments?.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+              ] }) : /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(import_jsx_runtime43.Fragment, { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(UserMessage, { text: message.text, structuredReply: Boolean(currentCapabilities?.structuredUserReply) }),
+                message.attachments?.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
                   Attachments,
                   {
                     items: message.attachments,
@@ -14498,7 +15249,7 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
             i
           );
         }),
-        hasLiveActivity && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+        hasLiveActivity && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
           TranscriptActivity,
           {
             activity,
@@ -14510,14 +15261,14 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
             t
           }
         ),
-        busy && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(RunningStatus, { startTime: runStartedAt, paused: false, t }),
-        session?.stopReason === "cancelled" && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("span", { className: "dchat-status", role: "status", children: t("cancelled") })
+        busy && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(RunningStatus, { startTime: runStartedAt, paused: false, t }),
+        session?.stopReason === "cancelled" && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { className: "dchat-status", role: "status", children: t("cancelled") })
       ] }) }) })
     ] }),
-    !blank && !followingTail && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("div", { className: "dchat-to-bottom-slot", children: /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("button", { type: "button", className: "dchat-to-bottom", "aria-label": t("transcript.toBottom"), onClick: returnToBottom, children: /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.IconChevronDownOutlineRegular, {}) }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { className: "dchat-input-region", "data-centered": blank || void 0, children: [
-      blank && /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(import_jsx_runtime41.Fragment, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+    !blank && !followingTail && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("div", { className: "dchat-to-bottom-slot", children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("button", { type: "button", className: "dchat-to-bottom", "aria-label": t("transcript.toBottom"), onClick: returnToBottom, children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconChevronDownOutlineRegular, {}) }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { className: "dchat-input-region", "data-centered": blank || void 0, children: [
+      blank && /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(import_jsx_runtime43.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
           EngineHero,
           {
             selected: engine,
@@ -14546,7 +15297,7 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
             t
           }
         ),
-        engine && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("div", { className: "dchat-workspace-row", children: /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+        engine && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("div", { className: "dchat-workspace-row", children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
           WorkspacePicker,
           {
             value: cwd,
@@ -14569,11 +15320,11 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
           }
         ) })
       ] }),
-      needsEngine && /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { className: "dchat-connection", role: "status", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("span", { children: t(engineStatus === "ready" ? "engine.empty" : engineStatus === "error" ? "engine.failed" : "engine.loading") }),
-        engineStatus === "error" && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.Button, { size: "sm", onClick: () => void reloadEngines(), children: t("engine.retry") })
+      needsEngine && /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { className: "dchat-connection", role: "status", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { children: t(engineStatus === "ready" ? "engine.empty" : engineStatus === "error" ? "engine.failed" : "engine.loading") }),
+        engineStatus === "error" && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.Button, { size: "sm", onClick: () => void reloadEngines(), children: t("engine.retry") })
       ] }),
-      !readOnly && session?.permissions.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("div", { className: "dchat-approvals", children: session.permissions.map((permission) => /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+      !readOnly && session?.permissions.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("div", { className: "dchat-approvals", children: session.permissions.map((permission) => /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
         PermissionCard,
         {
           request: permission,
@@ -14584,25 +15335,25 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
         },
         permissionId(permission)
       )) }),
-      (error || sendError || session?.error || invalidEvent) && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("p", { role: "alert", className: "dchat-error", children: error || sendError || session?.error || t("stream.invalid") }),
-      connectionError && /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { className: "dchat-connection", role: "status", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("span", { children: connectionError }),
-        /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.Button, { size: "sm", onClick: () => {
+      (error || sendError || session?.error || invalidEvent) && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("p", { role: "alert", className: "dchat-error", children: error || sendError || session?.error || t("stream.invalid") }),
+      connectionError && /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { className: "dchat-connection", role: "status", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { children: connectionError }),
+        /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.Button, { size: "sm", onClick: () => {
           if (id) setConnectAttempt((value) => value + 1);
           else setPrepareAttempt((value) => value + 1);
         }, children: t("reconnect") })
       ] }),
-      readOnly && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("p", { className: "dchat-history-notice", role: "status", children: t(session?.archived ? "session.archived" : "session.readOnly") }),
+      readOnly && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("p", { className: "dchat-history-notice", role: "status", children: t(session?.archived ? "session.archived" : "session.readOnly") }),
       !needsEngine && !readOnly && (() => {
         const planItems = activity.plan.length ? activity.plan : session?.messages?.at(-1)?.plan ?? [];
         const todos = planItems.map((item) => ({
           content: String(item.content ?? ""),
           status: ["completed", "in_progress", "pending"].includes(item.status) ? item.status : "pending"
         })).filter((item) => item.content);
-        return todos.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(TodoPanel, { todos, t: queueDock?.t ?? t }) : null;
+        return todos.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(TodoPanel, { todos, t: queueDock?.t ?? t }) : null;
       })(),
-      session?.queuePaused && queue.length > 0 && !readOnly && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.Button, { size: "sm", disabled: !ready || busy || Boolean(pending), onClick: () => void perform("queue", { action: "resume" }), children: t("queue.resume") }),
-      !needsEngine && !readOnly && (queue.length > 0 || queueEcho) && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+      session?.queuePaused && queue.length > 0 && !readOnly && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.Button, { size: "sm", disabled: !ready || busy || Boolean(pending), onClick: () => void perform("queue", { action: "resume" }), children: t("queue.resume") }),
+      !needsEngine && !readOnly && (queue.length > 0 || queueEcho) && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
         MessageQueue,
         {
           source: queueDock,
@@ -14616,7 +15367,7 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
             const ok = await perform("queue", { action, id: queuedId, text });
             if (!ok) throw new Error("Queue action was not applied");
           },
-          fallback: /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+          fallback: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
             QueuedMessages,
             {
               queue,
@@ -14628,7 +15379,7 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
           )
         }
       ),
-      !needsEngine && !readOnly && /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(
+      !needsEngine && !readOnly && /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(
         "form",
         {
           className: InputBar_default.card + " dchat-composer",
@@ -14669,7 +15420,7 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
           },
           children: [
             commandPicker.dropdown,
-            attachments.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+            attachments.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
               Attachments,
               {
                 items: attachments.map(({ id: id2, file }) => ({ id: id2, name: file.name })),
@@ -14681,16 +15432,16 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
                 t
               }
             ),
-            stagedCommand && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("div", { className: "dchat-staged-commands", children: /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("span", { className: "dchat-staged-command", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("span", { className: "dchat-staged-command-label", children: [
+            stagedCommand && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("div", { className: "dchat-staged-commands", children: /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("span", { className: "dchat-staged-command", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("span", { className: "dchat-staged-command-label", children: [
                 "/",
                 stagedTitle || stagedCommand,
-                stagedTitle && /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("code", { children: [
+                stagedTitle && /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("code", { children: [
                   "/",
                   stagedCommand
                 ] })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
                 "button",
                 {
                   type: "button",
@@ -14701,12 +15452,12 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
                     setStagedCommand(null);
                     input.current?.focus({ preventScroll: true });
                   },
-                  children: /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.IconCloseOutlineRegular, { size: 12 })
+                  children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconCloseOutlineRegular, { size: 12 })
                 }
               )
             ] }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { className: "dchat-composer-input-wrap", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { className: "dchat-composer-input-wrap", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
                 "textarea",
                 {
                   className: InputBar_default.input,
@@ -14736,16 +15487,16 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
                   }
                 }
               ),
-              !draft && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("span", { className: InputBar_default.placeholder + " dchat-composer-placeholder", "aria-hidden": "true", children: canSteerQueue ? queueDock.t("placeholder.steerQueue") : t(blank ? "message.hero" : "message") })
+              !draft && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { className: InputBar_default.placeholder + " dchat-composer-placeholder", "aria-hidden": "true", children: canSteerQueue ? queueDock.t("placeholder.steerQueue") : t(blank ? "message.hero" : "message") })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { className: InputBar_default.row + " dchat-composer-bar", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { className: "dchat-composer-tools", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("input", { type: "file", hidden: true, multiple: true, ref: fileInput, onChange: (event2) => {
+            /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { className: InputBar_default.row + " dchat-composer-bar", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { className: "dchat-composer-tools", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("input", { type: "file", hidden: true, multiple: true, ref: fileInput, onChange: (event2) => {
                   stage(Array.from(event2.target.files));
                   event2.target.value = "";
                 } }),
                 commandPicker.plus,
-                (otherOptions.length > 0 || displayedAccount) && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+                (otherOptions.length > 0 || displayedAccount) && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
                   "button",
                   {
                     type: "button",
@@ -14754,12 +15505,12 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
                     "aria-controls": optionsRowId,
                     "aria-expanded": mobileOptionsOpen,
                     onClick: () => setMobileOptionsOpen((value) => !value),
-                    children: /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.IconSlidersTwoOutlineRegular, { size: 18 })
+                    children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconSlidersTwoOutlineRegular, { size: 18 })
                   }
                 )
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { id: optionsRowId, className: "dchat-composer-options", "data-expanded": mobileOptionsOpen || void 0, children: [
-                otherOptions.map((option) => /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { id: optionsRowId, className: "dchat-composer-options", "data-expanded": mobileOptionsOpen || void 0, children: [
+                otherOptions.map((option) => /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
                   ConfigMenu,
                   {
                     option,
@@ -14771,7 +15522,7 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
                   },
                   option.id
                 )),
-                displayedAccount && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+                displayedAccount && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
                   SessionAccount,
                   {
                     engine: currentEngine,
@@ -14782,8 +15533,8 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
                   }
                 )
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { className: "dchat-composer-trailing", children: [
-                model || effort ? /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { className: "dchat-composer-trailing", children: [
+                model || effort ? /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
                   ModelConfigMenu,
                   {
                     model,
@@ -14795,8 +15546,8 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
                     disabled: configDisabled,
                     t
                   }
-                ) : !connectionError && (ready ? /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(
-                  import_dsh_client_ui_primitives36.Button,
+                ) : !connectionError && (ready ? /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(
+                  import_dsh_client_ui_primitives37.Button,
                   {
                     size: "sm",
                     className: "dchat-option-trigger",
@@ -14805,15 +15556,15 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
                     disabled: configDisabled,
                     onClick: () => setConnectAttempt((value) => value + 1),
                     children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.IconDataOutlineRegular, { size: 16 }),
-                      /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("span", { children: t("model.pending") })
+                      /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconDataOutlineRegular, { size: 16 }),
+                      /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { children: t("model.pending") })
                     ]
                   }
-                ) : /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("span", { className: "dchat-status", role: "status", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.StateDot, { state: "ongoing" }),
+                ) : /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("span", { className: "dchat-status", role: "status", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.StateDot, { state: "ongoing" }),
                   t("connecting")
                 ] })),
-                busy && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+                busy && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
                   "button",
                   {
                     type: "button",
@@ -14823,12 +15574,12 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
                     "aria-label": t("stop.current"),
                     disabled: !ready || Boolean(pending),
                     onClick: () => perform("cancel"),
-                    children: /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.IconStopFillRegular, { size: 16 })
+                    children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconStopFillRegular, { size: 16 })
                   }
                 ),
-                (!busy || hasDraft) && /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(import_jsx_runtime41.Fragment, { children: [
-                  canSteerDraft && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
-                    import_dsh_client_ui_primitives36.Menu,
+                (!busy || hasDraft) && /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(import_jsx_runtime43.Fragment, { children: [
+                  canSteerDraft && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+                    import_dsh_client_ui_primitives37.Menu,
                     {
                       open: deliveryMenuOpen && canSendPrompt,
                       portal: true,
@@ -14841,28 +15592,28 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
                         setDeliveryMenuOpen(false);
                         void send(delivery);
                       },
-                      anchor: /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
-                        import_dsh_client_ui_primitives36.Button,
+                      anchor: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+                        import_dsh_client_ui_primitives37.Button,
                         {
                           size: "sm",
                           "aria-label": t("send.options"),
                           title: t("send.options"),
                           disabled: !canSendPrompt,
                           onClick: () => setDeliveryMenuOpen((open) => !open),
-                          children: /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.IconChevronDownOutlineRegular, { size: 14 })
+                          children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconChevronDownOutlineRegular, { size: 14 })
                         }
                       )
                     }
                   ),
-                  /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("button", { type: "submit", className: InputBar_default.primary + " dchat-send", title: sendLabel, "aria-label": sendLabel, disabled: !canSendPrompt, children: pending === "prompt" ? /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.StateDot, { state: "ongoing" }) : /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.IconSendOutlineRegular, { size: 18 }) })
+                  /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("button", { type: "submit", className: InputBar_default.primary + " dchat-send", title: sendLabel, "aria-label": sendLabel, disabled: !canSendPrompt, children: pending === "prompt" ? /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.StateDot, { state: "ongoing" }) : /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconSendOutlineRegular, { size: 18 }) })
                 ] })
               ] })
             ] })
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { className: "dchat-session-footer", children: [
-        (needsEngine || readOnly) && displayedAccount && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { className: "dchat-session-footer", children: [
+        (needsEngine || readOnly) && displayedAccount && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
           SessionAccount,
           {
             engine: currentEngine,
@@ -14872,7 +15623,7 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
             t
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
           SessionStatus,
           {
             sessionId: id,
@@ -14894,7 +15645,7 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
         )
       ] })
     ] }),
-    commandDialog === "review" && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+    commandDialog === "review" && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
       ReviewCommand,
       {
         t,
@@ -14907,25 +15658,25 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
         }
       }
     ),
-    commandDialog === "compact" && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
-      import_dsh_client_ui_primitives36.Modal,
+    commandDialog === "compact" && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+      import_dsh_client_ui_primitives37.Modal,
       {
         open: true,
         title: t("composer.compactTitle"),
         description: t("composer.compactDescription"),
         closeLabel: t("close"),
         onClose: () => setCommandDialog(null),
-        footer: /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(import_jsx_runtime41.Fragment, { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.Button, { variant: "outline", "data-modal-autofocus": true, onClick: () => setCommandDialog(null), children: t("cancel") }),
-          /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.Button, { variant: "primary", onClick: () => {
+        footer: /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(import_jsx_runtime43.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.Button, { variant: "outline", "data-modal-autofocus": true, onClick: () => setCommandDialog(null), children: t("cancel") }),
+          /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.Button, { variant: "primary", onClick: () => {
             setCommandDialog(null);
             void executeImmediateCommand("/compact");
           }, children: t("composer.stageCommand") })
         ] })
       }
     ),
-    commandDialog === "mcp" && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(McpStatusDialog, { id, close: () => setCommandDialog(null), t }),
-    !readOnly && parallelOpen && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+    commandDialog === "mcp" && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(McpStatusDialog, { id, close: () => setCommandDialog(null), t }),
+    !readOnly && parallelOpen && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
       ParallelTasks,
       {
         id,
@@ -14938,8 +15689,8 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
   ] });
 }
 function McpStatusDialog({ id, close, t }) {
-  const [state, setState] = (0, import_react36.useState)({ loading: true });
-  (0, import_react36.useEffect)(() => {
+  const [state, setState] = (0, import_react38.useState)({ loading: true });
+  (0, import_react38.useEffect)(() => {
     if (!id) return;
     const controller = new AbortController();
     fetch(`/api/direct-chat/sessions/${encodeURIComponent(id)}/mcp`, { signal: controller.signal, credentials: "same-origin" }).then(async (response) => {
@@ -14956,52 +15707,52 @@ function McpStatusDialog({ id, close, t }) {
     );
     return () => controller.abort();
   }, [id]);
-  return /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
-    import_dsh_client_ui_primitives36.Modal,
+  return /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+    import_dsh_client_ui_primitives37.Modal,
     {
       open: true,
       title: t("composer.mcpTitle"),
       closeLabel: t("close"),
       onClose: close,
-      footer: /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.Button, { variant: "primary", "data-modal-autofocus": true, onClick: close, children: t("close") }),
-      children: state.loading ? /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("p", { className: "dchat-status", role: "status", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.StateDot, { state: "ongoing" }),
+      footer: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.Button, { variant: "primary", "data-modal-autofocus": true, onClick: close, children: t("close") }),
+      children: state.loading ? /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("p", { className: "dchat-status", role: "status", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.StateDot, { state: "ongoing" }),
         t("composer.mcpLoading")
-      ] }) : state.error ? /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("p", { className: "dchat-error", role: "alert", children: state.error }) : state.status !== "available" || !state.text ? /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("p", { className: "dchat-status", children: t("composer.mcpUnavailable") }) : /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("div", { className: "dchat-mcp-body", children: /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.MarkdownText, { text: state.text }) })
+      ] }) : state.error ? /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("p", { className: "dchat-error", role: "alert", children: state.error }) : state.status !== "available" || !state.text ? /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("p", { className: "dchat-status", children: t("composer.mcpUnavailable") }) : /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("div", { className: "dchat-mcp-body", children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.MarkdownText, { text: state.text }) })
     }
   );
 }
 function QueuedMessages({ queue, paused, busy, canSteer, disabled, change, t }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("section", { className: "dchat-queue", "aria-label": t("queue.title"), children: [
-    /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { className: "dchat-queue-heading", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("span", { children: t("queue.count", { count: queue.length }) }),
-      paused && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.Button, { size: "sm", disabled: disabled || busy, onClick: () => void change("resume"), children: t("queue.resume") })
+  return /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("section", { className: "dchat-queue", "aria-label": t("queue.title"), children: [
+    /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { className: "dchat-queue-heading", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { children: t("queue.count", { count: queue.length }) }),
+      paused && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.Button, { size: "sm", disabled: disabled || busy, onClick: () => void change("resume"), children: t("queue.resume") })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("ol", { className: "dchat-queue-list", children: queue.map((item) => {
+    /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("ol", { className: "dchat-queue-list", children: queue.map((item) => {
       const text = [item.text, ...(item.attachments ?? []).map((file) => file.name)].filter(Boolean).join(" \xB7 ");
       const steerable = canSteer && !item.attachments?.length && item.text?.trim() && !item.text.trimStart().startsWith("/");
-      return /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("li", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("span", { className: "dchat-queue-text", title: text, children: text }),
-        steerable && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
-          import_dsh_client_ui_primitives36.Button,
+      return /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("li", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { className: "dchat-queue-text", title: text, children: text }),
+        steerable && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+          import_dsh_client_ui_primitives37.Button,
           {
             size: "sm",
             disabled,
             title: t("send.steer"),
             "aria-label": t("send.steer"),
             onClick: () => void change("steer", item.id),
-            children: /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.IconSendOutlineRegular, { size: 14 })
+            children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconSendOutlineRegular, { size: 14 })
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
-          import_dsh_client_ui_primitives36.Button,
+        /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+          import_dsh_client_ui_primitives37.Button,
           {
             size: "sm",
             disabled,
             title: t("queue.remove"),
             "aria-label": t("queue.remove"),
             onClick: () => void change("remove", item.id),
-            children: /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.IconCloseOutlineRegular, { size: 14 })
+            children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconCloseOutlineRegular, { size: 14 })
           }
         )
       ] }, item.id);
@@ -15009,14 +15760,14 @@ function QueuedMessages({ queue, paused, busy, canSteer, disabled, change, t }) 
   ] });
 }
 function Attachments({ items, open, remove, disabled, t }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("div", { className: "dchat-attachments", children: /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("div", { className: "dchat-attachments", children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
     AttachmentRail,
     {
       items: items.map((item, index2) => ({ id: String(remove ? item.id : index2), item })),
       labels: { group: t("attachments"), scrollLeft: t("attachment.scrollLeft"), scrollRight: t("attachment.scrollRight") },
-      renderItem: ({ item }) => /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { className: "dchat-attachment", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.IconPaperclipOutlineRegular, { size: 14 }),
-        open && item.previewId ? /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+      renderItem: ({ item }) => /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { className: "dchat-attachment", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconPaperclipOutlineRegular, { size: 14 }),
+        open && item.previewId ? /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
           "button",
           {
             type: "button",
@@ -15026,16 +15777,16 @@ function Attachments({ items, open, remove, disabled, t }) {
             onClick: () => open(item),
             children: item.name
           }
-        ) : /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("span", { title: item.name, children: item.name }),
-        remove && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
-          import_dsh_client_ui_primitives36.Button,
+        ) : /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { title: item.name, children: item.name }),
+        remove && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+          import_dsh_client_ui_primitives37.Button,
           {
             type: "button",
             size: "sm",
             "aria-label": t("attachment.remove", { name: item.name }),
             disabled,
             onClick: () => remove(item.id),
-            children: /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.IconCloseOutlineRegular, { size: 12 })
+            children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconCloseOutlineRegular, { size: 12 })
           }
         )
       ] })
@@ -15043,9 +15794,9 @@ function Attachments({ items, open, remove, disabled, t }) {
   ) });
 }
 function SessionAccount({ engine, account, disabled, change, t }) {
-  const [open, setOpen] = (0, import_react36.useState)(false);
+  const [open, setOpen] = (0, import_react38.useState)(false);
   const selectable = account.canSwitch && !disabled && account.choices?.some((choice) => choice.id !== account.id);
-  (0, import_react36.useEffect)(() => {
+  (0, import_react38.useEffect)(() => {
     if (!selectable) setOpen(false);
   }, [selectable]);
   const baseLabel = (item) => accountChoiceLabel(item, t("engine.defaultAccount"));
@@ -15060,15 +15811,15 @@ function SessionAccount({ engine, account, disabled, change, t }) {
   const blocked = account.switchBlockedReason;
   const reason = ["busy", "history", "readOnly", "unavailable"].includes(blocked) ? t("engine.switch." + blocked) : "";
   const title = [t("engine.profileLabel") + " \xB7 " + label, reason].filter(Boolean).join(" \u2014 ");
-  const content = /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(import_jsx_runtime41.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.IconUsersOutlineRegular, { size: 14 }),
-    /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("span", { children: label })
+  const content = /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(import_jsx_runtime43.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconUsersOutlineRegular, { size: 14 }),
+    /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { children: label })
   ] });
   if (!selectable) {
-    return /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.Button, { type: "button", size: "sm", className: "dchat-session-account", disabled: true, title, "aria-label": title, children: content });
+    return /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.Button, { type: "button", size: "sm", className: "dchat-session-account", disabled: true, title, "aria-label": title, children: content });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
-    import_dsh_client_ui_primitives36.Menu,
+  return /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+    import_dsh_client_ui_primitives37.Menu,
     {
       open,
       portal: true,
@@ -15082,8 +15833,8 @@ function SessionAccount({ engine, account, disabled, change, t }) {
         setOpen(false);
         if (id !== account.id) void change(id);
       },
-      anchor: /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(
-        import_dsh_client_ui_primitives36.Button,
+      anchor: /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(
+        import_dsh_client_ui_primitives37.Button,
         {
           size: "sm",
           className: "dchat-session-account",
@@ -15094,7 +15845,7 @@ function SessionAccount({ engine, account, disabled, change, t }) {
           onClick: () => setOpen((value) => !value),
           children: [
             content,
-            /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.IconChevronDownOutlineRegular, { size: 12 })
+            /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconChevronDownOutlineRegular, { size: 12 })
           ]
         }
       )
@@ -15102,7 +15853,7 @@ function SessionAccount({ engine, account, disabled, change, t }) {
   );
 }
 function ConfigMenu({ option, change, open: controlledOpen, onOpenChange, disabled, t }) {
-  const [uncontrolledOpen, setUncontrolledOpen] = (0, import_react36.useState)(false);
+  const [uncontrolledOpen, setUncontrolledOpen] = (0, import_react38.useState)(false);
   const open = controlledOpen ?? uncontrolledOpen;
   const setOpen = onOpenChange ?? setUncontrolledOpen;
   const label = ["model", "thought_level", "mode"].includes(option.category) ? t(option.category) : option.name;
@@ -15110,10 +15861,10 @@ function ConfigMenu({ option, change, open: controlledOpen, onOpenChange, disabl
   const selected = groups.flatMap((group) => group.choices).find((choice) => choice.value === option.currentValue);
   const rows = groups.flatMap(({ name, choices }, index2) => [
     ...name ? [{ type: "label", id: `group:${index2}`, text: name }] : [],
-    ...choices.map((choice) => ({ id: choice.value, label: /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("span", { title: choice.description, children: choice.name }) }))
+    ...choices.map((choice) => ({ id: choice.value, label: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { title: choice.description, children: choice.name }) }))
   ]);
-  return /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
-    import_dsh_client_ui_primitives36.Menu,
+  return /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+    import_dsh_client_ui_primitives37.Menu,
     {
       open,
       portal: true,
@@ -15130,8 +15881,8 @@ function ConfigMenu({ option, change, open: controlledOpen, onOpenChange, disabl
         setOpen(false);
         if (value !== option.currentValue) change(option.id, value);
       },
-      anchor: /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(
-        import_dsh_client_ui_primitives36.Button,
+      anchor: /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(
+        import_dsh_client_ui_primitives37.Button,
         {
           size: "sm",
           className: "dchat-option-trigger",
@@ -15142,8 +15893,8 @@ function ConfigMenu({ option, change, open: controlledOpen, onOpenChange, disabl
           "aria-expanded": open,
           onClick: () => setOpen(!open),
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("span", { className: "dchat-option-selection", children: selected?.name ?? label }),
-            /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.IconChevronDownOutlineRegular, { size: 12 })
+            /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { className: "dchat-option-selection", children: selected?.name ?? label }),
+            /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconChevronDownOutlineRegular, { size: 12 })
           ]
         }
       )
@@ -15151,46 +15902,46 @@ function ConfigMenu({ option, change, open: controlledOpen, onOpenChange, disabl
   );
 }
 function ModelConfigMenu({ model, effort, commands, chooseCommand, change, triggerRef, disabled, t }) {
-  const [pane, setPane] = (0, import_react36.useState)(null);
-  const [query, setQuery] = (0, import_react36.useState)("");
-  const [highlight, setHighlight] = (0, import_react36.useState)(null);
-  const [selection2, setSelection] = (0, import_react36.useState)(null);
+  const [pane, setPane] = (0, import_react38.useState)(null);
+  const [query, setQuery] = (0, import_react38.useState)("");
+  const [highlight, setHighlight] = (0, import_react38.useState)(null);
+  const [selection2, setSelection] = (0, import_react38.useState)(null);
   const selecting = selection2 !== null;
-  const root = (0, import_react36.useRef)(null);
-  const trigger = (0, import_react36.useRef)(null);
+  const root = (0, import_react38.useRef)(null);
+  const trigger = (0, import_react38.useRef)(null);
   const setTriggerRef = (node2) => {
     trigger.current = node2;
     if (triggerRef) triggerRef.current = node2;
   };
-  const menu = (0, import_react36.useRef)(null);
-  const search = (0, import_react36.useRef)(null);
-  const scroll = (0, import_react36.useRef)(null);
-  const returnTo = (0, import_react36.useRef)(null);
-  const id = (0, import_react36.useId)().replace(/[^a-z\d-]/gi, "");
+  const menu = (0, import_react38.useRef)(null);
+  const search = (0, import_react38.useRef)(null);
+  const scroll = (0, import_react38.useRef)(null);
+  const returnTo = (0, import_react38.useRef)(null);
+  const id = (0, import_react38.useId)().replace(/[^a-z\d-]/gi, "");
   const anchor = { "--dchat-model-anchor": `--dchat-model-${id}` };
-  const modelGroups = (0, import_react36.useMemo)(() => configGroups(model), [model]);
-  const effortGroups = (0, import_react36.useMemo)(() => configGroups(effort), [effort]);
-  const models = (0, import_react36.useMemo)(() => modelGroups.flatMap((group) => group.choices), [modelGroups]);
+  const modelGroups = (0, import_react38.useMemo)(() => configGroups(model), [model]);
+  const effortGroups = (0, import_react38.useMemo)(() => configGroups(effort), [effort]);
+  const models = (0, import_react38.useMemo)(() => modelGroups.flatMap((group) => group.choices), [modelGroups]);
   const currentModel = models.find((choice) => choice.value === model?.currentValue)?.name;
   const currentEffort = effortGroups.flatMap((group) => group.choices).find((choice) => choice.value === effort?.currentValue)?.name;
   const modelLabel = model && (currentModel ?? t("model.choose"));
   const effortLabel = effort && (currentEffort ?? t("model.effort"));
   const label = currentModel && currentEffort ? t("model.currentEffort", { model: currentModel, effort: currentEffort }) : currentModel ? t("model.current", { model: currentModel }) : modelLabel ?? effortLabel;
   const showSearch = pane === "model" && models.length > 4;
-  const groups = (0, import_react36.useMemo)(() => {
+  const groups = (0, import_react38.useMemo)(() => {
     if (pane === "effort") return effortGroups;
     if (pane !== "model") return [];
     if (!showSearch || !query.trim()) return modelGroups;
-    return modelGroups.map((group) => ({ ...group, choices: (0, import_dsh_client_ui_primitives36.rankByName)(group.choices, query.trim()) })).filter((group) => group.choices.length > 0);
+    return modelGroups.map((group) => ({ ...group, choices: (0, import_dsh_client_ui_primitives37.rankByName)(group.choices, query.trim()) })).filter((group) => group.choices.length > 0);
   }, [pane, effortGroups, modelGroups, showSearch, query]);
-  const choices = (0, import_react36.useMemo)(() => groups.flatMap((group) => group.choices), [groups]);
+  const choices = (0, import_react38.useMemo)(() => groups.flatMap((group) => group.choices), [groups]);
   const activeOption = pane === "effort" ? effort : model;
   const selectedIndex = choices.findIndex((choice) => choice.value === activeOption?.currentValue);
   const activeIndex = Math.min(highlight ?? Math.max(0, selectedIndex), choices.length - 1);
   const open = pane !== null;
   const hasRoot = Boolean(currentModel) || commands.length > 0;
   const close = (restoreFocus) => {
-    if (restoreFocus && trigger.current) (0, import_dsh_client_ui_primitives36.focusWithoutRing)(trigger.current, { preventScroll: true });
+    if (restoreFocus && trigger.current) (0, import_dsh_client_ui_primitives37.focusWithoutRing)(trigger.current, { preventScroll: true });
     setPane(null);
   };
   const show = (next) => {
@@ -15208,7 +15959,7 @@ function ModelConfigMenu({ model, effort, commands, chooseCommand, change, trigg
     }
   };
   const openPane = hasRoot ? "root" : model ? "model" : "effort";
-  (0, import_react36.useEffect)(() => {
+  (0, import_react38.useEffect)(() => {
     if (!open) return;
     const onPointerDown = (event2) => {
       if (!root.current?.contains(event2.target) && !menu.current?.contains(event2.target)) setPane(null);
@@ -15216,15 +15967,15 @@ function ModelConfigMenu({ model, effort, commands, chooseCommand, change, trigg
     document.addEventListener("pointerdown", onPointerDown);
     return () => document.removeEventListener("pointerdown", onPointerDown);
   }, [open]);
-  (0, import_react36.useEffect)(() => {
+  (0, import_react38.useEffect)(() => {
     if (disabled && !selecting) setPane(null);
   }, [disabled, selecting]);
-  (0, import_react36.useLayoutEffect)(() => {
+  (0, import_react38.useLayoutEffect)(() => {
     if (!pane) return;
     if (pane === "root") {
       if (returnTo.current) menu.current?.querySelector(`[data-pane="${returnTo.current}"]`)?.focus({ preventScroll: true });
       returnTo.current = null;
-    } else if (showSearch && !(0, import_dsh_client_ui_primitives36.isMobileDevice)()) {
+    } else if (showSearch && !(0, import_dsh_client_ui_primitives37.isMobileDevice)()) {
       search.current?.focus({ preventScroll: true });
     } else {
       const checked = menu.current?.querySelector('[aria-checked="true"]');
@@ -15233,10 +15984,10 @@ function ModelConfigMenu({ model, effort, commands, chooseCommand, change, trigg
       initial?.focus({ preventScroll: true });
     }
   }, [pane, showSearch]);
-  (0, import_react36.useEffect)(() => {
-    if (scroll.current && groups.some((group) => group.name)) return (0, import_dsh_client_ui_primitives36.observeStickyMenuGroups)(scroll.current);
+  (0, import_react38.useEffect)(() => {
+    if (scroll.current && groups.some((group) => group.name)) return (0, import_dsh_client_ui_primitives37.observeStickyMenuGroups)(scroll.current);
   }, [groups]);
-  (0, import_react36.useLayoutEffect)(() => {
+  (0, import_react38.useLayoutEffect)(() => {
     if (showSearch && activeIndex >= 0) {
       scroll.current?.querySelector(`[data-choice="${activeIndex}"]`)?.scrollIntoView({ block: "nearest" });
     }
@@ -15247,7 +15998,7 @@ function ModelConfigMenu({ model, effort, commands, chooseCommand, change, trigg
       close(true);
       return;
     }
-    (0, import_dsh_client_ui_primitives36.focusWithoutRing)(trigger.current, { preventScroll: true });
+    (0, import_dsh_client_ui_primitives37.focusWithoutRing)(trigger.current, { preventScroll: true });
     setSelection(choice.value);
     try {
       if (await change(activeOption.id, choice.value)) close(true);
@@ -15301,12 +16052,12 @@ function ModelConfigMenu({ model, effort, commands, chooseCommand, change, trigg
   };
   const menuLabel = model && effort ? t("model.menu") : t(model ? "model" : "thought_level");
   let choiceIndex = 0;
-  return /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { ref: root, className: "dchat-model", onKeyDown, onBlur: (event2) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { ref: root, className: "dchat-model", onKeyDown, onBlur: (event2) => {
     if (event2.relatedTarget && !root.current?.contains(event2.relatedTarget) && !menu.current?.contains(event2.relatedTarget)) close();
   }, onMouseDown: (event2) => {
     if (event2.target.closest("button")) event2.preventDefault();
   }, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(
       "button",
       {
         ref: setTriggerRef,
@@ -15328,15 +16079,15 @@ function ModelConfigMenu({ model, effort, commands, chooseCommand, change, trigg
           else show(openPane);
         },
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.IconDataOutlineRegular, { className: "dchat-model-icon", size: 16 }),
-          modelLabel && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("span", { className: "dchat-model-name", children: modelLabel }),
-          effortLabel && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("span", { className: "dchat-model-effort", children: effortLabel }),
-          selecting ? /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.StateDot, { state: "ongoing" }) : /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.IconChevronDownOutlineRegular, { className: "dchat-model-chevron", size: 12 })
+          /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconDataOutlineRegular, { className: "dchat-model-icon", size: 16 }),
+          modelLabel && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { className: "dchat-model-name", children: modelLabel }),
+          effortLabel && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { className: "dchat-model-effort", children: effortLabel }),
+          selecting ? /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.StateDot, { state: "ongoing" }) : /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconChevronDownOutlineRegular, { className: "dchat-model-chevron", size: 12 })
         ]
       }
     ),
-    open && (0, import_react_dom6.createPortal)(/* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
-      import_dsh_client_ui_primitives36.MenuSurface,
+    open && (0, import_react_dom7.createPortal)(/* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+      import_dsh_client_ui_primitives37.MenuSurface,
       {
         ref: menu,
         className: "dchat-model-menu",
@@ -15345,18 +16096,18 @@ function ModelConfigMenu({ model, effort, commands, chooseCommand, change, trigg
         role: showSearch ? "group" : "menu",
         "aria-label": menuLabel,
         "aria-busy": selecting,
-        children: pane === "root" ? /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(import_jsx_runtime41.Fragment, { children: [
-          model && /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("button", { className: "dchat-model-cell", type: "button", role: "menuitem", "data-pane": "model", onClick: () => show("model"), children: [
-            /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("span", { children: t("model") }),
-            /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("span", { children: modelLabel }),
-            /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.IconChevronRightOutlineRegular, { size: 12 })
+        children: pane === "root" ? /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(import_jsx_runtime43.Fragment, { children: [
+          model && /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("button", { className: "dchat-model-cell", type: "button", role: "menuitem", "data-pane": "model", onClick: () => show("model"), children: [
+            /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { children: t("model") }),
+            /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { children: modelLabel }),
+            /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconChevronRightOutlineRegular, { size: 12 })
           ] }),
-          effort && /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("button", { className: "dchat-model-cell", type: "button", role: "menuitem", "data-pane": "effort", onClick: () => show("effort"), children: [
-            /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("span", { children: t("model.effort") }),
-            /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("span", { children: effortLabel }),
-            /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.IconChevronRightOutlineRegular, { size: 12 })
+          effort && /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("button", { className: "dchat-model-cell", type: "button", role: "menuitem", "data-pane": "effort", onClick: () => show("effort"), children: [
+            /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { children: t("model.effort") }),
+            /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { children: effortLabel }),
+            /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconChevronRightOutlineRegular, { size: 12 })
           ] }),
-          commands.map((command) => /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(
+          commands.map((command) => /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(
             "button",
             {
               className: "dchat-model-cell dchat-model-command",
@@ -15368,10 +16119,10 @@ function ModelConfigMenu({ model, effort, commands, chooseCommand, change, trigg
                 chooseCommand(command.name);
               },
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("span", { children: t(`model.${command.name}`) }),
-                /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("span", { children: [
-                  command.name === "swarm" && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("small", { children: t("model.swarmUsage") }),
-                  /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("code", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { children: t(`model.${command.name}`) }),
+                /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("span", { children: [
+                  command.name === "swarm" && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("small", { children: t("model.swarmUsage") }),
+                  /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("code", { children: [
                     "/",
                     command.name
                   ] })
@@ -15380,10 +16131,10 @@ function ModelConfigMenu({ model, effort, commands, chooseCommand, change, trigg
             },
             command.name
           ))
-        ] }) : /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(import_jsx_runtime41.Fragment, { children: [
-          showSearch && /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { className: "dchat-model-search", "data-query": Boolean(query) || void 0, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
-              import_dsh_client_ui_primitives36.Input,
+        ] }) : /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(import_jsx_runtime43.Fragment, { children: [
+          showSearch && /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { className: "dchat-model-search", "data-query": Boolean(query) || void 0, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+              import_dsh_client_ui_primitives37.Input,
               {
                 ref: search,
                 type: "text",
@@ -15398,12 +16149,12 @@ function ModelConfigMenu({ model, effort, commands, chooseCommand, change, trigg
                 onChange: (event2) => changeQuery(event2.target.value)
               }
             ),
-            query && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("button", { type: "button", "aria-label": t("model.clearSearch"), disabled, onClick: () => {
+            query && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("button", { type: "button", "aria-label": t("model.clearSearch"), disabled, onClick: () => {
               changeQuery("");
               search.current?.focus();
-            }, children: /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.IconCloseFillRegular, { size: 16 }) })
+            }, children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconCloseFillRegular, { size: 16 }) })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
             "div",
             {
               ref: scroll,
@@ -15416,7 +16167,7 @@ function ModelConfigMenu({ model, effort, commands, chooseCommand, change, trigg
                 const rows = groupChoices.map((choice) => {
                   const index2 = choiceIndex++;
                   const selected = index2 === selectedIndex;
-                  return /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(
+                  return /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(
                     "button",
                     {
                       type: "button",
@@ -15431,34 +16182,34 @@ function ModelConfigMenu({ model, effort, commands, chooseCommand, change, trigg
                       onMouseMove: showSearch ? () => setHighlight(index2) : void 0,
                       onClick: () => choose(choice),
                       children: [
-                        /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("span", { title: choice.description || choice.name, children: choice.name }),
-                        selection2 === choice.value ? /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.StateDot, { state: "ongoing" }) : selected && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.IconCheckOutlineRegular, { size: 14 })
+                        /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { title: choice.description || choice.name, children: choice.name }),
+                        selection2 === choice.value ? /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.StateDot, { state: "ongoing" }) : selected && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconCheckOutlineRegular, { size: 14 })
                       ]
                     },
                     choice.value
                   );
                 });
-                return name ? /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.MenuGroup, { label: name, children: rows }, groupIndex) : rows;
+                return name ? /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.MenuGroup, { label: name, children: rows }, groupIndex) : rows;
               })
             }
           ),
-          showSearch && choices.length === 0 && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("span", { className: "dchat-model-empty", role: "status", children: t("model.noMatches") })
+          showSearch && choices.length === 0 && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { className: "dchat-model-empty", role: "status", children: t("model.noMatches") })
         ] })
       }
     ), document.body)
   ] });
 }
 function ParallelTasks({ id, ready, launched, close, t }) {
-  const formId = (0, import_react36.useId)();
-  const form = (0, import_react36.useRef)(null);
-  const nextId = (0, import_react36.useRef)(2);
-  const focusTask = (0, import_react36.useRef)(null);
-  const lastRequest = (0, import_react36.useRef)(null);
-  const [items, setItems] = (0, import_react36.useState)([{ id: 0, text: "" }, { id: 1, text: "" }]);
-  const [pending, setPending] = (0, import_react36.useState)(false);
-  const [error, setError] = (0, import_react36.useState)("");
+  const formId = (0, import_react38.useId)();
+  const form = (0, import_react38.useRef)(null);
+  const nextId = (0, import_react38.useRef)(2);
+  const focusTask = (0, import_react38.useRef)(null);
+  const lastRequest = (0, import_react38.useRef)(null);
+  const [items, setItems] = (0, import_react38.useState)([{ id: 0, text: "" }, { id: 1, text: "" }]);
+  const [pending, setPending] = (0, import_react38.useState)(false);
+  const [error, setError] = (0, import_react38.useState)("");
   const tasks = items.map((item) => item.text.trim()).filter(Boolean);
-  (0, import_react36.useLayoutEffect)(() => {
+  (0, import_react38.useLayoutEffect)(() => {
     if (focusTask.current === null) return;
     form.current?.querySelector(`[data-task-id="${focusTask.current}"]`)?.focus();
     focusTask.current = null;
@@ -15486,8 +16237,8 @@ function ParallelTasks({ id, ready, launched, close, t }) {
   const dismiss = () => {
     if (!pending) close();
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
-    import_dsh_client_ui_primitives36.Modal,
+  return /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+    import_dsh_client_ui_primitives37.Modal,
     {
       open: true,
       onClose: dismiss,
@@ -15496,17 +16247,17 @@ function ParallelTasks({ id, ready, launched, close, t }) {
       description: t("parallel.description"),
       className: "dchat-parallel-dialog",
       contentClassName: "dchat-parallel-content",
-      footer: /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(import_jsx_runtime41.Fragment, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.Button, { size: "sm", onClick: dismiss, disabled: pending, children: t("cancel") }),
-        /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.Button, { size: "sm", variant: "primary", type: "submit", form: formId, disabled: pending || !ready || tasks.length === 0, children: t(pending ? "parallel.starting" : "parallel.start") })
+      footer: /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(import_jsx_runtime43.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.Button, { size: "sm", onClick: dismiss, disabled: pending, children: t("cancel") }),
+        /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.Button, { size: "sm", variant: "primary", type: "submit", form: formId, disabled: pending || !ready || tasks.length === 0, children: t(pending ? "parallel.starting" : "parallel.start") })
       ] }),
-      children: /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("form", { id: formId, ref: form, className: "dchat-parallel-form", onSubmit: submit, children: [
-        items.map((item, index2) => /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { className: "dchat-parallel-task", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { className: "dchat-parallel-task-header", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("label", { htmlFor: `${formId}-task-${item.id}`, className: "dchat-parallel-badge", children: index2 + 1 }),
-            /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("span", { className: "dchat-parallel-task-title", children: t("parallel.task", { index: index2 + 1 }) }),
-            items.length > 1 && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
-              import_dsh_client_ui_primitives36.Button,
+      children: /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("form", { id: formId, ref: form, className: "dchat-parallel-form", onSubmit: submit, children: [
+        items.map((item, index2) => /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { className: "dchat-parallel-task", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { className: "dchat-parallel-task-header", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("label", { htmlFor: `${formId}-task-${item.id}`, className: "dchat-parallel-badge", children: index2 + 1 }),
+            /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { className: "dchat-parallel-task-title", children: t("parallel.task", { index: index2 + 1 }) }),
+            items.length > 1 && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+              import_dsh_client_ui_primitives37.Button,
               {
                 size: "sm",
                 className: "dchat-parallel-remove",
@@ -15516,11 +16267,11 @@ function ParallelTasks({ id, ready, launched, close, t }) {
                   focusTask.current = items[index2 + 1]?.id ?? items[index2 - 1]?.id;
                   setItems(items.filter((task) => task.id !== item.id));
                 },
-                children: /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.IconCloseOutlineRegular, { size: 12 })
+                children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconCloseOutlineRegular, { size: 12 })
               }
             )
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
             "textarea",
             {
               id: `${formId}-task-${item.id}`,
@@ -15540,12 +16291,12 @@ function ParallelTasks({ id, ready, launched, close, t }) {
             }
           )
         ] }, item.id)),
-        items.length < 4 && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
-          import_dsh_client_ui_primitives36.Button,
+        items.length < 4 && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+          import_dsh_client_ui_primitives37.Button,
           {
             size: "sm",
             className: "dchat-parallel-add",
-            icon: /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.IconPlusOutlineRegular, { size: 14 }),
+            icon: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconPlusOutlineRegular, { size: 14 }),
             disabled: pending,
             onClick: () => {
               const task = { id: nextId.current++, text: "" };
@@ -15555,35 +16306,35 @@ function ParallelTasks({ id, ready, launched, close, t }) {
             children: t("parallel.add")
           }
         ),
-        error && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("p", { role: "alert", className: "dchat-error", children: error }),
-        !ready && !error && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("p", { role: "status", className: "dchat-status", children: t("disconnected") })
+        error && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("p", { role: "alert", className: "dchat-error", children: error }),
+        !ready && !error && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("p", { role: "status", className: "dchat-status", children: t("disconnected") })
       ] })
     }
   );
 }
 function SubagentCatalog({ summary, openChild, t }) {
-  const [open, setOpen] = (0, import_react36.useState)(false);
-  const root = (0, import_react36.useRef)(null);
-  const trigger = (0, import_react36.useRef)(null);
-  const count = (0, import_react36.useRef)(null);
-  const panel = (0, import_react36.useRef)(null);
-  const hover = (0, import_react36.useRef)(null);
-  const pinned = (0, import_react36.useRef)(false);
-  const nextFocus = (0, import_react36.useRef)(null);
-  const id = (0, import_react36.useId)();
+  const [open, setOpen] = (0, import_react38.useState)(false);
+  const root = (0, import_react38.useRef)(null);
+  const trigger = (0, import_react38.useRef)(null);
+  const count = (0, import_react38.useRef)(null);
+  const panel = (0, import_react38.useRef)(null);
+  const hover = (0, import_react38.useRef)(null);
+  const pinned = (0, import_react38.useRef)(false);
+  const nextFocus = (0, import_react38.useRef)(null);
+  const id = (0, import_react38.useId)();
   const anchorName = `--dchat-subagents-${id.replace(/[^a-z\d-]/gi, "")}`;
   const agents = summary?.agents ?? noAgents;
   const running = agents.filter((agent) => agent.status === "running" || agent.status === "in_progress").length;
   const label = summary?.ready || agents.length ? t(agents.length === 1 ? "agents.count.one" : "agents.count.other", { count: agents.length }) : t("agents.title");
   const rows = () => Array.from(panel.current?.querySelectorAll('[role="treeitem"]:not([aria-disabled="true"])') ?? []);
-  const close = (0, import_react36.useCallback)((restoreFocus = false) => {
+  const close = (0, import_react38.useCallback)((restoreFocus = false) => {
     clearTimeout(hover.current);
     pinned.current = false;
     nextFocus.current = null;
     setOpen(false);
-    if (restoreFocus && trigger.current) (0, import_dsh_client_ui_primitives36.focusWithoutRing)(trigger.current);
+    if (restoreFocus && trigger.current) (0, import_dsh_client_ui_primitives37.focusWithoutRing)(trigger.current);
   }, []);
-  (0, import_react36.useEffect)(() => {
+  (0, import_react38.useEffect)(() => {
     if (!open) return;
     const inside = (node2) => root.current?.contains(node2) || panel.current?.contains(node2);
     const pointerDown = (event2) => {
@@ -15602,8 +16353,8 @@ function SubagentCatalog({ summary, openChild, t }) {
       document.removeEventListener("keydown", onEscape);
     };
   }, [open, close]);
-  (0, import_react36.useEffect)(() => () => clearTimeout(hover.current), []);
-  (0, import_react36.useLayoutEffect)(() => {
+  (0, import_react38.useEffect)(() => () => clearTimeout(hover.current), []);
+  (0, import_react38.useLayoutEffect)(() => {
     if (!open || !nextFocus.current) return;
     const destination = nextFocus.current === "first" ? rows()[0] ?? panel.current : panel.current;
     nextFocus.current = null;
@@ -15643,8 +16394,8 @@ function SubagentCatalog({ summary, openChild, t }) {
     const next = event2.key === "Home" ? 0 : event2.key === "End" ? items.length - 1 : event2.key === "ArrowDown" ? current + 1 : current < 0 ? items.length - 1 : current - 1;
     items[(next + items.length) % items.length].focus();
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { className: "dchat-agent-catalog", ref: root, onKeyDown: navigate, onPointerLeave: hoverClose, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.Tooltip, { label, disabled: open, delayMs: 500, portal: true, side: "bottom", children: /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { className: "dchat-agent-catalog", ref: root, onKeyDown: navigate, onPointerLeave: hoverClose, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.Tooltip, { label, disabled: open, delayMs: 500, portal: true, side: "bottom", children: /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(
       "button",
       {
         type: "button",
@@ -15662,17 +16413,17 @@ function SubagentCatalog({ summary, openChild, t }) {
           else show("panel");
         },
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("span", { className: "dchat-agent-glyph", "aria-hidden": true, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.IconUsersOutlineRegular, { size: 14, className: running ? "dchat-agent-compact-icon" : void 0 }),
-            running > 0 && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.StateDot, { state: "ongoing", className: "dchat-agent-trigger-spinner" })
+          /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("span", { className: "dchat-agent-glyph", "aria-hidden": true, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconUsersOutlineRegular, { size: 14, className: running ? "dchat-agent-compact-icon" : void 0 }),
+            running > 0 && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.StateDot, { state: "ongoing", className: "dchat-agent-trigger-spinner" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("span", { className: "dchat-agent-count", ref: count, children: label })
+          /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { className: "dchat-agent-count", ref: count, children: label })
         ]
       }
     ) }),
-    running > 0 && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("span", { id: `${id}-running`, hidden: true, children: t("agents.activity", { count: running }) }),
-    open && (0, import_react_dom6.createPortal)(/* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
-      import_dsh_client_ui_primitives36.MenuSurface,
+    running > 0 && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { id: `${id}-running`, hidden: true, children: t("agents.activity", { count: running }) }),
+    open && (0, import_react_dom7.createPortal)(/* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+      import_dsh_client_ui_primitives37.MenuSurface,
       {
         ref: panel,
         id: `${id}-catalog`,
@@ -15683,12 +16434,12 @@ function SubagentCatalog({ summary, openChild, t }) {
         style: { positionAnchor: anchorName },
         onPointerEnter: () => clearTimeout(hover.current),
         onPointerLeave: hoverClose,
-        children: /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { className: "dchat-agent-panel-body", children: [
-          summary?.error && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("p", { className: "dchat-agent-notice", role: "alert", children: summary.error }),
-          agents.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("div", { role: "tree", "aria-label": t("agents.catalog"), children: agents.map((agent) => /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(SubagentRow, { agent, openChild: (id2) => {
+        children: /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { className: "dchat-agent-panel-body", children: [
+          summary?.error && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("p", { className: "dchat-agent-notice", role: "alert", children: summary.error }),
+          agents.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("div", { role: "tree", "aria-label": t("agents.catalog"), children: agents.map((agent) => /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(SubagentRow, { agent, openChild: (id2) => {
             close();
             openChild(id2);
-          }, t }, agent.id)) }) : !summary?.error && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("p", { className: "dchat-agent-notice", role: "status", children: t(summary?.ready ? "agents.empty" : "agents.loading") })
+          }, t }, agent.id)) }) : !summary?.error && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("p", { className: "dchat-agent-notice", role: "status", children: t(summary?.ready ? "agents.empty" : "agents.loading") })
         ] })
       }
     ), document.body)
@@ -15719,7 +16470,7 @@ function SubagentRow({ agent, openChild, t }) {
   const caption = [parallel ? t("agents.parallel") : null, agent.detail].filter(Boolean).join(" \xB7 ");
   const status = Object.hasOwn(labels, agent.status) ? t(labels[agent.status]) : agent.status;
   const launch = agent.sessionId ? () => openChild(agent.sessionId) : void 0;
-  return /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(
     "div",
     {
       className: "dchat-agent-row",
@@ -15735,13 +16486,13 @@ function SubagentRow({ agent, openChild, t }) {
         launch();
       },
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("span", { className: "dchat-agent-glyph", children: /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.StateDot, { state: Object.hasOwn(states, agent.status) ? states[agent.status] : "idle" }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("span", { className: "dchat-agent-name", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("span", { children: name }),
-          caption && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("small", { children: caption })
+        /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { className: "dchat-agent-glyph", children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.StateDot, { state: Object.hasOwn(states, agent.status) ? states[agent.status] : "idle" }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("span", { className: "dchat-agent-name", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { children: name }),
+          caption && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("small", { children: caption })
         ] }),
-        status && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("small", { className: "dchat-agent-status", children: status }),
-        /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("span", { className: "dchat-agent-open", "aria-hidden": true, children: launch && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.IconChevronRightOutlineRegular, { size: 14 }) })
+        status && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("small", { className: "dchat-agent-status", children: status }),
+        /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { className: "dchat-agent-open", "aria-hidden": true, children: launch && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.IconChevronRightOutlineRegular, { size: 14 }) })
       ]
     }
   );
@@ -15770,9 +16521,9 @@ function ToolLocations({ tool, openFile, t }) {
     tool.rawInput?.uri
   ]) add(candidate);
   if (locations.size === 0) return null;
-  return /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("ul", { className: "dchat-tool-paths", children: [...locations].map(([path, line2]) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("ul", { className: "dchat-tool-paths", children: [...locations].map(([path, line2]) => {
     const label = line2 === void 0 ? path : `${path}:${line2}`;
-    return /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
       "button",
       {
         className: "dchat-tool-path",
@@ -15792,13 +16543,13 @@ function PermissionCard({ request: request3, select, disabled, openFile, t }) {
     return [];
   }).join("\n");
   const detail = text || (toolCall.rawInput != null ? JSON.stringify(toolCall.rawInput, null, 2) : "");
-  return /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("section", { className: "dchat-approval", "aria-label": t("permission.title"), children: [
-    /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("h3", { children: t("permission.title") }),
-    /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("p", { children: toolCall.title || t("permission.tool") }),
-    /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(ToolLocations, { tool: toolCall, openFile, t }),
-    detail && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("pre", { children: detail }),
-    /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("div", { className: "dchat-approval-actions", children: options.map((option) => /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
-      import_dsh_client_ui_primitives36.Button,
+  return /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("section", { className: "dchat-approval", "aria-label": t("permission.title"), children: [
+    /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("h3", { children: t("permission.title") }),
+    /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("p", { children: toolCall.title || t("permission.tool") }),
+    /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(ToolLocations, { tool: toolCall, openFile, t }),
+    detail && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("pre", { children: detail }),
+    /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("div", { className: "dchat-approval-actions", children: options.map((option) => /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+      import_dsh_client_ui_primitives37.Button,
       {
         size: "sm",
         variant: "outline",
@@ -15812,15 +16563,15 @@ function PermissionCard({ request: request3, select, disabled, openFile, t }) {
 }
 function UserMessage({ text, structuredReply }) {
   const replies = structuredReply && questionReply(text);
-  if (replies) return /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("dl", { className: "dchat-question-reply", children: replies.map(({ question, answer }, i) => /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("dt", { children: question }),
-    /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("dd", { children: answer })
+  if (replies) return /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("dl", { className: "dchat-question-reply", children: replies.map(({ question, answer }, i) => /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("dt", { children: question }),
+    /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("dd", { children: answer })
   ] }, i)) });
-  return text ? /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("p", { children: text }) : null;
+  return text ? /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("p", { children: text }) : null;
 }
 function AssistantMessage({ message, ...props }) {
-  const normalized = (0, import_react36.useMemo)(() => normalizeMarkdownFileUrls(message.text), [message.text]);
-  return normalized ? /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_dsh_client_ui_primitives36.MarkdownText, { text: normalized, ...props }) : null;
+  const normalized = (0, import_react38.useMemo)(() => normalizeMarkdownFileUrls(message.text), [message.text]);
+  return normalized ? /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives37.MarkdownText, { text: normalized, ...props }) : null;
 }
 
 // composer-draft.mjs
@@ -16560,7 +17311,7 @@ var session_pet_default = `.dchat-pet-root {
 `;
 
 // copy.mjs
-var en3 = {
+var en4 = {
   "transcript.loadEarlier": "Show earlier messages ({count})",
   "transcript.toBottom": "Scroll to bottom",
   "chat.turnNavigation.label": "Conversation turns",
@@ -16744,6 +17495,10 @@ var en3 = {
   "agents.waiting": "Waiting",
   "agents.cancelled": "Cancelled",
   "agents.interrupted": "Interrupted",
+  "jobs.title": "Running tasks",
+  "jobs.running": "{count} running",
+  "jobs.tools": "Processes & tools ({count})",
+  "jobs.agents": "Subagents ({count})",
   "parallel.title": "Parallel tasks",
   "parallel.description": "Tasks inherit the current engine, workspace, model, and mode. Each task runs in its own conversation and counts toward your usage.",
   "parallel.task": "Task {index}",
@@ -16861,7 +17616,7 @@ var en3 = {
   "engineSettings.apiKeySaved": "Saved (leave blank to keep)",
   "engineSettings.missingKey": "Missing {key}"
 };
-var zh3 = {
+var zh4 = {
   "transcript.loadEarlier": "\u52A0\u8F7D\u66F4\u65E9\u7684\u6D88\u606F\uFF08\u5269\u4F59 {count} \u6761\uFF09",
   "transcript.toBottom": "\u56DE\u5230\u5E95\u90E8",
   "chat.turnNavigation.label": "\u5BF9\u8BDD\u8F6E\u6B21\u5BFC\u822A",
@@ -17069,6 +17824,10 @@ var zh3 = {
   "agents.waiting": "\u7B49\u5F85\u4E2D",
   "agents.cancelled": "\u5DF2\u53D6\u6D88",
   "agents.interrupted": "\u5DF2\u4E2D\u65AD",
+  "jobs.title": "\u8FD0\u884C\u4E2D\u7684\u4EFB\u52A1",
+  "jobs.running": "{count} \u4E2A\u8FD0\u884C\u4E2D",
+  "jobs.tools": "\u8FDB\u7A0B\u4E0E\u5DE5\u5177 ({count})",
+  "jobs.agents": "\u5B50\u4EE3\u7406 ({count})",
   "parallel.title": "\u5E76\u884C\u5B50\u4EFB\u52A1",
   "parallel.description": "\u5B50\u4EFB\u52A1\u6CBF\u7528\u5F53\u524D\u4F1A\u8BDD\u7684\u5F15\u64CE\u3001\u5DE5\u4F5C\u533A\u3001\u6A21\u578B\u548C\u6A21\u5F0F\uFF0C\u5404\u81EA\u5728\u72EC\u7ACB\u4F1A\u8BDD\u4E2D\u8FD0\u884C\u5E76\u8BA1\u5165\u7528\u91CF\u3002",
   "parallel.task": "\u4EFB\u52A1 {index}",
@@ -17164,9 +17923,9 @@ var zh3 = {
 };
 
 // sidebar.jsx
-var import_react37 = require("react");
-var import_dsh_client_ui_primitives37 = require("@deepseek-ai/dsh-client-ui-primitives");
-var import_jsx_runtime42 = require("react/jsx-runtime");
+var import_react39 = require("react");
+var import_dsh_client_ui_primitives38 = require("@deepseek-ai/dsh-client-ui-primitives");
+var import_jsx_runtime44 = require("react/jsx-runtime");
 var workspaceSessionsSlot = "sidebar.workspaces.external-sessions";
 var workspaceProjectionSlot = "sidebar.workspaces.direct-chat-projection";
 var sidebarCopy = {
@@ -17280,10 +18039,10 @@ var sidebarCopy = {
   }
 };
 function SidebarSessions({ placement, history, t }) {
-  const { pending, error } = (0, import_react37.useSyncExternalStore)(history.subscribe, history.getSnapshot);
+  const { pending, error } = (0, import_react39.useSyncExternalStore)(history.subscribe, history.getSnapshot);
   if (placement !== "toolbar") return null;
   const label = t(error ? "sidebar.failed" : "sidebar.refresh");
-  return /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
     "button",
     {
       type: "button",
@@ -17295,7 +18054,7 @@ function SidebarSessions({ placement, history, t }) {
       onClick: () => {
         if (!pending) void history.refresh();
       },
-      children: /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(import_dsh_client_ui_primitives37.IconRefreshOutlineRegular, { size: 14 })
+      children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(import_dsh_client_ui_primitives38.IconRefreshOutlineRegular, { size: 14 })
     }
   );
 }
@@ -17303,17 +18062,17 @@ var emptyStatusSnapshot = { list: [], byId: /* @__PURE__ */ new Map() };
 var fallbackStatusStore = { getSnapshot: () => emptyStatusSnapshot, subscribe: () => () => {
 } };
 function SidebarProjection({ render, history, statusStore = fallbackStatusStore, navigation, openDirect, usePanelInfo, panelId: panelId2, engineSource, registerWorkspace, archiveRequest, t }) {
-  const { byCwd } = (0, import_react37.useSyncExternalStore)(history.subscribe, history.getSnapshot);
-  const { engines } = (0, import_react37.useSyncExternalStore)(engineSource.subscribe, engineSource.getSnapshot);
-  const statusSnapshot = (0, import_react37.useSyncExternalStore)(statusStore.subscribe, statusStore.getSnapshot);
-  const target = (0, import_react37.useSyncExternalStore)(navigation.subscribe, navigation.getSnapshot);
+  const { byCwd } = (0, import_react39.useSyncExternalStore)(history.subscribe, history.getSnapshot);
+  const { engines } = (0, import_react39.useSyncExternalStore)(engineSource.subscribe, engineSource.getSnapshot);
+  const statusSnapshot = (0, import_react39.useSyncExternalStore)(statusStore.subscribe, statusStore.getSnapshot);
+  const target = (0, import_react39.useSyncExternalStore)(navigation.subscribe, navigation.getSnapshot);
   const active = usePanelInfo((info) => info.activePanelId === panelId2);
-  const [expanded, setExpanded] = (0, import_react37.useState)(() => /* @__PURE__ */ new Set());
-  const [notice, setNotice] = (0, import_react37.useState)(null);
-  const [renameTarget, setRenameTarget] = (0, import_react37.useState)(null);
-  const [deleteTarget, setDeleteTarget] = (0, import_react37.useState)(null);
-  const [localArchiveTarget, setLocalArchiveTarget] = (0, import_react37.useState)(null);
-  const externalArchiveTarget = (0, import_react37.useSyncExternalStore)(
+  const [expanded, setExpanded] = (0, import_react39.useState)(() => /* @__PURE__ */ new Set());
+  const [notice, setNotice] = (0, import_react39.useState)(null);
+  const [renameTarget, setRenameTarget] = (0, import_react39.useState)(null);
+  const [deleteTarget, setDeleteTarget] = (0, import_react39.useState)(null);
+  const [localArchiveTarget, setLocalArchiveTarget] = (0, import_react39.useState)(null);
+  const externalArchiveTarget = (0, import_react39.useSyncExternalStore)(
     archiveRequest?.subscribe ?? fallbackStatusStore.subscribe,
     archiveRequest?.getSnapshot ?? (() => null)
   );
@@ -17322,10 +18081,10 @@ function SidebarProjection({ render, history, statusStore = fallbackStatusStore,
     if (archiveRequest) archiveRequest.set(next);
     else setLocalArchiveTarget(next);
   };
-  const groupCwdsRef = (0, import_react37.useRef)(/* @__PURE__ */ new Map());
+  const groupCwdsRef = (0, import_react39.useRef)(/* @__PURE__ */ new Map());
   const report = (text, success) => setNotice((old) => ({ id: (old?.id ?? 0) + 1, text, success }));
   const copy = async (text) => {
-    const copied = await (0, import_dsh_client_ui_primitives37.writeClipboard)(text).catch(() => false);
+    const copied = await (0, import_dsh_client_ui_primitives38.writeClipboard)(text).catch(() => false);
     report(t(copied ? "sidebar.copied" : "sidebar.copyFailed"), copied);
   };
   const updateSession = async (row, action, data) => {
@@ -17367,7 +18126,7 @@ function SidebarProjection({ render, history, statusStore = fallbackStatusStore,
       const isRowActive = active && node2.directChat.id === target.id;
       const live = !node2.archived ? statusSnapshot.byId.get(node2.directChat.id) : void 0;
       const liveState = live?.state === "done" && isRowActive ? void 0 : live?.state;
-      return /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(
+      return /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
         ExternalSessionRow,
         {
           node: node2,
@@ -17392,7 +18151,7 @@ function SidebarProjection({ render, history, statusStore = fallbackStatusStore,
       if (group.directCwd === void 0) return null;
       const rows = byCwd.get(group.directCwd) ?? [];
       const archivableCount = rows.filter((row) => !row.archived && row.archiveMode !== "unsupported").length;
-      return /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(
+      return /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
         FolderActions,
         {
           path: group.directCwd,
@@ -17415,7 +18174,7 @@ function SidebarProjection({ render, history, statusStore = fallbackStatusStore,
       );
     }
   };
-  (0, import_react37.useLayoutEffect)(() => {
+  (0, import_react39.useLayoutEffect)(() => {
     if (typeof document === "undefined") return;
     const rank = { attention: 3, running: 2, done: 1 };
     const cwdState = /* @__PURE__ */ new Map();
@@ -17433,9 +18192,9 @@ function SidebarProjection({ render, history, statusStore = fallbackStatusStore,
       else delete el.dataset.directWorkspaceState;
     }
   }, [statusSnapshot, byCwd, expanded, active, target.id]);
-  return /* @__PURE__ */ (0, import_jsx_runtime42.jsxs)(import_jsx_runtime42.Fragment, { children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(import_jsx_runtime44.Fragment, { children: [
     render(extension),
-    renameTarget && /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(
+    renameTarget && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
       SessionRename,
       {
         row: renameTarget,
@@ -17445,7 +18204,7 @@ function SidebarProjection({ render, history, statusStore = fallbackStatusStore,
       },
       renameTarget.id
     ),
-    deleteTarget && /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(
+    deleteTarget && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
       SessionDelete,
       {
         name: deleteTarget.title || engineLabel(engines, deleteTarget.engine),
@@ -17455,7 +18214,7 @@ function SidebarProjection({ render, history, statusStore = fallbackStatusStore,
       },
       deleteTarget.id
     ),
-    archiveTarget && /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(
+    archiveTarget && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
       WorkspaceArchive,
       {
         name: archiveTarget.name,
@@ -17474,8 +18233,8 @@ function SidebarProjection({ render, history, statusStore = fallbackStatusStore,
       },
       archiveTarget.cwd
     ),
-    notice && /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(
-      import_dsh_client_ui_primitives37.Toast,
+    notice && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+      import_dsh_client_ui_primitives38.Toast,
       {
         text: notice.text,
         tone: notice.success ? "success" : void 0,
@@ -17487,8 +18246,8 @@ function SidebarProjection({ render, history, statusStore = fallbackStatusStore,
 }
 function MoreMenu({ name, css, open, setOpen, point, setPoint, items, select, t }) {
   const label = t("sidebar.moreActions", { name });
-  return /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(
-    import_dsh_client_ui_primitives37.Menu,
+  return /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+    import_dsh_client_ui_primitives38.Menu,
     {
       open,
       portal: true,
@@ -17506,7 +18265,7 @@ function MoreMenu({ name, css, open, setOpen, point, setPoint, items, select, t 
         setPoint?.(null);
         select(id);
       },
-      anchor: /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(
+      anchor: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
         "button",
         {
           type: "button",
@@ -17521,18 +18280,18 @@ function MoreMenu({ name, css, open, setOpen, point, setPoint, items, select, t 
             setPoint?.(null);
             setOpen(!open);
           },
-          children: /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(import_dsh_client_ui_primitives37.IconEllipsisOutlineRegular, { size: 16 })
+          children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(import_dsh_client_ui_primitives38.IconEllipsisOutlineRegular, { size: 16 })
         }
       )
     }
   );
 }
-var icon = (Icon) => /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(Icon, { size: 16 });
+var icon = (Icon) => /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(Icon, { size: 16 });
 function SessionRename({ row, save, close, t }) {
-  const [draft, setDraft] = (0, import_react37.useState)(row.title || "");
-  const [pending, setPending] = (0, import_react37.useState)(false);
-  const [error, setError] = (0, import_react37.useState)("");
-  const composing = (0, import_react37.useRef)(false);
+  const [draft, setDraft] = (0, import_react39.useState)(row.title || "");
+  const [pending, setPending] = (0, import_react39.useState)(false);
+  const [error, setError] = (0, import_react39.useState)("");
+  const composing = (0, import_react39.useRef)(false);
   const title = draft.trim();
   const confirm = async () => {
     if (!title || pending) return;
@@ -17549,21 +18308,21 @@ function SessionRename({ row, save, close, t }) {
   const dismiss = () => {
     if (!pending) close();
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime42.jsxs)(
-    import_dsh_client_ui_primitives37.Modal,
+  return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
+    import_dsh_client_ui_primitives38.Modal,
     {
       open: true,
       title: t("sidebar.renameTitle"),
       closeLabel: t("close"),
       onClose: dismiss,
-      footer: /* @__PURE__ */ (0, import_jsx_runtime42.jsxs)(import_jsx_runtime42.Fragment, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(import_dsh_client_ui_primitives37.Button, { variant: "outline", disabled: pending, onClick: dismiss, children: t("cancel") }),
-        /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(import_dsh_client_ui_primitives37.Button, { variant: "primary", disabled: !title || pending, onClick: () => {
+      footer: /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(import_jsx_runtime44.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(import_dsh_client_ui_primitives38.Button, { variant: "outline", disabled: pending, onClick: dismiss, children: t("cancel") }),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(import_dsh_client_ui_primitives38.Button, { variant: "primary", disabled: !title || pending, onClick: () => {
           void confirm();
         }, children: t("sidebar.rename") })
       ] }),
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
           "input",
           {
             "aria-label": t("sidebar.sessionName"),
@@ -17590,15 +18349,15 @@ function SessionRename({ row, save, close, t }) {
             }
           }
         ),
-        error && /* @__PURE__ */ (0, import_jsx_runtime42.jsx)("div", { className: "dchat-sidebar-dialog-error", role: "alert", children: error })
+        error && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "dchat-sidebar-dialog-error", role: "alert", children: error })
       ]
     }
   );
 }
 function ActionConfirmModal({ title, description, confirmLabel, pendingLabel, failedLabel, actionClassName, run, close, t }) {
-  const running = (0, import_react37.useRef)(false);
-  const [pending, setPending] = (0, import_react37.useState)(false);
-  const [error, setError] = (0, import_react37.useState)("");
+  const running = (0, import_react39.useRef)(false);
+  const [pending, setPending] = (0, import_react39.useState)(false);
+  const [error, setError] = (0, import_react39.useState)("");
   const dismiss = () => {
     if (!running.current) close();
   };
@@ -17616,8 +18375,8 @@ function ActionConfirmModal({ title, description, confirmLabel, pendingLabel, fa
       setPending(false);
     }
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime42.jsxs)(
-    import_dsh_client_ui_primitives37.Modal,
+  return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
+    import_dsh_client_ui_primitives38.Modal,
     {
       open: true,
       title,
@@ -17626,10 +18385,10 @@ function ActionConfirmModal({ title, description, confirmLabel, pendingLabel, fa
       contentClassName: "dchat-sidebar-delete-content",
       closeLabel: t("close"),
       onClose: dismiss,
-      footer: /* @__PURE__ */ (0, import_jsx_runtime42.jsxs)("div", { className: "dchat-sidebar-delete-actions", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(import_dsh_client_ui_primitives37.Button, { variant: "outline", "data-modal-autofocus": true, disabled: pending, onClick: dismiss, children: t("cancel") }),
-        /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(
-          import_dsh_client_ui_primitives37.Button,
+      footer: /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "dchat-sidebar-delete-actions", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(import_dsh_client_ui_primitives38.Button, { variant: "outline", "data-modal-autofocus": true, disabled: pending, onClick: dismiss, children: t("cancel") }),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+          import_dsh_client_ui_primitives38.Button,
           {
             variant: "outline",
             className: actionClassName,
@@ -17640,14 +18399,14 @@ function ActionConfirmModal({ title, description, confirmLabel, pendingLabel, fa
         )
       ] }),
       children: [
-        pending && /* @__PURE__ */ (0, import_jsx_runtime42.jsx)("div", { className: "dchat-sidebar-delete-status", role: "status", children: pendingLabel }),
-        error && /* @__PURE__ */ (0, import_jsx_runtime42.jsx)("div", { className: "dchat-sidebar-dialog-error", role: "alert", children: error })
+        pending && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "dchat-sidebar-delete-status", role: "status", children: pendingLabel }),
+        error && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "dchat-sidebar-dialog-error", role: "alert", children: error })
       ]
     }
   );
 }
 function SessionDelete({ name, remove, close, t }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
     ActionConfirmModal,
     {
       title: t("sidebar.deleteTitle"),
@@ -17663,7 +18422,7 @@ function SessionDelete({ name, remove, close, t }) {
   );
 }
 function WorkspaceArchive({ name, count, archive, close, t }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
     ActionConfirmModal,
     {
       title: t("sidebar.archiveFolderTitle"),
@@ -17678,17 +18437,17 @@ function WorkspaceArchive({ name, count, archive, close, t }) {
   );
 }
 function FolderActions({ path, name, css, archivableCount, register, archiveAll, copy, t }) {
-  const [open, setOpen] = (0, import_react37.useState)(false);
-  const [pending, setPending] = (0, import_react37.useState)(false);
+  const [open, setOpen] = (0, import_react39.useState)(false);
+  const [pending, setPending] = (0, import_react39.useState)(false);
   const items = [
     ...path ? [
-      { id: "register", label: t("sidebar.register"), icon: icon(import_dsh_client_ui_primitives37.IconProjectAddOutlineRegular), disabled: pending },
-      { id: "path", label: t("sidebar.copyPath"), icon: icon(import_dsh_client_ui_primitives37.IconCopyOutlineRegular) },
+      { id: "register", label: t("sidebar.register"), icon: icon(import_dsh_client_ui_primitives38.IconProjectAddOutlineRegular), disabled: pending },
+      { id: "path", label: t("sidebar.copyPath"), icon: icon(import_dsh_client_ui_primitives38.IconCopyOutlineRegular) },
       { type: "separator", id: "archive-separator" }
     ] : [],
-    { id: "archiveAll", label: t("sidebar.archiveFolder"), icon: icon(import_dsh_client_ui_primitives37.IconArchiveOutlineRegular), disabled: pending || archivableCount === 0 }
+    { id: "archiveAll", label: t("sidebar.archiveFolder"), icon: icon(import_dsh_client_ui_primitives38.IconArchiveOutlineRegular), disabled: pending || archivableCount === 0 }
   ];
-  return /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
     MoreMenu,
     {
       name,
@@ -17715,7 +18474,7 @@ function FolderActions({ path, name, css, archivableCount, register, archiveAll,
   );
 }
 function QuickAction({ css, label, Icon, disabled, onClick, pinned = false }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(import_dsh_client_ui_primitives37.Tooltip, { label, side: "bottom", align: "end", delayMs: 500, portal: true, children: /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(import_dsh_client_ui_primitives38.Tooltip, { label, side: "bottom", align: "end", delayMs: 500, portal: true, children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
     "button",
     {
       type: "button",
@@ -17724,15 +18483,15 @@ function QuickAction({ css, label, Icon, disabled, onClick, pinned = false }) {
       disabled,
       "data-direct-pinned-action": pinned || void 0,
       onClick,
-      children: /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(Icon, { size: 14 })
+      children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(Icon, { size: 14 })
     }
   ) });
 }
 function ExternalSessionRow({ node: node2, css, label, compactTime, formatTime, active, liveState, openDirect, updateSession, rename, confirmDelete, copy, report, t }) {
   const row = node2.directChat;
-  const [open, setOpen] = (0, import_react37.useState)(false);
-  const [point, setPoint] = (0, import_react37.useState)(null);
-  const [pending, setPending] = (0, import_react37.useState)(false);
+  const [open, setOpen] = (0, import_react39.useState)(false);
+  const [point, setPoint] = (0, import_react39.useState)(null);
+  const [pending, setPending] = (0, import_react39.useState)(false);
   const title = row.title || label;
   const origin = row.origin === "terminal" ? t("sidebar.terminal") : void 0;
   const created = sidebarTime(row.createdAt);
@@ -17742,24 +18501,24 @@ function ExternalSessionRow({ node: node2, css, label, compactTime, formatTime, 
   const canRename = row.actions?.rename === true || row.renameMode === "local";
   const archiveLabel = t(node2.archived ? row.archiveMode === "legacy" ? "sidebar.restoreLegacy" : "sidebar.restore" : "sidebar.archive");
   const pinLabel = t(node2.pinned ? "sidebar.unpin" : "sidebar.pin");
-  const ArchiveIcon = node2.archived ? import_dsh_client_ui_primitives37.IconUnarchiveOutlineRegular : import_dsh_client_ui_primitives37.IconArchiveOutlineRegular;
-  const PinIcon = node2.pinned ? import_dsh_client_ui_primitives37.IconPinFillRegular : import_dsh_client_ui_primitives37.IconPinOutlineRegular;
+  const ArchiveIcon = node2.archived ? import_dsh_client_ui_primitives38.IconUnarchiveOutlineRegular : import_dsh_client_ui_primitives38.IconArchiveOutlineRegular;
+  const PinIcon = node2.pinned ? import_dsh_client_ui_primitives38.IconPinFillRegular : import_dsh_client_ui_primitives38.IconPinOutlineRegular;
   const canFork = row.canFork === true && !node2.archived;
   const forkReason = t(node2.archived ? "sidebar.forkArchived" : row.forkUnavailableReason === "agy-acp" ? "sidebar.agyForkUnavailable" : "sidebar.forkUnavailable");
   const items = [
     ...!node2.archived ? [{ id: "pin", label: pinLabel, icon: icon(PinIcon), disabled: pending }] : [],
-    { id: "rename", label: t(row.renameMode === "local" ? "sidebar.localRename" : "sidebar.rename"), icon: icon(import_dsh_client_ui_primitives37.IconEditOutlineRegular), disabled: pending || !canRename },
-    { id: "fork", label: t("sidebar.fork"), icon: icon(import_dsh_client_ui_primitives37.IconBranchOutlineRegular), disabled: pending || !canFork },
+    { id: "rename", label: t(row.renameMode === "local" ? "sidebar.localRename" : "sidebar.rename"), icon: icon(import_dsh_client_ui_primitives38.IconEditOutlineRegular), disabled: pending || !canRename },
+    { id: "fork", label: t("sidebar.fork"), icon: icon(import_dsh_client_ui_primitives38.IconBranchOutlineRegular), disabled: pending || !canFork },
     ...!canFork ? [{ type: "label", id: "fork-unavailable", text: forkReason }] : [],
     { type: "separator", id: "copy-separator" },
-    { id: "id", label: t("sidebar.copyId"), icon: icon(import_dsh_client_ui_primitives37.IconCopyOutlineRegular) },
-    ...row.cwd ? [{ id: "path", label: t("sidebar.copyPath"), icon: icon(import_dsh_client_ui_primitives37.IconCopyOutlineRegular) }] : [],
+    { id: "id", label: t("sidebar.copyId"), icon: icon(import_dsh_client_ui_primitives38.IconCopyOutlineRegular) },
+    ...row.cwd ? [{ id: "path", label: t("sidebar.copyPath"), icon: icon(import_dsh_client_ui_primitives38.IconCopyOutlineRegular) }] : [],
     { type: "separator", id: "archive-separator" },
     { id: "archive", label: archiveLabel, disabled: pending || !canArchive, icon: icon(ArchiveIcon) },
     ...!canArchive ? [{ type: "label", id: "archive-unavailable", text: t("sidebar.archiveUnavailable") }] : [],
     ...canDelete ? [
       { type: "separator", id: "delete-separator" },
-      { id: "delete", label: t("sidebar.delete"), icon: icon(import_dsh_client_ui_primitives37.IconTrashOutlineRegular), danger: true, disabled: pending }
+      { id: "delete", label: t("sidebar.delete"), icon: icon(import_dsh_client_ui_primitives38.IconTrashOutlineRegular), danger: true, disabled: pending }
     ] : []
   ];
   const mutate = async (action, data, notice) => {
@@ -17784,7 +18543,7 @@ function ExternalSessionRow({ node: node2, css, label, compactTime, formatTime, 
     else if (id === "fork" && canFork) await mutate("fork", {}, "sidebar.forked");
   };
   const activate = () => node2.archived ? report(t("sidebar.restoreToOpen"), false) : openDirect(row.id);
-  const anchor = /* @__PURE__ */ (0, import_jsx_runtime42.jsxs)(
+  const anchor = /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
     "div",
     {
       role: "treeitem",
@@ -17808,17 +18567,17 @@ function ExternalSessionRow({ node: node2, css, label, compactTime, formatTime, 
         setOpen(true);
       },
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime42.jsx)("span", { className: `${css.slot} dchat-sidebar-slot`, "aria-hidden": "true", children: /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(EngineLogo, { engine: row.engine, label, size: 14 }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime42.jsx)("span", { className: css.title, onDoubleClick: (event2) => {
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: `${css.slot} dchat-sidebar-slot`, "aria-hidden": "true", children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(EngineLogo, { engine: row.engine, label, size: 14 }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: css.title, onDoubleClick: (event2) => {
           event2.stopPropagation();
           if (!pending && canRename) rename(row);
         }, children: title }),
-        /* @__PURE__ */ (0, import_jsx_runtime42.jsxs)("span", { className: css.rowResting, children: [
-          fullTime && /* @__PURE__ */ (0, import_jsx_runtime42.jsx)("time", { className: `${css.time} ${css.timestamp}`, dateTime: new Date(node2.updatedAt).toISOString(), title: fullTime, children: compactTime }),
-          node2.pinned && /* @__PURE__ */ (0, import_jsx_runtime42.jsx)("span", { className: css.pinIndicator, role: "img", title: t("sidebar.pinned"), "aria-label": t("sidebar.pinned"), children: /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(import_dsh_client_ui_primitives37.IconPinFillRegular, { size: 14 }) })
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("span", { className: css.rowResting, children: [
+          fullTime && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("time", { className: `${css.time} ${css.timestamp}`, dateTime: new Date(node2.updatedAt).toISOString(), title: fullTime, children: compactTime }),
+          node2.pinned && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: css.pinIndicator, role: "img", title: t("sidebar.pinned"), "aria-label": t("sidebar.pinned"), children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(import_dsh_client_ui_primitives38.IconPinFillRegular, { size: 14 }) })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime42.jsxs)("span", { className: css.rowActions, onClick: (event2) => event2.stopPropagation(), children: [
-          /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("span", { className: css.rowActions, onClick: (event2) => event2.stopPropagation(), children: [
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
             MoreMenu,
             {
               name: title,
@@ -17834,11 +18593,11 @@ function ExternalSessionRow({ node: node2, css, label, compactTime, formatTime, 
               t
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime42.jsxs)("span", { className: css.rowQuickActions, "data-direct-quick-actions": "", children: [
-            canArchive && /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(QuickAction, { css, label: archiveLabel, Icon: ArchiveIcon, disabled: pending, onClick: () => {
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("span", { className: css.rowQuickActions, "data-direct-quick-actions": "", children: [
+            canArchive && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(QuickAction, { css, label: archiveLabel, Icon: ArchiveIcon, disabled: pending, onClick: () => {
               void select("archive");
             } }),
-            !node2.archived && /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(
+            !node2.archived && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
               QuickAction,
               {
                 css,
@@ -17856,8 +18615,8 @@ function ExternalSessionRow({ node: node2, css, label, compactTime, formatTime, 
       ]
     }
   );
-  return /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(
-    import_dsh_client_ui_primitives37.HoverCard,
+  return /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+    import_dsh_client_ui_primitives38.HoverCard,
     {
       anchor,
       openDelayMs: 800,
@@ -17866,15 +18625,15 @@ function ExternalSessionRow({ node: node2, css, label, compactTime, formatTime, 
       copyText: title,
       copyLabel: t("copy"),
       copiedLabel: t("sidebar.copied"),
-      content: /* @__PURE__ */ (0, import_jsx_runtime42.jsxs)("div", { className: css.hoverContent, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime42.jsx)("div", { className: css.hoverTitle, children: title }),
-        row.cwd && /* @__PURE__ */ (0, import_jsx_runtime42.jsx)("div", { className: css.hoverPath, children: row.cwd }),
-        /* @__PURE__ */ (0, import_jsx_runtime42.jsx)("div", { className: css.hoverTime, children: origin ? `${label} \xB7 ${origin}` : label }),
-        fullTime && /* @__PURE__ */ (0, import_jsx_runtime42.jsx)("div", { className: css.hoverTime, children: t("sidebar.updatedAt", { date: fullTime }) }),
-        created > 0 && /* @__PURE__ */ (0, import_jsx_runtime42.jsx)("div", { className: css.hoverTime, children: t("sidebar.createdAt", { date: formatTime(created) }) }),
-        liveState && /* @__PURE__ */ (0, import_jsx_runtime42.jsxs)("div", { className: css.hoverStatus, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(import_dsh_client_ui_primitives37.StateDot, { state: liveState === "running" ? "ongoing" : liveState === "attention" ? "warning" : "done" }),
-          /* @__PURE__ */ (0, import_jsx_runtime42.jsx)("span", { children: t(`sidebar.status.${liveState}`) })
+      content: /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: css.hoverContent, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: css.hoverTitle, children: title }),
+        row.cwd && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: css.hoverPath, children: row.cwd }),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: css.hoverTime, children: origin ? `${label} \xB7 ${origin}` : label }),
+        fullTime && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: css.hoverTime, children: t("sidebar.updatedAt", { date: fullTime }) }),
+        created > 0 && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: css.hoverTime, children: t("sidebar.createdAt", { date: formatTime(created) }) }),
+        liveState && /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: css.hoverStatus, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(import_dsh_client_ui_primitives38.StateDot, { state: liveState === "running" ? "ongoing" : liveState === "attention" ? "warning" : "done" }),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { children: t(`sidebar.status.${liveState}`) })
         ] })
       ] })
     }
@@ -18200,7 +18959,7 @@ var archive_settings_default = `.dchat-archive-settings {
 var engine_hero_default = ".dchat[data-blank] {\n  --dchat-hero-accent: #6c81b8;\n  background:\n    radial-gradient(ellipse 68% 43% at 50% 43%, color-mix(in srgb, var(--dchat-hero-accent) 13%, transparent), transparent 88%),\n    var(--dsw-alias-bg-base);\n}\n\n.dchat[data-hero-engine='agy'] { --dchat-hero-accent: #7396ec; }\n.dchat[data-hero-engine='codex'] { --dchat-hero-accent: #8a74f4; }\n.dchat[data-hero-engine='claude'] { --dchat-hero-accent: #d88167; }\n\n.dchat-engine-hero {\n  position: relative;\n  display: grid;\n  gap: 8px;\n  width: 100%;\n  min-width: 0;\n  justify-items: center;\n}\n\n.dchat-engine-headline {\n  max-width: 100%;\n  margin: 0;\n  color: var(--dsw-alias-label-primary);\n  font-size: clamp(25px, 4vw, 34px);\n  line-height: 1.15;\n  font-weight: 600;\n  letter-spacing: -0.025em;\n  text-align: center;\n  overflow-wrap: anywhere;\n}\n\n.dchat-engine-headline-button {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: 11px;\n  max-width: 100%;\n  border: 0;\n  border-radius: 9px;\n  padding: 3px 8px;\n  background: transparent;\n  color: inherit;\n  font: inherit;\n  letter-spacing: inherit;\n  cursor: pointer;\n}\n\n.dchat-engine-headline-button:hover,\n.dchat-engine-headline-button[aria-expanded='true'] {\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n\n.dchat-engine-headline-button[aria-disabled='true'] {\n  cursor: wait;\n}\n\n.dchat-engine-popover {\n  position: absolute;\n  z-index: 12;\n  top: calc(100% + 8px);\n  width: min(570px, 100%);\n  display: grid;\n  gap: 8px;\n  max-height: min(320px, 45dvh);\n  overflow-y: auto;\n  overscroll-behavior: contain;\n  padding: 10px;\n  box-sizing: border-box;\n  border: 1px solid var(--dsw-alias-border-l2);\n  border-radius: 16px;\n  background: var(--dsw-alias-bg-base);\n  box-shadow: 0 12px 32px #131e3724;\n}\n\n.dchat-engine-headline img,\n.dchat-engine-headline svg {\n  flex: none;\n  object-fit: contain;\n}\n\n.dchat-engine-cards {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: stretch;\n  justify-content: center;\n  gap: 8px;\n  width: 100%;\n  max-width: 620px;\n  padding-inline: 4px;\n  box-sizing: border-box;\n}\n\n.dchat-engine-card {\n  --dchat-card-accent: #6c81b8;\n  display: flex;\n  flex: 1 1 115px;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  gap: 7px;\n  min-width: min(104px, 100%);\n  max-width: 132px;\n  min-height: 72px;\n  padding: 9px 8px;\n  border: 1px solid var(--dsw-alias-border-l2);\n  border-radius: 12px;\n  color: var(--dsw-alias-label-primary);\n  background: color-mix(in srgb, var(--dsw-alias-bg-base) 92%, transparent);\n  font: inherit;\n  font-size: 12px;\n  font-weight: 500;\n  line-height: 1.25;\n  text-align: center;\n  overflow-wrap: anywhere;\n  cursor: pointer;\n}\n\n.dchat-engine-card[data-engine='cli:agy'] { --dchat-card-accent: #7396ec; }\n.dchat-engine-card[data-engine='cli:codex'] { --dchat-card-accent: #8a74f4; }\n.dchat-engine-card[data-engine='cli:claude'] { --dchat-card-accent: #d88167; }\n\n.dchat-engine-card:hover {\n  border-color: color-mix(in srgb, var(--dchat-card-accent) 55%, var(--dsw-alias-border-l2));\n}\n\n.dchat-engine-card[aria-pressed='true'] {\n  border-color: color-mix(in srgb, var(--dchat-card-accent) 70%, var(--dsw-alias-border-l2));\n  background: color-mix(in srgb, var(--dchat-card-accent) 12%, var(--dsw-alias-bg-base));\n}\n\n.dchat-engine-card:focus-visible,\n.dchat-engine-headline-button:focus-visible,\n.dchat-engine-availability button:focus-visible {\n  outline: 2px solid var(--dsw-alias-state-business-primary, currentColor);\n  outline-offset: 3px;\n}\n\n.dchat-engine-card img {\n  object-fit: contain;\n}\n\n.dchat-engine-version {\n  font-size: 11px;\n  line-height: 1.2;\n  color: var(--dsw-alias-label-tertiary);\n  font-variant-numeric: tabular-nums;\n}\n\n.dchat-engine-pill {\n  padding: 1px 6px;\n  border-radius: 999px;\n  font-size: 10px;\n  line-height: 15px;\n  font-weight: 500;\n  background: var(--dsw-alias-interactive-bg-hover);\n  color: var(--dsw-alias-label-secondary);\n}\n\n.dchat-engine-pill[data-tone='update'] {\n  background: color-mix(in srgb, var(--dsw-alias-state-info-primary, #2563eb) 14%, transparent);\n  color: var(--dsw-alias-state-info-primary, #2563eb);\n}\n\n.dchat-engine-pill[data-tone='warn'] {\n  background: color-mix(in srgb, var(--dsw-alias-state-warn-label, #d97706) 14%, transparent);\n  color: var(--dsw-alias-state-warn-label, #d97706);\n}\n\n.dchat-engine-admin-bar,\n.dchat-engine-notice-strip {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  justify-content: center;\n  gap: 8px;\n}\n\n.dchat-engine-admin-bar {\n  padding-top: 4px;\n  border-top: 0.5px solid var(--dsw-alias-border-l2);\n}\n\n.dchat-engine-admin-btn {\n  padding: 3px 10px;\n  border: 0.5px solid var(--dsw-alias-border-l2);\n  border-radius: 999px;\n  background: var(--dsw-alias-bg-base);\n  color: var(--dsw-alias-label-secondary);\n  font: inherit;\n  font-size: 11px;\n  line-height: 16px;\n  cursor: pointer;\n}\n\n.dchat-engine-admin-btn:hover:not(:disabled) {\n  color: var(--dsw-alias-label-primary);\n  background: var(--dsw-alias-interactive-bg-hover);\n}\n\n.dchat-engine-admin-btn[data-primary] {\n  border-color: color-mix(in srgb, var(--dsw-alias-state-info-primary, #2563eb) 40%, transparent);\n  color: var(--dsw-alias-state-info-primary, #2563eb);\n}\n\n.dchat-engine-admin-btn:disabled {\n  opacity: 0.55;\n  cursor: wait;\n}\n\n.dchat-engine-initial {\n  display: grid;\n  place-items: center;\n  flex: none;\n  border-radius: 0.4em;\n  color: var(--dsw-alias-label-primary);\n  background: var(--dsw-alias-interactive-bg-hover);\n  font-weight: 600;\n}\n\n.dchat-engine-availability {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  justify-content: center;\n  gap: 4px 8px;\n  margin: 0;\n  color: var(--dsw-alias-label-secondary);\n  font-size: 12px;\n}\n\n.dchat-engine-availability button {\n  border: 0;\n  padding: 2px 4px;\n  background: transparent;\n  color: var(--dsw-alias-label-primary);\n  font: inherit;\n  text-decoration: underline;\n  cursor: pointer;\n}\n";
 
 // sidebar.css
-var sidebar_default = '.dchat-sidebar-slot {\n  display: inline-grid;\n  place-items: center;\n}\n\n.dchat-sidebar-slot img {\n  object-fit: contain;\n  border-radius: 3px;\n}\n\n.dchat-sidebar-native-logo {\n  display: inline-grid;\n  place-items: center;\n  width: 16px;\n  height: 16px;\n  flex: none;\n  color: var(--dsw-alias-label-secondary);\n}\n\n[data-seat="sidebar.session.row.leading"] {\n  display: inline-flex;\n  align-items: center;\n  gap: 4px;\n}\n\n[class*="groupSection"] [role="treeitem"][data-row-key^="session:"] {\n  padding-inline-start: calc(var(--dsh-sidebar-row-padding) - var(--dsh-sidebar-paint-inset) + 12px + var(--dsh-workspace-indent, 0px));\n}\n\n[role="treeitem"][data-row-key^="session:"]:not([data-direct-row]) > span:first-child {\n  width: auto;\n  min-width: 16px;\n}\n\n[data-direct-row] {\n  position: relative;\n  isolation: isolate;\n}\n\n[data-direct-row][data-live-state]::before {\n  content: "";\n  position: absolute;\n  inset: 0;\n  z-index: -1;\n  pointer-events: none;\n  border-radius: inherit;\n}\n\n[data-direct-row][data-live-state="running"] {\n  box-shadow: inset 2.5px 0 0 color-mix(in srgb, var(--dsw-alias-state-business-primary, #3b82f6) 75%, transparent);\n}\n\n[data-direct-row][data-live-state="running"]::before {\n  background: linear-gradient(\n    90deg,\n    color-mix(in srgb, var(--dsw-alias-state-business-primary, #3b82f6) 4%, transparent) 0%,\n    color-mix(in srgb, var(--dsw-alias-state-business-primary, #3b82f6) 13%, transparent) 50%,\n    color-mix(in srgb, var(--dsw-alias-state-business-primary, #3b82f6) 4%, transparent) 100%\n  );\n  background-size: 200% 100%;\n  animation: dchat-row-flow 2.5s ease-in-out infinite;\n}\n\n[data-direct-row][data-live-state="attention"] {\n  box-shadow: inset 2.5px 0 0 color-mix(in srgb, var(--dsw-alias-state-warn-label, #f59e0b) 85%, transparent);\n}\n\n[data-direct-row][data-live-state="attention"]::before {\n  background: color-mix(in srgb, var(--dsw-alias-state-warn-label, #f59e0b) 12%, transparent);\n  animation: dchat-row-breathe 2.2s ease-in-out infinite;\n}\n\n[data-direct-row][data-live-state="done"] {\n  box-shadow: inset 2.5px 0 0 color-mix(in srgb, var(--dsw-alias-state-success-primary, #22c55e) 70%, transparent);\n}\n\n[data-direct-row][data-live-state="done"]::before {\n  background: color-mix(in srgb, var(--dsw-alias-state-success-primary, #22c55e) 8%, transparent);\n}\n\n@keyframes dchat-row-flow {\n  0% { background-position: 200% 0; }\n  100% { background-position: -200% 0; }\n}\n\n@keyframes dchat-row-breathe {\n  0%, 100% { opacity: 0.45; }\n  50% { opacity: 1; }\n}\n\n@media (prefers-reduced-motion: reduce) {\n  [data-direct-row][data-live-state="running"]::before,\n  [data-direct-row][data-live-state="attention"]::before,\n  [data-row-key^="workspace:"][aria-expanded="false"][data-direct-workspace-state="running"]::before,\n  [data-row-key^="workspace:"][aria-expanded="false"][data-direct-workspace-state="attention"]::before {\n    animation: none;\n  }\n}\n\n[data-row-key^="workspace:"][aria-expanded="false"][data-direct-workspace-state] {\n  position: relative;\n  isolation: isolate;\n}\n\n[data-row-key^="workspace:"][aria-expanded="false"][data-direct-workspace-state]::before {\n  content: "";\n  position: absolute;\n  inset: 0;\n  z-index: -1;\n  pointer-events: none;\n  border-radius: inherit;\n}\n\n[data-row-key^="workspace:"][aria-expanded="false"][data-direct-workspace-state="running"] {\n  box-shadow: inset 2.5px 0 0 color-mix(in srgb, var(--dsw-alias-state-business-primary, #3b82f6) 75%, transparent);\n}\n\n[data-row-key^="workspace:"][aria-expanded="false"][data-direct-workspace-state="running"]::before {\n  background: linear-gradient(\n    90deg,\n    color-mix(in srgb, var(--dsw-alias-state-business-primary, #3b82f6) 4%, transparent) 0%,\n    color-mix(in srgb, var(--dsw-alias-state-business-primary, #3b82f6) 13%, transparent) 50%,\n    color-mix(in srgb, var(--dsw-alias-state-business-primary, #3b82f6) 4%, transparent) 100%\n  );\n  background-size: 200% 100%;\n  animation: dchat-row-flow 2.5s ease-in-out infinite;\n}\n\n[data-row-key^="workspace:"][aria-expanded="false"][data-direct-workspace-state="attention"] {\n  box-shadow: inset 2.5px 0 0 color-mix(in srgb, var(--dsw-alias-state-warn-label, #f59e0b) 85%, transparent);\n}\n\n[data-row-key^="workspace:"][aria-expanded="false"][data-direct-workspace-state="attention"]::before {\n  background: color-mix(in srgb, var(--dsw-alias-state-warn-label, #f59e0b) 12%, transparent);\n  animation: dchat-row-breathe 2.2s ease-in-out infinite;\n}\n\n[data-row-key^="workspace:"][aria-expanded="false"][data-direct-workspace-state="done"] {\n  box-shadow: inset 2.5px 0 0 color-mix(in srgb, var(--dsw-alias-state-success-primary, #22c55e) 70%, transparent);\n}\n\n[data-row-key^="workspace:"][aria-expanded="false"][data-direct-workspace-state="done"]::before {\n  background: color-mix(in srgb, var(--dsw-alias-state-success-primary, #22c55e) 8%, transparent);\n}\n\n[data-direct-row]:focus-visible {\n  outline: var(--dsw-focus-ring-width, 2px) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: -2px;\n}\n\n/* The native folder actions otherwise disappear as the pointer enters the portal. */\n[data-row-key^="workspace:direct-chat:cwd:"] > span:has([data-direct-menu-trigger][aria-expanded="true"]) {\n  display: inline-flex;\n}\n\n@media (hover: none) {\n  [data-row-key^="workspace:direct-chat:cwd:"][aria-expanded] > span:has([data-direct-menu-trigger]) {\n    display: inline-flex;\n  }\n\n  [data-direct-quick-actions] > button:not([data-direct-pinned-action]) {\n    display: none;\n  }\n}\n\n.dchat-sidebar-rename-input {\n  box-sizing: border-box;\n  width: 100%;\n  height: 44px;\n  padding: 7px 14px;\n  border: 0.5px solid var(--dsw-alias-border-l4);\n  border-radius: var(--dsw-radius-lg);\n  background: transparent;\n  color: var(--dsw-alias-label-primary);\n  font: inherit;\n}\n\n.dchat-sidebar-rename-input:focus-visible {\n  outline: var(--dsw-focus-ring-width, 2px) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: -1px;\n}\n\n.dchat-sidebar-dialog-error {\n  margin-top: 8px;\n  color: var(--dsw-alias-state-error-primary);\n  font-size: 12px;\n  line-height: 18px;\n}\n\n.dchat-sidebar-delete-dialog {\n  max-height: 100%;\n  overflow-wrap: anywhere;\n}\n\n.dchat-sidebar-delete-content {\n  overflow-y: auto;\n}\n\n.dchat-sidebar-delete-actions {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: flex-end;\n  width: 100%;\n  gap: 8px;\n  white-space: nowrap;\n}\n\n.dchat-sidebar-delete-actions > .dchat-sidebar-delete-action {\n  padding-inline: 8px;\n}\n\n.dchat-sidebar-delete-action:not(:disabled) {\n  color: var(--dsw-alias-state-error-primary);\n}\n\n.dchat-sidebar-delete-status {\n  color: var(--dsw-alias-label-secondary);\n  font-size: 12px;\n  line-height: 18px;\n}\n\n.dchat-sidebar-refresh {\n  display: grid;\n  flex: none;\n  place-items: center;\n  box-sizing: border-box;\n  width: 28px;\n  height: 28px;\n  border: none;\n  border-radius: var(--dsw-radius-sm);\n  padding: 0;\n  background: transparent;\n  color: var(--dsw-alias-label-secondary);\n  cursor: pointer;\n}\n\n.dchat-sidebar-refresh:hover {\n  background-color: var(--dsw-alias-interactive-bg-hover);\n}\n\n.dchat-sidebar-refresh:focus-visible {\n  outline: var(--dsw-focus-ring-width, 2px) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: -2px;\n}\n\n.dchat-sidebar-refresh[aria-disabled="true"] {\n  opacity: 0.6;\n}\n\n.dchat-sidebar-refresh[data-error] {\n  color: var(--dsw-alias-state-error-primary);\n}\n';
+var sidebar_default = '.dchat-sidebar-slot {\n  display: inline-grid;\n  place-items: center;\n}\n\n.dchat-sidebar-slot img {\n  object-fit: contain;\n  border-radius: 3px;\n}\n\n.dchat-sidebar-native-logo {\n  display: inline-grid;\n  place-items: center;\n  width: 16px;\n  height: 16px;\n  flex: none;\n  color: var(--dsw-alias-label-secondary);\n}\n\n[data-seat="sidebar.session.row.leading"] {\n  display: inline-flex;\n  align-items: center;\n  gap: 4px;\n}\n\n[class*="groupSection"] [role="treeitem"][data-row-key^="session:"] {\n  padding-inline-start: calc(var(--dsh-sidebar-row-padding) - var(--dsh-sidebar-paint-inset) + 12px + var(--dsh-workspace-indent, 0px));\n}\n\n[role="treeitem"][data-row-key^="session:"]:not([data-direct-row]) > span:first-child {\n  width: auto;\n  min-width: 16px;\n}\n\n[data-direct-row] {\n  position: relative;\n  isolation: isolate;\n}\n\n[data-direct-row][data-live-state]::before {\n  content: "";\n  position: absolute;\n  inset: 0;\n  z-index: -1;\n  pointer-events: none;\n  border-radius: inherit;\n}\n\n[data-direct-row][data-live-state="running"] {\n  box-shadow: inset 2.5px 0 0 color-mix(in srgb, var(--dsw-alias-state-business-primary, #3b82f6) 75%, transparent);\n}\n\n[data-direct-row][data-live-state="running"]::before {\n  background: linear-gradient(\n    90deg,\n    color-mix(in srgb, var(--dsw-alias-state-business-primary, #3b82f6) 4%, transparent) 0%,\n    color-mix(in srgb, var(--dsw-alias-state-business-primary, #3b82f6) 13%, transparent) 50%,\n    color-mix(in srgb, var(--dsw-alias-state-business-primary, #3b82f6) 4%, transparent) 100%\n  );\n  background-size: 200% 100%;\n  animation: dchat-row-flow 2.5s ease-in-out infinite;\n}\n\n[data-direct-row][data-live-state="attention"] {\n  box-shadow: inset 2.5px 0 0 color-mix(in srgb, var(--dsw-alias-state-warn-label, #f59e0b) 85%, transparent);\n}\n\n[data-direct-row][data-live-state="attention"]::before {\n  background: color-mix(in srgb, var(--dsw-alias-state-warn-label, #f59e0b) 12%, transparent);\n  animation: dchat-row-breathe 2.2s ease-in-out infinite;\n}\n\n[data-direct-row][data-live-state="done"] {\n  box-shadow: inset 2.5px 0 0 color-mix(in srgb, var(--dsw-alias-state-success-primary, #22c55e) 70%, transparent);\n}\n\n[data-direct-row][data-live-state="done"]::before {\n  background: color-mix(in srgb, var(--dsw-alias-state-success-primary, #22c55e) 8%, transparent);\n}\n\n@keyframes dchat-row-flow {\n  0% { background-position: 200% 0; }\n  100% { background-position: -200% 0; }\n}\n\n@keyframes dchat-row-breathe {\n  0%, 100% { opacity: 0.45; }\n  50% { opacity: 1; }\n}\n\n@media (prefers-reduced-motion: reduce) {\n  [data-direct-row][data-live-state="running"]::before,\n  [data-direct-row][data-live-state="attention"]::before,\n  [data-row-key^="workspace:"][aria-expanded="false"][data-direct-workspace-state="running"]::before,\n  [data-row-key^="workspace:"][aria-expanded="false"][data-direct-workspace-state="attention"]::before {\n    animation: none;\n  }\n}\n\n[data-row-key^="workspace:"][aria-expanded="false"][data-direct-workspace-state] {\n  position: relative;\n  isolation: isolate;\n}\n\n[data-row-key^="workspace:"][aria-expanded="false"][data-direct-workspace-state]::before {\n  content: "";\n  position: absolute;\n  inset: 0;\n  z-index: -1;\n  pointer-events: none;\n  border-radius: inherit;\n}\n\n[data-row-key^="workspace:"][aria-expanded="false"][data-direct-workspace-state="running"] {\n  box-shadow: inset 2.5px 0 0 color-mix(in srgb, var(--dsw-alias-state-business-primary, #3b82f6) 75%, transparent);\n}\n\n[data-row-key^="workspace:"][aria-expanded="false"][data-direct-workspace-state="running"]::before {\n  background: linear-gradient(\n    90deg,\n    color-mix(in srgb, var(--dsw-alias-state-business-primary, #3b82f6) 4%, transparent) 0%,\n    color-mix(in srgb, var(--dsw-alias-state-business-primary, #3b82f6) 13%, transparent) 50%,\n    color-mix(in srgb, var(--dsw-alias-state-business-primary, #3b82f6) 4%, transparent) 100%\n  );\n  background-size: 200% 100%;\n  animation: dchat-row-flow 2.5s ease-in-out infinite;\n}\n\n[data-row-key^="workspace:"][aria-expanded="false"][data-direct-workspace-state="attention"] {\n  box-shadow: inset 2.5px 0 0 color-mix(in srgb, var(--dsw-alias-state-warn-label, #f59e0b) 85%, transparent);\n}\n\n[data-row-key^="workspace:"][aria-expanded="false"][data-direct-workspace-state="attention"]::before {\n  background: color-mix(in srgb, var(--dsw-alias-state-warn-label, #f59e0b) 12%, transparent);\n  animation: dchat-row-breathe 2.2s ease-in-out infinite;\n}\n\n[data-row-key^="workspace:"][aria-expanded="false"][data-direct-workspace-state="done"] {\n  box-shadow: inset 2.5px 0 0 color-mix(in srgb, var(--dsw-alias-state-success-primary, #22c55e) 70%, transparent);\n}\n\n[data-row-key^="workspace:"][aria-expanded="false"][data-direct-workspace-state="done"]::before {\n  background: color-mix(in srgb, var(--dsw-alias-state-success-primary, #22c55e) 8%, transparent);\n}\n\n[data-direct-row]:focus-visible {\n  outline: var(--dsw-focus-ring-width, 2px) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: -2px;\n}\n\n[data-direct-row][aria-selected="true"] {\n  font-weight: 500;\n}\n\n[data-direct-row][aria-selected="true"][data-live-state] {\n  background-color: var(--dsw-alias-interactive-bg-hover-solid, var(--dsw-alias-interactive-bg-hover));\n  box-shadow: inset 3px 0 0 var(--dsw-alias-state-business-primary, #3b82f6), inset 0 0 0 1px var(--dsw-alias-border-l3, rgba(128, 128, 128, 0.28));\n}\n\n[data-direct-row][aria-selected="true"][data-live-state="attention"] {\n  box-shadow: inset 3px 0 0 var(--dsw-alias-state-warn-label, #f59e0b), inset 0 0 0 1px color-mix(in srgb, var(--dsw-alias-state-warn-label, #f59e0b) 45%, transparent);\n}\n\n[data-direct-row][aria-selected="true"][data-live-state="done"] {\n  box-shadow: inset 3px 0 0 var(--dsw-alias-state-success-primary, #22c55e), inset 0 0 0 1px color-mix(in srgb, var(--dsw-alias-state-success-primary, #22c55e) 40%, transparent);\n}\n\n/* The native folder actions otherwise disappear as the pointer enters the portal. */\n[data-row-key^="workspace:direct-chat:cwd:"] > span:has([data-direct-menu-trigger][aria-expanded="true"]) {\n  display: inline-flex;\n}\n\n@media (hover: none) {\n  [data-row-key^="workspace:direct-chat:cwd:"][aria-expanded] > span:has([data-direct-menu-trigger]) {\n    display: inline-flex;\n  }\n\n  [data-direct-quick-actions] > button:not([data-direct-pinned-action]) {\n    display: none;\n  }\n}\n\n.dchat-sidebar-rename-input {\n  box-sizing: border-box;\n  width: 100%;\n  height: 44px;\n  padding: 7px 14px;\n  border: 0.5px solid var(--dsw-alias-border-l4);\n  border-radius: var(--dsw-radius-lg);\n  background: transparent;\n  color: var(--dsw-alias-label-primary);\n  font: inherit;\n}\n\n.dchat-sidebar-rename-input:focus-visible {\n  outline: var(--dsw-focus-ring-width, 2px) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: -1px;\n}\n\n.dchat-sidebar-dialog-error {\n  margin-top: 8px;\n  color: var(--dsw-alias-state-error-primary);\n  font-size: 12px;\n  line-height: 18px;\n}\n\n.dchat-sidebar-delete-dialog {\n  max-height: 100%;\n  overflow-wrap: anywhere;\n}\n\n.dchat-sidebar-delete-content {\n  overflow-y: auto;\n}\n\n.dchat-sidebar-delete-actions {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: flex-end;\n  width: 100%;\n  gap: 8px;\n  white-space: nowrap;\n}\n\n.dchat-sidebar-delete-actions > .dchat-sidebar-delete-action {\n  padding-inline: 8px;\n}\n\n.dchat-sidebar-delete-action:not(:disabled) {\n  color: var(--dsw-alias-state-error-primary);\n}\n\n.dchat-sidebar-delete-status {\n  color: var(--dsw-alias-label-secondary);\n  font-size: 12px;\n  line-height: 18px;\n}\n\n.dchat-sidebar-refresh {\n  display: grid;\n  flex: none;\n  place-items: center;\n  box-sizing: border-box;\n  width: 28px;\n  height: 28px;\n  border: none;\n  border-radius: var(--dsw-radius-sm);\n  padding: 0;\n  background: transparent;\n  color: var(--dsw-alias-label-secondary);\n  cursor: pointer;\n}\n\n.dchat-sidebar-refresh:hover {\n  background-color: var(--dsw-alias-interactive-bg-hover);\n}\n\n.dchat-sidebar-refresh:focus-visible {\n  outline: var(--dsw-focus-ring-width, 2px) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));\n  outline-offset: -2px;\n}\n\n.dchat-sidebar-refresh[aria-disabled="true"] {\n  opacity: 0.6;\n}\n\n.dchat-sidebar-refresh[data-error] {\n  color: var(--dsw-alias-state-error-primary);\n}\n';
 
 // styles.css
 var styles_default = `.dchat {
@@ -18233,7 +18992,18 @@ var styles_default = `.dchat {
   min-height: 46px;
   padding: 8px var(--dchat-padding);
   padding-inline-start: max(var(--dchat-padding), var(--dsh-frame-leading-clearance, 0px));
+  padding-inline-end: max(var(--dchat-padding), var(--dsh-frame-trailing-clearance, 0px));
   border-bottom: 1px solid var(--dsw-alias-border-l2);
+}
+
+html[data-platform='darwin'] .dchat-header {
+  -webkit-app-region: drag;
+}
+
+html[data-platform='darwin'] .dchat-header-actions,
+html[data-platform='darwin'] .dchat-title button,
+html[data-platform='darwin'] .dchat-title a {
+  -webkit-app-region: no-drag;
 }
 
 /* The web drawer already places its sidebar opener over this header. */
@@ -19724,14 +20494,14 @@ var workspace_picker_default = ".dchat-workspace-picker {\n  min-width: 0;\n}\n\
 var workspace_diff_default = ".dchat-diff-pane {\n  position: absolute;\n  inset: 0 0 0 auto;\n  display: flex;\n  flex-direction: column;\n  box-sizing: border-box;\n  min-width: 0;\n  color: var(--dsw-alias-label-primary);\n}\n\n.dchat-diff-pane[data-fullscreen] {\n  position: fixed;\n  z-index: 40;\n  inset: var(--dsh-frame-chrome-top, 0px) 0 0;\n  width: auto;\n}\n\n.dchat-diff-pane[data-fallback] {\n  z-index: 40;\n  width: min(480px, 100%);\n\n}\n\n.dchat-diff-pane[data-fallback] [data-sidebar-right-mode] {\n  display: none;\n}\n\n.dchat-preview-markdown {\n  flex: 1;\n  min-height: 0;\n  overflow: auto;\n  padding: 16px 20px;\n  font-size: 13px;\n  line-height: 1.65;\n}\n\n.dchat .dchat-diff-icon,\n.dchat .dchat-files-icon,\n.dchat-diff-pane .dchat-diff-icon {\n  width: 28px;\n  height: 28px;\n  padding: 0;\n  color: var(--dsw-alias-label-secondary);\n}\n\n.dchat-rightbar-toggle-icon {\n  transform: scaleX(-1);\n}\n\n.dchat :is(.dchat-diff-icon, .dchat-files-icon)[aria-pressed='true'] {\n  background: var(--dsw-alias-interactive-bg-hover);\n  color: var(--dsw-alias-label-primary);\n}\n\n.dchat-diff-workspace {\n  flex: 1 1 120px;\n  min-width: 0;\n  color: var(--dsw-alias-label-tertiary);\n  font-size: 12px;\n}\n\n.dchat-diff-pane .dchat-diff-select {\n  gap: 4px;\n  padding: 0 7px;\n}\n\n.dchat-diff-visually-hidden {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  overflow: hidden;\n  clip-path: inset(50%);\n  white-space: nowrap;\n}\n\n[data-dchat-forge-changes] {\n  flex: 1;\n  min-width: 0;\n}\n\n.dchat-forge-body {\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  min-height: 0;\n  min-width: 0;\n}\n\n.dchat-preview-toolbar {\n  display: flex;\n  flex: none;\n  align-items: center;\n  gap: 4px;\n  box-sizing: border-box;\n  min-height: 38px;\n  padding: 0 6px 0 16px;\n  border-bottom: 0.5px solid var(--dsw-alias-border-l3);\n}\n\n.dchat-preview-path { flex: 1; min-width: 0; margin-inline-end: 8px; }\n.dchat-preview-toolbar .dchat-diff-icon { flex: none; }\n\n.dchat-files-pane,\n.dchat-preview-content {\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  min-width: 0;\n  min-height: 0;\n}\n\n.dchat-files-pane[hidden] { display: none; }\n\n.dchat-files-content {\n  flex: 1;\n  min-height: 0;\n  padding: 8px;\n  overflow: auto;\n  overscroll-behavior: contain;\n}\n\n.dchat-files-list {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\n\n.dchat-files-entry > .dchat-files-list { padding-inline-start: min(12px, 3cqw); }\n\n.dchat-files-row {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  width: 100%;\n  min-width: 0;\n  min-height: 29px;\n  padding: 5px 10px;\n  border: 0;\n  border-radius: var(--dsw-radius-md);\n  background: transparent;\n  color: var(--dsw-alias-label-primary);\n  font: inherit;\n  font-size: var(--dsh-content-font-size-secondary, 13px);\n  text-align: start;\n  cursor: pointer;\n}\n\n.dchat-files-row:hover { background: var(--dsw-alias-interactive-bg-hover); }\n.dchat-files-row > svg { flex: none; }\n.dchat-files-row[aria-expanded] > svg { color: var(--dsw-alias-label-tertiary); }\n.dchat-files-row[aria-expanded='true'] .dchat-files-chevron svg { transform: rotate(90deg); }\n\n.dchat-files-chevron {\n  display: flex;\n  flex: none;\n  align-items: center;\n  justify-content: center;\n  width: 12px;\n  color: var(--dsw-alias-label-tertiary);\n}\n\n.dchat-files-name { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }\n\n.dchat-files-note,\n.dchat-preview-status {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  margin: 0;\n  padding: 9px 12px;\n  color: var(--dsw-alias-label-secondary);\n  font-size: var(--dsh-content-font-size-secondary, 13px);\n  overflow-wrap: anywhere;\n}\n\n.dchat-files-entry > .dchat-files-note { margin-inline-start: 12px; }\n\n.dchat-preview-notice {\n  margin: 0;\n  padding: 6px 12px;\n  border-top: 0.5px solid var(--dsw-alias-border-l3);\n  color: var(--dsw-alias-label-secondary);\n  font-size: 12px;\n}\n\n.dchat-preview-scroll {\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  min-width: 0;\n  min-height: 0;\n}\n\n.dchat-preview-scroll > .md-code-block {\n  --dsl-code-block-border-radius: 0px;\n  --dsl-code-block-background: transparent;\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  min-width: 0;\n  min-height: 0;\n  margin: 0;\n}\n\n.dchat-preview-scroll > .md-code-block > [data-code-block-content] {\n  position: relative;\n  display: block;\n  flex: 1;\n  min-width: 0;\n  min-height: 0;\n  overflow: auto;\n  overscroll-behavior: contain;\n}\n\n.dchat-preview-scroll .md-code-block pre {\n  box-sizing: border-box;\n  min-width: 100%;\n  padding: 16px;\n  overflow: visible;\n}\n\n.dchat-preview-scroll [data-line-numbers] pre code {\n  --dsl-code-block-line-number-width: var(--dchat-file-number-width);\n  counter-reset: source-line var(--dchat-file-first-line, 0);\n}\n\n.dchat-preview-scroll [data-dchat-file-line] { background: var(--dsw-alias-interactive-bg-hover); }\n\n.dchat-preview-image-scroll,\n.dchat-preview-media-scroll {\n  display: flex;\n  flex: 1;\n  align-items: center;\n  justify-content: center;\n  min-width: 0;\n  min-height: 0;\n  padding: 12px;\n  overflow: auto;\n}\n\n.dchat-preview-image-scroll > img,\n.dchat-preview-video {\n  max-width: 100%;\n  max-height: 100%;\n  object-fit: contain;\n  border-radius: var(--dsw-radius-md);\n}\n\n.dchat-preview-audio {\n  width: min(100%, 420px);\n}\n\n.dchat-browser-toolbar {\n  padding-inline: 8px;\n}\n\n.dchat-browser-url {\n  flex: 1;\n  min-width: 0;\n}\n\n.dchat-browser-frame {\n  flex: 1;\n  width: 100%;\n  height: 100%;\n  border: 0;\n  background: #fff;\n}\n\n.dchat-native-terminal-host {\n  position: relative;\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  min-width: 0;\n  min-height: 0;\n  overflow: hidden;\n}\n\n.dchat-native-terminal-host > [data-sidebar-terminal] {\n  flex: 1;\n  min-width: 0;\n  min-height: 0;\n}\n\n.dchat-document-html {\n  display: block;\n  flex: 1;\n  width: 100%;\n  min-height: 0;\n  border: 0;\n  background: white;\n}\n\n.dchat-document-pdf {\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  min-width: 0;\n  min-height: 0;\n}\n\n.dchat-document-zoom {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  gap: 4px;\n  padding: 4px;\n  border-bottom: 1px solid var(--dsw-alias-border-l3);\n}\n\n.dchat-document-pdf-scroll {\n  flex: 1;\n  min-width: 0;\n  min-height: 0;\n  overflow: auto;\n  background: var(--dsw-alias-bg-module-platform);\n}\n\n.dchat-document-pdf-surface {\n  width: calc(var(--document-zoom-width) * var(--dchat-document-zoom));\n  --document-zoom-scale: var(--dchat-document-zoom);\n}\n";
 
 // index.jsx
-var import_jsx_runtime43 = require("react/jsx-runtime");
+var import_jsx_runtime45 = require("react/jsx-runtime");
 var panelId = "direct-chat";
 var forgeLocale = "direct-chat-forge";
 var inject = ["slots", "layout", "locale", "uiWorkspace", "workspaces", "contextMenus"];
 function apply(ctx) {
   const getModules = () => ctx.get?.("modules") ?? ctx.modules;
   const forgeT = ctx.locale.bind(forgeLocale);
-  const DocumentWorkspacePane = (props) => /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(DocumentModulesContext.Provider, { value: getModules, children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(WorkspaceDiffPane, { ...props, forgeT }) });
+  const DocumentWorkspacePane = (props) => /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(DocumentModulesContext.Provider, { value: getModules, children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(WorkspaceDiffPane, { ...props, forgeT }) });
   const history = createSidebarHistory();
   const statusStore = createDirectStatusStore();
   const engineSource = createEngineCatalog();
@@ -19781,8 +20551,8 @@ function apply(ctx) {
     return ctx.layout.panelInfo.subscribe(sync);
   }, "direct-chat: restore-active-panel");
   ctx.effect(() => ctx.locale.register(panelId, {
-    en: { ...en3, ...sidebarCopy.en, ...archiveSettingsCopy.en, ...sessionStatusCopy.en, ...diffCopy.en, ...documentCopy.en, ...spreadsheetCopy.en },
-    zh: { ...zh3, ...sidebarCopy.zh, ...archiveSettingsCopy.zh, ...sessionStatusCopy.zh, ...diffCopy.zh, ...documentCopy.zh, ...spreadsheetCopy.zh }
+    en: { ...en4, ...sidebarCopy.en, ...archiveSettingsCopy.en, ...sessionStatusCopy.en, ...diffCopy.en, ...documentCopy.en, ...spreadsheetCopy.en },
+    zh: { ...zh4, ...sidebarCopy.zh, ...archiveSettingsCopy.zh, ...sessionStatusCopy.zh, ...diffCopy.zh, ...documentCopy.zh, ...spreadsheetCopy.zh }
   }), "direct-chat: locale");
   ctx.effect(() => ctx.locale.register(forgeLocale, forgeCopy), "direct-chat: Forge locale");
   ctx.effect(() => {
@@ -19896,15 +20666,7 @@ function apply(ctx) {
     locale: panelId,
     label: () => t("engineSettings.pluginLabel"),
     inject: () => ({ engineSource })
-  }, ({ view, ...props }) => view === "page" ? /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(EngineSettings, { ...props }) : t("engineSettings.pluginSummary")));
-  ctx.slots.inject("settings.plugins.tab", () => ctx.slots.register({
-    name: "settings.plugins.tab",
-    id: "direct-chat-engines",
-    order: 50,
-    locale: panelId,
-    label: () => t("engineSettings.pluginLabel"),
-    inject: () => ({ engineSource })
-  }, EngineSettings));
+  }, ({ view, ...props }) => view === "page" ? /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(EngineSettings, { ...props }) : t("engineSettings.pluginSummary")));
   ctx.slots.inject("settings.section", () => ctx.slots.register({
     name: "settings.section",
     id: "archived-sessions",
@@ -19960,7 +20722,7 @@ function apply(ctx) {
     id: "direct-chat-native-logo",
     order: 100,
     locale: panelId
-  }, () => /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { className: "dchat-sidebar-native-logo", "aria-hidden": "true", children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_dsh_client_ui_primitives38.FishLogo, { size: 14 }) })));
+  }, () => /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "dchat-sidebar-native-logo", "aria-hidden": "true", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(import_dsh_client_ui_primitives39.FishLogo, { size: 14 }) })));
   ctx.slots.inject("shell.overlay", () => ctx.slots.register({
     name: "shell.overlay",
     id: "direct-chat-session-pet",
@@ -19975,8 +20737,8 @@ function apply(ctx) {
   }, SessionPet));
 }
 function NativeEngineHero({ cwd, headline, startDirect, engineSource, t }) {
-  const { engines, status } = (0, import_react38.useSyncExternalStore)(engineSource.subscribe, engineSource.getSnapshot);
-  return /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+  const { engines, status } = (0, import_react40.useSyncExternalStore)(engineSource.subscribe, engineSource.getSnapshot);
+  return /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
     EngineHero,
     {
       selected: null,

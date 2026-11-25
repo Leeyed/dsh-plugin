@@ -6,7 +6,7 @@ import {
 } from '@deepseek-ai/dsh-client-ui-primitives'
 import { fileUriReference, normalizeMarkdownFileUrls } from './chat-state.mjs'
 
-const toolIcons = {
+export const toolIcons = {
   read: IconBrowseOutlineRegular,
   edit: IconEditOutlineRegular,
   write: IconEditOutlineRegular,
@@ -15,6 +15,24 @@ const toolIcons = {
   move: IconFolderOpenRegular,
   fetch: IconGlobeOutlineRegular,
   execute: IconApiOutlineRegular,
+}
+
+export function describeTool(tool, t) {
+  const execution = tool.execution
+  const locations = Array.isArray(tool.locations) ? tool.locations : []
+  const Icon = toolIcons[tool.kind] ?? IconSparkleRegular
+  const title = Object.hasOwn(toolIcons, tool.kind) ? t(`activity.${tool.kind}`) : tool.title || t('permission.tool')
+  const legacyCommand = !execution && tool.kind === 'execute' && !locations.length && typeof tool.title === 'string'
+  const command = legacyCommand ? tool.title.trim() : execution?.command?.trim() ?? ''
+  const shell = /^(?:\/[^\s]+\/)?(bash|sh|zsh|fish)\s+-[a-z]*c\s+/.exec(command)
+  const script = shell ? command.slice(shell[0].length).replace(/^(['"])([\s\S]*)\1$/, '$2') : command
+  const lines = script.split('\n').map(line => line.trim()).filter(Boolean)
+  const preview = lines.find(line => !/^(?:cd\s|[A-Za-z_][A-Za-z0-9_]*=)/.test(line)) || lines[0] || ''
+  const detailedCommand = Boolean(command && (shell || lines.length > 1 || command.length > 88))
+  const summary = detailedCommand
+    ? preview.slice(0, 84) + (preview.length > 84 || lines.length > 1 ? '…' : '')
+    : command || tool.title
+  return { execution, locations, Icon, title, command, detailedCommand, summary }
 }
 
 function FileLocation({ location, openFile, t }) {
@@ -37,7 +55,7 @@ function withOutputTail(head, tail, omission) {
   return `${head ?? ''}${before}${omission}${after}${tail}`
 }
 
-function CommandDetails({ execution, exitCode, running, failed, stopped, t }) {
+export function CommandDetails({ execution, exitCode, running, failed, stopped, t }) {
   const { command, input, commandTruncated, inputTruncated, outputTruncated } = execution
   const omitted = t('activity.outputOmitted')
   const combined = withOutputTail(execution.output, execution.outputTail, omitted)
@@ -85,22 +103,9 @@ function CommandDetails({ execution, exitCode, running, failed, stopped, t }) {
 
 function ToolActivityRow({ tool, openFile, expandedTools, toggleExecution, t }) {
   const [localOpen, setLocalOpen] = useState(false)
-  const execution = tool.execution
+  const { execution, locations, Icon, title, command, detailedCommand, summary } = describeTool(tool, t)
   const sharedDisclosure = execution && tool.toolCallId && toggleExecution
   const open = sharedDisclosure ? expandedTools?.has(tool.toolCallId) ?? false : localOpen
-  const locations = Array.isArray(tool.locations) ? tool.locations : []
-  const Icon = toolIcons[tool.kind] ?? IconSparkleRegular
-  const title = Object.hasOwn(toolIcons, tool.kind) ? t(`activity.${tool.kind}`) : tool.title || t('permission.tool')
-  const legacyCommand = !execution && tool.kind === 'execute' && !locations.length && typeof tool.title === 'string'
-  const command = legacyCommand ? tool.title.trim() : execution?.command?.trim() ?? ''
-  const shell = /^(?:\/[^\s]+\/)?(bash|sh|zsh|fish)\s+-[a-z]*c\s+/.exec(command)
-  const script = shell ? command.slice(shell[0].length).replace(/^(['"])([\s\S]*)\1$/, '$2') : command
-  const lines = script.split('\n').map(line => line.trim()).filter(Boolean)
-  const preview = lines.find(line => !/^(?:cd\s|[A-Za-z_][A-Za-z0-9_]*=)/.test(line)) || lines[0] || ''
-  const detailedCommand = command && (shell || lines.length > 1 || command.length > 88)
-  const summary = detailedCommand
-    ? preview.slice(0, 84) + (preview.length > 84 || lines.length > 1 ? '…' : '')
-    : command || tool.title
   const expandable = Boolean(execution || detailedCommand) || locations.length > 1
   const running = tool.status === 'in_progress' || tool.status === 'pending'
   const stopped = tool.status === 'cancelled' || tool.status === 'interrupted'

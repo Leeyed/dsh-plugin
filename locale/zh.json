@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "直连 CLI 对话",
+    "description": "在 DSH 中直连 Claude Code、Codex 与 Antigravity CLI (agy)，支持多账号隔离、状态监控与工作区工具。"
+  }
+}

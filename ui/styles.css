@@ -28,7 +28,18 @@
   min-height: 46px;
   padding: 8px var(--dchat-padding);
   padding-inline-start: max(var(--dchat-padding), var(--dsh-frame-leading-clearance, 0px));
+  padding-inline-end: max(var(--dchat-padding), var(--dsh-frame-trailing-clearance, 0px));
   border-bottom: 1px solid var(--dsw-alias-border-l2);
+}
+
+html[data-platform='darwin'] .dchat-header {
+  -webkit-app-region: drag;
+}
+
+html[data-platform='darwin'] .dchat-header-actions,
+html[data-platform='darwin'] .dchat-title button,
+html[data-platform='darwin'] .dchat-title a {
+  -webkit-app-region: no-drag;
 }
 
 /* The web drawer already places its sidebar opener over this header. */

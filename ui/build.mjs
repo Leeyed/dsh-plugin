@@ -19,7 +19,7 @@ try {
 const { build } = esbuild
 const forgePackage = '@deepseek-ai/dsh-experimental-client-ui-forge'
 
-const nativePackages = ['dsh-experimental-client-ui-forge', 'dsh-client-ui-attachment', 'dsh-client-ui-chat', 'dsh-client-ui-conversation', 'dsh-client-ui-input-trigger', 'dsh-client-ui-sidebar-right', 'dsh-client-ui-sidebar-terminal']
+const nativePackages = ['dsh-experimental-client-ui-forge', 'dsh-client-ui-attachment', 'dsh-client-ui-chat', 'dsh-client-ui-conversation', 'dsh-client-ui-input-trigger', 'dsh-client-ui-jobs', 'dsh-client-ui-sidebar-right', 'dsh-client-ui-sidebar-terminal']
   .map(name => '@deepseek-ai/' + name)
 
 function resolveNativePackages() {
@@ -59,7 +59,7 @@ const { outputFiles } = await build({
   plugins: [{
     name: 'native-dsh-ui',
     setup(build) {
-      build.onResolve({ filter: /^@deepseek-ai\/dsh-(?:experimental-client-ui-forge|client-ui-(?:attachment|chat|conversation|input-trigger|sidebar-right|sidebar-terminal))\/src\// }, ({ path }) => ({
+      build.onResolve({ filter: /^@deepseek-ai\/dsh-(?:experimental-client-ui-forge|client-ui-(?:attachment|chat|conversation|input-trigger|jobs|sidebar-right|sidebar-terminal))\/src\// }, ({ path }) => ({
         path: native.resolve(path),
       }))
       // rc.5 shares its dock kit publicly but keeps the two panel buttons local to this module.

@@ -148,6 +148,23 @@
   outline-offset: -2px;
 }
 
+[data-direct-row][aria-selected="true"] {
+  font-weight: 500;
+}
+
+[data-direct-row][aria-selected="true"][data-live-state] {
+  background-color: var(--dsw-alias-interactive-bg-hover-solid, var(--dsw-alias-interactive-bg-hover));
+  box-shadow: inset 3px 0 0 var(--dsw-alias-state-business-primary, #3b82f6), inset 0 0 0 1px var(--dsw-alias-border-l3, rgba(128, 128, 128, 0.28));
+}
+
+[data-direct-row][aria-selected="true"][data-live-state="attention"] {
+  box-shadow: inset 3px 0 0 var(--dsw-alias-state-warn-label, #f59e0b), inset 0 0 0 1px color-mix(in srgb, var(--dsw-alias-state-warn-label, #f59e0b) 45%, transparent);
+}
+
+[data-direct-row][aria-selected="true"][data-live-state="done"] {
+  box-shadow: inset 3px 0 0 var(--dsw-alias-state-success-primary, #22c55e), inset 0 0 0 1px color-mix(in srgb, var(--dsw-alias-state-success-primary, #22c55e) 40%, transparent);
+}
+
 /* The native folder actions otherwise disappear as the pointer enters the portal. */
 [data-row-key^="workspace:direct-chat:cwd:"] > span:has([data-direct-menu-trigger][aria-expanded="true"]) {
   display: inline-flex;
