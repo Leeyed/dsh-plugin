@@ -299,7 +299,7 @@ export function apply(ctx, config = {}) {
   function syncArchived(record, entry) {
     if (typeof entry?.archived === 'boolean') record.archived=entry.archived
   }
-  async function changeArchive(record, archived, entry) {
+  async function changeArchive(record, archived, entry, { refresh = true } = {}) {
     requirePresent(record.id,record)
     const key=changeKey(record)
     if (archiveChanges.has(key)) throw reject(409,'Archive change in progress')
@@ -335,7 +335,7 @@ export function apply(ctx, config = {}) {
           s.record.archived=archived
           if (record.engine==='agy' && agyHistoryProfileId(record)!=='default') save(s)
         }
-        await catalog.refreshEngine(record.engine)
+        if (refresh) await catalog.refreshEngine(record.engine)
       }
       const previous=preferences.get(record.id) || {}
       // Clear the legacy override, including archive.json, without masking subsequent CLI changes.
@@ -344,6 +344,45 @@ export function apply(ctx, config = {}) {
       }
       return {archived}
     } finally { archiveChanges.delete(key) }
+  }
+  async function archiveWorkspace(cwd) {
+    const native = await catalog.list()
+    const cached = [...sessions.values()].map(s => s.record)
+    const knownIds = new Set(cached.map(r => r.engine + '/' + r.remoteId))
+    const entries = [...cached.filter(r => r.messages.length || r.queue.length || r.imported || r.forkedFrom || r.parentId),
+      ...[...native.values()].filter(r => !knownIds.has(r.engine + '/' + r.remoteId))]
+    const archivedIds = []
+    const refreshedEngines = new Set()
+    let skippedActive = 0
+    let skippedUnsupported = 0
+    for (const r of entries) {
+      const key = changeKey(r)
+      if (!engines.has(r.engine) || deleted.has(r.id) || deleted.has(key)) continue
+      const indexed = native.get(r.id) || (r.remoteId && native.get(nativeId(r.engine, r.remoteId)))
+      if (isChild(r, indexed)) continue
+      if ((r.cwd || '') !== cwd) continue
+      syncArchived(r, indexed)
+      if (isArchived(r, indexed)) continue
+      const mode = archiveMode(r, indexed)
+      if (mode === 'unsupported' || (mode === 'legacy' && !engines.get(r.engine)?.setArchived)) {
+        skippedUnsupported += 1
+        continue
+      }
+      try {
+        await changeArchive(r, true, indexed, { refresh: false })
+        archivedIds.push(r.id)
+        refreshedEngines.add(r.engine)
+        const current = sessions.get(r.id)
+        if (current) broadcast(current, 'snapshot', snapshot(current))
+      } catch (error) {
+        if (error?.status === 409) skippedActive += 1
+        else throw error
+      }
+    }
+    if (refreshedEngines.size) {
+      await Promise.all([...refreshedEngines].map(engine => catalog.refreshEngine(engine)))
+    }
+    return { cwd, archivedIds, skippedActive, skippedUnsupported }
   }
   function renameMode(record, entry) {
     if (isChild(record,entry) || isArchived(record,entry) || record.resumable===false || entry?.resumable===false) return 'unsupported'
@@ -1367,21 +1406,65 @@ export function apply(ctx, config = {}) {
       }
     }, 50).unref()
   }
-  function setNativeTitle(s, value) {
+  function setNativeTitle(s, value, notify = true) {
     const title = typeof value === 'string' ? value.replace(/\s+/g,' ').trim().slice(0,256) || undefined : undefined
-    if (title === s.record.nativeTitle) return
+    if (title === s.record.nativeTitle) return false
     s.record.nativeTitle=title
-    if (s.clients.size) broadcast(s,'snapshot',snapshot(s))
+    if (notify && s.clients.size) broadcast(s,'snapshot',snapshot(s))
+    return true
+  }
+  async function syncImportedFromEntry(s, entry) {
+    const r = s.record
+    const isolatedAgy = r.engine === 'agy' && agyHistoryProfileId(r) !== 'default'
+    if (!entry || !r.imported || r.hasWebTurns || isolatedAgy ||
+        s.busy || s.opening || s.forking || s.cancelling || s.switchingAccount || hasPendingTools(s)) {
+      return false
+    }
+    if (!(entry.updatedAt > (r.sourceModified ?? r.updatedAt ?? 0))) return false
+    if (s.nativeSync) return s.nativeSync
+    s.nativeSync = (async () => {
+      const version = transcriptVersion(entry.engine)
+      const [messages, metrics] = await Promise.all([
+        catalog.messages(entry).then(compactMessages),
+        catalog.metrics(entry),
+      ])
+      requirePresent(r.id, r)
+      if (r.remoteId !== entry.remoteId || r.hasWebTurns || s.busy || s.opening ||
+          s.forking || s.cancelling || s.switchingAccount || hasPendingTools(s)) {
+        return false
+      }
+      if (!messages.length && r.messages.length) return false
+      r.updatedAt = entry.updatedAt
+      r.sourceModified = entry.updatedAt
+      r.resumable = entry.resumable
+      r.transcriptVersion = version
+      if (entry.nativeParent) r.parentId = localIdFor(entry.engine, entry.nativeParent) ?? r.parentId
+      if (messages.length) {
+        r.messages = messages
+        delete r.historyNotice
+      }
+      if (metrics) {
+        r.metrics = metrics
+        s.metricsSourceModified = entry.updatedAt
+      } else if (s.importViewOnly) {
+        r.metrics = {}
+      }
+      if (!s.importViewOnly) save(s)
+      return true
+    })().finally(() => { s.nativeSync = null })
+    return s.nativeSync
   }
   async function refreshNativeMetadata(s) {
     const {engine,remoteId,parentId}=s.record
     if (!remoteId || parentId) return
+    if (engine === 'agy' && agyHistoryProfileId(s.record) !== 'default') return
     const entry=(await catalog.list()).get(nativeId(engine,remoteId))
     if (!entry || s.record.remoteId!==remoteId) return
     const wasArchived=isArchived(s.record)
     syncArchived(s.record,entry)
-    if(wasArchived!==isArchived(s.record)) broadcast(s,'snapshot',snapshot(s))
-    if(entry.nativeTitle) setNativeTitle(s,entry.nativeTitle)
+    const synced=await syncImportedFromEntry(s,entry)
+    const titleChanged=entry.nativeTitle ? setNativeTitle(s,entry.nativeTitle,false) : false
+    if(synced || wasArchived!==isArchived(s.record) || titleChanged) broadcast(s,'snapshot',snapshot(s))
   }
   function emit(s, type, data) {
     if (type === 'history' && s.record.imported && Array.isArray(data?.messages)) {
@@ -2158,7 +2241,9 @@ export function apply(ctx, config = {}) {
       if (existing?.record.remoteId) {
         const r=existing.record
         const entry=isolatedAgyHistory ? undefined : (await catalog.list()).get(nativeId(r.engine,r.remoteId))
-        await repairHistory(existing,entry)
+        if (!(await syncImportedFromEntry(existing,entry))) {
+          await repairHistory(existing,entry)
+        }
         if (!r.parentId) {
           await loadMissingMetrics(existing,entry)
           requirePresent(id,r)
@@ -2613,6 +2698,11 @@ export function apply(ctx, config = {}) {
       }
       broadcastGlobalStatus()
       return json(res, 200, { ok: true })
+    }
+    if (path === '/api/direct-chat/workspaces/archive' && req.method === 'POST') {
+      const data = await body(req)
+      if (typeof data?.cwd !== 'string') throw reject(400, 'Expected a workspace path')
+      return json(res, 200, await archiveWorkspace(data.cwd))
     }
     if (path !== base && !path.startsWith(base + '/')) throw reject(404, 'Unknown endpoint')
     const [id, action, extra] = path.slice(base.length + 1).split('/')

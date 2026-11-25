@@ -5,7 +5,7 @@ import {
   IconProjectAddOutlineRegular, IconRefreshOutlineRegular, IconTrashOutlineRegular, IconUnarchiveOutlineRegular,
   Menu, Modal, StateDot, Toast, Tooltip, writeClipboard,
 } from '@deepseek-ai/dsh-client-ui-primitives'
-import { deleteSession, engineLabel, sessionAction } from './chat-state.mjs'
+import { archiveWorkspace, deleteSession, engineLabel, sessionAction } from './chat-state.mjs'
 import { EngineLogo } from './EngineHero.jsx'
 import { hideNativeDraft, isVirtualGroup, mergeSidebarRows, projectSidebarGroups, sidebarRowVisible, sidebarTime } from './sidebar-history.mjs'
 
@@ -51,6 +51,15 @@ export const sidebarCopy = {
     'sidebar.archived': 'Conversation archived',
     'sidebar.restored': 'Conversation restored',
     'sidebar.restoreToOpen': 'Restore the conversation to open it.',
+    'sidebar.archiveFolder': 'Archive all sessions',
+    'sidebar.archiveFolderTitle': 'Archive all conversations in folder?',
+    'sidebar.archiveFolderDescription': 'Archive {count} active conversation(s) in “{name}” to hide this folder from the sidebar. You can restore them anytime in Settings.',
+    'sidebar.confirmArchiveFolder': 'Archive all',
+    'sidebar.archivingFolder': 'Archiving conversations…',
+    'sidebar.archivedFolder': 'Archived {count} conversation(s)',
+    'sidebar.archivedFolderPartial': 'Archived {count} conversation(s); {skipped} active or unsupported session(s) remained.',
+    'sidebar.archiveFolderNone': 'No idle archivable conversations in this folder.',
+    'sidebar.archiveFolderFailed': 'Could not archive conversations in this folder.',
     'sidebar.actionFailed': 'Could not complete the session action',
     'sidebar.updatedAt': 'Updated {date}',
     'sidebar.createdAt': 'Created {date}',
@@ -96,6 +105,15 @@ export const sidebarCopy = {
     'sidebar.archived': '已归档会话',
     'sidebar.restored': '已恢复会话',
     'sidebar.restoreToOpen': '恢复会话后即可打开。',
+    'sidebar.archiveFolder': '归档全部会话',
+    'sidebar.archiveFolderTitle': '归档目录中的全部会话？',
+    'sidebar.archiveFolderDescription': '将归档「{name}」中的 {count} 个会话并使其从左侧边栏隐藏；之后可随时在「设置 → CLI 会话归档」中恢复。',
+    'sidebar.confirmArchiveFolder': '全部归档',
+    'sidebar.archivingFolder': '正在归档会话…',
+    'sidebar.archivedFolder': '已归档 {count} 个会话',
+    'sidebar.archivedFolderPartial': '已归档 {count} 个会话；另有 {skipped} 个运行中或不支持归档的会话保留。',
+    'sidebar.archiveFolderNone': '该目录中没有可归档的空闲会话。',
+    'sidebar.archiveFolderFailed': '无法归档该目录中的会话。',
     'sidebar.actionFailed': '无法完成此会话操作',
     'sidebar.updatedAt': '更新于 {date}',
     'sidebar.createdAt': '创建于 {date}',
@@ -118,7 +136,7 @@ export function SidebarSessions({ placement, history, t }) {
 const emptyStatusSnapshot = { list: [], byId: new Map() }
 const fallbackStatusStore = { getSnapshot: () => emptyStatusSnapshot, subscribe: () => () => {} }
 
-export function SidebarProjection({ render, history, statusStore = fallbackStatusStore, navigation, openDirect, usePanelInfo, panelId, engineSource, registerWorkspace, t }) {
+export function SidebarProjection({ render, history, statusStore = fallbackStatusStore, navigation, openDirect, usePanelInfo, panelId, engineSource, registerWorkspace, archiveRequest, t }) {
   const { byCwd } = useSyncExternalStore(history.subscribe, history.getSnapshot)
   const { engines } = useSyncExternalStore(engineSource.subscribe, engineSource.getSnapshot)
   const statusSnapshot = useSyncExternalStore(statusStore.subscribe, statusStore.getSnapshot)
@@ -128,6 +146,16 @@ export function SidebarProjection({ render, history, statusStore = fallbackStatu
   const [notice, setNotice] = useState(null)
   const [renameTarget, setRenameTarget] = useState(null)
   const [deleteTarget, setDeleteTarget] = useState(null)
+  const [localArchiveTarget, setLocalArchiveTarget] = useState(null)
+  const externalArchiveTarget = useSyncExternalStore(
+    archiveRequest?.subscribe ?? fallbackStatusStore.subscribe,
+    archiveRequest?.getSnapshot ?? (() => null),
+  )
+  const archiveTarget = externalArchiveTarget ?? localArchiveTarget
+  const setArchiveTarget = next => {
+    if (archiveRequest) archiveRequest.set(next)
+    else setLocalArchiveTarget(next)
+  }
   const groupCwdsRef = useRef(new Map())
   const report = (text, success) => setNotice(old => ({ id: (old?.id ?? 0) + 1, text, success }))
   const copy = async text => {
@@ -178,16 +206,22 @@ export function SidebarProjection({ render, history, statusStore = fallbackStatu
         active={isRowActive} liveState={liveState} openDirect={openDirect} updateSession={updateSession}
         rename={setRenameTarget} confirmDelete={setDeleteTarget} copy={copy} report={report} t={t} />
     },
-    renderFolderActions: (group, css, setGroupExpanded) => group.directCwd && <FolderActions path={group.directCwd}
-      name={group.label} css={css} copy={copy} register={async () => {
-        try {
-          const workspace = await registerWorkspace(group.directCwd)
-          setGroupExpanded(workspace.workspaceId, true)
-          report(t('sidebar.registered'), true)
-        } catch (error) {
-          report(error.message || t('sidebar.registerFailed'), false)
-        }
-      }} t={t} />,
+    renderFolderActions: (group, css, setGroupExpanded) => {
+      if (group.directCwd === undefined) return null
+      const rows = byCwd.get(group.directCwd) ?? []
+      const archivableCount = rows.filter(row => !row.archived && row.archiveMode !== 'unsupported').length
+      return <FolderActions path={group.directCwd} name={group.label} css={css} archivableCount={archivableCount}
+        copy={copy} archiveAll={() => setArchiveTarget({ cwd: group.directCwd, name: group.label, count: archivableCount })}
+        register={async () => {
+          try {
+            const workspace = await registerWorkspace(group.directCwd)
+            setGroupExpanded(workspace.workspaceId, true)
+            report(t('sidebar.registered'), true)
+          } catch (error) {
+            report(error.message || t('sidebar.registerFailed'), false)
+          }
+        }} t={t} />
+    },
   }
   useLayoutEffect(() => {
     if (typeof document === 'undefined') return
@@ -215,6 +249,17 @@ export function SidebarProjection({ render, history, statusStore = fallbackStatu
     {deleteTarget && <SessionDelete key={deleteTarget.id}
       name={deleteTarget.title || engineLabel(engines, deleteTarget.engine)}
       remove={() => removeSession(deleteTarget)} close={() => setDeleteTarget(null)} t={t} />}
+    {archiveTarget && <WorkspaceArchive key={archiveTarget.cwd}
+      name={archiveTarget.name} count={archiveTarget.count}
+      archive={async () => {
+        const result = await archiveWorkspace(archiveTarget.cwd)
+        await history.refresh()
+        const archivedCount = result?.archivedIds?.length ?? 0
+        const skipped = (result?.skippedActive ?? 0) + (result?.skippedUnsupported ?? 0)
+        if (archivedCount > 0 && skipped === 0) report(t('sidebar.archivedFolder', { count: archivedCount }), true)
+        else if (archivedCount > 0) report(t('sidebar.archivedFolderPartial', { count: archivedCount, skipped }), true)
+        else report(t('sidebar.archiveFolderNone'), false)
+      }} close={() => setArchiveTarget(null)} t={t} />}
     {notice && <Toast key={notice.id} text={notice.text} tone={notice.success ? 'success' : undefined}
       onDone={() => setNotice(null)} />}
   </>
@@ -275,47 +320,77 @@ function SessionRename({ row, save, close, t }) {
   </Modal>
 }
 
-function SessionDelete({ name, remove, close, t }) {
-  const removing = useRef(false)
+function ActionConfirmModal({ title, description, confirmLabel, pendingLabel, failedLabel, actionClassName, run, close, t }) {
+  const running = useRef(false)
   const [pending, setPending] = useState(false)
   const [error, setError] = useState('')
-  const dismiss = () => { if (!removing.current) close() }
+  const dismiss = () => { if (!running.current) close() }
   const confirm = async () => {
-    if (removing.current) return
-    removing.current = true
+    if (running.current) return
+    running.current = true
     setPending(true)
     setError('')
     try {
-      await remove()
+      await run()
       close()
     } catch (reason) {
-      setError(reason.message || t('sidebar.deleteFailed'))
-      removing.current = false
+      setError(reason.message || failedLabel)
+      running.current = false
       setPending(false)
     }
   }
-  return <Modal open title={t('sidebar.deleteTitle')} description={t('sidebar.deleteDescription', { name })}
+  return <Modal open title={title} description={description}
     className="dchat-sidebar-delete-dialog" contentClassName="dchat-sidebar-delete-content"
     closeLabel={t('close')} onClose={dismiss} footer={<div className="dchat-sidebar-delete-actions">
       <Button variant="outline" data-modal-autofocus disabled={pending} onClick={dismiss}>{t('cancel')}</Button>
-      <Button variant="outline" className="dchat-sidebar-delete-action" disabled={pending}
-        onClick={() => void confirm()}>{t('sidebar.confirmDelete')}</Button>
+      <Button variant="outline" className={actionClassName} disabled={pending}
+        onClick={() => void confirm()}>{confirmLabel}</Button>
     </div>}>
-    {pending && <div className="dchat-sidebar-delete-status" role="status">{t('sidebar.deleting')}</div>}
+    {pending && <div className="dchat-sidebar-delete-status" role="status">{pendingLabel}</div>}
     {error && <div className="dchat-sidebar-dialog-error" role="alert">{error}</div>}
   </Modal>
 }
 
-function FolderActions({ path, name, css, register, copy, t }) {
+function SessionDelete({ name, remove, close, t }) {
+  return <ActionConfirmModal
+    title={t('sidebar.deleteTitle')}
+    description={t('sidebar.deleteDescription', { name })}
+    confirmLabel={t('sidebar.confirmDelete')}
+    pendingLabel={t('sidebar.deleting')}
+    failedLabel={t('sidebar.deleteFailed')}
+    actionClassName="dchat-sidebar-delete-action"
+    run={remove} close={close} t={t} />
+}
+
+function WorkspaceArchive({ name, count, archive, close, t }) {
+  return <ActionConfirmModal
+    title={t('sidebar.archiveFolderTitle')}
+    description={t('sidebar.archiveFolderDescription', { name, count })}
+    confirmLabel={t('sidebar.confirmArchiveFolder')}
+    pendingLabel={t('sidebar.archivingFolder')}
+    failedLabel={t('sidebar.archiveFolderFailed')}
+    run={archive} close={close} t={t} />
+}
+
+function FolderActions({ path, name, css, archivableCount, register, archiveAll, copy, t }) {
   const [open, setOpen] = useState(false)
   const [pending, setPending] = useState(false)
-  return <MoreMenu name={name} css={css} open={open} setOpen={setOpen} t={t}
-    items={[
+  const items = [
+    ...(path ? [
       { id: 'register', label: t('sidebar.register'), icon: icon(IconProjectAddOutlineRegular), disabled: pending },
       { id: 'path', label: t('sidebar.copyPath'), icon: icon(IconCopyOutlineRegular) },
-    ]}
+      { type: 'separator', id: 'archive-separator' },
+    ] : []),
+    { id: 'archiveAll', label: t('sidebar.archiveFolder'), icon: icon(IconArchiveOutlineRegular), disabled: pending || archivableCount === 0 },
+  ]
+  return <MoreMenu name={name} css={css} open={open} setOpen={setOpen} t={t}
+    items={items}
     select={async id => {
       if (id === 'path') return copy(path)
+      if (id === 'archiveAll') {
+        if (!pending && archivableCount > 0) archiveAll()
+        return
+      }
       if (pending) return
       setPending(true)
       try { await register() } finally { setPending(false) }

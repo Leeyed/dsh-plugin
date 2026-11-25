@@ -232,6 +232,10 @@ export function sessionAction(id, action, data = {}) {
   return sendJson(`${sessionsUrl}/${encodeURIComponent(id)}/${action}`, 'POST', data)
 }
 
+export function archiveWorkspace(cwd) {
+  return sendJson('/api/direct-chat/workspaces/archive', 'POST', { cwd })
+}
+
 export function deleteSession(id) {
   return sendJson(`${sessionsUrl}/${encodeURIComponent(id)}`, 'DELETE', { confirmId: id })
 }

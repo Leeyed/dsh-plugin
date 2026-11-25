@@ -42,6 +42,19 @@ export function apply(ctx) {
   const engineSource = createEngineCatalog()
   const queueDock = createQueueDockSource(ctx)
   const navigation = createNavigation(history.refresh)
+  const archiveListeners = new Set()
+  let archiveSnapshot = null
+  const archiveRequest = {
+    getSnapshot: () => archiveSnapshot,
+    subscribe: listener => {
+      archiveListeners.add(listener)
+      return () => archiveListeners.delete(listener)
+    },
+    set: next => {
+      archiveSnapshot = next
+      for (const listener of archiveListeners) listener()
+    },
+  }
   const diffController = createWorkspaceDiffController()
   const panelSource = {
     getSnapshot: () => ctx.layout.panelInfo.getSnapshot(),
@@ -167,10 +180,25 @@ export function apply(ctx) {
   }, SidebarSessions))
   ctx.slots.inject(workspaceProjectionSlot, () => ctx.slots.register({
     name: workspaceProjectionSlot, locale: panelId,
-    inject: () => ({ history, statusStore, navigation, openDirect, panelId, engineSource,
+    inject: () => ({ history, statusStore, navigation, openDirect, panelId, engineSource, archiveRequest,
       registerWorkspace: path => ctx.workspaces.create({ path }),
     }),
   }, SidebarProjection))
+  ctx.effect(() => ctx.contextMenus.register({
+    id: 'direct-chat.workspace.archive', target: 'workspace', order: 290,
+    resolve: ({ path, displayTitle }) => {
+      const cwd = path || ''
+      const rows = history.getSnapshot().byCwd.get(cwd) ?? []
+      const count = rows.filter(row => !row.archived && row.archiveMode !== 'unsupported').length
+      return count > 0 ? [{
+        id: 'direct-chat.archive-workspace',
+        label: t('sidebar.archiveFolder'),
+        icon: { key: 'workspace.archive' },
+        separatorBefore: true,
+        run: () => archiveRequest.set({ cwd, name: displayTitle, count }),
+      }] : []
+    },
+  }), 'direct-chat: workspace archive menu')
   ctx.slots.inject('sidebar.session.row.leading', () => ctx.slots.register({
     name: 'sidebar.session.row.leading', id: 'direct-chat-native-logo', order: 100, locale: panelId,
   }, () => <span className="dchat-sidebar-native-logo" aria-hidden="true"><FishLogo size={14} /></span>))
