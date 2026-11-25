@@ -4,6 +4,7 @@ import { appendFile, mkdtemp, mkdir, rm, utimes, writeFile } from 'node:fs/promi
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { randomUUID } from 'node:crypto'
+import { pathToFileURL } from 'node:url'
 import { DatabaseSync } from 'node:sqlite'
 import { zstdCompressSync } from 'node:zlib'
 import { nativeCatalog, nativeId } from '../server/native-history.mjs'
@@ -493,4 +494,53 @@ test('uses Claude native title metadata and skips transcripts containing only lo
   assert.equal(rows.get(nativeId('claude', named)).title, 'Original native name')
   await appendFile(namedFile, jsonl([{ type: 'custom-title', customTitle: 'Renamed in Claude', sessionId: named }]))
   assert.equal((await catalog.list(true)).get(nativeId('claude', named)).nativeTitle, 'Renamed in Claude')
+})
+
+test('reads AGY history from both antigravity-cli and antigravity IDE directories', async t => {
+  const home = await testHome(t)
+  const cliDir = join(home, '.gemini', 'antigravity-cli')
+  const ideDir = join(home, '.gemini', 'antigravity')
+  const cwd = join(home, 'workspace')
+  await mkdir(cwd, { recursive: true })
+  const [sharedId, ideOnlyId] = Array.from({ length: 2 }, randomUUID)
+  const uri = JSON.stringify([pathToFileURL(cwd).href])
+  for (const dir of [cliDir, ideDir]) {
+    await mkdir(dir, { recursive: true })
+    const db = new DatabaseSync(join(dir, 'conversation_summaries.db'))
+    db.exec(`CREATE TABLE conversation_summaries (
+      conversation_id TEXT PRIMARY KEY, title TEXT, created_at TEXT, last_modified_time TEXT,
+      workspace_uris TEXT, step_count INTEGER, status TEXT
+    )`)
+    db.prepare('INSERT INTO conversation_summaries VALUES (?, ?, ?, ?, ?, ?, ?)').run(
+      sharedId, dir === cliDir ? 'CLI summary only' : 'IDE full session', started, ended, uri, 2, 'CASCADE_RUN_STATUS_IDLE'
+    )
+    if (dir === ideDir) {
+      db.prepare('INSERT INTO conversation_summaries VALUES (?, ?, ?, ?, ?, ?, ?)').run(
+        ideOnlyId, 'IDE only session', started, ended, uri, 2, 'CASCADE_RUN_STATUS_IDLE'
+      )
+    }
+    db.close()
+  }
+  const sharedLogs = join(ideDir, 'brain', sharedId, '.system_generated', 'logs')
+  await mkdir(sharedLogs, { recursive: true })
+  await writeFile(join(sharedLogs, 'transcript.jsonl'), jsonl([
+    { type: 'USER_INPUT', step_index: 1, content: '<USER_REQUEST>\nHello IDE\n</USER_REQUEST>' },
+    { type: 'PLANNER_RESPONSE', step_index: 2, content: 'Hi from IDE' },
+  ]))
+  const ideOnlyLogs = join(ideDir, 'brain', ideOnlyId, '.system_generated', 'logs')
+  await mkdir(ideOnlyLogs, { recursive: true })
+  await writeFile(join(ideOnlyLogs, 'transcript.jsonl'), jsonl([
+    { type: 'USER_INPUT', step_index: 1, content: '<USER_REQUEST>\nOnly IDE\n</USER_REQUEST>' },
+    { type: 'PLANNER_RESPONSE', step_index: 2, content: 'Reply' },
+  ]))
+  const catalog = nativeCatalog({ registry: createEngineRegistry({ engines: ['agy'] }), home })
+  const rows = await catalog.list()
+  assert.equal(rows.size, 2)
+  const shared = rows.get(nativeId('agy', sharedId))
+  assert.equal(shared.title, 'IDE full session')
+  assert.deepEqual(await catalog.messages(shared), [
+    { role: 'user', text: 'Hello IDE' },
+    { role: 'assistant', text: 'Hi from IDE' },
+  ])
+  assert.equal(rows.get(nativeId('agy', ideOnlyId)).title, 'IDE only session')
 })

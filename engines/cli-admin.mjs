@@ -1,5 +1,5 @@
 import { execFile, spawn } from 'node:child_process'
-import { existsSync, lstatSync, readFileSync, renameSync, rmSync, statSync, writeFileSync } from 'node:fs'
+import { existsSync, lstatSync, readdirSync, readFileSync, renameSync, rmSync, statSync, writeFileSync } from 'node:fs'
 import { homedir } from 'node:os'
 import { isAbsolute, join } from 'node:path'
 import { promisify } from 'node:util'
@@ -11,7 +11,28 @@ function isWindowsBatch(filePath) {
   return /\.(?:cmd|bat)$/i.test(filePath)
 }
 
-function windowsSearchDirs(env) {
+function windowsExtensionBinDirs(home) {
+  const archDir = process.arch === 'arm64' ? 'windows-arm64' : 'windows-x86_64'
+  const roots = [
+    join(home, '.vscode', 'extensions'),
+    join(home, '.vscode-insiders', 'extensions'),
+    join(home, '.antigravity', 'extensions'),
+    join(home, '.cursor', 'extensions'),
+  ]
+  const dirs = []
+  for (const root of roots) {
+    try {
+      const entries = readdirSync(root, { withFileTypes: true })
+        .filter(entry => entry.isDirectory() && /^openai\.chatgpt-/i.test(entry.name))
+        .map(entry => entry.name)
+        .sort((a, b) => b.localeCompare(a, undefined, { numeric: true, sensitivity: 'base' }))
+      for (const name of entries) dirs.push(join(root, name, 'bin', archDir))
+    } catch {}
+  }
+  return dirs
+}
+
+function windowsSearchDirs(env, { includeExtensions = false } = {}) {
   const effective = { ...process.env, ...env }
   const pathValue = effective.PATH || effective.Path || process.env.PATH || process.env.Path || ''
   const fromPath = pathValue.split(';').map(entry => entry.trim().replace(/^"(.*)"$/, '$1')).filter(Boolean)
@@ -23,6 +44,7 @@ function windowsSearchDirs(env) {
   const programData = process.env.PROGRAMDATA || 'C:\\ProgramData'
   const extra = [
     join(appData, 'npm'),
+    join(localAppData, 'agy', 'bin'),
     join(localAppData, 'Programs', 'antigravity', 'bin'),
     join(localAppData, 'Programs', 'claude'),
     join(localAppData, 'Microsoft', 'WinGet', 'Links'),
@@ -31,6 +53,7 @@ function windowsSearchDirs(env) {
     join(home, '.bun', 'bin'),
     join(home, 'scoop', 'shims'),
     join(programData, 'chocolatey', 'bin'),
+    ...(includeExtensions ? windowsExtensionBinDirs(home) : []),
   ]
   return [...new Set([...fromPath, ...extra])]
 }
@@ -57,7 +80,7 @@ export function resolveCliCommand(bin, env, platform = process.platform) {
     const candidates = hasExt ? [bin] : exts.map(ext => bin + ext)
     resolvedPath = candidates.find(isRegularFile)
   } else {
-    for (const dir of windowsSearchDirs(env)) {
+    for (const dir of windowsSearchDirs(env, { includeExtensions: bin.toLowerCase() === 'codex' })) {
       const candidates = hasExt ? [join(dir, bin)] : exts.map(ext => join(dir, bin + ext))
       const match = candidates.find(isRegularFile)
       if (match) { resolvedPath = match; break }

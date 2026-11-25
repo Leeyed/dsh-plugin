@@ -5,6 +5,7 @@ import { DatabaseSync } from 'node:sqlite'
 import { nativeUuid, openNativeDatabase } from './native-history.mjs'
 
 export const agyDataDirectory = (home = homedir()) => join(home, '.gemini', 'antigravity-cli')
+export const agyIdeDataDirectory = (home = homedir()) => join(home, '.gemini', 'antigravity')
 
 function linkItem(directory, name, source) {
   const path = join(directory, name)

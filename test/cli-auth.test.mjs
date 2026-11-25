@@ -190,4 +190,27 @@ test('resolveCliCommand resolves Windows .cmd and .exe binaries from PATH', asyn
   const linux = resolveCliCommand('agy', env, 'linux')
   assert.equal(linux.command, 'agy')
   assert.deepEqual(linux.argsPrefix, [])
+
+  const prevUserProfile = process.env.USERPROFILE
+  const prevLocalAppData = process.env.LOCALAPPDATA
+  const fallbackRoot = join(directory, 'win-profile')
+  const agyFallbackDir = join(fallbackRoot, 'AppData', 'Local', 'agy', 'bin')
+  const codexOldExtDir = join(fallbackRoot, '.vscode', 'extensions', 'openai.chatgpt-26.1117.0-win32-x64', 'bin', process.arch === 'arm64' ? 'windows-arm64' : 'windows-x86_64')
+  const codexNewExtDir = join(fallbackRoot, '.vscode', 'extensions', 'openai.chatgpt-26.1120.0-win32-x64', 'bin', process.arch === 'arm64' ? 'windows-arm64' : 'windows-x86_64')
+  await Promise.all([agyFallbackDir, codexOldExtDir, codexNewExtDir].map(dir => mkdir(dir, { recursive: true })))
+  await writeFile(join(agyFallbackDir, 'agy.exe'), 'exe')
+  await writeFile(join(codexOldExtDir, 'codex.exe'), 'exe')
+  await writeFile(join(codexNewExtDir, 'codex.exe'), 'exe')
+  try {
+    process.env.USERPROFILE = fallbackRoot
+    process.env.LOCALAPPDATA = join(fallbackRoot, 'AppData', 'Local')
+    const minimalEnv = { PATH: directory, Path: directory, PATHEXT: '.COM;.EXE;.BAT;.CMD' }
+    assert.equal(resolveCliCommand('agy', minimalEnv, 'win32').resolvedPath, join(agyFallbackDir, 'agy.exe'))
+    assert.equal(resolveCliCommand('codex', minimalEnv, 'win32').resolvedPath, join(codexNewExtDir, 'codex.exe'))
+  } finally {
+    if (prevUserProfile === undefined) delete process.env.USERPROFILE
+    else process.env.USERPROFILE = prevUserProfile
+    if (prevLocalAppData === undefined) delete process.env.LOCALAPPDATA
+    else process.env.LOCALAPPDATA = prevLocalAppData
+  }
 })

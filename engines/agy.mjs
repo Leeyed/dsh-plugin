@@ -3,7 +3,7 @@ import { homedir } from 'node:os'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { startAgy } from '../server/agy.mjs'
-import { agyDataDirectory as dataDirectory, prepareAgySessionDirectory } from '../server/agy-session-history.mjs'
+import { agyDataDirectory as dataDirectory, agyIdeDataDirectory, prepareAgySessionDirectory } from '../server/agy-session-history.mjs'
 import { agyAccountUsage } from '../server/agy-usage.mjs'
 import { agyCliAdmin } from './cli-admin.mjs'
 import { nativeUuid, openNativeDatabase } from '../server/native-history.mjs'
@@ -29,7 +29,12 @@ function status(row) {
   if (row.status === 'CASCADE_RUN_STATUS_IDLE') return 'idle'
 }
 
-function list({ home = homedir(), directory = dataDirectory(home) }) {
+function hasAgyConversationData(directory, remoteId) {
+  return existsSync(join(directory, 'conversations', remoteId + '.db')) ||
+    existsSync(join(directory, 'brain', remoteId, '.system_generated', 'logs', 'transcript.jsonl'))
+}
+
+function listDirectory(directory) {
   const file = join(directory, 'conversation_summaries.db')
   const db = openNativeDatabase(file)
   if (!db) return []
@@ -67,6 +72,27 @@ function list({ home = homedir(), directory = dataDirectory(home) }) {
       }]
     })
   } finally { db.close() }
+}
+
+function list({ home = homedir(), directory }) {
+  if (directory) return listDirectory(directory)
+  const directories = [...new Set([dataDirectory(home), agyIdeDataDirectory(home)])]
+  const byId = new Map()
+  for (const dir of directories) {
+    for (const entry of listDirectory(dir)) {
+      const prev = byId.get(entry.remoteId)
+      if (!prev) {
+        byId.set(entry.remoteId, entry)
+        continue
+      }
+      const prevHasData = hasAgyConversationData(dirname(prev.file), prev.remoteId)
+      const nextHasData = hasAgyConversationData(dirname(entry.file), entry.remoteId)
+      if ((!prevHasData && nextHasData) || (prevHasData === nextHasData && (entry.updatedAt ?? 0) > (prev.updatedAt ?? 0))) {
+        byId.set(entry.remoteId, entry)
+      }
+    }
+  }
+  return [...byId.values()]
 }
 
 function unwrapAgyUserText(text) {
@@ -380,24 +406,41 @@ async function metrics({ file, remoteId }) {
 
 function conversationDirectory(remoteId, home = homedir()) {
   if (typeof remoteId !== 'string' || !nativeUuid.test(remoteId)) throw new Error('A native AGY session ID is required')
-  const directory = dataDirectory(home)
-  const db = openNativeDatabase(join(directory, 'conversation_summaries.db'))
-  if (!db) throw new Error('AGY conversation index was not found')
-  try {
-    if (!db.prepare('SELECT 1 FROM conversation_summaries WHERE conversation_id = ?').get(remoteId)) {
-      throw new Error('AGY conversation was not found')
-    }
-  } finally { db.close() }
-  return directory
+  const directories = [...new Set([dataDirectory(home), agyIdeDataDirectory(home)])]
+  let foundIndex = false
+  let fallback
+  for (const directory of directories) {
+    const db = openNativeDatabase(join(directory, 'conversation_summaries.db'))
+    if (!db) continue
+    foundIndex = true
+    try {
+      if (db.prepare('SELECT 1 FROM conversation_summaries WHERE conversation_id = ?').get(remoteId)) {
+        if (hasAgyConversationData(directory, remoteId)) return directory
+        fallback ??= directory
+      }
+    } finally { db.close() }
+  }
+  if (fallback) return fallback
+  throw new Error(foundIndex ? 'AGY conversation was not found' : 'AGY conversation index was not found')
 }
 
 async function startSession(options) {
   options.signal?.throwIfAborted()
   const sourceId = options.forkFrom ?? options.resumeId
-  const appDataDirectory = options.runtimeDirectory && prepareAgySessionDirectory({ ...options, resumeId: sourceId })
+  const defaultHome = homedir()
+  const appDataDirectory = options.runtimeDirectory
+    ? prepareAgySessionDirectory({ ...options, resumeId: sourceId })
+    : (!options.env?.HOME && sourceId && nativeUuid.test(sourceId) &&
+        !hasAgyConversationData(dataDirectory(defaultHome), sourceId) &&
+        hasAgyConversationData(agyIdeDataDirectory(defaultHome), sourceId)
+      ? agyIdeDataDirectory(defaultHome)
+      : undefined)
   const adapter = await startAgy({ ...options, appDataDirectory })
+  const contextFile = options.historyDirectory
+    ? join(options.historyDirectory, 'conversation_summaries.db')
+    : (appDataDirectory ? join(appDataDirectory, 'conversation_summaries.db') : undefined)
   adapter.context = async () => sessionContext({ remoteId: adapter.id, home: options.env?.HOME,
-    ...(options.historyDirectory ? { file: join(options.historyDirectory, 'conversation_summaries.db') } : {}) })
+    ...(contextFile ? { file: contextFile } : {}) })
   return adapter
 }
 
@@ -408,7 +451,7 @@ export const engine = {
   meta: { accentColor: '#7396ec' },
   capabilities: { fileUriLinks: true },
   ...agyCliAdmin,
-  readableRoots: ({ home = homedir() } = {}) => [dataDirectory(home)],
+  readableRoots: ({ home = homedir() } = {}) => [...new Set([dataDirectory(home), agyIdeDataDirectory(home)])],
   start: startSession,
   forkCapability: 'negotiated',
   async fork({ sourceId, ...options }) {
