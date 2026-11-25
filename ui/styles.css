@@ -42,18 +42,18 @@ html[data-platform='darwin'] .dchat-title a {
   -webkit-app-region: no-drag;
 }
 
-/* The web drawer already places its sidebar opener over this header. */
-html:not([data-platform]) [data-sidebar-drawer] [data-global-panel]:has(> [data-slot="main"] > :is(.dchat, .dchat-shell > .dchat)) {
+/* The drawer controls and the direct-session title share one row. */
+html [data-sidebar-drawer] [data-global-panel]:has(.dchat-shell > .dchat) {
   padding-block-start: 0;
 }
 
-html:not([data-platform]) [data-sidebar-drawer] .dchat-header {
+html [data-sidebar-drawer] .dchat-header {
   min-height: 50px;
   padding-block: 0;
   padding-inline-end: 12px;
 }
 
-html:not([data-platform]) [data-sidebar-drawer] .dchat-title {
+html [data-sidebar-drawer] .dchat-title {
   align-items: center;
 }
 

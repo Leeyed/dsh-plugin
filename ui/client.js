@@ -16633,193 +16633,52 @@ function clampPos(x, y) {
   };
 }
 function PetSprite({ mood }) {
-  if (mood === "running") {
-    return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("svg", { className: "dchat-pet-svg", width: "30", height: "30", viewBox: "0 0 40 40", fill: "none", "aria-hidden": "true", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { className: "dchat-pet-wind", d: "M2.5 17H7.5M4 20.5H8", stroke: "currentColor", strokeWidth: "1.4", strokeLinecap: "round" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M4 35.5H36", stroke: "currentColor", strokeWidth: "1.2", strokeOpacity: "0.28", strokeLinecap: "round", strokeDasharray: "3 3" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "10.5", cy: "29.5", r: "5.4", stroke: "currentColor", strokeWidth: "1.7" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "10.5", cy: "29.5", r: "1.1", fill: "currentColor" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("g", { className: "dchat-pet-wheel", style: { transformOrigin: "10.5px 29.5px" }, children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M10.5 24.5V34.5M6.2 27L14.8 32M14.8 27L6.2 32", stroke: "currentColor", strokeWidth: "1.05", strokeOpacity: "0.7", strokeLinecap: "round" }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "29.5", cy: "29.5", r: "5.4", stroke: "currentColor", strokeWidth: "1.7" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "29.5", cy: "29.5", r: "1.1", fill: "currentColor" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("g", { className: "dchat-pet-wheel", style: { transformOrigin: "29.5px 29.5px" }, children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M29.5 24.5V34.5M25.2 27L33.8 32M33.8 27L25.2 32", stroke: "currentColor", strokeWidth: "1.05", strokeOpacity: "0.7", strokeLinecap: "round" }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
-        "path",
-        {
-          d: "M10.5 29.5H18.5L24.5 21.5H15L10.5 29.5ZM18.5 29.5L14.5 20.5M29.5 29.5L23.8 18.2L27.2 17.5C28.4 17.3 28.8 18.6 27.8 19.2",
-          stroke: "currentColor",
-          strokeWidth: "1.55",
-          strokeLinecap: "round",
-          strokeLinejoin: "round"
-        }
-      ),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "18.5", cy: "29.5", r: "1.7", fill: "currentColor", fillOpacity: "0.2", stroke: "currentColor", strokeWidth: "1.2" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M12.6 20.3H16.6", stroke: "currentColor", strokeWidth: "1.8", strokeLinecap: "round" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("g", { className: "dchat-pet-rider", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M11.5 18.8L8 17.4L9.8 19.8", stroke: "currentColor", strokeWidth: "1.35", strokeLinecap: "round", strokeLinejoin: "round" }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
-          "path",
-          {
-            d: "M11.5 19.8C11 15.8 14 13.5 17.6 14.2C20 14.7 21 17.2 19 19.8Z",
-            fill: "currentColor",
-            fillOpacity: "0.16",
-            stroke: "currentColor",
-            strokeWidth: "1.55",
-            strokeLinejoin: "round"
-          }
-        ),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M16.2 14.5C16.2 12.2 16.6 10.6 17.6 9.6", stroke: "currentColor", strokeWidth: "3.2", strokeLinecap: "round" }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "18.5", cy: "9.5", r: "3.4", fill: "currentColor", fillOpacity: "0.14", stroke: "currentColor", strokeWidth: "1.55" }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M16.8 6.4C17.4 4.8 19.2 4.8 19.8 6.3", stroke: "currentColor", strokeWidth: "1.35", strokeLinecap: "round" }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
-          "path",
-          {
-            d: "M21.6 8.6L34.5 10.7C34.8 11.4 34.4 12.1 33.7 12.2C31 15.4 25.4 15.8 21.1 12.6Z",
-            fill: "currentColor",
-            fillOpacity: "0.22",
-            stroke: "currentColor",
-            strokeWidth: "1.5",
-            strokeLinejoin: "round"
-          }
-        ),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M21.8 10.6L33.8 11.7", stroke: "currentColor", strokeWidth: "1.15", strokeLinecap: "round" }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "19.6", cy: "8.9", r: "0.95", fill: "currentColor" }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M16.8 16.2C19.5 16.6 22 17.5 24.4 18.6", stroke: "currentColor", strokeWidth: "1.6", strokeLinecap: "round" })
-      ] })
-    ] });
-  }
-  if (mood === "attention") {
-    return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("svg", { className: "dchat-pet-svg", width: "30", height: "30", viewBox: "0 0 40 40", fill: "none", "aria-hidden": "true", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M7 33.5H26", stroke: "currentColor", strokeWidth: "1.4", strokeLinecap: "round" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
-        "path",
-        {
-          d: "M10 33.2C9.2 25 12.2 19.5 17 19.5C21.5 19.5 24 24.5 23.2 33.2Z",
-          fill: "currentColor",
-          fillOpacity: "0.16",
-          stroke: "currentColor",
-          strokeWidth: "1.65",
-          strokeLinejoin: "round"
-        }
-      ),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M10.4 25.5L5.5 21M22.8 25L27.5 20.8", stroke: "currentColor", strokeWidth: "1.7", strokeLinecap: "round" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "16.5", cy: "13.8", r: "4.1", fill: "currentColor", fillOpacity: "0.15", stroke: "currentColor", strokeWidth: "1.65" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M14.8 9.8C15.5 8 17.6 8 18.3 9.7", stroke: "currentColor", strokeWidth: "1.4", strokeLinecap: "round" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
-        "path",
-        {
-          d: "M20.2 12.5L31.2 13.3C30 16.8 24.6 17.8 19.8 15.6Z",
-          fill: "currentColor",
-          fillOpacity: "0.22",
-          stroke: "currentColor",
-          strokeWidth: "1.55",
-          strokeLinejoin: "round"
-        }
-      ),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M20.4 14.1L30.2 14.3", stroke: "currentColor", strokeWidth: "1.2", strokeLinecap: "round" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "17.8", cy: "13", r: "1.2", fill: "currentColor" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("g", { className: "dchat-pet-spark", style: { transformOrigin: "32.5px 8.5px" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M32.5 4.8V9.6", stroke: "currentColor", strokeWidth: "2.1", strokeLinecap: "round" }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "32.5", cy: "12.6", r: "1.2", fill: "currentColor" })
-      ] })
-    ] });
-  }
-  if (mood === "done") {
-    return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("svg", { className: "dchat-pet-svg", width: "30", height: "30", viewBox: "0 0 40 40", fill: "none", "aria-hidden": "true", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M7 33.5H26", stroke: "currentColor", strokeWidth: "1.4", strokeLinecap: "round" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
-        "path",
-        {
-          d: "M10 33.2C9.2 25 12.2 19.5 17 19.5C21.5 19.5 24 24.5 23.2 33.2Z",
-          fill: "currentColor",
-          fillOpacity: "0.16",
-          stroke: "currentColor",
-          strokeWidth: "1.65",
-          strokeLinejoin: "round"
-        }
-      ),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M10.4 24.2L5.5 18.8M22.8 24.2L27.5 19.2", stroke: "currentColor", strokeWidth: "1.7", strokeLinecap: "round" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "16.5", cy: "13.8", r: "4.1", fill: "currentColor", fillOpacity: "0.15", stroke: "currentColor", strokeWidth: "1.65" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M14.8 9.8C15.5 8 17.6 8 18.3 9.7", stroke: "currentColor", strokeWidth: "1.4", strokeLinecap: "round" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
-        "path",
-        {
-          d: "M20.2 12.6L30.5 13.8C29 17 24 17.6 19.8 15.4Z",
-          fill: "currentColor",
-          fillOpacity: "0.22",
-          stroke: "currentColor",
-          strokeWidth: "1.55",
-          strokeLinejoin: "round"
-        }
-      ),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M16.5 13.3C17.2 12.3 18.4 12.3 19.1 13.3", stroke: "currentColor", strokeWidth: "1.5", strokeLinecap: "round" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
-        "path",
-        {
-          className: "dchat-pet-spark",
-          style: { transformOrigin: "32.5px 8.5px" },
-          d: "M32.5 4.2L33.6 7.4L36.8 8.5L33.6 9.6L32.5 12.8L31.4 9.6L28.2 8.5L31.4 7.4Z",
-          fill: "currentColor"
-        }
-      )
-    ] });
-  }
-  return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("svg", { className: "dchat-pet-svg", width: "30", height: "30", viewBox: "0 0 40 40", fill: "none", "aria-hidden": "true", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M5 33.5H35", stroke: "currentColor", strokeWidth: "1.5", strokeLinecap: "round" }),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M8.5 29L5.5 26.8L7.5 30.8", stroke: "currentColor", strokeWidth: "1.4", strokeLinecap: "round", strokeLinejoin: "round" }),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
-      "path",
-      {
-        d: "M8.2 33.3C7.6 24.8 10.8 19.2 15.5 19.2C19.6 19.2 21.8 23.6 21.2 33.3Z",
-        fill: "currentColor",
-        fillOpacity: "0.15",
-        stroke: "currentColor",
-        strokeWidth: "1.65",
-        strokeLinejoin: "round"
-      }
-    ),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M14.5 23.2C17.6 23.8 20.5 25.5 23.8 26.2", stroke: "currentColor", strokeWidth: "1.65", strokeLinecap: "round" }),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "15", cy: "13.5", r: "4", fill: "currentColor", fillOpacity: "0.15", stroke: "currentColor", strokeWidth: "1.65" }),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M13.5 9.5C14.2 7.8 16.2 7.8 16.9 9.4", stroke: "currentColor", strokeWidth: "1.35", strokeLinecap: "round" }),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
-      "path",
-      {
-        d: "M18.6 12.2L28.8 13.8C27.2 16.8 22.2 17.4 18.2 15.2Z",
-        fill: "currentColor",
-        fillOpacity: "0.22",
-        stroke: "currentColor",
-        strokeWidth: "1.55",
-        strokeLinejoin: "round"
-      }
-    ),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M18.8 13.8L28 14.6", stroke: "currentColor", strokeWidth: "1.15", strokeLinecap: "round" }),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M14.8 13.1C15.5 13.9 16.8 13.9 17.5 13.1", stroke: "currentColor", strokeWidth: "1.5", strokeLinecap: "round" }),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
-      "rect",
-      {
-        x: "23.8",
-        y: "23.2",
-        width: "8.6",
-        height: "9.2",
-        rx: "1.8",
-        fill: "currentColor",
-        fillOpacity: "0.18",
-        stroke: "currentColor",
-        strokeWidth: "1.55"
-      }
-    ),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M32.4 25.2C34.8 25.2 34.8 29.8 32.4 29.8", stroke: "currentColor", strokeWidth: "1.5", strokeLinecap: "round" }),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
-      "path",
-      {
-        className: "dchat-pet-steam",
-        d: "M26.5 20.8C25.8 19.3 27.3 18.2 26.6 16.6M29.8 20.8C29.1 19.3 30.6 18.2 29.9 16.6",
-        stroke: "currentColor",
-        strokeWidth: "1.35",
-        strokeLinecap: "round"
-      }
-    )
-  ] });
+  const cycling = mood === "running";
+  return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
+    "svg",
+    {
+      className: "dchat-pet-svg",
+      width: "32",
+      height: "32",
+      viewBox: "0 0 40 40",
+      fill: "none",
+      stroke: "#293746",
+      strokeWidth: "1.9",
+      strokeLinecap: "round",
+      strokeLinejoin: "round",
+      "aria-hidden": "true",
+      children: [
+        cycling && /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(import_jsx_runtime44.Fragment, { children: [
+          [9, 31].map((x) => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("g", { transform: `translate(${x} 31)`, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { r: "6", fill: "#d6f5e8", strokeWidth: "2.6" }),
+            /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { className: "dchat-pet-wheel", d: "M0-4V0l3.5 2M0 0l-3.5 2", stroke: "#599887", strokeWidth: "1.4" })
+          ] }, x)),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M9 31l7-10 5 10H9m12 0 6-12 4 12m-7-12h4", stroke: "#197969", strokeWidth: "2.8" })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("g", { transform: cycling ? "translate(4 -2) scale(.87)" : "translate(0 2)", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { fill: "#fff5dc", d: "M3 19q4 2 8 0 4-3 4-9 0-7 6-7 6 0 7 6l-5 6q1 12-8 14Q5 31 3 19Z" }),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { fill: "#ffb14c", d: "m23 10 14 1q-4 9-11 8-4-1-5-6Z" }),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "m24 11 11 1", stroke: "#975829", strokeWidth: "1.2" }),
+          mood === "idle" ? /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M18 9q2 2 4 0" }) : /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "21", cy: "8.5", r: "1.45", fill: "#293746", stroke: "none" }),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: cycling ? "M9 20q5 8 15 1" : "M7 22q5 6 11 0", stroke: "#9a8073" })
+        ] }),
+        cycling && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { className: "dchat-pet-leg", d: "m15 22 6 2-2 4", stroke: "#b36530", strokeWidth: "2.6" }),
+        mood === "idle" && /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("g", { className: "dchat-pet-cup", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M32 26h2q5 0 2 5l-4 1", fill: "#ffe0a2" }),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M21 25h12v6q0 5-6 5t-6-5Z", fill: "#ef885d" }),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { className: "dchat-pet-steam", d: "M27 22q-2-2 0-4", stroke: "#a96c50" })
+        ] }),
+        mood === "attention" && /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("g", { className: "dchat-pet-flag", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "m22 36 1-14", strokeWidth: "2.5" }),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "m23 22 13-2-3 6 3 3-13 2Z", fill: "#ff9d62" })
+        ] }),
+        mood === "done" && /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("g", { className: "dchat-pet-check", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "29", cy: "29", r: "8", fill: "#70d7a2" }),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "m25 29 3 3 5-6", strokeWidth: "2.6" })
+        ] })
+      ]
+    }
+  );
 }
 function SessionPet({
   variant = "floating",
@@ -20610,8 +20469,8 @@ var session_pet_default = `.dchat-pet-root {
 }
 
 .dchat-pet-fab .dchat-pet-svg {
-  width: 26px;
-  height: 26px;
+  width: 32px;
+  height: 32px;
 }
 
 .dchat-pet-header-btn {
@@ -20642,8 +20501,8 @@ var session_pet_default = `.dchat-pet-root {
 }
 
 .dchat-pet-header-btn .dchat-pet-svg {
-  width: 22px;
-  height: 22px;
+  width: 30px;
+  height: 30px;
   flex: none;
 }
 
@@ -20664,10 +20523,6 @@ var session_pet_default = `.dchat-pet-root {
 
 .dchat .dchat-header-actions .dchat-pet-header-btn > .dchat-pet-badge {
   display: grid;
-}
-
-.dchat-pet-root[data-mood='idle'] .dchat-pet-fab {
-  opacity: 0.72;
 }
 
 .dchat-pet-fab:hover {
@@ -20695,50 +20550,65 @@ var session_pet_default = `.dchat-pet-root {
   border-color: color-mix(in srgb, currentColor 40%, transparent);
 }
 
-.dchat-pet-root[data-mood='running'] .dchat-pet-svg,
-.dchat-pet-header-slot[data-mood='running'] .dchat-pet-svg {
-  animation: dchat-pet-bob 0.9s ease-in-out infinite;
-}
+@media (prefers-reduced-motion: no-preference) {
+  .dchat-pet-wheel {
+    animation: dchat-pet-spin 1.2s linear infinite;
+  }
 
-.dchat-pet-wheel {
-  animation: dchat-pet-spin 1.1s linear infinite;
-}
+  .dchat-pet-leg {
+    transform-origin: 15px 22px;
+    animation: dchat-pet-pedal .6s ease-in-out infinite alternate;
+  }
 
-.dchat-pet-wind {
-  animation: dchat-pet-wind 0.9s ease-in-out infinite;
-}
+  .dchat-pet-cup {
+    transform-origin: 23px 29px;
+    animation: dchat-pet-sip 5s ease-in-out infinite;
+  }
 
-.dchat-pet-steam {
-  animation: dchat-pet-steam 2.4s ease-in-out infinite;
-}
+  .dchat-pet-steam {
+    animation: dchat-pet-steam 2s ease-out infinite;
+  }
 
-.dchat-pet-spark {
-  animation: dchat-pet-pulse 1.2s ease-in-out infinite;
-}
+  .dchat-pet-flag {
+    transform-origin: 22px 35px;
+    animation: dchat-pet-wave 3s ease-in-out infinite;
+  }
 
-@keyframes dchat-pet-bob {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-1.2px); }
+  .dchat-pet-check {
+    transform-origin: 29px 29px;
+    animation: dchat-pet-stamp .45s ease-out;
+  }
 }
 
 @keyframes dchat-pet-spin {
-  from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
 
-@keyframes dchat-pet-wind {
-  0%, 100% { opacity: 0.9; transform: translateX(0); }
-  50% { opacity: 0.35; transform: translateX(-1.5px); }
+@keyframes dchat-pet-pedal {
+  from { transform: rotate(-13deg); }
+  to { transform: rotate(16deg); }
+}
+
+@keyframes dchat-pet-sip {
+  0%, 50%, 100% { transform: none; }
+  66%, 78% { transform: translate(-1px, -4px) rotate(-12deg); }
 }
 
 @keyframes dchat-pet-steam {
-  0%, 100% { opacity: 0.75; transform: translateY(0); }
-  50% { opacity: 0.25; transform: translateY(-1.5px); }
+  from { opacity: .9; }
+  to { opacity: 0; transform: translateY(-3px); }
 }
 
-@keyframes dchat-pet-pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.35; transform: scale(0.75); }
+@keyframes dchat-pet-wave {
+  0%, 40%, 100% { transform: none; }
+  12%, 32% { transform: rotate(-12deg); }
+  22% { transform: rotate(7deg); }
+}
+
+@keyframes dchat-pet-stamp {
+  0% { transform: scale(.5); }
+  65% { transform: scale(1.13); }
+  100% { transform: scale(1); }
 }
 
 .dchat-pet-badge {
@@ -21015,7 +20885,7 @@ var session_pet_default = `.dchat-pet-root {
   --dchat-pet-inline-start: max(16px, env(safe-area-inset-left));
   --dchat-pet-inline-end: max(16px, env(safe-area-inset-right));
   position: fixed;
-  inset: 0;
+  inset: var(--dsh-frame-overlay-top, 0px) 0 0;
   gap: 0;
   width: auto;
   padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
@@ -21141,11 +21011,8 @@ var session_pet_default = `.dchat-pet-root {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .dchat-pet-fab,
-  .dchat-pet-root[data-mood="running"] .dchat-pet-svg,
-  .dchat-pet-spark {
+  .dchat-pet-fab {
     transition: none;
-    animation: none;
   }
 }
 `;
@@ -22128,18 +21995,18 @@ html[data-platform='darwin'] .dchat-title a {
   -webkit-app-region: no-drag;
 }
 
-/* The web drawer already places its sidebar opener over this header. */
-html:not([data-platform]) [data-sidebar-drawer] [data-global-panel]:has(> [data-slot="main"] > :is(.dchat, .dchat-shell > .dchat)) {
+/* The drawer controls and the direct-session title share one row. */
+html [data-sidebar-drawer] [data-global-panel]:has(.dchat-shell > .dchat) {
   padding-block-start: 0;
 }
 
-html:not([data-platform]) [data-sidebar-drawer] .dchat-header {
+html [data-sidebar-drawer] .dchat-header {
   min-height: 50px;
   padding-block: 0;
   padding-inline-end: 12px;
 }
 
-html:not([data-platform]) [data-sidebar-drawer] .dchat-title {
+html [data-sidebar-drawer] .dchat-title {
   align-items: center;
 }
 

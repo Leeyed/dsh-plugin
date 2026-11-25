@@ -31,119 +31,37 @@ function clampPos(x, y) {
 }
 
 function PetSprite({ mood }) {
-  if (mood === 'running') {
-    return <svg className="dchat-pet-svg" width="30" height="30" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-      {/* Wind & road */}
-      <path className="dchat-pet-wind" d="M2.5 17H7.5M4 20.5H8" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-      <path d="M4 35.5H36" stroke="currentColor" strokeWidth="1.2" strokeOpacity="0.28" strokeLinecap="round" strokeDasharray="3 3" />
-      {/* Rear wheel */}
-      <circle cx="10.5" cy="29.5" r="5.4" stroke="currentColor" strokeWidth="1.7" />
-      <circle cx="10.5" cy="29.5" r="1.1" fill="currentColor" />
-      <g className="dchat-pet-wheel" style={{ transformOrigin: '10.5px 29.5px' }}>
-        <path d="M10.5 24.5V34.5M6.2 27L14.8 32M14.8 27L6.2 32" stroke="currentColor" strokeWidth="1.05" strokeOpacity="0.7" strokeLinecap="round" />
-      </g>
-      {/* Front wheel */}
-      <circle cx="29.5" cy="29.5" r="5.4" stroke="currentColor" strokeWidth="1.7" />
-      <circle cx="29.5" cy="29.5" r="1.1" fill="currentColor" />
-      <g className="dchat-pet-wheel" style={{ transformOrigin: '29.5px 29.5px' }}>
-        <path d="M29.5 24.5V34.5M25.2 27L33.8 32M33.8 27L25.2 32" stroke="currentColor" strokeWidth="1.05" strokeOpacity="0.7" strokeLinecap="round" />
-      </g>
-      {/* Bicycle frame, crank, saddle & handlebars */}
-      <path d="M10.5 29.5H18.5L24.5 21.5H15L10.5 29.5ZM18.5 29.5L14.5 20.5M29.5 29.5L23.8 18.2L27.2 17.5C28.4 17.3 28.8 18.6 27.8 19.2"
-        stroke="currentColor" strokeWidth="1.55" strokeLinecap="round" strokeLinejoin="round" />
-      <circle cx="18.5" cy="29.5" r="1.7" fill="currentColor" fillOpacity="0.2" stroke="currentColor" strokeWidth="1.2" />
-      <path d="M12.6 20.3H16.6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-      {/* Pelican rider */}
-      <g className="dchat-pet-rider">
-        {/* Tail & body */}
-        <path d="M11.5 18.8L8 17.4L9.8 19.8" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M11.5 19.8C11 15.8 14 13.5 17.6 14.2C20 14.7 21 17.2 19 19.8Z"
-          fill="currentColor" fillOpacity="0.16" stroke="currentColor" strokeWidth="1.55" strokeLinejoin="round" />
-        {/* Neck & head with crest */}
-        <path d="M16.2 14.5C16.2 12.2 16.6 10.6 17.6 9.6" stroke="currentColor" strokeWidth="3.2" strokeLinecap="round" />
-        <circle cx="18.5" cy="9.5" r="3.4" fill="currentColor" fillOpacity="0.14" stroke="currentColor" strokeWidth="1.55" />
-        <path d="M16.8 6.4C17.4 4.8 19.2 4.8 19.8 6.3" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" />
-        {/* Signature pelican beak & pouch */}
-        <path d="M21.6 8.6L34.5 10.7C34.8 11.4 34.4 12.1 33.7 12.2C31 15.4 25.4 15.8 21.1 12.6Z"
-          fill="currentColor" fillOpacity="0.22" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
-        <path d="M21.8 10.6L33.8 11.7" stroke="currentColor" strokeWidth="1.15" strokeLinecap="round" />
-        {/* Eye & wing gripping handlebar */}
-        <circle cx="19.6" cy="8.9" r="0.95" fill="currentColor" />
-        <path d="M16.8 16.2C19.5 16.6 22 17.5 24.4 18.6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-      </g>
-    </svg>
-  }
-
-  if (mood === 'attention') {
-    return <svg className="dchat-pet-svg" width="30" height="30" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-      {/* Ground */}
-      <path d="M7 33.5H26" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-      {/* Pelican body & raised wings */}
-      <path d="M10 33.2C9.2 25 12.2 19.5 17 19.5C21.5 19.5 24 24.5 23.2 33.2Z"
-        fill="currentColor" fillOpacity="0.16" stroke="currentColor" strokeWidth="1.65" strokeLinejoin="round" />
-      <path d="M10.4 25.5L5.5 21M22.8 25L27.5 20.8" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
-      {/* Head & crest */}
-      <circle cx="16.5" cy="13.8" r="4.1" fill="currentColor" fillOpacity="0.15" stroke="currentColor" strokeWidth="1.65" />
-      <path d="M14.8 9.8C15.5 8 17.6 8 18.3 9.7" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-      {/* Open alert beak */}
-      <path d="M20.2 12.5L31.2 13.3C30 16.8 24.6 17.8 19.8 15.6Z"
-        fill="currentColor" fillOpacity="0.22" stroke="currentColor" strokeWidth="1.55" strokeLinejoin="round" />
-      <path d="M20.4 14.1L30.2 14.3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
-      <circle cx="17.8" cy="13" r="1.2" fill="currentColor" />
-      {/* Alert exclamation */}
-      <g className="dchat-pet-spark" style={{ transformOrigin: '32.5px 8.5px' }}>
-        <path d="M32.5 4.8V9.6" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" />
-        <circle cx="32.5" cy="12.6" r="1.2" fill="currentColor" />
-      </g>
-    </svg>
-  }
-
-  if (mood === 'done') {
-    return <svg className="dchat-pet-svg" width="30" height="30" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-      {/* Ground */}
-      <path d="M7 33.5H26" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-      {/* Pelican body & cheering wings */}
-      <path d="M10 33.2C9.2 25 12.2 19.5 17 19.5C21.5 19.5 24 24.5 23.2 33.2Z"
-        fill="currentColor" fillOpacity="0.16" stroke="currentColor" strokeWidth="1.65" strokeLinejoin="round" />
-      <path d="M10.4 24.2L5.5 18.8M22.8 24.2L27.5 19.2" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
-      {/* Head & happy eye */}
-      <circle cx="16.5" cy="13.8" r="4.1" fill="currentColor" fillOpacity="0.15" stroke="currentColor" strokeWidth="1.65" />
-      <path d="M14.8 9.8C15.5 8 17.6 8 18.3 9.7" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-      <path d="M20.2 12.6L30.5 13.8C29 17 24 17.6 19.8 15.4Z"
-        fill="currentColor" fillOpacity="0.22" stroke="currentColor" strokeWidth="1.55" strokeLinejoin="round" />
-      <path d="M16.5 13.3C17.2 12.3 18.4 12.3 19.1 13.3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      {/* Sparkle */}
-      <path className="dchat-pet-spark" style={{ transformOrigin: '32.5px 8.5px' }}
-        d="M32.5 4.2L33.6 7.4L36.8 8.5L33.6 9.6L32.5 12.8L31.4 9.6L28.2 8.5L31.4 7.4Z" fill="currentColor" />
-    </svg>
-  }
-
-  // Idle: pelican relaxing with a warm cup of coffee
-  return <svg className="dchat-pet-svg" width="30" height="30" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-    {/* Table / perch */}
-    <path d="M5 33.5H35" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-    {/* Tail & resting pelican body */}
-    <path d="M8.5 29L5.5 26.8L7.5 30.8" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M8.2 33.3C7.6 24.8 10.8 19.2 15.5 19.2C19.6 19.2 21.8 23.6 21.2 33.3Z"
-      fill="currentColor" fillOpacity="0.15" stroke="currentColor" strokeWidth="1.65" strokeLinejoin="round" />
-    {/* Layered wing holding mug */}
-    <path d="M14.5 23.2C17.6 23.8 20.5 25.5 23.8 26.2" stroke="currentColor" strokeWidth="1.65" strokeLinecap="round" />
-    {/* Head & crest */}
-    <circle cx="15" cy="13.5" r="4" fill="currentColor" fillOpacity="0.15" stroke="currentColor" strokeWidth="1.65" />
-    <path d="M13.5 9.5C14.2 7.8 16.2 7.8 16.9 9.4" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" />
-    {/* Pelican beak & pouch */}
-    <path d="M18.6 12.2L28.8 13.8C27.2 16.8 22.2 17.4 18.2 15.2Z"
-      fill="currentColor" fillOpacity="0.22" stroke="currentColor" strokeWidth="1.55" strokeLinejoin="round" />
-    <path d="M18.8 13.8L28 14.6" stroke="currentColor" strokeWidth="1.15" strokeLinecap="round" />
-    {/* Relaxed closed eye */}
-    <path d="M14.8 13.1C15.5 13.9 16.8 13.9 17.5 13.1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-    {/* Coffee mug + handle + steam */}
-    <rect x="23.8" y="23.2" width="8.6" height="9.2" rx="1.8"
-      fill="currentColor" fillOpacity="0.18" stroke="currentColor" strokeWidth="1.55" />
-    <path d="M32.4 25.2C34.8 25.2 34.8 29.8 32.4 29.8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-    <path className="dchat-pet-steam"
-      d="M26.5 20.8C25.8 19.3 27.3 18.2 26.6 16.6M29.8 20.8C29.1 19.3 30.6 18.2 29.9 16.6"
-      stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" />
+  const cycling = mood === 'running'
+  return <svg className="dchat-pet-svg" width="32" height="32" viewBox="0 0 40 40"
+    fill="none" stroke="#293746" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    {cycling && <>
+      {[9, 31].map(x => <g key={x} transform={`translate(${x} 31)`}>
+        <circle r="6" fill="#d6f5e8" strokeWidth="2.6" />
+        <path className="dchat-pet-wheel" d="M0-4V0l3.5 2M0 0l-3.5 2" stroke="#599887" strokeWidth="1.4" />
+      </g>)}
+      <path d="M9 31l7-10 5 10H9m12 0 6-12 4 12m-7-12h4" stroke="#197969" strokeWidth="2.8" />
+    </>}
+    <g transform={cycling ? 'translate(4 -2) scale(.87)' : 'translate(0 2)'}>
+      <path fill="#fff5dc" d="M3 19q4 2 8 0 4-3 4-9 0-7 6-7 6 0 7 6l-5 6q1 12-8 14Q5 31 3 19Z" />
+      <path fill="#ffb14c" d="m23 10 14 1q-4 9-11 8-4-1-5-6Z" />
+      <path d="m24 11 11 1" stroke="#975829" strokeWidth="1.2" />
+      {mood === 'idle' ? <path d="M18 9q2 2 4 0" /> : <circle cx="21" cy="8.5" r="1.45" fill="#293746" stroke="none" />}
+      <path d={cycling ? 'M9 20q5 8 15 1' : 'M7 22q5 6 11 0'} stroke="#9a8073" />
+    </g>
+    {cycling && <path className="dchat-pet-leg" d="m15 22 6 2-2 4" stroke="#b36530" strokeWidth="2.6" />}
+    {mood === 'idle' && <g className="dchat-pet-cup">
+      <path d="M32 26h2q5 0 2 5l-4 1" fill="#ffe0a2" />
+      <path d="M21 25h12v6q0 5-6 5t-6-5Z" fill="#ef885d" />
+      <path className="dchat-pet-steam" d="M27 22q-2-2 0-4" stroke="#a96c50" />
+    </g>}
+    {mood === 'attention' && <g className="dchat-pet-flag">
+      <path d="m22 36 1-14" strokeWidth="2.5" />
+      <path d="m23 22 13-2-3 6 3 3-13 2Z" fill="#ff9d62" />
+    </g>}
+    {mood === 'done' && <g className="dchat-pet-check">
+      <circle cx="29" cy="29" r="8" fill="#70d7a2" />
+      <path d="m25 29 3 3 5-6" strokeWidth="2.6" />
+    </g>}
   </svg>
 }
 
