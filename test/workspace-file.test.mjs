@@ -5,7 +5,7 @@ import {mkdtemp, mkdir, rm, writeFile, symlink} from 'node:fs/promises'
 import {tmpdir} from 'node:os'
 import {join} from 'node:path'
 import {pathToFileURL} from 'node:url'
-import {listWorkspaceDirectory,openMediaFile,sendMedia,previewFile} from './workspace-file.mjs'
+import {listWorkspaceDirectory,openMediaFile,sendMedia,previewFile} from '../server/workspace-file.mjs'
 
 test('workspace preview handles text, links, file boundaries and partial UTF-8',async t=>{
   const dir=await mkdtemp(join(tmpdir(),'dsh-file-preview-'))

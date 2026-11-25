@@ -90,7 +90,7 @@ case "$1 $2" in
 esac
 `, { mode: 0o700 })
 
-  const { apply } = await import('./index.mjs')
+  const { apply } = await import('../index.mjs')
   let handler
   apply({
     effect(fn) { dispose = fn() },

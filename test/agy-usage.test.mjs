@@ -3,8 +3,8 @@ import { mkdtemp, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { test } from 'node:test'
-import { agyAccountUsage, agyUsageReport } from './agy-usage.mjs'
-import { accountLimitGroups } from './ui/session-status.mjs'
+import { agyAccountUsage, agyUsageReport } from '../server/agy-usage.mjs'
+import { accountLimitGroups } from '../ui/session-status.mjs'
 
 test('AGY account usage reflects the native quota buckets and ignores disabled or missing data', () => {
   const report = { status: 'SUCCESS', num_turns: 0, command: { name: 'usage', data: { groups: [

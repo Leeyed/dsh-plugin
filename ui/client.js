@@ -12920,6 +12920,7 @@ function SessionPet({
   const archivedNativeIds = useWorkspaces((snapshot) => snapshot?.archivedSessionIds);
   const { engines } = (0, import_react32.useSyncExternalStore)(engineSource.subscribe, engineSource.getSnapshot);
   const [open, setOpen] = (0, import_react32.useState)(false);
+  const [approvingKey, setApprovingKey] = (0, import_react32.useState)(null);
   const [pos, setPos] = (0, import_react32.useState)(() => readSavedPos());
   const dragRef = (0, import_react32.useRef)(null);
   const rootRef = (0, import_react32.useRef)(null);
@@ -12962,7 +12963,8 @@ function SessionPet({
         title: item.title || engineLabel(engines, item.engine),
         source: engineLabel(engines, item.engine),
         state: item.state,
-        updatedAt: item.updatedAt || 0
+        updatedAt: item.updatedAt || 0,
+        permissions: Array.isArray(item.permissions) ? item.permissions : []
       });
     }
     const nativeById = nativeSnap?.byId ?? {};
@@ -13069,37 +13071,68 @@ function SessionPet({
     tasks.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)("div", { className: "dchat-pet-empty", children: [
       isHeader && /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(PetSprite, { mood: "idle" }),
       /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("p", { children: t("pet.empty") })
-    ] }) : /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("ul", { className: "dchat-pet-list", children: tasks.map((item) => /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)("button", { type: "button", className: "dchat-pet-item", "data-live-state": item.state, onClick: () => {
-      if (item.kind === "direct") {
-        openDirect(item.id);
-        if (item.state === "done") void statusStore.ack(item.id);
-      } else {
-        openNative?.(item.id);
-      }
-      closePanel();
-    }, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("span", { className: "dchat-pet-item-logo", "aria-hidden": "true", children: item.kind === "direct" ? /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(EngineLogo, { engine: item.engine, label: item.source, size: 16 }) : /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(import_dsh_client_ui_primitives33.FishLogo, { size: 16 }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)("span", { className: "dchat-pet-item-body", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("span", { className: "dchat-pet-item-title", children: item.title }),
-        /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)("span", { className: "dchat-pet-item-meta", children: [
-          item.source,
-          !isHeader && ` \xB7 ${t(`sidebar.status.${item.state}`)}`
+    ] }) : /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("ul", { className: "dchat-pet-list", children: tasks.map((item) => /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)("li", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)("button", { type: "button", className: "dchat-pet-item", "data-live-state": item.state, onClick: () => {
+        if (item.kind === "direct") {
+          openDirect(item.id);
+          if (item.state === "done") void statusStore.ack(item.id);
+        } else {
+          openNative?.(item.id);
+        }
+        closePanel();
+      }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("span", { className: "dchat-pet-item-logo", "aria-hidden": "true", children: item.kind === "direct" ? /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(EngineLogo, { engine: item.engine, label: item.source, size: 16 }) : /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(import_dsh_client_ui_primitives33.FishLogo, { size: 16 }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)("span", { className: "dchat-pet-item-body", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("span", { className: "dchat-pet-item-title", children: item.title }),
+          /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)("span", { className: "dchat-pet-item-meta", children: [
+            item.source,
+            !isHeader && ` \xB7 ${t(`sidebar.status.${item.state}`)}`
+          ] })
+        ] }),
+        isHeader && /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)(import_jsx_runtime37.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)("span", { className: "dchat-pet-item-status", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(
+              import_dsh_client_ui_primitives33.StateDot,
+              {
+                size: item.state === "running" ? 12 : 7,
+                state: item.state === "running" ? "ongoing" : item.state === "attention" ? "warning" : "done"
+              }
+            ),
+            t(item.kind === "native" && item.state === "attention" ? "pet.nativeAttention" : `sidebar.status.${item.state}`)
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(import_dsh_client_ui_primitives33.IconChevronRightOutlineRegular, { className: "dchat-pet-item-chevron", size: 16, "aria-hidden": "true" })
         ] })
       ] }),
-      isHeader && /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)(import_jsx_runtime37.Fragment, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)("span", { className: "dchat-pet-item-status", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(
-            import_dsh_client_ui_primitives33.StateDot,
+      item.kind === "direct" && item.state === "attention" && item.permissions.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("div", { className: "dchat-pet-approval", onClick: (event2) => event2.stopPropagation(), children: item.permissions.map((perm) => {
+        const key = `${item.id}:${perm.id}`;
+        const busy = approvingKey === key;
+        return /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)("div", { className: "dchat-pet-approval-card", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("div", { className: "dchat-pet-approval-title", children: perm.title || t("permission.tool") }),
+          perm.detail && /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("div", { className: "dchat-pet-approval-detail", title: String(perm.detail), children: String(perm.detail) }),
+          /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("div", { className: "dchat-pet-approval-actions", children: perm.options.map((option) => /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(
+            import_dsh_client_ui_primitives33.Button,
             {
-              size: item.state === "running" ? 12 : 7,
-              state: item.state === "running" ? "ongoing" : item.state === "attention" ? "warning" : "done"
-            }
-          ),
-          t(item.kind === "native" && item.state === "attention" ? "pet.nativeAttention" : `sidebar.status.${item.state}`)
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(import_dsh_client_ui_primitives33.IconChevronRightOutlineRegular, { className: "dchat-pet-item-chevron", size: 16, "aria-hidden": "true" })
-      ] })
-    ] }) }, item.key)) })
+              size: "sm",
+              variant: option.kind?.startsWith("allow") ? "primary" : "outline",
+              disabled: busy,
+              onClick: async (event2) => {
+                event2.stopPropagation();
+                if (approvingKey) return;
+                setApprovingKey(key);
+                try {
+                  await sessionAction(item.id, "approve", { id: perm.id, option: option.optionId });
+                } catch {
+                } finally {
+                  setApprovingKey(null);
+                }
+              },
+              children: option.name
+            },
+            option.optionId
+          )) })
+        ] }, perm.id);
+      }) })
+    ] }, item.key)) })
   ] });
   return /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)("div", { ref: rootRef, className: isHeader ? "dchat-pet-header-slot" : "dchat-pet-root", "data-mood": mood, style, children: [
     isHeader ? /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(
@@ -16035,6 +16068,53 @@ var session_pet_default = `.dchat-pet-root {
   min-width: 0;
   flex: 1 1 auto;
   gap: 2px;
+}
+
+.dchat-pet-approval {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 2px 4px 6px 26px;
+  padding: 8px 10px;
+  border-radius: var(--dsw-radius-md, 8px);
+  border: 0.5px solid color-mix(in srgb, var(--dsw-alias-state-warn-label, #f59e0b) 40%, var(--dsw-alias-border-l2));
+  background: color-mix(in srgb, var(--dsw-alias-state-warn-label, #f59e0b) 6%, var(--dsw-alias-bg-base));
+}
+
+.dchat-pet-approval-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dchat-pet-approval-card + .dchat-pet-approval-card {
+  padding-top: 6px;
+  border-top: 0.5px solid var(--dsw-alias-border-l2);
+}
+
+.dchat-pet-approval-title {
+  font-size: 12px;
+  line-height: 17px;
+  font-weight: 500;
+  color: var(--dsw-alias-label-primary);
+  overflow-wrap: anywhere;
+}
+
+.dchat-pet-approval-detail {
+  font-size: 11px;
+  line-height: 15px;
+  font-family: monospace;
+  color: var(--dsw-alias-label-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dchat-pet-approval-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
 }
 
 .dchat-pet-item-title {

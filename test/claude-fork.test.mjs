@@ -4,7 +4,7 @@ import { mkdtemp, mkdir, appendFile, rm } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { test } from 'node:test'
-import { createClaudeFork, recoverClaudeFork } from './claude-fork.mjs'
+import { createClaudeFork, recoverClaudeFork } from '../server/claude-fork.mjs'
 
 test('a Claude fork retains its boundary across restart and subsequent forks', async t => {
   const dir = await mkdtemp(join(tmpdir(), 'claude-fork-test-'))

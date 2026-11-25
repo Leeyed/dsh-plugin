@@ -7,7 +7,7 @@ import { EventEmitter } from 'node:events'
 import { test } from 'node:test'
 import { setImmediate } from 'node:timers/promises'
 import { pathToFileURL } from 'node:url'
-import { nativeId } from './native-history.mjs'
+import { nativeId } from '../server/native-history.mjs'
 
 async function fixture(t, profiles) {
   const dir=await mkdtemp(join(tmpdir(),'direct-chat-accounts-'))
@@ -27,7 +27,7 @@ async function fixture(t, profiles) {
     const file=join(dir,`${id}.mjs`)
     await writeFile(file,`
       import {randomUUID} from 'node:crypto'
-      import {agyCliAdmin} from ${JSON.stringify(new URL('./engines/cli-admin.mjs',import.meta.url).href)}
+      import {agyCliAdmin} from ${JSON.stringify(new URL('../engines/cli-admin.mjs',import.meta.url).href)}
       export const starts=[], turns=[], usage=[], closes=[], imports=[], metadata=[]
       let failNextStart=false
       export function failNext() { failNextStart=true }
@@ -78,7 +78,7 @@ async function fixture(t, profiles) {
     `)
     return pathToFileURL(file).href
   }))
-  const {apply}=await import(`./index.mjs?${dir}`)
+  const {apply}=await import(`../index.mjs?${dir}`)
   let handler
   function mount() {
     dispose?.()

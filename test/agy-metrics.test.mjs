@@ -5,7 +5,7 @@ import { tmpdir } from 'node:os'
 import { dirname, join } from 'node:path'
 import { DatabaseSync } from 'node:sqlite'
 import { test } from 'node:test'
-import { engine } from './engines/agy.mjs'
+import { engine } from '../engines/agy.mjs'
 
 function varint(value) {
   const bytes = []

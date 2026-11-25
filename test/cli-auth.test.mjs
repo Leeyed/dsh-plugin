@@ -4,7 +4,7 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { Readable } from 'node:stream'
 import { test } from 'node:test'
-import { claudeCliAdmin, codexCliAdmin } from './engines/cli-admin.mjs'
+import { claudeCliAdmin, codexCliAdmin } from '../engines/cli-admin.mjs'
 
 async function fixture(t) {
   const directory = await mkdtemp(join(tmpdir(), 'direct-chat-cli-auth-'))
@@ -123,7 +123,7 @@ case "$1 $2" in
 esac
 `, { mode: 0o700 })
 
-  const { apply } = await import(`./index.mjs?${directory}`)
+  const { apply } = await import(`../index.mjs?${directory}`)
   let handler
   apply({ effect(fn) { dispose = fn() }, connection: { admit: () => ({ peer: { principal: { kind: 'owner' } } }) },
     webServer: { register(route) { handler = route.handler; return () => {} } } }, { engines: ['claude', 'codex'] })

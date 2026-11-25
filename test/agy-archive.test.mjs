@@ -7,8 +7,8 @@ import { join } from 'node:path'
 import { DatabaseSync } from 'node:sqlite'
 import { test } from 'node:test'
 import { pathToFileURL } from 'node:url'
-import { engine } from './engines/agy.mjs'
-import { writeAgyArchive } from './engines/agy-archive.mjs'
+import { engine } from '../engines/agy.mjs'
+import { writeAgyArchive } from '../engines/agy-archive.mjs'
 
 async function fixture(t) {
   const home = await mkdtemp(join(tmpdir(), 'agy-archive-test-'))

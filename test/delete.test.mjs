@@ -7,7 +7,7 @@ import { join } from 'node:path'
 import { Readable } from 'node:stream'
 import { test } from 'node:test'
 import { pathToFileURL } from 'node:url'
-import { nativeId } from './native-history.mjs'
+import { nativeId } from '../server/native-history.mjs'
 
 test('confirmed native deletion serializes changes and clears only the verified thread and aliases', async t => {
   const temp=await mkdtemp(join(tmpdir(),'dchat-delete-'))
@@ -48,9 +48,14 @@ test('confirmed native deletion serializes changes and clears only the verified 
   await writeFile(prefs,JSON.stringify([[root.id,{title:'Primary'}],[alias.id,{title:'Alias'}],[parallel.id,{title:'Independent'}]]))
   await writeFile(archive,JSON.stringify([[root.id,false],[parallel.id,false]]))
   await mkdir(join(temp, 'engines'))
-  await Promise.all(['index.mjs','agy-session-history.mjs','account-usage-cache.mjs','engines/cli-admin.mjs','tool-activity.mjs','workspace-file.mjs','workspace-diff.mjs','codex-commands.mjs'].map(name=>copyFile(new URL(name,import.meta.url),join(temp,name))))
-  await writeFile(join(temp,'native-history.mjs'), `
-    export { nativeId, nativeUuid, openNativeDatabase } from ${JSON.stringify(new URL('./native-history.mjs',import.meta.url).href)}
+  await mkdir(join(temp, 'server'))
+  await Promise.all([
+    'index.mjs', 'engines/cli-admin.mjs',
+    'server/agy-session-history.mjs', 'server/account-usage-cache.mjs', 'server/tool-activity.mjs',
+    'server/workspace-file.mjs', 'server/workspace-diff.mjs', 'server/codex-commands.mjs',
+  ].map(name=>copyFile(new URL('../'+name,import.meta.url),join(temp,name))))
+  await writeFile(join(temp,'server','native-history.mjs'), `
+    export { nativeId, nativeUuid, openNativeDatabase } from ${JSON.stringify(new URL('../server/native-history.mjs',import.meta.url).href)}
     export const entries=new Map(${JSON.stringify(nativeRows.map(row=>[row.id,row]))})
     export const nativeCatalog=()=>({
       async list(){return new Map(entries)},async refreshEngine(){},
@@ -74,7 +79,7 @@ test('confirmed native deletion serializes changes and clears only the verified 
   `)
   const {apply}=await import(pathToFileURL(join(temp,'index.mjs')))
   const registry=await import(pathToFileURL(join(temp,'registry.mjs')))
-  const {entries}=await import(pathToFileURL(join(temp,'native-history.mjs')))
+  const {entries}=await import(pathToFileURL(join(temp,'server','native-history.mjs')))
   const {call,dispose}=mount(apply)
   t.after(dispose)
   const path='/'+root.id

@@ -86,7 +86,7 @@ touch "$DSH_HOME/keyring-secret-read"
 printf '[/item1]\nsecret = %s\n' "$(cat "$DSH_HOME/keyring-secret")"
 `, { mode: 0o700 })
 
-  const { apply } = await import('./index.mjs')
+  const { apply } = await import('../index.mjs')
   let handler
   function startPlugin() {
     dispose?.()
@@ -137,7 +137,7 @@ printf '[/item1]\nsecret = %s\n' "$(cat "$DSH_HOME/keyring-secret")"
   await writeFile(secret, '{"token":{"refresh_token":"fixture"},"id_token_email":"terminal@example.test"}')
   assert.equal((await engineProfile()).account, 'terminal@example.test')
   assert.equal((await profile()).account, 'terminal@example.test')
-  const { agyCliAdmin } = await import('./engines/cli-admin.mjs')
+  const { agyCliAdmin } = await import('../engines/cli-admin.mjs')
   assert.deepEqual(await agyCliAdmin.authStatus({ env: { HOME: join(dir, 'unsigned-profile') } }), { authenticated: false })
   await assert.rejects(readFile(receipt), { code: 'ENOENT' })
   await rm(secretRead)

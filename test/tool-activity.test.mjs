@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
-import { appendExecutionText, commandExecution, completeExecution } from './tool-activity.mjs'
+import { appendExecutionText, commandExecution, completeExecution } from '../server/tool-activity.mjs'
 
 test('keeps bounded head and tail previews identical for streamed and final tool output', () => {
   const chunks = ['x'.repeat(8191) + '🌱', 'z'.repeat(10_000), 'example failure\n']

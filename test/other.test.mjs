@@ -4,8 +4,8 @@ import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { delimiter, join } from 'node:path'
 import { after, before, test } from 'node:test'
-import { engine as codexEngine } from './engines/codex.mjs'
-import { inspectCodexThread, startOther } from './other.mjs'
+import { engine as codexEngine } from '../engines/codex.mjs'
+import { inspectCodexThread, startOther } from '../server/other.mjs'
 
 const header = `#!/usr/bin/env node
 import assert from 'node:assert/strict'

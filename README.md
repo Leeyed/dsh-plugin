@@ -40,5 +40,5 @@ npm run build:ui
 Run tests:
 
 ```bash
-node --test *.test.mjs ui/*.test.mjs
+node --test test/*.test.mjs ui/*.test.mjs
 ```

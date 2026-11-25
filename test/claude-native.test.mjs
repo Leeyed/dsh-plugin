@@ -4,8 +4,8 @@ import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { delimiter, join } from 'node:path'
 import { test } from 'node:test'
-import { engine } from './engines/claude.mjs'
-import { claudeAccountUsage, claudeCachedAccountUsage, claudeContextSummary } from './claude-native.mjs'
+import { engine } from '../engines/claude.mjs'
+import { claudeAccountUsage, claudeCachedAccountUsage, claudeContextSummary } from '../server/claude-native.mjs'
 
 test('Claude uses only native control requests for rename, plan limits and cached local context details', async t => {
   const cwd = await mkdtemp(join(tmpdir(), 'claude-native-test-'))

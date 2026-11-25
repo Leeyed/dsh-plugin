@@ -6,7 +6,7 @@ import {join} from 'node:path'
 import {execFile} from 'node:child_process'
 import {promisify} from 'node:util'
 const run=promisify(execFile)
-import {workspaceDiff,workspaceDiffText} from './workspace-diff.mjs'
+import {workspaceDiff,workspaceDiffText} from '../server/workspace-diff.mjs'
 
 test('workspace changes are read-only, scoped to the session directory and separated by Git state',async t=>{
   const root=await mkdtemp(join(tmpdir(),'dsh-worktree-'))

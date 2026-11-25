@@ -46,7 +46,7 @@ test('generic uploads use private session paths, retain previews and preserve na
   await writeFile(modulePath,fixture)
   const moduleUrl = pathToFileURL(modulePath).href
   const mock = await import(moduleUrl)
-  const { apply } = await import('./index.mjs')
+  const { apply } = await import('../index.mjs')
   const { call, dispose } = mount(apply,moduleUrl)
   t.after(dispose)
   const create = () => call('POST','',{engine:'mock',cwd:dir})
@@ -187,7 +187,7 @@ test('document routes return scoped preview bytes and use the host Office conver
     converted.push(extension)
     return { pdf }
   }}
-  const {apply} = await import('./index.mjs?document-routes-test')
+  const {apply} = await import('../index.mjs?document-routes-test')
   const moduleUrl = pathToFileURL(modulePath).href
   const {call,dispose} = mount(apply,moduleUrl,converter)
   t.after(dispose)

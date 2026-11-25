@@ -20,8 +20,8 @@ function getDshRequire() {
   return dshRequire
 }
 
-import { createAccountUsageCache, excludesSubscriptionQuota } from './account-usage-cache.mjs'
-import { agyDataDirectory } from './agy-session-history.mjs'
+import { createAccountUsageCache, excludesSubscriptionQuota } from './server/account-usage-cache.mjs'
+import { agyDataDirectory } from './server/agy-session-history.mjs'
 import { claudeExternalAuthEnvKeys } from './engines/cli-admin.mjs'
 import { createEngineRegistry } from './registry.mjs'
 
@@ -35,10 +35,10 @@ function compareSemver(a, b) {
   }
   return 0
 }
-import { workspaceDiff, workspaceDiffText } from './workspace-diff.mjs'
-import { imageType, listWorkspaceDirectory, openMediaFile, sendDocument, sendMedia, previewFile } from './workspace-file.mjs'
-import { nativeCatalog, nativeId, nativeUuid } from './native-history.mjs'
-import { commandExecution, completeExecution, toolLocations } from './tool-activity.mjs'
+import { workspaceDiff, workspaceDiffText } from './server/workspace-diff.mjs'
+import { imageType, listWorkspaceDirectory, openMediaFile, sendDocument, sendMedia, previewFile } from './server/workspace-file.mjs'
+import { nativeCatalog, nativeId, nativeUuid } from './server/native-history.mjs'
+import { commandExecution, completeExecution, toolLocations } from './server/tool-activity.mjs'
 
 export const name = 'direct-chat'
 export const inject = ['webServer', 'connection']
@@ -638,6 +638,14 @@ export function apply(ctx, config = {}) {
         cwd: r.cwd,
         state,
         updatedAt: r.updatedAt || Date.now(),
+        ...(s.permissions.size > 0 ? {
+          permissions: [...s.permissions.values()].map(req => ({
+            id: req.toolCall.toolCallId,
+            title: req.toolCall.title || '',
+            detail: req.toolCall.rawInput?.command || req.toolCall.rawInput?.file_path || req.toolCall.rawInput?.path || '',
+            options: Array.isArray(req.options) ? req.options.map(o => ({ optionId: o.optionId, name: o.name, kind: o.kind })) : [],
+          })),
+        } : {}),
       })
     }
     return items.sort((a, b) => b.updatedAt - a.updatedAt)
@@ -2936,6 +2944,7 @@ export function apply(ctx, config = {}) {
       syncTurnWait(s)
       if(s.record.requestId && !s.permissions.size) taskState(s,'running')
       broadcast(s,'permission_resolved',{id:data.id})
+      broadcastGlobalStatus()
     } else if (action === 'cancel') {
       await cancelTurn(s)
     } else if (action === 'configure') {

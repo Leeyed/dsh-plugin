@@ -360,6 +360,53 @@
   gap: 2px;
 }
 
+.dchat-pet-approval {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 2px 4px 6px 26px;
+  padding: 8px 10px;
+  border-radius: var(--dsw-radius-md, 8px);
+  border: 0.5px solid color-mix(in srgb, var(--dsw-alias-state-warn-label, #f59e0b) 40%, var(--dsw-alias-border-l2));
+  background: color-mix(in srgb, var(--dsw-alias-state-warn-label, #f59e0b) 6%, var(--dsw-alias-bg-base));
+}
+
+.dchat-pet-approval-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dchat-pet-approval-card + .dchat-pet-approval-card {
+  padding-top: 6px;
+  border-top: 0.5px solid var(--dsw-alias-border-l2);
+}
+
+.dchat-pet-approval-title {
+  font-size: 12px;
+  line-height: 17px;
+  font-weight: 500;
+  color: var(--dsw-alias-label-primary);
+  overflow-wrap: anywhere;
+}
+
+.dchat-pet-approval-detail {
+  font-size: 11px;
+  line-height: 15px;
+  font-family: monospace;
+  color: var(--dsw-alias-label-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dchat-pet-approval-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+}
+
 .dchat-pet-item-title {
   font-size: 13px;
   line-height: 18px;

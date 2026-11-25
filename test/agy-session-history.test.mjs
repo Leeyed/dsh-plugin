@@ -4,7 +4,7 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { DatabaseSync } from 'node:sqlite'
 import { test } from 'node:test'
-import { agyDataDirectory, prepareAgySessionDirectory } from './agy-session-history.mjs'
+import { agyDataDirectory, prepareAgySessionDirectory } from '../server/agy-session-history.mjs'
 
 const conversationId='12345678-0000-4000-8000-000000000000'
 const token='antigravity-oauth-token'

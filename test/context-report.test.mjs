@@ -5,8 +5,8 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { DatabaseSync } from 'node:sqlite'
 import { test } from 'node:test'
-import { createEngineRegistry } from './registry.mjs'
-import { nativeCatalog } from './native-history.mjs'
+import { createEngineRegistry } from '../registry.mjs'
+import { nativeCatalog } from '../server/native-history.mjs'
 
 async function scratch(t) {
   const directory = await mkdtemp(join(tmpdir(), 'direct-chat-context-'))

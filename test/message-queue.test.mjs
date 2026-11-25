@@ -57,7 +57,7 @@ async function fixture(t) {
   `)
   const moduleURL = pathToFileURL(path).href
   const engine = await import(moduleURL)
-  const {apply} = await import(`./index.mjs?${dir}`)
+  const {apply} = await import(`../index.mjs?${dir}`)
   const store = join(dir,'direct-chat')
   function mount() {
     let handler,dispose

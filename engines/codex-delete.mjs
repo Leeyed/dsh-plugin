@@ -1,7 +1,7 @@
 import { execFile } from 'node:child_process'
 import { homedir } from 'node:os'
 import { promisify } from 'node:util'
-import { nativeUuid } from '../native-history.mjs'
+import { nativeUuid } from '../server/native-history.mjs'
 
 const run = promisify(execFile)
 const options = { cwd: homedir(), windowsHide: true, maxBuffer: 64 * 1024 }

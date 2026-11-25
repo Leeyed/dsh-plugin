@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react'
-import { FishLogo, IconChevronRightOutlineRegular, IconCloseOutlineRegular, Modal, StateDot } from '@deepseek-ai/dsh-client-ui-primitives'
-import { engineLabel } from './chat-state.mjs'
+import { Button, FishLogo, IconChevronRightOutlineRegular, IconCloseOutlineRegular, Modal, StateDot } from '@deepseek-ai/dsh-client-ui-primitives'
+import { engineLabel, sessionAction } from './chat-state.mjs'
 import { EngineLogo } from './EngineHero.jsx'
 
 const PET_POS_KEY = 'dsh-direct-chat.pet-pos'
@@ -66,6 +66,7 @@ export function SessionPet({
   const archivedNativeIds = useWorkspaces(snapshot => snapshot?.archivedSessionIds)
   const { engines } = useSyncExternalStore(engineSource.subscribe, engineSource.getSnapshot)
   const [open, setOpen] = useState(false)
+  const [approvingKey, setApprovingKey] = useState(null)
   const [pos, setPos] = useState(() => readSavedPos())
   const dragRef = useRef(null)
   const rootRef = useRef(null)
@@ -111,6 +112,7 @@ export function SessionPet({
         source: engineLabel(engines, item.engine),
         state: item.state,
         updatedAt: item.updatedAt || 0,
+        permissions: Array.isArray(item.permissions) ? item.permissions : [],
       })
     }
     const nativeById = nativeSnap?.byId ?? {}
@@ -246,6 +248,31 @@ export function SessionPet({
             <IconChevronRightOutlineRegular className="dchat-pet-item-chevron" size={16} aria-hidden="true" />
           </>}
         </button>
+        {item.kind === 'direct' && item.state === 'attention' && item.permissions.length > 0 && (
+          <div className="dchat-pet-approval" onClick={event => event.stopPropagation()}>
+            {item.permissions.map(perm => {
+              const key = `${item.id}:${perm.id}`
+              const busy = approvingKey === key
+              return <div key={perm.id} className="dchat-pet-approval-card">
+                <div className="dchat-pet-approval-title">{perm.title || t('permission.tool')}</div>
+                {perm.detail && <div className="dchat-pet-approval-detail" title={String(perm.detail)}>{String(perm.detail)}</div>}
+                <div className="dchat-pet-approval-actions">
+                  {perm.options.map(option => <Button key={option.optionId} size="sm"
+                    variant={option.kind?.startsWith('allow') ? 'primary' : 'outline'}
+                    disabled={busy}
+                    onClick={async event => {
+                      event.stopPropagation()
+                      if (approvingKey) return
+                      setApprovingKey(key)
+                      try { await sessionAction(item.id, 'approve', { id: perm.id, option: option.optionId }) }
+                      catch {}
+                      finally { setApprovingKey(null) }
+                    }}>{option.name}</Button>)}
+                </div>
+              </div>
+            })}
+          </div>
+        )}
       </li>)}
     </ul>}
   </>

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import {test} from 'node:test'
-import {createAccountUsageCache, excludesSubscriptionQuota} from './account-usage-cache.mjs'
+import {createAccountUsageCache, excludesSubscriptionQuota} from '../server/account-usage-cache.mjs'
 
 const report = (usedPercent, observedAt, resetsAt) => ({limits:[{label:'5h',usedPercent,resetsAt}],observedAt})
 test('shares one in-flight refresh, preserves observation time on failure, and can manually retry', async () => {

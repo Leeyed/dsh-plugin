@@ -3,7 +3,7 @@ import { mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { delimiter, join } from 'node:path';
 import { after, before, test } from 'node:test';
-import { startAgy } from './agy.mjs';
+import { startAgy } from '../server/agy.mjs';
 
 const mock = String.raw`#!/usr/bin/env node
 const assert = require('node:assert/strict');
