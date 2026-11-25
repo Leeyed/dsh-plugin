@@ -1,4 +1,4 @@
-import { useRef, useState, useSyncExternalStore } from 'react'
+import { useLayoutEffect, useRef, useState, useSyncExternalStore } from 'react'
 import {
   Button, HoverCard, IconArchiveOutlineRegular, IconBranchOutlineRegular, IconCopyOutlineRegular,
   IconEditOutlineRegular, IconEllipsisOutlineRegular, IconPinFillRegular, IconPinOutlineRegular,
@@ -38,6 +38,7 @@ export const sidebarCopy = {
     'sidebar.deleteFailed': 'Could not delete the conversation.',
     'sidebar.fork': 'Fork session',
     'sidebar.forkUnavailable': 'The engine or current session state does not allow forking.',
+    'sidebar.agyForkUnavailable': 'Open this conversation in the Antigravity terminal and run /fork.',
     'sidebar.forkArchived': 'Restore this session before forking.',
     'sidebar.forked': 'Session forked',
     'sidebar.pin': 'Pin session',
@@ -82,6 +83,7 @@ export const sidebarCopy = {
     'sidebar.deleteFailed': '无法删除会话。',
     'sidebar.fork': '分叉会话',
     'sidebar.forkUnavailable': '当前引擎或会话状态不支持分叉。',
+    'sidebar.agyForkUnavailable': '请在 Antigravity 终端打开此会话并执行 /fork。',
     'sidebar.forkArchived': '请先恢复此会话，再创建分叉。',
     'sidebar.forked': '已分叉会话',
     'sidebar.pin': '置顶会话',
@@ -126,6 +128,7 @@ export function SidebarProjection({ render, history, statusStore = fallbackStatu
   const [notice, setNotice] = useState(null)
   const [renameTarget, setRenameTarget] = useState(null)
   const [deleteTarget, setDeleteTarget] = useState(null)
+  const groupCwdsRef = useRef(new Map())
   const report = (text, success) => setNotice(old => ({ id: (old?.id ?? 0) + 1, text, success }))
   const copy = async text => {
     const copied = await writeClipboard(text).catch(() => false)
@@ -145,8 +148,16 @@ export function SidebarProjection({ render, history, statusStore = fallbackStatu
   }
   const extension = {
     activeId: active && target.id ? `direct-chat:session:${target.id}` : undefined,
-    groups: (groups, workspaces, expandedGroups, filter) =>
-      projectSidebarGroups(groups, workspaces, expandedGroups, expanded, byCwd, filter, t('cwd.default'), active),
+    groups: (groups, workspaces, expandedGroups, filter) => {
+      const projected = projectSidebarGroups(groups, workspaces, expandedGroups, expanded, byCwd, filter, t('cwd.default'), active)
+      const nextCwds = new Map()
+      for (const group of projected) {
+        const path = group.directCwd ?? group.cwd
+        if (path) nextCwds.set(group.key, path)
+      }
+      groupCwdsRef.current = nextCwds
+      return projected
+    },
     flat: (rows, filter) => mergeSidebarRows(hideNativeDraft(rows, active), [...byCwd.values()].flat().filter(row => sidebarRowVisible(row, filter))),
     expandGroup(key, open) {
       if (!isVirtualGroup(key)) return false
@@ -178,6 +189,25 @@ export function SidebarProjection({ render, history, statusStore = fallbackStatu
         }
       }} t={t} />,
   }
+  useLayoutEffect(() => {
+    if (typeof document === 'undefined') return
+    const rank = { attention: 3, running: 2, done: 1 }
+    const cwdState = new Map()
+    for (const item of statusSnapshot.list ?? []) {
+      if (!item?.cwd || !item.state) continue
+      if (item.state === 'done' && active && item.id === target.id) continue
+      const prev = cwdState.get(item.cwd)
+      if (!prev || rank[item.state] > rank[prev]) cwdState.set(item.cwd, item.state)
+    }
+    for (const el of document.querySelectorAll('[data-row-key^="workspace:"]')) {
+      const key = el.dataset.rowKey?.slice('workspace:'.length)
+      const cwd = key ? (groupCwdsRef.current.get(key) ?? (key.startsWith('direct-chat:cwd:') ? key.slice('direct-chat:cwd:'.length) : undefined)) : undefined
+      const state = cwd ? cwdState.get(cwd) : undefined
+      if (state) el.dataset.directWorkspaceState = state
+      else delete el.dataset.directWorkspaceState
+    }
+  }, [statusSnapshot, byCwd, expanded, active, target.id])
+
   return <>
     {render(extension)}
     {renameTarget && <SessionRename key={renameTarget.id} row={renameTarget}
@@ -318,7 +348,8 @@ function ExternalSessionRow({ node, css, label, compactTime, formatTime, active,
   const ArchiveIcon = node.archived ? IconUnarchiveOutlineRegular : IconArchiveOutlineRegular
   const PinIcon = node.pinned ? IconPinFillRegular : IconPinOutlineRegular
   const canFork = row.canFork === true && !node.archived
-  const forkReason = t(node.archived ? 'sidebar.forkArchived' : 'sidebar.forkUnavailable')
+  const forkReason = t(node.archived ? 'sidebar.forkArchived'
+    : row.forkUnavailableReason === 'agy-acp' ? 'sidebar.agyForkUnavailable' : 'sidebar.forkUnavailable')
   const items = [
     ...(!node.archived ? [{ id: 'pin', label: pinLabel, icon: icon(PinIcon), disabled: pending }] : []),
     { id: 'rename', label: t(row.renameMode === 'local' ? 'sidebar.localRename' : 'sidebar.rename'), icon: icon(IconEditOutlineRegular), disabled: pending || !canRename },

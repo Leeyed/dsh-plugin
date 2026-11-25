@@ -367,7 +367,7 @@ button.dchat-stat-pill:focus-visible {
     align-items: center;
     justify-content: center;
     gap: 6px;
-    min-height: 32px;
+    min-height: 22px;
     max-width: 100%;
     padding: 0 8px;
     border: 0;

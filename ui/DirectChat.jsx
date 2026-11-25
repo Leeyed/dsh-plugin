@@ -13,6 +13,9 @@ import {
 import { AttachmentRail } from '@deepseek-ai/dsh-client-ui-attachment/src/AttachmentRail.tsx'
 import { TurnNavigator } from '@deepseek-ai/dsh-client-ui-chat/src/client/chat/TurnNavigator.tsx'
 import { RunningStatus } from '@deepseek-ai/dsh-client-ui-chat/src/client/chat/RunningStatus.tsx'
+import { ConversationWidthControls } from '@deepseek-ai/dsh-client-ui-conversation/src/client/skeleton/ConversationWidthControls.tsx'
+import inputLayout from '@deepseek-ai/dsh-client-ui-conversation/src/client/skeleton/InputBar.module.css'
+import conversationLayout from '@deepseek-ai/dsh-client-ui-conversation/src/client/skeleton/ConversationRoot.module.css'
 import { TodoPanel } from '@deepseek-ai/dsh-client-ui-conversation/src/client/skeleton/TodoPanel.tsx'
 import {
   accountChoiceLabel, applyEvent, attachmentIssue, composerAccount, configGroups, createSession, encodeAttachment, engineLabel, fileUriReference, inlineFileReference,
@@ -51,6 +54,7 @@ const commandIcons = new Map([
 export function DirectChat({ navigation, startNative, renderFactorySlot, workspaceSource, engineSource, diffController, performanceSettings, submissionSettings, queueDock, statusStore, nativeSessions, useSessionStatus, useWorkspaces, openDirect, openNative, t }) {
   const target = useSyncExternalStore(navigation.subscribe, navigation.getSnapshot)
   const { engines, status: engineStatus } = useSyncExternalStore(engineSource.subscribe, engineSource.getSnapshot)
+  const [column, setColumn] = useState(null)
   const [metadata, setMetadata] = useState(null)
   const parent = useRef(null)
   const [agentSummary, setAgentSummary] = useState(null)
@@ -94,18 +98,35 @@ export function DirectChat({ navigation, startNative, renderFactorySlot, workspa
           engineSource={engineSource} openDirect={openDirect || (sessionId => navigation.open(sessionId))} openNative={openNative} t={t} />}
       </div>
     </header>
-    <SessionPane key={target.key ?? target.id ?? target.engine} target={target} navigation={navigation} startNative={startNative} performanceSettings={performanceSettings} submissionSettings={submissionSettings}
-      engine={engine} engines={engines} engineStatus={engineStatus} reloadEngines={engineSource.refresh} diffController={diffController}
-      queueDock={queueDock} onAgentSummary={setAgentSummary} onSession={setMetadata}
-      renderFactorySlot={renderFactorySlot} workspaceSource={workspaceSource} t={t} />
+    <div ref={setColumn} className={conversationLayout.body}>
+      <div className={conversationLayout.scrollBody}>
+        <SessionPane key={target.key ?? target.id ?? target.engine} target={target} navigation={navigation} startNative={startNative} performanceSettings={performanceSettings} submissionSettings={submissionSettings}
+          engine={engine} engines={engines} engineStatus={engineStatus} reloadEngines={engineSource.refresh} diffController={diffController}
+          queueDock={queueDock} onAgentSummary={setAgentSummary} onSession={setMetadata}
+          renderFactorySlot={renderFactorySlot} workspaceSource={workspaceSource} t={t} />
+      </div>
+      <ConversationWidthControls container={column} phase={target.id ? 'active' : 'hero'} />
+    </div>
   </section>
 }
 
 function SessionPane({ queueDock, onAgentSummary, target, navigation, startNative, performanceSettings, submissionSettings = defaultSubmissionSettings, onSession, renderFactorySlot, workspaceSource, engine, engines, engineStatus, reloadEngines, diffController, t }) {
   const blank = !target.id
   const cwd = target.cwd ?? ''
-  const [draftProfile, setDraftProfile] = useState(null)
-  const profileId = draftProfile && draftProfile.engine === engine ? draftProfile.id : undefined
+  const [draftProfiles, setDraftProfiles] = useState(() => {
+    try {
+      const saved = JSON.parse(sessionStorage.getItem('dsh-direct-chat.draft-profiles') ?? 'null')
+      return saved && typeof saved === 'object' ? saved : {}
+    } catch { return {} }
+  })
+  const selectDraftProfile = (targetEngine, profileId) => {
+    setDraftProfiles(prev => {
+      const next = { ...prev, [targetEngine]: profileId }
+      try { sessionStorage.setItem('dsh-direct-chat.draft-profiles', JSON.stringify(next)) } catch {}
+      return next
+    })
+  }
+  const profileId = engine && typeof draftProfiles[engine] === 'string' ? draftProfiles[engine] : undefined
   const [prepared, setPrepared] = useState(null)
   const [prepareAttempt, setPrepareAttempt] = useState(0)
   const preparation = prepared?.engine === engine && prepared?.cwd === cwd && prepared.profileId === profileId && prepared.attempt === prepareAttempt ? prepared : null
@@ -530,7 +551,7 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
     <div className="dchat-transcript-area" hidden={blank}>
       {!blank && turnItems.length >= 2 && <TurnNavigator items={turnItems} activeTurn={resolvedActiveTurn}
         busyTurn={null} onNavigate={jumpToTurn} t={t} />}
-      <div className="dchat-transcript" ref={transcript} tabIndex={0} aria-label={t('transcript')} onScroll={event => {
+      <div className="dchat-transcript" data-conversation-scroll="" ref={transcript} tabIndex={0} aria-label={t('transcript')} onScroll={event => {
         const node = event.currentTarget
         const currentTop = node.scrollTop
         const previousTop = lastScrollTopRef.current
@@ -667,7 +688,7 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
         }}
         fallback={<QueuedMessages queue={queue} canSteer={canSteer} disabled={!ready || Boolean(pending)}
           change={(action, queuedId) => perform('queue', { action, id: queuedId })} t={t} />} />}
-      {!needsEngine && !readOnly && <form className="dchat-composer" tabIndex={-1} data-composer-card onSubmit={event => { event.preventDefault(); void send() }}
+      {!needsEngine && !readOnly && <form className={inputLayout.card + ' dchat-composer'} tabIndex={-1} data-composer-card onSubmit={event => { event.preventDefault(); void send() }}
         data-files-hover={draggingFiles || undefined}
         onDragEnter={event => {
           if (!hasDraggedFiles(event.dataTransfer)) return
@@ -720,7 +741,7 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
           </span>
         </div>}
         <div className="dchat-composer-input-wrap">
-          <textarea ref={input} value={draft} {...commandPicker.inputProps} aria-label={t('message')}
+          <textarea className={inputLayout.input} ref={input} value={draft} {...commandPicker.inputProps} aria-label={t('message')}
             rows={blank ? 2 : 1} readOnly={pending === 'prompt'} onPaste={event => {
             if (!capabilities.image) return
             const files = Array.from(event.clipboardData.files).filter(file => file.type.startsWith('image/'))
@@ -738,11 +759,11 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
               else void send(deliveryFor(event.ctrlKey || event.metaKey))
             }
           }} />
-          {!draft && <span className="dchat-composer-placeholder" aria-hidden="true">
+          {!draft && <span className={inputLayout.placeholder + ' dchat-composer-placeholder'} aria-hidden="true">
             {canSteerQueue ? queueDock.t('placeholder.steerQueue') : t(blank ? 'message.hero' : 'message')}
           </span>}
         </div>
-        <div className="dchat-composer-bar">
+        <div className={inputLayout.row + ' dchat-composer-bar'}>
           <div className="dchat-composer-tools">
             <input type="file" hidden multiple ref={fileInput} onChange={event => {
               stage(Array.from(event.target.files))
@@ -762,7 +783,7 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
               disabled={configDisabled} t={t} />)}
             {displayedAccount && <SessionAccount engine={currentEngine} account={displayedAccount}
               disabled={blank ? Boolean(pending) || busy : configDisabled || readOnly}
-              change={id => blank ? setDraftProfile({ engine, id }) : perform('account', { profileId: id })} t={t} />}
+              change={id => blank ? selectDraftProfile(engine, id) : perform('account', { profileId: id })} t={t} />}
           </div>
           <div className="dchat-composer-trailing">
             {model || effort ? <ModelConfigMenu model={model} effort={effort} commands={teamCommands}
@@ -775,7 +796,7 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
                     <IconDataOutlineRegular size={16} /><span>{t('model.pending')}</span>
                   </Button>
                 : <span className="dchat-status" role="status"><StateDot state="ongoing" />{t('connecting')}</span>)}
-            {busy && <button type="button" className="dchat-send" data-secondary={hasDraft || undefined}
+            {busy && <button type="button" className={inputLayout.primary + ' dchat-send'} data-secondary={hasDraft || undefined}
               title={t('stop.current')} aria-label={t('stop.current')}
               disabled={!ready || Boolean(pending)} onClick={() => perform('cancel')}><IconStopFillRegular size={16} /></button>}
             {(!busy || hasDraft) && <>
@@ -786,7 +807,7 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
                   disabled={!canSendPrompt} onClick={() => setDeliveryMenuOpen(open => !open)}>
                   <IconChevronDownOutlineRegular size={14} />
                 </Button>} />}
-              <button type="submit" className="dchat-send" title={sendLabel} aria-label={sendLabel} disabled={!canSendPrompt}>
+              <button type="submit" className={inputLayout.primary + ' dchat-send'} title={sendLabel} aria-label={sendLabel} disabled={!canSendPrompt}>
                 {pending === 'prompt' ? <StateDot state="ongoing" /> : <IconSendOutlineRegular size={18} />}
               </button>
             </>}
@@ -796,7 +817,7 @@ function SessionPane({ queueDock, onAgentSummary, target, navigation, startNativ
       <div className="dchat-session-footer">
         {(needsEngine || readOnly) && displayedAccount && <SessionAccount engine={currentEngine} account={displayedAccount}
           disabled={blank ? Boolean(pending) || busy : configDisabled || readOnly}
-          change={id => blank ? setDraftProfile({ engine, id }) : perform('account', { profileId: id })} t={t} />}
+          change={id => blank ? selectDraftProfile(engine, id) : perform('account', { profileId: id })} t={t} />}
         <SessionStatus sessionId={id} engine={currentEngine} profileId={session?.account?.id} engineCapabilities={currentCapabilities}
           messages={session?.messages} model={model?.currentValue}
           modelName={configGroups(model).flatMap(group => group.choices).find(choice => choice.value === model?.currentValue)?.name} effort={effort?.currentValue} agentCount={session?.agents?.length}

@@ -13,6 +13,7 @@ import { DirectChat } from './DirectChat.jsx'
 import { EngineHero } from './EngineHero.jsx'
 import { createEngineCatalog, createDirectStatusStore } from './chat-state.mjs'
 import { createNavigation } from './navigation.mjs'
+import { startDirectFromNative } from './native-draft.mjs'
 import { SessionPet } from './SessionPet.jsx'
 import petStyles from './session-pet.css'
 import { en, zh } from './copy.mjs'
@@ -103,7 +104,7 @@ export function apply(ctx) {
     else ctx.uiWorkspace.startSession()
   }
   const startDirect = (engine, cwd) => {
-    navigation.start(engine, cwd)
+    startDirectFromNative(ctx, navigation, engine, cwd)
     ctx.layout.selectPanel(panelId)
   }
   const openDirect = id => {
@@ -146,6 +147,11 @@ export function apply(ctx) {
     label: () => t('engineSettings.pluginLabel'),
     inject: () => ({ engineSource }),
   }, ({ view, ...props }) => view === 'page' ? <EngineSettings {...props} /> : t('engineSettings.pluginSummary')))
+  ctx.slots.inject('settings.plugins.tab', () => ctx.slots.register({
+    name: 'settings.plugins.tab', id: 'direct-chat-engines', order: 50, locale: panelId,
+    label: () => t('engineSettings.pluginLabel'),
+    inject: () => ({ engineSource }),
+  }, EngineSettings))
   ctx.slots.inject('settings.section', () => ctx.slots.register({
     name: 'settings.section', id: 'archived-sessions', order: 46, locale: panelId,
     label: () => t('archiveSettings.title'),

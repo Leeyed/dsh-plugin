@@ -414,6 +414,9 @@ export function apply(ctx, config = {}) {
     return Boolean(record.remoteId && !record.parentId && !record.nativeParent && record.resumable !== false &&
       typeof definition?.fork === 'function' && (definition.forkCapability !== 'negotiated' || record.capabilitiesMedia?.fork))
   }
+  function agyForkUnavailable(record) {
+    return record.engine==='agy' && engines.get('agy')?.forkCapability==='negotiated' && !record.capabilitiesMedia?.fork
+  }
   const activeTask = status => ['queued','running','waiting'].includes(status)
   const transcriptVersion = engine => ['agy','codex'].includes(engine) ? 9 : 8
   const capabilityUpdates = list => (Array.isArray(list) ? list : [])
@@ -675,7 +678,8 @@ export function apply(ctx, config = {}) {
     const list = Array.isArray(entry.list) ? entry.list : []
     const defaultProfileId = typeof entry.defaultProfileId === 'string' ? entry.defaultProfileId : 'default'
     const overrides = entry.overrides && typeof entry.overrides === 'object' ? entry.overrides : {}
-    return { defaultProfileId, list, overrides }
+    const defaultOptions = entry.defaultOptions && typeof entry.defaultOptions === 'object' ? entry.defaultOptions : {}
+    return { defaultProfileId, list, overrides, defaultOptions }
   }
   function sanitizeEnvMap(raw) {
     const env = {}
@@ -748,11 +752,13 @@ export function apply(ctx, config = {}) {
   }
   function sessionProfiles(provider, {list, overrides} = engineProfiles(provider.id)) {
     const defaults = [{id:'default', name:'Default', kind:'default'}]
-    if (provider.id === 'agy') return [...defaults, ...list.filter(item => item.kind === 'isolated')]
-    return [...defaults, ...(provider.configProfiles?.() || []), ...list].filter(item => {
-      if (item.kind === 'env') return Boolean(sanitizeEnvMap(item.env) || sanitizeEnvMap(overrides[item.id]?.env))
-      return item.kind !== 'snapshot' && (item.kind !== 'isolated' || ['codex','claude'].includes(provider.id))
-    })
+    const raw = provider.id === 'agy'
+      ? [...defaults, ...list.filter(item => item.kind === 'isolated')]
+      : [...defaults, ...(provider.configProfiles?.() || []), ...list].filter(item => {
+          if (item.kind === 'env') return Boolean(sanitizeEnvMap(item.env) || sanitizeEnvMap(overrides[item.id]?.env))
+          return item.kind !== 'snapshot' && (item.kind !== 'isolated' || ['codex','claude'].includes(provider.id))
+        })
+    return raw.map(item => ({ ...item, disabled: Boolean(overrides[item.id]?.disabled) }))
   }
   function agyAutomaticName(item) {
     return item.kind === 'isolated' && (item.autoNamed ?? /^Antigravity #\d+$/.test(item.name))
@@ -813,8 +819,8 @@ export function apply(ctx, config = {}) {
     }
     if (typeof absolute==='string' && isAbsolute(absolute)) {
       const nativePath=relative(brain,absolute)
-      const [account,folder,id,...path]=relative(agyRuntimeRoot(record),absolute).split(sep)
-      if (account.startsWith('account-') && folder==='brain' && id===record.remoteId) requestedPath=join(canonical,...path)
+      const [runtimeId,account,folder,id,...path]=relative(join(store,'agy-sessions'),absolute).split(sep)
+      if (nativeUuid.test(runtimeId) && account?.startsWith('account-') && folder==='brain' && id===record.remoteId) requestedPath=join(canonical,...path)
       else if (!isAbsolute(nativePath) && nativePath!=='..' && !nativePath.startsWith('..'+sep)) requestedPath=join(canonical,nativePath)
     }
     return {requestedPath,allowedRoots:[canonical]}
@@ -866,8 +872,8 @@ export function apply(ctx, config = {}) {
     const retainedHistory=hasSessionHistory(r)
     const canResumeAgy=r.engine==='agy' && (!retainedHistory || nativeUuid.test(r.remoteId))
     const modelProvider=r.engine==='codex' && retainedHistory && (r.modelProvider || profileModelProvider(provider,current,profiles.overrides))
-    const choices=available.filter(item=>item.id===id || canResumeAgy || (sharesSessionHistory(r.engine,item,profiles.overrides) &&
-      (!modelProvider || modelProvider===profileModelProvider(provider,item,profiles.overrides))))
+    const choices=available.filter(item=>item.id===id || (!item.disabled && (canResumeAgy || (sharesSessionHistory(r.engine,item,profiles.overrides) &&
+      (!modelProvider || modelProvider===profileModelProvider(provider,item,profiles.overrides))))))
       .map(describe)
     const key=changeKey(r)
     const canChoose=Boolean(current && choices.length>1 && (canResumeAgy || sharesSessionHistory(r.engine,current,profiles.overrides)) &&
@@ -879,7 +885,7 @@ export function apply(ctx, config = {}) {
         (r.remoteId && other.record.engine===r.engine && other.record.remoteId===r.remoteId && (other.adapter || activeSession(other)))
       )))
     const canSwitch=canChoose && !readOnly && !busy
-    const switchBlockedReason=!canSwitch && available.some(item=>item.id!==id)
+    const switchBlockedReason=!canSwitch && available.some(item=>item.id!==id && !item.disabled)
       ? !current ? 'unavailable' : readOnly ? 'readOnly' : busy ? 'busy' : 'history'
       : undefined
     const selected=choices.find(choice=>choice.id===id) ?? {id,label:profiles.list.find(item=>item.id===id)?.name || id}
@@ -983,6 +989,7 @@ export function apply(ctx, config = {}) {
           ? auth.account : item.name,
         kind: item.kind,
         isDefault: item.isDefault,
+        disabled: Boolean(override?.disabled),
         authenticated: auth?.authenticated,
         account: auth?.account,
         authLabel: auth?.label,
@@ -1607,7 +1614,7 @@ export function apply(ctx, config = {}) {
     })
     try {
       if ((nextProfileId && !adapter.id) || (resumeId && adapter.id!==resumeId)) throw reject(409,'The selected account could not resume this conversation')
-      if (record.remoteId || record.parentId) await restoreOptions(adapter,savedOptions)
+      if (record.remoteId || record.parentId || savedOptions?.length) await restoreOptions(adapter,savedOptions)
       return adapter
     } catch (error) {
       record.options=savedOptions
@@ -2082,6 +2089,7 @@ export function apply(ctx, config = {}) {
         !activeKeys.has(r.id) && !activeKeys.has(key))
       const renaming=renameMode(r,indexed)
       rows.push({id:r.id,engine:r.engine,title:displayTitle(r,indexed),pinned:Boolean(preferences.get(r.id)?.pinnedAt),pinnedAt:preferences.get(r.id)?.pinnedAt,canFork:canFork(r) && !sessions.get(r.id)?.busy,cwd:r.cwd,origin:r.id.startsWith('local-')?'terminal':'web',
+        ...(agyForkUnavailable(r) ? {forkUnavailableReason:'agy-acp'} : {}),
         isChild:false, readOnly:r.resumable===false || indexed?.resumable===false,
         actions:{delete:canDelete,rename:renaming!=='unsupported'}, renameMode:renaming,
         archiveMode:archiveMode(r,indexed), canNativeArchive:supportsNativeArchive(r), archived:isArchived(r,indexed), createdAt:r.createdAt ?? indexed?.createdAt,
@@ -2210,7 +2218,9 @@ export function apply(ctx, config = {}) {
   async function forkSession(source) {
     requireWritable(source)
     const record = source.record
-    if (!canFork(record)) throw reject(409,'This engine cannot fork this session')
+    const agyForkHelp='Antigravity ACP has not reported fork support. Open the conversation in the Antigravity terminal and run /fork.'
+    if (!canFork(record)) throw reject(409,agyForkUnavailable(record) ? agyForkHelp
+      : 'This engine cannot fork this session')
     if (activeSession(source)) throw reject(409,'Session is busy')
     source.forking=true
     const id=randomUUID()
@@ -2238,8 +2248,13 @@ export function apply(ctx, config = {}) {
       const definition=engines.get(record.engine)
       const events=[]
       const launch=accountLaunch(record,definition)
+      const profileId=sessionProfileId(record)
+      const historyProfile=record.engine==='agy' ? agyHistoryProfileId(record) : undefined
+      const separateHistory=historyProfile && historyProfile!==profileId
       adapter=await definition.fork({
         sourceId:record.remoteId,sourceRecipe:record.forkRecipe,cwd:record.cwd,signal:controller.signal,...launch,
+        ...(separateHistory ? {historyDirectory:agyHistoryDirectory(record,definition),
+          runtimeDirectory:join(agyRuntimeRoot(record),'account-'+encodeURIComponent(profileId))} : {}),
         emit:(type,data)=>{
           if (!fork) events.push([type,data])
           else if (fork.adapter===adapter) emit(fork,type,data)
@@ -2248,6 +2263,7 @@ export function apply(ctx, config = {}) {
       if (!adapter?.id || adapter.id===record.remoteId) throw reject(502,'Engine did not return an independent session')
       await restoreOptions(adapter,record.options || [])
       fork=attach({id,remoteId:adapter.id,engine:record.engine,profileId:record.profileId,modelProvider:adapter.modelProvider,cwd:record.cwd,
+        ...(separateHistory ? {agyHistoryProfileId:historyProfile} : {}),
         forkedFrom:record.id,forkRecipe:adapter.forkRecipe,title:forkTitle(record),messages:structuredClone(record.messages),
         options:adapter.options ?? [],capabilitiesMedia:adapter.capabilities ?? {},createdAt:now,updatedAt:now})
       fork.adapter=adapter
@@ -2260,6 +2276,13 @@ export function apply(ctx, config = {}) {
       sessions.delete(id)
       if (media) rmSync(media,{recursive:true,force:true})
       if(adapter) await Promise.resolve(adapter.close()).catch(()=>{})
+      if (record.engine==='agy' && error.code==='AGY_FORK_UNAVAILABLE') {
+        record.capabilitiesMedia={...record.capabilitiesMedia,fork:false}
+        source.forking=false
+        save(source)
+        broadcast(source,'snapshot',snapshot(source))
+        throw reject(409,agyForkHelp)
+      }
       throw error
     } finally { source.forking=false }
   }
@@ -2474,8 +2497,34 @@ export function apply(ctx, config = {}) {
             throw reject(409, 'Choose an isolated AGY account or the native default account')
           }
           cur.defaultProfileId = profileId
+          if (cur.overrides?.[profileId]?.disabled) {
+            const nextOverride = { ...cur.overrides[profileId] }
+            delete nextOverride.disabled
+            if (Object.keys(nextOverride).length) cur.overrides[profileId] = nextOverride
+            else delete cur.overrides[profileId]
+          }
           all[engineId] = cur
           writeProfiles(all)
+          await inspectEngineAdmin(provider, { remote: false })
+        } else if (action === 'setDisabled') {
+          const profileId = textField(data.profileId, 'profileId')
+          const isConfig = (profileId.startsWith('config:') || profileId.startsWith('provider:')) &&
+            typeof provider.configProfiles === 'function' &&
+            provider.configProfiles().some(p => p.id === profileId)
+          if (profileId !== 'default' && !isConfig && !cur.list.some(p => p.id === profileId)) throw reject(404, 'Unknown profile')
+          cur.overrides = cur.overrides && typeof cur.overrides === 'object' ? { ...cur.overrides } : {}
+          const nextOverride = { ...(cur.overrides[profileId] || {}) }
+          if (data.disabled) nextOverride.disabled = true
+          else delete nextOverride.disabled
+          if (Object.keys(nextOverride).length) cur.overrides[profileId] = nextOverride
+          else delete cur.overrides[profileId]
+          if (data.disabled && cur.defaultProfileId === profileId) {
+            const fallback = sessionProfiles(provider, { list: cur.list || [], overrides: cur.overrides }).find(p => p.id !== profileId && !p.disabled)
+            if (fallback) cur.defaultProfileId = fallback.id
+          }
+          all[engineId] = cur
+          writeProfiles(all)
+          closeIdleAdapters(engineId, profileId)
           await inspectEngineAdmin(provider, { remote: false })
         } else if (action === 'update') {
           const profileId = textField(data.profileId, 'profileId')
@@ -2505,6 +2554,7 @@ export function apply(ctx, config = {}) {
               }
             }
             const nextOverride = {
+              ...(prev.disabled ? { disabled: true } : {}),
               ...(Object.keys(nextEnv).length ? { env: nextEnv } : {}),
               ...(typeof data.baseUrl === 'string' && data.baseUrl.trim() ? { baseUrl: data.baseUrl.trim() } : {}),
             }
@@ -2576,9 +2626,15 @@ export function apply(ctx, config = {}) {
       const path = input.cwd || homedir()
       if (typeof path !== 'string' || !isAbsolute(path) || !existsSync(path) || !statSync(path).isDirectory()) throw reject(400, 'Choose an existing absolute directory')
       const profiles=engineProfiles(input.engine)
-      const profileId=input.profileId===undefined ? profiles.defaultProfileId : textField(input.profileId,'profileId')
-      if (!sessionProfiles(engines.get(input.engine),profiles).some(item=>item.id===profileId)) throw reject(400,'Choose an available account')
-      const s = attach({ id: randomUUID(), engine: input.engine, profileId, cwd: realpathSync(path), title: input.engine, createdAt:Date.now(), updatedAt:Date.now(), messages: [], options: [] }, input.draft === true)
+      const available=sessionProfiles(engines.get(input.engine),profiles)
+      const requestedId=input.profileId===undefined ? profiles.defaultProfileId : textField(input.profileId,'profileId')
+      const resolved=available.find(item=>item.id===requestedId && !item.disabled)
+      if (!resolved) throw reject(400,'Choose an available account')
+      const profileId=resolved.id
+      const initialOptions=['model','thought_level','mode']
+        .filter(key=>typeof profiles.defaultOptions?.[key]==='string' && profiles.defaultOptions[key])
+        .map(key=>({id:key,currentValue:profiles.defaultOptions[key]}))
+      const s = attach({ id: randomUUID(), engine: input.engine, profileId, cwd: realpathSync(path), title: input.engine, createdAt:Date.now(), updatedAt:Date.now(), messages: [], options: initialOptions }, input.draft === true)
       try { await open(s) } catch (err) { sessions.delete(s.record.id); throw err }
       scheduleRelease(s)
       return json(res, 201, snapshot(s))
@@ -2951,9 +3007,22 @@ export function apply(ctx, config = {}) {
       s.busy = true
       try {
         const a = await open(s)
-        s.record.options = await a.configure(textField(data.id,'id'),textField(data.value,'value'))
+        const optId = textField(data.id,'id')
+        const optValue = textField(data.value,'value')
+        s.record.options = await a.configure(optId, optValue)
         s.record.capabilitiesMedia = a.capabilities || {}
         s.importViewOnly=false
+        const configured = s.record.options?.find(item => item.id === optId)
+        const prefKey = ['model','thought_level','mode'].includes(optId)
+          ? optId
+          : (['model','thought_level','mode'].includes(configured?.category) ? configured.category : null)
+        if (prefKey) {
+          const all = readProfiles()
+          const cur = all[s.record.engine] && typeof all[s.record.engine] === 'object' ? { ...all[s.record.engine] } : {}
+          cur.defaultOptions = { ...(cur.defaultOptions && typeof cur.defaultOptions === 'object' ? cur.defaultOptions : {}), [prefKey]: optValue }
+          all[s.record.engine] = cur
+          writeProfiles(all)
+        }
         save(s)
         broadcast(s,'options',s.record.options)
       } finally { s.busy = false; broadcast(s,'snapshot',snapshot(s)); scheduleRelease(s); drainQueue(s) }

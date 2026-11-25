@@ -194,14 +194,21 @@ test('queued steering waits for acknowledgement and leaves rejected messages pen
   assert.equal((await session.send('steering while idle','steer')).status,409)
 })
 
-test('native acceptance splits streamed replies before the steering request finishes', async t=>{
+test('native acceptance removes the queued message and splits streamed replies immediately', async t=>{
   const {engine,mount} = await fixture(t)
   const session = await mount().start()
   await session.send('first')
   engine.turns[0].chunk('before')
-  const delivery = session.send('follow-up','steer')
+  const events = await session.events()
+  await session.send('follow-up','queue')
+  const {id} = (await session.view()).queue[0]
+  const delivery = session.queue('steer',id)
   await pause()
   engine.steering[0].accepted()
+  const accepted = events().at(-1)
+  assert.equal(accepted.type,'snapshot')
+  assert.deepEqual(accepted.data.queue,[])
+  assert.equal(accepted.data.messages.at(-1).queueItemId,id)
   engine.turns[0].chunk('after')
   assert.deepEqual((await session.view()).messages.map(row=>row.text),['first','before','follow-up','after'])
   engine.steering[0].resolve()

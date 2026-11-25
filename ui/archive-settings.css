@@ -144,6 +144,26 @@
   min-width: 0;
 }
 
+.dchat-engine-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--dsw-alias-label-secondary);
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.dchat-engine-status[data-tone="warn"] {
+  color: var(--dsw-alias-state-warn-label, #d97706);
+}
+
+.dchat-engine-icon-btn {
+  padding-inline: 6px !important;
+  min-width: 28px;
+}
+
 .dchat-profile-panel {
   display: flex;
   flex-direction: column;
@@ -166,6 +186,10 @@
   border-top: 0.5px solid var(--dsw-alias-border-l2);
 }
 
+.dchat-profile-row[data-disabled] .dchat-profile-info {
+  opacity: 0.65;
+}
+
 .dchat-profile-main {
   display: flex;
   align-items: center;
@@ -178,12 +202,23 @@
 
 .dchat-profile-info {
   display: flex;
-  align-items: center;
-  gap: 6px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
   flex: 1 1 180px;
   min-width: 0;
-  flex-wrap: wrap;
   overflow-wrap: anywhere;
+}
+
+.dchat-profile-title-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.dchat-profile-danger {
+  color: var(--dsw-alias-state-error-primary) !important;
 }
 
 .dchat-profile-actions {

@@ -15,8 +15,11 @@ let sessionId;
 let promptId;
 let cancelled;
 let promptText;
+let delayedSteerId;
+let deferredSteer;
 const values = { model: 'gemini-4-neon', thought_level: 'high', mode: existsSync('agy-plan-mode') ? 'plan' : 'default' };
 const profile = process.env.DSH_TEST_AGY_PROFILE;
+const forkMode = process.env.DSH_TEST_AGY_FORK;
 let models = profile === 'limited' ? ['gemini-4-neon']
   : profile === 'flash-only' ? ['gemini-3.8-flash'] : ['gemini-4-neon', 'gemini-3.8-flash'];
 const modes = ['default', 'plan'];
@@ -49,6 +52,11 @@ createInterface({ input: createReadStream(null, { fd: 0 }) }).on('line', line =>
     assert.deepEqual(result, cancelled
       ? { outcome: { outcome: 'cancelled' } }
       : { outcome: { outcome: 'selected', optionId: 'allow-once' } });
+    if (deferredSteer) {
+      update({ sessionUpdate: 'user_message_chunk', content: { type: 'text', text: deferredSteer.text } });
+      send({ id: deferredSteer.id, result: { stopReason: 'end_turn' } });
+      deferredSteer = undefined;
+    }
     finish();
     return;
   }
@@ -57,12 +65,32 @@ createInterface({ input: createReadStream(null, { fd: 0 }) }).on('line', line =>
       assert.equal(params.protocolVersion, 1);
       send({ id, result: {
         protocolVersion: 1,
-        agentCapabilities: { loadSession: true, promptCapabilities: { image: true, audio: false, embeddedContext: true } },
+        agentCapabilities: { loadSession: true, promptCapabilities: { image: true, audio: false, embeddedContext: true },
+          ...(forkMode ? { sessionCapabilities: { fork: {} } } : {}),
+        },
       } });
       break;
     case 'session/new':
       assert.deepEqual(params, { cwd: process.cwd(), mcpServers: [] });
       sessionId = 'new-session';
+      send({ id, result: { sessionId, configOptions: configOptions() } });
+      break;
+    case 'session/fork':
+      assert.ok(forkMode, 'Unadvertised fork was requested');
+      assert.deepEqual(params, { sessionId: 'existing-session', cwd: process.cwd(), mcpServers: [] });
+      if (forkMode === 'unavailable') {
+        send({ id, error: { code: -32601, message: 'Method not found' } });
+        break;
+      }
+      sessionId = params.sessionId;
+      update({ sessionUpdate: 'available_commands_update', availableCommands: [{ name: 'source-only' }] });
+      if (forkMode === 'same-id') {
+        send({ id, result: { sessionId, configOptions: configOptions() } });
+        break;
+      }
+      sessionId = 'forked-session';
+      update({ sessionUpdate: 'agent_message_chunk', content: { type: 'text', text: 'Do not duplicate copied history' } });
+      update({ sessionUpdate: 'available_commands_update', availableCommands: [{ name: 'fork-command' }] });
       send({ id, result: { sessionId, configOptions: configOptions() } });
       break;
     case 'session/load': {
@@ -103,6 +131,34 @@ createInterface({ input: createReadStream(null, { fd: 0 }) }).on('line', line =>
     case 'session/prompt':
       assert.equal(params.sessionId, sessionId);
       if (promptId !== undefined) {
+        const text = params.prompt[0]?.text;
+        if (text === 'queued follow-up') {
+          if (delayedSteerId === undefined) {
+            delayedSteerId = id;
+            update({ sessionUpdate: 'user_message_chunk', content: { type: 'text', text: '<USER_REQUEST>\nqueued ' } });
+            update({ sessionUpdate: 'user_message_chunk', content: { type: 'text',
+              text: 'follow-up\n</USER_REQUEST>\n<ADDITIONAL_METADATA>fixture</ADDITIONAL_METADATA>' } });
+          } else {
+            deferredSteer = { id, text };
+            send({ id: delayedSteerId, result: { stopReason: 'cancelled' } });
+            update({ sessionUpdate: 'agent_thought_chunk', content: { type: 'text', text: 'waiting for permission' } });
+          }
+          break;
+        }
+        if (text === 'rejected follow-up') {
+          send({ id, error: { code: -32603, message: 'could not accept follow-up' } });
+          break;
+        }
+        if (text === 'acknowledged without echo') {
+          send({ id, result: { stopReason: 'end_turn' } });
+          break;
+        }
+        if (text === 'permission with delayed initial echo') {
+          deferredSteer = { id, text };
+          update({ sessionUpdate: 'user_message_chunk', content: params.prompt[0] });
+          update({ sessionUpdate: 'agent_thought_chunk', content: { type: 'text', text: 'initial echo received' } });
+          break;
+        }
         assert.deepEqual(params.prompt, [{ type: 'text', text: 'follow up' }]);
         update({ sessionUpdate: 'user_message_chunk', content: params.prompt[0] });
         send({ id, result: { stopReason: 'end_turn' } });
@@ -110,11 +166,13 @@ createInterface({ input: createReadStream(null, { fd: 0 }) }).on('line', line =>
       }
       assert.ok(params.prompt.length > 0);
       assert.ok(models.includes(values.model));
-      for (const content of params.prompt) update({ sessionUpdate: 'user_message_chunk', content });
       promptId = id;
       promptText = params.prompt[0].text;
       cancelled = false;
-      update({ sessionUpdate: 'agent_thought_chunk', content: { type: 'text', text: 'thinking' } });
+      if (promptText !== 'permission with delayed initial echo') {
+        for (const content of params.prompt) update({ sessionUpdate: 'user_message_chunk', content });
+        update({ sessionUpdate: 'agent_thought_chunk', content: { type: 'text', text: 'thinking' } });
+      }
       if (promptText === 'remove the active model') {
         models = ['gemini-3.8-flash'];
         update({ sessionUpdate: 'config_option_update', configOptions: configOptions() });
@@ -129,7 +187,7 @@ createInterface({ input: createReadStream(null, { fd: 0 }) }).on('line', line =>
         update({ sessionUpdate: 'tool_call_update', toolCallId: 'command', status: 'completed',
           content: [{ type: 'content', content: { type: 'text', text: 'Command exited with code 0.\n\nfirst\nsecond\n' } }] });
       }
-      if (params.prompt[0].text !== 'permission') {
+      if (!['permission', 'permission with delayed initial echo'].includes(promptText)) {
         finish();
         break;
       }
@@ -212,6 +270,28 @@ test('resume uses the existing session with its returned settings', { timeout: 5
   assert.equal(session.id, 'existing-session');
   assert.deepEqual(selected(session.options), { model: 'gemini-4-neon', thought_level: 'xhigh', mode: 'plan' });
   assert.equal((await session.prompt('stream')).stopReason, 'end_turn');
+});
+
+test('fork uses the advertised ACP method and keeps updates scoped to the independent session', { timeout: 5_000 }, async t => {
+  const events = [];
+  const session = await startAgy({ cwd, forkFrom: 'existing-session', env: { DSH_TEST_AGY_FORK: 'supported' },
+    signal: t.signal, emit: (type, data) => events.push([type, data]) });
+  t.after(() => session.close());
+  assert.equal(session.id, 'forked-session');
+  assert.equal(session.capabilities.fork, true);
+  assert.deepEqual(selected(session.options), { model: 'gemini-4-neon', thought_level: 'high', mode: 'default' });
+  assert.deepEqual(events, [['update', { sessionId: 'forked-session',
+    update: { sessionUpdate: 'available_commands_update', availableCommands: [{ name: 'fork-command' }] },
+  }]]);
+  assert.equal((await session.prompt('stream')).stopReason, 'end_turn');
+  assert.ok(events.every(([, data]) => data.sessionId === 'forked-session'));
+});
+
+test('fork rejects unadvertised, unimplemented, and non-independent ACP responses', { timeout: 5_000 }, async t => {
+  const options = { cwd, forkFrom: 'existing-session', signal: t.signal, emit: () => assert.fail('Unexpected fork update') };
+  await assert.rejects(startAgy(options), { status: 409, code: 'AGY_FORK_UNAVAILABLE' });
+  await assert.rejects(startAgy({ ...options, env: { DSH_TEST_AGY_FORK: 'unavailable' } }), { status: 409, code: 'AGY_FORK_UNAVAILABLE' });
+  await assert.rejects(startAgy({ ...options, env: { DSH_TEST_AGY_FORK: 'same-id' } }), /independent session/);
 });
 
 test('new sessions use the selected account catalog when Flash Low is unavailable', { timeout: 5_000 }, async t => {
@@ -360,6 +440,68 @@ test('streams ACP updates and resolves permissions with the chosen option', { ti
     { sessionUpdate: 'user_message_chunk', content: { type: 'text', text: 'follow up' } },
     { sessionUpdate: 'agent_message_chunk', content: { type: 'text', text: 'answer' } },
   ]);
+});
+
+test('steering finishes on its echoed input while native prompt responses are pending', { timeout: 5_000 }, async t => {
+  const permission = Promise.withResolvers();
+  const previousReply = Promise.withResolvers();
+  const session = await startAgy({ cwd, signal: t.signal, emit(type, params) {
+    if (type === 'permission') permission.resolve(params);
+    if (params.update?.content?.text === 'waiting for permission') previousReply.resolve();
+  } });
+  t.after(() => session.close());
+  const turn = session.prompt('permission');
+  const params = await permission.promise;
+  let accepted = 0;
+  await session.steer('queued follow-up', [], () => { accepted++; });
+  assert.equal(accepted, 1);
+
+  const repeated = session.steer('queued follow-up', [], () => { accepted++; });
+  await previousReply.promise;
+  assert.equal(accepted, 1);
+  session.approve(params.toolCall.toolCallId, 'allow-once');
+  await repeated;
+  assert.equal(accepted, 2);
+  assert.equal((await turn).stopReason, 'end_turn');
+});
+
+test('steering propagates a request rejection and accepts a successful response without an echo', { timeout: 5_000 }, async t => {
+  const permission = Promise.withResolvers();
+  const session = await startAgy({ cwd, signal: t.signal, emit(type, params) {
+    if (type === 'permission') permission.resolve(params);
+  } });
+  t.after(() => session.close());
+  const turn = session.prompt('permission');
+  const params = await permission.promise;
+  let accepted = 0;
+  const accept = () => { accepted++; };
+  await assert.rejects(session.steer('rejected follow-up', [], accept), /could not accept follow-up/);
+  assert.equal(accepted, 0);
+  await session.steer('acknowledged without echo', [], accept);
+  assert.equal(accepted, 0);
+  session.approve(params.toolCall.toolCallId, 'allow-once');
+  assert.equal((await turn).stopReason, 'end_turn');
+});
+
+test('a late initial prompt echo cannot acknowledge an identical steering request', { timeout: 5_000 }, async t => {
+  const permission = Promise.withResolvers();
+  const initialEcho = Promise.withResolvers();
+  const session = await startAgy({ cwd, signal: t.signal, emit(type, params) {
+    if (type === 'permission') permission.resolve(params);
+    if (params.update?.content?.text === 'initial echo received') initialEcho.resolve();
+  } });
+  t.after(() => session.close());
+  const text = 'permission with delayed initial echo';
+  const turn = session.prompt(text);
+  const params = await permission.promise;
+  let accepted = false;
+  const steer = session.steer(text, [], () => { accepted = true; });
+  await initialEcho.promise;
+  assert.equal(accepted, false);
+  session.approve(params.toolCall.toolCallId, 'allow-once');
+  await steer;
+  assert.equal(accepted, true);
+  assert.equal((await turn).stopReason, 'end_turn');
 });
 
 test('cancels outstanding approvals and keeps the ACP session usable', { timeout: 5_000 }, async t => {

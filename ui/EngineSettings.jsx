@@ -1,5 +1,5 @@
 import { useEffect, useId, useRef, useState, useSyncExternalStore } from 'react'
-import { Button } from '@deepseek-ai/dsh-client-ui-primitives'
+import { Button, IconRefreshOutlineRegular, StateDot, Tooltip } from '@deepseek-ai/dsh-client-ui-primitives'
 import {
   cancelEngineLogin, checkEngineUpdate, listEngineProfiles, logoutEngineCli,
   mutateEngineProfile, pollEngineLogin, readActiveEngineLogin, startEngineLogin, submitEngineLoginCode, updateEngineCli,
@@ -337,41 +337,48 @@ export function EngineSettings({ engineSource, t }) {
               <span className="dchat-engine-identity">
                 <EngineLogo engine={eng.id} label={eng.label} icon={eng.meta?.icon} size={16} />
                 <span>{eng.label}</span>
-                {s.installed === false && <span className="dchat-engine-pill" data-tone="warn">{t('engine.notInstalled')}</span>}
                 {s.version && <span className="dchat-engine-version">v{s.version}</span>}
+                {s.installed === false ? (
+                  <span className="dchat-engine-status" data-tone="warn">
+                    <StateDot state="warning" size={7} />{t('engine.notInstalled')}
+                  </span>
+                ) : s.authenticated === true ? (
+                  <span className="dchat-engine-status">
+                    <StateDot state="done" size={7} />{accountText || t('engineSettings.loggedIn')}
+                  </span>
+                ) : s.authenticated === false ? (
+                  <span className="dchat-engine-status" data-tone="warn">
+                    <StateDot state="warning" size={7} />{t('engine.notLoggedIn')}
+                  </span>
+                ) : null}
+              </span>
+              {(s.updateAvailable || s.restartRequired || s.error) && <div className="dchat-archive-meta">
                 {s.updateAvailable && <span className="dchat-engine-pill" data-tone="update">
                   {t('engine.updateAvailable', { version: s.latestVersion })}
                 </span>}
-                {s.authenticated === true && <span className="dchat-engine-pill">
-                  {accountText || t('engineSettings.loggedIn')}
-                </span>}
-                {s.authenticated === false && <span className="dchat-engine-pill" data-tone="warn">{t('engine.notLoggedIn')}</span>}
-              </span>
-              <div className="dchat-archive-meta">
                 {s.restartRequired && <span>{t('engine.restartNeeded')}</span>}
                 {s.error && <span className="dchat-archive-error">{s.error}</span>}
-              </div>
+              </div>}
             </div>
             <div className="dchat-engine-actions">
               {s.authenticated === false && eng.canLogin && isOAuthProfile(activeProfile) && <Button variant="primary" size="sm" disabled={loginBusy || isLoggingOut}
                 onClick={() => void handleStartLogin(eng.id, { profileId: activeProfileId })}>
                 {t('engineSettings.login')}
               </Button>}
-              {s.authenticated === true && eng.canLogout && isOAuthProfile(activeProfile) && <Button variant="outline" size="sm"
-                disabled={Boolean(loggingOutKey) || loginBusy} onClick={() => void handleLogout(eng.id, activeProfileId)}>
-                {t(isLoggingOut ? 'engineSettings.loggingOut' : logoutLabel(eng.id, activeProfile))}
+              {eng.canUpdate && s.updateAvailable && <Button variant="primary" size="sm"
+                disabled={isChecking || isUpdating} onClick={() => void handleUpdate(eng.id)}>
+                {isUpdating ? t('engine.updating') : t('engine.updateNow')}
               </Button>}
-              <Button variant="outline" size="sm" onClick={() => void toggleProfiles(eng.id)}>
+              <Button variant="outline" size="sm" aria-expanded={isExpanded} onClick={() => void toggleProfiles(eng.id)}>
                 {t('engineSettings.profiles', { count: profiles.length || 1 })}
               </Button>
-              {eng.canCheckUpdate && <Button variant="outline" size="sm" disabled={isChecking || isUpdating}
-                onClick={() => void handleCheck(eng.id)}>
-                {isChecking ? t('engine.checking') : t('engine.checkUpdate')}
-              </Button>}
-              {eng.canUpdate && <Button variant={s.updateAvailable ? 'primary' : 'outline'} size="sm"
-                disabled={isChecking || isUpdating} onClick={() => void handleUpdate(eng.id)}>
-                {isUpdating ? t('engine.updating') : s.updateAvailable ? t('engine.updateNow') : t('engineSettings.reinstall')}
-              </Button>}
+              {eng.canCheckUpdate && <Tooltip label={isChecking ? t('engine.checking') : t('engine.checkUpdate')} side="bottom">
+                <Button variant="outline" size="sm" className="dchat-engine-icon-btn" disabled={isChecking || isUpdating}
+                  aria-label={isChecking ? t('engine.checking') : t('engine.checkUpdate')}
+                  onClick={() => void handleCheck(eng.id)}>
+                  <IconRefreshOutlineRegular size={14} />
+                </Button>
+              </Tooltip>}
             </div>
           </div>
 
@@ -408,17 +415,23 @@ export function EngineSettings({ engineSource, t }) {
               const secondaryAccount = (isNamedProfile || agyNative) && prof.account !== displayName &&
                 prof.account !== 'Google OAuth' ? prof.account : undefined
               const isEditingThis = editingProfile?.engineId === eng.id && editingProfile?.prof?.id === prof.id
-              return <div key={prof.id} className="dchat-profile-row">
+              return <div key={prof.id} className="dchat-profile-row" data-disabled={prof.disabled || undefined}>
                 <div className="dchat-profile-main">
                   <div className="dchat-profile-info">
-                    <strong>{displayName}</strong>
-                    {secondaryAccount && <span className="dchat-archive-meta">{secondaryAccount}</span>}
-                    {isAgy && prof.kind === 'isolated' && <span className="dchat-engine-pill">{t('engineSettings.agyIsolated')}</span>}
-                    {isDefault && <span className="dchat-engine-pill">{t('engineSettings.defaultTag')}</span>}
-                    {prof.authenticated === true && <span className="dchat-engine-pill">{t('engineSettings.loggedIn')}</span>}
-                    {prof.authenticated === false && <span className="dchat-engine-pill" data-tone="warn">
-                      {prof.kind === 'snapshot' && eng.id === 'agy' ? t('engineSettings.readdOAuth') : prof.envKey ? t('engineSettings.missingKey', { key: prof.envKey }) : t('engine.notLoggedIn')}
-                    </span>}
+                    <div className="dchat-profile-title-row">
+                      <strong>{displayName}</strong>
+                      {isDefault && <span className="dchat-engine-pill">{t('engineSettings.defaultTag')}</span>}
+                      {prof.disabled && <span className="dchat-engine-pill" data-tone="warn">{t('engineSettings.disabledTag')}</span>}
+                      {prof.authenticated === false && <span className="dchat-engine-pill" data-tone="warn">
+                        {prof.kind === 'snapshot' && eng.id === 'agy' ? t('engineSettings.readdOAuth') : prof.envKey ? t('engineSettings.missingKey', { key: prof.envKey }) : t('engine.notLoggedIn')}
+                      </span>}
+                    </div>
+                    {(secondaryAccount || (isAgy && prof.kind === 'isolated')) && (
+                      <div className="dchat-archive-meta">
+                        {secondaryAccount && <span>{secondaryAccount}</span>}
+                        {isAgy && prof.kind === 'isolated' && <span>{t('engineSettings.agyIsolated')}</span>}
+                      </div>
+                    )}
                   </div>
                   <div className="dchat-profile-actions">
                     {isNamedProfile && <Button variant="outline" size="sm"
@@ -433,11 +446,15 @@ export function EngineSettings({ engineSource, t }) {
                       disabled={Boolean(loggingOutKey) || loginBusy} onClick={() => void handleLogout(eng.id, prof.id)}>
                       {t(loggingOutKey === pKey ? 'engineSettings.loggingOut' : logoutLabel(eng.id, prof))}
                     </Button>}
-                    {!isDefault && (!isAgy || isOAuthProfile(prof)) && <Button variant="outline" size="sm"
+                    {!isDefault && !prof.disabled && (!isAgy || isOAuthProfile(prof)) && <Button variant="outline" size="sm"
                       onClick={() => void handleProfileAction(eng.id, { action: 'setDefault', profileId: prof.id })}>
                       {t('engineSettings.setDefault')}
                     </Button>}
-                    {prof.id !== 'default' && prof.kind !== 'config' && <Button variant="outline" size="sm"
+                    {(!isAgy || isOAuthProfile(prof)) && <Button variant="outline" size="sm"
+                      onClick={() => void handleProfileAction(eng.id, { action: 'setDisabled', profileId: prof.id, disabled: !prof.disabled })}>
+                      {t(prof.disabled ? 'engineSettings.enable' : 'engineSettings.disable')}
+                    </Button>}
+                    {prof.id !== 'default' && prof.kind !== 'config' && <Button variant="outline" size="sm" className="dchat-profile-danger"
                       onClick={() => void handleProfileAction(eng.id, { action: 'delete', profileId: prof.id })}>
                       {t('engineSettings.deleteProfile')}
                     </Button>}
@@ -476,6 +493,10 @@ export function EngineSettings({ engineSource, t }) {
               </Button>}
               {!isAgy && <Button variant="outline" size="sm" onClick={() => { setAddingFor(eng.id); setAddingKind('env'); setNewName(''); setNewEnvText('') }}>
                 + {t('engineSettings.addEnv')}
+              </Button>}
+              {eng.canUpdate && !s.updateAvailable && <Button variant="outline" size="sm"
+                disabled={isChecking || isUpdating} onClick={() => void handleUpdate(eng.id)}>
+                {isUpdating ? t('engine.updating') : t('engineSettings.reinstall')}
               </Button>}
             </div>}
           </div>}

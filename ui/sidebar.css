@@ -90,9 +90,57 @@
 
 @media (prefers-reduced-motion: reduce) {
   [data-direct-row][data-live-state="running"]::before,
-  [data-direct-row][data-live-state="attention"]::before {
+  [data-direct-row][data-live-state="attention"]::before,
+  [data-row-key^="workspace:"][aria-expanded="false"][data-direct-workspace-state="running"]::before,
+  [data-row-key^="workspace:"][aria-expanded="false"][data-direct-workspace-state="attention"]::before {
     animation: none;
   }
+}
+
+[data-row-key^="workspace:"][aria-expanded="false"][data-direct-workspace-state] {
+  position: relative;
+  isolation: isolate;
+}
+
+[data-row-key^="workspace:"][aria-expanded="false"][data-direct-workspace-state]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+[data-row-key^="workspace:"][aria-expanded="false"][data-direct-workspace-state="running"] {
+  box-shadow: inset 2.5px 0 0 color-mix(in srgb, var(--dsw-alias-state-business-primary, #3b82f6) 75%, transparent);
+}
+
+[data-row-key^="workspace:"][aria-expanded="false"][data-direct-workspace-state="running"]::before {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--dsw-alias-state-business-primary, #3b82f6) 4%, transparent) 0%,
+    color-mix(in srgb, var(--dsw-alias-state-business-primary, #3b82f6) 13%, transparent) 50%,
+    color-mix(in srgb, var(--dsw-alias-state-business-primary, #3b82f6) 4%, transparent) 100%
+  );
+  background-size: 200% 100%;
+  animation: dchat-row-flow 2.5s ease-in-out infinite;
+}
+
+[data-row-key^="workspace:"][aria-expanded="false"][data-direct-workspace-state="attention"] {
+  box-shadow: inset 2.5px 0 0 color-mix(in srgb, var(--dsw-alias-state-warn-label, #f59e0b) 85%, transparent);
+}
+
+[data-row-key^="workspace:"][aria-expanded="false"][data-direct-workspace-state="attention"]::before {
+  background: color-mix(in srgb, var(--dsw-alias-state-warn-label, #f59e0b) 12%, transparent);
+  animation: dchat-row-breathe 2.2s ease-in-out infinite;
+}
+
+[data-row-key^="workspace:"][aria-expanded="false"][data-direct-workspace-state="done"] {
+  box-shadow: inset 2.5px 0 0 color-mix(in srgb, var(--dsw-alias-state-success-primary, #22c55e) 70%, transparent);
+}
+
+[data-row-key^="workspace:"][aria-expanded="false"][data-direct-workspace-state="done"]::before {
+  background: color-mix(in srgb, var(--dsw-alias-state-success-primary, #22c55e) 8%, transparent);
 }
 
 [data-direct-row]:focus-visible {

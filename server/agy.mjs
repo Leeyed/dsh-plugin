@@ -7,6 +7,9 @@ import { agyCommandExecution, agyCommandResult, agyToolActivity, appendExecution
 
 const cancelledPermission = { outcome: { outcome: 'cancelled' } };
 const replayUpdates = new Set(['available_commands_update', 'config_option_update', 'session_info_update', 'usage_update']);
+const forkUnavailable = () => Object.assign(new Error('Antigravity ACP does not support session forking'), {
+  status: 409, code: 'AGY_FORK_UNAVAILABLE',
+});
 
 function unwrapUserPrompt(text) {
   if (typeof text !== 'string') return '';
@@ -22,6 +25,35 @@ function chunkText(content) {
   }
   if (content?.type === 'text' && typeof content.text === 'string') return content.text;
   return '';
+}
+
+function trackPromptEcho(prompt) {
+  return { prompt, text: chunkText(prompt).trim(), received: '' };
+}
+
+function mayContinuePromptEcho(candidate, expected) {
+  const text = candidate.trimStart();
+  if (expected.startsWith(text)) return true;
+  const opening = '<USER_REQUEST>';
+  const prefix = text.slice(0, opening.length).toUpperCase();
+  if (!opening.startsWith(prefix)) return false;
+  const body = text.slice(opening.length).trimStart();
+  return expected.startsWith(body) ||
+    (body.startsWith(expected) && '</USER_REQUEST>'.startsWith(body.slice(expected.length).trimStart().toUpperCase()));
+}
+
+function matchesPromptEcho(echo, content) {
+  if (!echo.text) {
+    return echo.prompt.some(block => block.type === content?.type && block.mimeType === content.mimeType && block.data === content.data);
+  }
+  const chunk = chunkText(content);
+  if (!chunk) return false;
+  const combined = echo.received + chunk;
+  for (const candidate of [combined, chunk]) {
+    if (candidate.trim() === echo.text || unwrapUserPrompt(candidate) === echo.text) return true;
+  }
+  echo.received = [combined, chunk].find(candidate => mayContinuePromptEcho(candidate, echo.text)) ?? '';
+  return false;
 }
 
 function selectableValues(option) {
@@ -60,8 +92,11 @@ function toolUpdate(update, executions) {
   };
 }
 
-export async function startAgy({ cwd, env, resumeId, replayHistory, appDataDirectory, emit, signal }) {
+export async function startAgy({ cwd, env, resumeId, forkFrom, replayHistory, appDataDirectory, emit, signal }) {
   signal?.throwIfAborted();
+  if (forkFrom !== undefined && (typeof forkFrom !== 'string' || !forkFrom || resumeId !== undefined)) {
+    throw new Error('Invalid Antigravity fork request');
+  }
   const directory = resolve(cwd);
   const args = ['acp'];
   if (appDataDirectory) {
@@ -77,6 +112,7 @@ export async function startAgy({ cwd, env, resumeId, replayHistory, appDataDirec
   const pending = new Map();
   const permissions = new Map();
   const executions = new Map();
+  const forkUpdates = [];
   const lines = createInterface({ input: child.stdout, crlfDelay: Infinity });
   let requestId = 0;
   let sessionId;
@@ -86,7 +122,7 @@ export async function startAgy({ cwd, env, resumeId, replayHistory, appDataDirec
   let historyActivity;
   let historyAfterActivity = false;
   let turn;
-  let steeringEcho;
+  let steering;
 
   function markHistoryActivity() {
     const last = history.at(-1);
@@ -168,6 +204,10 @@ export async function startAgy({ cwd, env, resumeId, replayHistory, appDataDirec
   function receive(message) {
     const { id, method, params, result, error } = message;
     if (method === 'session/update') {
+      if (forkFrom && !sessionId) {
+        if (replayUpdates.has(params.update?.sessionUpdate)) forkUpdates.push(message);
+        return;
+      }
       const expectedSession = sessionId ?? resumeId;
       if (expectedSession && params.sessionId !== expectedSession) return;
       const update = toolUpdate(params.update, executions);
@@ -229,11 +269,22 @@ export async function startAgy({ cwd, env, resumeId, replayHistory, appDataDirec
         return;
       }
       if (!turn && !replayUpdates.has(update.sessionUpdate) && (!sessionId || closing)) return;
-      if (steeringEcho && update.sessionUpdate === 'user_message_chunk' && update.content?.type === 'text' &&
-          update.content.text === steeringEcho.text) {
-        const { accepted } = steeringEcho;
-        steeringEcho = undefined;
-        accepted();
+      if (update.sessionUpdate === 'user_message_chunk') {
+        // ACP user input updates omit the prompt request ID.
+        if (turn?.echo && matchesPromptEcho(turn.echo, update.content)) {
+          turn.echo = undefined;
+        } else if (steering && matchesPromptEcho(steering.echo, update.content)) {
+          const { accepted, resolve, reject } = steering;
+          steering = undefined;
+          try {
+            accepted?.();
+            resolve();
+          } catch (error) {
+            reject(error);
+          }
+        }
+      } else if (turn && ['agent_message_chunk', 'agent_thought_chunk', 'tool_call'].includes(update.sessionUpdate)) {
+        turn.echo = undefined;
       }
       if (update.sessionUpdate === 'config_option_update') {
         if (!Array.isArray(update.configOptions)) return;
@@ -260,7 +311,7 @@ export async function startAgy({ cwd, env, resumeId, replayHistory, appDataDirec
     const entry = pending.get(id);
     pending.delete(id);
     clearTimeout(entry.timer);
-    if (error) entry.reject(new Error(error.message ?? 'AGY ACP request failed'));
+    if (error) entry.reject(Object.assign(new Error(error.message ?? 'AGY ACP request failed'), { rpcCode: error.code }));
     else entry.resolve(result);
   }
 
@@ -319,19 +370,28 @@ export async function startAgy({ cwd, env, resumeId, replayHistory, appDataDirec
     if (!turn?.sent || turn.cancelled) {
       throw Object.assign(new Error('The AGY turn is no longer accepting messages'), { status: 409 });
     }
+    if (steering) throw Object.assign(new Error('AGY steering is in progress'), { status: 409 });
+    const prompt = promptContent(text, attachments);
+    const receipt = Promise.withResolvers();
+    const attempt = { ...receipt, echo: trackPromptEcho(prompt), accepted };
+    steering = attempt;
     // AGY ACP steers an active turn with a second prompt on the same session.
-    steeringEcho = accepted && { text, accepted };
-    try {
-      const result = await request('session/prompt', { sessionId, prompt: promptContent(text, attachments) }, 0);
+    // Its response can wait for the entire turn after a user input update confirms delivery.
+    const response = request('session/prompt', { sessionId, prompt }, 0).then(result => {
       if (result?.stopReason === 'cancelled') throw Object.assign(new Error('AGY cancelled the follow-up'), { status: 409 });
-    } finally { steeringEcho = undefined; }
+    });
+    try {
+      await Promise.race([receipt.promise, response]);
+    } finally {
+      if (steering === attempt) steering = undefined;
+    }
   }
 
   async function prompt(text, attachments = []) {
     requireOpen();
     if (turn) throw new Error('An AGY turn is already running');
     const content = promptContent(text, attachments);
-    turn = { sent: false, cancelled: false };
+    turn = { sent: false, cancelled: false, echo: trackPromptEcho(content) };
     try {
       await configuration;
       if (turn.cancelled) return { stopReason: 'cancelled' };
@@ -436,13 +496,24 @@ export async function startAgy({ cwd, env, resumeId, replayHistory, appDataDirec
       clientInfo: { name: 'dsh-direct-chat', version: '0.1.0' },
     });
     if (initialized?.protocolVersion !== 1) throw new Error('Unsupported AGY ACP protocol version');
-    const promptCapabilities = initialized.agentCapabilities?.promptCapabilities;
-    capabilities = { image: promptCapabilities?.image === true, audio: promptCapabilities?.audio === true };
+    const agent = initialized.agentCapabilities;
+    const promptCapabilities = agent?.promptCapabilities;
+    const supportsFork = Boolean(agent?.sessionCapabilities?.fork || agent?.session_capabilities?.fork);
+    capabilities = { image: promptCapabilities?.image === true, audio: promptCapabilities?.audio === true,
+      ...(supportsFork ? { fork: true } : {}) };
     const params = { cwd: directory, mcpServers: [] };
     let session;
     let replayed;
-    if (resumeId) {
-      const agent = initialized.agentCapabilities;
+    if (forkFrom) {
+      if (!supportsFork) throw forkUnavailable();
+      try {
+        session = await request('session/fork', { ...params, sessionId: forkFrom }, 90_000);
+      } catch (error) {
+        if (error.rpcCode === -32601) throw forkUnavailable();
+        throw error;
+      }
+      if (session?.sessionId === forkFrom) throw new Error('Antigravity did not return an independent session');
+    } else if (resumeId) {
       if (replayHistory && (agent?.loadSession === true || agent?.sessionCapabilities?.load != null)) {
         history = [];
         historyActivity = { thought: '', tools: new Map(), steps: [], toolStepById: new Map() };
@@ -468,8 +539,10 @@ export async function startAgy({ cwd, env, resumeId, replayHistory, appDataDirec
     if (typeof sessionId !== 'string' || !sessionId) throw new Error('AGY ACP did not return a session ID');
     if (resumeId && sessionId !== resumeId) throw new Error('AGY did not reopen the requested conversation');
     if (Array.isArray(session?.configOptions)) options = session.configOptions;
-    await selectAvailable('model', resumeId ? undefined : 'gemini-3.8-flash');
-    await selectAvailable('thought_level', resumeId ? undefined : 'low');
+    for (const update of forkUpdates) receive(update);
+    forkUpdates.length = 0;
+    await selectAvailable('model', resumeId || forkFrom ? undefined : 'gemini-3.8-flash');
+    await selectAvailable('thought_level', resumeId || forkFrom ? undefined : 'low');
     signal?.throwIfAborted();
     requireOpen();
     if (replayed) emit('history', { messages: replayed });

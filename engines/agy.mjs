@@ -391,6 +391,16 @@ function conversationDirectory(remoteId, home = homedir()) {
   return directory
 }
 
+async function startSession(options) {
+  options.signal?.throwIfAborted()
+  const sourceId = options.forkFrom ?? options.resumeId
+  const appDataDirectory = options.runtimeDirectory && prepareAgySessionDirectory({ ...options, resumeId: sourceId })
+  const adapter = await startAgy({ ...options, appDataDirectory })
+  adapter.context = async () => sessionContext({ remoteId: adapter.id, home: options.env?.HOME,
+    ...(options.historyDirectory ? { file: join(options.historyDirectory, 'conversation_summaries.db') } : {}) })
+  return adapter
+}
+
 export const engine = {
   id: 'agy',
   label: 'Antigravity',
@@ -399,13 +409,11 @@ export const engine = {
   capabilities: { fileUriLinks: true },
   ...agyCliAdmin,
   readableRoots: ({ home = homedir() } = {}) => [dataDirectory(home)],
-  async start(options) {
-    options.signal?.throwIfAborted()
-    const appDataDirectory = options.runtimeDirectory && prepareAgySessionDirectory(options)
-    const adapter = await startAgy({ ...options, appDataDirectory })
-    adapter.context = async () => sessionContext({ remoteId: adapter.id, home: options.env?.HOME,
-      ...(options.historyDirectory ? { file: join(options.historyDirectory, 'conversation_summaries.db') } : {}) })
-    return adapter
+  start: startSession,
+  forkCapability: 'negotiated',
+  async fork({ sourceId, ...options }) {
+    if (!nativeUuid.test(sourceId)) throw new Error('A native Antigravity session ID is required to fork')
+    return startSession({ ...options, forkFrom: sourceId })
   },
   replayHistory: true,
   resumeEmpty: true,

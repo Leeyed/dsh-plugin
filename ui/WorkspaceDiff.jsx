@@ -11,6 +11,7 @@ import {
 import { GUIDE_KIND, pageAddress } from '@deepseek-ai/dsh-client-ui-sidebar-right/src/client/contract/seed.ts'
 import { dockLabels } from '@deepseek-ai/dsh-client-ui-sidebar-right/src/client/labels.ts'
 import { en as rightbarEn, zh as rightbarZh } from '@deepseek-ai/dsh-client-ui-sidebar-right/src/client/locales.ts'
+import panelStyles from '@deepseek-ai/dsh-client-ui-sidebar-right/src/client/shell/SidebarRight.module.css'
 import { PanelChrome } from '@deepseek-ai/dsh-client-ui-sidebar-right/src/client/shell/SidebarRight.tsx'
 import { canCloseTab, createSidebarRightStore } from '@deepseek-ai/dsh-client-ui-sidebar-right/src/client/stores.ts'
 import { GuideBody } from '@deepseek-ai/dsh-client-ui-sidebar-right/src/client/tabs/guide/GuideBody.tsx'
@@ -216,9 +217,6 @@ export function WorkspaceDiffPane({
     return () => layout.closeRightbar()
   }, [shown, layout])
 
-  useEffect(() => {
-    if (!shown) setExpanded(false)
-  }, [shown])
 
   const closeTab = useCallback(tabId => {
     const current = readSurface()
@@ -273,7 +271,32 @@ export function WorkspaceDiffPane({
     }
   }, [shown, contextMenus, controller, sessionKey, readSurface, closeTab, t])
 
-  if (!shown || !dockLayout) return null
+  const panelRef = useRef(null)
+  const [motion, setMotion] = useState(null)
+  const activeSeat = activePanelId === panelId && (fallback ? !layoutSeat : layoutSeat)
+  const phase = motion?.key === sessionKey ? motion.phase : null
+  useLayoutEffect(() => {
+    if (!activeSeat || !dockLayout) return
+    if (shown && (phase === null || phase === 'closing')) {
+      setMotion({ key: sessionKey, phase: 'opening' })
+    } else if (!shown && phase && phase !== 'closing') {
+      setMotion({ key: sessionKey, phase: 'closing' })
+    }
+  }, [activeSeat, Boolean(dockLayout), shown, sessionKey, phase])
+
+  useLayoutEffect(() => {
+    if (!activeSeat || !panelRef.current || !['opening', 'closing'].includes(phase)) return
+    let current = true
+    const slides = panelRef.current.getAnimations({ subtree: true }).filter(a => a.transitionProperty === 'transform')
+    void Promise.allSettled(slides.map(a => a.finished)).then(() => {
+      if (current) setMotion(phase === 'opening' ? { key: sessionKey, phase: 'open' } : null)
+    })
+    return () => { current = false }
+  }, [activeSeat, phase, sessionKey])
+  useEffect(() => {
+    if (!shown && (!phase || !activeSeat)) setExpanded(false)
+  }, [shown, phase, activeSeat])
+  if (!activeSeat || !dockLayout || !phase) return null
   const close = controller.close
   const detailsFor = tabId => tabDetails[JSON.stringify([sessionKey, tabId])] ?? {}
   const duplicateTab = tabId => {
@@ -344,16 +367,18 @@ export function WorkspaceDiffPane({
     }
   }
 
-  return <aside id="dchat-workspace-diff" className="dchat-diff-pane"
+  return <aside ref={panelRef} id="dchat-workspace-diff" className={panelStyles.panel + ' dchat-diff-pane'}
+    data-sidebar-right-open={shown || undefined} data-sidebar-right-opening={phase === 'opening' || undefined}
+    data-sidebar-right-panel={fullscreen ? 'fullscreen' : 'push'} aria-hidden={!shown || undefined}
     data-fullscreen={fullscreen || undefined} data-fallback={fallback || undefined}
-    style={!fullscreen && !fallback ? { width } : undefined} aria-labelledby={titleId}
+    style={{ width: fullscreen || fallback ? undefined : width, '--dsh-sidebar-width': fullscreen ? '100vw' : fallback ? 'min(480px, 100vw)' : width + 'px' }} aria-labelledby={titleId}
     onKeyDown={event => {
       if (event.key !== 'Escape' || event.defaultPrevented) return
       event.preventDefault()
       close()
     }}>
     <h2 id={titleId} className="dchat-diff-visually-hidden">{t('files.sidebar')}</h2>
-    <DockLayout key={sessionKey} state={dockLayout}
+    <div className={panelStyles.panelBody}><DockLayout key={sessionKey} state={dockLayout}
       canSplit={dockPaneIds(dockLayout).length < 2} dropZones="horizontal" minPaneFraction={0.2}
       canAddTab={paneId => !getPane(dockLayout, paneId).tabs.some(id => dockLayout.tabs[id].kind === GUIDE_KIND)}
       canCloseTab={tabId => canCloseTab(surface, tabId)}
@@ -382,7 +407,7 @@ export function WorkspaceDiffPane({
           if (autoFullscreen) close()
           else setExpanded(current => !current)
         }} />}
-    />
+    /></div>
   </aside>
 }
 

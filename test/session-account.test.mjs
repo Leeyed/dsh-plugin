@@ -28,11 +28,15 @@ async function fixture(t, profiles) {
     await writeFile(file,`
       import {randomUUID} from 'node:crypto'
       import {agyCliAdmin} from ${JSON.stringify(new URL('../engines/cli-admin.mjs',import.meta.url).href)}
-      export const starts=[], turns=[], usage=[], closes=[], imports=[], metadata=[]
+      export const starts=[], turns=[], usage=[], closes=[], imports=[], metadata=[], forks=[]
       let failNextStart=false
       export function failNext() { failNextStart=true }
       export const engine={id:${JSON.stringify(id)},label:'Fixture',resumeEmpty:${id==='agy'},
-        history:{list:()=>imports,messages:entry=>entry.messages,context({file}) {
+        ...(${id==='agy'} ? {forkCapability:'negotiated',fork({sourceId,...options}) {
+          forks.push({sourceId,env:options.env,historyDirectory:options.historyDirectory,runtimeDirectory:options.runtimeDirectory})
+          return engine.start(options)
+        }} : {}),
+        history:{list:()=>imports,messages:entry=>entry.messages ?? [],context({file}) {
           metadata.push({action:'context',file})
           return {used:10,size:100}
         }},
@@ -50,7 +54,7 @@ async function fixture(t, profiles) {
           let model=models[0]
           const options=()=>[{id:'model',category:'model',type:'select',currentValue:model,options:models.map(value=>({value,name:value}))}]
           starts.push({env,resumeId,id,...(historyDirectory ? {historyDirectory,runtimeDirectory} : {})})
-          return {id,get options(){return options()},capabilities:{},modelProvider:modelProvider || (${id==='codex'} ? 'openai' : undefined),
+          return {id,get options(){return options()},capabilities:${id==='agy'} ? {fork:true} : {},modelProvider:modelProvider || (${id==='codex'} ? 'openai' : undefined),
             configure(option,value){
               if (option!=='model' || !models.includes(value)) throw new Error('Unavailable fixture model')
               model=value
@@ -289,6 +293,22 @@ test('AGY switches each session independently and resumes the same native conver
   assert.equal(engine.metadata.at(-1).env.HOME,dirForAccount)
   assert.equal(engine.metadata.at(-1).remoteId,isolatedSessionId)
   assert.equal((await call('POST',path+'/archive',{archived:false})).status,200)
+  const fork=await call('POST',path+'/fork',{})
+  assert.equal(fork.status,201)
+  assert.deepEqual(engine.forks,[{sourceId:isolatedSessionId,env:undefined,
+    historyDirectory:credentials,runtimeDirectory:active.runtimeDirectory}])
+  const forkPath='/sessions/'+fork.data.id
+  const forkRecord=JSON.parse(await readFile(join(store,fork.data.id+'.json'),'utf8'))
+  assert.equal(forkRecord.agyHistoryProfileId,isolated.id)
+  assert.equal(forkRecord.profileId,'default')
+  assert.notEqual(forkRecord.remoteId,isolatedSessionId)
+  assert.deepEqual((await call('GET',forkPath)).data.messages,before.messages)
+  const forkBrain=join(credentials,'brain',forkRecord.remoteId)
+  await mkdir(forkBrain,{recursive:true})
+  await writeFile(join(forkBrain,'result.txt'),'fork artifact')
+  const forkArtifact=join(active.runtimeDirectory,'brain',forkRecord.remoteId,'result.txt')
+  assert.equal((await call('GET',forkPath+'/file?path='+encodeURIComponent(forkArtifact))).data.text,'fork artifact')
+  assert.equal((await preview(forkArtifact)).status,403)
   mount()
   assert.equal((await call('GET',path)).data.options.some(option=>option.category==='model'),false)
   const stream = await call('GET',path+'/events')
