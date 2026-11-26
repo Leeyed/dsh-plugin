@@ -309,8 +309,18 @@ html [data-sidebar-drawer] .dchat-title {
 .dchat-workspace-row {
   min-width: 0;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  gap: 4px;
   padding-inline: 8px;
+}
+
+.dchat-worktree-slot {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  max-width: 100%;
+  margin-inline-start: auto;
 }
 
 .dchat-connection {

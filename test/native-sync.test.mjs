@@ -46,7 +46,7 @@ test('imported AGY session reloads newer native messages even while adapter is o
   await Promise.all([
     'index.mjs', 'engines/cli-admin.mjs',
     'server/agy-session-history.mjs', 'server/account-usage-cache.mjs', 'server/tool-activity.mjs',
-    'server/workspace-file.mjs', 'server/workspace-diff.mjs', 'server/codex-commands.mjs',
+    'server/workspace-file.mjs', 'server/workspace-worktree.mjs', 'server/workspace-diff.mjs', 'server/codex-commands.mjs',
   ].map(name => copyFile(new URL('../' + name, import.meta.url), join(temp, name))))
 
   await writeFile(join(temp, 'server', 'native-history.mjs'), `

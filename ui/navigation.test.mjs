@@ -118,6 +118,35 @@ test('accepting a first message after navigation refreshes history without chang
   assert.equal(refreshed.length, 1)
 })
 
+test('new sessions default to the last created agent without being overwritten by browsing history', () => {
+  const storage = localStorage()
+  const navigation = createNavigation(() => {}, storage)
+  assert.equal(navigation.getSnapshot().engine, undefined)
+
+  navigation.start('codex', '/one')
+  assert.equal(navigation.getSnapshot().engine, 'codex')
+
+  // Browsing an existing session must not forget or overwrite the remembered engine.
+  navigation.open('existing-claude-session')
+  assert.equal(navigation.getSnapshot().id, 'existing-claude-session')
+
+  navigation.start(undefined, '/two')
+  assert.equal(navigation.getSnapshot().engine, 'codex')
+  assert.equal(navigation.getSnapshot().cwd, '/two')
+
+  // Explicit engine selection updates the remembered engine, and survives reload.
+  navigation.start('agy', '/two')
+  navigation.open('another-session')
+  const reloaded = createNavigation(() => {}, storage)
+  reloaded.start()
+  assert.equal(reloaded.getSnapshot().engine, 'agy')
+
+  // Deleting the active session falls back to the remembered engine when none is given.
+  reloaded.open('doomed')
+  reloaded.forget(new Set(['doomed']), { engine: 'claude' })
+  assert.equal(reloaded.getSnapshot().engine, 'agy')
+})
+
 test('deleting a session removes its saved draft and ignores a late receipt', () => {
   const storage = localStorage()
   const navigation = createNavigation(() => {}, storage)
@@ -133,4 +162,17 @@ test('deleting a session removes its saved draft and ignores a late receipt', ()
   assert.equal(reloaded.getSnapshot().id, undefined)
   reloaded.open('deleted')
   assert.equal(activeDraft(reloaded).getSnapshot().text, '')
+})
+
+test('native new-chat entry restores only an available preference and honors switching back', () => {
+  const navigation = createNavigation(() => {}, localStorage())
+  const engines = [{ id: 'claude' }, { id: 'codex' }]
+  assert.equal(navigation.preferredEngine(engines), undefined)
+  navigation.start('codex')
+  navigation.open('claude-history')
+  assert.equal(navigation.preferredEngine(engines), 'codex')
+  assert.equal(navigation.preferredEngine([{ id: 'codex', status: { installed: false } }]), undefined)
+  assert.equal(navigation.preferredEngine([]), undefined)
+  navigation.selectNative()
+  assert.equal(navigation.preferredEngine(engines), undefined)
 })

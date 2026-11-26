@@ -3,6 +3,7 @@ import { createComposerDrafts } from './composer-draft.mjs'
 const sessionKey = 'dsh-direct-chat.active-session'
 const newTargetKey = 'dsh-direct-chat.new-target'
 const cwdKey = 'dsh-direct-chat.cwd'
+const engineKey = 'dsh-direct-chat.engine'
 
 function browserStorage() {
   try { return globalThis.localStorage } catch {}
@@ -17,9 +18,12 @@ export function createNavigation(refreshHistory, storage = browserStorage()) {
   let savedNew
   try { savedNew = JSON.parse(read(newTargetKey) ?? 'null') } catch {}
   let target = savedId ? { id: savedId, key: savedId } : createTarget(
-    typeof savedNew?.engine === 'string' ? savedNew.engine : undefined,
+    typeof savedNew?.engine === 'string' ? savedNew.engine : read(engineKey) || undefined,
     typeof savedNew?.cwd === 'string' ? savedNew.cwd : read(cwdKey) || undefined,
   )
+  const rememberEngine = engine => {
+    if (engine) { try { storage?.setItem(engineKey, engine) } catch {} }
+  }
 
   const listeners = new Set()
   const set = next => {
@@ -39,12 +43,21 @@ export function createNavigation(refreshHistory, storage = browserStorage()) {
   return {
     getSnapshot: () => target,
     draftFor: drafts.forTarget,
+    preferredEngine(engines) {
+      const saved = read(engineKey)
+      return engines.find(item => item.id === saved && item.status?.installed !== false)?.id
+    },
+    selectNative() {
+      try { storage?.removeItem(engineKey) } catch {}
+    },
+    rememberEngine,
     refreshHistory,
     subscribe(listener) {
       listeners.add(listener)
       return () => listeners.delete(listener)
     },
-    start(engine, cwd = read(cwdKey) || undefined) {
+    start(engine = read(engineKey) || undefined, cwd = read(cwdKey) || undefined) {
+      rememberEngine(engine)
       if (!target.id && target.engine === engine && target.cwd === cwd) return
       set(createTarget(engine, cwd))
     },
@@ -56,9 +69,9 @@ export function createNavigation(refreshHistory, storage = browserStorage()) {
       if ((expected && target !== expected) || target.id === id) return
       set({ id, key: expected?.key ?? id })
     },
-    forget(ids, { engine, cwd }) {
+    forget(ids, { cwd }) {
       for (const id of ids) drafts.forgetSession(id)
-      if (ids.has(target.id)) set(createTarget(engine, cwd))
+      if (ids.has(target.id)) set(createTarget(read(engineKey) || undefined, cwd ?? (read(cwdKey) || undefined)))
       else {
         try {
           if (ids.has(read(sessionKey))) storage?.removeItem(sessionKey)

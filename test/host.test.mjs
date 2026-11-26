@@ -43,6 +43,7 @@ test('authenticated sessions persist replies, serialize prompts and restore the 
   await copyFile(new URL('../index.mjs',import.meta.url), join(dir,'index.mjs'))
   await copyFile(new URL('../server/codex-commands.mjs',import.meta.url), join(dir,'server','codex-commands.mjs'))
   await copyFile(new URL('../server/workspace-diff.mjs',import.meta.url), join(dir,'server','workspace-diff.mjs'))
+  await copyFile(new URL('../server/workspace-worktree.mjs',import.meta.url), join(dir,'server','workspace-worktree.mjs'))
   await copyFile(new URL('../server/workspace-file.mjs',import.meta.url), join(dir,'server','workspace-file.mjs'))
   await copyFile(new URL('../server/agy-session-history.mjs',import.meta.url),join(dir,'server','agy-session-history.mjs'))
   await copyFile(new URL('../server/tool-activity.mjs',import.meta.url), join(dir,'server','tool-activity.mjs'))

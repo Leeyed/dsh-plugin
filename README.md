@@ -6,8 +6,9 @@ A DeepSeek Harness (`dsh`) plugin that connects **Claude Code**, **Codex**, and 
 
 ## Features
 
-- **Multi-CLI Direct Integration**: Run and manage `claude`, `codex`, and `agy` sessions from a unified composer and sidebar.
-- **Multi-Account & Profile Isolation**: Manage multiple OAuth or environment-based profiles per CLI with per-session account binding and default profile switching.
+- **Multi-CLI Direct Integration**: Run and manage `claude`, `codex`, and `agy` sessions from a unified composer and sidebar, with automatic recall of your last-used engine.
+- **Multi-Account & Profile Isolation**: Manage multiple OAuth or environment-based profiles per CLI with per-session account binding, default profile switching, and quick in-session account management.
+- **Git Worktree Isolation**: Toggle worktree mode before starting a session to choose a base branch and create an isolated Git worktree under `.agents/worktrees/`.
 - **Native History & Archiving**: Import existing terminal CLI sessions, browse merged workspace sources in the sidebar, and archive/restore sessions back to native CLI storage.
 - **Status & Quota Monitoring**: Live context window usage, token throughput (`tok/s`), account quota windows, and a cross-session Task Companion (`SessionPet`).
 - **Task Companion (`SessionPet`)**: Animated pelican status indicator (`idle` / `running` / `attention` / `done`), PC floating approval bubble for background sessions, unseen-completion badge (cleared on view), optional Web Audio alert chimes (off by default), PC `S/M/L` size selector with viewport-clamped drag position, and mobile fullscreen card layout.

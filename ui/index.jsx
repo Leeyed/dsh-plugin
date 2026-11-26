@@ -1,4 +1,4 @@
-import { useSyncExternalStore } from 'react'
+import { useEffect, useSyncExternalStore } from 'react'
 import { FishLogo } from '@deepseek-ai/dsh-client-ui-primitives'
 import { DocumentModulesContext, documentCopy } from './DocumentPreview.jsx'
 import { spreadsheetCopy } from './SpreadsheetPreview.jsx'
@@ -25,6 +25,7 @@ import { en, zh } from './copy.mjs'
 import { createSidebarHistory } from './sidebar-history.mjs'
 import { createWorkspaceDiffController } from './workspace-diff-view.mjs'
 import { sidebarCopy } from './sidebar.jsx'
+import { worktreeCopy } from './WorktreeToggle.jsx'
 import archiveStyles from './archive-settings.css'
 import engineStyles from './engine-hero.css'
 import sidebarStyles from './sidebar.css'
@@ -87,8 +88,8 @@ export function apply(ctx) {
     return ctx.layout.panelInfo.subscribe(sync)
   }, 'direct-chat: restore-active-panel')
   ctx.effect(() => ctx.locale.register(panelId, {
-    en: { ...en, ...sidebarCopy.en, ...archiveSettingsCopy.en, ...sessionStatusCopy.en, ...diffCopy.en, ...documentCopy.en, ...spreadsheetCopy.en },
-    zh: { ...zh, ...sidebarCopy.zh, ...archiveSettingsCopy.zh, ...sessionStatusCopy.zh, ...diffCopy.zh, ...documentCopy.zh, ...spreadsheetCopy.zh },
+    en: { ...en, ...sidebarCopy.en, ...archiveSettingsCopy.en, ...sessionStatusCopy.en, ...diffCopy.en, ...documentCopy.en, ...spreadsheetCopy.en, ...worktreeCopy.en },
+    zh: { ...zh, ...sidebarCopy.zh, ...archiveSettingsCopy.zh, ...sessionStatusCopy.zh, ...diffCopy.zh, ...documentCopy.zh, ...spreadsheetCopy.zh, ...worktreeCopy.zh },
   }), 'direct-chat: locale')
   ctx.effect(() => ctx.locale.register(forgeLocale, forgeCopy), 'direct-chat: Forge locale')
   ctx.effect(() => {
@@ -179,7 +180,7 @@ export function apply(ctx) {
   }, ArchiveSettings))
   ctx.slots.inject('conversation.hero.agentPreset', () => ctx.slots.register({
     name: 'conversation.hero.agentPreset', priority: -10, locale: panelId,
-    inject: sessionId => ({ sessionId, engineSource, startDirect }),
+    inject: sessionId => ({ sessionId, engineSource, startDirect, navigation }),
   }, NativeInputDockHero))
 
   const viewHandle = createWorkspaceViewStore()
@@ -273,12 +274,16 @@ export function apply(ctx) {
   }, SessionPet))
 }
 
-function NativeInputDockHero({ sessionId, useSessions, useWorkspaces, engineSource, startDirect, t }) {
+function NativeInputDockHero({ sessionId, useSessions, useWorkspaces, engineSource, startDirect, navigation, t }) {
   const session = useSessions(s => sessionId ? s.byId[sessionId] : undefined)
   const workspacePath = useWorkspaces(w => sessionId
     ? w.items.find(workspace => workspace.sessionIds.includes(sessionId))?.path
     : undefined) ?? (session?.cwd || undefined)
   const { engines, status } = useSyncExternalStore(engineSource.subscribe, engineSource.getSnapshot)
+  const preferred = status === 'ready' && session?.blank ? navigation.preferredEngine(engines) : undefined
+  useEffect(() => {
+    if (preferred) startDirect(preferred, workspacePath)
+  }, [preferred, sessionId, workspacePath, startDirect])
   if (!session?.blank) return null
   return <EngineDropdown selected={null} engines={engines} status={status} reload={engineSource.refresh}
     onSelect={engine => { if (engine !== null) startDirect(engine, workspacePath) }} t={t} />

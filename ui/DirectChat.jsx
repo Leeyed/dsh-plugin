@@ -18,13 +18,16 @@ import inputLayout from '@deepseek-ai/dsh-client-ui-conversation/src/client/skel
 import conversationLayout from '@deepseek-ai/dsh-client-ui-conversation/src/client/skeleton/ConversationRoot.module.css'
 import { TodoPanel } from '@deepseek-ai/dsh-client-ui-conversation/src/client/skeleton/TodoPanel.tsx'
 import {
-  accountChoiceLabel, applyEvent, attachmentIssue, composerAccount, configGroups, createSession, encodeAttachment, engineLabel, fileUriReference, inlineFileReference,
+  accountChoiceLabel, applyEvent, attachmentIssue, composerAccount, configGroups, createSession, encodeAttachment, engineLabel, fileUriReference, getGitBranches, inlineFileReference,
   hasDraggedFiles, markdownFileReference, normalizeMarkdownFileUrls, openEvents, permissionId,
   projectActivity, promptDelivery, sessionAction,
 } from './chat-state.mjs'
+import { createWorktreePrompt } from './worktree-prompt.mjs'
+import { WorktreeToggle } from './WorktreeToggle.jsx'
 import { useComposerCommands } from './ComposerCommands.jsx'
 import { commandEntries } from './composer-commands.mjs'
 import { EngineDropdown, EngineLogo } from './EngineHero.jsx'
+import { EngineSettings } from './EngineSettings.jsx'
 import { ReviewCommand } from './ReviewCommand.jsx'
 import { codexPromptCommand } from './review-command.mjs'
 import { MessageQueue, pendingQueueSubmission } from './MessageQueue.jsx'
@@ -154,7 +157,8 @@ export function DirectChat({ navigation, startNative, renderFactorySlot, useCont
   const current = metadata?.id === target.id ? metadata : null
   const currentAgents = agentSummary?.id === target.id ? agentSummary : null
   const currentRuntime = runtimeSummary?.id === target.id ? runtimeSummary : null
-  const engine = target.engine ?? engines[0]?.id
+  const engine = engineStatus === 'ready' && !engines.some(item => item.id === target.engine && item.status?.installed !== false)
+    ? undefined : target.engine
   const engineMeta = engines.find(item => item.id === engine)?.meta
   const showSplitPane = canShowSplit && Boolean(diffState?.open)
 
@@ -198,7 +202,7 @@ export function DirectChat({ navigation, startNative, renderFactorySlot, useCont
       <div ref={setColumn} className={conversationLayout.body}>
         <div className={conversationLayout.scrollBody}>
           <SessionPane key={target.key ?? target.id ?? target.engine} target={target} navigation={navigation} startNative={startNative} performanceSettings={performanceSettings} submissionSettings={submissionSettings}
-            engine={engine} engines={engines} engineStatus={engineStatus} reloadEngines={engineSource.refresh} diffController={diffController}
+            engine={engine} engines={engines} engineStatus={engineStatus} engineSource={engineSource} reloadEngines={engineSource.refresh} diffController={diffController}
             queueDock={queueDock} onAgentSummary={setAgentSummary} onRuntimeSummary={setRuntimeSummary} onSession={setMetadata}
             renderFactorySlot={renderFactorySlot} workspaceSource={workspaceSource} t={t} />
         </div>
@@ -215,8 +219,9 @@ export function DirectChat({ navigation, startNative, renderFactorySlot, useCont
   </div>
 }
 
-function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navigation, startNative, performanceSettings, submissionSettings = defaultSubmissionSettings, onSession, renderFactorySlot, workspaceSource, engine, engines, engineStatus, reloadEngines, diffController, t }) {
+function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navigation, startNative, performanceSettings, submissionSettings = defaultSubmissionSettings, onSession, renderFactorySlot, workspaceSource, engine, engines, engineStatus, engineSource, reloadEngines, diffController, t }) {
   const blank = !target.id
+  const [accountSettingsOpen, setAccountSettingsOpen] = useState(false)
   const cwd = target.cwd ?? ''
   const [draftProfiles, setDraftProfiles] = useState(() => {
     try {
@@ -234,6 +239,13 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
   const profileId = engine && typeof draftProfiles[engine] === 'string' ? draftProfiles[engine] : undefined
   const [prepared, setPrepared] = useState(null)
   const [prepareAttempt, setPrepareAttempt] = useState(0)
+  const [gitBranches, setGitBranches] = useState(null)
+  const [worktreeDraft, setWorktreeDraft] = useState({ cwd: '', enabled: false, from: undefined })
+  const gitInfo = gitBranches?.cwd === cwd ? gitBranches.info : null
+  const worktreeEnabled = worktreeDraft.cwd === cwd && worktreeDraft.enabled
+  const worktreeFrom = worktreeDraft.cwd === cwd ? worktreeDraft.from : undefined
+  const worktreeBase = worktreeFrom === undefined ? gitInfo?.current : worktreeFrom
+  const sendWorktree = useMemo(() => createWorktreePrompt(cwd, worktreeBase), [cwd, worktreeBase])
   const preparation = prepared?.engine === engine && prepared?.cwd === cwd && prepared.profileId === profileId && prepared.attempt === prepareAttempt ? prepared : null
   const id = target.id ?? preparation?.session?.id
   const [feed, setFeed] = useState(null)
@@ -297,6 +309,28 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
     id: diffId, cwd: diffCwd, addReviewToInput: format => reviewInput.current(format),
   } : null),
     [diffController, diffId, diffCwd])
+
+  useEffect(() => {
+    if (!blank || !cwd) {
+      setGitBranches(null)
+      return
+    }
+    const controller = new AbortController()
+    getGitBranches(cwd, controller.signal).then(info => {
+      if (!controller.signal.aborted) setGitBranches({ cwd, info })
+    }).catch(() => {
+      if (!controller.signal.aborted) setGitBranches({ cwd, info: null })
+    })
+    return () => controller.abort()
+  }, [blank, cwd])
+
+  const refreshGitBranches = useCallback(async () => {
+    if (!cwd) return
+    try {
+      const info = await getGitBranches(cwd)
+      setGitBranches({ cwd, info })
+    } catch {}
+  }, [cwd])
 
   useEffect(() => {
     if (!blank || !engine) return
@@ -443,6 +477,29 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
     if (!settle) return
     follow.setFollowing(true)
     let failure = ''
+    if (blank && worktreeEnabled && gitInfo?.isGit && gitInfo.commit) {
+      setPending('prompt')
+      setError('')
+      try {
+        const payload = typeof data === 'function' ? await data() : data
+        await sendWorktree({ engine, profileId, options: configOptions, payload, navigation, target })
+        settle(true, '')
+        const editor = input.current
+        if (editor?.form && editor.ownerDocument.activeElement === editor && isMobileDevice()) {
+          focusWithoutRing(editor.form, { preventScroll: true })
+        }
+        setWorktreeDraft({ cwd: '', enabled: false, from: undefined })
+        return
+      } catch (err) {
+        const translated = err?.code ? t(err.code) : ''
+        failure = translated && translated !== err?.code ? translated : err?.message || t('request.failed')
+        setError(failure)
+        settle(false, failure)
+        return
+      } finally {
+        setPending(null)
+      }
+    }
     const sent = await perform('prompt', data, message => { failure = message })
     settle(sent, failure)
     if (sent) {
@@ -792,20 +849,21 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
             renderFactorySlot={renderFactorySlot} workspaceSource={workspaceSource} />}
           <EngineDropdown selected={engine} engines={engines} status={engineStatus} reload={reloadEngines}
             disabled={Boolean(pending)} onSelect={async next => {
-              if (next === engine) return
+              if (next && next === engine) return
               if (next === null) {
                 const workspace = workspaceSource.getSnapshot().items.find(item => item.path === cwd)
                 const effectiveDraft = stagedCommand
                   ? `/${stagedCommand}${draft.trim() ? ` ${draft.trim()}` : ''}`
                   : draft
                 try {
+                  navigation.selectNative()
                   const transferred = await startNative(workspace?.workspaceId, cwd, effectiveDraft)
                   if (transferred && effectiveDraft && !composer.getSnapshot().sending) {
                     setDraft('')
                     if (stagedCommand) setStagedCommand(null)
                   }
                 }
-                catch (reason) { setError(reason.message || t('request.failed')) }
+                catch (reason) { navigation.rememberEngine(engine); setError(reason.message || t('request.failed')) }
               } else {
                 const nextComposer = navigation.draftFor(target, next)
                 const nextSnap = nextComposer.getSnapshot()
@@ -826,9 +884,25 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
                 navigation.start(next, cwd)
               }
             }} t={t} />
+          {engine && gitInfo?.isGit && <div className="dchat-worktree-slot">
+            <WorktreeToggle
+              gitInfo={gitInfo}
+              enabled={worktreeEnabled}
+              from={worktreeFrom}
+              disabled={Boolean(pending)}
+              onToggle={(checked, currentBranch) => setWorktreeDraft({
+                cwd,
+                enabled: checked,
+                from: checked ? (worktreeFrom !== undefined ? worktreeFrom : currentBranch ?? null) : undefined,
+              })}
+              onSelectBase={branch => setWorktreeDraft({ cwd, enabled: true, from: branch })}
+              onRefreshBranches={refreshGitBranches}
+              t={t}
+            />
+          </div>}
         </div>
       </>}
-      {needsEngine && <div className="dchat-connection" role="status">
+      {needsEngine && (engineStatus !== 'ready' || !engines.some(item => item.status?.installed !== false)) && <div className="dchat-connection" role="status">
         <span>{t(engineStatus === 'ready' ? 'engine.empty' : engineStatus === 'error' ? 'engine.failed' : 'engine.loading')}</span>
         {engineStatus === 'error' && <Button size="sm" onClick={() => void reloadEngines()}>{t('engine.retry')}</Button>}
       </div>}
@@ -961,7 +1035,8 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
               disabled={configDisabled} t={t} />)}
             {displayedAccount && <SessionAccount engine={currentEngine} account={displayedAccount}
               disabled={blank ? Boolean(pending) || busy : configDisabled || readOnly}
-              change={id => blank ? selectDraftProfile(engine, id) : perform('account', { profileId: id })} t={t} />}
+              change={id => blank ? selectDraftProfile(engine, id) : perform('account', { profileId: id })}
+              manage={() => setAccountSettingsOpen(true)} t={t} />}
           </div>
           <div className="dchat-composer-trailing">
             {model || effort ? <ModelConfigMenu model={model} effort={effort} commands={teamCommands}
@@ -995,7 +1070,8 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
       <div className="dchat-session-footer">
         {(needsEngine || readOnly) && displayedAccount && <SessionAccount engine={currentEngine} account={displayedAccount}
           disabled={blank ? Boolean(pending) || busy : configDisabled || readOnly}
-          change={id => blank ? selectDraftProfile(engine, id) : perform('account', { profileId: id })} t={t} />}
+          change={id => blank ? selectDraftProfile(engine, id) : perform('account', { profileId: id })}
+          manage={() => setAccountSettingsOpen(true)} t={t} />}
         <SessionStatus sessionId={id} engine={currentEngine} profileId={session?.account?.id} engineCapabilities={currentCapabilities}
           messages={session?.messages} model={model?.currentValue}
           modelName={configGroups(model).flatMap(group => group.choices).find(choice => choice.value === model?.currentValue)?.name} effort={effort?.currentValue} agentCount={session?.agents?.length}
@@ -1017,6 +1093,11 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
     {commandDialog === 'mcp' && <McpStatusDialog id={id} close={() => setCommandDialog(null)} t={t} />}
     {!readOnly && parallelOpen && <ParallelTasks id={id} ready={ready && canStartParallel}
       launched={() => navigation.refreshHistory?.()} close={() => setParallelOpen(false)} t={t} />}
+    {accountSettingsOpen && <Modal open title={t('engine.manageAccountsTitle')} closeLabel={t('close')}
+      className="dchat-account-modal" contentClassName="dchat-account-modal-body"
+      onClose={() => setAccountSettingsOpen(false)}>
+      <EngineSettings engineSource={engineSource} focusedEngine={currentEngine} t={t} />
+    </Modal>}
   </>
 }
 
@@ -1081,9 +1162,12 @@ function Attachments({ items, open, remove, disabled, t }) {
   </div>
 }
 
-function SessionAccount({ engine, account, disabled, change, t }) {
+function SessionAccount({ engine, account, disabled, change, manage, t }) {
   const [open, setOpen] = useState(false)
-  const selectable = account.canSwitch && !disabled && account.choices?.some(choice => choice.id !== account.id)
+  const canSwitch = account.canSwitch && !disabled && account.choices?.some(choice => choice.id !== account.id)
+  const blocked = account.switchBlockedReason
+  const canManage = Boolean(manage) && !disabled && !blocked
+  const selectable = canSwitch || canManage
   useEffect(() => { if (!selectable) setOpen(false) }, [selectable])
   const baseLabel = item => accountChoiceLabel(item, t('engine.defaultAccount'))
   const profileLabel = item => {
@@ -1094,7 +1178,6 @@ function SessionAccount({ engine, account, disabled, change, t }) {
     return label + ' · ' + t('engineSettings.agyIsolated') + suffix
   }
   const label = profileLabel(account)
-  const blocked = account.switchBlockedReason
   const reason = ['busy', 'history', 'readOnly', 'unavailable'].includes(blocked) ? t('engine.switch.' + blocked) : ''
   const title = [t('engine.profileLabel') + ' · ' + label, reason].filter(Boolean).join(' — ')
   const content = <><IconUsersOutlineRegular size={14} /><span>{label}</span></>
@@ -1103,10 +1186,26 @@ function SessionAccount({ engine, account, disabled, change, t }) {
       {content}
     </Button>
   }
+  const choices = account.choices?.length ? account.choices : [account]
+  const items = choices.map(choice => ({
+    id: choice.id,
+    label: profileLabel(choice),
+    disabled: !canSwitch && choice.id !== account.id,
+  }))
+  if (canManage) {
+    items.push(
+      { type: 'separator', id: 'manage-sep' },
+      { id: '__manage__', label: t('engine.manageAccounts'), icon: <IconPlusOutlineRegular size={14} /> },
+    )
+  }
   return <Menu open={open} portal side="top" align="start" dense onClose={() => setOpen(false)}
-    selectedId={account.id} items={account.choices.map(choice => ({ id: choice.id, label: profileLabel(choice) }))} onSelect={id => {
+    selectedId={account.id} items={items} onSelect={id => {
       setOpen(false)
-      if (id !== account.id) void change(id)
+      if (id === '__manage__') {
+        manage()
+        return
+      }
+      if (canSwitch && id !== account.id) void change(id)
     }} anchor={<Button size="sm" className="dchat-session-account" title={title} aria-label={title}
       aria-haspopup="menu" aria-expanded={open} onClick={() => setOpen(value => !value)}>
       {content}<IconChevronDownOutlineRegular size={12} />

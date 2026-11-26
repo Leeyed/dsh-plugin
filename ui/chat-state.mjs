@@ -237,6 +237,14 @@ export function archiveWorkspace(cwd) {
   return sendJson('/api/direct-chat/workspaces/archive', 'POST', { cwd })
 }
 
+export function getGitBranches(cwd, signal) {
+  return request(`/api/direct-chat/workspaces/git-branches?cwd=${encodeURIComponent(cwd || '')}`, { signal })
+}
+
+export function createWorktree(cwd, from) {
+  return sendJson('/api/direct-chat/workspaces/worktree', 'POST', { cwd, from: from ?? null })
+}
+
 export function deleteSession(id) {
   return sendJson(`${sessionsUrl}/${encodeURIComponent(id)}`, 'DELETE', { confirmId: id })
 }

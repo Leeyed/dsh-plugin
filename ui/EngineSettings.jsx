@@ -34,13 +34,13 @@ const agyLogoutMessages = {
   agy_logout_storage: 'engineSettings.agyLogoutStorage',
 }
 
-export function EngineSettings({ engineSource, t }) {
+export function EngineSettings({ engineSource, focusedEngine, t }) {
   const { engines, status } = useSyncExternalStore(engineSource.subscribe, engineSource.getSnapshot)
   const headingId = useId()
   const [checkingId, setCheckingId] = useState(null)
   const [updatingId, setUpdatingId] = useState(null)
   const [loggingOutKey, setLoggingOutKey] = useState(null)
-  const [expandedId, setExpandedId] = useState(null)
+  const [expandedId, setExpandedId] = useState(focusedEngine || null)
   const [profilesByEngine, setProfilesByEngine] = useState({})
   const [addingFor, setAddingFor] = useState(null)
   const [addingKind, setAddingKind] = useState('env')
@@ -89,6 +89,12 @@ export function EngineSettings({ engineSource, t }) {
     }).catch(() => {})
     return () => controller.abort()
   }, [])
+
+  useEffect(() => {
+    if (!focusedEngine) return
+    setExpandedId(focusedEngine)
+    void refreshProfiles(focusedEngine).catch(() => {})
+  }, [focusedEngine])
 
   const loginEngineId = loginJob?.engineId
   const loginId = loginJob?.loginId
@@ -303,19 +309,21 @@ export function EngineSettings({ engineSource, t }) {
     setEditingProfile(null)
   }
 
-  return <section className="dchat-archive-settings" aria-labelledby={headingId}>
-    <div className="dchat-settings-header">
+  const visibleEngines = focusedEngine ? engines.filter(item => item.id === focusedEngine) : engines
+
+  return <section className="dchat-archive-settings" aria-labelledby={focusedEngine ? undefined : headingId}>
+    {!focusedEngine && <div className="dchat-settings-header">
       <h2 id={headingId}>{t('engineSettings.title')}</h2>
       <Button variant="outline" size="sm" disabled={Boolean(checkingId) || Boolean(updatingId)}
         onClick={() => void handleCheck('all')}>
         {checkingId === 'all' ? t('engine.checking') : t('engineSettings.checkAll')}
       </Button>
-    </div>
+    </div>}
     {notice && <p role={notice.error ? 'alert' : 'status'} className={notice.error ? 'dchat-archive-error' : undefined}>
       {notice.text}
     </p>}
-    {engines.length > 0 ? <ul className="dchat-archive-rows">
-      {engines.map(eng => {
+    {visibleEngines.length > 0 ? <ul className={focusedEngine ? 'dchat-archive-rows dchat-account-focused' : 'dchat-archive-rows'}>
+      {visibleEngines.map(eng => {
         const s = eng.status || {}
         const isChecking = checkingId === eng.id || checkingId === 'all'
         const isUpdating = updatingId === eng.id
@@ -324,15 +332,35 @@ export function EngineSettings({ engineSource, t }) {
         const activeProfile = profiles.find(item => item.id === activeProfileId)
         const isLoggingOut = loggingOutKey === `${eng.id}:${activeProfileId}`
         const isAgy = eng.id === 'agy'
-        const isExpanded = expandedId === eng.id
+        const isExpanded = Boolean(focusedEngine) || expandedId === eng.id
         const googleEmails = isAgy && isExpanded ? profiles.filter(item =>
           isOAuthProfile(item) && item.authenticated && item.account?.includes('@')).map(item => item.account.toLowerCase()) : []
         const repeatedGoogleAccount = new Set(googleEmails).size < googleEmails.length
         const accountText = s.account || s.authLabel
         const activeLoginHere = loginJob?.engineId === eng.id
         const startingLoginHere = startingLoginId === eng.id || (activeLoginHere && loginJob.status === 'waiting_url')
-        return <li className="dchat-archive-row dchat-engine-row" key={eng.id}>
-          <div className="dchat-engine-header">
+        const addButtons = <>
+          {eng.canMultiOAuth && <Button variant={focusedEngine && isAgy ? 'primary' : 'outline'} size="sm" disabled={loginBusy}
+            onClick={() => void handleStartLogin(eng.id, { createProfile: true })}>
+            + {t('engineSettings.addOAuth')}
+          </Button>}
+          {!isAgy && <Button variant={focusedEngine ? 'primary' : 'outline'} size="sm"
+            onClick={() => { setAddingFor(eng.id); setAddingKind('env'); setNewName(''); setNewEnvText('') }}>
+            + {t('engineSettings.addEnv')}
+          </Button>}
+        </>
+        const addForm = addingFor === eng.id && <div className="dchat-profile-form" style={{ margin: focusedEngine ? '0 0 8px' : '6px 0' }}>
+          <input type="text" className="dchat-profile-input" placeholder={t('engineSettings.profileName')} value={newName}
+            onChange={e => setNewName(e.target.value)} />
+          {addingKind === 'env' && <textarea rows={3} className="dchat-profile-input" placeholder={t('engineSettings.envVarHint')} value={newEnvText}
+            onChange={e => setNewEnvText(e.target.value)} style={{ fontFamily: 'monospace' }} />}
+          <div style={{ display: 'flex', gap: 6 }}>
+            <Button variant="primary" size="sm" onClick={() => void handleCreateProfileForm(eng.id)}>{t('engineSettings.saveProfile')}</Button>
+            <Button variant="outline" size="sm" onClick={() => setAddingFor(null)}>{t('cancel')}</Button>
+          </div>
+        </div>
+        return <li className={focusedEngine ? 'dchat-account-focused-row' : 'dchat-archive-row dchat-engine-row'} key={eng.id}>
+          <div className={focusedEngine ? 'dchat-account-modal-engine' : 'dchat-engine-header'}>
             <div className="dchat-archive-detail">
               <span className="dchat-engine-identity">
                 <EngineLogo engine={eng.id} label={eng.label} icon={eng.meta?.icon} size={16} />
@@ -352,7 +380,7 @@ export function EngineSettings({ engineSource, t }) {
                   </span>
                 ) : null}
               </span>
-              {(s.updateAvailable || s.restartRequired || s.error) && <div className="dchat-archive-meta">
+              {!focusedEngine && (s.updateAvailable || s.restartRequired || s.error) && <div className="dchat-archive-meta">
                 {s.updateAvailable && <span className="dchat-engine-pill" data-tone="update">
                   {t('engine.updateAvailable', { version: s.latestVersion })}
                 </span>}
@@ -360,7 +388,7 @@ export function EngineSettings({ engineSource, t }) {
                 {s.error && <span className="dchat-archive-error">{s.error}</span>}
               </div>}
             </div>
-            <div className="dchat-engine-actions">
+            {focusedEngine ? (addingFor !== eng.id && <div className="dchat-engine-actions">{addButtons}</div>) : <div className="dchat-engine-actions">
               {s.authenticated === false && eng.canLogin && isOAuthProfile(activeProfile) && <Button variant="primary" size="sm" disabled={loginBusy || isLoggingOut}
                 onClick={() => void handleStartLogin(eng.id, { profileId: activeProfileId })}>
                 {t('engineSettings.login')}
@@ -379,7 +407,7 @@ export function EngineSettings({ engineSource, t }) {
                   <IconRefreshOutlineRegular size={14} />
                 </Button>
               </Tooltip>}
-            </div>
+            </div>}
           </div>
 
           {(startingLoginHere || activeLoginHere) && <div className="dchat-profile-form" style={{ fontSize: 12 }}>
@@ -404,7 +432,8 @@ export function EngineSettings({ engineSource, t }) {
             </form>}
           </div>}
 
-          {isExpanded && <div className="dchat-profile-panel">
+          {isExpanded && <div className={focusedEngine ? 'dchat-profile-panel dchat-profile-panel--flat' : 'dchat-profile-panel'}>
+            {focusedEngine && addForm}
             {repeatedGoogleAccount && <div className="dchat-archive-meta" style={{ padding: '6px 0' }}>{t('engineSettings.agySameAccount')}</div>}
             {profiles.map(prof => {
               const pKey = `${eng.id}:${prof.id}`
@@ -478,27 +507,13 @@ export function EngineSettings({ engineSource, t }) {
                 </div>}
               </div>
             })}
-            {addingFor === eng.id ? <div className="dchat-profile-form" style={{ margin: '6px 0' }}>
-              <input type="text" className="dchat-profile-input" placeholder={t('engineSettings.profileName')} value={newName}
-                onChange={e => setNewName(e.target.value)} />
-              {addingKind === 'env' && <textarea rows={3} className="dchat-profile-input" placeholder={t('engineSettings.envVarHint')} value={newEnvText}
-                onChange={e => setNewEnvText(e.target.value)} style={{ fontFamily: 'monospace' }} />}
-              <div style={{ display: 'flex', gap: 6 }}>
-                <Button variant="primary" size="sm" onClick={() => void handleCreateProfileForm(eng.id)}>{t('engineSettings.saveProfile')}</Button>
-                <Button variant="outline" size="sm" onClick={() => setAddingFor(null)}>{t('cancel')}</Button>
-              </div>
-            </div> : <div className="dchat-profile-footer">
-              {eng.canMultiOAuth && <Button variant="outline" size="sm" disabled={loginBusy} onClick={() => void handleStartLogin(eng.id, { createProfile: true })}>
-                + {t('engineSettings.addOAuth')}
-              </Button>}
-              {!isAgy && <Button variant="outline" size="sm" onClick={() => { setAddingFor(eng.id); setAddingKind('env'); setNewName(''); setNewEnvText('') }}>
-                + {t('engineSettings.addEnv')}
-              </Button>}
+            {!focusedEngine && (addForm || <div className="dchat-profile-footer">
+              {addButtons}
               {eng.canUpdate && !s.updateAvailable && <Button variant="outline" size="sm"
                 disabled={isChecking || isUpdating} onClick={() => void handleUpdate(eng.id)}>
                 {isUpdating ? t('engine.updating') : t('engineSettings.reinstall')}
               </Button>}
-            </div>}
+            </div>)}
           </div>}
         </li>
       })}

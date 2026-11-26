@@ -36,6 +36,7 @@ function compareSemver(a, b) {
   return 0
 }
 import { workspaceDiff, workspaceDiffText } from './server/workspace-diff.mjs'
+import { createWorkspaceWorktree, gitBranchInfo } from './server/workspace-worktree.mjs'
 import { imageType, listWorkspaceDirectory, openMediaFile, sendDocument, sendDownload, sendMedia, previewFile } from './server/workspace-file.mjs'
 import { nativeCatalog, nativeId, nativeUuid } from './server/native-history.mjs'
 import { commandExecution, completeExecution, toolLocations } from './server/tool-activity.mjs'
@@ -2762,6 +2763,36 @@ export function apply(ctx, config = {}) {
       const data = await body(req)
       if (typeof data?.cwd !== 'string') throw reject(400, 'Expected a workspace path')
       return json(res, 200, await archiveWorkspace(data.cwd))
+    }
+    if (path === '/api/direct-chat/workspaces/git-branches' && req.method === 'GET') {
+      const cwd = url.searchParams.get('cwd') || ''
+      const closed = new AbortController()
+      const onClose = () => closed.abort()
+      res.once('close', onClose)
+      try {
+        const signal = AbortSignal.any([controller.signal, closed.signal])
+        const info = await gitBranchInfo(cwd, signal)
+        if (!res.destroyed) return json(res, 200, info)
+      } finally {
+        res.off('close', onClose)
+      }
+      return
+    }
+    if (path === '/api/direct-chat/workspaces/worktree' && req.method === 'POST') {
+      const data = await body(req)
+      if (typeof data?.cwd !== 'string' || !data.cwd) throw reject(400, 'Expected a workspace path')
+      const from = data.from === undefined || data.from === null ? null : textField(data.from, 'from')
+      const closed = new AbortController()
+      const onClose = () => closed.abort()
+      res.once('close', onClose)
+      try {
+        const signal = AbortSignal.any([controller.signal, closed.signal])
+        const created = await createWorkspaceWorktree(data.cwd, from, signal)
+        if (!res.destroyed) return json(res, 201, created)
+      } finally {
+        res.off('close', onClose)
+      }
+      return
     }
     if (path !== base && !path.startsWith(base + '/')) throw reject(404, 'Unknown endpoint')
     const [id, action, extra] = path.slice(base.length + 1).split('/')
