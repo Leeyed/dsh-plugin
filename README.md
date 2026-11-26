@@ -8,11 +8,12 @@ A DeepSeek Harness (`dsh`) plugin that connects **Claude Code**, **Codex**, and 
 
 - **Multi-CLI Direct Integration**: Run and manage `claude`, `codex`, and `agy` sessions from a unified composer and sidebar.
 - **Multi-Account & Profile Isolation**: Manage multiple OAuth or environment-based profiles per CLI with per-session account binding and default profile switching.
-- **Native History & Archiving**: Import existing terminal CLI sessions and archive/restore sessions back to native CLI storage.
-- **Status & Quota Monitoring**: Live context window usage, token throughput (`tok/s`), account quota windows, and a cross-session status monitor (`SessionPet`).
-- **Workspace Rightbar**: File tree browser, syntax-highlighted code / Markdown / PDF / spreadsheet / media previews, Git diff review annotations, and embedded PTY terminal.
+- **Native History & Archiving**: Import existing terminal CLI sessions, browse merged workspace sources in the sidebar, and archive/restore sessions back to native CLI storage.
+- **Status & Quota Monitoring**: Live context window usage, token throughput (`tok/s`), account quota windows, and a cross-session Task Companion (`SessionPet`).
+- **Task Companion (`SessionPet`)**: Animated pelican status indicator (`idle` / `running` / `attention` / `done`), PC floating approval bubble for background sessions, unseen-completion badge (cleared on view), optional Web Audio alert chimes (off by default), PC `S/M/L` size selector with viewport-clamped drag position, and mobile fullscreen card layout.
+- **Workspace Rightbar**: Resizable split-pane rightbar with file tree browser, syntax-highlighted code / Markdown / PDF / spreadsheet / media / artifact previews (including shared directory aliases), Git diff review annotations, and embedded PTY terminal.
 - **Rich Composer**: `/` slash commands, `@` workspace file & directory mentions with drill-down breadcrumbs, attachments, and queue/steer delivery modes.
-- **Mobile & Desktop Responsive**: Adaptive layout for mobile browsers (fullscreen overlays, two-row composer bar, compact status modal).
+- **Cross-Platform & Responsive**: Supports Linux, macOS, and Windows (CLI wrapper resolution, PATH fallbacks, directory junctions, and Credential Manager OAuth detection), with adaptive layouts for desktop and mobile browsers.
 
 ## Prerequisites
 
