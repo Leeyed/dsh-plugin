@@ -21032,46 +21032,52 @@ var session_pet_default = `.dchat-pet-root {
 .dchat-pet-approval {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  margin: 2px 4px 6px 26px;
-  padding: 8px 10px;
+  gap: 8px;
+  margin: 4px 6px 6px;
+  padding: 10px;
   border-radius: var(--dsw-radius-md, 8px);
-  border: 0.5px solid color-mix(in srgb, var(--dsw-alias-state-warn-label, #f59e0b) 40%, var(--dsw-alias-border-l2));
-  background: color-mix(in srgb, var(--dsw-alias-state-warn-label, #f59e0b) 6%, var(--dsw-alias-bg-base));
+  border: 1px solid var(--dsw-alias-border-l2);
+  background: var(--dsw-alias-bg-module-platform, var(--dsw-alias-bg-layer-1));
 }
 
 .dchat-pet-approval-card {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
 .dchat-pet-approval-card + .dchat-pet-approval-card {
-  padding-top: 6px;
-  border-top: 0.5px solid var(--dsw-alias-border-l2);
+  padding-top: 8px;
+  border-top: 0.5px solid var(--dsw-alias-border-l3);
 }
 
 .dchat-pet-approval-title {
-  font-size: 12px;
-  line-height: 17px;
-  font-weight: 500;
+  font-size: 12.5px;
+  line-height: 18px;
+  font-weight: 600;
   color: var(--dsw-alias-label-primary);
   overflow-wrap: anywhere;
 }
 
 .dchat-pet-approval-detail {
-  font-size: 11px;
-  line-height: 15px;
-  font-family: monospace;
+  max-height: 76px;
+  padding: 6px 8px;
+  overflow: auto;
+  border-radius: var(--dsw-radius-sm, 6px);
+  border: 0.5px solid var(--dsw-alias-border-l3);
+  background: var(--dsw-alias-bg-base);
+  font-size: 11.5px;
+  line-height: 1.45;
+  font-family: var(--ds-font-family-code, monospace);
   color: var(--dsw-alias-label-secondary);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 
 .dchat-pet-approval-actions {
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 6px;
   margin-top: 2px;
 }
@@ -21106,8 +21112,9 @@ var session_pet_default = `.dchat-pet-root {
 
 .dchat-pet-panel-fullscreen .dchat-pet-panel-header {
   flex: none;
-  min-height: 56px;
+  min-height: 54px;
   padding: 0 max(6px, env(safe-area-inset-right)) 0 var(--dchat-pet-inline-start);
+  border-bottom: 0.5px solid var(--dsw-alias-border-l3);
 }
 
 .dchat-pet-panel-fullscreen .dchat-pet-panel-title {
@@ -21151,10 +21158,11 @@ var session_pet_default = `.dchat-pet-root {
 
 .dchat-pet-panel-fullscreen .dchat-pet-empty .dchat-pet-svg {
   box-sizing: content-box;
-  width: 34px;
-  height: 34px;
-  padding: 10px;
-  border-radius: var(--dsw-radius-panel);
+  width: 38px;
+  height: 38px;
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px solid var(--dsw-alias-border-l3);
   background: var(--dsw-alias-bg-layer-1);
   color: var(--dsw-alias-label-secondary);
 }
@@ -21162,31 +21170,60 @@ var session_pet_default = `.dchat-pet-root {
 .dchat-pet-panel-fullscreen .dchat-pet-list {
   min-height: 0;
   margin: 0;
-  padding: 4px var(--dchat-pet-inline-end) 12px var(--dchat-pet-inline-start);
+  padding: 12px var(--dchat-pet-inline-end) 18px var(--dchat-pet-inline-start);
   overscroll-behavior: contain;
-  gap: 0;
+  gap: 10px;
 }
 
-.dchat-pet-panel-fullscreen .dchat-pet-list > li + li {
-  border-top: 0.5px solid var(--dsw-alias-border-l3);
+.dchat-pet-panel-fullscreen .dchat-pet-list > li {
+  border-radius: var(--dsw-radius-lg, 12px);
+  border: 1px solid var(--dsw-alias-border-l2);
+  background: var(--dsw-alias-bg-layer-1);
+  overflow: hidden;
 }
 
 .dchat-pet-panel-fullscreen .dchat-pet-item {
-  min-height: 60px;
-  padding: 10px 2px;
-  gap: 8px;
-  box-shadow: none;
-}
-
-.dchat-pet-panel-fullscreen .dchat-pet-item::before {
-  content: none;
+  min-height: 58px;
+  padding: 12px 14px;
+  gap: 12px;
+  border-radius: 0;
 }
 
 .dchat-pet-panel-fullscreen .dchat-pet-item-logo {
-  width: 28px;
-  height: 28px;
-  border-radius: var(--dsw-radius-sm);
-  background: var(--dsw-alias-bg-layer-1);
+  width: 30px;
+  height: 30px;
+  border-radius: var(--dsw-radius-sm, 6px);
+  background: var(--dsw-alias-bg-base);
+  border: 0.5px solid var(--dsw-alias-border-l3);
+}
+
+.dchat-pet-panel-fullscreen .dchat-pet-approval {
+  margin: 0;
+  padding: 10px 14px 12px;
+  border: 0;
+  border-top: 0.5px solid var(--dsw-alias-border-l3);
+  border-radius: 0;
+  background: var(--dsw-alias-bg-module-platform, var(--dsw-alias-bg-base));
+}
+
+.dchat-pet-panel-fullscreen .dchat-pet-approval-title {
+  font-size: 13px;
+  line-height: 19px;
+}
+
+.dchat-pet-panel-fullscreen .dchat-pet-approval-detail {
+  max-height: 96px;
+  font-size: 12px;
+}
+
+.dchat-pet-panel-fullscreen .dchat-pet-approval-actions {
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.dchat-pet-panel-fullscreen .dchat-pet-approval-actions button {
+  flex: 1 1 auto;
+  min-height: 36px;
 }
 
 .dchat-pet-panel-fullscreen .dchat-pet-item-title {
