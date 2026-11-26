@@ -8,7 +8,7 @@ import {
   IconNewChatOutlineRegular, IconPaperclipOutlineRegular, IconPlusOutlineRegular, IconSendOutlineRegular,
   IconStopFillRegular, Input, isMobileDevice, MarkdownDelegateProvider, MarkdownText,
   IconUsersOutlineRegular, Menu, MenuGroup, MenuSurface, Modal, observeStickyMenuGroups,
-  PermissionIconFullAccessRegular, rankByName, StateDot, Tooltip,
+  PermissionIconFullAccessRegular, rankByName, StateDot, TextShimmer, Tooltip,
 } from '@deepseek-ai/dsh-client-ui-primitives'
 import { AttachmentRail } from '@deepseek-ai/dsh-client-ui-attachment/src/AttachmentRail.tsx'
 import { TurnNavigator } from '@deepseek-ai/dsh-client-ui-chat/src/client/chat/TurnNavigator.tsx'
@@ -83,7 +83,7 @@ function readSavedRightbarWidth() {
 
 const noopRightbarLayout = { openRightbar() {}, closeRightbar() {} }
 
-export function DirectChat({ navigation, startNative, renderFactorySlot, workspaceSource, engineSource, diffController, renderRightbar, performanceSettings, submissionSettings, queueDock, statusStore, nativeSessions, useSessionStatus, useWorkspaces, openDirect, openNative, t }) {
+export function DirectChat({ navigation, startNative, renderFactorySlot, useContextMenu, workspaceSource, engineSource, diffController, renderRightbar, performanceSettings, submissionSettings, queueDock, statusStore, nativeSessions, useSessionStatus, useWorkspaces, openDirect, openNative, t }) {
   const target = useSyncExternalStore(navigation.subscribe, navigation.getSnapshot)
   const { engines, status: engineStatus } = useSyncExternalStore(engineSource.subscribe, engineSource.getSnapshot)
   const diffState = useSyncExternalStore(
@@ -209,7 +209,7 @@ export function DirectChat({ navigation, startNative, renderFactorySlot, workspa
       <div className="dchat-split-handle" role="separator" aria-orientation="vertical"
         onPointerDown={startSplitDrag} onPointerMove={moveSplitDrag} onPointerUp={endSplitDrag} onPointerCancel={endSplitDrag} />
       <aside className="dchat-split-rightbar" style={{ width: `${resolvedRightbarWidth}px` }}>
-        {renderRightbar({ width: resolvedRightbarWidth, viewportWidth, canShow: true, layout: noopRightbarLayout })}
+        {renderRightbar({ useContextMenu, width: resolvedRightbarWidth, viewportWidth, canShow: true, layout: noopRightbarLayout })}
       </aside>
     </>}
   </div>
@@ -755,7 +755,8 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
           })}
           {hasLiveActivity && <TranscriptActivity activity={activity} openFile={openFile} markdown={reasoningMarkdown} streaming={busy}
             expandedTools={activeExpandedTools} toggleExecution={toggleExecution} t={t} />}
-          {busy && <RunningStatus startTime={runStartedAt} paused={false} t={t} />}
+          {busy && (TextShimmer ? <RunningStatus startTime={runStartedAt} paused={false} t={t} />
+            : <span className="dchat-status" role="status">{t('chat.deepDiving')}</span>)}
           {session?.stopReason === 'cancelled' && <span className="dchat-status" role="status">{t('cancelled')}</span>}
         </div></MarkdownDelegateProvider>
       </div>
@@ -975,7 +976,7 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
                 : <span className="dchat-status" role="status"><StateDot state="ongoing" />{t('connecting')}</span>)}
             {busy && <button type="button" className={inputLayout.primary + ' dchat-send'} data-secondary={hasDraft || undefined}
               title={t('stop.current')} aria-label={t('stop.current')}
-              disabled={!ready || Boolean(pending)} onClick={() => perform('cancel')}><IconStopFillRegular size={16} /></button>}
+              disabled={!ready || Boolean(pending)} onClick={() => perform('cancel')}>{IconStopFillRegular ? <IconStopFillRegular size={16} /> : <span aria-hidden="true">■</span>}</button>}
             {(!busy || hasDraft) && <>
               {canSteerDraft && <Menu open={deliveryMenuOpen && canSendPrompt} portal side="top" align="end"
                 onClose={() => setDeliveryMenuOpen(false)} items={['queue','steer'].map(id => ({ id, label: t(`send.${id}`) }))}

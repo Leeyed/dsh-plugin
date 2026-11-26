@@ -36,7 +36,7 @@ function compareSemver(a, b) {
   return 0
 }
 import { workspaceDiff, workspaceDiffText } from './server/workspace-diff.mjs'
-import { imageType, listWorkspaceDirectory, openMediaFile, sendDocument, sendMedia, previewFile } from './server/workspace-file.mjs'
+import { imageType, listWorkspaceDirectory, openMediaFile, sendDocument, sendDownload, sendMedia, previewFile } from './server/workspace-file.mjs'
 import { nativeCatalog, nativeId, nativeUuid } from './server/native-history.mjs'
 import { commandExecution, completeExecution, toolLocations } from './server/tool-activity.mjs'
 
@@ -2830,10 +2830,14 @@ export function apply(ctx, config = {}) {
       requirePresent(id,s?.record)
       return sendQueuedImage(res,s,url.searchParams.get('item'),url.searchParams.get('index'))
     }
-    if (['file', 'files', 'diff', 'diff-text', 'media', 'document'].includes(action) && req.method === 'GET') {
+    if (['file', 'files', 'diff', 'diff-text', 'media', 'document', 'download'].includes(action) &&
+        (req.method === 'GET' || (action === 'download' && req.method === 'HEAD'))) {
       const record=sessions.get(id)?.record ?? (await catalog.list()).get(id)
       if(!record) throw reject(404,'Unknown session')
       requirePresent(id,record)
+      if (action === 'download') return sendDownload(res, record.cwd, url.searchParams.get('path'), {
+        privateRoot: mediaRoot, range: req.headers.range, headersOnly: req.method === 'HEAD',
+      })
       if (action === 'diff' || action === 'diff-text') {
         const closed = new AbortController()
         const onClose = () => closed.abort()

@@ -5,6 +5,8 @@ import {
 } from '@deepseek-ai/dsh-client-ui-primitives'
 import { PdfPreview, TextDocumentPreview } from './DocumentPreview.jsx'
 import { SpreadsheetPreview } from './SpreadsheetPreview.jsx'
+import { resolveWorkspacePath } from '@deepseek-ai/dsh-util-workspace-path'
+import { workspaceEntryTarget } from './workspace-entry-menu.mjs'
 import { previewAttachment, previewFile } from './chat-state.mjs'
 
 const imageTypes = ['image/png', 'image/jpeg', 'image/gif', 'image/webp', 'image/svg+xml', 'image/bmp', 'image/x-icon']
@@ -30,13 +32,18 @@ class PreviewErrorBoundary extends React.Component {
   }
 }
 
-export function WorkspaceFiles({ target, selected, controller, t }) {
+export function WorkspaceFiles({ target, selected, controller, getTriggerProps, openIn, t }) {
   const [revision, refresh] = useState(0)
   const [expanded, setExpanded] = useState(() => new Set())
   const id = target?.id
   if (!id || !target.cwd) return <p className="dchat-preview-status" role="status">{t('files.noWorkspace')}</p>
   const files = {
     id, revision, expanded, visible: !selected, t,
+    trigger(entry) {
+      return getTriggerProps?.({ kind: workspaceEntryTarget, value: {
+        sessionId: id, entry, absolutePath: entry.path ? resolveWorkspacePath(target.cwd, entry.path) : target.cwd, openIn,
+      } })
+    },
     open: path => controller.openFile(id, { path }),
     toggle(path) {
       setExpanded(previous => {
@@ -53,7 +60,7 @@ export function WorkspaceFiles({ target, selected, controller, t }) {
     </PreviewErrorBoundary>}
     <div className="dchat-files-pane" hidden={Boolean(selected)}>
       <div className="dchat-preview-toolbar">
-        <PathLabel path={target.cwd} className="dchat-preview-path" />
+        <PathLabel path={target.cwd} className="dchat-preview-path" {...files.trigger({ path: '', directory: true })} />
         <Tooltip label={t('diff.refresh')} side="bottom">
           <Button size="sm" className="dchat-diff-icon" aria-label={t('diff.refresh')} onClick={() => refresh(value => value + 1)}>
             <IconRefreshOutlineRegular size={15} />
@@ -97,10 +104,12 @@ function WorkspaceDirectory({ files, path }) {
     <ul className="dchat-files-list">
       {result.entries.map(entry => {
         const open = entry.directory && expanded.has(entry.path)
+        const activate = () => entry.directory ? files.toggle(entry.path) : files.open(entry.path)
         return <li key={entry.path} className="dchat-files-entry">
           <button type="button" className="dchat-files-row" title={entry.path}
             aria-expanded={entry.directory ? open : undefined}
-            onClick={() => entry.directory ? files.toggle(entry.path) : files.open(entry.path)}>
+            {...files.trigger(entry)}
+            onClick={activate}>
             <span className="dchat-files-chevron" aria-hidden="true">
               {entry.directory && <IconChevronRightOutlineRegular size={12} />}
             </span>

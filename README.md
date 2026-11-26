@@ -18,6 +18,7 @@ A DeepSeek Harness (`dsh`) plugin that connects **Claude Code**, **Codex**, and 
 ## Prerequisites
 
 - [DeepSeek Harness (`dsh`)](https://github.com/deepseek-ai/deepseek-harness) installed and available.
+- Recommended DSH version: `0.2.2-rc.5`, matching the plugin’s UI build dependencies. The plugin includes a task-list icon fix for `0.2.2-rc.1`; full compatibility with that release is unverified. Check your version with `dsh --version`.
 - At least one supported CLI installed on your machine (`claude`, `codex`, or `agy`).
 
 ## Installation (Prebuilt)

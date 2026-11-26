@@ -1,7 +1,7 @@
 import { pipeline } from 'node:stream/promises'
 import { constants } from 'node:fs'
 import { open, opendir, realpath } from 'node:fs/promises'
-import { extname, isAbsolute, relative, resolve, sep } from 'node:path'
+import { basename, extname, isAbsolute, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const limit = 512 * 1024
@@ -166,6 +166,20 @@ export async function openMediaFile(cwd, requestedPath, scope) {
   }
 }
 
+export async function sendDownload(response, cwd, requestedPath, { privateRoot, range, headersOnly }) {
+  const path = normalizeRequestedPath(requestedPath)
+  if (isAbsolute(path)) throw fail(400, 'Expected a workspace-relative file path')
+  const name = basename(resolve(cwd, path))
+  const fallback = name.replace(/[^ -~]|["\\%]/g, '_')
+  const encoded = encodeURIComponent(name).replace(/['()*]/g, char => '%' + char.charCodeAt(0).toString(16).toUpperCase())
+  const headers = {
+    'Content-Disposition': `attachment; filename="${fallback}"; filename*=UTF-8''${encoded}`,
+    'X-Content-Type-Options': 'nosniff',
+  }
+  const file = await openScopedFile(cwd, path, { privateRoot })
+  return sendMedia(response, { ...file, mimeType: 'application/octet-stream', headers, headersOnly }, range)
+}
+
 function fileVersion({ dev, ino, size, mtimeNs, ctimeNs }) {
   return [dev, ino, size, mtimeNs, ctimeNs].join(':')
 }
@@ -245,10 +259,10 @@ export async function sendDocument(response, cwd, requestedPath, scope, { office
   } finally { await file.handle.close() }
 }
 
-export async function sendMedia(response, { handle, bytes, size, mimeType, headers: extraHeaders }, rangeHeader) {
+export async function sendMedia(response, { handle, bytes, size, mimeType, headers: extraHeaders, headersOnly }, rangeHeader) {
   try {
     const headers = { 'Content-Type': mimeType, 'Accept-Ranges': 'bytes', 'Cache-Control': 'no-store', ...extraHeaders }
-    const range = /^bytes=(\d*)-(\d*)$/i.exec(rangeHeader ?? '')
+    const range = headersOnly ? null : /^bytes=(\d*)-(\d*)$/i.exec(rangeHeader ?? '')
     let start = 0
     let end = size - 1
     if (range) {
@@ -266,6 +280,7 @@ export async function sendMedia(response, { handle, bytes, size, mimeType, heade
       headers['Content-Range'] = `bytes ${start}-${end}/${size}`
     }
     response.writeHead(range ? 206 : 200, { ...headers, 'Content-Length': end - start + 1 })
+    if (headersOnly) { response.end(); return }
     if (bytes) { response.end(bytes.subarray(start, end + 1)); return }
     if (!size) { response.end(); return }
     await pipeline(handle.createReadStream({ start, end }), response)

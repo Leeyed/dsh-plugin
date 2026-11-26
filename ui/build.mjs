@@ -76,6 +76,13 @@ const { outputFiles } = await build({
       build.onResolve({ filter: /^@deepseek-ai\/dsh-(?:experimental-client-ui-forge|client-ui-(?:attachment|chat|conversation|input-trigger|jobs|sidebar-right|sidebar-terminal|workspace))\/src\// }, ({ path }) => ({
         path: native.resolve(path),
       }))
+      build.onLoad({ filter: /JobListAction\.tsx$/ }, async ({ path }) => {
+        if (!path.includes('dsh-client-ui-jobs')) return
+        const source = await readFile(path, 'utf8')
+        // The rc.1 host exposes the checklist icon for the task list.
+        const contents = replaceExact(source, 'IconLayersOutlineRegular,', 'IconChecklistOutlineRegular as IconLayersOutlineRegular,', 'JobListAction icon')
+        return { contents, loader: 'tsx', resolveDir: dirname(path) }
+      })
       build.onLoad({ filter: /WorkspaceBrowser\.tsx$/ }, async ({ path }) => {
         if (!path.includes('dsh-client-ui-workspace')) return
         let source = await readFile(path, 'utf8')

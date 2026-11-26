@@ -227,6 +227,62 @@ test('document routes return scoped preview bytes and use the host Office conver
   assert.equal((await call('GET',`/${sibling}/document?attachment=${previewId}`)).status,404)
   const privatePath = join(dir,'direct-chat','media',source,previewId+'.pptx')
   assert.equal((await call('GET',`/${sibling}/document?${new URLSearchParams({path:privatePath})}`)).status,403)
+  await t.test('downloads stream original bytes from the workspace tree only', async () => {
+    const download = (path,id=source) => call('GET',`/${id}/download?${new URLSearchParams({path})}`)
+    const name = '原始 "文档".docx'
+    await writeFile(join(workspace,name),office)
+    const original = await download(name)
+    assert.equal(original.status,200)
+    assert.equal(original.headers['Content-Type'],'application/octet-stream')
+    assert.equal(original.headers['X-Content-Type-Options'],'nosniff')
+    assert.equal(original.headers['Cache-Control'],'no-store')
+    assert.match(original.headers['Content-Disposition'],/^attachment; filename="[\x20-\x21\x23-\x5b\x5d-\x7e]+";/)
+    assert.ok(original.headers['Content-Disposition'].endsWith(`filename*=UTF-8''${encodeURIComponent(name)}`))
+    assert.deepEqual(original.data,office)
+    const head = path => call('HEAD',`/${source}/download?${new URLSearchParams({path})}`)
+    const available = await head(name)
+    assert.equal(available.status,200)
+    assert.deepEqual(available.headers,original.headers)
+    assert.equal(available.data.length,0)
+    assert.equal((await head('missing')).status,404)
+    assert.equal((await head('escape.pptx')).status,403)
+    assert.equal((await download(join(workspace,name))).status,400)
+    assert.equal((await download(pathToFileURL(join(shared,'sample.xlsx')).href)).status,400)
+    await symlink(join(shared,'sample.xlsx'),join(workspace,'shared.xlsx'))
+    assert.equal((await download('shared.xlsx')).status,403)
+
+    const enclosing = (await call('POST','',{engine:'mock',cwd:dir})).data.id
+    await call('POST',`/${enclosing}/prompt`,{text:'',attachments:[{
+      name:'private.pptx',type:'file',mimeType:'application/octet-stream',data:office.toString('base64'),
+    }]})
+    await setImmediate()
+    const own = (await call('GET',`/${enclosing}`)).data.messages[0].attachments[0].previewId
+    const ownPrivate = join('direct-chat','media',enclosing,own+'.pptx')
+    assert.equal((await download(ownPrivate,enclosing)).status,403)
+    await symlink(join(dir,ownPrivate),join(dir,'private-link.pptx'))
+    assert.equal((await download('private-link.pptx',enclosing)).status,403)
+    assert.equal((await download(join('direct-chat','media',source,previewId+'.pptx'),enclosing)).status,403)
+    assert.equal((await download('escape.pptx')).status,403)
+    assert.equal((await download('../secret.pptx')).status,403)
+    assert.equal((await download('missing')).status,404)
+    assert.equal((await download('.')).status,415)
+    assert.equal((await call('GET',`/${source}/download`)).status,400)
+    assert.equal((await download(name,'00000000-0000-4000-8000-000000000000')).status,404)
+
+    await writeFile(join(workspace,'empty'),'')
+    const empty = await download('empty')
+    assert.equal(empty.status,200)
+    assert.equal(empty.headers['Content-Length'],0)
+    assert.equal(empty.data.length,0)
+
+    const bytes = Buffer.alloc(32 * 1024 * 1024 + 1,0xff)
+    bytes[0] = 0
+    await writeFile(join(workspace,'large.bin'),bytes)
+    const large = await download('large.bin')
+    assert.equal(large.status,200)
+    assert.equal(large.headers['Content-Length'],bytes.length)
+    assert.deepEqual(large.data,bytes)
+  })
   assert.deepEqual(converted,['docx','pptx'])
   replaceSource = true
   assert.equal((await document('example.docx')).status,409)

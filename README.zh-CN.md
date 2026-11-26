@@ -18,6 +18,7 @@
 ## 前置条件
 
 - 已安装 [DeepSeek Harness (`dsh`)](https://github.com/deepseek-ai/deepseek-harness)。
+- 推荐 DSH 版本为 `0.2.2-rc.5`，与插件的前端构建依赖一致。插件已适配 `0.2.2-rc.1` 的任务列表图标，该版本的完整兼容性仍待验证。可用 `dsh --version` 查看本机版本。
 - 本机至少已安装一个支持的 CLI（`claude`、`codex` 或 `agy`）。
 
 ## 安装使用（开箱即用）

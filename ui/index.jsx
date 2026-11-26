@@ -12,6 +12,8 @@ import { MergedWorkspaceBrowser } from './MergedWorkspaceBrowser.jsx'
 import { sessionStatusCopy } from './SessionStatus.jsx'
 import statusStyles from './session-status.css'
 import { createQueueDockSource } from './MessageQueue.jsx'
+import { writeClipboard } from '@deepseek-ai/dsh-client-ui-primitives'
+import { workspaceEntryMenu } from './workspace-entry-menu.mjs'
 import { DirectChat } from './DirectChat.jsx'
 import { EngineDropdown } from './EngineHero.jsx'
 import { createEngineCatalog, createDirectStatusStore } from './chat-state.mjs'
@@ -97,6 +99,13 @@ export function apply(ctx) {
     return () => style.remove()
   }, 'direct-chat: styles')
   const t = ctx.locale.bind(panelId)
+  ctx.inject(['fileActions', 'remote', 'remote.session'], child => {
+    child.effect(() => child.contextMenus.register(workspaceEntryMenu({
+      session: child.remote.session, fileActions: child.fileActions, writeClipboard,
+      pathLabel: child.locale.bind('open-in-app'), fileLabel: child.locale.bind('fileActions'),
+      notify: (...args) => child.contextMenus.notify(...args),
+    })), 'direct-chat: workspace file menu')
+  })
   const workspaceList = ctx.workspaces.list
   const workspaceSource = {
     getSnapshot: () => workspaceList.getSnapshot(),

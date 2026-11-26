@@ -173,12 +173,12 @@ export function WorkspaceDiffPane({
     })
   }, [sessionKey, readSurface])
 
-  const openTab = useCallback((kind, { paneId, replaceTab, requested } = {}) => {
+  const openTab = useCallback((kind, { paneId, replaceTab, requested, destination } = {}) => {
     const current = readSurface()?.layout
     if (!current) return
     const pane = paneId ? getPane(current, paneId) : getPane(current, activeDockPaneId(current))
-    const destination = pane.host === 'dock' ? pane : getPane(current, activeDockPaneId(current))
-    const active = current.tabs[destination.activeTabId]
+    const dockPane = pane.host === 'dock' ? pane : getPane(current, activeDockPaneId(current))
+    const active = current.tabs[dockPane.activeTabId]
     const replace = replaceTab ?? (active?.kind === GUIDE_KIND ? active.id : undefined)
     let contentId = kind
     if (requested) contentId = requested.attachmentId ? 'attachment:' + requested.attachmentId : 'file:' + requested.path
@@ -188,10 +188,24 @@ export function WorkspaceDiffPane({
     let openedTab
     actions.openContent(sessionKey, {
       kind, contentId, title: workspaceTabTitle(kind, t, requested),
-      paneId: destination.id, replaceTab: replace,
+      paneId: dockPane.id, replaceTab: replace, destination,
       revealIfOpened: kind !== 'browser' && kind !== 'terminal',
     }, tabId => { openedTab = tabId })
-    if (requested && openedTab) updateTabDetails(openedTab, { requested })
+    if (requested && openedTab && (!destination || !current.tabs[openedTab])) {
+      updateTabDetails(openedTab, { requested })
+    }
+    if (destination === 'float' && openedTab) {
+      const floated = findTabPane(readSurface().layout, openedTab)
+      if (current.floats.includes(floated.id)) return
+      const rect = floated.rect
+      const width = Math.min(rect.width, window.innerWidth)
+      const height = Math.min(rect.height, window.innerHeight)
+      const x = Math.min(rect.x, window.innerWidth - width)
+      const y = Math.min(rect.y, window.innerHeight - height)
+      if (width !== rect.width || height !== rect.height || x !== rect.x || y !== rect.y) {
+        actions.resizeFloat(sessionKey, floated.id, { x, y, width, height })
+      }
+    }
   }, [actions, sessionKey, readSurface, t, updateTabDetails])
 
   useLayoutEffect(() => {
@@ -346,7 +360,13 @@ export function WorkspaceDiffPane({
           useEntryPins={selectEmpty} useEntryActions={selectFalse}
           renderSlot={guideFallback} renderSlotChain={guideFallback} t={t} />
       case 'files':
-        return <WorkspaceFiles target={target} selected={null} controller={controller} t={t} />
+        return <WorkspaceFiles getTriggerProps={getTriggerProps} target={target} selected={null} controller={controller} t={t}
+          openIn={(path, destination) => {
+            const current = controller.getSnapshot()
+            if (current.open && workspaceSessionKey(current.target) === sessionKey) {
+              openTab('file', { requested: { path }, destination })
+            }
+          }} />
       case 'file':
         return details.requested && <WorkspaceFiles target={target} selected={details.requested}
           controller={{ ...controller, browseFiles: () => openTab('files', { paneId }) }} t={t} />
