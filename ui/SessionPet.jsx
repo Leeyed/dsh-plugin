@@ -4,6 +4,7 @@ import { engineLabel, sessionAction } from './chat-state.mjs'
 import { EngineLogo } from './EngineHero.jsx'
 
 const PET_POS_KEY = 'dsh-direct-chat.pet-pos'
+const PET_SOUND_KEY = 'dsh-direct-chat.pet-sound'
 const emptyNative = { byId: {}, ids: [] }
 const emptyNativeStore = { getSnapshot: () => emptyNative, subscribe: () => () => {} }
 const emptyNativeStatus = new Map()
@@ -11,12 +12,149 @@ const useEmptyNativeStatus = () => emptyNativeStatus
 const useEmptyWorkspaces = () => undefined
 const mobileViewport = '(max-width: 767px)'
 
+let audioCtx = null
+let lastChimeAt = 0
+let hydratedTasks = false
+const prevTaskStates = new Map()
+const seenDoneKeys = new Set()
+const petAlertListeners = new Set()
+let petAlertSnapshot = { soundEnabled: readSoundEnabled(), seenRevision: 0 }
+
+function readSoundEnabled() {
+  try { return localStorage.getItem(PET_SOUND_KEY) === 'true' } catch { return false }
+}
+
+function emitPetAlert() {
+  petAlertSnapshot = { soundEnabled: petAlertSnapshot.soundEnabled, seenRevision: petAlertSnapshot.seenRevision + 1 }
+  for (const listener of petAlertListeners) listener()
+}
+
+function getAudioContext() {
+  if (typeof window === 'undefined') return null
+  const Ctor = window.AudioContext || window.webkitAudioContext
+  if (!Ctor) return null
+  if (!audioCtx) {
+    try { audioCtx = new Ctor() } catch { return null }
+  }
+  return audioCtx
+}
+
+function scheduleTone(ctx, freq, startOffset, duration, type = 'sine', peak = 0.08) {
+  const start = ctx.currentTime + startOffset
+  const osc = ctx.createOscillator()
+  const gain = ctx.createGain()
+  osc.type = type
+  osc.frequency.setValueAtTime(freq, start)
+  gain.gain.setValueAtTime(0.0001, start)
+  gain.gain.exponentialRampToValueAtTime(peak, start + 0.015)
+  gain.gain.exponentialRampToValueAtTime(0.0001, start + duration)
+  osc.connect(gain)
+  gain.connect(ctx.destination)
+  osc.start(start)
+  osc.stop(start + duration + 0.02)
+}
+
+function playAlertSound(kind, { force = false } = {}) {
+  if (!force) {
+    const now = Date.now()
+    if (now - lastChimeAt < 400) return
+    lastChimeAt = now
+  }
+  const ctx = getAudioContext()
+  if (!ctx) return
+  const trigger = () => {
+    if (ctx.state !== 'running') return
+    if (kind === 'attention') {
+      scheduleTone(ctx, 698.46, 0, 0.11, 'triangle', 0.075)
+      scheduleTone(ctx, 880, 0.13, 0.14, 'triangle', 0.075)
+    } else {
+      scheduleTone(ctx, 1046.5, 0, 0.1, 'sine', 0.075)
+      scheduleTone(ctx, 1318.51, 0.09, 0.16, 'sine', 0.075)
+    }
+  }
+  if (ctx.state === 'suspended') {
+    void ctx.resume().then(trigger).catch(() => {})
+  } else {
+    trigger()
+  }
+}
+
+const petAlertStore = {
+  subscribe: listener => {
+    petAlertListeners.add(listener)
+    return () => petAlertListeners.delete(listener)
+  },
+  getSnapshot: () => petAlertSnapshot,
+  toggleSound: () => {
+    const next = !petAlertSnapshot.soundEnabled
+    petAlertSnapshot = { ...petAlertSnapshot, soundEnabled: next }
+    try { localStorage.setItem(PET_SOUND_KEY, String(next)) } catch {}
+    for (const listener of petAlertListeners) listener()
+    if (next) playAlertSound('done', { force: true })
+  },
+  markDoneSeen: tasks => {
+    let changed = false
+    for (const item of tasks) {
+      if (item.state === 'done' && !seenDoneKeys.has(item.key)) {
+        seenDoneKeys.add(item.key)
+        changed = true
+      }
+    }
+    if (changed) emitPetAlert()
+  },
+  syncTasks: tasks => {
+    const currentStates = new Map()
+    for (const item of tasks) currentStates.set(item.key, item.state)
+    let pruned = false
+    for (const key of seenDoneKeys) {
+      if (currentStates.get(key) !== 'done') {
+        seenDoneKeys.delete(key)
+        pruned = true
+      }
+    }
+    if (!hydratedTasks) {
+      for (const [k, v] of currentStates) prevTaskStates.set(k, v)
+      hydratedTasks = true
+      if (pruned) emitPetAlert()
+      return
+    }
+    let alertKind = null
+    for (const item of tasks) {
+      const prev = prevTaskStates.get(item.key)
+      if (item.state === 'attention' && prev !== 'attention') {
+        alertKind = 'attention'
+        break
+      }
+      if (item.state === 'done' && prev === 'running') {
+        alertKind = 'done'
+      }
+    }
+    prevTaskStates.clear()
+    for (const [k, v] of currentStates) prevTaskStates.set(k, v)
+    if (pruned) emitPetAlert()
+    if (alertKind && petAlertSnapshot.soundEnabled) playAlertSound(alertKind)
+  },
+}
+
+function SoundIcon({ enabled, size = 16 }) {
+  return <svg width={size} height={size} viewBox="0 0 16 16" fill="none" stroke="currentColor"
+    strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M2.5 6.2H5l3.5-2.7v9L5 9.8H2.5a.5.5 0 0 1-.5-.5V6.7a.5.5 0 0 1 .5-.5Z" />
+    {enabled
+      ? <>
+        <path d="M10.8 5.6a3.3 3.3 0 0 1 0 4.8" />
+        <path d="M12.7 3.9a5.7 5.7 0 0 1 0 8.2" />
+      </>
+      : <path d="m11 5.8 3.4 4.4m0-4.4L11 10.2" />}
+  </svg>
+}
+
 function readSavedPos() {
   try {
     const raw = localStorage.getItem(PET_POS_KEY)
     if (!raw) return null
     const parsed = JSON.parse(raw)
-    if (Number.isFinite(parsed?.x) && Number.isFinite(parsed?.y)) return { x: parsed.x, y: parsed.y }
+    if (Number.isFinite(parsed?.x) && Number.isFinite(parsed?.y)) return clampPos(parsed.x, parsed.y)
   } catch {}
   return null
 }
@@ -75,6 +213,7 @@ export function SessionPet({
   const nativeStatus = useSessionStatus(snapshot => snapshot)
   const archivedNativeIds = useWorkspaces(snapshot => snapshot?.archivedSessionIds)
   const { engines } = useSyncExternalStore(engineSource.subscribe, engineSource.getSnapshot)
+  const { soundEnabled, seenRevision } = useSyncExternalStore(petAlertStore.subscribe, petAlertStore.getSnapshot)
   const [open, setOpen] = useState(false)
   const [approvingKey, setApprovingKey] = useState(null)
   const [pos, setPos] = useState(() => readSavedPos())
@@ -152,20 +291,33 @@ export function SessionPet({
     let running = 0
     let attention = 0
     let done = 0
+    let unseenDone = 0
     for (const item of tasks) {
       if (item.state === 'running') running++
       else if (item.state === 'attention') attention++
-      else if (item.state === 'done') done++
+      else if (item.state === 'done') {
+        done++
+        if (!seenDoneKeys.has(item.key)) unseenDone++
+      }
     }
-    return { running, attention, done }
+    return { running, attention, done, unseenDone }
+  }, [tasks, seenRevision])
+
+  useEffect(() => {
+    petAlertStore.syncTasks(tasks)
   }, [tasks])
+
+  useEffect(() => {
+    if (open) petAlertStore.markDoneSeen(tasks)
+  }, [open, tasks])
 
   const mood = counts.attention > 0 ? 'attention'
     : counts.running > 0 ? 'running'
     : counts.done > 0 ? 'done'
     : 'idle'
 
-  const activeCount = counts.attention + counts.running + counts.done
+  const badgeMood = counts.attention > 0 ? 'attention' : counts.unseenDone > 0 ? 'done' : null
+  const badgeCount = counts.attention > 0 ? counts.attention : counts.unseenDone
   const openBelow = pos ? pos.y < 280 : true
   const alignLeft = pos ? pos.x < 220 : false
 
@@ -220,6 +372,13 @@ export function SessionPet({
         }}>
           {t(hasNativeCompletion ? 'pet.clearDirectDone' : 'pet.clearDone')}
         </button>}
+        <button type="button" className="dchat-pet-sound" data-enabled={soundEnabled || undefined}
+          aria-pressed={soundEnabled}
+          aria-label={t(soundEnabled ? 'pet.soundOn' : 'pet.soundOff')}
+          title={t(soundEnabled ? 'pet.soundOn' : 'pet.soundOff')}
+          onClick={() => petAlertStore.toggleSound()}>
+          <SoundIcon enabled={soundEnabled} size={isHeader ? 18 : 15} />
+        </button>
         <button type="button" ref={closeRef} className="dchat-pet-close" aria-label={t('close')} onClick={closePanel}
           data-modal-autofocus={isHeader ? '' : undefined}>
           <IconCloseOutlineRegular size={isHeader ? 20 : 16} />
@@ -299,11 +458,11 @@ export function SessionPet({
         setOpen(true)
       }}>
       <PetSprite mood={mood} />
-      {activeCount > 0 && <span className="dchat-pet-badge" data-mood={mood}>{activeCount > 99 ? '99+' : activeCount}</span>}
+      {badgeCount > 0 && <span className="dchat-pet-badge" data-mood={badgeMood}>{badgeCount > 99 ? '99+' : badgeCount}</span>}
     </button> : <button type="button" className="dchat-pet-fab" title={t('pet.title')} aria-label={t('pet.title')}
       aria-expanded={open} onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp}>
       <PetSprite mood={mood} />
-      {activeCount > 0 && <span className="dchat-pet-badge" data-mood={mood}>{activeCount}</span>}
+      {badgeCount > 0 && <span className="dchat-pet-badge" data-mood={badgeMood}>{badgeCount > 99 ? '99+' : badgeCount}</span>}
     </button>}
   </div>
 }

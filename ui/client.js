@@ -16625,6 +16625,7 @@ var import_react39 = require("react");
 var import_dsh_client_ui_primitives39 = require("@deepseek-ai/dsh-client-ui-primitives");
 var import_jsx_runtime44 = require("react/jsx-runtime");
 var PET_POS_KEY = "dsh-direct-chat.pet-pos";
+var PET_SOUND_KEY = "dsh-direct-chat.pet-sound";
 var emptyNative = { byId: {}, ids: [] };
 var emptyNativeStore = { getSnapshot: () => emptyNative, subscribe: () => () => {
 } };
@@ -16632,12 +16633,164 @@ var emptyNativeStatus = /* @__PURE__ */ new Map();
 var useEmptyNativeStatus = () => emptyNativeStatus;
 var useEmptyWorkspaces = () => void 0;
 var mobileViewport = "(max-width: 767px)";
+var audioCtx = null;
+var lastChimeAt = 0;
+var hydratedTasks = false;
+var prevTaskStates = /* @__PURE__ */ new Map();
+var seenDoneKeys = /* @__PURE__ */ new Set();
+var petAlertListeners = /* @__PURE__ */ new Set();
+var petAlertSnapshot = { soundEnabled: readSoundEnabled(), seenRevision: 0 };
+function readSoundEnabled() {
+  try {
+    return localStorage.getItem(PET_SOUND_KEY) === "true";
+  } catch {
+    return false;
+  }
+}
+function emitPetAlert() {
+  petAlertSnapshot = { soundEnabled: petAlertSnapshot.soundEnabled, seenRevision: petAlertSnapshot.seenRevision + 1 };
+  for (const listener of petAlertListeners) listener();
+}
+function getAudioContext() {
+  if (typeof window === "undefined") return null;
+  const Ctor = window.AudioContext || window.webkitAudioContext;
+  if (!Ctor) return null;
+  if (!audioCtx) {
+    try {
+      audioCtx = new Ctor();
+    } catch {
+      return null;
+    }
+  }
+  return audioCtx;
+}
+function scheduleTone(ctx, freq, startOffset, duration, type = "sine", peak = 0.08) {
+  const start = ctx.currentTime + startOffset;
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.type = type;
+  osc.frequency.setValueAtTime(freq, start);
+  gain.gain.setValueAtTime(1e-4, start);
+  gain.gain.exponentialRampToValueAtTime(peak, start + 0.015);
+  gain.gain.exponentialRampToValueAtTime(1e-4, start + duration);
+  osc.connect(gain);
+  gain.connect(ctx.destination);
+  osc.start(start);
+  osc.stop(start + duration + 0.02);
+}
+function playAlertSound(kind, { force = false } = {}) {
+  if (!force) {
+    const now = Date.now();
+    if (now - lastChimeAt < 400) return;
+    lastChimeAt = now;
+  }
+  const ctx = getAudioContext();
+  if (!ctx) return;
+  const trigger = () => {
+    if (ctx.state !== "running") return;
+    if (kind === "attention") {
+      scheduleTone(ctx, 698.46, 0, 0.11, "triangle", 0.075);
+      scheduleTone(ctx, 880, 0.13, 0.14, "triangle", 0.075);
+    } else {
+      scheduleTone(ctx, 1046.5, 0, 0.1, "sine", 0.075);
+      scheduleTone(ctx, 1318.51, 0.09, 0.16, "sine", 0.075);
+    }
+  };
+  if (ctx.state === "suspended") {
+    void ctx.resume().then(trigger).catch(() => {
+    });
+  } else {
+    trigger();
+  }
+}
+var petAlertStore = {
+  subscribe: (listener) => {
+    petAlertListeners.add(listener);
+    return () => petAlertListeners.delete(listener);
+  },
+  getSnapshot: () => petAlertSnapshot,
+  toggleSound: () => {
+    const next = !petAlertSnapshot.soundEnabled;
+    petAlertSnapshot = { ...petAlertSnapshot, soundEnabled: next };
+    try {
+      localStorage.setItem(PET_SOUND_KEY, String(next));
+    } catch {
+    }
+    for (const listener of petAlertListeners) listener();
+    if (next) playAlertSound("done", { force: true });
+  },
+  markDoneSeen: (tasks) => {
+    let changed = false;
+    for (const item of tasks) {
+      if (item.state === "done" && !seenDoneKeys.has(item.key)) {
+        seenDoneKeys.add(item.key);
+        changed = true;
+      }
+    }
+    if (changed) emitPetAlert();
+  },
+  syncTasks: (tasks) => {
+    const currentStates = /* @__PURE__ */ new Map();
+    for (const item of tasks) currentStates.set(item.key, item.state);
+    let pruned = false;
+    for (const key of seenDoneKeys) {
+      if (currentStates.get(key) !== "done") {
+        seenDoneKeys.delete(key);
+        pruned = true;
+      }
+    }
+    if (!hydratedTasks) {
+      for (const [k, v] of currentStates) prevTaskStates.set(k, v);
+      hydratedTasks = true;
+      if (pruned) emitPetAlert();
+      return;
+    }
+    let alertKind = null;
+    for (const item of tasks) {
+      const prev = prevTaskStates.get(item.key);
+      if (item.state === "attention" && prev !== "attention") {
+        alertKind = "attention";
+        break;
+      }
+      if (item.state === "done" && prev === "running") {
+        alertKind = "done";
+      }
+    }
+    prevTaskStates.clear();
+    for (const [k, v] of currentStates) prevTaskStates.set(k, v);
+    if (pruned) emitPetAlert();
+    if (alertKind && petAlertSnapshot.soundEnabled) playAlertSound(alertKind);
+  }
+};
+function SoundIcon({ enabled, size = 16 }) {
+  return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
+    "svg",
+    {
+      width: size,
+      height: size,
+      viewBox: "0 0 16 16",
+      fill: "none",
+      stroke: "currentColor",
+      strokeWidth: "1.4",
+      strokeLinecap: "round",
+      strokeLinejoin: "round",
+      "aria-hidden": "true",
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M2.5 6.2H5l3.5-2.7v9L5 9.8H2.5a.5.5 0 0 1-.5-.5V6.7a.5.5 0 0 1 .5-.5Z" }),
+        enabled ? /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(import_jsx_runtime44.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M10.8 5.6a3.3 3.3 0 0 1 0 4.8" }),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "M12.7 3.9a5.7 5.7 0 0 1 0 8.2" })
+        ] }) : /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("path", { d: "m11 5.8 3.4 4.4m0-4.4L11 10.2" })
+      ]
+    }
+  );
+}
 function readSavedPos() {
   try {
     const raw = localStorage.getItem(PET_POS_KEY);
     if (!raw) return null;
     const parsed = JSON.parse(raw);
-    if (Number.isFinite(parsed?.x) && Number.isFinite(parsed?.y)) return { x: parsed.x, y: parsed.y };
+    if (Number.isFinite(parsed?.x) && Number.isFinite(parsed?.y)) return clampPos(parsed.x, parsed.y);
   } catch {
   }
   return null;
@@ -16714,6 +16867,7 @@ function SessionPet({
   const nativeStatus = useSessionStatus((snapshot) => snapshot);
   const archivedNativeIds = useWorkspaces((snapshot) => snapshot?.archivedSessionIds);
   const { engines } = (0, import_react39.useSyncExternalStore)(engineSource.subscribe, engineSource.getSnapshot);
+  const { soundEnabled, seenRevision } = (0, import_react39.useSyncExternalStore)(petAlertStore.subscribe, petAlertStore.getSnapshot);
   const [open, setOpen] = (0, import_react39.useState)(false);
   const [approvingKey, setApprovingKey] = (0, import_react39.useState)(null);
   const [pos, setPos] = (0, import_react39.useState)(() => readSavedPos());
@@ -16786,15 +16940,26 @@ function SessionPet({
     let running = 0;
     let attention = 0;
     let done = 0;
+    let unseenDone = 0;
     for (const item of tasks) {
       if (item.state === "running") running++;
       else if (item.state === "attention") attention++;
-      else if (item.state === "done") done++;
+      else if (item.state === "done") {
+        done++;
+        if (!seenDoneKeys.has(item.key)) unseenDone++;
+      }
     }
-    return { running, attention, done };
+    return { running, attention, done, unseenDone };
+  }, [tasks, seenRevision]);
+  (0, import_react39.useEffect)(() => {
+    petAlertStore.syncTasks(tasks);
   }, [tasks]);
+  (0, import_react39.useEffect)(() => {
+    if (open) petAlertStore.markDoneSeen(tasks);
+  }, [open, tasks]);
   const mood = counts.attention > 0 ? "attention" : counts.running > 0 ? "running" : counts.done > 0 ? "done" : "idle";
-  const activeCount = counts.attention + counts.running + counts.done;
+  const badgeMood = counts.attention > 0 ? "attention" : counts.unseenDone > 0 ? "done" : null;
+  const badgeCount = counts.attention > 0 ? counts.attention : counts.unseenDone;
   const openBelow = pos ? pos.y < 280 : true;
   const alignLeft = pos ? pos.x < 220 : false;
   const onPointerDown = (event2) => {
@@ -16849,6 +17014,19 @@ function SessionPet({
           if (isHeader) closeRef.current?.focus();
           void statusStore.ack();
         }, children: t(hasNativeCompletion ? "pet.clearDirectDone" : "pet.clearDone") }),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+          "button",
+          {
+            type: "button",
+            className: "dchat-pet-sound",
+            "data-enabled": soundEnabled || void 0,
+            "aria-pressed": soundEnabled,
+            "aria-label": t(soundEnabled ? "pet.soundOn" : "pet.soundOff"),
+            title: t(soundEnabled ? "pet.soundOn" : "pet.soundOff"),
+            onClick: () => petAlertStore.toggleSound(),
+            children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SoundIcon, { enabled: soundEnabled, size: isHeader ? 18 : 15 })
+          }
+        ),
         /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
           "button",
           {
@@ -16968,7 +17146,7 @@ function SessionPet({
         },
         children: [
           /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(PetSprite, { mood }),
-          activeCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "dchat-pet-badge", "data-mood": mood, children: activeCount > 99 ? "99+" : activeCount })
+          badgeCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "dchat-pet-badge", "data-mood": badgeMood, children: badgeCount > 99 ? "99+" : badgeCount })
         ]
       }
     ) : /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
@@ -16984,7 +17162,7 @@ function SessionPet({
         onPointerUp,
         children: [
           /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(PetSprite, { mood }),
-          activeCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "dchat-pet-badge", "data-mood": mood, children: activeCount })
+          badgeCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "dchat-pet-badge", "data-mood": badgeMood, children: badgeCount > 99 ? "99+" : badgeCount })
         ]
       }
     )
@@ -20712,7 +20890,11 @@ var session_pet_default = `.dchat-pet-root {
 }
 
 .dchat-pet-ack,
+.dchat-pet-sound,
 .dchat-pet-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border: 0;
   border-radius: var(--dsw-radius-sm);
   background: transparent;
@@ -20722,7 +20904,16 @@ var session_pet_default = `.dchat-pet-root {
   padding: 2px 6px;
 }
 
+.dchat-pet-sound {
+  padding: 3px;
+}
+
+.dchat-pet-sound[data-enabled] {
+  color: var(--dsw-alias-label-secondary);
+}
+
 .dchat-pet-ack:hover,
+.dchat-pet-sound:hover,
 .dchat-pet-close:hover {
   color: var(--dsw-alias-label-primary);
   background: var(--dsw-alias-interactive-bg-hover);
@@ -20928,7 +21119,7 @@ var session_pet_default = `.dchat-pet-root {
   gap: 2px;
 }
 
-.dchat-pet-panel-fullscreen :is(.dchat-pet-ack, .dchat-pet-close) {
+.dchat-pet-panel-fullscreen :is(.dchat-pet-ack, .dchat-pet-sound, .dchat-pet-close) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -20941,6 +21132,7 @@ var session_pet_default = `.dchat-pet-root {
   white-space: nowrap;
 }
 
+.dchat-pet-panel-fullscreen .dchat-pet-sound,
 .dchat-pet-panel-fullscreen .dchat-pet-close {
   width: 44px;
 }
@@ -21272,6 +21464,8 @@ var en4 = {
   "pet.clearDone": "Mark all read",
   "pet.clearDirectDone": "Mark CLI tasks read",
   "pet.nativeAttention": "Awaiting input",
+  "pet.soundOn": "Mute task alerts",
+  "pet.soundOff": "Enable task alert sounds",
   "engine.checkUpdate": "Check updates",
   "engine.checking": "Checking\u2026",
   "engine.updateAvailable": "Update to {version}",
@@ -21577,6 +21771,8 @@ var zh4 = {
   "pet.clearDone": "\u5168\u90E8\u5DF2\u8BFB",
   "pet.clearDirectDone": "\u76F4\u8FDE\u4EFB\u52A1\u5DF2\u8BFB",
   "pet.nativeAttention": "\u5F85\u5904\u7406",
+  "pet.soundOn": "\u5173\u95ED\u63D0\u793A\u97F3",
+  "pet.soundOff": "\u5F00\u542F\u63D0\u793A\u97F3",
   "engine.checkUpdate": "\u68C0\u67E5\u66F4\u65B0",
   "engine.checking": "\u6B63\u5728\u68C0\u67E5\u2026",
   "engine.updateAvailable": "\u53EF\u66F4\u65B0\u81F3 {version}",
