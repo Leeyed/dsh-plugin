@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
 import {
-  createSidebarHistory, hideNativeDraft, groupSidebarSessions, mergeSidebarRows, projectSidebarGroups, virtualGroupKey,
+  createSidebarHistory, sidebarAgentRows, hideNativeDraft, groupSidebarSessions, mergeSidebarRows, projectSidebarGroups, virtualGroupKey,
 } from './sidebar-history.mjs'
 
 test('sidebar history groups by exact cwd and sorts each group by recency', () => {
@@ -149,4 +149,14 @@ test('native provisional rows are visible only on the native conversation panel'
   assert.deepEqual(group.sessions,[named])
   assert.equal(group.sessionCount,1)
   assert.equal(group.containsCurrent,false)
+})
+
+test('agent filtering preserves workspaces and row order for current and historical engines', () => {
+  const codex = { id: 'a', engine: 'codex', archived: true }
+  const legacy = { id: 'b', engine: 'removed' }
+  const groups = new Map([['/one', [legacy, codex]], ['/two', [legacy]]])
+  assert.equal(sidebarAgentRows(groups, 'all'), groups)
+  assert.equal(sidebarAgentRows(groups, 'native').size, 0)
+  assert.deepEqual([...sidebarAgentRows(groups, 'engine:codex')], [['/one', [codex]]])
+  assert.deepEqual([...sidebarAgentRows(groups, 'engine:removed')], [['/one', [legacy]], ['/two', [legacy]]])
 })

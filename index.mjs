@@ -2470,6 +2470,9 @@ export function apply(ctx, config = {}) {
     const url = new URL(req.url, 'http://localhost')
     const path = url.pathname
     if (path === '/api/direct-chat/engines' && req.method === 'GET') {
+      await Promise.all(engines.list()
+        .filter(provider => provider.cliInfo && !engineAdmin.get(provider.id)?.checkedAt)
+        .map(provider => inspectEngineAdmin(provider)))
       const agy = engines.get('agy')
       if (agy?.authStatus && agy.readOAuthAccount) await profileAuthStatus(agy, 'default').catch(() => {})
       return json(res, 200, {

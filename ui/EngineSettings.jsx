@@ -340,7 +340,7 @@ export function EngineSettings({ engineSource, focusedEngine, t }) {
         const activeLoginHere = loginJob?.engineId === eng.id
         const startingLoginHere = startingLoginId === eng.id || (activeLoginHere && loginJob.status === 'waiting_url')
         const addButtons = <>
-          {eng.canMultiOAuth && <Button variant={focusedEngine && isAgy ? 'primary' : 'outline'} size="sm" disabled={loginBusy}
+          {eng.canMultiOAuth && <Button variant={focusedEngine && isAgy ? 'primary' : 'outline'} size="sm" disabled={loginBusy || s.installed === false}
             onClick={() => void handleStartLogin(eng.id, { createProfile: true })}>
             + {t('engineSettings.addOAuth')}
           </Button>}
@@ -389,7 +389,7 @@ export function EngineSettings({ engineSource, focusedEngine, t }) {
               </div>}
             </div>
             {focusedEngine ? (addingFor !== eng.id && <div className="dchat-engine-actions">{addButtons}</div>) : <div className="dchat-engine-actions">
-              {s.authenticated === false && eng.canLogin && isOAuthProfile(activeProfile) && <Button variant="primary" size="sm" disabled={loginBusy || isLoggingOut}
+              {s.authenticated === false && eng.canLogin && isOAuthProfile(activeProfile) && <Button variant="primary" size="sm" disabled={loginBusy || isLoggingOut || s.installed === false}
                 onClick={() => void handleStartLogin(eng.id, { profileId: activeProfileId })}>
                 {t('engineSettings.login')}
               </Button>}
@@ -410,6 +410,11 @@ export function EngineSettings({ engineSource, focusedEngine, t }) {
             </div>}
           </div>
 
+          {s.installed === false && isExpanded && <div className="dchat-archive-error" role="status">
+            {t('engine.cliMissing', { engine: eng.id })}
+            {focusedEngine && eng.canCheckUpdate && <Button variant="outline" size="sm" disabled={isChecking}
+              onClick={() => void handleCheck(eng.id)}>{t('engine.retry')}</Button>}
+          </div>}
           {(startingLoginHere || activeLoginHere) && <div className="dchat-profile-form" style={{ fontSize: 12 }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8, flexWrap: 'wrap' }}>
               <span role="status">{t(startingLoginHere ? 'engineSettings.startingLogin' : 'engineSettings.waitingLogin')}</span>
@@ -467,7 +472,7 @@ export function EngineSettings({ engineSource, focusedEngine, t }) {
                       onClick={() => isEditingThis ? setEditingProfile(null) : startEditProfile(eng.id, prof)}>
                       {t('engineSettings.edit')}
                     </Button>}
-                    {isOAuthProfile(prof) && eng.canLogin && prof.authenticated !== true && <Button variant="primary" size="sm" disabled={loginBusy || loggingOutKey === pKey}
+                    {isOAuthProfile(prof) && eng.canLogin && prof.authenticated !== true && <Button variant="primary" size="sm" disabled={loginBusy || loggingOutKey === pKey || s.installed === false}
                       onClick={() => void handleStartLogin(eng.id, { profileId: prof.id })}>
                       {t('engineSettings.login')}
                     </Button>}

@@ -36,6 +36,17 @@ export function sidebarRowVisible(row, filter) {
   return Boolean(row.archived) === (filter === 'only')
 }
 
+export function sidebarAgentRows(byCwd, agent) {
+  if (agent === 'all') return byCwd
+  const matches = new Map()
+  if (agent === 'native') return matches
+  for (const [cwd, rows] of byCwd) {
+    const selected = rows.filter(row => agent === 'engine:' + row.engine)
+    if (selected.length) matches.set(cwd, selected)
+  }
+  return matches
+}
+
 export function mergeSidebarRows(nativeRows, externalRows) {
   if (!externalRows.length) return nativeRows
   const pinned = []

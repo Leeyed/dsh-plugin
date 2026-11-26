@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import {
   Button, FishLogo, IconArchiveOutlineRegular, IconBranchOutlineRegular,
   IconEditOutlineRegular, IconPinFillRegular, IconPinOutlineRegular,
@@ -6,6 +6,7 @@ import {
 } from '@deepseek-ai/dsh-client-ui-primitives'
 import { WorkspaceBrowser } from '@deepseek-ai/dsh-client-ui-workspace/src/client/rows/WorkspaceBrowser.tsx'
 import RowsCss from '@deepseek-ai/dsh-client-ui-workspace/src/client/rows/Rows.module.css'
+import { sidebarDirectorySlot } from './sidebar-directory-flow.mjs'
 import { SidebarProjection, SidebarSessions } from './sidebar.jsx'
 
 function NativeSessionMenuItems({ sessionId, displayTitle, pinned, archived, onPin, onRename, onFork, onArchive, closeMenu, t }) {
@@ -48,87 +49,6 @@ function NativeSessionRowActions({ sessionId, pinned, archived, onPin, onArchive
   </>
 }
 
-function DirectoryPickDialog({ open, busy, directoryPicker, useHostInfo, onPicked, onCancel, onError, t }) {
-  const hostInfo = useHostInfo(info => info)
-  const [pathInput, setPathInput] = useState('')
-  const [entries, setEntries] = useState([])
-  const [loading, setLoading] = useState(false)
-  const desktopPicker = globalThis.__DSH_DIRECTORY_PICKER__
-  const nativePicker = desktopPicker?.pick ? desktopPicker : hostInfo?.nativeDirectoryPicker ? directoryPicker : null
-  const pickedOnceRef = useRef(false)
-
-  useEffect(() => {
-    if (!open) {
-      pickedOnceRef.current = false
-      return
-    }
-    if (nativePicker?.pick) {
-      if (pickedOnceRef.current) return
-      pickedOnceRef.current = true
-      nativePicker.pick().then(
-        res => {
-          if (nativePicker === desktopPicker) {
-            if (res) onPicked(res)
-            else onCancel()
-          } else if (!res.ok) onError(res.error.message)
-          else if (res.value) onPicked(res.value)
-          else onCancel()
-        },
-        err => onError(err?.message || 'Failed to open directory picker'),
-      )
-      return
-    }
-    if (!directoryPicker?.list) return
-    const controller = new AbortController()
-    setLoading(true)
-    directoryPicker.list(pathInput || undefined, controller.signal).then(
-      res => {
-        if (controller.signal.aborted) return
-        setLoading(false)
-        if (res?.ok === false) {
-          onError(res.error?.message || 'Failed to list directories')
-          return
-        }
-        const value = res?.value ?? res
-        if (value?.path && !pathInput) setPathInput(value.path)
-        setEntries(Array.isArray(value?.entries) ? value.entries.filter(item => item.isDirectory !== false) : [])
-      },
-      err => {
-        if (!controller.signal.aborted) {
-          setLoading(false)
-          onError(err?.message || 'Failed to list directories')
-        }
-      },
-    )
-    return () => controller.abort()
-  }, [open, nativePicker, desktopPicker, directoryPicker, pathInput])
-
-  if (!open || nativePicker?.pick) return null
-  return <Modal open title={t('workspace.add')} closeLabel={t('cancel')} onClose={() => { if (!busy) onCancel() }}
-    footer={<>
-      <Button variant="outline" disabled={busy} onClick={onCancel}>{t('cancel')}</Button>
-      <Button variant="primary" disabled={busy || !pathInput.trim()} onClick={() => onPicked(pathInput.trim())}>
-        {t('workspace.add')}
-      </Button>
-    </>}>
-    <input className="dchat-sidebar-rename-input" data-modal-autofocus value={pathInput} disabled={busy}
-      onChange={event => setPathInput(event.target.value)}
-      onKeyDown={event => {
-        if (event.key === 'Enter' && pathInput.trim() && !busy) {
-          event.preventDefault()
-          onPicked(pathInput.trim())
-        }
-      }} />
-    {loading ? <div className="dchat-status">…</div> : entries.length > 0 && <div style={{ maxHeight: 220, overflowY: 'auto', marginTop: 8 }}>
-      {entries.map(entry => <button key={entry.path ?? entry.name} type="button" className={RowsCss.projectRow}
-        style={{ width: '100%', textAlign: 'left' }}
-        onClick={() => setPathInput(entry.path ?? (pathInput ? `${pathInput.replace(/\/$/, '')}/${entry.name}` : entry.name))}>
-        <span className={RowsCss.title}>{entry.name}</span>
-      </button>)}
-    </div>}
-  </Modal>
-}
-
 const defaultContextMenuTarget = () => false
 const defaultContextMenu = () => ({ getTriggerProps: (_target, handlers) => handlers ?? {} })
 const defaultSectionScroller = () => ({ bindScrollerRef: () => {} })
@@ -139,7 +59,7 @@ const emptyFactorySlot = () => null
 
 export function MergedWorkspaceBrowser({
   history, statusStore, navigation, openDirect, panelId, engineSource, archiveRequest,
-  registerWorkspace, directoryPicker, uiWorkspace, sessionsApi, workspacesApi, directT,
+  registerWorkspace, uiWorkspace, sessionsApi, workspacesApi, directT,
   ...browserProps
 }) {
   const workspacesState = browserProps.useWorkspaces(state => state)
@@ -171,7 +91,7 @@ export function MergedWorkspaceBrowser({
   const localRenderSlot = (slotName, ownerProps, options) => {
     switch (slotName) {
       case 'sidebar.workspaces.directoryFlow':
-        return <DirectoryPickDialog {...ownerProps} directoryPicker={directoryPicker} useHostInfo={browserProps.useHostInfo} t={browserProps.t} />
+        return browserProps.renderSlot(sidebarDirectorySlot, ownerProps)
       case 'sidebar.session.row.leading':
         return <span className="dchat-sidebar-native-logo" aria-hidden="true"><FishLogo size={14} /></span>
       case 'sidebar.workspaces.session.menu.item': {

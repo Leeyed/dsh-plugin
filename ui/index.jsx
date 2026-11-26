@@ -8,6 +8,7 @@ import { forgeCopy } from './ForgeChanges.jsx'
 import { WorkspaceDiffPane, diffCopy } from './WorkspaceDiff.jsx'
 import { createWorkspaceViewStore } from '@deepseek-ai/dsh-client-ui-workspace/src/client/stores.ts'
 import { createWorkspaceShortcutControls } from '@deepseek-ai/dsh-client-ui-workspace/src/client/shortcuts.ts'
+import { connectSidebarDirectoryFlow, sidebarDirectorySlot } from './sidebar-directory-flow.mjs'
 import { MergedWorkspaceBrowser } from './MergedWorkspaceBrowser.jsx'
 import { sessionStatusCopy } from './SessionStatus.jsx'
 import statusStyles from './session-status.css'
@@ -187,13 +188,14 @@ export function apply(ctx) {
   const viewInstance = viewHandle.create()
   const viewStore = { ...viewHandle, create: () => viewInstance }
   const shortcutControls = createWorkspaceShortcutControls()
-  const getDirectoryPicker = () => {
-    try { return ctx.get?.('remote.directoryPicker') } catch { return undefined }
-  }
   const getShortcutsCatalog = () => {
     try { return ctx.get?.('shortcuts')?.catalog } catch { return undefined }
   }
-  const directoryFlowSource = { getSnapshot: () => Boolean(getDirectoryPicker()), subscribe: () => () => {} }
+  const directoryFlowSource = {
+    getSnapshot: () => ctx.slots.entriesOfSlot(sidebarDirectorySlot).length > 0,
+    subscribe: listener => ctx.slots.subscribe(sidebarDirectorySlot, listener),
+  }
+  ctx.slots.inject(sidebarDirectorySlot, () => connectSidebarDirectoryFlow(ctx.slots))
   const hostInfoSource = {
     getSnapshot: () => {
       try { return ctx.get?.('remote')?.$host ?? {} } catch { return {} }
@@ -204,18 +206,18 @@ export function apply(ctx) {
   }
   ctx.slots.inject('sidebar.workspaces', () => ctx.slots.register({
     name: 'sidebar.workspaces',
+    children: { [sidebarDirectorySlot]: { kind: 'single', scope: 'root' } },
     priority: -10,
     store: viewStore,
     locale: 'workspace',
     inject: () => {
       const sessionsApi = (() => { try { return ctx.get?.('sessions') } catch { return undefined } })()
-      const directoryPicker = getDirectoryPicker()
       return {
         history, statusStore, navigation, openDirect, panelId, engineSource, archiveRequest,
         registerWorkspace: path => ctx.workspaces.create({ path }),
-        directoryPicker, uiWorkspace: ctx.uiWorkspace, sessionsApi, workspacesApi: ctx.workspaces,
+        uiWorkspace: ctx.uiWorkspace, sessionsApi, workspacesApi: ctx.workspaces,
         directT: t,
-        startSession: workspaceId => ctx.uiWorkspace.startSession(workspaceId),
+        startSession: (workspaceId, options) => ctx.uiWorkspace.startSession(workspaceId, options),
         open: sessionId => ctx.uiWorkspace.openSession(sessionId),
         searchSessions: async (query, signal) => {
           const result = await sessionsApi?.search(query, signal)

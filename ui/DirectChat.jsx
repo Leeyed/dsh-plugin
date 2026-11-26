@@ -902,6 +902,9 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
           </div>}
         </div>
       </>}
+      {needsEngine && engines.some(item => item.id === target.engine && item.status?.installed === false) && <p role="alert" className="dchat-error">
+        {t('engine.cliMissing', { engine: target.engine })}
+      </p>}
       {needsEngine && (engineStatus !== 'ready' || !engines.some(item => item.status?.installed !== false)) && <div className="dchat-connection" role="status">
         <span>{t(engineStatus === 'ready' ? 'engine.empty' : engineStatus === 'error' ? 'engine.failed' : 'engine.loading')}</span>
         {engineStatus === 'error' && <Button size="sm" onClick={() => void reloadEngines()}>{t('engine.retry')}</Button>}
@@ -914,7 +917,7 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
       {(error || sendError || session?.error || invalidEvent) && <p role="alert" className="dchat-error">
         {error || sendError || session?.error || t('stream.invalid')}
       </p>}
-      {connectionError && <div className="dchat-connection" role="status">
+      {connectionError && <div className="dchat-connection dchat-error" role="alert">
         <span>{connectionError}</span>
         <Button size="sm" onClick={() => {
           if (id) setConnectAttempt(value => value + 1)

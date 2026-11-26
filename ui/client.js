@@ -873,6 +873,16 @@ function sidebarRowVisible(row, filter) {
   if (filter === "show") return true;
   return Boolean(row.archived) === (filter === "only");
 }
+function sidebarAgentRows(byCwd, agent) {
+  if (agent === "all") return byCwd;
+  const matches = /* @__PURE__ */ new Map();
+  if (agent === "native") return matches;
+  for (const [cwd, rows] of byCwd) {
+    const selected = rows.filter((row) => agent === "engine:" + row.engine);
+    if (selected.length) matches.set(cwd, selected);
+  }
+  return matches;
+}
 function mergeSidebarRows(nativeRows, externalRows) {
   if (!externalRows.length) return nativeRows;
   const pinned = [];
@@ -1168,9 +1178,10 @@ function EngineDropdown({ selected = null, engines, status, reload, onSelect, di
   const options = [{ id: null, label: t("engine.native"), meta: null }, ...engines];
   const active = options.find((option) => option.id === selected) ?? { id: selected, label: selected || t("engine.native") };
   if (!engines.length && status === "ready" && selected === null) return null;
-  const items = options.map(({ id, label, meta }) => ({
+  const items = options.map(({ id, label, meta, status: cli }) => ({
     id: id === null ? "__native__" : id,
-    label,
+    label: cli?.installed === false ? label + " \xB7 " + t("engine.notInstalled") : label,
+    disabled: cli?.installed === false,
     icon: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(EngineLogo, { engine: id, label, icon: meta?.icon, size: 16 })
   }));
   return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
@@ -1545,7 +1556,7 @@ function EngineSettings({ engineSource, focusedEngine, t }) {
           {
             variant: focusedEngine && isAgy ? "primary" : "outline",
             size: "sm",
-            disabled: loginBusy,
+            disabled: loginBusy || s.installed === false,
             onClick: () => void handleStartLogin(eng.id, { createProfile: true }),
             children: [
               "+ ",
@@ -1631,7 +1642,7 @@ function EngineSettings({ engineSource, focusedEngine, t }) {
               {
                 variant: "primary",
                 size: "sm",
-                disabled: loginBusy || isLoggingOut,
+                disabled: loginBusy || isLoggingOut || s.installed === false,
                 onClick: () => void handleStartLogin(eng.id, { profileId: activeProfileId }),
                 children: t("engineSettings.login")
               }
@@ -1660,6 +1671,19 @@ function EngineSettings({ engineSource, focusedEngine, t }) {
               }
             ) })
           ] })
+        ] }),
+        s.installed === false && isExpanded && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "dchat-archive-error", role: "status", children: [
+          t("engine.cliMissing", { engine: eng.id }),
+          focusedEngine && eng.canCheckUpdate && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+            import_dsh_client_ui_primitives5.Button,
+            {
+              variant: "outline",
+              size: "sm",
+              disabled: isChecking,
+              onClick: () => void handleCheck(eng.id),
+              children: t("engine.retry")
+            }
+          )
         ] }),
         (startingLoginHere || activeLoginHere) && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "dchat-profile-form", style: { fontSize: 12 }, children: [
           /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, flexWrap: "wrap" }, children: [
@@ -1743,7 +1767,7 @@ function EngineSettings({ engineSource, focusedEngine, t }) {
                     {
                       variant: "primary",
                       size: "sm",
-                      disabled: loginBusy || loggingOutKey === pKey,
+                      disabled: loginBusy || loggingOutKey === pKey || s.installed === false,
                       onClick: () => void handleStartLogin(eng.id, { profileId: prof.id }),
                       children: t("engineSettings.login")
                     }
@@ -10070,6 +10094,31 @@ function createWorkspaceShortcutControls() {
   };
 }
 
+// sidebar-directory-flow.mjs
+var nativeSlot = "sidebar.workspaces.directoryFlow";
+var sidebarDirectorySlot = "direct-chat.sidebar.directoryFlow";
+function connectSidebarDirectoryFlow(slots) {
+  let current;
+  let remove;
+  const sync = () => {
+    const [entry] = slots.entriesOfSlot(nativeSlot);
+    if (entry === current) return;
+    remove?.();
+    remove = void 0;
+    current = entry;
+    if (entry) {
+      const { select, inject: inject2, locale } = entry;
+      remove = slots.register({ name: sidebarDirectorySlot, select, inject: inject2, locale }, entry.component);
+    }
+  };
+  sync();
+  const unsubscribe = slots.subscribe(nativeSlot, sync);
+  return () => {
+    unsubscribe();
+    remove?.();
+  };
+}
+
 // MergedWorkspaceBrowser.jsx
 var import_react25 = require("react");
 var import_dsh_client_ui_primitives26 = require("@deepseek-ai/dsh-client-ui-primitives");
@@ -11050,7 +11099,7 @@ function useNativeDragAcceptance(active) {
     };
   }, [active]);
 }
-function ViewOptionsMenu2({ groupBy, orderBy, archivedFilter, onGroupPick, onOrderPick, onArchivedFilterPick, t }) {
+function ViewOptionsMenu2({ extension, groupBy, orderBy, archivedFilter, onGroupPick, onOrderPick, onArchivedFilterPick, t }) {
   const [open, setOpen] = (0, import_react23.useState)(false);
   return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
     import_dsh_client_ui_primitives24.Menu,
@@ -11072,15 +11121,18 @@ function ViewOptionsMenu2({ groupBy, orderBy, archivedFilter, onGroupPick, onOrd
         { type: "label", id: "filter-by", text: t("filterBy.label") },
         { id: "hide-archived", label: t("viewOptions.hideArchived"), icon: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_dsh_client_ui_primitives24.IconArchiveOffOutlineRegular, {}) },
         { id: "show-archived", label: t("viewOptions.showArchived"), icon: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_dsh_client_ui_primitives24.IconQueueOutlineRegular, {}) },
-        { id: "only-archived", label: t("viewOptions.onlyArchived"), icon: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_dsh_client_ui_primitives24.IconArchiveCheckOutlineRegular, {}) }
+        { id: "only-archived", label: t("viewOptions.onlyArchived"), icon: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_dsh_client_ui_primitives24.IconArchiveCheckOutlineRegular, {}) },
+        ...extension.agentItems
       ],
       selectedIds: [
+        "agent:" + extension.agent,
         groupBy,
         orderBy,
         { default: "hide-archived", show: "show-archived", only: "only-archived" }[archivedFilter]
       ],
       onSelect: (id) => {
-        if (id === "workspace" || id === "workspace-tree" || id === "flat") onGroupPick(id);
+        if (id.startsWith("agent:")) extension.setAgent(id.slice(6));
+        else if (id === "workspace" || id === "workspace-tree" || id === "flat") onGroupPick(id);
         else if (id === "manual" || id === "updated") onOrderPick(id);
         else if (id === "hide-archived") onArchivedFilterPick("default");
         else if (id === "show-archived") onArchivedFilterPick("show");
@@ -11511,7 +11563,7 @@ function FlatList({
     () => deriveFlat(list, sessionIds, rowState, statuses),
     [list, sessionIds, rowState, statuses]
   );
-  const rows = extension?.flat(nativeRows, rowState.archivedFilter) ?? nativeRows;
+  const rows = extension?.flat(nativeRows, rowState.archivedFilter, extension.query) ?? nativeRows;
   const [drag, setDrag] = (0, import_react23.useState)(null);
   const dropCommitted = (0, import_react23.useRef)(false);
   useNativeDragAcceptance(drag !== null);
@@ -12010,6 +12062,7 @@ function WorkspaceBrowser({
         wide && /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
           ViewOptionsMenu2,
           {
+            extension,
             groupBy,
             orderBy,
             archivedFilter,
@@ -12072,7 +12125,7 @@ function WorkspaceBrowser({
         children: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_dsh_client_ui_primitives24.IconSearchOutlineRegular, { size: 18 })
       }
     ) }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("div", { ref: wide ? bindScrollerRef : void 0, className: WorkspaceBrowser_default.listArea, "data-sidebar-list-area": "", children: wide && (normalizedQuery !== "" ? /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("div", { ref: wide ? bindScrollerRef : void 0, className: WorkspaceBrowser_default.listArea, "data-sidebar-list-area": "", children: wide && (normalizedQuery !== "" && !extension.directOnly ? /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
       SearchResults,
       {
         usePanelInfo,
@@ -12089,10 +12142,10 @@ function WorkspaceBrowser({
         resultLimit: searchResultLimit,
         t
       }
-    ) : groupBy === "flat" ? /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
+    ) : groupBy === "flat" || normalizedQuery && extension.directOnly ? /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
       FlatList,
       {
-        extension,
+        extension: { ...extension, query: normalizedQuery },
         useSessionAccess,
         usePanelInfo,
         list,
@@ -12171,6 +12224,8 @@ var import_dsh_client_ui_primitives25 = require("@deepseek-ai/dsh-client-ui-prim
 var import_jsx_runtime28 = require("react/jsx-runtime");
 var sidebarCopy = {
   en: {
+    "sidebar.agentFilter": "Filter by Agent",
+    "sidebar.allAgents": "All agents",
     "sidebar.refresh": "Refresh direct conversations",
     "sidebar.failed": "Could not load direct conversations. Refresh to try again.",
     "sidebar.terminal": "Terminal",
@@ -12225,6 +12280,8 @@ var sidebarCopy = {
     "sidebar.status.done": "Completed"
   },
   zh: {
+    "sidebar.agentFilter": "\u6309 Agent \u7B5B\u9009",
+    "sidebar.allAgents": "\u5168\u90E8 Agent",
     "sidebar.refresh": "\u5237\u65B0\u76F4\u8FDE\u4F1A\u8BDD",
     "sidebar.failed": "\u65E0\u6CD5\u52A0\u8F7D\u76F4\u8FDE\u4F1A\u8BDD\u3002\u70B9\u51FB\u5237\u65B0\u91CD\u8BD5\u3002",
     "sidebar.terminal": "\u7EC8\u7AEF",
@@ -12305,6 +12362,15 @@ var fallbackStatusStore = { getSnapshot: () => emptyStatusSnapshot, subscribe: (
 function SidebarProjection({ render, history, statusStore = fallbackStatusStore, navigation, openDirect, usePanelInfo, panelId: panelId2, engineSource, registerWorkspace, archiveRequest, t }) {
   const { byCwd } = (0, import_react24.useSyncExternalStore)(history.subscribe, history.getSnapshot);
   const { engines } = (0, import_react24.useSyncExternalStore)(engineSource.subscribe, engineSource.getSnapshot);
+  const [agent, setAgent] = (0, import_react24.useState)("all");
+  const directOnly = agent.startsWith("engine:");
+  const filteredCwds = (0, import_react24.useMemo)(() => sidebarAgentRows(byCwd, agent), [byCwd, agent]);
+  const agentIds = (0, import_react24.useMemo)(() => {
+    const ids = new Set(engines.map((engine) => engine.id));
+    for (const rows of byCwd.values()) for (const row of rows) if (row.engine) ids.add(row.engine);
+    if (directOnly) ids.add(agent.slice(7));
+    return [...ids];
+  }, [engines, byCwd, agent, directOnly]);
   const statusSnapshot = (0, import_react24.useSyncExternalStore)(statusStore.subscribe, statusStore.getSnapshot);
   const target = (0, import_react24.useSyncExternalStore)(navigation.subscribe, navigation.getSnapshot);
   const active = usePanelInfo((info) => info.activePanelId === panelId2);
@@ -12341,9 +12407,24 @@ function SidebarProjection({ render, history, statusStore = fallbackStatusStore,
     report(t("sidebar.deleted"), true);
   };
   const extension = {
+    agent,
+    directOnly,
+    setAgent,
+    agentItems: [
+      { type: "separator", id: "agent-separator" },
+      { type: "label", id: "agent-label", text: t("sidebar.agentFilter") },
+      { id: "agent:all", label: t("sidebar.allAgents"), icon: /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(import_dsh_client_ui_primitives25.IconUsersOutlineRegular, { size: 16 }) },
+      { id: "agent:native", label: t("engine.native"), icon: /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(EngineLogo, { engine: null, size: 16 }) },
+      ...agentIds.map((id) => {
+        const engine = engines.find((item) => item.id === id);
+        const label = engine?.label || id;
+        return { id: "agent:engine:" + id, label, icon: /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(EngineLogo, { engine: id, label, icon: engine?.meta?.icon, size: 16 }) };
+      })
+    ],
     activeId: active && target.id ? `direct-chat:session:${target.id}` : void 0,
     groups: (groups, workspaces, expandedGroups, filter) => {
-      const projected = projectSidebarGroups(groups, workspaces, expandedGroups, expanded, byCwd, filter, t("cwd.default"), active);
+      const nativeGroups = directOnly ? groups.filter((group) => group.workspaceId !== void 0).map((group) => ({ ...group, sessions: [], sessionCount: 0, containsCurrent: false })) : groups;
+      const projected = projectSidebarGroups(nativeGroups, workspaces, expandedGroups, expanded, filteredCwds, filter, t("cwd.default"), active);
       const nextCwds = /* @__PURE__ */ new Map();
       for (const group of projected) {
         const path = group.directCwd ?? group.cwd;
@@ -12352,7 +12433,10 @@ function SidebarProjection({ render, history, statusStore = fallbackStatusStore,
       groupCwdsRef.current = nextCwds;
       return projected;
     },
-    flat: (rows, filter) => mergeSidebarRows(hideNativeDraft(rows, active), [...byCwd.values()].flat().filter((row) => sidebarRowVisible(row, filter))),
+    flat: (rows, filter, query = "") => mergeSidebarRows(
+      directOnly ? [] : hideNativeDraft(rows, active),
+      [...filteredCwds.values()].flat().filter((row) => sidebarRowVisible(row, filter) && (!query || [row.title, row.cwd, row.id].some((value) => value?.toLowerCase().includes(query.toLowerCase()))))
+    ),
     expandGroup(key, open) {
       if (!isVirtualGroup(key)) return false;
       setExpanded((current) => {
@@ -12420,7 +12504,8 @@ function SidebarProjection({ render, history, statusStore = fallbackStatusStore,
     const rank = { attention: 3, running: 2, done: 1 };
     const cwdState = /* @__PURE__ */ new Map();
     for (const item of statusSnapshot.list ?? []) {
-      if (!item?.cwd || !item.state) continue;
+      if (!item?.cwd || !item.state || agent === "native") continue;
+      if (directOnly && !filteredCwds.get(item.cwd)?.some((row) => row.id === item.id)) continue;
       if (item.state === "done" && active && item.id === target.id) continue;
       const prev = cwdState.get(item.cwd);
       if (!prev || rank[item.state] > rank[prev]) cwdState.set(item.cwd, item.state);
@@ -12432,7 +12517,7 @@ function SidebarProjection({ render, history, statusStore = fallbackStatusStore,
       if (state) el.dataset.directWorkspaceState = state;
       else delete el.dataset.directWorkspaceState;
     }
-  }, [statusSnapshot, byCwd, expanded, active, target.id]);
+  }, [statusSnapshot, filteredCwds, agent, directOnly, expanded, active, target.id]);
   return /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(import_jsx_runtime28.Fragment, { children: [
     render(extension),
     renameTarget && /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
@@ -12978,105 +13063,6 @@ function NativeSessionRowActions({ sessionId, pinned, archived, onPin, onArchive
     ) })
   ] });
 }
-function DirectoryPickDialog({ open, busy, directoryPicker, useHostInfo, onPicked, onCancel, onError, t }) {
-  const hostInfo = useHostInfo((info) => info);
-  const [pathInput, setPathInput] = (0, import_react25.useState)("");
-  const [entries, setEntries] = (0, import_react25.useState)([]);
-  const [loading, setLoading] = (0, import_react25.useState)(false);
-  const desktopPicker = globalThis.__DSH_DIRECTORY_PICKER__;
-  const nativePicker = desktopPicker?.pick ? desktopPicker : hostInfo?.nativeDirectoryPicker ? directoryPicker : null;
-  const pickedOnceRef = (0, import_react25.useRef)(false);
-  (0, import_react25.useEffect)(() => {
-    if (!open) {
-      pickedOnceRef.current = false;
-      return;
-    }
-    if (nativePicker?.pick) {
-      if (pickedOnceRef.current) return;
-      pickedOnceRef.current = true;
-      nativePicker.pick().then(
-        (res) => {
-          if (nativePicker === desktopPicker) {
-            if (res) onPicked(res);
-            else onCancel();
-          } else if (!res.ok) onError(res.error.message);
-          else if (res.value) onPicked(res.value);
-          else onCancel();
-        },
-        (err) => onError(err?.message || "Failed to open directory picker")
-      );
-      return;
-    }
-    if (!directoryPicker?.list) return;
-    const controller = new AbortController();
-    setLoading(true);
-    directoryPicker.list(pathInput || void 0, controller.signal).then(
-      (res) => {
-        if (controller.signal.aborted) return;
-        setLoading(false);
-        if (res?.ok === false) {
-          onError(res.error?.message || "Failed to list directories");
-          return;
-        }
-        const value = res?.value ?? res;
-        if (value?.path && !pathInput) setPathInput(value.path);
-        setEntries(Array.isArray(value?.entries) ? value.entries.filter((item) => item.isDirectory !== false) : []);
-      },
-      (err) => {
-        if (!controller.signal.aborted) {
-          setLoading(false);
-          onError(err?.message || "Failed to list directories");
-        }
-      }
-    );
-    return () => controller.abort();
-  }, [open, nativePicker, desktopPicker, directoryPicker, pathInput]);
-  if (!open || nativePicker?.pick) return null;
-  return /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(
-    import_dsh_client_ui_primitives26.Modal,
-    {
-      open: true,
-      title: t("workspace.add"),
-      closeLabel: t("cancel"),
-      onClose: () => {
-        if (!busy) onCancel();
-      },
-      footer: /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(import_jsx_runtime29.Fragment, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_dsh_client_ui_primitives26.Button, { variant: "outline", disabled: busy, onClick: onCancel, children: t("cancel") }),
-        /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_dsh_client_ui_primitives26.Button, { variant: "primary", disabled: busy || !pathInput.trim(), onClick: () => onPicked(pathInput.trim()), children: t("workspace.add") })
-      ] }),
-      children: [
-        /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
-          "input",
-          {
-            className: "dchat-sidebar-rename-input",
-            "data-modal-autofocus": true,
-            value: pathInput,
-            disabled: busy,
-            onChange: (event2) => setPathInput(event2.target.value),
-            onKeyDown: (event2) => {
-              if (event2.key === "Enter" && pathInput.trim() && !busy) {
-                event2.preventDefault();
-                onPicked(pathInput.trim());
-              }
-            }
-          }
-        ),
-        loading ? /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("div", { className: "dchat-status", children: "\u2026" }) : entries.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("div", { style: { maxHeight: 220, overflowY: "auto", marginTop: 8 }, children: entries.map((entry) => /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
-          "button",
-          {
-            type: "button",
-            className: Rows_default.projectRow,
-            style: { width: "100%", textAlign: "left" },
-            onClick: () => setPathInput(entry.path ?? (pathInput ? `${pathInput.replace(/\/$/, "")}/${entry.name}` : entry.name)),
-            children: /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { className: Rows_default.title, children: entry.name })
-          },
-          entry.path ?? entry.name
-        )) })
-      ]
-    }
-  );
-}
 var defaultContextMenuTarget = () => false;
 var defaultContextMenu = () => ({ getTriggerProps: (_target, handlers) => handlers ?? {} });
 var defaultSectionScroller = () => ({ bindScrollerRef: () => {
@@ -13095,7 +13081,6 @@ function MergedWorkspaceBrowser({
   engineSource,
   archiveRequest,
   registerWorkspace,
-  directoryPicker,
   uiWorkspace,
   sessionsApi,
   workspacesApi,
@@ -13128,7 +13113,7 @@ function MergedWorkspaceBrowser({
   const localRenderSlot = (slotName, ownerProps, options) => {
     switch (slotName) {
       case "sidebar.workspaces.directoryFlow":
-        return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(DirectoryPickDialog, { ...ownerProps, directoryPicker, useHostInfo: browserProps.useHostInfo, t: browserProps.t });
+        return browserProps.renderSlot(sidebarDirectorySlot, ownerProps);
       case "sidebar.session.row.leading":
         return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { className: "dchat-sidebar-native-logo", "aria-hidden": "true", children: /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_dsh_client_ui_primitives26.FishLogo, { size: 14 }) });
       case "sidebar.workspaces.session.menu.item": {
@@ -20893,6 +20878,7 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
           ) })
         ] })
       ] }),
+      needsEngine && engines.some((item) => item.id === target.engine && item.status?.installed === false) && /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("p", { role: "alert", className: "dchat-error", children: t("engine.cliMissing", { engine: target.engine }) }),
       needsEngine && (engineStatus !== "ready" || !engines.some((item) => item.status?.installed !== false)) && /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "dchat-connection", role: "status", children: [
         /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { children: t(engineStatus === "ready" ? "engine.empty" : engineStatus === "error" ? "engine.failed" : "engine.loading") }),
         engineStatus === "error" && /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(import_dsh_client_ui_primitives44.Button, { size: "sm", onClick: () => void reloadEngines(), children: t("engine.retry") })
@@ -20909,7 +20895,7 @@ function SessionPane({ queueDock, onAgentSummary, onRuntimeSummary, target, navi
         permissionId(permission)
       )) }),
       (error || sendError || session?.error || invalidEvent) && /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("p", { role: "alert", className: "dchat-error", children: error || sendError || session?.error || t("stream.invalid") }),
-      connectionError && /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "dchat-connection", role: "status", children: [
+      connectionError && /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "dchat-connection dchat-error", role: "alert", children: [
         /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { children: connectionError }),
         /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(import_dsh_client_ui_primitives44.Button, { size: "sm", onClick: () => {
           if (id) setConnectAttempt((value) => value + 1);
@@ -23444,6 +23430,7 @@ var en4 = {
   "engine.updating": "Updating\u2026",
   "engine.upToDate": "Up to date",
   "engine.restartNeeded": "Updated. Active sessions still use the old process until restarted.",
+  "engine.cliMissing": "DSH could not find the {engine} CLI. Install it or add it to the PATH used by DSH, then check again.",
   "engine.notInstalled": "CLI unavailable on PATH",
   "engine.notLoggedIn": "Not logged in",
   "engine.loginHint": "Run `{cmd}` in terminal to sign in",
@@ -23760,6 +23747,7 @@ var zh4 = {
   "engine.updating": "\u6B63\u5728\u66F4\u65B0\u2026",
   "engine.upToDate": "\u5DF2\u662F\u6700\u65B0",
   "engine.restartNeeded": "\u5DF2\u66F4\u65B0\u3002\u7A7A\u95F2\u4F1A\u8BDD\u5DF2\u81EA\u52A8\u5207\u6362\uFF0C\u8FD0\u884C\u4E2D\u7684\u4F1A\u8BDD\u9700\u7B49\u5F85\u7ED3\u675F\u6216\u91CD\u542F\u540E\u751F\u6548\u3002",
+  "engine.cliMissing": "DSH \u627E\u4E0D\u5230 {engine} \u547D\u4EE4\u3002\u8BF7\u5B89\u88C5\u5BF9\u5E94 CLI\uFF0C\u6216\u5C06\u5176\u52A0\u5165 DSH \u8FDB\u7A0B\u7684 PATH\uFF0C\u7136\u540E\u91CD\u65B0\u68C0\u6D4B\u3002",
   "engine.notInstalled": "\u672A\u5728 PATH \u627E\u5230 CLI",
   "engine.notLoggedIn": "\u672A\u767B\u5F55",
   "engine.loginHint": "\u8BF7\u5728\u7EC8\u7AEF\u8FD0\u884C `{cmd}` \u767B\u5F55",
@@ -26004,13 +25992,6 @@ function apply(ctx) {
   const viewInstance = viewHandle.create();
   const viewStore = { ...viewHandle, create: () => viewInstance };
   const shortcutControls = createWorkspaceShortcutControls();
-  const getDirectoryPicker = () => {
-    try {
-      return ctx.get?.("remote.directoryPicker");
-    } catch {
-      return void 0;
-    }
-  };
   const getShortcutsCatalog = () => {
     try {
       return ctx.get?.("shortcuts")?.catalog;
@@ -26018,8 +25999,11 @@ function apply(ctx) {
       return void 0;
     }
   };
-  const directoryFlowSource = { getSnapshot: () => Boolean(getDirectoryPicker()), subscribe: () => () => {
-  } };
+  const directoryFlowSource = {
+    getSnapshot: () => ctx.slots.entriesOfSlot(sidebarDirectorySlot).length > 0,
+    subscribe: (listener) => ctx.slots.subscribe(sidebarDirectorySlot, listener)
+  };
+  ctx.slots.inject(sidebarDirectorySlot, () => connectSidebarDirectoryFlow(ctx.slots));
   const hostInfoSource = {
     getSnapshot: () => {
       try {
@@ -26040,6 +26024,7 @@ function apply(ctx) {
   };
   ctx.slots.inject("sidebar.workspaces", () => ctx.slots.register({
     name: "sidebar.workspaces",
+    children: { [sidebarDirectorySlot]: { kind: "single", scope: "root" } },
     priority: -10,
     store: viewStore,
     locale: "workspace",
@@ -26051,7 +26036,6 @@ function apply(ctx) {
           return void 0;
         }
       })();
-      const directoryPicker = getDirectoryPicker();
       return {
         history,
         statusStore,
@@ -26061,12 +26045,11 @@ function apply(ctx) {
         engineSource,
         archiveRequest,
         registerWorkspace: (path) => ctx.workspaces.create({ path }),
-        directoryPicker,
         uiWorkspace: ctx.uiWorkspace,
         sessionsApi,
         workspacesApi: ctx.workspaces,
         directT: t,
-        startSession: (workspaceId) => ctx.uiWorkspace.startSession(workspaceId),
+        startSession: (workspaceId, options) => ctx.uiWorkspace.startSession(workspaceId, options),
         open: (sessionId) => ctx.uiWorkspace.openSession(sessionId),
         searchSessions: async (query, signal) => {
           const result = await sessionsApi?.search(query, signal);

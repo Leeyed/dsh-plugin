@@ -162,6 +162,17 @@ const { outputFiles } = await build({
           '                setGroupExpanded={actions.setGroupExpanded}',
           '                setGroupExpanded={(key, expanded) => { if (!extension?.expandGroup(key, expanded)) actions.setGroupExpanded(key, expanded) }}',
           'WorkspaceBrowser setGroupExpanded')
+        source = replaceExact(source, 'function ViewOptionsMenu({ groupBy,', 'function ViewOptionsMenu({ extension, groupBy,', 'Agent menu props')
+        source = replaceExact(source, '      <ViewOptionsMenu', '      <ViewOptionsMenu extension={extension}', 'Agent menu')
+        source = replaceExact(source, '      selectedIds={[\n        groupBy,',
+          '      selectedIds={[\n        "agent:" + extension.agent,\n        groupBy,', 'Selected Agent')
+        source = replaceExact(source, "icon: <IconArchiveCheckOutlineRegular /> },",
+          "icon: <IconArchiveCheckOutlineRegular /> },\n        ...extension.agentItems,", 'Agent choices')
+        source = replaceExact(source, "        if (id === 'workspace' ||", "        if (id.startsWith('agent:')) extension.setAgent(id.slice(6))\n        else if (id === 'workspace' ||", 'Agent selection')
+        source = replaceExact(source, "{wide && (normalizedQuery !== ''", "{wide && (normalizedQuery !== '' && !extension.directOnly", 'Agent search results')
+        source = replaceExact(source, ": groupBy === 'flat'", ": groupBy === 'flat' || (normalizedQuery && extension.directOnly)", 'Filtered search list')
+        source = replaceExact(source, '<FlatList\n                extension={extension}', '<FlatList\n                extension={{ ...extension, query: normalizedQuery }}', 'Filtered search query')
+        source = replaceExact(source, 'extension?.flat(nativeRows, rowState.archivedFilter)', 'extension?.flat(nativeRows, rowState.archivedFilter, extension.query)', 'Filter direct matches')
         return { contents: source, loader: 'tsx' }
       })
       build.onLoad({ filter: /Rows\.tsx$/ }, async ({ path }) => {

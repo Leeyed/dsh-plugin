@@ -1,20 +1,22 @@
-import { useEffect, useLayoutEffect, useRef, useState, useSyncExternalStore } from 'react'
+import { useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react'
 import {
   Button, HoverCard, IconArchiveOutlineRegular, IconBranchOutlineRegular, IconCopyOutlineRegular,
   IconEditOutlineRegular, IconEllipsisOutlineRegular, IconPinFillRegular, IconPinOutlineRegular,
-  IconProjectAddOutlineRegular, IconRefreshOutlineRegular, IconTrashOutlineRegular, IconUnarchiveOutlineRegular,
+  IconProjectAddOutlineRegular, IconRefreshOutlineRegular, IconTrashOutlineRegular, IconUnarchiveOutlineRegular, IconUsersOutlineRegular,
   Menu, Modal, StateDot, Toast, Tooltip, writeClipboard,
 } from '@deepseek-ai/dsh-client-ui-primitives'
 import { archiveWorkspace, deleteSession, engineLabel, sessionAction } from './chat-state.mjs'
 import { useTitleMarquee } from '@deepseek-ai/dsh-client-ui-workspace/src/client/rows/Rows.tsx'
 import { EngineLogo } from './EngineHero.jsx'
-import { hideNativeDraft, isVirtualGroup, mergeSidebarRows, projectSidebarGroups, sidebarRowVisible, sidebarTime } from './sidebar-history.mjs'
+import { hideNativeDraft, isVirtualGroup, mergeSidebarRows, projectSidebarGroups, sidebarAgentRows, sidebarRowVisible, sidebarTime } from './sidebar-history.mjs'
 
 export const workspaceSessionsSlot = 'sidebar.workspaces.external-sessions'
 export const workspaceProjectionSlot = 'sidebar.workspaces.direct-chat-projection'
 
 export const sidebarCopy = {
   en: {
+    'sidebar.agentFilter': 'Filter by Agent',
+    'sidebar.allAgents': 'All agents',
     'sidebar.refresh': 'Refresh direct conversations',
     'sidebar.failed': 'Could not load direct conversations. Refresh to try again.',
     'sidebar.terminal': 'Terminal',
@@ -69,6 +71,8 @@ export const sidebarCopy = {
     'sidebar.status.done': 'Completed',
   },
   zh: {
+    'sidebar.agentFilter': '按 Agent 筛选',
+    'sidebar.allAgents': '全部 Agent',
     'sidebar.refresh': '刷新直连会话',
     'sidebar.failed': '无法加载直连会话。点击刷新重试。',
     'sidebar.terminal': '终端',
@@ -140,6 +144,15 @@ const fallbackStatusStore = { getSnapshot: () => emptyStatusSnapshot, subscribe:
 export function SidebarProjection({ render, history, statusStore = fallbackStatusStore, navigation, openDirect, usePanelInfo, panelId, engineSource, registerWorkspace, archiveRequest, t }) {
   const { byCwd } = useSyncExternalStore(history.subscribe, history.getSnapshot)
   const { engines } = useSyncExternalStore(engineSource.subscribe, engineSource.getSnapshot)
+  const [agent, setAgent] = useState('all')
+  const directOnly = agent.startsWith('engine:')
+  const filteredCwds = useMemo(() => sidebarAgentRows(byCwd, agent), [byCwd, agent])
+  const agentIds = useMemo(() => {
+    const ids = new Set(engines.map(engine => engine.id))
+    for (const rows of byCwd.values()) for (const row of rows) if (row.engine) ids.add(row.engine)
+    if (directOnly) ids.add(agent.slice(7))
+    return [...ids]
+  }, [engines, byCwd, agent, directOnly])
   const statusSnapshot = useSyncExternalStore(statusStore.subscribe, statusStore.getSnapshot)
   const target = useSyncExternalStore(navigation.subscribe, navigation.getSnapshot)
   const active = usePanelInfo(info => info.activePanelId === panelId)
@@ -176,9 +189,26 @@ export function SidebarProjection({ render, history, statusStore = fallbackStatu
     report(t('sidebar.deleted'), true)
   }
   const extension = {
+    agent,
+    directOnly,
+    setAgent,
+    agentItems: [
+      { type: 'separator', id: 'agent-separator' },
+      { type: 'label', id: 'agent-label', text: t('sidebar.agentFilter') },
+      { id: 'agent:all', label: t('sidebar.allAgents'), icon: <IconUsersOutlineRegular size={16} /> },
+      { id: 'agent:native', label: t('engine.native'), icon: <EngineLogo engine={null} size={16} /> },
+      ...agentIds.map(id => {
+        const engine = engines.find(item => item.id === id)
+        const label = engine?.label || id
+        return { id: 'agent:engine:' + id, label, icon: <EngineLogo engine={id} label={label} icon={engine?.meta?.icon} size={16} /> }
+      }),
+    ],
     activeId: active && target.id ? `direct-chat:session:${target.id}` : undefined,
     groups: (groups, workspaces, expandedGroups, filter) => {
-      const projected = projectSidebarGroups(groups, workspaces, expandedGroups, expanded, byCwd, filter, t('cwd.default'), active)
+      const nativeGroups = directOnly
+        ? groups.filter(group => group.workspaceId !== undefined).map(group => ({ ...group, sessions: [], sessionCount: 0, containsCurrent: false }))
+        : groups
+      const projected = projectSidebarGroups(nativeGroups, workspaces, expandedGroups, expanded, filteredCwds, filter, t('cwd.default'), active)
       const nextCwds = new Map()
       for (const group of projected) {
         const path = group.directCwd ?? group.cwd
@@ -187,7 +217,9 @@ export function SidebarProjection({ render, history, statusStore = fallbackStatu
       groupCwdsRef.current = nextCwds
       return projected
     },
-    flat: (rows, filter) => mergeSidebarRows(hideNativeDraft(rows, active), [...byCwd.values()].flat().filter(row => sidebarRowVisible(row, filter))),
+    flat: (rows, filter, query = '') => mergeSidebarRows(directOnly ? [] : hideNativeDraft(rows, active),
+      [...filteredCwds.values()].flat().filter(row => sidebarRowVisible(row, filter) &&
+        (!query || [row.title, row.cwd, row.id].some(value => value?.toLowerCase().includes(query.toLowerCase()))))),
     expandGroup(key, open) {
       if (!isVirtualGroup(key)) return false
       setExpanded(current => {
@@ -229,7 +261,8 @@ export function SidebarProjection({ render, history, statusStore = fallbackStatu
     const rank = { attention: 3, running: 2, done: 1 }
     const cwdState = new Map()
     for (const item of statusSnapshot.list ?? []) {
-      if (!item?.cwd || !item.state) continue
+      if (!item?.cwd || !item.state || agent === 'native') continue
+      if (directOnly && !filteredCwds.get(item.cwd)?.some(row => row.id === item.id)) continue
       if (item.state === 'done' && active && item.id === target.id) continue
       const prev = cwdState.get(item.cwd)
       if (!prev || rank[item.state] > rank[prev]) cwdState.set(item.cwd, item.state)
@@ -241,7 +274,7 @@ export function SidebarProjection({ render, history, statusStore = fallbackStatu
       if (state) el.dataset.directWorkspaceState = state
       else delete el.dataset.directWorkspaceState
     }
-  }, [statusSnapshot, byCwd, expanded, active, target.id])
+  }, [statusSnapshot, filteredCwds, agent, directOnly, expanded, active, target.id])
 
   return <>
     {render(extension)}

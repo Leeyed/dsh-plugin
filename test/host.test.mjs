@@ -59,7 +59,8 @@ test('authenticated sessions persist replies, serialize prompts and restore the 
     export const archiveImplementation=fn=>{archiveFn=fn}
     export const renameImplementation=fn=>{renameFn=fn}
     export const createEngineRegistry=()=>({
-      ready:Promise.resolve(),has:id=>['agy','codex'].includes(id),list:()=>[{id:'agy',label:'AGY'},{id:'codex',label:'Codex'}],
+      ready:Promise.resolve(),has:id=>['agy','codex'].includes(id),list:()=>[{id:'agy',label:'AGY'},{id:'codex',label:'Codex'},
+        {id:'missing',label:'Missing CLI',cliInfo:async()=>{throw Object.assign(Error('not found'),{code:'ENOENT'})}}],
       get:id=>({id,start:async args=>{
         starts.push({resumeId:args.resumeId,replayHistory:args.replayHistory})
         if(args.resumeId==='held-thread'){resumeAttempts++; throw Object.assign(Error('Codex session is in use'),{status:409})}
@@ -148,7 +149,7 @@ test('authenticated sessions persist replies, serialize prompts and restore the 
       webServer:{register(route){handler=route.handler;return ()=>{}}}})
     return {dispose,async call(method,suffix='',data,authenticated=true) {
       const req=Readable.from(data?[Buffer.from(JSON.stringify(data))]:[])
-      Object.assign(req,{url:'/api/direct-chat/sessions'+suffix,method,headers:{'content-type':'application/json',cookie:authenticated?'auth':''}})
+      Object.assign(req,{url:suffix.startsWith('/api/') ? suffix : '/api/direct-chat/sessions'+suffix,method,headers:{'content-type':'application/json',cookie:authenticated?'auth':''}})
       const res=Object.assign(new EventEmitter(),{chunks:[],writeHead(status){this.status=status},write(str){this.chunks.push(str)},end(str){this.data=str&&JSON.parse(str)}})
       await handler(req,res)
       return res
@@ -157,6 +158,8 @@ test('authenticated sessions persist replies, serialize prompts and restore the 
   const app=mount()
   t.after(()=>app.dispose())
   assert.equal((await app.call('POST','',{engine:'agy'},false)).status,401)
+  const catalog = await app.call('GET', '/api/direct-chat/engines')
+  assert.equal(catalog.data.engines.find(engine => engine.id === 'missing').status.installed, false)
   const create=await app.call('POST','',{engine:'agy',cwd:dir})
   assert.equal(create.status,201)
   assert.deepEqual((await app.call('GET')).data.sessions,[])

@@ -24,9 +24,10 @@ export function EngineDropdown({ selected = null, engines, status, reload, onSel
   const options = [{ id: null, label: t('engine.native'), meta: null }, ...engines]
   const active = options.find(option => option.id === selected) ?? { id: selected, label: selected || t('engine.native') }
   if (!engines.length && status === 'ready' && selected === null) return null
-  const items = options.map(({ id, label, meta }) => ({
+  const items = options.map(({ id, label, meta, status: cli }) => ({
     id: id === null ? '__native__' : id,
-    label,
+    label: cli?.installed === false ? label + ' · ' + t('engine.notInstalled') : label,
+    disabled: cli?.installed === false,
     icon: <EngineLogo engine={id} label={label} icon={meta?.icon} size={16} />,
   }))
   return <Menu open={open && !disabled} portal side="bottom" align="start" dense items={items}
