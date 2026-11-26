@@ -16626,6 +16626,8 @@ var import_dsh_client_ui_primitives39 = require("@deepseek-ai/dsh-client-ui-prim
 var import_jsx_runtime44 = require("react/jsx-runtime");
 var PET_POS_KEY = "dsh-direct-chat.pet-pos";
 var PET_SOUND_KEY = "dsh-direct-chat.pet-sound";
+var PET_SIZE_KEY = "dsh-direct-chat.pet-size";
+var PET_SIZES = ["sm", "md", "lg"];
 var emptyNative = { byId: {}, ids: [] };
 var emptyNativeStore = { getSnapshot: () => emptyNative, subscribe: () => () => {
 } };
@@ -16639,7 +16641,7 @@ var hydratedTasks = false;
 var prevTaskStates = /* @__PURE__ */ new Map();
 var seenDoneKeys = /* @__PURE__ */ new Set();
 var petAlertListeners = /* @__PURE__ */ new Set();
-var petAlertSnapshot = { soundEnabled: readSoundEnabled(), seenRevision: 0 };
+var petAlertSnapshot = { soundEnabled: readSoundEnabled(), petSize: readPetSize(), seenRevision: 0 };
 function readSoundEnabled() {
   try {
     return localStorage.getItem(PET_SOUND_KEY) === "true";
@@ -16647,8 +16649,16 @@ function readSoundEnabled() {
     return false;
   }
 }
+function readPetSize() {
+  try {
+    const raw = localStorage.getItem(PET_SIZE_KEY);
+    return PET_SIZES.includes(raw) ? raw : "sm";
+  } catch {
+    return "sm";
+  }
+}
 function emitPetAlert() {
-  petAlertSnapshot = { soundEnabled: petAlertSnapshot.soundEnabled, seenRevision: petAlertSnapshot.seenRevision + 1 };
+  petAlertSnapshot = { ...petAlertSnapshot, seenRevision: petAlertSnapshot.seenRevision + 1 };
   for (const listener of petAlertListeners) listener();
 }
 function getAudioContext() {
@@ -16718,6 +16728,15 @@ var petAlertStore = {
     }
     for (const listener of petAlertListeners) listener();
     if (next) playAlertSound("done", { force: true });
+  },
+  setPetSize: (size) => {
+    if (!PET_SIZES.includes(size) || petAlertSnapshot.petSize === size) return;
+    petAlertSnapshot = { ...petAlertSnapshot, petSize: size };
+    try {
+      localStorage.setItem(PET_SIZE_KEY, size);
+    } catch {
+    }
+    for (const listener of petAlertListeners) listener();
   },
   markDoneSeen: (tasks) => {
     let changed = false;
@@ -16851,6 +16870,9 @@ function PetSprite({ mood }) {
     }
   );
 }
+var noopSubscribe = () => () => {
+};
+var noopSnapshot = () => void 0;
 function SessionPet({
   variant = "floating",
   statusStore,
@@ -16858,6 +16880,9 @@ function SessionPet({
   useSessionStatus = useEmptyNativeStatus,
   useWorkspaces = useEmptyWorkspaces,
   engineSource,
+  navigation,
+  panelInfo,
+  panelId: panelId2,
   openDirect,
   openNative,
   t
@@ -16867,9 +16892,13 @@ function SessionPet({
   const nativeStatus = useSessionStatus((snapshot) => snapshot);
   const archivedNativeIds = useWorkspaces((snapshot) => snapshot?.archivedSessionIds);
   const { engines } = (0, import_react39.useSyncExternalStore)(engineSource.subscribe, engineSource.getSnapshot);
-  const { soundEnabled, seenRevision } = (0, import_react39.useSyncExternalStore)(petAlertStore.subscribe, petAlertStore.getSnapshot);
+  const navSnap = (0, import_react39.useSyncExternalStore)(navigation?.subscribe ?? noopSubscribe, navigation?.getSnapshot ?? noopSnapshot);
+  const layoutSnap = (0, import_react39.useSyncExternalStore)(panelInfo?.subscribe ?? noopSubscribe, panelInfo?.getSnapshot ?? noopSnapshot);
+  const { soundEnabled, petSize, seenRevision } = (0, import_react39.useSyncExternalStore)(petAlertStore.subscribe, petAlertStore.getSnapshot);
   const [open, setOpen] = (0, import_react39.useState)(false);
   const [approvingKey, setApprovingKey] = (0, import_react39.useState)(null);
+  const [failedApprovalKey, setFailedApprovalKey] = (0, import_react39.useState)(null);
+  const [dismissedBubbleKeys, setDismissedBubbleKeys] = (0, import_react39.useState)(() => /* @__PURE__ */ new Set());
   const [pos, setPos] = (0, import_react39.useState)(() => readSavedPos());
   const dragRef = (0, import_react39.useRef)(null);
   const rootRef = (0, import_react39.useRef)(null);
@@ -16960,6 +16989,22 @@ function SessionPet({
   const mood = counts.attention > 0 ? "attention" : counts.running > 0 ? "running" : counts.done > 0 ? "done" : "idle";
   const badgeMood = counts.attention > 0 ? "attention" : counts.unseenDone > 0 ? "done" : null;
   const badgeCount = counts.attention > 0 ? counts.attention : counts.unseenDone;
+  const activeDirectId = !panelId2 || layoutSnap?.activePanelId === panelId2 ? navSnap?.id : null;
+  const pendingApprovals = (0, import_react39.useMemo)(() => {
+    if (isHeader) return [];
+    const list = [];
+    for (const item of tasks) {
+      if (item.kind !== "direct" || item.state !== "attention" || item.permissions.length === 0) continue;
+      if (activeDirectId && item.id === activeDirectId) continue;
+      for (const perm of item.permissions) {
+        const key = `${item.id}:${perm.id}`;
+        if (!dismissedBubbleKeys.has(key)) list.push({ item, perm, key });
+      }
+    }
+    return list;
+  }, [isHeader, tasks, activeDirectId, dismissedBubbleKeys]);
+  const activeBubble = !isHeader && !open ? pendingApprovals[0] ?? null : null;
+  const extraApprovalCount = Math.max(0, pendingApprovals.length - 1);
   const openBelow = pos ? pos.y < 280 : true;
   const alignLeft = pos ? pos.x < 220 : false;
   const onPointerDown = (event2) => {
@@ -17004,6 +17049,19 @@ function SessionPet({
     }
   };
   const style = variant === "floating" && pos ? { left: `${pos.x}px`, top: `${pos.y}px`, right: "auto", bottom: "auto" } : void 0;
+  const approve = async (sessionId, permissionId2, optionId2) => {
+    if (approvingKey) return;
+    const key = `${sessionId}:${permissionId2}`;
+    setApprovingKey(key);
+    setFailedApprovalKey(null);
+    try {
+      await sessionAction(sessionId, "approve", { id: permissionId2, option: optionId2 });
+    } catch {
+      setFailedApprovalKey(key);
+    } finally {
+      setApprovingKey(null);
+    }
+  };
   const hasDirectCompletion = tasks.some((item) => item.kind === "direct" && item.state === "done");
   const hasNativeCompletion = tasks.some((item) => item.kind === "native" && item.state === "done");
   const panel = /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(import_jsx_runtime44.Fragment, { children: [
@@ -17014,6 +17072,18 @@ function SessionPet({
           if (isHeader) closeRef.current?.focus();
           void statusStore.ack();
         }, children: t(hasNativeCompletion ? "pet.clearDirectDone" : "pet.clearDone") }),
+        !isHeader && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "dchat-pet-size-group", role: "group", "aria-label": t("pet.sizeLabel"), title: t("pet.sizeLabel"), children: PET_SIZES.map((size) => /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+          "button",
+          {
+            type: "button",
+            className: "dchat-pet-size-btn",
+            "data-active": petSize === size || void 0,
+            "aria-pressed": petSize === size,
+            onClick: () => petAlertStore.setPetSize(size),
+            children: t(`pet.size.${size}`)
+          },
+          size
+        )) }),
         /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
           "button",
           {
@@ -17078,27 +17148,17 @@ function SessionPet({
       ] }),
       item.kind === "direct" && item.state === "attention" && item.permissions.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "dchat-pet-approval", onClick: (event2) => event2.stopPropagation(), children: item.permissions.map((perm) => {
         const key = `${item.id}:${perm.id}`;
-        const busy = approvingKey === key;
         return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "dchat-pet-approval-card", children: [
           /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "dchat-pet-approval-title", children: perm.title || t("permission.tool") }),
           perm.detail && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "dchat-pet-approval-detail", title: String(perm.detail), children: String(perm.detail) }),
+          failedApprovalKey === key && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { role: "alert", children: t("pet.approvalFailed") }),
           /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "dchat-pet-approval-actions", children: perm.options.map((option) => /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
             import_dsh_client_ui_primitives39.Button,
             {
               size: "sm",
               variant: option.kind?.startsWith("allow") ? "primary" : "outline",
-              disabled: busy,
-              onClick: async (event2) => {
-                event2.stopPropagation();
-                if (approvingKey) return;
-                setApprovingKey(key);
-                try {
-                  await sessionAction(item.id, "approve", { id: perm.id, option: option.optionId });
-                } catch {
-                } finally {
-                  setApprovingKey(null);
-                }
-              },
+              disabled: Boolean(approvingKey),
+              onClick: () => approve(item.id, perm.id, option.optionId),
               children: option.name
             },
             option.optionId
@@ -17107,66 +17167,125 @@ function SessionPet({
       }) })
     ] }, item.key)) })
   ] });
-  return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { ref: rootRef, className: isHeader ? "dchat-pet-header-slot" : "dchat-pet-root", "data-mood": mood, style, children: [
-    isHeader ? /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
-      import_dsh_client_ui_primitives39.Modal,
-      {
-        open,
-        onClose: closePanel,
-        title: t("pet.title"),
-        headless: true,
-        backdropBlur: false,
-        className: "dchat-pet-panel-fullscreen",
-        children: panel
-      }
-    ) : open && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
-      "div",
-      {
-        ref: panelRef,
-        className: "dchat-pet-panel",
-        "data-below": openBelow || void 0,
-        "data-align-left": alignLeft || void 0,
-        role: "dialog",
-        "aria-label": t("pet.title"),
-        children: panel
-      }
-    ),
-    isHeader ? /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
-      "button",
-      {
-        type: "button",
-        className: "dchat-pet-header-btn",
-        title: t("pet.title"),
-        "aria-label": t("pet.title"),
-        "aria-expanded": open,
-        "aria-haspopup": "dialog",
-        onClick: (event2) => {
-          event2.currentTarget.focus();
-          setOpen(true);
-        },
-        children: [
-          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(PetSprite, { mood }),
-          badgeCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "dchat-pet-badge", "data-mood": badgeMood, children: badgeCount > 99 ? "99+" : badgeCount })
-        ]
-      }
-    ) : /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
-      "button",
-      {
-        type: "button",
-        className: "dchat-pet-fab",
-        title: t("pet.title"),
-        "aria-label": t("pet.title"),
-        "aria-expanded": open,
-        onPointerDown,
-        onPointerMove,
-        onPointerUp,
-        children: [
-          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(PetSprite, { mood }),
-          badgeCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "dchat-pet-badge", "data-mood": badgeMood, children: badgeCount > 99 ? "99+" : badgeCount })
-        ]
-      }
-    )
-  ] });
+  return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
+    "div",
+    {
+      ref: rootRef,
+      className: isHeader ? "dchat-pet-header-slot" : "dchat-pet-root",
+      "data-mood": mood,
+      "data-size": !isHeader ? petSize : void 0,
+      style,
+      children: [
+        isHeader ? /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+          import_dsh_client_ui_primitives39.Modal,
+          {
+            open,
+            onClose: closePanel,
+            title: t("pet.title"),
+            headless: true,
+            backdropBlur: false,
+            className: "dchat-pet-panel-fullscreen",
+            children: panel
+          }
+        ) : open ? /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+          "div",
+          {
+            ref: panelRef,
+            className: "dchat-pet-panel",
+            "data-below": openBelow || void 0,
+            "data-align-left": alignLeft || void 0,
+            role: "dialog",
+            "aria-label": t("pet.title"),
+            children: panel
+          }
+        ) : activeBubble && /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
+          "div",
+          {
+            className: "dchat-pet-bubble",
+            "data-below": openBelow || void 0,
+            "data-align-left": alignLeft || void 0,
+            role: "region",
+            "aria-label": t("pet.title"),
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "dchat-pet-bubble-head", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("button", { type: "button", className: "dchat-pet-bubble-task", onClick: () => openDirect(activeBubble.item.id), children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(EngineLogo, { engine: activeBubble.item.engine, label: activeBubble.item.source, size: 14 }),
+                  /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { children: activeBubble.item.title })
+                ] }),
+                extraApprovalCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { type: "button", className: "dchat-pet-bubble-more", onClick: () => setOpen(true), children: t("pet.moreApprovals", { count: extraApprovalCount }) }),
+                /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+                  "button",
+                  {
+                    type: "button",
+                    className: "dchat-pet-bubble-close",
+                    "aria-label": t("pet.dismissBubble"),
+                    title: t("pet.dismissBubble"),
+                    onClick: () => setDismissedBubbleKeys((prev) => {
+                      const next = new Set(prev);
+                      next.add(activeBubble.key);
+                      return next;
+                    }),
+                    children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(import_dsh_client_ui_primitives39.IconCloseOutlineRegular, { size: 14 })
+                  }
+                )
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "dchat-pet-approval-card", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "dchat-pet-approval-title", children: activeBubble.perm.title || t("permission.tool") }),
+                activeBubble.perm.detail && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "dchat-pet-approval-detail", title: String(activeBubble.perm.detail), children: String(activeBubble.perm.detail) }),
+                failedApprovalKey === activeBubble.key && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { role: "alert", children: t("pet.approvalFailed") }),
+                /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "dchat-pet-approval-actions", children: activeBubble.perm.options.map((option) => /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+                  import_dsh_client_ui_primitives39.Button,
+                  {
+                    size: "sm",
+                    variant: option.kind?.startsWith("allow") ? "primary" : "outline",
+                    disabled: Boolean(approvingKey),
+                    onClick: () => approve(activeBubble.item.id, activeBubble.perm.id, option.optionId),
+                    children: option.name
+                  },
+                  option.optionId
+                )) })
+              ] })
+            ]
+          }
+        ),
+        isHeader ? /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
+          "button",
+          {
+            type: "button",
+            className: "dchat-pet-header-btn",
+            title: t("pet.title"),
+            "aria-label": t("pet.title"),
+            "aria-expanded": open,
+            "aria-haspopup": "dialog",
+            onClick: (event2) => {
+              event2.currentTarget.focus();
+              setOpen(true);
+            },
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(PetSprite, { mood }),
+              badgeCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "dchat-pet-badge", "data-mood": badgeMood, children: badgeCount > 99 ? "99+" : badgeCount })
+            ]
+          }
+        ) : /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
+          "button",
+          {
+            type: "button",
+            className: "dchat-pet-fab",
+            title: t("pet.title"),
+            "aria-label": t("pet.title"),
+            "aria-expanded": open,
+            onPointerDown,
+            onPointerMove,
+            onPointerUp,
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(PetSprite, { mood }),
+              badgeCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "dchat-pet-badge", "data-mood": badgeMood, children: badgeCount > 99 ? "99+" : badgeCount })
+            ]
+          }
+        )
+      ]
+    }
+  );
 }
 
 // RunningJobs.jsx
@@ -20605,6 +20724,7 @@ async function startNativeFromDirect(ctx, workspaceId, cwd, draft) {
 
 // session-pet.css
 var session_pet_default = `.dchat-pet-root {
+  --dchat-pet-fab-size: 38px;
   position: fixed;
   top: 56px;
   right: 16px;
@@ -20613,13 +20733,21 @@ var session_pet_default = `.dchat-pet-root {
   user-select: none;
 }
 
+.dchat-pet-root[data-size='md'] {
+  --dchat-pet-fab-size: 48px;
+}
+
+.dchat-pet-root[data-size='lg'] {
+  --dchat-pet-fab-size: 60px;
+}
+
 .dchat-pet-fab {
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
+  width: var(--dchat-pet-fab-size);
+  height: var(--dchat-pet-fab-size);
   padding: 0;
   border: 1px solid var(--dsw-alias-border-l2);
   border-radius: 999px;
@@ -20665,8 +20793,8 @@ var session_pet_default = `.dchat-pet-root {
 }
 
 .dchat-pet-fab .dchat-pet-svg {
-  width: 32px;
-  height: 32px;
+  width: calc(var(--dchat-pet-fab-size) * 0.82);
+  height: calc(var(--dchat-pet-fab-size) * 0.82);
 }
 
 .dchat-pet-header-btn {
@@ -20729,21 +20857,6 @@ var session_pet_default = `.dchat-pet-root {
 
 .dchat-pet-fab:active {
   cursor: grabbing;
-}
-
-.dchat-pet-root[data-mood='running'] .dchat-pet-fab {
-  color: var(--dsw-alias-state-info-primary, #2563eb);
-  border-color: color-mix(in srgb, currentColor 35%, transparent);
-}
-
-.dchat-pet-root[data-mood='attention'] .dchat-pet-fab {
-  color: var(--dsw-alias-state-warn-label, #d97706);
-  border-color: color-mix(in srgb, currentColor 45%, transparent);
-}
-
-.dchat-pet-root[data-mood='done'] .dchat-pet-fab {
-  color: var(--dsw-alias-state-success-primary, #16a34a);
-  border-color: color-mix(in srgb, currentColor 40%, transparent);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -20844,7 +20957,7 @@ var session_pet_default = `.dchat-pet-root {
 .dchat-pet-panel {
   position: absolute;
   right: 0;
-  bottom: 58px;
+  bottom: calc(var(--dchat-pet-fab-size) + 12px);
   width: min(320px, calc(100vw - 24px));
   max-height: min(380px, calc(100dvh - 100px));
   display: flex;
@@ -20860,12 +20973,111 @@ var session_pet_default = `.dchat-pet-root {
 
 .dchat-pet-panel[data-below] {
   bottom: auto;
-  top: 58px;
+  top: calc(var(--dchat-pet-fab-size) + 12px);
 }
 
 .dchat-pet-panel[data-align-left] {
   right: auto;
   left: 0;
+}
+
+.dchat-pet-bubble {
+  position: absolute;
+  right: 0;
+  bottom: calc(var(--dchat-pet-fab-size) + 10px);
+  width: min(310px, calc(100vw - 24px));
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 12px;
+  border: 0.5px solid var(--dsw-alias-border-l2);
+  border-radius: var(--dsw-radius-lg);
+  background: var(--dsw-specific-menu, var(--dsw-alias-bg-layer-1));
+  backdrop-filter: var(--dsw-menu-backdrop-filter);
+  box-shadow: var(--dsw-elevation-prominent);
+  color: var(--dsw-alias-label-primary);
+  animation: dchat-pet-bubble-in 0.16s ease-out;
+}
+
+.dchat-pet-bubble[data-below] {
+  bottom: auto;
+  top: calc(var(--dchat-pet-fab-size) + 10px);
+}
+
+.dchat-pet-bubble[data-align-left] {
+  right: auto;
+  left: 0;
+}
+
+@keyframes dchat-pet-bubble-in {
+  from { opacity: 0; transform: translateY(4px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+
+.dchat-pet-bubble-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.dchat-pet-bubble-task {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--dsw-alias-label-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dchat-pet-bubble-task:hover {
+  color: var(--dsw-alias-label-primary);
+}
+
+.dchat-pet-bubble-task > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dchat-pet-bubble-more {
+  flex: none;
+  padding: 1px 6px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--dsw-alias-interactive-bg-hover);
+  color: var(--dsw-alias-label-secondary);
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.dchat-pet-bubble-more:hover {
+  color: var(--dsw-alias-label-primary);
+}
+
+.dchat-pet-bubble-close {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px;
+  border: 0;
+  border-radius: var(--dsw-radius-sm);
+  background: transparent;
+  color: var(--dsw-alias-label-tertiary);
+  cursor: pointer;
+}
+
+.dchat-pet-bubble-close:hover {
+  color: var(--dsw-alias-label-primary);
+  background: var(--dsw-alias-interactive-bg-hover);
 }
 
 .dchat-pet-panel-header {
@@ -20887,6 +21099,35 @@ var session_pet_default = `.dchat-pet-root {
   display: flex;
   align-items: center;
   gap: 6px;
+}
+
+.dchat-pet-size-group {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px;
+  border-radius: var(--dsw-radius-sm);
+  background: var(--dsw-alias-bg-layer-1);
+}
+
+.dchat-pet-size-btn {
+  border: 0;
+  border-radius: calc(var(--dsw-radius-sm) - 2px);
+  background: transparent;
+  color: var(--dsw-alias-label-tertiary);
+  font-size: 11px;
+  line-height: 16px;
+  padding: 1px 5px;
+  cursor: pointer;
+}
+
+.dchat-pet-size-btn:hover {
+  color: var(--dsw-alias-label-primary);
+}
+
+.dchat-pet-size-btn[data-active] {
+  background: var(--dsw-alias-bg-base);
+  color: var(--dsw-alias-label-primary);
+  font-weight: 500;
 }
 
 .dchat-pet-ack,
@@ -20937,7 +21178,22 @@ var session_pet_default = `.dchat-pet-root {
   overflow: auto;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
+}
+
+.dchat-pet-list > li {
+  flex-shrink: 0;
+  border-radius: var(--dsw-radius-md);
+  overflow: hidden;
+}
+
+.dchat-pet-list > li:has(.dchat-pet-approval) {
+  border: 0;
+  background: var(--dsw-alias-bg-layer-1);
+}
+
+.dchat-pet-list > li:has(.dchat-pet-approval) .dchat-pet-item {
+  border-radius: 0;
 }
 
 .dchat-pet-item {
@@ -21033,11 +21289,12 @@ var session_pet_default = `.dchat-pet-root {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin: 4px 6px 6px;
-  padding: 10px;
-  border-radius: var(--dsw-radius-md, 8px);
-  border: 1px solid var(--dsw-alias-border-l2);
-  background: var(--dsw-alias-bg-module-platform, var(--dsw-alias-bg-layer-1));
+  margin: 0;
+  padding: 8px 10px 10px;
+  border: 0;
+  border-top: 0.5px solid var(--dsw-alias-border-l3);
+  border-radius: 0;
+  background: transparent;
 }
 
 .dchat-pet-approval-card {
@@ -21064,7 +21321,7 @@ var session_pet_default = `.dchat-pet-root {
   padding: 6px 8px;
   overflow: auto;
   border-radius: var(--dsw-radius-sm, 6px);
-  border: 0.5px solid var(--dsw-alias-border-l3);
+  border: 0;
   background: var(--dsw-alias-bg-base);
   font-size: 11.5px;
   line-height: 1.45;
@@ -21177,7 +21434,7 @@ var session_pet_default = `.dchat-pet-root {
 
 .dchat-pet-panel-fullscreen .dchat-pet-list > li {
   border-radius: var(--dsw-radius-lg, 12px);
-  border: 1px solid var(--dsw-alias-border-l2);
+  border: 0;
   background: var(--dsw-alias-bg-layer-1);
   overflow: hidden;
 }
@@ -21203,7 +21460,7 @@ var session_pet_default = `.dchat-pet-root {
   border: 0;
   border-top: 0.5px solid var(--dsw-alias-border-l3);
   border-radius: 0;
-  background: var(--dsw-alias-bg-module-platform, var(--dsw-alias-bg-base));
+  background: transparent;
 }
 
 .dchat-pet-panel-fullscreen .dchat-pet-approval-title {
@@ -21503,6 +21760,13 @@ var en4 = {
   "pet.nativeAttention": "Awaiting input",
   "pet.soundOn": "Mute task alerts",
   "pet.soundOff": "Enable task alert sounds",
+  "pet.moreApprovals": "+{count} more",
+  "pet.approvalFailed": "Could not submit your response. Try again.",
+  "pet.dismissBubble": "Hide for now",
+  "pet.sizeLabel": "Assistant size",
+  "pet.size.sm": "S",
+  "pet.size.md": "M",
+  "pet.size.lg": "L",
   "engine.checkUpdate": "Check updates",
   "engine.checking": "Checking\u2026",
   "engine.updateAvailable": "Update to {version}",
@@ -21810,6 +22074,13 @@ var zh4 = {
   "pet.nativeAttention": "\u5F85\u5904\u7406",
   "pet.soundOn": "\u5173\u95ED\u63D0\u793A\u97F3",
   "pet.soundOff": "\u5F00\u542F\u63D0\u793A\u97F3",
+  "pet.moreApprovals": "\u53E6\u6709 {count} \u9879",
+  "pet.approvalFailed": "\u5BA1\u6279\u63D0\u4EA4\u5931\u8D25\uFF0C\u8BF7\u91CD\u8BD5\u3002",
+  "pet.dismissBubble": "\u6682\u65F6\u6536\u8D77",
+  "pet.sizeLabel": "\u5C0F\u52A9\u624B\u5927\u5C0F",
+  "pet.size.sm": "\u5C0F",
+  "pet.size.md": "\u4E2D",
+  "pet.size.lg": "\u5927",
   "engine.checkUpdate": "\u68C0\u67E5\u66F4\u65B0",
   "engine.checking": "\u6B63\u5728\u68C0\u67E5\u2026",
   "engine.updateAvailable": "\u53EF\u66F4\u65B0\u81F3 {version}",
@@ -23900,6 +24171,9 @@ function apply(ctx) {
       }
     })(),
     engineSource,
+    navigation,
+    panelInfo: ctx.layout.panelInfo,
+    panelId,
     openDirect,
     openNative: (id) => {
       try {

@@ -5,6 +5,8 @@ import { EngineLogo } from './EngineHero.jsx'
 
 const PET_POS_KEY = 'dsh-direct-chat.pet-pos'
 const PET_SOUND_KEY = 'dsh-direct-chat.pet-sound'
+const PET_SIZE_KEY = 'dsh-direct-chat.pet-size'
+const PET_SIZES = ['sm', 'md', 'lg']
 const emptyNative = { byId: {}, ids: [] }
 const emptyNativeStore = { getSnapshot: () => emptyNative, subscribe: () => () => {} }
 const emptyNativeStatus = new Map()
@@ -18,14 +20,21 @@ let hydratedTasks = false
 const prevTaskStates = new Map()
 const seenDoneKeys = new Set()
 const petAlertListeners = new Set()
-let petAlertSnapshot = { soundEnabled: readSoundEnabled(), seenRevision: 0 }
+let petAlertSnapshot = { soundEnabled: readSoundEnabled(), petSize: readPetSize(), seenRevision: 0 }
 
 function readSoundEnabled() {
   try { return localStorage.getItem(PET_SOUND_KEY) === 'true' } catch { return false }
 }
 
+function readPetSize() {
+  try {
+    const raw = localStorage.getItem(PET_SIZE_KEY)
+    return PET_SIZES.includes(raw) ? raw : 'sm'
+  } catch { return 'sm' }
+}
+
 function emitPetAlert() {
-  petAlertSnapshot = { soundEnabled: petAlertSnapshot.soundEnabled, seenRevision: petAlertSnapshot.seenRevision + 1 }
+  petAlertSnapshot = { ...petAlertSnapshot, seenRevision: petAlertSnapshot.seenRevision + 1 }
   for (const listener of petAlertListeners) listener()
 }
 
@@ -91,6 +100,12 @@ const petAlertStore = {
     try { localStorage.setItem(PET_SOUND_KEY, String(next)) } catch {}
     for (const listener of petAlertListeners) listener()
     if (next) playAlertSound('done', { force: true })
+  },
+  setPetSize: size => {
+    if (!PET_SIZES.includes(size) || petAlertSnapshot.petSize === size) return
+    petAlertSnapshot = { ...petAlertSnapshot, petSize: size }
+    try { localStorage.setItem(PET_SIZE_KEY, size) } catch {}
+    for (const listener of petAlertListeners) listener()
   },
   markDoneSeen: tasks => {
     let changed = false
@@ -203,19 +218,26 @@ function PetSprite({ mood }) {
   </svg>
 }
 
+const noopSubscribe = () => () => {}
+const noopSnapshot = () => undefined
+
 export function SessionPet({
   variant = 'floating', statusStore, nativeSessions = emptyNativeStore,
   useSessionStatus = useEmptyNativeStatus, useWorkspaces = useEmptyWorkspaces,
-  engineSource, openDirect, openNative, t,
+  engineSource, navigation, panelInfo, panelId, openDirect, openNative, t,
 }) {
   const directSnap = useSyncExternalStore(statusStore.subscribe, statusStore.getSnapshot)
   const nativeSnap = useSyncExternalStore(nativeSessions.subscribe, nativeSessions.getSnapshot)
   const nativeStatus = useSessionStatus(snapshot => snapshot)
   const archivedNativeIds = useWorkspaces(snapshot => snapshot?.archivedSessionIds)
   const { engines } = useSyncExternalStore(engineSource.subscribe, engineSource.getSnapshot)
-  const { soundEnabled, seenRevision } = useSyncExternalStore(petAlertStore.subscribe, petAlertStore.getSnapshot)
+  const navSnap = useSyncExternalStore(navigation?.subscribe ?? noopSubscribe, navigation?.getSnapshot ?? noopSnapshot)
+  const layoutSnap = useSyncExternalStore(panelInfo?.subscribe ?? noopSubscribe, panelInfo?.getSnapshot ?? noopSnapshot)
+  const { soundEnabled, petSize, seenRevision } = useSyncExternalStore(petAlertStore.subscribe, petAlertStore.getSnapshot)
   const [open, setOpen] = useState(false)
   const [approvingKey, setApprovingKey] = useState(null)
+  const [failedApprovalKey, setFailedApprovalKey] = useState(null)
+  const [dismissedBubbleKeys, setDismissedBubbleKeys] = useState(() => new Set())
   const [pos, setPos] = useState(() => readSavedPos())
   const dragRef = useRef(null)
   const rootRef = useRef(null)
@@ -318,6 +340,24 @@ export function SessionPet({
 
   const badgeMood = counts.attention > 0 ? 'attention' : counts.unseenDone > 0 ? 'done' : null
   const badgeCount = counts.attention > 0 ? counts.attention : counts.unseenDone
+  const activeDirectId = !panelId || layoutSnap?.activePanelId === panelId ? navSnap?.id : null
+
+  const pendingApprovals = useMemo(() => {
+    if (isHeader) return []
+    const list = []
+    for (const item of tasks) {
+      if (item.kind !== 'direct' || item.state !== 'attention' || item.permissions.length === 0) continue
+      if (activeDirectId && item.id === activeDirectId) continue
+      for (const perm of item.permissions) {
+        const key = `${item.id}:${perm.id}`
+        if (!dismissedBubbleKeys.has(key)) list.push({ item, perm, key })
+      }
+    }
+    return list
+  }, [isHeader, tasks, activeDirectId, dismissedBubbleKeys])
+
+  const activeBubble = !isHeader && !open ? pendingApprovals[0] ?? null : null
+  const extraApprovalCount = Math.max(0, pendingApprovals.length - 1)
   const openBelow = pos ? pos.y < 280 : true
   const alignLeft = pos ? pos.x < 220 : false
 
@@ -360,6 +400,19 @@ export function SessionPet({
   }
 
   const style = variant === 'floating' && pos ? { left: `${pos.x}px`, top: `${pos.y}px`, right: 'auto', bottom: 'auto' } : undefined
+  const approve = async (sessionId, permissionId, optionId) => {
+    if (approvingKey) return
+    const key = `${sessionId}:${permissionId}`
+    setApprovingKey(key)
+    setFailedApprovalKey(null)
+    try {
+      await sessionAction(sessionId, 'approve', { id: permissionId, option: optionId })
+    } catch {
+      setFailedApprovalKey(key)
+    } finally {
+      setApprovingKey(null)
+    }
+  }
   const hasDirectCompletion = tasks.some(item => item.kind === 'direct' && item.state === 'done')
   const hasNativeCompletion = tasks.some(item => item.kind === 'native' && item.state === 'done')
   const panel = <>
@@ -372,6 +425,14 @@ export function SessionPet({
         }}>
           {t(hasNativeCompletion ? 'pet.clearDirectDone' : 'pet.clearDone')}
         </button>}
+        {!isHeader && <div className="dchat-pet-size-group" role="group" aria-label={t('pet.sizeLabel')} title={t('pet.sizeLabel')}>
+          {PET_SIZES.map(size => <button key={size} type="button" className="dchat-pet-size-btn"
+            data-active={petSize === size || undefined}
+            aria-pressed={petSize === size}
+            onClick={() => petAlertStore.setPetSize(size)}>
+            {t(`pet.size.${size}`)}
+          </button>)}
+        </div>}
         <button type="button" className="dchat-pet-sound" data-enabled={soundEnabled || undefined}
           aria-pressed={soundEnabled}
           aria-label={t(soundEnabled ? 'pet.soundOn' : 'pet.soundOff')}
@@ -421,22 +482,15 @@ export function SessionPet({
           <div className="dchat-pet-approval" onClick={event => event.stopPropagation()}>
             {item.permissions.map(perm => {
               const key = `${item.id}:${perm.id}`
-              const busy = approvingKey === key
               return <div key={perm.id} className="dchat-pet-approval-card">
                 <div className="dchat-pet-approval-title">{perm.title || t('permission.tool')}</div>
                 {perm.detail && <div className="dchat-pet-approval-detail" title={String(perm.detail)}>{String(perm.detail)}</div>}
+                {failedApprovalKey === key && <div role="alert">{t('pet.approvalFailed')}</div>}
                 <div className="dchat-pet-approval-actions">
                   {perm.options.map(option => <Button key={option.optionId} size="sm"
                     variant={option.kind?.startsWith('allow') ? 'primary' : 'outline'}
-                    disabled={busy}
-                    onClick={async event => {
-                      event.stopPropagation()
-                      if (approvingKey) return
-                      setApprovingKey(key)
-                      try { await sessionAction(item.id, 'approve', { id: perm.id, option: option.optionId }) }
-                      catch {}
-                      finally { setApprovingKey(null) }
-                    }}>{option.name}</Button>)}
+                    disabled={Boolean(approvingKey)}
+                    onClick={() => approve(item.id, perm.id, option.optionId)}>{option.name}</Button>)}
                 </div>
               </div>
             })}
@@ -446,11 +500,46 @@ export function SessionPet({
     </ul>}
   </>
 
-  return <div ref={rootRef} className={isHeader ? 'dchat-pet-header-slot' : 'dchat-pet-root'} data-mood={mood} style={style}>
+  return <div ref={rootRef} className={isHeader ? 'dchat-pet-header-slot' : 'dchat-pet-root'}
+    data-mood={mood} data-size={!isHeader ? petSize : undefined} style={style}>
     {isHeader ? <Modal open={open} onClose={closePanel} title={t('pet.title')} headless backdropBlur={false}
-      className="dchat-pet-panel-fullscreen">{panel}</Modal> : open && (
+      className="dchat-pet-panel-fullscreen">{panel}</Modal> : open ? (
       <div ref={panelRef} className="dchat-pet-panel" data-below={openBelow || undefined}
         data-align-left={alignLeft || undefined} role="dialog" aria-label={t('pet.title')}>{panel}</div>
+    ) : activeBubble && (
+      <div className="dchat-pet-bubble" data-below={openBelow || undefined}
+        data-align-left={alignLeft || undefined} role="region" aria-label={t('pet.title')}>
+        <div className="dchat-pet-bubble-head">
+          <button type="button" className="dchat-pet-bubble-task" onClick={() => openDirect(activeBubble.item.id)}>
+            <EngineLogo engine={activeBubble.item.engine} label={activeBubble.item.source} size={14} />
+            <span>{activeBubble.item.title}</span>
+          </button>
+          {extraApprovalCount > 0 && <button type="button" className="dchat-pet-bubble-more" onClick={() => setOpen(true)}>
+            {t('pet.moreApprovals', { count: extraApprovalCount })}
+          </button>}
+          <button type="button" className="dchat-pet-bubble-close" aria-label={t('pet.dismissBubble')} title={t('pet.dismissBubble')}
+            onClick={() => setDismissedBubbleKeys(prev => {
+              const next = new Set(prev)
+              next.add(activeBubble.key)
+              return next
+            })}>
+            <IconCloseOutlineRegular size={14} />
+          </button>
+        </div>
+        <div className="dchat-pet-approval-card">
+          <div className="dchat-pet-approval-title">{activeBubble.perm.title || t('permission.tool')}</div>
+          {activeBubble.perm.detail && <div className="dchat-pet-approval-detail" title={String(activeBubble.perm.detail)}>
+            {String(activeBubble.perm.detail)}
+          </div>}
+          {failedApprovalKey === activeBubble.key && <div role="alert">{t('pet.approvalFailed')}</div>}
+          <div className="dchat-pet-approval-actions">
+            {activeBubble.perm.options.map(option => <Button key={option.optionId} size="sm"
+              variant={option.kind?.startsWith('allow') ? 'primary' : 'outline'}
+              disabled={Boolean(approvingKey)}
+              onClick={() => approve(activeBubble.item.id, activeBubble.perm.id, option.optionId)}>{option.name}</Button>)}
+          </div>
+        </div>
+      </div>
     )}
     {isHeader ? <button type="button" className="dchat-pet-header-btn" title={t('pet.title')} aria-label={t('pet.title')}
       aria-expanded={open} aria-haspopup="dialog" onClick={event => {

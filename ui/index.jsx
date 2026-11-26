@@ -123,6 +123,9 @@ export function apply(ctx) {
     statusStore,
     nativeSessions: (() => { try { return ctx.get?.('sessions')?.list } catch { return undefined } })(),
     engineSource,
+    navigation,
+    panelInfo: ctx.layout.panelInfo,
+    panelId,
     openDirect,
     openNative: id => { try { ctx.uiWorkspace.openSession(id) } catch {} },
   })
